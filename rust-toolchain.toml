@@ -1,0 +1,4 @@
+# Pinned per ADR-0014 §1: every host-evidence record names this toolchain.
+[toolchain]
+channel = "1.97.1"
+targets = ["x86_64-pc-windows-msvc"]

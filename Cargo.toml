@@ -1,0 +1,23 @@
+[package]
+name = "dynamicfx"
+version = "0.0.1"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+after-effects = "0.4"
+naga = { version = "29", default-features = false, features = ["glsl-in", "spv-out"] }
+wgpu = { version = "29", features = ["spirv"] }
+pollster = "1"
+log = "0.4"
+# Identity hashing (ADR-0017); version rides the lockfile into evidence records.
+blake3 = "1"
+
+[build-dependencies]
+pipl = "0.1"
+
+[profile.dev]
+opt-level = 3
