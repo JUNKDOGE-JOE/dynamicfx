@@ -28,6 +28,10 @@ pub enum ParamKey {
     /// ADR fixes the layout — interim encodings must not persist (ADR-0009).
     StateToken,
     Pool(PoolKind, usize),
+    /// ADR-0028: appended after every pool slot (append-only growth per
+    /// ADR-0013) — a button that pops the full, untruncated status text
+    /// (the Status name is capped at 31 chars by PF).
+    Details,
 }
 
 /// Head parameters in declaration order, after AE's implicit input layer.
@@ -53,6 +57,9 @@ pub fn declaration_order() -> Vec<ParamKey> {
             order.push(ParamKey::Pool(*kind, i));
         }
     }
+    // ADR-0028 append-only growth: Details rides after every pool slot so
+    // all 0.0.1 indexes stay stable.
+    order.push(ParamKey::Details);
     order
 }
 
@@ -158,6 +165,15 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
                     ae::ParamUIFlags::INVISIBLE,
                 )?;
             }
+            ParamKey::Details => {
+                params.add(
+                    key,
+                    "Details",
+                    ae::ButtonDef::setup(|b| {
+                        b.set_label("Show Full Status");
+                    }),
+                )?;
+            }
             ParamKey::Pool(kind, i) => {
                 let name = default_slot_name(kind, i);
                 match kind {
@@ -170,6 +186,11 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
                             f.set_valid_min(0.0);
                             f.set_valid_max(1.0);
                             f.set_default(0.0);
+                            // Unset precision is the zeroed field = integer
+                            // stepping — floats dragged like ints (0.0.1
+                            // user report). Hundredths matches AE's own
+                            // float sliders.
+                            f.set_precision(ae::Precision::Hundredths);
                         }),
                         ae::ParamFlag::START_COLLAPSED,
                         ae::ParamUIFlags::empty(),
@@ -240,10 +261,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn topology_has_five_heads_plus_104_pool_slots() {
+    fn topology_has_five_heads_104_pool_slots_and_details() {
         let order = declaration_order();
-        assert_eq!(order.len(), 109);
+        // ADR-0013 base (5 heads + 104 pools) + ADR-0028 Details appended.
+        assert_eq!(order.len(), 110);
         assert_eq!(&order[..5], &HEAD);
+        assert_eq!(order[109], ParamKey::Details);
     }
 
     /// The pool segment mirrors V1_POOLS exactly: table order, kind-local
@@ -258,7 +281,7 @@ mod tests {
                 expected.push(ParamKey::Pool(*kind, i));
             }
         }
-        assert_eq!(&order[5..], &expected[..]);
+        assert_eq!(&order[5..109], &expected[..]);
     }
 
     #[test]

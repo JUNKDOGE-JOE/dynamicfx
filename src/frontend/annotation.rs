@@ -8,6 +8,7 @@
 //! entry := label:"quoted text" | label:word
 //!        | min:<number> | max:<number>
 //!        | default:<number>[,<number>]*      (1-4 components)
+//!        | default:#RRGGBB[AA]               (hint:color only, ADR-0026)
 //!        | alias:<id>[,<id>]*
 //!        | hint:angle | hint:color
 //! ```
@@ -104,6 +105,7 @@ pub fn parse_annotations(source: &str) -> Result<HashMap<String, Annotation>, An
             .map_err(|e: ParamIdError| err(line_no, format!("bad id `{id_token}`: {e:?}")))?;
 
         let mut annotation = Annotation::default();
+        let mut default_was_hex = false;
         for token in tokens {
             let Some((key, value)) = token.split_once(':') else {
                 return Err(err(line_no, format!("`{token}` is not a key:value entry")));
@@ -121,10 +123,18 @@ pub fn parse_annotations(source: &str) -> Result<HashMap<String, Annotation>, An
                     set_once(line_no, "max", &mut annotation.max, v)?;
                 }
                 "default" => {
-                    let components: Vec<f32> = value
-                        .split(',')
-                        .map(|c| parse_number(line_no, "default", c))
-                        .collect::<Result<_, _>>()?;
+                    // ADR-0026: `#RRGGBB[AA]` color literals decode to
+                    // normalized components (6 digits imply alpha 1.0);
+                    // malformed hex is rejected, never guessed.
+                    let components: Vec<f32> = if let Some(hex) = value.strip_prefix('#') {
+                        default_was_hex = true;
+                        parse_hex_color(line_no, hex)?
+                    } else {
+                        value
+                            .split(',')
+                            .map(|c| parse_number(line_no, "default", c))
+                            .collect::<Result<_, _>>()?
+                    };
                     if components.is_empty() || components.len() > 4 {
                         return Err(err(line_no, "default takes 1-4 components"));
                     }
@@ -156,6 +166,18 @@ pub fn parse_annotations(source: &str) -> Result<HashMap<String, Annotation>, An
             }
         }
 
+        // ADR-0026 combination rules: hex literals are color-only, and a
+        // color default never combines with min/max.
+        if default_was_hex && annotation.hint != Some(Hint::Color) {
+            return Err(err(line_no, "hex default requires hint:color"));
+        }
+        if annotation.hint == Some(Hint::Color)
+            && annotation.default.is_some()
+            && (annotation.min.is_some() || annotation.max.is_some())
+        {
+            return Err(err(line_no, "color default does not combine with min/max"));
+        }
+
         if out.insert(id.as_str().to_string(), annotation).is_some() {
             return Err(err(line_no, format!("duplicate @param for `{}`", id.as_str())));
         }
@@ -177,6 +199,24 @@ fn parse_number(line: usize, key: &str, value: &str) -> Result<f32, AnnotationEr
         Ok(v) if v.is_finite() => Ok(v),
         _ => Err(err(line, format!("{key} needs a finite number, got `{value}`"))),
     }
+}
+
+/// ADR-0026 hex color literal (without the `#`): exactly 6 or 8 hex digits,
+/// sRGB-8 channels normalized to 0..=1; 6 digits imply alpha 1.0.
+fn parse_hex_color(line: usize, hex: &str) -> Result<Vec<f32>, AnnotationError> {
+    if hex.len() != 6 && hex.len() != 8 {
+        return Err(err(line, format!("hex default needs 6 or 8 digits, got `{hex}`")));
+    }
+    let mut components = Vec::with_capacity(4);
+    for pair in 0..hex.len() / 2 {
+        let byte = u8::from_str_radix(&hex[pair * 2..pair * 2 + 2], 16)
+            .map_err(|_| err(line, format!("bad hex digits in default `#{hex}`")))?;
+        components.push(byte as f32 / 255.0);
+    }
+    if components.len() == 3 {
+        components.push(1.0);
+    }
+    Ok(components)
 }
 
 /// Split on whitespace, keeping `label:"..."` quoted spans intact.
@@ -225,6 +265,44 @@ mod tests {
         assert!(parse_window("// @window lots").unwrap_err().message.contains("integer"));
         assert!(parse_window("// @window 4\n// @window 4").unwrap_err().message.contains("duplicate"));
         assert_eq!(WINDOW_DEFAULT, 16);
+    }
+
+    // ADR-0026: hex color defaults — exact decode, alpha rules, rejections.
+    #[test]
+    fn color_hex_defaults() {
+        let ok = parse_annotations("// @param tint hint:color default:#1A6BFF").unwrap();
+        let d = ok["tint"].default.as_ref().unwrap();
+        assert_eq!(d.len(), 4);
+        assert!((d[0] - 26.0 / 255.0).abs() < 1e-6);
+        assert!((d[1] - 107.0 / 255.0).abs() < 1e-6);
+        assert!((d[2] - 255.0 / 255.0).abs() < 1e-6);
+        assert_eq!(d[3], 1.0);
+
+        let with_alpha = parse_annotations("// @param t hint:color default:#00FF8080").unwrap();
+        let d = with_alpha["t"].default.as_ref().unwrap();
+        assert_eq!(d[0], 0.0);
+        assert_eq!(d[1], 1.0);
+        assert!((d[3] - 128.0 / 255.0).abs() < 1e-6);
+
+        // Case-insensitive digits.
+        assert!(parse_annotations("// @param t hint:color default:#a0b1c2").is_ok());
+        // Wrong length, bad digits, hex without hint:color, min/max combo.
+        assert!(parse_annotations("// @param t hint:color default:#12345")
+            .unwrap_err()
+            .message
+            .contains("6 or 8 digits"));
+        assert!(parse_annotations("// @param t hint:color default:#GGGGGG")
+            .unwrap_err()
+            .message
+            .contains("bad hex digits"));
+        assert!(parse_annotations("// @param t default:#112233")
+            .unwrap_err()
+            .message
+            .contains("requires hint:color"));
+        assert!(parse_annotations("// @param t hint:color min:0 max:1 default:#112233")
+            .unwrap_err()
+            .message
+            .contains("does not combine"));
     }
 
     #[test]

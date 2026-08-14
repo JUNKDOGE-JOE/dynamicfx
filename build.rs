@@ -37,7 +37,7 @@ fn main() {
             // Subversion bumps with out-flag changes (M5 SmartFX entry,
             // M6 threaded rendering) so AE's plugin cache re-reads the PIPL.
             version: 1,
-            subversion: 4,
+            subversion: 5,
             bugversion: 0,
             stage: Stage::Develop,
             build: 0,

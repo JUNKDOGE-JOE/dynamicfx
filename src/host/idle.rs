@@ -442,9 +442,8 @@ fn apply_slot_ui(
                 false,
                 hidden,
             )?;
-            // Fresh-binding defaults, scalar (OneD) kinds only for now;
-            // color/point defaults need more raw stream-value plumbing and
-            // arrive with their value-encoding fixtures.
+            // Fresh-binding defaults: scalar (OneD) kinds, and Color
+            // streams via the four-component color value (ADR-0026).
             if let Some(config) = config {
                 let scalar = matches!(
                     kind,
@@ -453,6 +452,20 @@ fn apply_slot_ui(
                 if config.fresh && scalar {
                     if let Some(default) = config.default {
                         raw_streams.set_one_d(state.plugin_id, &stream, default as f64)?;
+                        defaults_written += 1;
+                    }
+                }
+                if config.fresh && *kind == PoolKind::Color {
+                    if let Some([r, g, b, _a]) = config.color_default {
+                        // Alpha rides the companion Float slot; the color
+                        // stream itself is written opaque.
+                        raw_streams.set_color(
+                            state.plugin_id,
+                            &stream,
+                            r as f64,
+                            g as f64,
+                            b as f64,
+                        )?;
                         defaults_written += 1;
                     }
                 }
@@ -522,6 +535,35 @@ impl RawStreamSuite6 {
             Ok(())
         } else {
             crate::diag::log(&format!("AEGP_SetStreamValue failed: {err}"));
+            Err(ae::Error::Generic)
+        }
+    }
+
+    /// ADR-0026: write a Color stream's RGBA value (alpha fixed opaque —
+    /// the shader-facing alpha rides the companion Float slot).
+    fn set_color(
+        &self,
+        plugin_id: ae::aegp::PluginId,
+        stream: &StreamReferenceHandle,
+        r: f64,
+        g: f64,
+        b: f64,
+    ) -> Result<(), ae::Error> {
+        let set_stream_value =
+            unsafe { (*self.suite).AEGP_SetStreamValue }.ok_or(ae::Error::MissingSuite)?;
+        let mut stream_value: ae::sys::AEGP_StreamValue2 = unsafe { std::mem::zeroed() };
+        stream_value.streamH = stream.as_ptr();
+        stream_value.val.color = ae::sys::AEGP_ColorVal {
+            alphaF: 1.0,
+            redF: r,
+            greenF: g,
+            blueF: b,
+        };
+        let err = unsafe { set_stream_value(plugin_id, stream.as_ptr(), &mut stream_value) };
+        if err == ae::sys::A_Err_NONE {
+            Ok(())
+        } else {
+            crate::diag::log(&format!("AEGP_SetStreamValue(color) failed: {err}"));
             Err(ae::Error::Generic)
         }
     }

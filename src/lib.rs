@@ -154,6 +154,9 @@ pub(crate) struct SlotConfig {
     /// Scalar default for this slot (component 0, or component 3 for the
     /// vec4 alpha companion).
     pub default: Option<f32>,
+    /// Full RGBA default for Color slots (ADR-0026); alpha rides the
+    /// companion Float slot, so the color stream itself gets alpha 1.0.
+    pub color_default: Option<[f32; 4]>,
     pub fresh: bool,
 }
 
@@ -174,6 +177,13 @@ pub(crate) fn slot_configs(
                 // The vec4 alpha companion rides component 3.
                 (format!("{base} A"), decl.ui.default.as_ref().and_then(|d| d.get(3).copied()))
             };
+            let color_default = (j == 0 && slot.kind == binding::PoolKind::Color)
+                .then(|| {
+                    decl.ui.default.as_ref().and_then(|d| {
+                        (d.len() >= 3).then(|| [d[0], d[1], d[2], d.get(3).copied().unwrap_or(1.0)])
+                    })
+                })
+                .flatten();
             configs.insert(
                 *slot,
                 SlotConfig {
@@ -181,6 +191,7 @@ pub(crate) fn slot_configs(
                     min: (j == 0).then_some(decl.ui.min).flatten(),
                     max: (j == 0).then_some(decl.ui.max).flatten(),
                     default,
+                    color_default,
                     fresh: !bound.inherited,
                 },
             );
@@ -1626,6 +1637,14 @@ impl AdobePluginInstance for LocalMutex {
                             window.is_some(),
                         );
                         let cache = cache_slot.as_mut().expect("just ensured");
+                        // ADR-0029: shaders see the logical full-resolution
+                        // frame size regardless of preview downsampling.
+                        let ds_x = plugin.in_data.downsample_x();
+                        let ds_y = plugin.in_data.downsample_y();
+                        let logical_res = (
+                            render::logical_size(rw, ds_x.num, ds_x.den),
+                            render::logical_size(rh, ds_y.num, ds_y.den),
+                        );
                         let result = render::execute_plan(
                             gpu,
                             set,
@@ -1637,6 +1656,7 @@ impl AdobePluginInstance for LocalMutex {
                             rh,
                             time,
                             frame,
+                            logical_res,
                             scratch_out,
                             rect_w * bpp,
                             window,
@@ -1742,6 +1762,20 @@ impl AdobePluginInstance for LocalMutex {
         match command {
             Command::UserChangedParam { param_index } => {
                 let force = plugin.params.index(ParamKey::Compile) == Some(param_index);
+                // ADR-0028: the Details button pops the full status text —
+                // the Status row's name is capped at 31 chars by PF.
+                if plugin.params.index(ParamKey::Details) == Some(param_index) {
+                    let text = {
+                        let local = self.lock().map_err(|_| Error::Generic)?;
+                        format!(
+                            "DynamicFX status\n\n{}\n\n(diagnostic code E{})",
+                            local.status_text,
+                            local.status_code.code()
+                        )
+                    };
+                    host::show_info_dialog("DynamicFX", &text);
+                    return Ok(());
+                }
                 let mut local = self.lock().map_err(|_| Error::Generic)?;
                 observe_core(plugin, &mut local, force)?;
                 // UI callbacks always try to land the desired status text —

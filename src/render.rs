@@ -497,6 +497,10 @@ pub fn execute_plan(
     height: usize,
     time: f32,
     frame: f32,
+    // ADR-0029: the u_resolution the SHADER sees — the logical full-
+    // resolution frame size, invariant under AE preview downsampling.
+    // Geometry (buffers, rects, taps) stays physical.
+    logical_res: (f32, f32),
     output: &mut [u8],
     out_stride: usize,
     window: Option<(u32, f32)>,
@@ -636,8 +640,8 @@ pub fn execute_plan(
             // ABI v1 builtin head at fixed offsets 0/8/12, then user members
             // at their reflected std140 offsets.
             let mut ubuf = vec![0u8; fx.layout.block_size.max(16)];
-            ubuf[0..4].copy_from_slice(&(width as f32).to_le_bytes());
-            ubuf[4..8].copy_from_slice(&(height as f32).to_le_bytes());
+            ubuf[0..4].copy_from_slice(&logical_res.0.to_le_bytes());
+            ubuf[4..8].copy_from_slice(&logical_res.1.to_le_bytes());
             ubuf[8..12].copy_from_slice(&iter_time.to_le_bytes());
             ubuf[12..16].copy_from_slice(&iter_frame.to_le_bytes());
             for (i, entry) in fx.layout.entries.iter().enumerate() {
@@ -792,6 +796,36 @@ pub fn execute_plan(
     cache.readback.unmap();
     perf.readback_ms = t_read.elapsed().as_secs_f32() * 1000.0;
     Ok(perf)
+}
+
+
+/// ADR-0029: logical (full-resolution) size of a downsampled buffer.
+/// AE hands effects buffers scaled by downsample_x/y (num/den ratios); the
+/// shader-visible u_resolution reports the full-resolution frame so pixel-
+/// based shader math is invariant across preview resolutions.
+pub fn logical_size(physical: usize, num: i32, den: u32) -> f32 {
+    if num <= 0 || den == 0 {
+        return physical as f32;
+    }
+    physical as f32 * den as f32 / num as f32
+}
+
+#[cfg(test)]
+mod logical_size_tests {
+    use super::logical_size;
+
+    #[test]
+    fn downsample_ratios() {
+        // Full res: ratio 1/1.
+        assert_eq!(logical_size(1280, 1, 1), 1280.0);
+        // Half res: AE hands a 640 buffer with ratio 1/2 -> logical 1280.
+        assert_eq!(logical_size(640, 1, 2), 1280.0);
+        // Third res.
+        assert_eq!(logical_size(427, 1, 3), 1281.0);
+        // Degenerate ratios fall back to physical.
+        assert_eq!(logical_size(640, 0, 2), 640.0);
+        assert_eq!(logical_size(640, 1, 0), 640.0);
+    }
 }
 
 /// U15 (0..=32768, white = 32768) -> working f32. Exact: every U15 integer

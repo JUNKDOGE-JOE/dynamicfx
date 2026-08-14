@@ -224,24 +224,28 @@ fn reflect_user_params(
                 (None, _) => {}
             }
             if let Some(default) = &annotation.default {
-                let expected = match ty {
+                // ADR-0026: color defaults are supported (3 components, or 4
+                // with explicit alpha — the hex forms decode to exactly
+                // these). Vec2 (point) defaults still lack stream plumbing.
+                let accepted: &[usize] = match ty {
                     ShaderParamType::Float
                     | ShaderParamType::AngleFloat
                     | ShaderParamType::Int
-                    | ShaderParamType::Bool => 1,
-                    // Writing color/point defaults needs AEGP stream-value
-                    // plumbing that v1 does not have; fail closed instead of
-                    // silently ignoring the user's default.
-                    ShaderParamType::Vec2 | ShaderParamType::Vec3Color
-                    | ShaderParamType::Vec4Color => {
+                    | ShaderParamType::Bool => &[1],
+                    // vec3 has no alpha companion slot — a 4th component
+                    // would be silently dropped, so reject it.
+                    ShaderParamType::Vec3Color => &[3],
+                    ShaderParamType::Vec4Color => &[3, 4],
+                    ShaderParamType::Vec2 => {
                         return Err(FrontendError::Param(format!(
-                            "`{name}`: default is scalar-only in v1 (color/point defaults are not supported yet)"
+                            "`{name}`: point defaults are not supported yet"
                         )));
                     }
                 };
-                if default.len() != expected {
+                if !accepted.contains(&default.len()) {
                     return Err(FrontendError::Param(format!(
-                        "`{name}`: default needs {expected} component(s), got {}",
+                        "`{name}`: default needs {} component(s), got {}",
+                        accepted.iter().map(|n| n.to_string()).collect::<Vec<_>>().join(" or "),
                         default.len()
                     )));
                 }
@@ -525,11 +529,14 @@ layout(set = 0, binding = 2) uniform FxUniforms {
 };
 void main() { outColor = vec4(tint + vec3(u_time + u_frame), 1.0) + vec4(u_resolution, 0.0, 1.0); }
 "#;
-        // Color/point defaults are scalar-only in v1: explicit rejection,
-        // never a silent no-op.
+        // ADR-0026: color defaults accept 3 or 4 components; a 2-component
+        // color default is still a rejection, and point defaults stay
+        // unsupported.
         let color_default = format!("{head}// @param tint default:1,0.5,0.25\n{body}");
-        let err = parse(&color_default).expect_err("color default is v1-rejected");
-        assert!(matches!(err, FrontendError::Param(ref m) if m.contains("scalar-only")), "{err:?}");
+        assert!(parse(&color_default).is_ok(), "3-component color default accepted");
+        let bad_color_default = format!("{head}// @param tint default:1,0.5\n{body}");
+        let err = parse(&bad_color_default).expect_err("2-component color default rejected");
+        assert!(matches!(err, FrontendError::Param(ref m) if m.contains("component")), "{err:?}");
         // angle hint on a vec3.
         let bad_hint = format!("{head}// @param tint hint:angle\n{body}");
         assert!(matches!(parse(&bad_hint), Err(FrontendError::Param(_))));
