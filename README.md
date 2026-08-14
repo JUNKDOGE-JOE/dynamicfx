@@ -90,6 +90,14 @@ cargo build --release
 scripts\install.bat 2025   (run as administrator)
 ```
 
+## Sponsors
+
+Thank you to everyone supporting DynamicFX!
+
+| Sponsor | Amount |
+|---|---|
+| **PAO** — our first sponsor! | ¥5 |
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
