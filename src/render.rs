@@ -455,6 +455,45 @@ pub fn ensure_frame_cache(
     }
 }
 
+/// Encode float RGBA samples into one row of the working format. Used to
+/// hand a baked gradient LUT (ADR-0031) to the same upload path every other
+/// external texture takes.
+pub fn encode_samples(samples: &[[f32; 4]], depth: Depth) -> Vec<u8> {
+    let mut out = Vec::with_capacity(samples.len() * depth.bpp());
+    for sample in samples {
+        match depth {
+            Depth::U8 => {
+                for c in sample {
+                    out.push((c.clamp(0.0, 1.0) * 255.0).round() as u8);
+                }
+            }
+            // U15 and F32 both ride Rgba32Float (ADR-0022).
+            Depth::U15 | Depth::F32 => {
+                for c in sample {
+                    out.extend_from_slice(&c.to_le_bytes());
+                }
+            }
+        }
+    }
+    out
+}
+
+/// Pixels for one externally-fed graph resource, already in the working
+/// format. A checked-out AE layer arrives at the effect's extent (ADR-0030 §4
+/// comp-space semantics: AE renders it as composited into the same request
+/// rect); a baked gradient LUT arrives as its own `width x 1` strip.
+pub struct ExternalTexture<'a> {
+    pub pixels: &'a [u8],
+    pub stride: usize,
+    pub width: usize,
+    pub height: usize,
+    /// ADR-0035 §3: a path's vertex texture is `Rgba32Float` whatever the
+    /// working depth, because quantizing a vertex position to 1/255 of the
+    /// frame would move it by whole pixels. Everything else rides the working
+    /// format.
+    pub float32: bool,
+}
+
 /// Wall-clock spans of one execute (M7 measurement plan). Collection is a
 /// handful of `Instant` reads — always on; logging is env-gated upstream.
 #[derive(Default, Clone, Copy)]
@@ -513,6 +552,11 @@ pub fn execute_plan(
     // window iterations always render full-frame (downstream passes and
     // the next iteration may sample anywhere).
     out_rect: (usize, usize, usize, usize),
+    // ADR-0030/0032 externally-fed resources, indexed by `TexSlot::External`
+    // ordinal. A `None` entry is an unassigned selector and binds transparent
+    // black (ADR-0030 §5) — never an error, so a graph with an optional
+    // second input still renders.
+    externals: &[Option<ExternalTexture>],
     cache: &mut FrameCache,
 ) -> Result<PerfBreakdown, String> {
     let mut perf = PerfBreakdown::default();
@@ -575,6 +619,109 @@ pub fn execute_plan(
         );
     }
 
+    // External textures are allocated per render rather than cached: the M7
+    // discipline is to measure before optimizing, and the `upload` span below
+    // already covers their cost. Each carries its own extent — a checked-out
+    // layer matches the frame, a baked gradient LUT is `width x 1`.
+    let external_texs: Vec<Option<wgpu::Texture>> = externals
+        .iter()
+        .map(|maybe| {
+            let src = maybe.as_ref()?;
+            // ADR-0035 §3's cost, made explicit: sampling an Rgba32Float
+            // texture needs FLOAT32_FILTERABLE, which `request_device` only
+            // asks for when the adapter offers it. Without it the bind group
+            // would fail validation and take the whole render down, so bind
+            // the zero texture and say why — never silently.
+            if src.float32 && !gpu.features.contains(wgpu::Features::FLOAT32_FILTERABLE) {
+                crate::diag::log(
+                    "external: adapter lacks FLOAT32_FILTERABLE; path input binds the zero texture",
+                );
+                return None;
+            }
+            let format = if src.float32 {
+                wgpu::TextureFormat::Rgba32Float
+            } else {
+                set.depth.wgpu_format()
+            };
+            let bpp = if src.float32 { 16 } else { set.depth.bpp() };
+            let src_row_bytes = src.width * bpp;
+            if src.width == 0
+                || src.height == 0
+                || src.stride < src_row_bytes
+                || src.pixels.len() < src.stride * src.height
+            {
+                // Short or malformed buffer: fall back to transparent black
+                // rather than read out of bounds or upload a torn image.
+                //
+                // Say so. The fallback is the frame-sized zero texture, so a
+                // shader calling `textureSize` on a dropped path input gets the
+                // frame width and no indication anything went wrong — which is
+                // exactly how a dropped upload hid on the first host run
+                // (2026-08-16).
+                crate::diag::log(&format!(
+                    "external dropped: {}x{} stride {} bytes {} (needs >= {} per row)",
+                    src.width, src.height, src.stride, src.pixels.len(), src_row_bytes
+                ));
+                return None;
+            }
+            let src_extent = wgpu::Extent3d {
+                width: src.width as u32,
+                height: src.height as u32,
+                depth_or_array_layers: 1,
+            };
+            let tex = device.create_texture(&wgpu::TextureDescriptor {
+                label: Some("dynamicfx-external"),
+                size: src_extent,
+                mip_level_count: 1,
+                sample_count: 1,
+                dimension: wgpu::TextureDimension::D2,
+                format,
+                usage: wgpu::TextureUsages::TEXTURE_BINDING | wgpu::TextureUsages::COPY_DST,
+                view_formats: &[],
+            });
+            let dst = wgpu::TexelCopyTextureInfo {
+                texture: &tex,
+                mip_level: 0,
+                origin: wgpu::Origin3d::ZERO,
+                aspect: wgpu::TextureAspect::All,
+            };
+            let src_padded = align256(src_row_bytes);
+            if src.stride % (wgpu::COPY_BYTES_PER_ROW_ALIGNMENT as usize) == 0 {
+                queue.write_texture(
+                    dst,
+                    src.pixels,
+                    wgpu::TexelCopyBufferLayout {
+                        offset: 0,
+                        bytes_per_row: Some(src.stride as u32),
+                        rows_per_image: Some(src.height as u32),
+                    },
+                    src_extent,
+                );
+            } else {
+                let mut packed = vec![0u8; src_padded * src.height];
+                for y in 0..src.height {
+                    let row = &src.pixels[y * src.stride..y * src.stride + src_row_bytes];
+                    packed[y * src_padded..y * src_padded + src_row_bytes].copy_from_slice(row);
+                }
+                queue.write_texture(
+                    dst,
+                    &packed,
+                    wgpu::TexelCopyBufferLayout {
+                        offset: 0,
+                        bytes_per_row: Some(src_padded as u32),
+                        rows_per_image: Some(src.height as u32),
+                    },
+                    src_extent,
+                );
+            }
+            Some(tex)
+        })
+        .collect();
+    let external_views: Vec<Option<wgpu::TextureView>> = external_texs
+        .iter()
+        .map(|t| t.as_ref().map(|t| t.create_view(&wgpu::TextureViewDescriptor::default())))
+        .collect();
+
     let input_view = cache.input_tex.create_view(&wgpu::TextureViewDescriptor::default());
     let physical_views: Vec<wgpu::TextureView> = cache
         .physical
@@ -621,6 +768,10 @@ pub fn execute_plan(
                 }
                 TexSlot::Physical(i) => {
                     physical_views.get(i).ok_or_else(|| format!("physical slot {i} out of range"))
+                }
+                // Unassigned (or unusable) layer selectors read as all zeros.
+                TexSlot::External(i) => {
+                    Ok(external_views.get(i).and_then(|v| v.as_ref()).unwrap_or(&zero_view))
                 }
             }
         };

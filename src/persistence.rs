@@ -86,6 +86,13 @@ fn kind_byte(kind: PoolKind) -> u8 {
         PoolKind::Color => 3,
         PoolKind::Point2D => 4,
         PoolKind::Angle => 5,
+        // ADR-0030. Codes are persistent and append-only, like the pools.
+        PoolKind::Layer => 6,
+        PoolKind::Gradient => 7,
+        // ADR-0034.
+        PoolKind::Point3D => 8,
+        // ADR-0035.
+        PoolKind::Path => 9,
     }
 }
 
@@ -97,6 +104,10 @@ fn kind_from_byte(byte: u8) -> Option<PoolKind> {
         3 => PoolKind::Color,
         4 => PoolKind::Point2D,
         5 => PoolKind::Angle,
+        6 => PoolKind::Layer,
+        7 => PoolKind::Gradient,
+        8 => PoolKind::Point3D,
+        9 => PoolKind::Path,
         _ => return None,
     })
 }

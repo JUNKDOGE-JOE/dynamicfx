@@ -199,7 +199,26 @@ pub fn parse_envelope(source: &str) -> Result<Envelope, GrammarError> {
         return Err(err(1, "missing @graph block"));
     }
 
-    validate_graph(&passes)?;
+    // ADR-0030/0032/0035: `hint:layer`, `hint:gradient` and `hint:path` name graph
+    // resources that have no writer — an AE parameter feeds them. They must
+    // be known *before* graph validation, or the writer rules below reject
+    // them as `E6`.
+    let external_names: Vec<String> = {
+        let mut names: Vec<String> = sections
+            .iter()
+            .flat_map(|(_, body, _)| {
+                let mut names = super::annotation::layer_param_names(body);
+                names.extend(super::annotation::gradient_param_names(body));
+                names.extend(super::annotation::path_param_names(body));
+                names
+            })
+            .collect();
+        names.sort();
+        names.dedup();
+        names
+    };
+
+    validate_graph(&passes, &external_names)?;
 
     // Manifest and section sets must match one-to-one, any order.
     let mut bodies = vec![None; passes.len()];
@@ -226,7 +245,8 @@ pub fn parse_envelope(source: &str) -> Result<Envelope, GrammarError> {
 }
 
 /// The v1 graph rules (ADR-0018 §3).
-fn validate_graph(passes: &[ManifestPass]) -> Result<(), GrammarError> {
+fn validate_graph(passes: &[ManifestPass], external_names: &[String]) -> Result<(), GrammarError> {
+    let is_external = |name: &str| external_names.iter().any(|l| l == name);
     if passes.is_empty() {
         return Err(err(1, "the graph declares no passes"));
     }
@@ -244,6 +264,13 @@ fn validate_graph(passes: &[ManifestPass]) -> Result<(), GrammarError> {
         if pass.name == RES_PREV {
             return Err(err(pass.line, "`prev` is reserved and cannot name a pass"));
         }
+        // ADR-0030 §3: a layer input is read-only, exactly like `prev`.
+        if is_external(&pass.name) {
+            return Err(err(
+                pass.line,
+                format!("`{}` is a parameter-fed input and cannot name a pass", pass.name),
+            ));
+        }
     }
 
     // Writers: exactly one per resource; exactly one output writer.
@@ -254,6 +281,12 @@ fn validate_graph(passes: &[ManifestPass]) -> Result<(), GrammarError> {
         }
         if pass.output == RES_PREV {
             return Err(err(pass.line, "`prev` cannot be written (it is the previous frame's output)"));
+        }
+        if is_external(&pass.output) {
+            return Err(err(
+                pass.line,
+                format!("`{}` is a parameter-fed input and cannot be written", pass.output),
+            ));
         }
         if writers.iter().any(|(name, _)| *name == pass.output) {
             return Err(err(pass.line, format!("resource `{}` has two writers", pass.output)));
@@ -280,6 +313,7 @@ fn validate_graph(passes: &[ManifestPass]) -> Result<(), GrammarError> {
             }
             if input != RES_INPUT
                 && input != RES_PREV
+                && !is_external(input)
                 && !writers.iter().any(|(name, _)| name == input)
             {
                 return Err(err(pass.line, format!("input `{input}` has no writer")));
@@ -310,7 +344,7 @@ fn validate_graph(passes: &[ManifestPass]) -> Result<(), GrammarError> {
     // (the ADR-0020 determinism rule shares this order). `prev` is always
     // available: it is last frame's output, not a within-frame dependency.
     let mut scheduled = vec![false; passes.len()];
-    let mut available: Vec<&str> = vec![RES_INPUT, RES_PREV];
+    let mut available: Vec<&str> = external_resources(passes);
     for _ in 0..passes.len() {
         let next = passes.iter().position(|p| {
             !scheduled[passes.iter().position(|q| q.name == p.name).unwrap()]
@@ -336,11 +370,32 @@ fn validate_graph(passes: &[ManifestPass]) -> Result<(), GrammarError> {
     Ok(())
 }
 
+/// Resources a pass may read that no pass produces, so scheduling can treat
+/// them as satisfied from the start: `input`, `prev` (ADR-0023 — last frame's
+/// output, not a within-frame dependency), and every ADR-0030 layer input.
+///
+/// Deriving this from "has no writer" rather than from a name list keeps the
+/// scheduler correct without threading layer names through `topological_order`,
+/// which the ExecutionPlan also calls. Validation has already rejected any
+/// unwritten input that is not legitimately external.
+fn external_resources(passes: &[ManifestPass]) -> Vec<&str> {
+    let mut available: Vec<&str> = vec![RES_INPUT, RES_PREV];
+    for pass in passes {
+        for input in &pass.inputs {
+            let produced = passes.iter().any(|p| p.output == *input);
+            if !produced && !available.contains(&input.as_str()) {
+                available.push(input.as_str());
+            }
+        }
+    }
+    available
+}
+
 /// Deterministic topological order (ready passes in declaration order),
 /// shared by validation and the ExecutionPlan (ADR-0020 §1).
 pub fn topological_order(passes: &[ManifestPass]) -> Vec<usize> {
     let mut scheduled = vec![false; passes.len()];
-    let mut available: Vec<&str> = vec![RES_INPUT, RES_PREV];
+    let mut available: Vec<&str> = external_resources(passes);
     let mut order = Vec::with_capacity(passes.len());
     while order.len() < passes.len() {
         let next = passes

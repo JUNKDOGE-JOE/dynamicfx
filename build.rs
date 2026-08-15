@@ -19,7 +19,48 @@ fn main() {
     }
     println!("cargo:rustc-cfg=catch_panics");
 
-    pipl::plugin_build(vec![
+    // `plugin_build` emits the PIPL_* env vars the after-effects entry point
+    // reads at GLOBAL_SETUP, and also writes the PiPL resource. Its resource
+    // path is byte-unsafe (see `repair_pipl_resource`), so the resource is
+    // rebuilt afterwards; the env vars from this call are correct and stay.
+    pipl::plugin_build(pipl_properties());
+    repair_pipl_resource();
+}
+
+/// pipl 0.1.1 serializes the PiPL as an RC **string literal** of `\xNN`
+/// escapes under `#pragma code_page(65001)`. Every byte >= 0x80 is then
+/// code-page converted on the way into the binary and lands as `?` (0x3F).
+///
+/// This went unnoticed for the project's whole life because every out-flags
+/// byte was <= 0x7F. `OutFlags::CustomUI` is bit 15, which makes byte 1 of the
+/// little-endian global out-flags word 0x84 — the first byte to cross the
+/// line. Measured on AE 2025 (2026-08-15): the built resource carried
+/// `0x6003F44` while the code returned `0x6008444`, and AE refused to load the
+/// effect with "global out-flags mismatch".
+///
+/// The repair writes the same bytes to a file and points the resource at it.
+/// An RC file reference is copied verbatim, so no code page can touch it.
+/// Recompiling overwrites pipl's `resource.rc` in OUT_DIR, so exactly one PiPL
+/// reaches the linker.
+fn repair_pipl_resource() {
+    if !cfg!(target_os = "windows") {
+        return;
+    }
+    let out_dir = std::env::var("OUT_DIR").expect("OUT_DIR is always set for build scripts");
+    let bytes = pipl::build_pipl(pipl_properties()).expect("PiPL serialization");
+    let bin = std::path::Path::new(&out_dir).join("pipl.bin");
+    std::fs::write(&bin, &bytes).expect("write pipl.bin");
+
+    let mut res = winres::WindowsResource::new();
+    // Relative to the generated .rc, which winres also writes into OUT_DIR.
+    res.append_rc_content("16000 PiPL DISCARDABLE \"pipl.bin\"");
+    res.compile().expect("compile the byte-exact PiPL resource");
+    println!("cargo:rerun-if-changed=build.rs");
+}
+
+#[rustfmt::skip]
+fn pipl_properties() -> Vec<Property> {
+    vec![
         Property::Kind(PIPLType::AEEffect),
         Property::Name("DynamicFx"),
         Property::Category("DynamicFx"),
@@ -51,6 +92,12 @@ fn main() {
             // The shader output depends on u_time (and the shader source
             // itself) even when no AE parameter changes — without this flag
             // AE caches the frame forever and the preview never updates.
+            // PF_OutFlag_CUSTOM_UI was set for the ADR-0031 §7 gradient
+            // editor and is gone with it (2026-08-15). AE validates the flag
+            // at PARAMS_SETUP and refuses the whole effect — "no custom ui
+            // outflag, but param has ui_width or ui_height or
+            // PF_PUI_TOPIC/CONTROL flags" — so it must return the moment any
+            // parameter carries PF_PUI_CONTROL again. No parameter does.
             OutFlags::NonParamVary
         ),
         Property::AE_Effect_Global_OutFlags_2(
@@ -73,5 +120,5 @@ fn main() {
         Property::AE_Effect_Match_Name("DynamicFx"),
         Property::AE_Reserved_Info(0),
         Property::AE_Effect_Support_URL("https://github.com/dynamicfx/dynamicfx-ae"),
-    ])
+    ]
 }

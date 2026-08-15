@@ -57,8 +57,9 @@ impl ParamId {
 }
 
 /// Shader-side parameter types bindable in v1. The type set is ADR-0011's;
-/// the pool mapping is ADR-0013 §3-§4. `Vec3Color` is the vec3 default;
-/// Point 3D stays a reserved, undeclared kind until host evidence exists.
+/// the pool mapping is ADR-0013 §3-§4. `Vec3Color` is the vec3 default
+/// (ADR-0026); `Point3D` is the same GLSL type reached through `hint:point3d`
+/// (ADR-0034 §2).
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum ShaderParamType {
     Float,
@@ -69,6 +70,20 @@ pub enum ShaderParamType {
     Vec4Color,
     /// `float` with the `angle` annotation hint.
     AngleFloat,
+    /// ADR-0030: an AE layer selector feeding a texture binding. Unlike every
+    /// other variant this one has no `FxUniforms` member and contributes no
+    /// words to the uniform buffer — it is declared by annotation alone.
+    Layer,
+    /// ADR-0031/0032: a gradient baked into a 1D LUT texture. Same shape as
+    /// `Layer` — annotation-declared, texture-bound, no block storage.
+    Gradient,
+    /// ADR-0034: `vec3` with the `point3d` annotation hint — a spatial value
+    /// on the AE 3D point widget, not a colour.
+    Point3D,
+    /// ADR-0035: an AE mask delivered as an `N x 2` vertex texture. Same shape
+    /// as `Layer`/`Gradient` — annotation-declared, texture-bound, no block
+    /// storage.
+    Path,
 }
 
 impl ShaderParamType {
@@ -84,7 +99,18 @@ impl ShaderParamType {
             Self::Vec3Color => &[PoolKind::Color],
             Self::Vec4Color => &[PoolKind::Color, PoolKind::Float],
             Self::AngleFloat => &[PoolKind::Angle],
+            Self::Layer => &[PoolKind::Layer],
+            Self::Gradient => &[PoolKind::Gradient],
+            Self::Point3D => &[PoolKind::Point3D],
+            Self::Path => &[PoolKind::Path],
         }
+    }
+
+    /// True when the parameter is a texture binding rather than uniform-block
+    /// storage. Such parameters are skipped by uniform packing and by the
+    /// float-budget accounting.
+    pub fn is_texture_binding(self) -> bool {
+        matches!(self, Self::Layer | Self::Gradient | Self::Path)
     }
 }
 

@@ -7,7 +7,7 @@
 //! index never changes kind, moves, or dies; all growth appends at the tail
 //! (ADR-0013 §5).
 
-use crate::binding::{PoolKind, V1_POOLS};
+use crate::binding::{PoolKind, GROWTH_POOLS, V1_POOLS};
 use crate::frontend;
 use after_effects as ae;
 
@@ -32,6 +32,46 @@ pub enum ParamKey {
     /// ADR-0013) — a button that pops the full, untruncated status text
     /// (the Status name is capped at 31 chars by PF).
     Details,
+    /// ADR-0033: how many of a gradient's eight stops are live.
+    GradientCount(usize),
+    /// ADR-0033: one field of one stop of one gradient. Ordinary parameters,
+    /// so AE owns their persistence, undo, copy/paste and keyframes.
+    GradientStop(usize, usize, GradientField),
+}
+
+/// The three ordinary parameters that make up one gradient stop (ADR-0033 §1).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum GradientField {
+    Position,
+    Color,
+    Alpha,
+}
+
+/// ADR-0033 §2. Capacity is a persistent contract: growth appends, never
+/// renumbers.
+pub const GRADIENTS: usize = 2;
+pub const STOPS_PER_GRADIENT: usize = 8;
+
+/// How many stops a freshly declared gradient has live, and therefore how many
+/// stop groups the Effect Controls panel shows before the user touches
+/// anything. Two, not eight: the count drives visibility now that the ADR-0031
+/// §7 editor is gone, and eight would put 25 rows in the panel of every bound
+/// gradient (user report, 2026-08-15).
+pub const DEFAULT_LIVE_STOPS: usize = 2;
+
+/// Default position of stop `stop`: the first stop at the start of the ramp,
+/// every other stop parked at the end.
+///
+/// Monotone, so the declared defaults can never read back as `E54`, and
+/// raising `Stops` never changes the rendered ramp — a new stop appears where
+/// the ramp already ends and the user drags it inward. That is the invariant
+/// the deleted editor got from sampling the ramp before inserting.
+pub fn default_stop_position(stop: usize) -> f64 {
+    if stop == 0 {
+        0.0
+    } else {
+        1.0
+    }
 }
 
 /// Head parameters in declaration order, after AE's implicit input layer.
@@ -60,6 +100,26 @@ pub fn declaration_order() -> Vec<ParamKey> {
     // ADR-0028 append-only growth: Details rides after every pool slot so
     // all 0.0.1 indexes stay stable.
     order.push(ParamKey::Details);
+    // ADR-0030/0031 growth: after Details, never inside the V1 loop above —
+    // Details is index 109 in every project saved by 0.0.2, and widening the
+    // V1 pools would slide it. See `binding::GROWTH_POOLS`.
+    for (kind, capacity) in GROWTH_POOLS {
+        for i in 0..*capacity {
+            order.push(ParamKey::Pool(*kind, i));
+        }
+    }
+    // ADR-0033: a gradient's stops are ordinary parameters. `Pool(Gradient, g)`
+    // above is the preview/canvas row; the value lives in these. Declared last
+    // so every index before them — including Details at 109 and the ADR-0030
+    // Layer slots — keeps its position.
+    for g in 0..GRADIENTS {
+        order.push(ParamKey::GradientCount(g));
+        for stop in 0..STOPS_PER_GRADIENT {
+            for field in [GradientField::Position, GradientField::Color, GradientField::Alpha] {
+                order.push(ParamKey::GradientStop(g, stop, field));
+            }
+        }
+    }
     order
 }
 
@@ -72,6 +132,10 @@ fn kind_label(kind: PoolKind) -> &'static str {
         PoolKind::Color => "Color",
         PoolKind::Point2D => "Point",
         PoolKind::Angle => "Angle",
+        PoolKind::Layer => "Layer",
+        PoolKind::Gradient => "Gradient",
+        PoolKind::Point3D => "Point 3D",
+        PoolKind::Path => "Mask",
     }
 }
 
@@ -165,6 +229,80 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
                     ae::ParamUIFlags::INVISIBLE,
                 )?;
             }
+            // ADR-0033: gradient stops as ordinary rows. Two stops are live by
+            // default and the other six park at the far end, so a freshly bound
+            // gradient reads as a clean black->white ramp on sight AND raising
+            // the count never changes the picture — a stop appears where the
+            // ramp already ends, and the user drags it inward. The same
+            // invariant the deleted editor got from sampling the ramp before
+            // inserting.
+            ParamKey::GradientCount(g) => {
+                params.add_with_flags(
+                    key,
+                    &format!("Gradient {:02} Stops", g + 1),
+                    ae::FloatSliderDef::setup(|f| {
+                        f.set_slider_min(1.0);
+                        f.set_slider_max(STOPS_PER_GRADIENT as f32);
+                        f.set_valid_min(1.0);
+                        f.set_valid_max(STOPS_PER_GRADIENT as f32);
+                        f.set_precision(ae::Precision::Integer);
+                        f.set_default(DEFAULT_LIVE_STOPS as f64);
+                    }),
+                    ae::ParamFlag::START_COLLAPSED,
+                    ae::ParamUIFlags::empty(),
+                )?;
+            }
+            ParamKey::GradientStop(g, stop, field) => {
+                let even = default_stop_position(stop);
+                let name = format!("G{:02} Stop {:02} ", g + 1, stop + 1);
+                match field {
+                    // Precision is explicit for the same reason ADR-0028
+                    // made it explicit on the pool sliders: a float slider
+                    // left at AE's default displays and rounds to whole
+                    // numbers, so an evenly spread ramp came back as
+                    // 0,0,0,0,1,1,1,1 (measured 2026-08-15).
+                    GradientField::Position => params.add_with_flags(
+                        key,
+                        &(name + "Pos"),
+                        ae::FloatSliderDef::setup(|f| {
+                            f.set_slider_min(0.0);
+                            f.set_slider_max(1.0);
+                            f.set_valid_min(0.0);
+                            f.set_valid_max(1.0);
+                            f.set_precision(ae::Precision::Thousandths);
+                            f.set_default(even);
+                        }),
+                        ae::ParamFlag::START_COLLAPSED,
+                        ae::ParamUIFlags::empty(),
+                    )?,
+                    // Black at the start, white everywhere else — derived from
+                    // the same curve as the position, so the two cannot drift.
+                    GradientField::Color => params.add_with_flags(
+                        key,
+                        &(name + "Color"),
+                        ae::ColorDef::setup(|c| {
+                            let level = (even * 255.0).round() as u8;
+                            c.set_default(ae::Pixel8 { alpha: 255, red: level, green: level, blue: level });
+                        }),
+                        ae::ParamFlag::START_COLLAPSED,
+                        ae::ParamUIFlags::empty(),
+                    )?,
+                    GradientField::Alpha => params.add_with_flags(
+                        key,
+                        &(name + "Alpha"),
+                        ae::FloatSliderDef::setup(|f| {
+                            f.set_slider_min(0.0);
+                            f.set_slider_max(1.0);
+                            f.set_valid_min(0.0);
+                            f.set_valid_max(1.0);
+                            f.set_precision(ae::Precision::Thousandths);
+                            f.set_default(1.0);
+                        }),
+                        ae::ParamFlag::START_COLLAPSED,
+                        ae::ParamUIFlags::empty(),
+                    )?,
+                }
+            }
             ParamKey::Details => {
                 params.add(
                     key,
@@ -240,6 +378,42 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
                         ae::ParamFlag::START_COLLAPSED,
                         ae::ParamUIFlags::empty(),
                     )?,
+                    // ADR-0034. x/y mirror the Point 2D default exactly, and
+                    // z is 0 — the plane the layer already occupies, so a
+                    // fresh Point 3D starts where the user is looking rather
+                    // than off in depth.
+                    //
+                    // Whether PF reads a Point 3D's declared x/y as a
+                    // percentage of the frame (as it does for Point 2D) or as
+                    // absolute pixels is NOT established here: the SDK header
+                    // is not vendored with the crate, and no host leg has
+                    // measured it. Both readings put the default somewhere
+                    // visible and draggable, so this is safe to ship and is
+                    // recorded as a host-verification item rather than
+                    // asserted from memory.
+                    PoolKind::Point3D => params.add_with_flags(
+                        key,
+                        &name,
+                        ae::Point3DDef::setup(|p| {
+                            p.set_default((50.0, 50.0, 0.0));
+                        }),
+                        ae::ParamFlag::START_COLLAPSED,
+                        ae::ParamUIFlags::empty(),
+                    )?,
+                    // ADR-0035. The default is 0 = NONE: an unassigned
+                    // selector binds the documented zero texture (§5), which is
+                    // honest about the user not having picked a mask.
+                    // Defaulting to path 1 would silently pick whichever mask
+                    // happened to be drawn first.
+                    PoolKind::Path => params.add_with_flags(
+                        key,
+                        &name,
+                        ae::PathDef::setup(|p| {
+                            p.set_default(0);
+                        }),
+                        ae::ParamFlag::START_COLLAPSED,
+                        ae::ParamUIFlags::empty(),
+                    )?,
                     PoolKind::Angle => params.add_with_flags(
                         key,
                         &name,
@@ -248,6 +422,48 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
                         }),
                         ae::ParamFlag::START_COLLAPSED,
                         ae::ParamUIFlags::empty(),
+                    )?,
+                    // ADR-0030. The default is deliberately *not*
+                    // `PF_LayerDefault_MYSELF`: a layer input that silently
+                    // pointed at the effect's own layer would render something
+                    // plausible instead of the documented all-zeros, hiding
+                    // the fact that the user never picked a source.
+                    PoolKind::Layer => params.add_with_flags(
+                        key,
+                        &name,
+                        ae::LayerDef::setup(|_| {}),
+                        ae::ParamFlag::START_COLLAPSED,
+                        ae::ParamUIFlags::empty(),
+                    )?,
+                    // ADR-0031 §7's custom-UI editor is gone (removed
+                    // 2026-08-15 by decision, after the canvas parameter took
+                    // the host down in every configuration tried: arbitrary
+                    // data with no callbacks, arbitrary data with callbacks,
+                    // and a float slider substituted to dodge both). ADR-0033
+                    // §6 anticipated exactly this — "the preview/editor may
+                    // therefore be [...] dropped entirely without making the
+                    // feature unusable" — because the gradient VALUE lives in
+                    // ordinary stop parameters that AE persists and keyframes
+                    // by itself.
+                    //
+                    // The slot survives as an inert, permanently invisible
+                    // float: it is the binding anchor `hint:gradient` resolves
+                    // to, and it holds its declaration index so the ADR-0013 §5
+                    // append-only topology contract still holds for every
+                    // parameter declared after it. It is never shown and never
+                    // read.
+                    PoolKind::Gradient => params.add_with_flags(
+                        key,
+                        &name,
+                        ae::FloatSliderDef::setup(|f| {
+                            f.set_slider_min(0.0);
+                            f.set_slider_max(1.0);
+                            f.set_valid_min(0.0);
+                            f.set_valid_max(1.0);
+                            f.set_default(0.0);
+                        }),
+                        ae::ParamFlag::CANNOT_TIME_VARY,
+                        ae::ParamUIFlags::INVISIBLE,
                     )?,
                 }
             }
@@ -260,13 +476,86 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
 mod tests {
     use super::*;
 
+    /// The declared defaults must read back as a legal gradient. A default
+    /// that fails `validate` would put every freshly bound gradient into `E54`
+    /// before the user had touched it.
+    #[test]
+    fn declared_stop_defaults_are_a_legal_black_to_white_ramp() {
+        let stops: Vec<crate::gradient::Stop> = (0..DEFAULT_LIVE_STOPS)
+            .map(|stop| {
+                let position = default_stop_position(stop) as f32;
+                crate::gradient::Stop { position, rgba: [position, position, position, 1.0] }
+            })
+            .collect();
+        let value = crate::gradient::Gradient { stops };
+        value.validate().expect("declared defaults are a legal gradient");
+        assert_eq!(value.sample(0.0), [0.0, 0.0, 0.0, 1.0], "starts black");
+        assert_eq!(value.sample(1.0), [1.0, 1.0, 1.0, 1.0], "ends white");
+
+        // Every spare stop parks at the end, so the whole eight stay monotone
+        // and raising `Stops` cannot author an out-of-order value.
+        let all: Vec<crate::gradient::Stop> = (0..STOPS_PER_GRADIENT)
+            .map(|stop| {
+                let position = default_stop_position(stop) as f32;
+                crate::gradient::Stop { position, rgba: [position, position, position, 1.0] }
+            })
+            .collect();
+        let widened = crate::gradient::Gradient { stops: all };
+        widened.validate().expect("all eight declared defaults stay monotone");
+        // ...and raising the count leaves the picture alone.
+        for i in 0..=16 {
+            let t = i as f32 / 16.0;
+            assert_eq!(widened.sample(t), value.sample(t), "raising Stops changed the ramp at {t}");
+        }
+    }
+
     #[test]
     fn topology_has_five_heads_104_pool_slots_and_details() {
         let order = declaration_order();
-        // ADR-0013 base (5 heads + 104 pools) + ADR-0028 Details appended.
-        assert_eq!(order.len(), 110);
         assert_eq!(&order[..5], &HEAD);
+        // The 0.0.2 prefix is frozen: 5 heads + 104 V1 pool slots, then
+        // Details at 109. Every project saved by a released build binds its
+        // parameter streams to these positions, so this assertion may only
+        // ever be *extended* past index 109 — never renumbered.
         assert_eq!(order[109], ParamKey::Details);
+        // ADR-0030/0031/0034/0035 pool growth, then the ADR-0033 stop
+        // parameters, all strictly after Details.
+        let pools: usize = GROWTH_POOLS.iter().map(|(_, capacity)| capacity).sum();
+        let stops = GRADIENTS * (1 + STOPS_PER_GRADIENT * 3);
+        assert_eq!(order.len(), 110 + pools + stops);
+        // 4 Layer + 2 Gradient anchors + 8 Point 3D + 2 Path, then
+        // 2 x (1 count + 8 x 3 stop fields).
+        assert_eq!(pools, 16);
+        assert_eq!(stops, 50);
+        assert!(
+            order[110..110 + pools].iter().all(|k| matches!(k, ParamKey::Pool(..))),
+            "the pool segment carries pool slots only"
+        );
+        assert!(
+            order[110 + pools..].iter().all(|k| matches!(
+                k,
+                ParamKey::GradientCount(_) | ParamKey::GradientStop(..)
+            )),
+            "the tail carries ADR-0033 stop parameters only"
+        );
+    }
+
+    /// The released prefix cannot move. Reconstructing it from the frozen
+    /// `V1_POOLS` table and comparing against the live order is what makes a
+    /// later append fail loudly if someone widens a V1 pool instead of
+    /// appending to `GROWTH_POOLS`.
+    #[test]
+    fn released_prefix_is_frozen_through_details() {
+        let order = declaration_order();
+        let mut expected: Vec<ParamKey> = HEAD.to_vec();
+        for (kind, capacity) in V1_POOLS {
+            for i in 0..*capacity {
+                expected.push(ParamKey::Pool(*kind, i));
+            }
+        }
+        expected.push(ParamKey::Details);
+        assert_eq!(expected.len(), 110);
+        assert_eq!(&order[..110], &expected[..]);
     }
 
     /// The pool segment mirrors V1_POOLS exactly: table order, kind-local
@@ -286,9 +575,48 @@ mod tests {
 
     #[test]
     fn every_pool_kind_has_a_label() {
-        for (kind, _) in V1_POOLS {
+        for (kind, _) in crate::binding::all_pools() {
             assert!(!kind_label(*kind).is_empty());
         }
+    }
+
+    /// The host harness addresses the new pools by hard-coded AE property
+    /// index (`scripts/f003/*.jsx`), because ExtendScript has no way to ask
+    /// for a slot by kind. Pin them here so a future append cannot silently
+    /// repoint what those scripts probe.
+    #[test]
+    fn growth_pool_property_indexes_match_the_harness() {
+        let order = declaration_order();
+        let property_index = |key: ParamKey| {
+            order.iter().position(|k| *k == key).map(|p| p + 1)
+        };
+        assert_eq!(
+            property_index(ParamKey::Pool(PoolKind::Layer, 0)),
+            Some(111),
+            "f003a_layer.jsx probes property 111"
+        );
+        assert_eq!(
+            property_index(ParamKey::Pool(PoolKind::Gradient, 0)),
+            Some(115),
+            "f003b_gradient.jsx probes property 115"
+        );
+        // ADR-0034/0035 appended ten more pool slots between the gradient
+        // anchors and the stop parameters, so the stop block starts ten later.
+        assert_eq!(
+            property_index(ParamKey::Pool(PoolKind::Point3D, 0)),
+            Some(117),
+            "f003f_point3d.jsx probes property 117"
+        );
+        assert_eq!(
+            property_index(ParamKey::Pool(PoolKind::Path, 0)),
+            Some(125),
+            "f003g_path.jsx probes property 125"
+        );
+        assert_eq!(
+            property_index(ParamKey::GradientCount(0)),
+            Some(127),
+            "f003b_gradient.jsx reads the stop block from property 127"
+        );
     }
 
     /// Stream indexes are declaration positions + 1 (input layer at 0).

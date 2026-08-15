@@ -14,6 +14,11 @@ pub enum TexSlot {
     History,
     /// Index into the plan's physical intermediate pool.
     Physical(usize),
+    /// ADR-0030/0032: an AE parameter feeds this input rather than a pass —
+    /// a Layer selector or a Gradient. The index is the resource's ordinal in
+    /// first-appearance order across the manifest, which the render side maps
+    /// back to the parameter that supplies it.
+    External(usize),
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -30,6 +35,24 @@ pub struct ExecutionPlan {
     pub steps: Vec<ExecutionStep>,
     /// Number of physical intermediate textures to allocate.
     pub physical_count: usize,
+}
+
+/// Externally-fed resources in first-appearance order across the scheduled
+/// manifest — the ordinals `TexSlot::External` carries. Identified by "read
+/// but never written", the same rule the scheduler uses, so layer inputs
+/// (ADR-0030) and gradients (ADR-0032) need no separate handling here.
+pub fn external_order(passes: &[ManifestPass]) -> Vec<String> {
+    let mut names: Vec<String> = Vec::new();
+    for &pass_index in &topological_order(passes) {
+        for input in &passes[pass_index].inputs {
+            let reserved = input == RES_INPUT || input == RES_OUTPUT || input == RES_PREV;
+            let produced = passes.iter().any(|p| p.output == *input);
+            if !reserved && !produced && !names.contains(input) {
+                names.push(input.clone());
+            }
+        }
+    }
+    names
 }
 
 /// Build the plan. `alias=false` (the `DYNAMICFX_NO_ALIAS` kill switch)
@@ -78,6 +101,11 @@ pub fn build_plan(passes: &[ManifestPass], alias: bool) -> ExecutionPlan {
         assignment.push((name, slot));
     }
 
+    // ADR-0030 layer inputs, in first-appearance order. Identified by "read
+    // but never written", the same rule the scheduler uses — no name list has
+    // to be threaded in from the frontend.
+    let external_names = external_order(passes);
+
     let slot_of = |name: &str| -> TexSlot {
         if name == RES_INPUT {
             TexSlot::EffectInput
@@ -85,6 +113,8 @@ pub fn build_plan(passes: &[ManifestPass], alias: bool) -> ExecutionPlan {
             TexSlot::FinalOutput
         } else if name == RES_PREV {
             TexSlot::History
+        } else if let Some(ordinal) = external_names.iter().position(|l| l == name) {
+            TexSlot::External(ordinal)
         } else {
             TexSlot::Physical(
                 assignment

@@ -271,6 +271,10 @@ fn sync_state_token(
 
     use crate::diagnostics::Diag;
     use crate::TokenState;
+    // Set when the word below is a *pending mark* rather than a settled
+    // outcome. A pending mark may only fill an empty stream, never overwrite
+    // one (see the guard after `current` is read).
+    let mut pending = false;
     let desired_state = match language {
         None => TokenState::Invalid(Diag::LanguageUnknown.code()),
         Some(language) => {
@@ -305,10 +309,18 @@ fn sync_state_token(
                             } else if let Some(code) = crate::failure_code_for(fp) {
                                 TokenState::Invalid(code)
                             } else {
-                                // Not observed yet this session: leave the
-                                // stream alone until CompletelyGeneral has
-                                // had its turn.
-                                return Ok(());
+                                // CompletelyGeneral already had its turn (it
+                                // runs immediately before this call) and still
+                                // produced neither a registry entry nor a
+                                // failure code: a refused registry insert, a
+                                // `block_rebind` instance, or an expression
+                                // that changed between the two AEGP reads.
+                                // Publishing E53 is what stops a render clone
+                                // from reading this instance as "nothing
+                                // authored yet" — the two states are otherwise
+                                // identical on every signal a clone can see.
+                                pending = true;
+                                TokenState::Invalid(Diag::PublicationPending.code())
                             }
                         }
                     },
@@ -336,6 +348,14 @@ fn sync_state_token(
         StreamValue::OneD(value) => value,
         _ => return Ok(()),
     };
+
+    // A pending mark fills an empty stream only. It must never clobber a
+    // reopened project's saved Active word (still the recovery authority
+    // when the registry is cold) nor a more specific diagnostic already
+    // published for this instance.
+    if pending && current != 0.0 {
+        return Ok(());
+    }
 
     let desired_f64 = crate::encode_token_state(desired_state);
     // Exact comparison avoids dirtying the project on every scan (the word

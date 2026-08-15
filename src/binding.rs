@@ -11,8 +11,7 @@ use crate::definition::param::{
 };
 
 /// AE pool kinds declared in v1 (ADR-0013 §3). Popup is deliberately absent
-/// (TR-M0-006: menus are immutable after PARAMS_SETUP); Point 3D and Layer
-/// are reserved for their own entry evidence/ADRs.
+/// (TR-M0-006: menus are immutable after PARAMS_SETUP).
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum PoolKind {
     Float,
@@ -21,10 +20,23 @@ pub enum PoolKind {
     Color,
     Point2D,
     Angle,
+    /// ADR-0030: an AE Layer selector feeding a texture binding. Carries no
+    /// uniform-block storage and no float budget.
+    Layer,
+    /// ADR-0031: an arbitrary-data gradient baked into a 1D LUT texture.
+    /// Carries no uniform-block storage and no float budget.
+    Gradient,
+    /// ADR-0035: an AE mask selector feeding an `N x 2` vertex texture. Like
+    /// `Layer` and `Gradient` it carries no uniform-block storage.
+    Path,
+    /// ADR-0034: a three-component *spatial* value — the AE 3D point widget.
+    /// Distinct from `Color`, which is what an un-annotated `vec3` still maps
+    /// to (ADR-0026); this kind is reached only through `hint:point3d`.
+    Point3D,
 }
 
-/// The v1 pool table: 104 slots total. Capacity changes append at the tail
-/// of the parameter list and ship as a new build (ADR-0013 §5).
+/// The pool table released in 0.0.1: 104 slots, declared *before* the
+/// ADR-0028 `Details` button. Frozen — see `GROWTH_POOLS`.
 pub const V1_POOLS: &[(PoolKind, usize)] = &[
     (PoolKind::Float, 48),
     (PoolKind::Integer, 8),
@@ -34,9 +46,39 @@ pub const V1_POOLS: &[(PoolKind, usize)] = &[
     (PoolKind::Angle, 8),
 ];
 
+/// Pools added after 0.0.2 shipped (ADR-0030, ADR-0031).
+///
+/// These are declared *after* `Details`, not appended to `V1_POOLS`, and the
+/// distinction is a persistence contract rather than a style choice: AE
+/// matches effect parameter streams by declaration order, `Details` occupies
+/// index 109 in every project saved by 0.0.2, and widening `V1_POOLS` would
+/// slide it to 117 — silently repointing a released parameter. ADR-0013 §5
+/// requires growth at the tail, and after `Details` *is* the tail.
+pub const GROWTH_POOLS: &[(PoolKind, usize)] = &[
+    (PoolKind::Layer, 4),
+    // ADR-0033 §2: two gradients, because each now costs 26 declared
+    // parameters rather than one arbitrary row. The slot itself is the
+    // preview/canvas; the stops are declared separately in `declaration_order`.
+    (PoolKind::Gradient, 2),
+    // ADR-0034 §1: closes the Point 3D kind ADR-0013 §3 left reserved. Eight,
+    // matching the Integer and Angle pools — a spatial vec3 is a
+    // several-per-shader parameter, not a dozens-per-shader one.
+    (PoolKind::Point3D, 8),
+    // ADR-0035 §1: two, because each bound path costs a checkout and a vertex
+    // walk every frame, and a shader wanting more masks than that is better
+    // served by a layer input.
+    (PoolKind::Path, 2),
+];
+
+/// Every pool that can be allocated, in allocation order. Physical
+/// declaration order is `host::params::declaration_order`'s business, and it
+/// is deliberately not the same sequence.
+pub fn all_pools() -> impl Iterator<Item = &'static (PoolKind, usize)> {
+    V1_POOLS.iter().chain(GROWTH_POOLS.iter())
+}
+
 pub fn pool_capacity(kind: PoolKind) -> usize {
-    V1_POOLS
-        .iter()
+    all_pools()
         .find(|(k, _)| *k == kind)
         .map(|(_, capacity)| *capacity)
         .unwrap_or(0)

@@ -10,7 +10,8 @@
 //!        | default:<number>[,<number>]*      (1-4 components)
 //!        | default:#RRGGBB[AA]               (hint:color only, ADR-0026)
 //!        | alias:<id>[,<id>]*
-//!        | hint:angle | hint:color
+//!        | hint:angle | hint:color | hint:layer | hint:gradient
+//!        | hint:point3d | hint:path
 //! ```
 //!
 //! Error policy (fail closed without punishing leftovers): a malformed entry
@@ -25,11 +26,25 @@ use std::collections::HashMap;
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Hint {
     Angle,
+    /// ADR-0030: not a `FxUniforms` member at all. The id names a graph
+    /// resource fed by an AE Layer parameter, so unlike every other hint it
+    /// declares a parameter that reflection will never find.
+    Layer,
+    /// ADR-0031/0032: like `Layer`, declares a graph resource rather than a
+    /// block member — the value is baked into a 1D LUT texture.
+    Gradient,
     /// std140 rejects `bool` members (naga: non-host-shareable), so a bool
     /// parameter is an `int` member carrying `hint:bool` — exactly ADR-0011's
     /// "bool as i32".
     Bool,
     Color,
+    /// ADR-0035: like `Layer` and `Gradient`, declares a graph resource rather
+    /// than a block member — the value is an AE mask's vertices in a texture.
+    Path,
+    /// ADR-0034: makes a `vec3` a spatial Point 3D instead of the colour it
+    /// would otherwise be. The default is deliberately unchanged, so this hint
+    /// is the only way to reach the kind.
+    Point3D,
 }
 
 #[derive(Debug, Clone, Default, PartialEq)]
@@ -154,8 +169,12 @@ pub fn parse_annotations(source: &str) -> Result<HashMap<String, Annotation>, An
                 "hint" => {
                     let hint = match value {
                         "angle" => Hint::Angle,
+                        "layer" => Hint::Layer,
+                        "gradient" => Hint::Gradient,
                         "bool" => Hint::Bool,
                         "color" => Hint::Color,
+                        "point3d" => Hint::Point3D,
+                        "path" => Hint::Path,
                         other => return Err(err(line_no, format!("unknown hint `{other}`"))),
                     };
                     set_once(line_no, "hint", &mut annotation.hint, hint)?;
@@ -362,4 +381,41 @@ uniform stuff;
         let two_lines = parse_annotations("//ok\n// @param x mim:0").unwrap_err();
         assert_eq!(two_lines.line, 2);
     }
+}
+
+/// Ids annotated `hint:gradient` (ADR-0031), sorted.
+pub fn gradient_param_names(source: &str) -> Vec<String> {
+    hinted_names(source, Hint::Gradient)
+}
+
+/// Ids annotated `hint:path` (ADR-0035), in source order.
+pub fn path_param_names(source: &str) -> Vec<String> {
+    hinted_names(source, Hint::Path)
+}
+
+/// Ids annotated `hint:layer` (ADR-0030), in source order.
+///
+/// The graph grammar needs these *before* any frontend runs: a layer name is
+/// a legal pass input with no writer, which the writer rules would otherwise
+/// reject as `E6`. Parse errors are swallowed here on purpose — this is a
+/// pre-pass, and the real `parse_annotations` call reports them with a line
+/// number once the pass body is compiled.
+pub fn layer_param_names(source: &str) -> Vec<String> {
+    hinted_names(source, Hint::Layer)
+}
+
+/// Ids carrying one hint. Both graph-resource hints share this: the grammar
+/// needs their names before any frontend runs, because such a name is a legal
+/// pass input that no pass writes.
+fn hinted_names(source: &str, hint: Hint) -> Vec<String> {
+    let Ok(annotations) = parse_annotations(source) else {
+        return Vec::new();
+    };
+    let mut names: Vec<String> = annotations
+        .iter()
+        .filter(|(_, a)| a.hint == Some(hint))
+        .map(|(name, _)| name.clone())
+        .collect();
+    names.sort();
+    names
 }

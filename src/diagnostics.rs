@@ -18,6 +18,11 @@ pub enum Diag {
     /// Appended by ADR-0018: any envelope grammar/graph-rule violation,
     /// always reported with its 1-based source line.
     EnvelopeSyntax = 6,
+    /// Appended by ADR-0030 §6: a `hint:layer` input in a graph that also
+    /// reads `prev`. Windowed re-simulation would have to check the
+    /// referenced layer out once per iterated frame; rather than silently
+    /// reuse the requested frame's pixels, the combination fails closed.
+    LayerInTemporalGraph = 7,
     // 16-31: frontend
     LanguageUnknown = 16,
     GlslParse = 17,
@@ -33,6 +38,19 @@ pub enum Diag {
     SnapshotCorrupt = 50,
     SnapshotSchemaUnknown = 51,
     TokenCorrupt = 52,
+    /// Appended within the runtime/transport family (ADR-0015 §4 pre-
+    /// partitions 48-63 for exactly this): a well-formed committed source
+    /// exists, but no definition has been published for it, so render clones
+    /// cannot resolve one. Without this code the state is byte-identical to a
+    /// never-authored instance from the render side — token 0, no snapshot,
+    /// and a Source slider that reads 0 whether or not the `…`;0 expression
+    /// is there — so pass-through was indistinguishable from "nothing here".
+    PublicationPending = 53,
+    /// Appended by ADR-0031 §3: a stored gradient value that is empty,
+    /// unsorted, out of range, or over the 8-stop cap. Repairing it silently
+    /// would hide corruption and make the format's guarantees untestable, so
+    /// the resource binds transparent black and says why.
+    GradientMalformed = 54,
 }
 
 /// The registry rows, in ascending code order. Append-only forever.
@@ -44,6 +62,7 @@ pub const REGISTRY: &[Diag] = &[
     Diag::NotSourceBlock,
     Diag::NoExpression,
     Diag::EnvelopeSyntax,
+    Diag::LayerInTemporalGraph,
     Diag::LanguageUnknown,
     Diag::GlslParse,
     Diag::AbiViolation,
@@ -56,6 +75,8 @@ pub const REGISTRY: &[Diag] = &[
     Diag::SnapshotCorrupt,
     Diag::SnapshotSchemaUnknown,
     Diag::TokenCorrupt,
+    Diag::PublicationPending,
+    Diag::GradientMalformed,
 ];
 
 impl Diag {
@@ -102,6 +123,7 @@ mod tests {
                         | Diag::NotSourceBlock
                         | Diag::NoExpression
                         | Diag::EnvelopeSyntax
+                        | Diag::LayerInTemporalGraph
                 ),
                 16..=31 => matches!(
                     diag,
@@ -119,6 +141,8 @@ mod tests {
                         | Diag::SnapshotCorrupt
                         | Diag::SnapshotSchemaUnknown
                         | Diag::TokenCorrupt
+                        | Diag::PublicationPending
+                        | Diag::GradientMalformed
                 ),
                 _ => false,
             };

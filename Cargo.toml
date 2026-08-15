@@ -1,6 +1,6 @@
 [package]
 name = "dynamicfx"
-version = "0.0.2"
+version = "0.0.3"
 edition = "2021"
 license = "MIT"
 
@@ -18,6 +18,9 @@ blake3 = "1"
 
 [build-dependencies]
 pipl = "0.1"
+# Only to re-emit the PiPL resource byte-exactly; see build.rs
+# `repair_pipl_resource`. Same version pipl itself pulls in.
+winres = "0.1"
 
 [profile.dev]
 opt-level = 3

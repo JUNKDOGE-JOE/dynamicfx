@@ -21,6 +21,8 @@ mod source;
 
 // M3 persistence layers (ADRs 0015-0017).
 pub mod diagnostics;
+mod gradient;
+mod path;
 pub mod identity;
 pub mod persistence;
 
@@ -59,6 +61,261 @@ pub(crate) struct CompiledPass {
     extra_input_bindings: Vec<u32>,
 }
 
+/// Read one gradient's live stop parameters and bake its LUT into the working
+/// format (ADR-0031 §5, ADR-0033 §1).
+///
+/// The LUT rides the render's working format rather than a fixed
+/// `Rgba32Float`: at 32-bpc that *is* float — satisfying the decision's reason,
+/// which is not quantizing what the rest of the pipeline preserves — while at
+/// 8-bpc a float texture would demand `FLOAT32_FILTERABLE`, a feature the
+/// adapter is only guaranteed to carry for the deep formats.
+///
+/// A malformed read is refused, not repaired (ADR-0033 §5): the resource binds
+/// transparent black and the reason is logged with its `E54` code.
+fn bake_gradient(
+    params: &ae::Parameters<host::params::ParamKey>,
+    gradient_index: usize,
+) -> Option<ExternalPixels> {
+    use host::params::{GradientField, ParamKey, STOPS_PER_GRADIENT};
+
+    let float_at = |key: ParamKey| -> Option<f32> {
+        params.get(key).ok()?.as_float_slider().ok().map(|f| f.value() as f32)
+    };
+    let color_at = |key: ParamKey| -> Option<[f32; 3]> {
+        let p = params.get(key).ok()?;
+        let c = p.as_color().ok()?.value();
+        Some([c.red as f32 / 255.0, c.green as f32 / 255.0, c.blue as f32 / 255.0])
+    };
+
+    let count = float_at(ParamKey::GradientCount(gradient_index))
+        .map(|v| v.round() as i32)
+        .unwrap_or(0);
+    let mut stops = Vec::with_capacity(STOPS_PER_GRADIENT);
+    for stop in 0..STOPS_PER_GRADIENT {
+        // Never `?` these away silently: an unreadable stop is a real fault
+        // and the project's policy is that nothing degrades to pass-through
+        // without a diagnostic.
+        let position =
+            float_at(ParamKey::GradientStop(gradient_index, stop, GradientField::Position));
+        let rgb = color_at(ParamKey::GradientStop(gradient_index, stop, GradientField::Color));
+        let alpha =
+            float_at(ParamKey::GradientStop(gradient_index, stop, GradientField::Alpha));
+        let (Some(position), Some(rgb), Some(alpha)) = (position, rgb, alpha) else {
+            diag::log(&diagnostics::status_text(
+                Diag::GradientMalformed,
+                &format!("gradient {gradient_index}: stop {stop} parameters unreadable"),
+            ));
+            return None;
+        };
+        stops.push(gradient::Stop { position, rgba: [rgb[0], rgb[1], rgb[2], alpha] });
+    }
+
+    if count < 1 || count as usize > STOPS_PER_GRADIENT {
+        diag::log(&diagnostics::status_text(
+            Diag::GradientMalformed,
+            &format!("gradient {gradient_index}: stop count {count} outside 1..={STOPS_PER_GRADIENT}"),
+        ));
+        return None;
+    }
+    let value = gradient::Gradient::from_parameters(count as usize, &stops);
+    if let Err(e) = value.validate() {
+        diag::log(&diagnostics::status_text(
+            Diag::GradientMalformed,
+            &format!("gradient {gradient_index} rejected ({e:?}); binding transparent black"),
+        ));
+        return None;
+    }
+
+    Some(ExternalPixels {
+        pixels: Vec::new(),
+        stride: 0,
+        width: gradient::LUT_WIDTH,
+        height: 1,
+        samples: Some(value.bake_lut()),
+        vertices: None,
+        ae_pixels: false,
+    })
+}
+
+/// Check out one AE mask and walk its vertices (ADR-0035).
+///
+/// Never fails the render: an unassigned selector, a deleted mask, or a path
+/// with no segments all yield the empty vertex list, which `path::encode` turns
+/// into the documented `1 x 2` zero texture (§5). Each of those is logged,
+/// because "the shader sees nothing" and "the checkout broke" look identical
+/// from the outside otherwise.
+fn read_path(
+    in_data: &ae::InData,
+    params: &ae::Parameters<host::params::ParamKey>,
+    path_index: usize,
+) -> Option<ExternalPixels> {
+    // One line per *change*, not one per frame: a bound path is read on every
+    // SmartRender, and `diag::log` opens and closes the file per call, so
+    // unconditional logging would cost a syscall per frame during playback.
+    // Silence is not an option either — the first host run could not tell an
+    // unassigned selector from a dropped upload, because neither said anything
+    // (2026-08-16).
+    fn note(path_index: usize, id: u32, count: usize) {
+        thread_local! {
+            static LAST: std::cell::RefCell<TokenMap<usize, (u32, usize)>> =
+                std::cell::RefCell::new(TokenMap::new());
+        }
+        LAST.with(|last| {
+            let mut last = last.borrow_mut();
+            if last.get(&path_index) == Some(&(id, count)) {
+                return;
+            }
+            last.insert(path_index, (id, count));
+            diag::log(&format!("path {path_index}: id={id} vertices={count}"));
+        });
+    }
+
+    let empty = || {
+        Some(ExternalPixels {
+            pixels: Vec::new(),
+            stride: 0,
+            width: 0,
+            height: 0,
+            samples: None,
+            vertices: Some(Vec::new()),
+            ae_pixels: false,
+        })
+    };
+
+    let key = ParamKey::Pool(binding::PoolKind::Path, path_index);
+    let Some(id) = params.get(key).ok().and_then(|p| p.as_path().ok().map(|p| p.path_id()))
+    else {
+        diag::log(&format!("path {path_index}: selector unreadable"));
+        return empty();
+    };
+    // 0 is PF_PathID_NONE — the user has not picked a mask. Not a fault.
+    if id == 0 {
+        note(path_index, 0, 0);
+        return empty();
+    }
+
+    let Ok(suite) = ae::pf::suites::PathQuery::new() else {
+        diag::log("path: PathQuerySuite unavailable");
+        return empty();
+    };
+    let outline = suite.checkout_path(
+        in_data.effect_ref(),
+        id,
+        in_data.current_time(),
+        in_data.time_step(),
+        in_data.time_scale(),
+    );
+    let outline = match outline {
+        // Documented: a non-NONE id can still resolve to nothing, because the
+        // mask it named may have been deleted since.
+        Ok(None) => return empty(),
+        Ok(Some(outline)) => outline,
+        Err(e) => {
+            diag::log(&format!("path {path_index}: checkout of id {id} failed: {e:?}"));
+            return empty();
+        }
+    };
+
+    // N segments means vertices `[0..=N]`, and a closed path repeats vertex 0
+    // at the end — which is what lets a shader walk segments without wrapping
+    // the index itself.
+    let Ok(segments) = outline.num_segments() else {
+        diag::log(&format!("path {path_index}: segment count unreadable"));
+        return empty();
+    };
+    if segments <= 0 {
+        return empty();
+    }
+    let wanted = segments as usize + 1;
+    if wanted > path::MAX_VERTICES {
+        // No silent caps: say what was dropped, or the render reads as
+        // complete when it is not.
+        diag::log(&format!(
+            "path {path_index}: {wanted} vertices exceeds the {} the texture can carry; \
+             delivering the first {}",
+            path::MAX_VERTICES,
+            path::MAX_VERTICES
+        ));
+    }
+    let mut vertices = Vec::with_capacity(wanted.min(path::MAX_VERTICES));
+    for i in 0..wanted.min(path::MAX_VERTICES) {
+        match outline.vertex(i as i32) {
+            Ok(v) => vertices.push(path::Vertex {
+                x: v.x as f32,
+                y: v.y as f32,
+                tan_in_x: v.tan_in_x as f32,
+                tan_in_y: v.tan_in_y as f32,
+                tan_out_x: v.tan_out_x as f32,
+                tan_out_y: v.tan_out_y as f32,
+            }),
+            Err(e) => {
+                diag::log(&format!("path {path_index}: vertex {i} unreadable: {e:?}"));
+                return empty();
+            }
+        }
+    }
+    note(path_index, id, vertices.len());
+    Some(ExternalPixels {
+        pixels: Vec::new(),
+        stride: 0,
+        width: 0,
+        height: 0,
+        samples: None,
+        vertices: Some(vertices),
+        ae_pixels: false,
+    })
+}
+
+/// Owned pixels for one external resource, staged for the frame being
+/// rendered on this thread.
+#[derive(Debug, Clone)]
+pub(crate) struct ExternalPixels {
+    pixels: Vec<u8>,
+    stride: usize,
+    width: usize,
+    height: usize,
+    /// ADR-0033: a baked gradient LUT is held as float samples and encoded by
+    /// the executor, which is the only place the working format is known.
+    /// Deriving depth in the SmartRender arm instead made the whole read fail
+    /// silently on the first frame, before any pipeline existed — measured
+    /// 2026-08-15 as an all-black ramp with nothing in the log.
+    samples: Option<Vec<[f32; 4]>>,
+    /// ADR-0035: mask vertices in layer pixels, not yet encoded. Normalizing
+    /// needs the frame extent, which this staging point does not have — the
+    /// same reason the gradient LUT above is baked depth-independently and
+    /// encoded later.
+    vertices: Option<Vec<path::Vertex>>,
+    /// ADR-0030: `pixels` are AE's own bytes (ARGB, and 8 bytes per pixel at
+    /// 16-bpc), not the working RGBA layout. Converted at the encode site.
+    ae_pixels: bool,
+}
+
+/// What supplies one externally-fed graph resource (ADR-0030, ADR-0032).
+/// They differ only in how the pixels are obtained — a layer is checked out,
+/// a gradient is baked, a path is walked.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) enum ExternalSource {
+    /// The **AE parameter index** of the Layer selector: the declaration
+    /// position plus one, because AE's implicit input layer occupies index 0.
+    /// The same convention `host::params::stream_index_of` uses.
+    ///
+    /// Storing the declaration position here instead is what broke layer
+    /// inputs on their first host run (2026-08-16): `PF_CHECKOUT_LAYER` was
+    /// handed 110 for the slot AE calls 111 and answered
+    /// `BadCallbackParameter`, so every layer read returned nothing and the
+    /// effect rendered transparent black — indistinguishable, in the harness
+    /// as written, from the documented unassigned-selector behaviour.
+    Layer { param_index: usize },
+    /// ADR-0033: the gradient's ordinal (its `Pool(Gradient, g)` slot index),
+    /// not a declaration index — the value now lives in that gradient's stop
+    /// parameters, which are addressed by ordinal.
+    Gradient { gradient_index: usize },
+    /// ADR-0035: the mask selector's `Pool(Path, i)` slot index. Addressed by
+    /// ordinal like a gradient, because the checkout reads the parameter
+    /// rather than an AE-assigned checkout id.
+    Path { path_index: usize },
+}
+
 /// Everything a render clone needs to execute one published definition.
 pub(crate) struct CompiledEffect {
     definition: EffectDefinition,
@@ -71,6 +328,10 @@ pub(crate) struct CompiledEffect {
     /// pass body here instead was an M4-latent defect: envelope sources
     /// reopened as raw single-pass effects (caught by the M6 aerender leg).
     source: String,
+    /// ADR-0030/0032: what feeds each `TexSlot::External` ordinal. Resolved
+    /// once at compile time so neither PreRender nor SmartRender has to
+    /// re-derive the graph's resource order per frame.
+    externals: Vec<ExternalSource>,
 }
 
 /// ADR-0025 §1: iterations for frame F under window W (the F+1 clamp keeps
@@ -324,6 +585,353 @@ mod token_tests {
             TokenState::Invalid(Diag::PoolOverflow.code())
         );
     }
+
+    /// The not-ready contract: an instance whose source is committed but
+    /// whose definition is unpublished must not encode to the same word as an
+    /// instance that was never authored. Before E53 both produced 0, and a
+    /// render clone has no other signal to separate them — no snapshot
+    /// either way, and the `…`;0 Source expression evaluates to the slider's
+    /// own 0.0 default. This assertion is what makes a scripted readiness
+    /// poll (property 5) able to tell "still pending" from "nothing here".
+    #[test]
+    fn pending_publication_is_distinguishable_from_never_authored() {
+        let never_authored = encode_token_state(desired_token_state(0, Diag::Ok));
+        let pending = encode_token_state(desired_token_state(0, Diag::PublicationPending));
+
+        assert_eq!(never_authored, 0.0);
+        assert_ne!(pending, never_authored);
+        assert_eq!(
+            decode_token_state(pending),
+            TokenState::Invalid(Diag::PublicationPending.code())
+        );
+        // And it stays separable from a resolved definition.
+        assert_ne!(pending, encode_token_state(desired_token_state(42, Diag::Ok)));
+    }
+}
+
+/// ADR-0030 layer inputs, exercised end-to-end through the real compile path.
+#[cfg(test)]
+mod layer_param_tests {
+    use super::*;
+
+    /// `graph` is spliced in so each case varies only the manifest line.
+    fn source(graph: &str) -> String {
+        format!(
+            "@dynamicfx 1\n@graph\n{graph}\n@end\n@pass main\n\
+             #version 450\n\
+             // @param depth_map label:\"Depth Map\" hint:layer\n\
+             layout(location = 0) in vec2 v_uv;\n\
+             layout(location = 0) out vec4 outColor;\n\
+             layout(set = 0, binding = 0) uniform texture2D u_in;\n\
+             layout(set = 0, binding = 1) uniform sampler u_s;\n\
+             layout(set = 0, binding = 2) uniform FxUniforms {{\n\
+             \x20   vec2 u_resolution;\n\
+             \x20   float u_time;\n\
+             \x20   float u_frame;\n\
+             }};\n\
+             layout(set = 0, binding = 3) uniform texture2D u_depth;\n\
+             void main() {{\n\
+             \x20   float d = texture(sampler2D(u_depth, u_s), v_uv).r;\n\
+             \x20   outColor = texture(sampler2D(u_in, u_s), v_uv + vec2(d * 0.1, 0.0));\n\
+             }}\n\
+             @endpass\n"
+        )
+    }
+
+    fn compile(graph: &str) -> (Diag, String, Option<(u64, Arc<CompiledEffect>)>) {
+        evaluate_committed_source(frontend::LanguageId::GLSL, &source(graph), None)
+    }
+
+    /// The core of ADR-0030 §1/§3: a layer name is a legal pass input that no
+    /// pass writes. Before this, the "every input has a writer" rule made it
+    /// an E6.
+    #[test]
+    fn layer_name_is_a_legal_input_without_a_writer() {
+        let (code, status, compiled) = compile("pass main: input, depth_map -> output");
+        assert_eq!(code, Diag::Ok, "{status}");
+        let (_, effect) = compiled.expect("layer graph should compile");
+        let layer_params: Vec<_> = effect
+            .definition
+            .params
+            .iter()
+            .filter(|p| p.ty == definition::param::ShaderParamType::Layer)
+            .collect();
+        assert_eq!(layer_params.len(), 1);
+        assert_eq!(layer_params[0].id.as_str(), "depth_map");
+    }
+
+    /// It must land in the Layer pool, not borrow a Float/Color slot.
+    #[test]
+    fn layer_param_binds_to_the_layer_pool() {
+        let (_, _, compiled) = compile("pass main: input, depth_map -> output");
+        let (_, effect) = compiled.expect("layer graph should compile");
+        let index = effect
+            .definition
+            .params
+            .iter()
+            .position(|p| p.id.as_str() == "depth_map")
+            .expect("declared");
+        let slots = &effect.definition.binding.bindings[index].slots;
+        assert_eq!(slots.len(), 1, "a layer consumes exactly one slot");
+        assert_eq!(slots[0].kind, binding::PoolKind::Layer);
+    }
+
+    #[test]
+    fn layer_name_cannot_be_written_or_name_a_pass() {
+        let (code, status, _) = compile("pass main: input -> depth_map\npass o: depth_map -> output");
+        assert_eq!(code, Diag::EnvelopeSyntax, "{status}");
+
+        let (code, status, _) = compile("pass depth_map: input -> output");
+        assert_eq!(code, Diag::EnvelopeSyntax, "{status}");
+    }
+
+    /// ADR-0030 §6: fail closed rather than silently reuse the requested
+    /// frame's layer pixels for every re-simulated iteration.
+    #[test]
+    fn layer_input_in_a_temporal_graph_is_refused() {
+        let (code, status, compiled) = compile("pass main: input, depth_map, prev -> output");
+        // Rejected for the temporal combination specifically — the graph is
+        // otherwise valid, so an E6 here would mean the fixture drifted.
+        assert_eq!(code, Diag::LayerInTemporalGraph, "{status}");
+        assert!(compiled.is_none());
+        assert!(status.contains("depth_map"), "names the offending input: {status}");
+    }
+
+    /// A name cannot be both a layer input and an FxUniforms member — the two
+    /// would compete for one ParamId.
+    #[test]
+    fn hint_layer_on_a_uniform_member_is_rejected() {
+        let source = source("pass main: input, depth_map -> output")
+            .replace("    float u_frame;\n", "    float u_frame;\n    float depth_map;\n");
+        let (code, status, compiled) =
+            evaluate_committed_source(frontend::LanguageId::GLSL, &source, None);
+        assert_eq!(code, Diag::ParamRejected, "{status}");
+        assert!(compiled.is_none());
+    }
+}
+
+/// ADR-0035 paths, through the same compile path as layer inputs and
+/// gradients. That they need no new grammar, no new binding rule and no new
+/// declaration mechanism is the decision being tested here, as much as the
+/// behaviour is.
+#[cfg(test)]
+mod path_param_tests {
+    use super::*;
+
+    fn source(graph: &str) -> String {
+        format!(
+            "@dynamicfx 1
+@graph
+{graph}
+@end
+@pass main
+             #version 450
+             // @param outline label:\"Outline\" hint:path
+             layout(location = 0) in vec2 v_uv;
+             layout(location = 0) out vec4 outColor;
+             layout(set = 0, binding = 0) uniform texture2D u_in;
+             layout(set = 0, binding = 1) uniform sampler u_s;
+             layout(set = 0, binding = 2) uniform FxUniforms {{
+                 vec2 u_resolution;
+                 float u_time;
+                 float u_frame;
+             }};
+             layout(set = 0, binding = 3) uniform texture2D u_path;
+             void main() {{
+                 vec2 v0 = texelFetch(sampler2D(u_path, u_s), ivec2(0, 0), 0).xy;
+                 float n = float(textureSize(sampler2D(u_path, u_s), 0).x);
+                 float d = distance(v_uv, v0) * n;
+                 outColor = texture(sampler2D(u_in, u_s), v_uv) * d;
+             }}
+             @endpass
+"
+        )
+    }
+
+    fn compile(graph: &str) -> (Diag, String, Option<(u64, Arc<CompiledEffect>)>) {
+        evaluate_committed_source(frontend::LanguageId::GLSL, &source(graph), None)
+    }
+
+    /// ADR-0035 §2: a path name is a legal pass input that no pass writes, and
+    /// it lands in the Path pool rather than borrowing another kind's slot.
+    #[test]
+    fn path_named_in_the_graph_binds_to_the_path_pool() {
+        let (code, status, compiled) = compile("pass main: input, outline -> output");
+        assert_eq!(code, Diag::Ok, "{status}");
+        let (_, effect) = compiled.expect("path graph should compile");
+        let index = effect
+            .definition
+            .params
+            .iter()
+            .position(|p| p.id.as_str() == "outline")
+            .expect("declared");
+        assert_eq!(
+            effect.definition.params[index].ty,
+            definition::param::ShaderParamType::Path
+        );
+        let slots = &effect.definition.binding.bindings[index].slots;
+        assert_eq!(slots.len(), 1, "a path consumes exactly one slot");
+        assert_eq!(slots[0].kind, binding::PoolKind::Path);
+        // It must reach the render side as a path source, not as some other
+        // external that happens to occupy the same ordinal.
+        assert_eq!(effect.externals, vec![ExternalSource::Path { path_index: 0 }]);
+    }
+
+    /// §2 again, from the other side: read-only means read-only.
+    #[test]
+    fn path_name_cannot_be_written_or_name_a_pass() {
+        let (code, status, _) = compile("pass main: input -> outline
+pass o: outline -> output");
+        assert_eq!(code, Diag::EnvelopeSyntax, "{status}");
+
+        let (code, status, _) = compile("pass outline: input -> output");
+        assert_eq!(code, Diag::EnvelopeSyntax, "{status}");
+    }
+
+    /// §7: refused for ADR-0030 §6's reason — re-simulation would need the
+    /// path checked out at every iterated frame, a cost never measured.
+    #[test]
+    fn path_input_in_a_temporal_graph_is_refused() {
+        let (code, status, compiled) = compile("pass main: input, outline, prev -> output");
+        assert_eq!(code, Diag::LayerInTemporalGraph, "{status}");
+        assert!(compiled.is_none());
+        assert!(status.contains("outline"), "names the offending input: {status}");
+        assert!(status.contains("path input"), "says which kind it was: {status}");
+    }
+
+    /// A name cannot be both a path input and an FxUniforms member.
+    #[test]
+    fn hint_path_on_a_uniform_member_is_rejected() {
+        let source = source("pass main: input, outline -> output")
+            .replace("    float u_frame;
+", "    float u_frame;
+    float outline;
+");
+        let (code, status, compiled) =
+            evaluate_committed_source(frontend::LanguageId::GLSL, &source, None);
+        assert_eq!(code, Diag::ParamRejected, "{status}");
+        assert!(compiled.is_none());
+    }
+}
+
+/// ADR-0031/0032 gradients, through the same compile path as layer inputs —
+/// which is the point of ADR-0032: one rule, one code path, two kinds.
+#[cfg(test)]
+mod gradient_param_tests {
+    use super::*;
+
+    fn source(graph: &str, annotations: &str, extra_binding: &str) -> String {
+        format!(
+            "@dynamicfx 1\n@graph\n{graph}\n@end\n@pass main\n\
+             #version 450\n{annotations}\
+             layout(location = 0) in vec2 v_uv;\n\
+             layout(location = 0) out vec4 outColor;\n\
+             layout(set = 0, binding = 0) uniform texture2D u_in;\n\
+             layout(set = 0, binding = 1) uniform sampler u_s;\n\
+             layout(set = 0, binding = 2) uniform FxUniforms {{\n\
+             \x20   vec2 u_resolution;\n\
+             \x20   float u_time;\n\
+             \x20   float u_frame;\n\
+             }};\n\
+             layout(set = 0, binding = 3) uniform texture2D u_ramp;\n{extra_binding}\
+             void main() {{\n\
+             \x20   float t = texture(sampler2D(u_in, u_s), v_uv).r;\n\
+             \x20   outColor = texture(sampler2D(u_ramp, u_s), vec2(t, 0.5));\n\
+             }}\n\
+             @endpass\n"
+        )
+    }
+
+    const RAMP: &str = "// @param heat_ramp label:\"Heat Ramp\" hint:gradient\n";
+
+    #[test]
+    fn gradient_named_in_the_graph_binds_to_the_gradient_pool() {
+        let (code, status, compiled) = evaluate_committed_source(
+            frontend::LanguageId::GLSL,
+            &source("pass main: input, heat_ramp -> output", RAMP, ""),
+            None,
+        );
+        assert_eq!(code, Diag::Ok, "{status}");
+        let (_, effect) = compiled.expect("gradient graph should compile");
+        let index = effect
+            .definition
+            .params
+            .iter()
+            .position(|p| p.id.as_str() == "heat_ramp")
+            .expect("declared");
+        assert_eq!(
+            effect.definition.params[index].ty,
+            definition::param::ShaderParamType::Gradient
+        );
+        let slots = &effect.definition.binding.bindings[index].slots;
+        assert_eq!(slots.len(), 1);
+        assert_eq!(slots[0].kind, binding::PoolKind::Gradient);
+    }
+
+    /// ADR-0032's whole reason for existing: layers and gradients take their
+    /// bindings from one rule — graph order — so a pass reading both gets
+    /// bindings 3 and 4 in the order the manifest names them.
+    #[test]
+    fn a_layer_and_a_gradient_share_one_binding_rule() {
+        let annotations = format!("{RAMP}// @param depth_map hint:layer\n");
+        let (code, status, compiled) = evaluate_committed_source(
+            frontend::LanguageId::GLSL,
+            &source(
+                "pass main: input, heat_ramp, depth_map -> output",
+                &annotations,
+                "layout(set = 0, binding = 4) uniform texture2D u_depth;\n",
+            ),
+            None,
+        );
+        assert_eq!(code, Diag::Ok, "{status}");
+        let (_, effect) = compiled.expect("mixed graph should compile");
+        // Graph order decides the ordinals, so the gradient (named first) is
+        // external 0 and the layer is external 1.
+        assert!(matches!(
+            effect.externals.as_slice(),
+            [ExternalSource::Gradient { .. }, ExternalSource::Layer { .. }]
+        ));
+    }
+
+    #[test]
+    fn gradient_cannot_be_written_or_name_a_pass() {
+        let (code, _, _) = evaluate_committed_source(
+            frontend::LanguageId::GLSL,
+            &source("pass heat_ramp: input -> output", RAMP, ""),
+            None,
+        );
+        assert_eq!(code, Diag::EnvelopeSyntax);
+    }
+}
+
+/// The shipped `examples/` sources are compiled by the real pipeline here, so
+/// a grammar, ABI, or annotation change that would break a user's copy-paste
+/// breaks the build first. These are the exact bytes in the public repo —
+/// `include_str!` means the test cannot drift from the file it documents.
+#[cfg(test)]
+mod example_tests {
+    use super::*;
+
+    fn compiles(name: &str, source: &str) {
+        let (code, status, compiled) =
+            evaluate_committed_source(frontend::LanguageId::GLSL, source, None);
+        assert!(
+            compiled.is_some(),
+            "examples/{name} failed to compile: E{} {status}",
+            code.code()
+        );
+        assert_eq!(code, Diag::Ok, "examples/{name}: {status}");
+    }
+
+    #[test]
+    fn thermal_example_compiles() {
+        compiles("thermal.glsl", include_str!("../examples/thermal.glsl"));
+    }
+
+    #[test]
+    fn orb_example_compiles() {
+        compiles("orb.glsl", include_str!("../examples/orb.glsl"));
+    }
 }
 
 /// Failed observations keyed by attempt fingerprint, so the idle sync can
@@ -457,6 +1065,20 @@ thread_local! {
     /// (`SUPPORTS_THREADED_RENDERING`, ADR-0023 §4).
     static SMART_WINDOW: std::cell::Cell<Option<(i32, i32)>> =
         const { std::cell::Cell::new(None) };
+
+    /// ADR-0030 layer pixels for the frame being rendered on THIS thread,
+    /// parallel to `TexSlot::Layer` ordinals. Same reasoning as SMART_WINDOW:
+    /// an instance field would race concurrent MFR frames. Owned copies —
+    /// the checked-out `Layer` borrows the callbacks and cannot outlive the
+    /// SmartRender arm, and the copy cost is visible in the upload span.
+    /// Layer checkout ids `PF_CHECKOUT_LAYER` actually accepted this frame.
+    /// PreRender fills it, SmartRender reads and clears it — the two run on the
+    /// same thread per frame, like `SMART_LAYERS` beside it.
+    static SMART_CHECKOUTS: std::cell::RefCell<Vec<u32>> =
+        const { std::cell::RefCell::new(Vec::new()) };
+
+    static SMART_LAYERS: std::cell::RefCell<Vec<Option<ExternalPixels>>> =
+        const { std::cell::RefCell::new(Vec::new()) };
 }
 
 /// FNV-1a over an observation kind tag, the selected language, and the
@@ -492,7 +1114,10 @@ impl AdobePluginGlobal for Global {
         command: ae::Command,
         in_data: ae::InData,
         _: ae::OutData,
-        _: &mut ae::Parameters<ParamKey>,
+        // The global handler took `params` only for the ADR-0031 §7 custom-UI
+        // editor, which is gone. Everything else that touches parameters runs
+        // on the instance side, where the sequence handle is available.
+        _params: &mut ae::Parameters<ParamKey>,
     ) -> Result<(), ae::Error> {
         // The §5.3 idle observer: scripted expression writes never arrive as
         // UserChangedParam (TR-M0-005), so a main-thread idle scan gives each
@@ -693,6 +1318,16 @@ fn observe_core(plugin: &mut PluginState, local: &mut Local, force: bool) -> Res
     match compiled {
         Some((token, effect)) => {
             let published = registry_insert(token, Arc::clone(&effect));
+            if !published {
+                // The registry refused this fingerprint (ADR-0015 §"Costs":
+                // the insert guards against cross-content collisions). The
+                // effect compiled, but no render clone can resolve it, so the
+                // frame passes through. Say that instead of leaving a
+                // success status over a pass-through render.
+                local.status_code = Diag::PublicationPending;
+                local.status_text =
+                    "compiled, but publication was refused; press Compile".to_string();
+            }
             local.token = if published { token } else { 0 };
             local.compiled = Some(effect);
             local.pipelines = None;
@@ -754,6 +1389,41 @@ fn evaluate_committed_source(
         }
     };
 
+    let layer_names = frontend::annotation::layer_param_names(committed);
+    let gradient_names = frontend::annotation::gradient_param_names(committed);
+    let path_names = frontend::annotation::path_param_names(committed);
+    let uses_prev = manifest
+        .iter()
+        .any(|p| p.inputs.iter().any(|i| i == frontend::grammar::RES_PREV));
+    // ADR-0030 §6 and ADR-0035 §7 refuse for the same reason and therefore
+    // share the diagnostic: windowed re-simulation would need the resource at
+    // every iterated frame, a cost never measured. Gradients are exempt — a
+    // bake is arithmetic, with no host round trip to repeat.
+    let used_externals: Vec<(&str, &String)> = manifest
+        .iter()
+        .flat_map(|p| p.inputs.iter())
+        .filter_map(|i| {
+            if layer_names.iter().any(|l| l == i) {
+                Some(("layer input", i))
+            } else if path_names.iter().any(|l| l == i) {
+                Some(("path input", i))
+            } else {
+                None
+            }
+        })
+        .collect();
+    if uses_prev && !used_externals.is_empty() {
+        let (what, name) = used_externals[0];
+        return (
+            Diag::LayerInTemporalGraph,
+            format!(
+                "{what} `{name}` cannot be used in a graph that reads `prev`; \
+                 windowed re-simulation would need it at every iterated frame"
+            ),
+            None,
+        );
+    }
+
     let Some(frontend_impl) = frontend::frontend_for(language) else {
         return (
             Diag::LanguageUnknown,
@@ -798,8 +1468,37 @@ fn evaluate_committed_source(
         }
     }
 
-    let per_pass_params: Vec<Vec<definition::param::ParamDeclaration>> =
+    // ADR-0030/0032: layer inputs and gradients are declared by annotation and
+    // never reflected,
+    // so they are appended here — after the module's own members, in each
+    // pass's graph-input order — to reach pool allocation and the AE control
+    // list. `lower_graph`'s effect-wide merge dedupes a layer read by several
+    // passes into one parameter, exactly as it does for uniform members.
+    let mut per_pass_params: Vec<Vec<definition::param::ParamDeclaration>> =
         pass_modules.iter().map(|m| m.params.clone()).collect();
+    for (params, pass) in per_pass_params.iter_mut().zip(manifest.iter()) {
+        for input in &pass.inputs {
+            let ty = if layer_names.iter().any(|l| l == input) {
+                definition::param::ShaderParamType::Layer
+            } else if gradient_names.iter().any(|g| g == input) {
+                definition::param::ShaderParamType::Gradient
+            } else if path_names.iter().any(|g| g == input) {
+                definition::param::ShaderParamType::Path
+            } else {
+                continue;
+            };
+            let Ok(id) = definition::param::ParamId::new(input) else { continue };
+            let ui = annotations
+                .get(input)
+                .map(|a| definition::param::ParamUiMeta {
+                    label: a.label.clone(),
+                    ..Default::default()
+                })
+                .unwrap_or_default();
+            let aliases = annotations.get(input).map(|a| a.aliases.clone()).unwrap_or_default();
+            params.push(definition::param::ParamDeclaration { id, ty, aliases, ui });
+        }
+    }
     let (def, maps) = match definition::effect::lower_graph(
         language,
         &manifest,
@@ -862,12 +1561,44 @@ fn evaluate_committed_source(
         None
     };
     let token = session_token(language, committed);
+    // ADR-0030: resolve each layer ordinal to the AE parameter index that
+    // feeds it, once, here — the render path must not re-derive graph order
+    // per frame, and PreRender needs the same indexes SmartRender will use.
+    let declaration = host::params::declaration_order();
+    let externals: Vec<ExternalSource> = plan::external_order(&manifest)
+        .iter()
+        .filter_map(|name| {
+            let index = def.params.iter().position(|p| p.id.as_str() == name)?;
+            let slot = def.binding.bindings.get(index)?.slots.first()?;
+            let param_index = declaration
+                .iter()
+                .position(|k| *k == host::params::ParamKey::Pool(slot.kind, slot.index))?;
+            match slot.kind {
+                // +1: `param_index` is a declaration position, and every AE
+                // parameter index is one higher (input layer at 0).
+                binding::PoolKind::Layer => {
+                    Some(ExternalSource::Layer { param_index: param_index + 1 })
+                }
+                binding::PoolKind::Gradient => {
+                    Some(ExternalSource::Gradient { gradient_index: slot.index })
+                }
+                binding::PoolKind::Path => {
+                    Some(ExternalSource::Path { path_index: slot.index })
+                }
+                // Unreachable: only these three kinds reach the graph as
+                // resources. Dropping anything else keeps the ordinals aligned
+                // with what the render side can actually supply.
+                _ => None,
+            }
+        })
+        .collect();
     let compiled = Arc::new(CompiledEffect {
         definition: def,
         passes,
         plan: exec_plan,
         window,
         source: committed.to_string(),
+        externals,
     });
     (Diag::Ok, status, Some((token, compiled)))
 }
@@ -907,6 +1638,29 @@ fn set_slot_hidden(
     dyn_suite.set_dynamic_stream_flag(&stream, ae::aegp::DynamicStreamFlags::Hidden, false, hidden)
 }
 
+/// **Known limitation, recorded rather than fixed (2026-08-16).** Pool slots
+/// added after 0.0.2 — Layer, Gradient, Point 3D, Path — display their pool
+/// name ("Mask 01") in Effect Controls instead of the shader's own label,
+/// while every V1 kind displays the label correctly.
+///
+/// Measured on AE 2025 **and** 2026: from a single shader declaring both, the
+/// Colour slot read back as `Tint` and the Point 3D slot beside it as
+/// `Point 3D 01`, and a re-read a full idle window later was unchanged — so it
+/// is not refresh timing. `PF_UpdateParamUI` returns success for these kinds
+/// and AE ignores the name.
+///
+/// The obvious second route, `AEGP_SetStreamName` — the same AEGP-braces trick
+/// that fixes the Hidden flag for `PF_Param_ANGLE` rows — **was tried and
+/// hangs After Effects**: it is documented as Undoable, and calling it from the
+/// slot-configure path froze the host before a single leg completed (artifact
+/// `4FD125F9…`, harness timed out at 600 s with AE unresponsive). Shipping a
+/// cosmetic label fix that can freeze a user's session is a bad trade, so the
+/// route stays closed until the undo-group requirement is understood.
+///
+/// Consequence for users: a `hint:layer` / `hint:gradient` / `hint:point3d` /
+/// `hint:path` control shows a generic name. Its value, keyframes, identity and
+/// render behaviour are all unaffected.
+
 /// Configure pool-slot UI from the resolved definition: bound slots take
 /// their ParamId as the label (vec4 alpha companions get an " A" suffix) and
 /// become visible; unbound slots return to their default names and hide.
@@ -940,7 +1694,18 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
 
     let mut names_ok = true;
     if configure_names {
-        for (kind, capacity) in binding::V1_POOLS {
+        // Every pool, not just the V1 ones: a bound `hint:layer` slot must
+        // carry the shader's own name exactly as a bound float does. The
+        // growth pools were left out of this loop when they were appended, so
+        // layer inputs read as "Layer 01" whatever the shader called them.
+        for (kind, capacity) in binding::all_pools() {
+            // The Gradient slot is inert and permanently invisible
+            // (ADR-0033 §6), so its label would never be seen. The gradient's
+            // shader name goes on the stop rows below instead — the rows the
+            // user actually edits.
+            if *kind == binding::PoolKind::Gradient {
+                continue;
+            }
             for i in 0..*capacity {
                 let slot = binding::SlotRef { kind: *kind, index: i };
                 let config = configs.get(&slot);
@@ -967,6 +1732,11 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
                                         if let Some(default) = config.default {
                                             f.set_default(default as f64);
                                         }
+                                        // ADR-0028 belt-and-braces: keep the
+                                        // display precision explicit on every
+                                        // def write so no host path can zero
+                                        // it back to integer stepping.
+                                        f.set_precision(ae::Precision::Hundredths);
                                     }
                                     ae::Param::Slider(s) => {
                                         if let (Some(min), Some(max)) = (config.min, config.max) {
@@ -997,6 +1767,35 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
                 }
             }
         }
+        // ADR-0033 presentation: the gradient's shader name lands on the count
+        // and stop rows, because the slot that would normally carry it is
+        // invisible. PF caps a parameter name at 31 characters, so the label is
+        // clipped up front rather than cut mid-suffix by the host.
+        for g in 0..host::params::GRADIENTS {
+            let slot = binding::SlotRef { kind: binding::PoolKind::Gradient, index: g };
+            let label = configs
+                .get(&slot)
+                .map(|c| clip(&c.label, 20))
+                .unwrap_or_else(|| format!("G{:02}", g + 1));
+            if let Ok(mut p) = plugin.params.get_mut(ParamKey::GradientCount(g)) {
+                names_ok &= p.set_name(&format!("{label} Stops")).is_ok();
+                names_ok &= p.update_param_ui().is_ok();
+            }
+            for stop in 0..host::params::STOPS_PER_GRADIENT {
+                for (field, suffix) in [
+                    (host::params::GradientField::Position, "Pos"),
+                    (host::params::GradientField::Color, "Color"),
+                    (host::params::GradientField::Alpha, "Alpha"),
+                ] {
+                    let key = ParamKey::GradientStop(g, stop, field);
+                    if let Ok(mut p) = plugin.params.get_mut(key) {
+                        let name = format!("{label} {:02} {suffix}", stop + 1);
+                        names_ok &= p.set_name(&name).is_ok();
+                        names_ok &= p.update_param_ui().is_ok();
+                    }
+                }
+            }
+        }
     }
 
     let mut visibility_ok = true;
@@ -1016,6 +1815,12 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
     ));
 }
 
+/// Clip a label to `n` characters on a char boundary. PF parameter names are
+/// capped at 31 bytes, and a byte-wise cut could split a multi-byte character.
+fn clip(label: &str, n: usize) -> String {
+    label.chars().take(n).collect()
+}
+
 /// Apply hidden flags for every pool slot (bound = visible).
 fn apply_visibility(
     plugin: &mut PluginState,
@@ -1026,14 +1831,80 @@ fn apply_visibility(
     let effect_suite = ae::aegp::suites::Effect::new()?;
     let effect_ref = pf_iface.new_effect_for_effect(plugin.in_data.effect_ref(), plugin_id)?;
     let mut result = Ok(());
-    for (kind, capacity) in binding::V1_POOLS {
+
+    // ADR-0033 presentation. The reference gradient effect keeps every stop
+    // parameter in the topology but shows only ONE stop group at a time — the
+    // ramp bar selects, the group below edits. Listing all eight stops as 24
+    // flat rows is the storage model leaking into the UI (user report,
+    // 2026-08-15). Same machinery as the pool slots: a bound gradient shows
+    // its count, its preview, and the selected stop's three rows; everything
+    // else hides.
+    for g in 0..host::params::GRADIENTS {
+        let bound = configs
+            .keys()
+            .any(|s| s.kind == binding::PoolKind::Gradient && s.index == g);
+        let live = plugin
+            .params
+            .get(ParamKey::GradientCount(g))
+            .ok()
+            .and_then(|p| p.as_float_slider().ok().map(|f| f.value().round() as usize))
+            .unwrap_or(host::params::DEFAULT_LIVE_STOPS);
+        for key in [ParamKey::GradientCount(g)] {
+            if let Some(index) = host::params::stream_index_of(key) {
+                if let Err(e) = set_slot_hidden(plugin, &effect_ref, index, !bound) {
+                    diag::log(&format!("gradient {g} count hidden flag failed: {e:?}"));
+                    result = Err(e);
+                }
+            }
+            if let Ok(mut p) = plugin.params.get_mut(key) {
+                let mut flags = p.ui_flags();
+                if flags.contains(ae::ParamUIFlags::INVISIBLE) == bound {
+                    flags.set(ae::ParamUIFlags::INVISIBLE, !bound);
+                    p.set_ui_flags(flags);
+                }
+            }
+        }
+        for stop in 0..host::params::STOPS_PER_GRADIENT {
+            // The count owns how many stop groups are on screen. With the
+            // editor gone there is nothing to select a stop with, so showing
+            // every live stop is the only presentation that leaves them all
+            // reachable — and the count is already the value's own truth.
+            let shown = bound && stop < live;
+            for field in [
+                host::params::GradientField::Position,
+                host::params::GradientField::Color,
+                host::params::GradientField::Alpha,
+            ] {
+                let key = ParamKey::GradientStop(g, stop, field);
+                if let Some(index) = host::params::stream_index_of(key) {
+                    if let Err(e) = set_slot_hidden(plugin, &effect_ref, index, !shown) {
+                        diag::log(&format!("gradient {g} stop {stop} hidden flag failed: {e:?}"));
+                        result = Err(e);
+                    }
+                }
+                if let Ok(mut p) = plugin.params.get_mut(key) {
+                    let mut flags = p.ui_flags();
+                    if flags.contains(ae::ParamUIFlags::INVISIBLE) == shown {
+                        flags.set(ae::ParamUIFlags::INVISIBLE, !shown);
+                        p.set_ui_flags(flags);
+                    }
+                }
+            }
+        }
+    }
+
+    for (kind, capacity) in binding::all_pools() {
         for i in 0..*capacity {
             let slot = binding::SlotRef { kind: *kind, index: i };
             let Some(stream_index) = host::params::stream_index_of(ParamKey::Pool(*kind, i))
             else {
                 continue;
             };
-            let hidden = !configs.contains_key(&slot);
+            // The Gradient slot is inert (ADR-0033 §6) — hidden whether or not
+            // a shader binds it. Everything else shows exactly when bound,
+            // which the growth pools never did: four "Layer" rows sat in the
+            // panel of every instance, bound or not.
+            let hidden = !configs.contains_key(&slot) || *kind == binding::PoolKind::Gradient;
             if let Err(e) = set_slot_hidden(plugin, &effect_ref, stream_index, hidden) {
                 diag::log(&format!("slot hidden flag failed ({kind:?} {i}): {e:?}"));
                 result = Err(e);
@@ -1170,6 +2041,31 @@ fn read_bound_values(
                         }
                     }
                 }
+                // ADR-0034 §3. `x` and `y` are normalized to the frame
+                // exactly as Vec2 is, so a point and a point-3D mean the same
+                // thing in the same shader; `z` is passed in pixels because
+                // there is no third frame dimension to divide by, and
+                // inventing one (height? the diagonal?) would be a convention
+                // the shader author cannot predict. The asymmetry is
+                // documented, not hidden.
+                ShaderParamType::Point3D => {
+                    if let Some(key) = slot_key(0) {
+                        if let Ok(p) = plugin.params.get(key) {
+                            if let Ok(pt) = p.as_point3d() {
+                                let (px, py, pz) = pt.value();
+                                out[0] = px as f32 / width.max(1) as f32;
+                                out[1] = py as f32 / height.max(1) as f32;
+                                out[2] = pz as f32;
+                            }
+                        }
+                    }
+                }
+                // ADR-0030/0035: these are texture bindings, never uniform
+                // members, so they contribute no words. The slot stays zeroed
+                // and is never read — no pass layout points at it.
+                ShaderParamType::Layer
+                | ShaderParamType::Gradient
+                | ShaderParamType::Path => {}
                 ShaderParamType::Vec3Color | ShaderParamType::Vec4Color => {
                     if let Some(key) = slot_key(0) {
                         if let Ok(p) = plugin.params.get(key) {
@@ -1197,6 +2093,77 @@ fn read_bound_values(
             out
         })
         .collect()
+}
+
+/// Resolve the transported definition from the StateToken: process registry
+/// first, then the persisted snapshot (ADR-0015 §2, ADR-0016 §4).
+///
+/// Extracted from `render` so SmartRender can run it **before** staging
+/// external resources. On a render clone's very first frame `local.compiled`
+/// is still `None` when staging runs — resolution used to happen inside
+/// `render`, which is after — so every external was staged as absent and the
+/// frame rendered against the zero texture. Measured on the host 2026-08-16:
+/// a path input read as unassigned on the first render and correctly on every
+/// render after it, with nothing in the log to say why. Layers and gradients
+/// had the same hole.
+fn resolve_transported_definition(plugin: &PluginState, local: &mut Local) {
+    let word = match plugin.params.get(ParamKey::StateToken) {
+        Ok(p) => match p.as_float_slider() {
+            Ok(slider) => slider.value(),
+            Err(_) => f64::NAN,
+        },
+        Err(_) => f64::NAN,
+    };
+    match decode_token_state(word) {
+        TokenState::Active(fp) if fp == local.token => {}
+        TokenState::Active(fp) => {
+            if let Some(compiled) = registry_get(fp) {
+                local.token = fp;
+                local.compiled = Some(compiled);
+                local.pipelines = None;
+                diag::log("definition resolved from process registry");
+            } else if local.snapshot.is_some() {
+                // Fresh process (reopen/aerender): the snapshot is
+                // the authority. A fingerprint mismatch means a torn
+                // token/snapshot pair — the checksummed snapshot
+                // wins (ADR-0015 §2).
+                if local.snapshot.as_ref().is_some_and(|s| s.fingerprint != fp) {
+                    diag::log("token/snapshot fingerprint mismatch; snapshot wins");
+                }
+                resolve_from_snapshot(local);
+            } else {
+                diag::verbose("token missed registry with no snapshot; passing through");
+                local.token = 0;
+                local.compiled = None;
+                local.pipelines = None;
+            }
+        }
+        TokenState::Uninitialized => {
+            if local.compiled.is_some() {
+                local.token = 0;
+                local.compiled = None;
+                local.pipelines = None;
+            } else if local.snapshot.is_some() {
+                // Token stream says "nothing" but a snapshot exists:
+                // torn pair, snapshot wins.
+                resolve_from_snapshot(local);
+            }
+        }
+        TokenState::Invalid(code) => {
+            if local.compiled.is_some() {
+                local.token = 0;
+                local.compiled = None;
+                local.pipelines = None;
+            }
+            diag::verbose(&format!("token carries diagnostic E{code}; passing through"));
+        }
+        TokenState::Corrupt => {
+            diag::log("state token corrupt; passing through (E52)");
+            local.token = 0;
+            local.compiled = None;
+            local.pipelines = None;
+        }
+    }
 }
 
 /// Rebuild the compiled effect from the restored snapshot (the render
@@ -1366,63 +2333,7 @@ impl AdobePluginInstance for LocalMutex {
         }
 
         if !observed_now {
-            let word = match plugin.params.get(ParamKey::StateToken) {
-                Ok(p) => match p.as_float_slider() {
-                    Ok(slider) => slider.value(),
-                    Err(_) => f64::NAN,
-                },
-                Err(_) => f64::NAN,
-            };
-            match decode_token_state(word) {
-                TokenState::Active(fp) if fp == local.token => {}
-                TokenState::Active(fp) => {
-                    if let Some(compiled) = registry_get(fp) {
-                        local.token = fp;
-                        local.compiled = Some(compiled);
-                        local.pipelines = None;
-                        diag::log("definition resolved from process registry");
-                    } else if local.snapshot.is_some() {
-                        // Fresh process (reopen/aerender): the snapshot is
-                        // the authority. A fingerprint mismatch means a torn
-                        // token/snapshot pair — the checksummed snapshot
-                        // wins (ADR-0015 §2).
-                        if local.snapshot.as_ref().is_some_and(|s| s.fingerprint != fp) {
-                            diag::log("token/snapshot fingerprint mismatch; snapshot wins");
-                        }
-                        resolve_from_snapshot(&mut local);
-                    } else {
-                        diag::verbose("token missed registry with no snapshot; passing through");
-                        local.token = 0;
-                        local.compiled = None;
-                        local.pipelines = None;
-                    }
-                }
-                TokenState::Uninitialized => {
-                    if local.compiled.is_some() {
-                        local.token = 0;
-                        local.compiled = None;
-                        local.pipelines = None;
-                    } else if local.snapshot.is_some() {
-                        // Token stream says "nothing" but a snapshot exists:
-                        // torn pair, snapshot wins.
-                        resolve_from_snapshot(&mut local);
-                    }
-                }
-                TokenState::Invalid(code) => {
-                    if local.compiled.is_some() {
-                        local.token = 0;
-                        local.compiled = None;
-                        local.pipelines = None;
-                    }
-                    diag::verbose(&format!("token carries diagnostic E{code}; passing through"));
-                }
-                TokenState::Corrupt => {
-                    diag::log("state token corrupt; passing through (E52)");
-                    local.token = 0;
-                    local.compiled = None;
-                    local.pipelines = None;
-                }
-            }
+            resolve_transported_definition(plugin, &mut local);
         }
 
         let mut rendered = false;
@@ -1645,6 +2556,88 @@ impl AdobePluginInstance for LocalMutex {
                             render::logical_size(rw, ds_x.num, ds_x.den),
                             render::logical_size(rh, ds_y.num, ds_y.den),
                         );
+                        // ADR-0030: pixels checked out by the SmartRender
+                        // arm on this thread, in TexSlot::Layer ordinal order.
+                        // Absent entries bind transparent black (§5).
+                        let borrowed = SMART_LAYERS.with(|l| l.borrow().clone());
+                        // Encode any baked gradient here: this is the first
+                        // point where the working format is known, which is
+                        // exactly why the bake itself is depth-independent.
+                        // `(bytes, width, height, float32)` per resource. Both
+                        // encodings land here rather than at staging time
+                        // because both need something only the render knows:
+                        // the gradient needs the working depth, and the path
+                        // needs the frame extent to normalize against
+                        // (ADR-0035 §3).
+                        type Encoded = (Vec<u8>, usize, usize, bool);
+                        let encoded: Vec<Option<Encoded>> = borrowed
+                            .iter()
+                            .map(|entry| {
+                                let e = entry.as_ref()?;
+                                if let Some(vertices) = e.vertices.as_ref() {
+                                    let (width, samples) =
+                                        path::encode(vertices, rw as f32, rh as f32);
+                                    return Some((
+                                        render::encode_samples(&samples, render::Depth::F32),
+                                        width,
+                                        path::ROWS,
+                                        true,
+                                    ));
+                                }
+                                if e.ae_pixels {
+                                    // ADR-0030 layer pixels: AE's ARGB (and
+                                    // U15 at 16-bpc) into the working RGBA
+                                    // layout, through the same converters the
+                                    // effect's own input uses.
+                                    let mut out = vec![0u8; e.width * e.height * depth.bpp()];
+                                    match depth {
+                                        render::Depth::U8 => render::argb8_to_rgba8(
+                                            &e.pixels, e.stride, e.width, e.height, &mut out,
+                                        ),
+                                        render::Depth::U15 => render::argb_u15_to_rgba_f32(
+                                            &e.pixels, e.stride, e.width, e.height, &mut out,
+                                        ),
+                                        render::Depth::F32 => render::argb_f32_to_rgba_f32(
+                                            &e.pixels, e.stride, e.width, e.height, &mut out,
+                                        ),
+                                    }
+                                    return Some((out, e.width, e.height, false));
+                                }
+                                let samples = e.samples.as_ref()?;
+                                Some((
+                                    render::encode_samples(samples, depth),
+                                    e.width,
+                                    e.height,
+                                    false,
+                                ))
+                            })
+                            .collect();
+                        let externals: Vec<Option<render::ExternalTexture>> = borrowed
+                            .iter()
+                            .zip(encoded.iter())
+                            .map(|(entry, enc)| {
+                                let e = entry.as_ref()?;
+                                match enc {
+                                    Some((bytes, width, height, float32)) => {
+                                        let bpp = if *float32 { 16 } else { depth.bpp() };
+                                        Some(render::ExternalTexture {
+                                            pixels: bytes.as_slice(),
+                                            stride: width * bpp,
+                                            width: *width,
+                                            height: *height,
+                                            float32: *float32,
+                                        })
+                                    }
+                                    None => Some(render::ExternalTexture {
+                                        pixels: e.pixels.as_slice(),
+                                        stride: e.stride,
+                                        width: e.width,
+                                        height: e.height,
+                                        float32: false,
+                                    }),
+                                }
+                            })
+                            .collect();
                         let result = render::execute_plan(
                             gpu,
                             set,
@@ -1661,6 +2654,7 @@ impl AdobePluginInstance for LocalMutex {
                             rect_w * bpp,
                             window,
                             rect,
+                            &externals,
                             cache,
                         );
                         match result {
@@ -1819,6 +2813,8 @@ impl AdobePluginInstance for LocalMutex {
             Command::SequenceSetup | Command::SequenceResetup => {
                 diag::verbose("sequence (re)setup: observation deferred");
             }
+            // ADR-0031 §7: the gradient editor. Custom-UI events arrive on
+            // the main thread for the row that owns the control area.
             // SmartFX entry (M5): AE only hands float worlds to smart
             // effects (FLOAT_COLOR_AWARE rides SUPPORTS_SMART_RENDER), so
             // the smart path exists for image correctness; performance-side
@@ -1872,6 +2868,56 @@ impl AdobePluginInstance for LocalMutex {
                             bottom: requested.bottom.max(in_data.height()),
                         });
                         extra.set_pre_render_data::<(i32, i32)>((requested.left, requested.top));
+
+                        // ADR-0030: one checkout per bound layer parameter,
+                        // with the SAME full-frame rect and time as the input
+                        // so `uv` addresses the same point in every texture
+                        // (§4 comp space). Checkout ids start at 1 — 0 is the
+                        // effect's own input. A failed checkout is logged and
+                        // left unbound: the shader then reads zeros (§5)
+                        // rather than the frame failing.
+                        let externals = {
+                            let mut local = self.lock().map_err(|_| Error::Generic)?;
+                            // Resolve here too, not only in SmartRender. AE
+                            // counts checkouts: if PreRender skips a layer this
+                            // frame and SmartRender then asks for its pixels,
+                            // the host aborts the render with "Node received
+                            // more checkout requests than expected" (reported
+                            // from interactive use, 2026-08-16, after the
+                            // SmartRender side was fixed alone). The two sides
+                            // must see the same definition or neither may act.
+                            if local.compiled.is_none() {
+                                resolve_transported_definition(plugin, &mut local);
+                            }
+                            local
+                                .compiled
+                                .as_ref()
+                                .map(|c| c.externals.clone())
+                                .unwrap_or_default()
+                        };
+                        // Exactly the ids AE accepted. SmartRender asks for
+                        // these and checks in these — never a superset, which
+                        // is the same accounting mistake from the other end.
+                        let mut checked_out: Vec<u32> = Vec::new();
+                        for (ordinal, source) in externals.iter().enumerate() {
+                            // Gradients and paths are not checked out as layers.
+                            let ExternalSource::Layer { param_index } = source else { continue };
+                            let id = ordinal as u32 + 1;
+                            match cb.checkout_layer(
+                                *param_index as i32,
+                                id as i32,
+                                &req,
+                                in_data.current_time(),
+                                in_data.time_step(),
+                                in_data.time_scale(),
+                            ) {
+                                Ok(_) => checked_out.push(id),
+                                Err(e) => diag::log(&format!(
+                                    "layer checkout failed (param {param_index}): {e:?}"
+                                )),
+                            }
+                        }
+                        SMART_CHECKOUTS.with(|c| *c.borrow_mut() = checked_out);
                     }
                     Err(e) => diag::log(&format!("smart pre-render checkout failed: {e:?}")),
                 }
@@ -1889,6 +2935,99 @@ impl AdobePluginInstance for LocalMutex {
                         None
                     }
                 };
+                // ADR-0030: copy each bound layer's pixels for this frame.
+                // The `Layer` borrows the callbacks and cannot outlive this
+                // arm, so the bytes are owned; the cost rides the upload span.
+                let externals = {
+                    let mut local = self.lock().map_err(|_| Error::Generic)?;
+                    // Resolve BEFORE reading `externals`: see
+                    // `resolve_transported_definition`. Without this the first
+                    // frame of every render clone stages nothing.
+                    if local.compiled.is_none() {
+                        resolve_transported_definition(plugin, &mut local);
+                    }
+                    local
+                        .compiled
+                        .as_ref()
+                        .map(|c| c.externals.clone())
+                        .unwrap_or_default()
+                };
+                let mut staged: Vec<Option<ExternalPixels>> = Vec::new();
+                for (ordinal, source) in externals.iter().enumerate() {
+                    match source {
+                        ExternalSource::Layer { .. } => {
+                            let id = ordinal as u32 + 1;
+                            // PreRender is the authority on which ids exist
+                            // this frame; asking for one it did not request is
+                            // what AE reports as an internal verification
+                            // failure.
+                            if !SMART_CHECKOUTS.with(|c| c.borrow().contains(&id)) {
+                                staged.push(None);
+                                continue;
+                            }
+                            match cb.checkout_layer_pixels(id) {
+                                // `None` is legitimate — an unassigned
+                                // selector, or an adjustment layer with
+                                // nothing under it (ADR-0030 §5).
+                                Ok(Some(layer)) => {
+                                    let stride = layer.buffer_stride();
+                                    // Raw AE bytes: ARGB, and at 16-bpc a
+                                    // 4x16-bit U15 pixel. The working format is
+                                    // RGBA, so these are converted at the
+                                    // encode site in `render`, where the depth
+                                    // is known — exactly like the gradient LUT.
+                                    // Uploading them unconverted put alpha in
+                                    // the red channel and shifted every other
+                                    // channel one place: a cyan solid read back
+                                    // as magenta, arithmetically exactly
+                                    // (a,r,g,b) (measured 2026-08-16, the first
+                                    // run in which the checkout itself worked).
+                                    diag::log(&format!(
+                                        "layer {id}: {}x{} stride {stride}",
+                                        layer.width(),
+                                        layer.height()
+                                    ));
+                                    staged.push(Some(ExternalPixels {
+                                        pixels: layer.buffer().to_vec(),
+                                        stride,
+                                        width: layer.width(),
+                                        height: layer.height(),
+                                        samples: None,
+                                        vertices: None,
+                                        ae_pixels: true,
+                                    }));
+                                }
+                                Ok(None) => {
+                                    // Legitimate, but indistinguishable in the
+                                    // render from a failed read — so say which
+                                    // it was (2026-08-16: a broken checkout and
+                                    // an unassigned selector produced the same
+                                    // silent transparent black).
+                                    diag::log(&format!("layer {id}: no pixels (selector unset?)"));
+                                    staged.push(None);
+                                }
+                                Err(e) => {
+                                    diag::log(&format!(
+                                        "layer pixels checkout {id} failed: {e:?}"
+                                    ));
+                                    staged.push(None);
+                                }
+                            }
+                        }
+                        ExternalSource::Gradient { gradient_index } => {
+                            staged.push(bake_gradient(plugin.params, *gradient_index));
+                        }
+                        ExternalSource::Path { path_index } => {
+                            staged.push(read_path(
+                                &plugin.in_data,
+                                plugin.params,
+                                *path_index,
+                            ));
+                        }
+                    }
+                }
+                SMART_LAYERS.with(|l| *l.borrow_mut() = staged);
+
                 if let Ok(Some(mut out_layer)) = cb.checkout_output() {
                     if let Some(in_layer) = &checked_out {
                         SMART_WINDOW.with(|w| w.set(Some(window)));
@@ -1901,6 +3040,11 @@ impl AdobePluginInstance for LocalMutex {
                         out_layer.buffer_mut().fill(0);
                     }
                 }
+                SMART_LAYERS.with(|l| l.borrow_mut().clear());
+                for id in SMART_CHECKOUTS.with(|c| c.borrow().clone()) {
+                    let _ = cb.checkin_layer_pixels(id);
+                }
+                SMART_CHECKOUTS.with(|c| c.borrow_mut().clear());
                 if checked_out.is_some() {
                     let _ = cb.checkin_layer_pixels(0);
                 }

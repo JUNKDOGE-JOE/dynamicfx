@@ -215,10 +215,44 @@ fn reflect_user_params(
                         "`{name}`: hint:bool applies to int members only"
                     )));
                 }
+                // ADR-0034 §2: a vec3 stays a colour unless it says otherwise.
+                // Flipping the default would silently retype every existing
+                // shader's colours, which is what ADR-0026 exists to prevent.
+                (Some(Hint::Point3D), ShaderParamType::Vec3Color) => {
+                    ty = ShaderParamType::Point3D
+                }
+                (Some(Hint::Point3D), _) => {
+                    return Err(FrontendError::Param(format!(
+                        "`{name}`: hint:point3d applies to vec3 members only"
+                    )));
+                }
                 (Some(Hint::Color), ShaderParamType::Vec3Color | ShaderParamType::Vec4Color) => {}
                 (Some(Hint::Color), _) => {
                     return Err(FrontendError::Param(format!(
                         "`{name}`: hint:color applies to vec3/vec4 members only"
+                    )));
+                }
+                // ADR-0030/0032/0035: all three are texture bindings, not block
+                // storage. Reaching here means the id names both a
+                // graph-resource annotation and an FxUniforms member — the two
+                // would fight over one ParamId, so reject rather than pick a
+                // winner.
+                (Some(Hint::Path), _) => {
+                    return Err(FrontendError::Param(format!(
+                        "`{name}`: hint:path names a graph input, so it must not \
+                         also be an FxUniforms member"
+                    )));
+                }
+                (Some(Hint::Layer), _) => {
+                    return Err(FrontendError::Param(format!(
+                        "`{name}`: hint:layer names a graph input, so it must not \
+                         also be an FxUniforms member"
+                    )));
+                }
+                (Some(Hint::Gradient), _) => {
+                    return Err(FrontendError::Param(format!(
+                        "`{name}`: hint:gradient names a graph input, so it must \
+                         not also be an FxUniforms member"
                     )));
                 }
                 (None, _) => {}
@@ -236,7 +270,15 @@ fn reflect_user_params(
                     // would be silently dropped, so reject it.
                     ShaderParamType::Vec3Color => &[3],
                     ShaderParamType::Vec4Color => &[3, 4],
-                    ShaderParamType::Vec2 => {
+                    // Unreachable: reflection only ever yields member types,
+                    // and the hint:layer arm above already rejected the id.
+                    ShaderParamType::Layer | ShaderParamType::Gradient | ShaderParamType::Path => {
+                        &[]
+                    }
+                    // ADR-0034 §4 keeps Point 3D where Point 2D already is:
+                    // a default would need AEGP ThreeD stream-value plumbing
+                    // neither kind has, so the pool default is AE's own.
+                    ShaderParamType::Vec2 | ShaderParamType::Point3D => {
                         return Err(FrontendError::Param(format!(
                             "`{name}`: point defaults are not supported yet"
                         )));
@@ -268,8 +310,13 @@ fn reflect_user_params(
             ShaderParamType::Float | ShaderParamType::AngleFloat => (1, false),
             ShaderParamType::Int | ShaderParamType::Bool => (1, true),
             ShaderParamType::Vec2 => (2, false),
-            ShaderParamType::Vec3Color => (3, false),
+            ShaderParamType::Vec3Color | ShaderParamType::Point3D => (3, false),
             ShaderParamType::Vec4Color => (4, false),
+            // Unreachable for the same reason as above; a layer occupies no
+            // block words, so zero is also the honest answer if it were.
+            ShaderParamType::Layer | ShaderParamType::Gradient | ShaderParamType::Path => {
+                (0, false)
+            }
         };
         entries.push(UniformEntry { offset: member.offset as usize, words, int });
         params.push(ParamDeclaration { id, ty, aliases, ui });
@@ -460,6 +507,97 @@ void main() { outColor = vec4(sweep + level + u_time + u_frame) + vec4(u_resolut
         assert_eq!(aliases, vec!["gain"]);
         // `ghost` names no member: stale annotations are ignored.
         assert_eq!(pm.params.len(), 2);
+    }
+
+    /// ADR-0034. The whole point of the hint is that it is the ONLY way to
+    /// reach the kind: an un-annotated `vec3` must stay a colour, or every
+    /// existing shader's colours silently retype (ADR-0026).
+    #[test]
+    fn point3d_needs_the_hint_and_a_vec3() {
+        let src = r#"
+#version 450
+layout(location = 0) out vec4 outColor;
+// @param light_dir hint:point3d
+layout(set = 0, binding = 2) uniform FxUniforms {
+    vec2 u_resolution;
+    float u_time;
+    float u_frame;
+    vec3 light_dir;
+    vec3 tint;
+};
+void main() { outColor = vec4(light_dir + tint + u_resolution.xyy + u_time + u_frame, 1.0); }
+"#;
+        let pm = parse(src).expect("annotated module");
+        assert_eq!(pm.params[0].ty, ShaderParamType::Point3D);
+        assert_eq!(
+            pm.params[1].ty,
+            ShaderParamType::Vec3Color,
+            "an un-annotated vec3 is still a colour"
+        );
+        // Both occupy three block words, so the hint changes the AE control
+        // and the value encoding, never the layout.
+        assert_eq!(pm.layout.entries[0].words, 3);
+        assert_eq!(pm.layout.entries[1].words, 3);
+
+        // The pool routing is what makes it a different control.
+        assert_eq!(
+            pm.params[0].ty.slot_requirements(),
+            &[crate::binding::PoolKind::Point3D]
+        );
+
+        // Any other member type is a mismatch, not a silent reinterpretation.
+        for (member, use_it) in [
+            ("float", "thing"),
+            ("int", "float(thing)"),
+            ("vec2", "thing.x"),
+            ("vec4", "thing.x"),
+        ] {
+            let bad = format!(
+                r#"
+#version 450
+layout(location = 0) out vec4 outColor;
+// @param thing hint:point3d
+layout(set = 0, binding = 2) uniform FxUniforms {{
+    vec2 u_resolution;
+    float u_time;
+    float u_frame;
+    {member} thing;
+}};
+void main() {{ outColor = vec4(u_resolution, u_time + u_frame + {use_it}, 1.0); }}
+"#,
+            );
+            match parse(&bad).expect_err("hint:point3d on a non-vec3 member") {
+                FrontendError::Param(message) => assert!(
+                    message.contains("hint:point3d applies to vec3 members only"),
+                    "{member}: unexpected message {message}"
+                ),
+                other => panic!("{member}: expected a param error, got {other:?}"),
+            }
+        }
+    }
+
+    /// ADR-0034 §4: a Point 3D default would need the AEGP ThreeD stream-value
+    /// plumbing Point 2D also lacks, so it is refused rather than half-applied.
+    #[test]
+    fn point3d_defaults_are_refused() {
+        let src = r#"
+#version 450
+layout(location = 0) out vec4 outColor;
+// @param light_dir hint:point3d default:0,0,1
+layout(set = 0, binding = 2) uniform FxUniforms {
+    vec2 u_resolution;
+    float u_time;
+    float u_frame;
+    vec3 light_dir;
+};
+void main() { outColor = vec4(light_dir + u_resolution.xyy + u_time + u_frame, 1.0); }
+"#;
+        match parse(src).expect_err("defaults are unsupported for this kind") {
+            FrontendError::Param(message) => {
+                assert!(message.contains("point defaults are not supported yet"), "{message}");
+            }
+            other => panic!("expected a param error, got {other:?}"),
+        }
     }
 
     /// The exact multi-kind fixture shader the M2 harness uses (m2h): every
