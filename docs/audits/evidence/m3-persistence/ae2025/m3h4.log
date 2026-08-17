@@ -1,0 +1,4 @@
+CONVERGED token_nonzero=1 png expect (51,51,0) again
+SAVED dirty_after_save=false
+RESULT M3H4 token_nonzero=1 dirty_after_save=false
+RESULT_DONE

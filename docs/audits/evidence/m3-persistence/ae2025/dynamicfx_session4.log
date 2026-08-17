@@ -1,0 +1,65 @@
+[1786542176] registered with AEGP at global setup
+[1786542176] AEGP idle hook registered
+[1786542176] params setup: ADR-0013 topology
+[1786542176] params setup: complete
+[1786542177] idle observation: compiled: 1 pass, 1 params
+[1786542177] idle slot ui applied: 1 bound, 0 defaults written
+[1786542177] idle state token updated: Active(1334301862297414)
+[1786542212] registered with AEGP at global setup
+[1786542212] AEGP idle hook registered
+[1786542212] params setup: ADR-0013 topology
+[1786542212] params setup: complete
+[1786542212] status: compiled: 1 pass, 1 params
+[1786542212] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1786542212] definition resolved from process registry
+[1786542212] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1786542212] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542213] idle slot ui applied: 1 bound, 0 defaults written
+[1786542221] definition resolved from process registry
+[1786542221] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542221] definition resolved from process registry
+[1786542221] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542248] registered with AEGP at global setup
+[1786542248] AEGP idle hook registered
+[1786542248] params setup: ADR-0013 topology
+[1786542248] params setup: complete
+[1786542248] status: compiled: 1 pass, 1 params
+[1786542248] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1786542248] definition resolved from process registry
+[1786542248] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1786542248] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542249] idle slot ui applied: 1 bound, 0 defaults written
+[1786542257] definition resolved from process registry
+[1786542257] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542257] definition resolved from process registry
+[1786542257] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542284] registered with AEGP at global setup
+[1786542284] AEGP idle hook registered
+[1786542284] params setup: ADR-0013 topology
+[1786542284] params setup: complete
+[1786542284] status: compiled: 1 pass, 1 params
+[1786542284] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1786542284] status: compiled: 1 pass, 1 params
+[1786542284] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1786542284] definition resolved from process registry
+[1786542284] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1786542285] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542285] definition resolved from process registry
+[1786542285] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542286] idle slot ui applied: 1 bound, 0 defaults written
+[1786542286] idle slot ui applied: 1 bound, 0 defaults written
+[1786542286] token/snapshot fingerprint mismatch; snapshot wins
+[1786542286] definition rebuilt from snapshot
+[1786542286] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542286] token/snapshot fingerprint mismatch; snapshot wins
+[1786542286] definition rebuilt from snapshot
+[1786542286] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542287] idle slot ui applied: 1 bound, 0 defaults written
+[1786542287] idle state token updated: Active(1334301862297414)
+[1786542295] definition resolved from process registry
+[1786542295] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542295] definition resolved from process registry
+[1786542295] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786542300] idle observation: GLSL error: Error { kind: InvalidToken(Identifier("broken"), [Eof]), meta: Span { start: 0, end: 6 } }
+[1786542300] idle state token updated: Invalid(17)
+[1786542314] idle observation: compiled: 1 pass, 1 params

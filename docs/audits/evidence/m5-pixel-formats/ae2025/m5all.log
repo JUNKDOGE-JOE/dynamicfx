@@ -1,0 +1,63 @@
+SETUP bpc=16 ws=[None]
+SETUP comps ready; idle window scheduled
+STEP1 arm probes at bpc=16
+STATUS step1 m5ramp [Status: idle]
+STATUS step1 m5chain [Status: idle]
+STATUS step1 m5hdr [Status: idle]
+STATUS step1 m5hdrchain [Status: idle]
+STATUS step1 m5alpha [Status: idle]
+STEP1B bpc=16 ws=[None]
+PROBE m5ramp p100 bpc16 = 0.000000000
+PROBE m5ramp p9 bpc16 = 0.000000000
+PROBE m5ramp p10 bpc16 = 0.000000000
+PROBE m5ramp white bpc16 = 0.000000000
+PROBE m5chain p100 bpc16 = 0.314056396
+PROBE m5chain p9 bpc16 = 0.029693604
+PROBE m5chain p10 bpc16 = 0.032806396
+PROBE m5chain white bpc16 = 1.000000000
+PROBE m5hdr over bpc16 = 1.000000000
+PROBE m5hdr neg bpc16 = 0.000000000
+PROBE m5hdr one bpc16 = 1.000000000
+PROBE m5hdr ramp bpc16 = 0.314056396
+SETDEPTH_ERR Error: After Effects错误: Invalid Value for key: <Depth>.  Property is read-only
+RQ m5_chain16 tmpl=[Photoshop] depth [Millions of Colors+] -> [Millions of Colors+] want [Trillions of Colors]
+RENDERED m5_chain16 status=3019
+STEP2 bpc=32
+PROBE m5hdr over bpc32 = 2.000000000
+PROBE m5hdr neg bpc32 = -0.500000000
+PROBE m5hdr one bpc32 = 1.000000000
+PROBE m5hdr ramp bpc32 = 0.314062476
+PROBE m5hdrchain over bpc32 = 2.000000000
+PROBE m5hdrchain neg bpc32 = -0.500000000
+PROBE m5hdrchain one bpc32 = 1.000000000
+PROBE m5hdrchain ramp bpc32 = 0.314062476
+PNG m5_hdr32_preview saved
+STEP3 bpc=8
+PROBE m5ramp p100 bpc8 = 0.313725501
+PROBE m5ramp p9 bpc8 = 0.031372551
+PROBE m5ramp p10 bpc8 = 0.031372551
+PROBE m5ramp white bpc8 = 1.000000000
+PROBE m5alpha rec bpc8 = 1.000000000
+PROBE m5alpha white bpc8 = 1.000000000
+PROBE m5alpha srcR bpc8 = 1.000000000
+PROBE m5alpha srcA bpc8 = 0.501960814
+PROBE m5alpha rec bpc16 = 1.000000000
+PROBE m5alpha white bpc16 = 1.000000000
+PROBE m5alpha srcR bpc16 = 1.000000000
+PROBE m5alpha srcA bpc16 = 0.500000000
+PROBE m5alpha rec bpc32 = 1.000000000
+PROBE m5alpha white bpc32 = 1.000000000
+PROBE m5alpha srcR bpc32 = 1.000000000
+PROBE m5alpha srcA bpc32 = 0.500000000
+COLOR unmanaged ws=[None]
+PROBE m5hdr over bpc32 = 2.000000000
+PROBE m5hdr neg bpc32 = -0.500000000
+PROBE m5hdr one bpc32 = 1.000000000
+PROBE m5hdr ramp bpc32 = 0.314062476
+COLOR managed ws=[sRGB IEC61966-2.1]
+PROBE m5hdr over bpc32 = 2.000000000
+PROBE m5hdr neg bpc32 = -0.500000000
+PROBE m5hdr one bpc32 = 1.000000000
+PROBE m5hdr ramp bpc32 = 0.314062476
+RESULT M5ALL complete
+RESULT_DONE

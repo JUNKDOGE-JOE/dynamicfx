@@ -1,0 +1,5 @@
+INVALID_STATE token=70 png expect passthrough solid (10,200,30)
+UNDO pressed=2 exprHead=[`#version 450
+layout(location ]
+RESULT M3H3 token_during_invalid=70
+RESULT_DONE

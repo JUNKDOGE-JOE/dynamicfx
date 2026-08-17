@@ -1,0 +1,1 @@
+16-logical-px stripe probe, middle-row half-period transitions: full 1280x720 = 159; Half preview 640x360 = 159 (pre-fix prediction: ~80). Resolution-invariant per ADR-0029.

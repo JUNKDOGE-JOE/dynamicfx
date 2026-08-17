@@ -1,0 +1,4 @@
+CYCLIC status=[Status: E6 envelope line 3: cyc] token=26
+PNG m4f_bad.png expect passthrough solid (10,200,30)
+RESULT M4F status=[Status: E6 envelope line 3: cyc] token=26
+RESULT_DONE

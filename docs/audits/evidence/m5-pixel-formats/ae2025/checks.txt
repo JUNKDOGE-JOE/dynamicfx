@@ -1,0 +1,25 @@
+CHECK m5chain@16 p100 = 0.314056396 expect 0.314062500 tol 0.0002 PASS
+CHECK m5chain@16 p9 = 0.029693604 expect 0.029687500 tol 0.0002 PASS
+CHECK m5chain@16 white = 1.000000000 expect 1.000000000 tol 0.0001 PASS
+CHECK m5chain@16 stair(9,10) 0.029693604 vs 0.032806396 -> distinct PASS
+CHECK m5hdr@16 over(clamped) = 1.000000000 expect 1.000000000 tol 0.0001 PASS
+CHECK m5hdr@16 neg(clamped) = 0.000000000 expect 0.000000000 tol 0.0001 PASS
+CHECK m5hdr@16 one = 1.000000000 expect 1.000000000 tol 0.0001 PASS
+CHECK m5hdr@16 ramp = 0.314056396 expect 0.314062500 tol 0.0002 PASS
+CHECK m5hdr@32 over = 2.000000000 expect 2.000000000 tol 0.001 PASS
+CHECK m5hdr@32 neg = -0.500000000 expect -0.500000000 tol 0.001 PASS
+CHECK m5hdr@32 ramp = 0.314062476 expect 0.314062500 tol 0.0005 PASS
+CHECK m5hdrchain@32 over = 2.000000000 expect 2.000000000 tol 0.001 PASS
+CHECK m5hdrchain@32 neg = -0.500000000 expect -0.500000000 tol 0.001 PASS
+CHECK m5hdrchain@32 ramp = 0.314062476 expect 0.314062500 tol 0.0005 PASS
+CHECK m5hdr@32 one = 1.000000000 expect 1.000000000 tol 0.0001 PASS
+CHECK m5ramp@8 p100 = 0.313725501 expect 0.314062500 tol 0.0025 PASS
+CHECK m5ramp@8 white = 1.000000000 expect 1.000000000 tol 0.0001 PASS
+CHECK m5ramp@8 stair(9,10) 0.031372551 vs 0.031372551 -> collapsed PASS
+CHECK alpha@8 rec/white = 1.000000 SEMANTICS straight (src r=1.0 a=0.501960814) PASS
+CHECK alpha@16 rec/white = 1.000000 SEMANTICS straight (src r=1.0 a=0.5) PASS
+CHECK alpha@32 rec/white = 1.000000 SEMANTICS straight (src r=1.0 a=0.5) PASS
+CHECK m5hdr@32 unmanaged over = 2.000000000 expect 2.000000000 tol 0.001 PASS
+CHECK m5hdr@32 managed over = 2.000000000 RECORD
+CHECKS_RESULT fails=0
+CHECK pixel E:\Code\AePlugin_Dynamicfx\scripts\out\m5\2025\m5_chain16_00000.psd depth=8 comp=1 (100,120) = [80, 80, 80, 255] RECORD

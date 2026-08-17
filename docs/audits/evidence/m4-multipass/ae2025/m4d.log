@@ -1,0 +1,4 @@
+RAW png expect center (64,64,0)
+ONE_PASS_ENVELOPE set
+RESULT M4D staged=1
+RESULT_DONE

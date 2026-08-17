@@ -1,0 +1,14 @@
+MASK ok=1 err=
+TICK state=object
+TOKEN word=956351399501233 state=1
+STATUS [Status: idle]
+PATH_SLOT index=125 name=[Mask 01] valueType=6422
+PURGE ok=1
+RENDERED f003g_none tmpl=[Photoshop] status=3019
+EXPECT none: rgb(0,0,16) — one zero vertex, count 1 of 16
+ASSIGN ok=1 value=1 err=
+PURGE ok=1
+RENDERED f003g_assigned tmpl=[Photoshop] status=3019
+EXPECT assigned: rgb(64,64,80) — vertex0 (40/160, 30/120), 5 vertices of 16
+RESULT F003G rendered=2
+RESULT_DONE

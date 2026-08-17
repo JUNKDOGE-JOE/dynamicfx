@@ -1,0 +1,21 @@
+[1786528565] registered with AEGP at global setup
+[1786528565] AEGP idle hook registered
+[1786528565] params setup: ADR-0013 topology
+[1786528565] params setup: complete
+[1786528567] idle observation: compiled: 1 pass, 1 params
+[1786528567] idle slot ui applied: 1 bound, 1 defaults written
+[1786528567] idle state token updated: 0005e462bf7b6644
+[1786528579] status: compiled: 1 pass, 1 params
+[1786528579] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1786528579] definition resolved from process registry
+[1786528579] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1786528579] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786528579] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1786528580] idle slot ui applied: 1 bound, 0 defaults written
+[1786528580] idle state token updated: 0000133cabce4844
+[1786528580] definition resolved from process registry
+[1786528580] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786528588] definition resolved from process registry
+[1786528588] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786528588] definition resolved from process registry
+[1786528588] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")

@@ -1,0 +1,7 @@
+DynamicFX governance check
+markdown_files=23
+local_links=122
+mermaid_blocks=19
+accepted_adrs=9
+errors=0
+RESULT=PASS

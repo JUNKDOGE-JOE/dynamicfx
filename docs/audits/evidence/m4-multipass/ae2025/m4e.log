@@ -1,0 +1,4 @@
+ONE_PASS status=[Status: compiled: 1 pass, 1 par] png expect center (64,64,0)
+CYCLIC set
+RESULT M4E status=[Status: compiled: 1 pass, 1 par]
+RESULT_DONE

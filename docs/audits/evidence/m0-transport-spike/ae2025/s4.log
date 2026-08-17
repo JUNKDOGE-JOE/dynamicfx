@@ -1,0 +1,10 @@
+ENV DFX_PROBE_KB=16384
+PROBE props=6
+IDX kb=1 popup=3 status=5
+POPUP name=[Popup Probe] value=1
+POPUP setValue(5)=Error: After Effects错误: 由于参数 1，无法调用“setValue”。值 5 在 1 至 4 的范围外。 (accepted => menu grew to 5; range error => menu unchanged at 4)
+SEQ_SAVE aepBytes=33626813 saveMs=117 (compare vs env_kb; plugin log SEQ_FLATTEN has real byte count)
+SEQ_REOPEN done (plugin log SEQ_UNFLATTEN has magic/len/crc verdict)
+RENDER_PNG ok dirty=false
+DONE_MAIN
+RESULT_DONE

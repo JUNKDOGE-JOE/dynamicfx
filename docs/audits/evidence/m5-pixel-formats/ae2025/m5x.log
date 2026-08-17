@@ -1,0 +1,30 @@
+PROP colorManagementMode type=[undefined] value=[undefined]
+PROP colorEngine type=[undefined] value=[undefined]
+PROP colorSettings type=[undefined] value=[undefined]
+PROP ocioConfigName type=[undefined] value=[undefined]
+PROP ocioConfigFile type=[undefined] value=[undefined]
+PROP workingColorSpace type=[undefined] value=[undefined]
+PROP displayColorSpace type=[undefined] value=[undefined]
+PROP viewTransform type=[undefined] value=[undefined]
+PROP workingSpace type=[string] value=[None]
+PROP workingGamma type=[number] value=[2.4]
+PROP linearizeWorkingSpace type=[boolean] value=[false]
+PROP linearBlending type=[boolean] value=[false]
+PROP bitsPerChannel type=[number] value=[32]
+PROP expressionEngine type=[string] value=[javascript-1.0]
+GLOBALS ColorManagementMode=undefined CMSettings=undefined
+BPC16 under-default-engine -> OK bpc=16
+TRY colorManagementMode-3407179 -> SET_OK cmm=[3407179]
+BPC16 after-colorManagementMode-3407179 -> OK bpc=16
+TRY colorManagementMode-0 -> SET_OK cmm=[0]
+BPC16 after-colorManagementMode-0 -> OK bpc=16
+TRY colorManagementMode-1 -> SET_OK cmm=[1]
+BPC16 after-colorManagementMode-1 -> OK bpc=16
+TRY colorManagementMode-2 -> SET_OK cmm=[2]
+BPC16 after-colorManagementMode-2 -> OK bpc=16
+TRY ocioConfigName-empty -> SET_OK cmm=[2]
+BPC16 after-ocioConfigName-empty -> OK bpc=16
+TRY workingSpace-empty -> SET_OK cmm=[2]
+BPC16 after-workingSpace-empty -> OK bpc=16
+RESULT M5X done
+RESULT_DONE

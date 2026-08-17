@@ -1,0 +1,4 @@
+REOPEN numKeys=2 token_nonzero=1
+PNG saved m3c_reopen.png expect (51,51,0) via snapshot path, no Compile click
+RESULT M3C numKeys=2
+RESULT_DONE

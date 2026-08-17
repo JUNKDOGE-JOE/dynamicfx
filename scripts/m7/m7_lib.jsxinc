@@ -1,0 +1,263 @@
+// Shared helpers for the M7 performance baseline (TR-M7-001, audit 07).
+// Scenes are rendered through the RQ; the plugin's DYNAMICFX_PERF=1 log
+// lines carry per-render spans, and SCENE begin/end epochs let the
+// summarizer bucket those lines per scene.
+function m7Out() {
+    return ($.getenv("DFX_M7_OUT") || "E:/Code/AePlugin_Dynamicfx/scripts/out/m7/dev") + "/";
+}
+function m7Log(s) {
+    var f = new File(m7Out() + "m7bench.log");
+    f.encoding = "UTF-8";
+    if (f.open("a")) { f.write(s + "\n"); f.close(); }
+}
+function m7Find(name) {
+    for (var j = 1; j <= app.project.numItems; j++) {
+        if (app.project.item(j) instanceof CompItem && app.project.item(j).name === name) {
+            return app.project.item(j);
+        }
+    }
+    return null;
+}
+function m7Epoch() {
+    return Math.round((new Date()).getTime() / 1000);
+}
+
+// --- Scene sources -------------------------------------------------------
+
+// 1-pass M1-class gradient: samples input, writes a uv ramp mix.
+function m7GradSource() {
+    return "@dynamicfx 1\n@graph\npass main: input -> output\n@end\n@pass main\n" +
+        "#version 450\n" +
+        "layout(location = 0) in vec2 v_uv;\n" +
+        "layout(location = 0) out vec4 outColor;\n" +
+        "layout(set = 0, binding = 0) uniform texture2D u_in;\n" +
+        "layout(set = 0, binding = 1) uniform sampler u_s;\n" +
+        "layout(set = 0, binding = 2) uniform FxUniforms {\n" +
+        "    vec2 u_resolution;\n" +
+        "    float u_time;\n" +
+        "    float u_frame;\n" +
+        "};\n" +
+        "void main() {\n" +
+        "    vec4 base = texture(sampler2D(u_in, u_s), v_uv);\n" +
+        "    vec3 ramp = vec3(v_uv, 0.5 + 0.5 * sin(u_time));\n" +
+        "    outColor = vec4(mix(base.rgb, ramp, 0.85), 1.0);\n" +
+        "}\n" +
+        "@endpass\n";
+}
+
+// Windowed accumulator (ADR-0025), same shape as the M6 fixture.
+function m7TemporalSource(windowN) {
+    return "@dynamicfx 1\n@graph\npass acc: prev -> output\n@end\n@pass acc\n" +
+        "#version 450\n" +
+        "// @window " + windowN + "\n" +
+        "layout(location = 0) in vec2 v_uv;\n" +
+        "layout(location = 0) out vec4 outColor;\n" +
+        "layout(set = 0, binding = 0) uniform texture2D u_prev;\n" +
+        "layout(set = 0, binding = 1) uniform sampler u_sampler;\n" +
+        "layout(set = 0, binding = 2) uniform FxUniforms {\n" +
+        "    vec2 u_resolution;\n" +
+        "    float u_time;\n" +
+        "    float u_frame;\n" +
+        "};\n" +
+        "void main() {\n" +
+        "    vec4 p = texture(sampler2D(u_prev, u_sampler), v_uv);\n" +
+        "    outColor = vec4(p.rgb + vec3(v_uv * (4.0 / 255.0), 4.0 / 255.0), 1.0);\n" +
+        "}\n" +
+        "@endpass\n";
+}
+
+// The thermal-A benchmark (user-approved v11): 6-pass envelope, 10 params.
+// Source text is IDENTICAL to the showcase build; only the host comp
+// differs (comp-sized solid input for controlled dims).
+function m7ThermalSource() {
+    var UB_SMALL =
+        "layout(set = 0, binding = 2) uniform FxUniforms {\n" +
+        "    vec2 u_resolution;\n" +
+        "    float u_time;\n" +
+        "    float u_frame;\n" +
+        "    float glow;\n" +
+        "    float heat;\n" +
+        "    float speed;\n" +
+        "};\n";
+    var NOISE =
+        "float hash21(vec2 p) {\n" +
+        "    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);\n" +
+        "}\n" +
+        "float vnoise(vec2 p) {\n" +
+        "    vec2 i = floor(p);\n" +
+        "    vec2 f = fract(p);\n" +
+        "    vec2 u = f * f * (3.0 - 2.0 * f);\n" +
+        "    float a = hash21(i);\n" +
+        "    float b = hash21(i + vec2(1.0, 0.0));\n" +
+        "    float c = hash21(i + vec2(0.0, 1.0));\n" +
+        "    float d = hash21(i + vec2(1.0, 1.0));\n" +
+        "    return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);\n" +
+        "}\n" +
+        "float fbm3(vec2 p) {\n" +
+        "    return 0.55 * vnoise(p) + 0.28 * vnoise(p * 2.1 + 7.0) + 0.17 * vnoise(p * 4.3 + 13.0);\n" +
+        "}\n";
+    var HEAD =
+        "#version 450\n" +
+        "layout(location = 0) in vec2 v_uv;\n" +
+        "layout(location = 0) out vec4 outColor;\n" +
+        "layout(set = 0, binding = 0) uniform texture2D u_a;\n" +
+        "layout(set = 0, binding = 1) uniform sampler u_s;\n";
+    function blurPass(axis, chan, sigmaExpr) {
+        return HEAD + UB_SMALL +
+            "void main() {\n" +
+            "    float sigma = " + sigmaExpr + ";\n" +
+            "    float acc = 0.0;\n" +
+            "    float wsum = 0.0;\n" +
+            "    for (int i = -24; i <= 24; i++) {\n" +
+            "        float x = float(i) * sigma / 24.0;\n" +
+            "        float w = exp(-0.5 * (x / sigma) * (x / sigma) * 9.0);\n" +
+            "        vec2 off = " + (axis === "h" ? "vec2(x / u_resolution.x, 0.0)" : "vec2(0.0, x / u_resolution.y)") + ";\n" +
+            "        acc += texture(sampler2D(u_a, u_s), v_uv + off)." + chan + " * w;\n" +
+            "        wsum += w;\n" +
+            "    }\n" +
+            "    outColor = vec4(vec3(acc / wsum), 1.0);\n" +
+            "}\n";
+    }
+    var FIELD = HEAD + UB_SMALL + NOISE +
+        "void main() {\n" +
+        "    float a = texture(sampler2D(u_a, u_s), v_uv).a;\n" +
+        "    float t = u_time * speed;\n" +
+        "    vec2 p = (v_uv - 0.5) * vec2(u_resolution.x / u_resolution.y, 1.0);\n" +
+        "    vec2 warp = vec2(fbm3(p * 1.4 + vec2(0.0, -t * 0.18)),\n" +
+        "                     fbm3(p * 1.4 + vec2(5.2, t * 0.15)));\n" +
+        "    float n = fbm3(p * 1.9 + (warp - 0.5) * 1.6);\n" +
+        "    vec2 cp = p - vec2(-0.05, 0.02);\n" +
+        "    float core = exp(-dot(cp, cp) * 7.0);\n" +
+        "    float field = clamp(n * 1.05 + core * 0.55 * heat - 0.22, 0.0, 1.0);\n" +
+        "    outColor = vec4(vec3(field), 1.0);\n" +
+        "}\n";
+    var COMP =
+        "#version 450\n" +
+        "// @param glow label:\"Glow Radius\" min:0.2 max:3 default:1.2\n" +
+        "// @param heat label:\"Core Heat\" min:0 max:2 default:1\n" +
+        "// @param speed label:\"Heat Speed\" min:0 max:4 default:1\n" +
+        "// @param grain label:\"Grain\" min:0 max:0.2 default:0.05\n" +
+        "// @param body_deep label:\"Body Deep\" hint:color\n" +
+        "// @param body_main label:\"Body Main\" hint:color\n" +
+        "// @param body_light label:\"Body Light\" hint:color\n" +
+        "// @param hot_color label:\"Hot Core\" hint:color\n" +
+        "// @param rim_color label:\"Rim\" hint:color\n" +
+        "// @param glow_color label:\"Glow\" hint:color\n" +
+        "layout(location = 0) in vec2 v_uv;\n" +
+        "layout(location = 0) out vec4 outColor;\n" +
+        "layout(set = 0, binding = 0) uniform texture2D u_glyph;\n" +
+        "layout(set = 0, binding = 1) uniform sampler u_s;\n" +
+        "layout(set = 0, binding = 2) uniform FxUniforms {\n" +
+        "    vec2 u_resolution;\n" +
+        "    float u_time;\n" +
+        "    float u_frame;\n" +
+        "    float glow;\n" +
+        "    float heat;\n" +
+        "    float speed;\n" +
+        "    float grain;\n" +
+        "    vec4 body_deep;\n" +
+        "    vec4 body_main;\n" +
+        "    vec4 body_light;\n" +
+        "    vec4 hot_color;\n" +
+        "    vec4 rim_color;\n" +
+        "    vec4 glow_color;\n" +
+        "};\n" +
+        "layout(set = 0, binding = 3) uniform texture2D u_soft;\n" +
+        "layout(set = 0, binding = 4) uniform texture2D u_field;\n" +
+        "float dhash(vec2 p) {\n" +
+        "    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);\n" +
+        "}\n" +
+        "vec3 palette(float t) {\n" +
+        "    vec3 c0 = body_deep.rgb * 0.25;\n" +
+        "    vec3 c1 = body_deep.rgb;\n" +
+        "    vec3 c2 = body_main.rgb;\n" +
+        "    vec3 c3 = body_light.rgb;\n" +
+        "    vec3 c4 = mix(body_light.rgb, hot_color.rgb, 0.65);\n" +
+        "    vec3 c5 = hot_color.rgb;\n" +
+        "    vec3 c6 = clamp(hot_color.rgb * 0.6 + vec3(0.5), 0.0, 1.2);\n" +
+        "    t = clamp(t, 0.0, 1.0);\n" +
+        "    if (t < 0.30) { return mix(c0, c1, t / 0.30); }\n" +
+        "    if (t < 0.52) { return mix(c1, c2, (t - 0.30) / 0.22); }\n" +
+        "    if (t < 0.68) { return mix(c2, c3, (t - 0.52) / 0.16); }\n" +
+        "    if (t < 0.80) { return mix(c3, c4, (t - 0.68) / 0.12); }\n" +
+        "    if (t < 0.90) { return mix(c4, c5, (t - 0.80) / 0.10); }\n" +
+        "    return mix(c5, c6, (t - 0.90) / 0.10);\n" +
+        "}\n" +
+        "void main() {\n" +
+        "    float a = texture(sampler2D(u_glyph, u_s), v_uv).a;\n" +
+        "    float s = texture(sampler2D(u_soft, u_s), v_uv).r;\n" +
+        "    float fldRaw = texture(sampler2D(u_field, u_s), v_uv).r;\n" +
+        "    float fld = smoothstep(0.12, 0.78, fldRaw);\n" +
+        "    float band = smoothstep(0.06, 0.50, s) * (1.0 - smoothstep(0.50, 0.94, s));\n" +
+        "    float inner = 0.26 + 0.60 * fld + 0.16 * band;\n" +
+        "    vec3 body = palette(inner) * a;\n" +
+        "    vec3 rimCol = mix(rim_color.rgb, hot_color.rgb, fld);\n" +
+        "    vec3 rim = rimCol * band * 1.0;\n" +
+        "    float halo = pow(clamp(s * 1.15, 0.0, 1.0), 0.45) * (1.0 - a);\n" +
+        "    vec3 glowCol = glow_color.rgb * 0.85 * (1.0 - a);\n" +
+        "    vec3 col = body + rim + glowCol;\n" +
+        "    float g = dhash(v_uv * u_resolution + vec2(u_frame * 7.3, u_frame * 3.1));\n" +
+        "    col *= 1.0 + (g - 0.5) * grain;\n" +
+        "    col += (g - 0.5) * (2.0 / 255.0);\n" +
+        "    float outA = clamp(a + halo * 0.9 + band * 0.5, 0.0, 1.0);\n" +
+        "    outA = clamp(outA + (g - 0.5) * (2.0 / 255.0), 0.0, 1.0);\n" +
+        "    outColor = vec4(col, outA);\n" +
+        "}\n";
+    return "@dynamicfx 1\n@graph\n" +
+        "pass field: input -> f0\n" +
+        "pass fbh: f0 -> f1\n" +
+        "pass fbv: f1 -> fsm\n" +
+        "pass blurh: input -> b0\n" +
+        "pass blurv: b0 -> soft\n" +
+        "pass comp: input, soft, fsm -> output\n" +
+        "@end\n" +
+        "@pass field\n" + FIELD + "@endpass\n" +
+        "@pass fbh\n" + blurPass("h", "r", "max(8.0, 30.0 * glow)") + "@endpass\n" +
+        "@pass fbv\n" + blurPass("v", "r", "max(8.0, 30.0 * glow)") + "@endpass\n" +
+        "@pass blurh\n" + blurPass("h", "a", "max(6.0, 42.0 * glow)") + "@endpass\n" +
+        "@pass blurv\n" + blurPass("v", "r", "max(6.0, 42.0 * glow)") + "@endpass\n" +
+        "@pass comp\n" + COMP + "@endpass\n";
+}
+
+// --- Scene construction --------------------------------------------------
+
+// 25 fps, 25 frames (1 s), comp-sized solid "input" carrying the effect.
+// instances > 1 stacks that many solids, each with its own instance.
+function m7NewScene(name, w, h, src, instances) {
+    var comp = app.project.items.addComp(name, w, h, 1.0, 1.0, 25);
+    comp.bgColor = [0, 0, 0];
+    var count = instances || 1;
+    for (var i = 0; i < count; i++) {
+        var solid = comp.layers.addSolid([0, 0, 0], "input" + (count > 1 ? String(i + 1) : ""), w, h, 1.0, 1.0);
+        var fx = solid.property("ADBE Effect Parade").addProperty("DynamicFx");
+        fx.property(2).expression = "`" + src + "`;0";
+    }
+    return comp;
+}
+
+// RQ render of one scene: purge first so the baseline measures renders,
+// not cache hits. Logs begin/end epochs for the perf-line bucketing.
+function m7RenderScene(name, tag) {
+    var comp = m7Find(name);
+    try { app.purge(PurgeTarget.ALL_CACHES); } catch (eP) {}
+    var rq = app.project.renderQueue;
+    var item = rq.items.add(comp);
+    item.render = true;
+    try {
+        item.timeSpanStart = 0;
+        item.timeSpanDuration = 25 * comp.frameDuration;
+    } catch (eT) {}
+    var om = item.outputModule(1);
+    for (var t = 0; t < om.templates.length; t++) {
+        if (om.templates[t] === "Photoshop") { om.applyTemplate("Photoshop"); break; }
+    }
+    om.file = new File(m7Out() + "m7_" + tag + "_[#####].psd");
+    var begin = m7Epoch();
+    var t0 = (new Date()).getTime();
+    var status = "DONE";
+    try { rq.render(); } catch (eX) { status = "RENDER_ERR " + String(eX); }
+    var wall = (new Date()).getTime() - t0;
+    m7Log("SCENE " + tag + " bpc=" + app.project.bitsPerChannel +
+        " begin=" + begin + " end=" + m7Epoch() + " wall_ms=" + wall + " status=" + status);
+    try { item.remove(); } catch (eR) {}
+}

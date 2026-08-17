@@ -1,0 +1,5 @@
+PROJECT bpc=8 ws_before=[None] ws_after=[None]
+TOPOLOGY add_ok=1 props=110 heads=[1:Language | 2:Source (use expression) | 3:Compile | 4:Status: idle | 5:State Token (internal) | 6:Float 01] lang_value=1 popup_reject=1 lang_after_reject=1
+REOPEN props=110 lang_value=1 lang_name=Language
+RESULT M1A add_ok=1 props=110 lang_value=1 popup_reject=1 reopen_props=110 reopen_lang=1
+RESULT_DONE

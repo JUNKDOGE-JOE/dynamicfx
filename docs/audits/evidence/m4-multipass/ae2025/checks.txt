@@ -1,0 +1,25 @@
+--- numeric checks ---
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m4\2025\m4b_two.png (160,120) = 191,191,255,255 (channels=4, 8-bit; 8-bit=191,191,255,255)
+EXPECT [191, 191, 255] tol=3 (8-bit terms) -> PASS
+CHECK m4b_two.png (160,120) expect (191,191,255) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m4\2025\m4b_two.png (32,120) = 242,191,255,255 (channels=4, 8-bit; 8-bit=242,191,255,255)
+EXPECT [242, 191, 255] tol=3 (8-bit terms) -> PASS
+CHECK m4b_two.png (32,120) expect (242,191,255) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m4\2025\m4c_three.png (160,120) = 64,64,0,255 (channels=4, 8-bit; 8-bit=64,64,0,255)
+EXPECT [64, 64, 0] tol=3 (8-bit terms) -> PASS
+CHECK m4c_three.png (160,120) expect (64,64,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m4\2025\m4d_raw.png (160,120) = 64,64,0,255 (channels=4, 8-bit; 8-bit=64,64,0,255)
+EXPECT [64, 64, 0] tol=3 (8-bit terms) -> PASS
+CHECK m4d_raw.png (160,120) expect (64,64,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m4\2025\m4e_env1.png (160,120) = 64,64,0,255 (channels=4, 8-bit; 8-bit=64,64,0,255)
+EXPECT [64, 64, 0] tol=3 (8-bit terms) -> PASS
+CHECK m4e_env1.png (160,120) expect (64,64,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m4\2025\m4f_bad.png (160,120) = 10,200,30,255 (channels=4, 8-bit; 8-bit=10,200,30,255)
+EXPECT [10, 200, 30] tol=2 (8-bit terms) -> PASS
+CHECK m4f_bad.png (160,120) expect (10,200,30) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m4\2025\m4h_noalias.png (160,120) = 191,191,255,255 (channels=4, 8-bit; 8-bit=191,191,255,255)
+EXPECT [191, 191, 255] tol=3 (8-bit terms) -> PASS
+CHECK m4h_noalias.png (160,120) expect (191,191,255) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m4\2025\m4h_noalias.png (32,120) = 242,191,255,255 (channels=4, 8-bit; 8-bit=242,191,255,255)
+EXPECT [242, 191, 255] tol=3 (8-bit terms) -> PASS
+CHECK m4h_noalias.png (32,120) expect (242,191,255) exit=0

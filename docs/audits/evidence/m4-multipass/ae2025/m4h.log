@@ -1,0 +1,3 @@
+PNG m4h_noalias.png expect center (191,191,255) — identical to m4b
+RESULT M4H rendered=1
+RESULT_DONE

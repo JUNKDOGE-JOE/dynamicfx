@@ -1,0 +1,55 @@
+ADR-0036 publication verification - consolidated public tree, 2026-08-17
+(Scan patterns are held in shell variables and are not reproduced in this
+ report: writing the withheld vendor terms here would itself publish them.
+ This report file is excluded from its own scans.)
+
+$ python scripts/check_governance.py
+DynamicFX governance check
+markdown_files=64
+local_links=613
+mermaid_blocks=16
+accepted_adrs=36
+errors=0
+RESULT=PASS
+
+$ grep -rlaiE "$VENDOR_TERMS" . --exclude-dir=.git --exclude-dir=adr-0036
+(no matches)
+
+$ grep -rlaiE "$CREDENTIAL_TERMS" . --exclude-dir=.git --exclude-dir=adr-0036
+(no matches)
+
+$ find . -name '*COMPET*' -not -path './.git/*'    # withheld document must be absent
+(no matches)
+
+$ grep -rlaE "$LOCAL_PATH_TERMS" . --exclude-dir=.git --exclude-dir=adr-0036
+./docs/audits/evidence/f003-20260816/f003b.log
+./docs/audits/evidence/layer-origin/pos_repro.jsx
+./docs/audits/evidence/m0-transport-spike/ae2025/aerender_s5.txt
+./docs/audits/evidence/m0-transport-spike/ae2025/s5.log
+./docs/audits/evidence/m1-first-frame/ae2025/aerender_m1.txt
+./docs/audits/evidence/m1-first-frame/ae2025/checks.txt
+./docs/audits/evidence/m2-keyframed/ae2025/checks.txt
+./docs/audits/evidence/m2-keyframed/ae2025-annotation/checks.txt
+./docs/audits/evidence/m2-keyframed/ae2025-kinds/checks.txt
+./docs/audits/evidence/m3-persistence/ae2025/aerender_m3.txt
+./docs/audits/evidence/m3-persistence/ae2025/checks.txt
+./docs/audits/evidence/m4-multipass/ae2025/checks.txt
+./docs/audits/evidence/m5-pixel-formats/ae2025/checks.txt
+./docs/audits/evidence/m6-temporal/ae2025/m6all.log
+./docs/audits/evidence/m7-perf/ae2025/m7bench.log
+./docs/audits/evidence/m7-perf/ae2025/m7bench_run1_20s.log
+./docs/audits/evidence/m7-perf/ae2025/wysiwyg/wys2_setup.jsx
+./scripts/f003/run_f003.ps1
+./scripts/m1/run_m1.ps1
+./scripts/m2/run_m2.ps1
+./scripts/m3/run_m3.ps1
+./scripts/m4/run_m4.ps1
+./scripts/m5/run_m5.ps1
+./scripts/m6/run_m6.ps1
+./scripts/m7/run_m7.ps1
+./scripts/spike/run_spike.ps1
+  -> 26 files, retained deliberately. They are original evidence artifacts and
+     the reproduction harnesses that produced them; the paths are the project
+     directory and an anonymous Windows account name, which is what an evidence
+     record needs to be reproducible (ADR-0036 section 5). No credential, no
+     personal identity, no third-party data. Editing them would alter evidence.

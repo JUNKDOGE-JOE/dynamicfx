@@ -1,0 +1,4 @@
+[1786615367] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786615450] idle state token updated: Active(379652250331110)
+[1786615450] definition resolved from process registry
+[1786615450] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")

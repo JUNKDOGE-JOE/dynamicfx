@@ -1,0 +1,19 @@
+[1786521041] registered with AEGP at global setup
+[1786521041] AEGP idle hook registered
+[1786521041] params setup: ADR-0013 topology
+[1786521041] params setup: complete
+[1786521043] idle observation: no expression on Source
+[1786521045] idle observation: compiled: 1 pass, 0 params
+[1786521045] idle state token updated: 00042eec230341ec
+[1786521059] status: compiled: 1 pass, 0 params
+[1786521059] definition resolved from process registry
+[1786521059] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1786521059] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786521061] status: GLSL error: Error { kind: InvalidToken(Identifier("this"), [Eof]), meta: Span { start: 0, end: 4 } }
+[1786521061] idle state token updated: 0000000000000000
+[1786521076] status: compiled: 1 pass, 0 params
+[1786521077] idle state token updated: 00042eec230341ec
+[1786521153] registered with AEGP at global setup
+[1786521153] AEGP idle hook registered
+[1786521153] params setup: ADR-0013 topology
+[1786521153] params setup: complete

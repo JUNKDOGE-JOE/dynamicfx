@@ -1,0 +1,13 @@
+SETUP ok fxMatch=ADBE Slider Control
+CEIL size=1024 setOk=1 match=1 rbLen=1024 ms=67 err= exprErr=
+CEIL size=4096 setOk=1 match=1 rbLen=4096 ms=2 err= exprErr=
+CEIL size=16384 setOk=1 match=1 rbLen=16384 ms=2 err= exprErr=
+CEIL size=65536 setOk=1 match=1 rbLen=65536 ms=3 err= exprErr=
+CEIL size=262144 setOk=1 match=1 rbLen=262144 ms=7 err= exprErr=
+CEIL size=1048576 setOk=1 match=1 rbLen=1048576 ms=16 err= exprErr=
+CEIL size=2097152 setOk=1 match=1 rbLen=2097152 ms=31 err= exprErr=
+CEIL size=4194304 setOk=1 match=1 rbLen=4194304 ms=68 err= exprErr=
+CEIL size=8388608 setOk=1 match=1 rbLen=8388608 ms=115 err= exprErr=
+CEIL size=16777216 setOk=1 match=1 rbLen=16777216 ms=235 err= exprErr=
+BOUNDARY lastOk=16777216 firstFail=none (cap 16MB reached, cap is explicit not a host limit)
+RESULT_DONE

@@ -1,0 +1,69 @@
+// Shared helpers for the M6 temporal harness (TR-M6-001, ADR-0023/0024).
+function m6Out() {
+    return ($.getenv("DFX_M6_OUT") || "E:/Code/AePlugin_Dynamicfx/scripts/out/m6/dev") + "/";
+}
+function m6Log(file, s) {
+    var f = new File(m6Out() + file);
+    f.encoding = "UTF-8";
+    if (f.open("a")) { f.write(s + "\n"); f.close(); }
+}
+function m6Find(name) {
+    for (var j = 1; j <= app.project.numItems; j++) {
+        if (app.project.item(j) instanceof CompItem && app.project.item(j).name === name) {
+            return app.project.item(j);
+        }
+    }
+    return null;
+}
+function m6Fx(comp) {
+    for (var i = 1; i <= comp.numLayers; i++) {
+        if (comp.layer(i).name === "input") {
+            return comp.layer(i).property("ADBE Effect Parade").property(1);
+        }
+    }
+    return comp.layer(1).property("ADBE Effect Parade").property(1);
+}
+// The windowed accumulator (ADR-0025): value at frame F = min(F+1, W) *
+// step (prev is this pass's only input, so it samples at binding 0).
+function m6AccSource(stepExpr, windowN) {
+    return "@dynamicfx 1\n@graph\npass acc: prev -> output\n@end\n@pass acc\n" +
+        "#version 450\n" +
+        "// @window " + windowN + "\n" +
+        "layout(location = 0) in vec2 v_uv;\n" +
+        "layout(location = 0) out vec4 outColor;\n" +
+        "layout(set = 0, binding = 0) uniform texture2D u_prev;\n" +
+        "layout(set = 0, binding = 1) uniform sampler u_sampler;\n" +
+        "layout(set = 0, binding = 2) uniform FxUniforms {\n" +
+        "    vec2 u_resolution;\n" +
+        "    float u_time;\n" +
+        "    float u_frame;\n" +
+        "};\n" +
+        "void main() {\n" +
+        "    vec4 p = texture(sampler2D(u_prev, u_sampler), v_uv);\n" +
+        "    outColor = vec4(p.rgb + vec3(" + stepExpr + "), 1.0);\n" +
+        "}\n" +
+        "@endpass\n";
+}
+// 320x240 comp, 25 fps, 3 s, black solid named "input" carrying the effect.
+function m6NewAccComp(name, stepExpr) {
+    var comp = app.project.items.addComp(name, 320, 240, 1.0, 3.0, 25);
+    comp.bgColor = [0, 0, 0];
+    var solid = comp.layers.addSolid([0, 0, 0], "input", 320, 240, 1.0, 3.0);
+    var fx = solid.property("ADBE Effect Parade").addProperty("DynamicFx");
+    fx.property(2).expression = "`" + m6AccSource(stepExpr, 16) + "`;0";
+    // Bare probe slider; the expression is armed post-compile.
+    var nul = comp.layers.addNull(3.0);
+    nul.name = "probes";
+    var sl = nul.property("ADBE Effect Parade").addProperty("ADBE Slider Control");
+    sl.name = "acc";
+    return comp;
+}
+function m6ArmProbe(compName) {
+    var comp = m6Find(compName);
+    var lay = null;
+    for (var i = 1; i <= comp.numLayers; i++) {
+        if (comp.layer(i).name === "probes") { lay = comp.layer(i); break; }
+    }
+    lay.effect("acc")(1).expression =
+        'thisComp.layer("input").sampleImage([160,120],[0.49,0.49],true,time)[0]';
+}

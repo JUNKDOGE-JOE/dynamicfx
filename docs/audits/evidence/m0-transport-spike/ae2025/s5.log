@@ -1,0 +1,7 @@
+EXPR len=1048575 immMatch=1 exprErr=
+OPACITY expr set, value=37.5
+GUI_PNG saved expect_gray=96 (255*0.375=95.6)
+OM_TEMPLATES 多机序列 | 带有 Alpha 的 TIFF 序列  | 未命名 1 | AIFF 48kHz | H.264 - 匹配渲染设置 - 15 Mbps | H.264 - 匹配渲染设置 - 40 Mbps | H.264 - 匹配渲染设置 - 5 Mbps | HAP_Alaph | HEVC | Photoshop | 具有 Alpha 的高品质 | 使用 Alpha 无损耗 | 仅 Alpha | 无损 | 高品质 | _HIDDEN X-Factor 16 | _HIDDEN X-Factor 16 Premul | _HIDDEN X-Factor 32 | _HIDDEN X-Factor 32 Premul | _HIDDEN X-Factor 8 | _HIDDEN X-Factor 8 Premul
+RQ applied=[Photoshop] fmt=Photoshop Sequence
+SAVED E:\Code\AePlugin_Dynamicfx\scripts\out\spike\2025\s5.aep
+RESULT_DONE

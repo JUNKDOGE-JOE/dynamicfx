@@ -1,0 +1,327 @@
+[1786685220] registered with AEGP at global setup
+[1786685220] AEGP idle hook registered
+[1786685220] params setup: ADR-0013 topology
+[1786685220] params setup: complete
+[1786685221] idle observation: compiled: 1 pass, 0 params
+[1786685221] idle slot ui applied: 0 bound, 0 defaults written
+[1786685221] idle state token updated: Active(1451249372630276)
+[1786685221] idle observation: compiled: 1 pass, 0 params
+[1786685221] idle slot ui applied: 0 bound, 0 defaults written
+[1786685221] idle state token updated: Active(1451249372630276)
+[1786685221] idle observation: compiled: 1 pass, 0 params
+[1786685221] idle slot ui applied: 0 bound, 0 defaults written
+[1786685221] idle state token updated: Active(1451249372630276)
+[1786685221] idle observation: compiled: 1 pass, 0 params
+[1786685221] idle slot ui applied: 0 bound, 0 defaults written
+[1786685221] idle state token updated: Active(1451249372630276)
+[1786685221] idle observation: compiled: 1 pass, 0 params
+[1786685221] idle slot ui applied: 0 bound, 0 defaults written
+[1786685221] idle state token updated: Active(1451249372630276)
+[1786685221] idle observation: compiled: 1 pass, 0 params
+[1786685221] idle slot ui applied: 0 bound, 0 defaults written
+[1786685221] idle state token updated: Active(1451249372630276)
+[1786685221] idle observation: compiled: 1 pass, 0 params
+[1786685221] idle slot ui applied: 0 bound, 0 defaults written
+[1786685221] idle state token updated: Active(1808721205814908)
+[1786685221] idle observation: compiled: 6 passes, 10 params
+[1786685221] idle slot ui applied: 16 bound, 4 defaults written
+[1786685221] idle state token updated: Active(2000363954371444)
+[1786685221] idle observation: compiled: 6 passes, 10 params
+[1786685221] idle slot ui applied: 16 bound, 4 defaults written
+[1786685221] idle state token updated: Active(2000363954371444)
+[1786685228] definition resolved from process registry
+[1786685228] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1786685228] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786685228] perf: t0=1786685228880 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=2 conv_in=0.826 upload=0.580 gpu=3.345 readback=0.264 conv_out=0.619 total=9.435
+[1786685228] perf: t0=1786685228889 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=3 conv_in=0.322 upload=0.858 gpu=0.553 readback=0.185 conv_out=0.424 total=2.348
+[1786685228] perf: t0=1786685228892 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=1 conv_in=0.390 upload=0.518 gpu=0.466 readback=0.145 conv_out=0.512 total=2.039
+[1786685228] perf: t0=1786685228909 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=7 conv_in=0.414 upload=0.493 gpu=0.670 readback=0.207 conv_out=0.465 total=2.256
+[1786685228] perf: t0=1786685228947 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=9 conv_in=0.278 upload=0.477 gpu=0.503 readback=0.226 conv_out=0.638 total=2.130
+[1786685228] perf: t0=1786685228951 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=10 conv_in=0.348 upload=0.551 gpu=0.478 readback=0.146 conv_out=0.461 total=1.991
+[1786685228] perf: t0=1786685228989 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=11 conv_in=0.366 upload=0.475 gpu=0.470 readback=0.215 conv_out=0.463 total=1.997
+[1786685228] perf: t0=1786685228990 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=8 conv_in=0.318 upload=0.498 gpu=0.547 readback=0.182 conv_out=0.591 total=2.143
+[1786685228] perf: t0=1786685228993 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=6 conv_in=0.342 upload=0.503 gpu=0.536 readback=0.165 conv_out=0.545 total=2.102
+[1786685229] perf: t0=1786685229028 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=16 conv_in=0.272 upload=0.428 gpu=0.473 readback=0.213 conv_out=0.631 total=2.024
+[1786685229] perf: t0=1786685229030 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=14 conv_in=0.407 upload=0.474 gpu=0.493 readback=0.209 conv_out=0.595 total=2.184
+[1786685229] perf: t0=1786685229034 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=15 conv_in=0.330 upload=0.357 gpu=0.393 readback=0.165 conv_out=0.635 total=1.887
+[1786685229] perf: t0=1786685229035 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=12 conv_in=0.365 upload=0.420 gpu=0.467 readback=0.167 conv_out=0.622 total=2.046
+[1786685229] perf: t0=1786685229065 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=18 conv_in=0.275 upload=0.576 gpu=0.491 readback=0.242 conv_out=0.656 total=2.249
+[1786685229] perf: t0=1786685229068 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=19 conv_in=0.347 upload=0.463 gpu=0.471 readback=0.232 conv_out=0.644 total=2.164
+[1786685229] perf: t0=1786685229070 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=17 conv_in=0.349 upload=0.408 gpu=0.426 readback=0.202 conv_out=0.637 total=2.029
+[1786685229] perf: t0=1786685229073 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=4 conv_in=0.355 upload=0.493 gpu=0.547 readback=0.275 conv_out=0.675 total=2.355
+[1786685229] perf: t0=1786685229101 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=23 conv_in=0.268 upload=0.413 gpu=0.460 readback=0.229 conv_out=0.667 total=2.044
+[1786685229] perf: t0=1786685229105 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=20 conv_in=0.364 upload=0.458 gpu=0.395 readback=0.182 conv_out=0.560 total=1.965
+[1786685229] perf: t0=1786685229106 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=22 conv_in=0.358 upload=0.374 gpu=0.621 readback=0.214 conv_out=0.606 total=2.180
+[1786685229] perf: t0=1786685229140 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=5 conv_in=0.261 upload=0.457 gpu=0.461 readback=0.203 conv_out=0.538 total=1.926
+[1786685229] perf: t0=1786685229142 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=24 conv_in=0.293 upload=0.476 gpu=0.479 readback=0.212 conv_out=0.612 total=2.079
+[1786685229] perf: t0=1786685229148 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=0 conv_in=0.369 upload=0.468 gpu=0.464 readback=0.192 conv_out=0.617 total=2.117
+[1786685229] perf: t0=1786685229150 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=13 conv_in=0.408 upload=0.472 gpu=0.573 readback=0.159 conv_out=0.399 total=2.020
+[1786685229] perf: t0=1786685229153 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=21 conv_in=0.309 upload=0.470 gpu=0.435 readback=0.194 conv_out=0.598 total=2.012
+[1786685230] definition resolved from process registry
+[1786685230] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 3840x2160, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786685230] perf: t0=1786685230407 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=4 conv_in=5.320 upload=1.704 gpu=1.247 readback=2.017 conv_out=3.839 total=17.332
+[1786685230] perf: t0=1786685230431 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=0 conv_in=2.457 upload=1.691 gpu=1.286 readback=2.322 conv_out=3.932 total=11.733
+[1786685230] perf: t0=1786685230486 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=5 conv_in=3.430 upload=2.269 gpu=1.292 readback=3.082 conv_out=4.982 total=15.089
+[1786685230] perf: t0=1786685230502 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=8 conv_in=2.573 upload=2.212 gpu=2.161 readback=3.923 conv_out=3.945 total=14.826
+[1786685230] perf: t0=1786685230518 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=9 conv_in=2.304 upload=1.981 gpu=2.486 readback=2.615 conv_out=4.387 total=13.784
+[1786685230] perf: t0=1786685230531 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=7 conv_in=2.177 upload=2.196 gpu=1.812 readback=2.268 conv_out=3.744 total=12.208
+[1786685230] perf: t0=1786685230544 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=10 conv_in=2.211 upload=2.617 gpu=1.908 readback=2.206 conv_out=4.114 total=13.066
+[1786685230] perf: t0=1786685230557 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=2 conv_in=2.504 upload=2.183 gpu=1.981 readback=2.090 conv_out=3.586 total=12.359
+[1786685230] perf: t0=1786685230578 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=13 conv_in=2.656 upload=1.700 gpu=1.108 readback=1.909 conv_out=3.618 total=10.998
+[1786685230] perf: t0=1786685230589 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=14 conv_in=2.265 upload=2.193 gpu=1.842 readback=2.221 conv_out=3.757 total=12.287
+[1786685230] perf: t0=1786685230602 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=17 conv_in=2.258 upload=2.990 gpu=1.606 readback=2.429 conv_out=4.014 total=13.307
+[1786685230] perf: t0=1786685230617 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=16 conv_in=2.420 upload=2.425 gpu=1.863 readback=2.804 conv_out=4.349 total=13.878
+[1786685230] perf: t0=1786685230630 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=11 conv_in=2.478 upload=2.714 gpu=1.879 readback=2.676 conv_out=4.640 total=14.401
+[1786685230] perf: t0=1786685230646 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=1 conv_in=2.357 upload=2.003 gpu=1.748 readback=2.683 conv_out=4.131 total=12.934
+[1786685230] perf: t0=1786685230658 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=15 conv_in=3.054 upload=1.963 gpu=1.706 readback=5.373 conv_out=7.336 total=19.449
+[1786685230] perf: t0=1786685230679 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=6 conv_in=3.870 upload=2.211 gpu=1.820 readback=3.547 conv_out=4.497 total=15.958
+[1786685230] perf: t0=1786685230694 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=18 conv_in=3.073 upload=2.071 gpu=1.434 readback=6.189 conv_out=5.537 total=18.327
+[1786685230] perf: t0=1786685230713 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=19 conv_in=2.975 upload=2.768 gpu=1.930 readback=2.852 conv_out=4.570 total=15.107
+[1786685230] perf: t0=1786685230729 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=24 conv_in=2.980 upload=2.468 gpu=1.900 readback=2.567 conv_out=3.891 total=13.817
+[1786685230] perf: t0=1786685230743 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=23 conv_in=2.392 upload=1.976 gpu=1.888 readback=2.590 conv_out=5.923 total=14.782
+[1786685230] perf: t0=1786685230758 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=22 conv_in=5.054 upload=3.902 gpu=1.378 readback=2.383 conv_out=4.206 total=16.937
+[1786685230] perf: t0=1786685230776 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=21 conv_in=2.697 upload=2.218 gpu=1.757 readback=2.912 conv_out=4.355 total=13.950
+[1786685230] perf: t0=1786685230790 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=3 conv_in=2.558 upload=3.014 gpu=2.056 readback=3.641 conv_out=4.491 total=15.773
+[1786685230] perf: t0=1786685230805 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=12 conv_in=2.854 upload=2.987 gpu=1.567 readback=2.968 conv_out=3.786 total=14.173
+[1786685230] perf: t0=1786685230820 depth=U8 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=20 conv_in=2.371 upload=1.865 gpu=1.830 readback=5.767 conv_out=4.328 total=16.241
+[1786685233] definition resolved from process registry
+[1786685233] pipelines built: 6 pass(es), plan 6 step(s), 3 physical intermediate(s) (~10800 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786685233] perf: t0=1786685233830 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=2 conv_in=0.728 upload=0.428 gpu=2.591 readback=0.227 conv_out=0.487 total=8.969
+[1786685233] perf: t0=1786685233839 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=5 conv_in=0.247 upload=0.467 gpu=0.714 readback=0.226 conv_out=0.401 total=2.107
+[1786685233] perf: t0=1786685233842 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=1 conv_in=0.363 upload=0.610 gpu=0.676 readback=0.167 conv_out=0.443 total=2.314
+[1786685233] perf: t0=1786685233844 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=4 conv_in=0.298 upload=0.551 gpu=0.729 readback=0.139 conv_out=0.414 total=2.179
+[1786685233] perf: t0=1786685233851 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=3 conv_in=0.247 upload=0.512 gpu=0.696 readback=0.237 conv_out=0.420 total=2.144
+[1786685233] perf: t0=1786685233871 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=9 conv_in=0.251 upload=0.523 gpu=0.802 readback=0.275 conv_out=0.492 total=2.375
+[1786685233] perf: t0=1786685233874 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=10 conv_in=0.255 upload=0.523 gpu=0.767 readback=0.265 conv_out=0.563 total=2.410
+[1786685233] perf: t0=1786685233876 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=12 conv_in=0.294 upload=0.531 gpu=0.947 readback=0.148 conv_out=0.527 total=2.538
+[1786685233] perf: t0=1786685233879 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=11 conv_in=0.325 upload=0.541 gpu=0.750 readback=0.301 conv_out=0.392 total=2.359
+[1786685233] perf: t0=1786685233882 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=8 conv_in=0.294 upload=0.516 gpu=0.691 readback=0.284 conv_out=0.384 total=2.210
+[1786685233] perf: t0=1786685233893 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=16 conv_in=0.220 upload=0.377 gpu=0.700 readback=0.238 conv_out=0.409 total=1.976
+[1786685233] perf: t0=1786685233894 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=14 conv_in=0.211 upload=0.376 gpu=1.184 readback=0.157 conv_out=0.398 total=2.360
+[1786685233] perf: t0=1786685233897 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=13 conv_in=0.213 upload=0.340 gpu=0.898 readback=0.272 conv_out=0.381 total=2.134
+[1786685233] perf: t0=1786685233900 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=6 conv_in=0.239 upload=0.376 gpu=0.596 readback=0.162 conv_out=0.378 total=1.782
+[1786685233] perf: t0=1786685233902 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=15 conv_in=0.304 upload=0.601 gpu=0.686 readback=0.306 conv_out=0.418 total=2.362
+[1786685233] perf: t0=1786685233904 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=17 conv_in=0.352 upload=0.597 gpu=0.866 readback=0.280 conv_out=0.539 total=2.687
+[1786685233] perf: t0=1786685233907 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=18 conv_in=0.282 upload=0.398 gpu=0.909 readback=0.221 conv_out=0.438 total=2.285
+[1786685233] perf: t0=1786685233923 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=21 conv_in=0.294 upload=0.478 gpu=0.670 readback=0.246 conv_out=0.459 total=2.178
+[1786685233] perf: t0=1786685233926 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=0 conv_in=0.254 upload=0.520 gpu=0.778 readback=0.163 conv_out=0.361 total=2.113
+[1786685233] perf: t0=1786685233928 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=22 conv_in=0.218 upload=0.450 gpu=0.883 readback=0.292 conv_out=0.425 total=2.308
+[1786685233] perf: t0=1786685233931 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=19 conv_in=0.219 upload=0.527 gpu=0.680 readback=0.292 conv_out=0.395 total=2.150
+[1786685233] perf: t0=1786685233934 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=20 conv_in=0.220 upload=0.460 gpu=0.701 readback=0.136 conv_out=0.361 total=1.917
+[1786685233] perf: t0=1786685233936 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=23 conv_in=0.273 upload=0.442 gpu=0.944 readback=0.311 conv_out=0.360 total=2.371
+[1786685233] perf: t0=1786685233938 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=24 conv_in=0.322 upload=0.429 gpu=0.683 readback=0.275 conv_out=0.443 total=2.199
+[1786685233] perf: t0=1786685233941 depth=U8 dims=1280x720 rect=1280x720 passes=6 iters=1 frame=7 conv_in=0.241 upload=0.412 gpu=0.631 readback=0.211 conv_out=0.455 total=1.990
+[1786685234] definition resolved from process registry
+[1786685234] pipelines built: 6 pass(es), plan 6 step(s), 3 physical intermediate(s) (~97200 KiB transient at 3840x2160, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786685234] perf: t0=1786685234822 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=2 conv_in=5.426 upload=1.749 gpu=2.624 readback=2.198 conv_out=3.870 total=25.188
+[1786685234] perf: t0=1786685234848 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=7 conv_in=2.403 upload=2.060 gpu=2.716 readback=2.289 conv_out=4.056 total=13.591
+[1786685234] perf: t0=1786685234871 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=6 conv_in=2.641 upload=1.939 gpu=2.395 readback=2.033 conv_out=3.681 total=12.760
+[1786685234] perf: t0=1786685234913 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=9 conv_in=2.451 upload=1.781 gpu=2.460 readback=2.135 conv_out=3.876 total=12.745
+[1786685234] perf: t0=1786685234926 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=4 conv_in=2.651 upload=2.891 gpu=2.734 readback=2.266 conv_out=4.026 total=14.646
+[1786685234] perf: t0=1786685234941 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=8 conv_in=2.416 upload=2.440 gpu=2.699 readback=2.336 conv_out=3.851 total=13.814
+[1786685234] perf: t0=1786685234963 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=13 conv_in=2.511 upload=1.795 gpu=2.400 readback=2.343 conv_out=3.876 total=12.975
+[1786685234] perf: t0=1786685234976 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=10 conv_in=2.309 upload=2.273 gpu=2.625 readback=2.371 conv_out=3.873 total=13.526
+[1786685235] perf: t0=1786685234990 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=12 conv_in=2.656 upload=2.114 gpu=3.614 readback=2.086 conv_out=3.868 total=14.392
+[1786685235] perf: t0=1786685235005 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=1 conv_in=2.434 upload=2.493 gpu=3.091 readback=2.096 conv_out=3.732 total=13.904
+[1786685235] perf: t0=1786685235019 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=14 conv_in=2.249 upload=2.318 gpu=2.926 readback=2.891 conv_out=4.097 total=14.550
+[1786685235] perf: t0=1786685235033 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=15 conv_in=2.273 upload=2.073 gpu=3.104 readback=2.632 conv_out=3.968 total=14.119
+[1786685235] perf: t0=1786685235049 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=0 conv_in=2.801 upload=2.260 gpu=3.384 readback=2.452 conv_out=3.797 total=14.752
+[1786685235] perf: t0=1786685235064 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=16 conv_in=2.592 upload=2.416 gpu=2.622 readback=2.322 conv_out=5.877 total=15.896
+[1786685235] perf: t0=1786685235079 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=3 conv_in=3.153 upload=3.654 gpu=3.663 readback=3.239 conv_out=4.418 total=18.226
+[1786685235] perf: t0=1786685235099 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=11 conv_in=2.604 upload=2.766 gpu=2.826 readback=2.698 conv_out=4.840 total=15.828
+[1786685235] perf: t0=1786685235114 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=20 conv_in=2.739 upload=3.006 gpu=3.537 readback=2.492 conv_out=5.368 total=17.216
+[1786685235] perf: t0=1786685235132 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=19 conv_in=3.330 upload=2.309 gpu=3.148 readback=2.521 conv_out=4.005 total=15.384
+[1786685235] perf: t0=1786685235148 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=5 conv_in=2.300 upload=2.881 gpu=3.052 readback=2.277 conv_out=3.956 total=14.545
+[1786685235] perf: t0=1786685235163 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=17 conv_in=2.621 upload=2.268 gpu=2.755 readback=2.119 conv_out=3.981 total=13.811
+[1786685235] perf: t0=1786685235177 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=18 conv_in=2.583 upload=2.474 gpu=2.976 readback=2.180 conv_out=3.882 total=14.174
+[1786685235] perf: t0=1786685235191 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=21 conv_in=2.579 upload=2.224 gpu=3.094 readback=2.257 conv_out=3.908 total=14.123
+[1786685235] perf: t0=1786685235206 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=22 conv_in=2.852 upload=2.862 gpu=2.699 readback=2.685 conv_out=4.149 total=15.322
+[1786685235] perf: t0=1786685235221 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=23 conv_in=2.765 upload=3.056 gpu=3.389 readback=3.158 conv_out=4.804 total=17.257
+[1786685235] perf: t0=1786685235239 depth=U8 dims=3840x2160 rect=3840x2160 passes=6 iters=1 frame=24 conv_in=2.787 upload=2.616 gpu=3.230 readback=2.475 conv_out=4.117 total=15.286
+[1786685239] definition resolved from process registry
+[1786685239] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786685239] perf: t0=1786685239661 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=7 frame=6 conv_in=0.640 upload=1.238 gpu=2.242 readback=0.301 conv_out=0.579 total=5.534
+[1786685239] perf: t0=1786685239683 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=4 frame=3 conv_in=0.262 upload=0.590 gpu=0.695 readback=0.228 conv_out=0.420 total=2.208
+[1786685239] perf: t0=1786685239703 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=9 frame=8 conv_in=0.229 upload=0.597 gpu=0.646 readback=0.195 conv_out=0.389 total=2.066
+[1786685239] perf: t0=1786685239723 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=10 frame=9 conv_in=0.259 upload=0.673 gpu=1.838 readback=0.228 conv_out=0.455 total=3.464
+[1786685239] perf: t0=1786685239727 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=0 conv_in=0.303 upload=0.431 gpu=0.632 readback=0.183 conv_out=0.364 total=1.924
+[1786685239] perf: t0=1786685239764 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=14 frame=13 conv_in=0.236 upload=0.788 gpu=1.810 readback=0.202 conv_out=0.401 total=3.448
+[1786685239] perf: t0=1786685239768 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=2 frame=1 conv_in=0.222 upload=0.365 gpu=0.402 readback=0.146 conv_out=0.373 total=1.518
+[1786685239] perf: t0=1786685239770 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=13 frame=12 conv_in=0.312 upload=0.937 gpu=1.198 readback=0.175 conv_out=0.478 total=3.111
+[1786685239] perf: t0=1786685239773 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=11 frame=10 conv_in=0.272 upload=0.544 gpu=0.742 readback=0.207 conv_out=0.457 total=2.232
+[1786685239] perf: t0=1786685239776 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=15 frame=14 conv_in=0.401 upload=1.818 gpu=1.445 readback=0.176 conv_out=0.482 total=4.338
+[1786685239] perf: t0=1786685239794 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=3 frame=2 conv_in=0.299 upload=0.521 gpu=0.466 readback=0.193 conv_out=0.365 total=1.855
+[1786685239] perf: t0=1786685239796 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=16 frame=15 conv_in=0.231 upload=0.648 gpu=0.888 readback=0.345 conv_out=0.516 total=2.641
+[1786685239] perf: t0=1786685239798 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=16 frame=16 conv_in=0.262 upload=0.555 gpu=0.895 readback=0.163 conv_out=0.431 total=2.319
+[1786685239] perf: t0=1786685239816 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=16 frame=19 conv_in=0.284 upload=0.708 gpu=0.955 readback=0.307 conv_out=0.439 total=2.705
+[1786685239] perf: t0=1786685239818 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=16 frame=17 conv_in=0.300 upload=0.555 gpu=0.811 readback=0.163 conv_out=0.446 total=2.285
+[1786685239] perf: t0=1786685239821 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=16 frame=20 conv_in=0.271 upload=0.693 gpu=2.237 readback=0.198 conv_out=0.473 total=3.884
+[1786685239] perf: t0=1786685239841 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=16 frame=22 conv_in=0.233 upload=0.658 gpu=0.882 readback=0.203 conv_out=0.426 total=2.414
+[1786685239] perf: t0=1786685239844 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=16 frame=21 conv_in=0.305 upload=0.547 gpu=1.066 readback=0.195 conv_out=0.491 total=2.616
+[1786685239] perf: t0=1786685239847 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=16 frame=23 conv_in=0.289 upload=0.996 gpu=2.387 readback=0.270 conv_out=0.456 total=4.410
+[1786685239] perf: t0=1786685239852 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=5 frame=4 conv_in=0.232 upload=0.416 gpu=0.512 readback=0.173 conv_out=0.422 total=1.766
+[1786685239] perf: t0=1786685239854 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=16 frame=24 conv_in=0.220 upload=0.608 gpu=0.866 readback=0.298 conv_out=0.470 total=2.475
+[1786685239] perf: t0=1786685239868 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=8 frame=7 conv_in=0.236 upload=0.600 gpu=0.713 readback=0.196 conv_out=0.372 total=2.127
+[1786685239] perf: t0=1786685239895 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=6 frame=5 conv_in=0.232 upload=0.570 gpu=0.603 readback=0.204 conv_out=0.360 total=1.981
+[1786685239] perf: t0=1786685239928 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=12 frame=11 conv_in=0.238 upload=0.705 gpu=1.670 readback=0.297 conv_out=0.706 total=3.629
+[1786685239] perf: t0=1786685239934 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=16 frame=18 conv_in=0.278 upload=0.716 gpu=0.892 readback=0.203 conv_out=0.412 total=2.511
+[1786685240] definition resolved from process registry
+[1786685240] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786685240] perf: t0=1786685240668 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=5 conv_in=0.612 upload=0.309 gpu=0.532 readback=0.170 conv_out=0.397 total=2.606
+[1786685240] definition resolved from process registry
+[1786685240] perf: t0=1786685240671 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=0 conv_in=0.217 upload=0.362 gpu=0.343 readback=0.141 conv_out=0.359 total=1.427
+[1786685240] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786685240] perf: t0=1786685240673 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=2 conv_in=0.352 upload=0.398 gpu=0.381 readback=0.176 conv_out=0.411 total=1.727
+[1786685240] perf: t0=1786685240674 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=5 conv_in=0.676 upload=0.287 gpu=0.600 readback=0.339 conv_out=0.449 total=2.985
+[1786685240] perf: t0=1786685240674 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=6 conv_in=0.291 upload=0.492 gpu=0.639 readback=0.214 conv_out=0.539 total=2.181
+[1786685240] perf: t0=1786685240676 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=0 conv_in=0.234 upload=0.280 gpu=0.590 readback=0.387 conv_out=0.587 total=2.083
+[1786685240] perf: t0=1786685240677 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=1 conv_in=0.389 upload=0.445 gpu=0.518 readback=0.281 conv_out=0.556 total=2.199
+[1786685240] perf: t0=1786685240679 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=2 conv_in=0.414 upload=0.405 gpu=0.477 readback=0.564 conv_out=0.895 total=2.761
+[1786685240] definition resolved from process registry
+[1786685240] perf: t0=1786685240679 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=7 conv_in=0.398 upload=0.643 gpu=0.512 readback=0.281 conv_out=0.542 total=2.385
+[1786685240] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786685240] perf: t0=1786685240682 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=6 conv_in=0.457 upload=0.464 gpu=0.540 readback=0.249 conv_out=0.633 total=2.351
+[1786685240] perf: t0=1786685240683 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=3 conv_in=0.600 upload=0.444 gpu=0.478 readback=0.314 conv_out=0.494 total=2.339
+[1786685240] perf: t0=1786685240685 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=1 conv_in=0.241 upload=0.804 gpu=0.691 readback=0.161 conv_out=0.745 total=2.649
+[1786685240] perf: t0=1786685240685 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=4 conv_in=0.440 upload=0.411 gpu=0.791 readback=0.526 conv_out=0.888 total=3.065
+[1786685240] perf: t0=1786685240683 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=5 conv_in=0.905 upload=0.596 gpu=1.201 readback=0.517 conv_out=0.958 total=5.076
+[1786685240] definition resolved from process registry
+[1786685240] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786685240] perf: t0=1786685240688 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=7 conv_in=0.420 upload=0.442 gpu=1.485 readback=0.247 conv_out=0.760 total=3.370
+[1786685240] perf: t0=1786685240689 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=0 conv_in=0.571 upload=0.362 gpu=0.726 readback=0.371 conv_out=0.457 total=2.496
+[1786685240] perf: t0=1786685240692 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=3 conv_in=0.399 upload=0.577 gpu=0.672 readback=0.222 conv_out=0.485 total=2.364
+[1786685240] perf: t0=1786685240692 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=2 conv_in=0.698 upload=0.409 gpu=5.183 readback=0.456 conv_out=0.477 total=7.232
+[1786685240] perf: t0=1786685240694 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=4 conv_in=0.266 upload=4.333 gpu=0.514 readback=0.304 conv_out=1.060 total=6.484
+[1786685240] perf: t0=1786685240692 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=5 conv_in=1.449 upload=0.744 gpu=0.920 readback=0.782 conv_out=0.514 total=9.838
+[1786685240] perf: t0=1786685240699 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=6 conv_in=0.856 upload=0.524 gpu=0.404 readback=0.746 conv_out=0.493 total=3.030
+[1786685240] perf: t0=1786685240702 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=0 conv_in=0.570 upload=0.328 gpu=0.511 readback=0.543 conv_out=0.636 total=2.597
+[1786685240] perf: t0=1786685240703 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=1 conv_in=0.574 upload=0.383 gpu=0.361 readback=0.182 conv_out=0.918 total=2.425
+[1786685240] perf: t0=1786685240705 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=2 conv_in=0.651 upload=0.411 gpu=0.480 readback=0.521 conv_out=0.624 total=2.693
+[1786685240] perf: t0=1786685240705 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=7 conv_in=0.315 upload=0.359 gpu=0.462 readback=0.211 conv_out=0.768 total=2.122
+[1786685240] perf: t0=1786685240707 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=6 conv_in=0.404 upload=0.511 gpu=0.723 readback=0.615 conv_out=1.055 total=3.318
+[1786685240] perf: t0=1786685240708 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=3 conv_in=0.549 upload=0.413 gpu=0.806 readback=0.651 conv_out=0.667 total=3.093
+[1786685240] perf: t0=1786685240711 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=1 conv_in=1.278 upload=0.842 gpu=0.642 readback=0.521 conv_out=0.746 total=4.046
+[1786685240] perf: t0=1786685240712 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=4 conv_in=1.005 upload=0.564 gpu=0.661 readback=0.505 conv_out=0.906 total=3.654
+[1786685240] perf: t0=1786685240715 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=7 conv_in=0.577 upload=0.455 gpu=0.445 readback=0.292 conv_out=0.496 total=2.273
+[1786685240] perf: t0=1786685240718 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=3 conv_in=0.231 upload=0.352 gpu=0.415 readback=0.230 conv_out=0.512 total=1.750
+[1786685240] perf: t0=1786685240720 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=4 conv_in=0.564 upload=0.391 gpu=0.440 readback=0.201 conv_out=0.499 total=2.099
+[1786685240] perf: t0=1786685240736 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=11 conv_in=0.285 upload=0.454 gpu=0.480 readback=0.249 conv_out=0.384 total=1.860
+[1786685240] perf: t0=1786685240738 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=8 conv_in=0.238 upload=0.476 gpu=0.427 readback=0.270 conv_out=0.538 total=1.957
+[1786685240] perf: t0=1786685240739 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=11 conv_in=0.286 upload=0.359 gpu=0.466 readback=0.280 conv_out=0.576 total=1.974
+[1786685240] perf: t0=1786685240740 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=12 conv_in=0.401 upload=0.646 gpu=0.402 readback=0.575 conv_out=0.644 total=2.682
+[1786685240] perf: t0=1786685240742 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=8 conv_in=0.592 upload=0.467 gpu=0.775 readback=0.582 conv_out=0.573 total=2.998
+[1786685240] perf: t0=1786685240742 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=10 conv_in=0.357 upload=0.633 gpu=0.823 readback=0.438 conv_out=1.142 total=3.405
+[1786685240] perf: t0=1786685240742 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=11 conv_in=0.496 upload=1.054 gpu=0.860 readback=0.910 conv_out=1.044 total=4.378
+[1786685240] perf: t0=1786685240744 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=12 conv_in=0.723 upload=0.471 gpu=0.485 readback=1.038 conv_out=1.457 total=4.186
+[1786685240] perf: t0=1786685240746 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=13 conv_in=0.506 upload=1.563 gpu=1.208 readback=0.816 conv_out=1.544 total=5.648
+[1786685240] perf: t0=1786685240747 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=8 conv_in=0.943 upload=0.770 gpu=1.956 readback=0.518 conv_out=1.263 total=5.464
+[1786685240] perf: t0=1786685240748 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=11 conv_in=0.520 upload=0.799 gpu=1.203 readback=0.913 conv_out=1.055 total=4.501
+[1786685240] perf: t0=1786685240749 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=10 conv_in=0.591 upload=0.512 gpu=0.864 readback=0.926 conv_out=1.152 total=4.057
+[1786685240] perf: t0=1786685240752 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=15 conv_in=0.794 upload=1.787 gpu=1.041 readback=0.427 conv_out=1.204 total=5.271
+[1786685240] perf: t0=1786685240752 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=12 conv_in=0.861 upload=1.546 gpu=0.977 readback=0.935 conv_out=2.000 total=6.331
+[1786685240] perf: t0=1786685240754 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=13 conv_in=0.662 upload=1.017 gpu=0.497 readback=1.024 conv_out=1.666 total=4.872
+[1786685240] perf: t0=1786685240754 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=8 conv_in=0.852 upload=1.123 gpu=0.711 readback=0.747 conv_out=2.184 total=5.627
+[1786685240] perf: t0=1786685240758 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=9 conv_in=1.178 upload=1.513 gpu=1.377 readback=0.395 conv_out=0.751 total=5.224
+[1786685240] perf: t0=1786685240759 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=10 conv_in=1.238 upload=1.826 gpu=0.748 readback=0.481 conv_out=1.819 total=6.125
+[1786685240] perf: t0=1786685240761 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=12 conv_in=0.433 upload=1.285 gpu=0.958 readback=0.972 conv_out=1.500 total=5.161
+[1786685240] perf: t0=1786685240761 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=15 conv_in=0.460 upload=1.022 gpu=0.964 readback=1.271 conv_out=1.606 total=5.333
+[1786685240] perf: t0=1786685240764 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=14 conv_in=0.827 upload=0.721 gpu=0.569 readback=0.859 conv_out=1.342 total=4.328
+[1786685240] perf: t0=1786685240766 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=13 conv_in=0.891 upload=0.412 gpu=0.868 readback=0.508 conv_out=1.034 total=3.721
+[1786685240] perf: t0=1786685240767 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=9 conv_in=1.338 upload=1.591 gpu=1.153 readback=0.335 conv_out=0.971 total=5.400
+[1786685240] perf: t0=1786685240769 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=16 conv_in=0.563 upload=0.938 gpu=1.465 readback=0.445 conv_out=1.293 total=4.710
+[1786685240] perf: t0=1786685240767 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=10 conv_in=1.462 upload=1.757 gpu=1.697 readback=0.876 conv_out=1.477 total=7.277
+[1786685240] perf: t0=1786685240770 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=15 conv_in=0.399 upload=0.393 gpu=1.533 readback=0.602 conv_out=1.602 total=4.537
+[1786685240] perf: t0=1786685240773 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=14 conv_in=0.974 upload=0.560 gpu=0.465 readback=1.730 conv_out=0.816 total=4.555
+[1786685240] perf: t0=1786685240774 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=17 conv_in=0.683 upload=2.197 gpu=0.921 readback=1.384 conv_out=1.275 total=6.475
+[1786685240] perf: t0=1786685240775 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=9 conv_in=1.286 upload=1.155 gpu=1.236 readback=1.161 conv_out=1.523 total=6.377
+[1786685240] perf: t0=1786685240775 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=13 conv_in=0.668 upload=1.476 gpu=1.284 readback=1.531 conv_out=1.709 total=6.683
+[1786685240] perf: t0=1786685240778 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=16 conv_in=1.347 upload=0.663 gpu=0.714 readback=0.261 conv_out=1.081 total=4.076
+[1786685240] perf: t0=1786685240781 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=18 conv_in=0.615 upload=0.521 gpu=0.727 readback=1.468 conv_out=0.917 total=4.257
+[1786685240] perf: t0=1786685240782 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=14 conv_in=0.858 upload=0.935 gpu=1.075 readback=0.544 conv_out=0.913 total=4.333
+[1786685240] perf: t0=1786685240783 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=17 conv_in=1.538 upload=1.094 gpu=0.671 readback=0.311 conv_out=1.658 total=5.280
+[1786685240] perf: t0=1786685240782 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=15 conv_in=1.497 upload=1.466 gpu=0.477 readback=0.673 conv_out=1.971 total=6.098
+[1786685240] perf: t0=1786685240786 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=16 conv_in=1.492 upload=0.565 gpu=0.722 readback=0.483 conv_out=0.763 total=4.033
+[1786685240] perf: t0=1786685240786 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=19 conv_in=1.023 upload=0.880 gpu=1.609 readback=0.565 conv_out=1.929 total=6.016
+[1786685240] perf: t0=1786685240789 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=9 conv_in=0.899 upload=1.062 gpu=0.530 readback=0.728 conv_out=1.242 total=4.467
+[1786685240] perf: t0=1786685240789 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=18 conv_in=0.805 upload=1.082 gpu=1.325 readback=0.581 conv_out=1.594 total=5.394
+[1786685240] perf: t0=1786685240791 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=17 conv_in=0.304 upload=0.585 gpu=0.836 readback=0.591 conv_out=1.952 total=4.278
+[1786685240] perf: t0=1786685240793 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=14 conv_in=0.623 upload=1.283 gpu=0.686 readback=0.503 conv_out=1.158 total=4.265
+[1786685240] perf: t0=1786685240793 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=20 conv_in=1.040 upload=1.321 gpu=1.146 readback=0.537 conv_out=1.461 total=5.519
+[1786685240] perf: t0=1786685240796 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=18 conv_in=0.254 upload=1.206 gpu=0.502 readback=0.559 conv_out=1.359 total=3.887
+[1786685240] perf: t0=1786685240795 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=19 conv_in=0.808 upload=0.759 gpu=0.827 readback=1.218 conv_out=1.550 total=5.171
+[1786685240] perf: t0=1786685240798 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=16 conv_in=0.872 upload=0.647 gpu=1.081 readback=0.216 conv_out=1.385 total=4.211
+[1786685240] perf: t0=1786685240799 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=21 conv_in=0.587 upload=0.869 gpu=0.741 readback=0.767 conv_out=0.524 total=3.496
+[1786685240] perf: t0=1786685240801 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=20 conv_in=0.814 upload=0.951 gpu=0.585 readback=0.918 conv_out=1.319 total=4.597
+[1786685240] perf: t0=1786685240802 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=19 conv_in=0.379 upload=0.520 gpu=1.280 readback=0.810 conv_out=1.352 total=4.349
+[1786685240] perf: t0=1786685240803 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=17 conv_in=0.452 upload=0.631 gpu=1.014 readback=0.817 conv_out=1.506 total=4.428
+[1786685240] perf: t0=1786685240803 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=22 conv_in=0.886 upload=0.805 gpu=0.565 readback=0.939 conv_out=2.225 total=5.435
+[1786685240] perf: t0=1786685240806 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=21 conv_in=1.255 upload=1.362 gpu=1.094 readback=0.558 conv_out=1.048 total=5.330
+[1786685240] perf: t0=1786685240807 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=20 conv_in=0.765 upload=0.958 gpu=1.004 readback=1.190 conv_out=1.646 total=5.574
+[1786685240] perf: t0=1786685240807 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=18 conv_in=0.770 upload=0.715 gpu=1.712 readback=0.679 conv_out=2.191 total=6.076
+[1786685240] perf: t0=1786685240809 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=23 conv_in=0.772 upload=0.984 gpu=1.358 readback=1.498 conv_out=1.706 total=6.335
+[1786685240] perf: t0=1786685240813 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=21 conv_in=0.800 upload=0.562 gpu=0.980 readback=1.105 conv_out=1.237 total=4.695
+[1786685240] perf: t0=1786685240811 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=22 conv_in=1.287 upload=1.483 gpu=0.930 readback=1.213 conv_out=2.246 total=7.174
+[1786685240] perf: t0=1786685240814 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=19 conv_in=0.953 upload=0.669 gpu=0.696 readback=1.607 conv_out=1.391 total=5.328
+[1786685240] perf: t0=1786685240816 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=24 conv_in=1.198 upload=1.279 gpu=0.838 readback=0.495 conv_out=1.839 total=5.660
+[1786685240] perf: t0=1786685240820 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=22 conv_in=0.999 upload=1.159 gpu=0.663 readback=0.346 conv_out=1.082 total=4.261
+[1786685240] perf: t0=1786685240819 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=23 conv_in=0.878 upload=2.233 gpu=1.317 readback=0.786 conv_out=1.218 total=6.445
+[1786685240] perf: t0=1786685240820 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=20 conv_in=1.180 upload=1.279 gpu=1.278 readback=0.864 conv_out=1.262 total=5.876
+[1786685240] perf: t0=1786685240826 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=24 conv_in=0.921 upload=1.556 gpu=0.581 readback=0.315 conv_out=0.898 total=4.281
+[1786685240] perf: t0=1786685240827 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=21 conv_in=1.225 upload=1.074 gpu=0.748 readback=0.538 conv_out=1.095 total=4.689
+[1786685240] perf: t0=1786685240827 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=23 conv_in=0.542 upload=0.761 gpu=1.400 readback=0.648 conv_out=0.801 total=4.159
+[1786685240] perf: t0=1786685240832 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=24 conv_in=0.801 upload=0.604 gpu=0.561 readback=0.425 conv_out=0.730 total=3.127
+[1786685240] perf: t0=1786685240832 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=22 conv_in=1.045 upload=1.010 gpu=0.578 readback=0.581 conv_out=0.611 total=3.835
+[1786685240] perf: t0=1786685240836 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=23 conv_in=0.482 upload=0.414 gpu=0.460 readback=0.389 conv_out=1.030 total=2.782
+[1786685240] perf: t0=1786685240839 depth=U8 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=24 conv_in=1.153 upload=0.426 gpu=0.573 readback=0.676 conv_out=1.031 total=3.871
+[1786685242] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786685242] perf: t0=1786685242914 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=1 conv_in=2.521 upload=0.951 gpu=0.786 readback=0.974 conv_out=1.633 total=8.634
+[1786685242] perf: t0=1786685242938 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=6 conv_in=0.972 upload=1.062 gpu=0.850 readback=0.960 conv_out=1.784 total=5.638
+[1786685242] perf: t0=1786685242979 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=8 conv_in=0.988 upload=1.102 gpu=0.767 readback=0.855 conv_out=1.903 total=5.626
+[1786685242] perf: t0=1786685242985 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=9 conv_in=1.294 upload=1.490 gpu=1.111 readback=1.030 conv_out=1.846 total=6.783
+[1786685242] perf: t0=1786685242992 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=7 conv_in=1.355 upload=1.459 gpu=0.859 readback=0.872 conv_out=1.752 total=6.306
+[1786685243] perf: t0=1786685243010 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=4 conv_in=1.216 upload=1.079 gpu=0.909 readback=1.155 conv_out=1.565 total=5.933
+[1786685243] perf: t0=1786685243030 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=12 conv_in=0.981 upload=1.049 gpu=0.753 readback=1.172 conv_out=1.645 total=5.609
+[1786685243] perf: t0=1786685243052 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=13 conv_in=0.908 upload=0.928 gpu=0.787 readback=1.180 conv_out=1.731 total=5.541
+[1786685243] perf: t0=1786685243057 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=14 conv_in=1.514 upload=1.639 gpu=1.092 readback=1.075 conv_out=2.009 total=7.338
+[1786685243] perf: t0=1786685243066 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=5 conv_in=1.320 upload=1.388 gpu=1.056 readback=1.045 conv_out=1.863 total=6.684
+[1786685243] perf: t0=1786685243073 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=10 conv_in=1.312 upload=1.253 gpu=1.151 readback=1.258 conv_out=2.555 total=7.540
+[1786685243] perf: t0=1786685243081 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=15 conv_in=0.949 upload=0.970 gpu=1.065 readback=1.297 conv_out=2.566 total=6.856
+[1786685243] perf: t0=1786685243089 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=0 conv_in=1.556 upload=2.001 gpu=1.140 readback=1.153 conv_out=2.076 total=7.938
+[1786685243] perf: t0=1786685243112 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=16 conv_in=1.128 upload=1.541 gpu=0.803 readback=0.973 conv_out=1.674 total=6.128
+[1786685243] perf: t0=1786685243119 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=20 conv_in=1.104 upload=1.108 gpu=1.021 readback=1.135 conv_out=1.876 total=6.253
+[1786685243] perf: t0=1786685243125 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=17 conv_in=1.219 upload=1.681 gpu=1.452 readback=1.646 conv_out=2.016 total=8.027
+[1786685243] perf: t0=1786685243140 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=24 conv_in=1.396 upload=1.143 gpu=1.239 readback=1.208 conv_out=1.719 total=6.713
+[1786685243] perf: t0=1786685243146 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=21 conv_in=1.245 upload=1.225 gpu=1.134 readback=0.899 conv_out=1.653 total=6.167
+[1786685243] perf: t0=1786685243152 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=22 conv_in=1.310 upload=1.377 gpu=1.026 readback=1.113 conv_out=2.187 total=7.022
+[1786685243] perf: t0=1786685243161 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=3 conv_in=1.289 upload=1.458 gpu=1.105 readback=0.976 conv_out=1.981 total=6.822
+[1786685243] perf: t0=1786685243167 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=19 conv_in=0.955 upload=1.077 gpu=1.339 readback=1.073 conv_out=1.874 total=6.330
+[1786685243] perf: t0=1786685243174 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=23 conv_in=0.765 upload=1.255 gpu=1.285 readback=1.218 conv_out=1.653 total=6.183
+[1786685243] perf: t0=1786685243180 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=2 conv_in=1.246 upload=1.347 gpu=0.968 readback=0.907 conv_out=1.731 total=6.206
+[1786685243] perf: t0=1786685243187 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=11 conv_in=1.006 upload=1.245 gpu=1.075 readback=1.935 conv_out=2.656 total=7.928
+[1786685243] perf: t0=1786685243196 depth=F32 dims=1280x720 rect=1280x720 passes=1 iters=1 frame=18 conv_in=1.368 upload=1.248 gpu=1.108 readback=1.230 conv_out=1.919 total=6.884
+[1786685244] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 3840x2160, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786685244] perf: t0=1786685244145 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=0 conv_in=22.128 upload=18.475 gpu=9.237 readback=8.623 conv_out=15.307 total=96.851
+[1786685244] perf: t0=1786685244242 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=3 conv_in=11.556 upload=19.840 gpu=10.411 readback=16.004 conv_out=17.826 total=75.657
+[1786685244] perf: t0=1786685244318 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=5 conv_in=23.841 upload=22.555 gpu=12.687 readback=11.090 conv_out=19.473 total=89.667
+[1786685244] perf: t0=1786685244408 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=4 conv_in=11.595 upload=21.530 gpu=10.647 readback=11.679 conv_out=24.263 total=79.742
+[1786685244] perf: t0=1786685244488 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=6 conv_in=15.850 upload=24.583 gpu=11.225 readback=9.465 conv_out=15.363 total=76.507
+[1786685244] perf: t0=1786685244565 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=2 conv_in=10.688 upload=20.466 gpu=8.964 readback=10.648 conv_out=15.258 total=66.042
+[1786685244] perf: t0=1786685244632 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=1 conv_in=11.084 upload=20.555 gpu=10.608 readback=9.569 conv_out=14.121 total=65.957
+[1786685244] perf: t0=1786685244698 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=8 conv_in=10.471 upload=23.134 gpu=10.764 readback=22.438 conv_out=20.796 total=87.626
+[1786685244] perf: t0=1786685244786 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=7 conv_in=12.798 upload=24.316 gpu=11.128 readback=10.377 conv_out=16.653 total=75.293
+[1786685244] perf: t0=1786685244862 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=9 conv_in=12.060 upload=25.085 gpu=11.364 readback=13.165 conv_out=26.285 total=87.983
+[1786685245] perf: t0=1786685244951 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=10 conv_in=14.710 upload=20.479 gpu=11.103 readback=12.166 conv_out=15.516 total=73.995
+[1786685245] perf: t0=1786685245024 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=11 conv_in=11.343 upload=20.100 gpu=10.439 readback=19.911 conv_out=27.604 total=89.419
+[1786685245] perf: t0=1786685245114 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=12 conv_in=16.962 upload=20.345 gpu=10.946 readback=13.129 conv_out=15.832 total=77.231
+[1786685245] perf: t0=1786685245192 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=13 conv_in=11.768 upload=21.831 gpu=10.327 readback=12.088 conv_out=25.128 total=81.170
+[1786685245] perf: t0=1786685245274 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=14 conv_in=22.797 upload=21.119 gpu=10.341 readback=12.634 conv_out=19.968 total=86.882
+[1786685245] perf: t0=1786685245362 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=15 conv_in=11.719 upload=20.843 gpu=9.937 readback=11.248 conv_out=16.931 total=70.699
+[1786685245] perf: t0=1786685245432 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=16 conv_in=22.451 upload=23.620 gpu=12.492 readback=12.667 conv_out=16.211 total=87.464
+[1786685245] perf: t0=1786685245520 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=17 conv_in=13.248 upload=22.718 gpu=11.324 readback=10.789 conv_out=16.517 total=74.617
+[1786685245] perf: t0=1786685245596 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=18 conv_in=11.148 upload=26.570 gpu=11.326 readback=16.656 conv_out=17.038 total=82.759
+[1786685245] perf: t0=1786685245679 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=19 conv_in=11.952 upload=22.019 gpu=10.333 readback=10.080 conv_out=14.321 total=68.722
+[1786685245] perf: t0=1786685245748 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=20 conv_in=11.048 upload=21.634 gpu=11.395 readback=17.197 conv_out=22.450 total=83.751
+[1786685245] perf: t0=1786685245832 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=21 conv_in=13.331 upload=21.344 gpu=11.221 readback=9.862 conv_out=16.562 total=72.339
+[1786685245] perf: t0=1786685245905 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=22 conv_in=11.435 upload=20.536 gpu=10.278 readback=17.424 conv_out=25.183 total=84.884
+[1786685246] perf: t0=1786685245990 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=23 conv_in=13.135 upload=20.910 gpu=10.130 readback=11.386 conv_out=13.839 total=69.422
+[1786685246] perf: t0=1786685246059 depth=F32 dims=3840x2160 rect=3840x2160 passes=1 iters=1 frame=24 conv_in=11.646 upload=20.717 gpu=10.000 readback=12.415 conv_out=23.231 total=78.033

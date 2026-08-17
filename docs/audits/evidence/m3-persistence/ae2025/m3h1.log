@@ -1,0 +1,4 @@
+TORN before=5337207449189657 written=5
+PNG saved m3h1_torn.png expect (51,51,0) — snapshot wins over the torn token
+RESULT M3H1 before=5337207449189657
+RESULT_DONE

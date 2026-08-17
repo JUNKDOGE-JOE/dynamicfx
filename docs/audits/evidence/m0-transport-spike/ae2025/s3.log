@@ -1,0 +1,13 @@
+DIRTY afterSave=false
+SET_A expr=111 dirty=true
+SET_B expr=222 dirty=true
+UNDO1 expr=111 dirty=true
+UNDO2 expr=[] enabled=false dirty=true
+REDO1 expr= dirty=true
+DIRTY afterSave2=false
+PROTO props=40
+PROTO after-compile exprLen=501 status=[Status: idle] f01=[F 01] chan=0 dirty=true
+PROTO afterSave dirty=false
+PROTO idleDirty=false
+PROTO_UNDO1 exprLen=0 status=[Status: idle] f01=[F 01] chan=0 dirty=true
+RESULT_DONE

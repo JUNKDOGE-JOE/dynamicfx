@@ -1,0 +1,14 @@
+SETUP ok
+RT var=A size=4096 immMatch=1 reopenMatch=1
+RT var=A size=262144 immMatch=1 reopenMatch=1
+RT var=A size=1048576 immMatch=1 reopenMatch=1
+RT var=B size=4096 immMatch=1 reopenMatch=1
+RT var=B size=262144 immMatch=1 reopenMatch=1
+RT var=B size=1048576 immMatch=1 reopenMatch=1
+RT var=C size=4096 immMatch=1 reopenMatch=1
+RT var=C size=262144 immMatch=1 reopenMatch=1
+RT var=C size=1048576 immMatch=1 reopenMatch=1
+RT var=D size=5125 immMatch=1 reopenMatch=1
+RT var=D size=327685 immMatch=1 reopenMatch=1
+RT var=D size=1310725 immMatch=1 reopenMatch=1
+RESULT_DONE

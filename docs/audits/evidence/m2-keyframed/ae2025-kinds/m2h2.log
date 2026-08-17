@@ -1,0 +1,6 @@
+SLOT_NAMES count->Count=[Count] flag=[flag] tint=[tint] center=[center] sweep=[sweep]
+DEFAULTS count=3 flag=1 sweep=90
+VALUES set tint=[1,0.5,0.25] center=[240,60]
+PNG saved m2h_kinds.png bands: count 77 / flag 255 / tint (255,128,64) / center (191,64,0) / sweep 64
+RESULT M2H2 defaults count=3 flag=1 sweep=90
+RESULT_DONE

@@ -1,0 +1,4 @@
+DUP layer1_keys=2 layer2_keys=0 layer2_value=0.89999997615814
+PNGS layer1 expect (51,51,0); layer2 expect (115,115,0)
+RESULT M3G l1_keys=2 l2_value=0.89999997615814
+RESULT_DONE

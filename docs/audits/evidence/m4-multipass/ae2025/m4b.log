@@ -1,0 +1,5 @@
+TWO_PASS status=[Status: idle] slot1=[gain]
+PNG m4b_two.png expect center (191,191,255), (32,120)=(242,191,255)
+THREE_PASS set
+RESULT M4B status=[Status: idle]
+RESULT_DONE

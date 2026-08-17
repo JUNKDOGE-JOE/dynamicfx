@@ -1,0 +1,4 @@
+THREE_PASS status=[Status: compiled: 3 passes, 1 p] png expect center (64,64,0)
+RAW set
+RESULT M4C status=[Status: compiled: 3 passes, 1 p]
+RESULT_DONE

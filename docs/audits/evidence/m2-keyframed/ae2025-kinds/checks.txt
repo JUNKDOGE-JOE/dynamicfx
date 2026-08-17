@@ -1,0 +1,25 @@
+--- numeric checks (8-bit expectations) ---
+CHECK m2b_t0.png SKIP (missing)
+CHECK m2b_t04.png SKIP (missing)
+CHECK m2b_t08.png SKIP (missing)
+CHECK m2d_t04.png SKIP (missing)
+CHECK m2e_default.png SKIP (missing)
+CHECK m2g_t04.png SKIP (missing)
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2h_kinds.png (32,120) = 76,76,76,255 (channels=4, 8-bit; 8-bit=76,76,76,255)
+EXPECT [77, 77, 77] tol=3 (8-bit terms) -> PASS
+CHECK m2h_kinds.png (32,120) expect (77,77,77) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2h_kinds.png (96,120) = 255,255,255,255 (channels=4, 8-bit; 8-bit=255,255,255,255)
+EXPECT [255, 255, 255] tol=2 (8-bit terms) -> PASS
+CHECK m2h_kinds.png (96,120) expect (255,255,255) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2h_kinds.png (160,120) = 255,128,64,255 (channels=4, 8-bit; 8-bit=255,128,64,255)
+EXPECT [255, 128, 64] tol=3 (8-bit terms) -> PASS
+CHECK m2h_kinds.png (160,120) expect (255,128,64) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2h_kinds.png (224,120) = 191,64,0,255 (channels=4, 8-bit; 8-bit=191,64,0,255)
+EXPECT [191, 64, 0] tol=3 (8-bit terms) -> PASS
+CHECK m2h_kinds.png (224,120) expect (191,64,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2h_kinds.png (288,120) = 64,64,64,255 (channels=4, 8-bit; 8-bit=64,64,64,255)
+EXPECT [64, 64, 64] tol=3 (8-bit terms) -> PASS
+CHECK m2h_kinds.png (288,120) expect (64,64,64) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2i_overflow.png (160,120) = 10,200,30,255 (channels=4, 8-bit; 8-bit=10,200,30,255)
+EXPECT [10, 200, 30] tol=2 (8-bit terms) -> PASS
+CHECK m2i_overflow.png (160,120) expect (10,200,30) exit=0

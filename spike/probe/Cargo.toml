@@ -1,0 +1,20 @@
+[package]
+name = "dynamicfx-probe"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+publish = false
+
+# Throwaway M0 transport-spike probe (ADR-0009). Measures AE host behavior:
+# arbitrary-data parameter payload capacity (TR-M0-004) and popup menu
+# mutation after setup (TR-M0-006). Never shipped; independent of the root
+# crate on purpose so the M0 governance check sees no runtime diffs.
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+after-effects = "0.4"
+
+[build-dependencies]
+pipl = "0.1"

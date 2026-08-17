@@ -1,0 +1,78 @@
+// Shared helpers for the 0.0.3 feature batch host legs (TR-0015-001,
+// TR-0030-001, TR-0031-001).
+var F003_OUT = ($.getenv("DFX_F003_OUT") || "E:/Code/AePlugin_Dynamicfx/scripts/out/f003/dev") + "/";
+new Folder(F003_OUT).create();
+
+function f003Log(name, s) {
+    var f = new File(F003_OUT + name + ".log");
+    f.encoding = "UTF-8";
+    if (f.open("a")) { f.write(s + "\n"); f.close(); }
+}
+
+// Readiness is the Active token state, not "non-zero": the token is
+// `(payload << 2) | state` and every published diagnostic (state 0b10) is
+// also non-zero — including E53, which is precisely not-ready.
+function f003IsReady(fx) {
+    try { return fx.property(5).value % 4 === 1; } catch (e) { return false; }
+}
+
+function f003TokenState(fx) {
+    try {
+        var v = fx.property(5).value;
+        return { word: v, state: v % 4, payload: Math.floor(v / 4) };
+    } catch (e) { return { word: -1, state: -1, payload: -1 }; }
+}
+
+function f003Status(fx) {
+    try { return fx.property(4).name; } catch (e) { return "<unreadable>"; }
+}
+
+function f003Wrap(source) {
+    return "`" + source + "`;0";
+}
+
+// A comp whose only job is to give the effect a deterministic input.
+function f003NewComp(name, w, h, bpc) {
+    app.project.bitsPerChannel = bpc || 8;
+    try { app.project.workingSpace = ""; } catch (e) {}
+    var comp = app.project.items.addComp(name, w, h, 1.0, 1.0, 25);
+    comp.bgColor = [0, 0, 0];
+    return comp;
+}
+
+// Render one frame as a flattened PSD so `scripts/m1/check_psd_rgb.py` can
+// read exact pixels. The template is matched by name from `om.templates`, and
+// a miss is LOGGED rather than silently accepted: an unmatched
+// `applyTemplate` falls through to AE's default H.264 output, which produced
+// .mp4 files and no numeric evidence at all on 2026-08-15.
+function f003RenderPsd(logName, comp, tag) {
+    // Purge first, ALWAYS. After Effects' disk cache survives a restart and is
+    // not keyed on the plug-in binary, so a rebuilt AEX rendering a
+    // byte-identical comp gets the PREVIOUS build's frames served back — with
+    // no render call, nothing in the plug-in log, and a PSD that looks like
+    // fresh evidence. That happened on 2026-08-16 and cost a whole host cycle:
+    // a leg "reproduced" a result the new binary had never computed.
+    var purged = 0;
+    try { app.purge(PurgeTarget.ALL_CACHES); purged = 1; } catch (e) {}
+    f003Log(logName, "PURGE ok=" + purged);
+    var rq = app.project.renderQueue;
+    var item = rq.items.add(comp);
+    item.render = true;
+    try { item.timeSpanStart = 0; item.timeSpanDuration = comp.frameDuration; } catch (e) {}
+    var om = item.outputModule(1);
+    var applied = "";
+    for (var t = 0; t < om.templates.length; t++) {
+        if (om.templates[t] === "Photoshop") { om.applyTemplate("Photoshop"); applied = "Photoshop"; break; }
+    }
+    if (applied === "") {
+        f003Log(logName, "TEMPLATE_MISS no Photoshop template; pixels will not be readable");
+    }
+    om.file = new File(F003_OUT + tag + "_[#####].psd");
+    try {
+        rq.render();
+        f003Log(logName, "RENDERED " + tag + " tmpl=[" + applied + "] status=" + String(item.status));
+    } catch (e) {
+        f003Log(logName, "RENDER_ERR " + tag + " " + String(e));
+    }
+    try { item.remove(); } catch (e) {}
+}

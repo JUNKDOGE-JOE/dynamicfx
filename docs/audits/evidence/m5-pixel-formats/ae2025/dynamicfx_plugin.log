@@ -1,0 +1,138 @@
+[1786582807] registered with AEGP at global setup
+[1786582807] AEGP idle hook registered
+[1786582807] params setup: ADR-0013 topology
+[1786582807] params setup: complete
+[1786582809] idle observation: compiled: 1 pass, 0 params
+[1786582809] idle slot ui applied: 0 bound, 0 defaults written
+[1786582809] idle state token updated: Active(735227720081179)
+[1786582809] idle observation: compiled: 3 passes, 0 params
+[1786582809] idle slot ui applied: 0 bound, 0 defaults written
+[1786582809] idle state token updated: Active(597775039635775)
+[1786582809] idle observation: compiled: 1 pass, 0 params
+[1786582809] idle slot ui applied: 0 bound, 0 defaults written
+[1786582809] idle state token updated: Active(118106118487749)
+[1786582809] idle observation: compiled: 3 passes, 0 params
+[1786582809] idle slot ui applied: 0 bound, 0 defaults written
+[1786582809] idle state token updated: Active(765547083157748)
+[1786582809] idle observation: compiled: 1 pass, 0 params
+[1786582809] idle slot ui applied: 0 bound, 0 defaults written
+[1786582809] idle state token updated: Active(1363152159716216)
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] definition resolved from process registry
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(95,115) token=597775039635775 compiled=true snap=false
+[1786582823] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1786582823] pipelines built: 3 pass(es), plan 3 step(s), 2 physical intermediate(s) (~3 KiB transient at 11x11, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(4,115) token=597775039635775 compiled=true snap=false
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(155,10) token=597775039635775 compiled=true snap=false
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] definition resolved from process registry
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(155,25) token=118106118487749 compiled=true snap=false
+[1786582823] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 11x11, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(155,85) token=118106118487749 compiled=true snap=false
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(155,145) token=118106118487749 compiled=true snap=false
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(95,205) token=118106118487749 compiled=true snap=false
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] definition resolved from process registry
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(155,25) token=765547083157748 compiled=true snap=false
+[1786582823] pipelines built: 3 pass(es), plan 3 step(s), 2 physical intermediate(s) (~3 KiB transient at 11x11, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(155,85) token=765547083157748 compiled=true snap=false
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(155,145) token=765547083157748 compiled=true snap=false
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(95,205) token=765547083157748 compiled=true snap=false
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] definition resolved from process registry
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(155,115) token=735227720081179 compiled=true snap=false
+[1786582823] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 11x11, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786582823] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582823] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582823] render enter: Some(U15) in=320x240 out=11x11 win=(155,10) token=735227720081179 compiled=true snap=false
+[1786582826] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582826] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582826] definition resolved from process registry
+[1786582826] render enter: Some(U15) in=320x240 out=384x288 win=(-32,-24) token=597775039635775 compiled=true snap=false
+[1786582826] pipelines built: 3 pass(es), plan 3 step(s), 2 physical intermediate(s) (~2400 KiB transient at 320x240, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786582829] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582829] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582829] render enter: Some(F32) in=320x240 out=11x11 win=(155,25) token=118106118487749 compiled=true snap=false
+[1786582829] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 11x11, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786582829] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582829] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582829] render enter: Some(F32) in=320x240 out=11x11 win=(155,85) token=118106118487749 compiled=true snap=false
+[1786582829] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582829] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582829] render enter: Some(F32) in=320x240 out=11x11 win=(155,145) token=118106118487749 compiled=true snap=false
+[1786582829] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582829] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582829] render enter: Some(F32) in=320x240 out=11x11 win=(95,205) token=118106118487749 compiled=true snap=false
+[1786582829] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582829] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582829] render enter: Some(F32) in=320x240 out=11x11 win=(155,25) token=765547083157748 compiled=true snap=false
+[1786582829] pipelines built: 3 pass(es), plan 3 step(s), 2 physical intermediate(s) (~3 KiB transient at 11x11, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786582829] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582829] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582829] render enter: Some(F32) in=320x240 out=11x11 win=(155,85) token=765547083157748 compiled=true snap=false
+[1786582829] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582829] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582829] render enter: Some(F32) in=320x240 out=11x11 win=(155,145) token=765547083157748 compiled=true snap=false
+[1786582829] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582829] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582829] render enter: Some(F32) in=320x240 out=11x11 win=(95,205) token=765547083157748 compiled=true snap=false
+[1786582829] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582829] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582829] render enter: Some(F32) in=320x240 out=384x288 win=(-32,-24) token=118106118487749 compiled=true snap=false
+[1786582832] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582832] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582832] definition resolved from process registry
+[1786582832] render enter: Some(U8) in=320x240 out=11x11 win=(95,115) token=1363152159716216 compiled=true snap=false
+[1786582832] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 11x11, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786582832] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582832] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582832] render enter: Some(U8) in=320x240 out=11x11 win=(4,115) token=1363152159716216 compiled=true snap=false
+[1786582832] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582832] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582832] render enter: Some(U8) in=320x240 out=11x11 win=(155,10) token=1363152159716216 compiled=true snap=false
+[1786582834] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582834] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582834] render enter: Some(U8) in=320x240 out=11x11 win=(155,115) token=735227720081179 compiled=true snap=false
+[1786582834] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 11x11, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786582834] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582834] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582834] render enter: Some(U8) in=320x240 out=11x11 win=(155,10) token=735227720081179 compiled=true snap=false
+[1786582834] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582834] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582834] render enter: Some(F32) in=320x240 out=11x11 win=(155,115) token=735227720081179 compiled=true snap=false
+[1786582834] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 11x11, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786582834] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582834] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582834] render enter: Some(F32) in=320x240 out=11x11 win=(155,10) token=735227720081179 compiled=true snap=false
+[1786582836] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582836] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582836] render enter: Some(F32) in=320x240 out=11x11 win=(155,25) token=118106118487749 compiled=true snap=false
+[1786582836] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582836] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582836] render enter: Some(F32) in=320x240 out=11x11 win=(155,85) token=118106118487749 compiled=true snap=false
+[1786582836] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582836] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582836] render enter: Some(F32) in=320x240 out=11x11 win=(155,145) token=118106118487749 compiled=true snap=false
+[1786582836] smart cmd (render=false): seq_raw_null=false const_seq_ok=true
+[1786582836] smart cmd (render=true): seq_raw_null=false const_seq_ok=true
+[1786582836] render enter: Some(F32) in=320x240 out=11x11 win=(95,205) token=118106118487749 compiled=true snap=false

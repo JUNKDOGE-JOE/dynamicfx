@@ -1,0 +1,4 @@
+GUI_PNG saved m1c_gui.png expect uv gradient (R=x, G=y, B=0, A=255)
+STATUS [Status: idle] token_nonzero=1
+RESULT M1C status=[Status: idle] token_nonzero=1
+RESULT_DONE

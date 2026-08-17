@@ -1,0 +1,19 @@
+SETUP bpc=8 ws=[None]
+SETUP comps ready; polling StateToken readiness
+WAIT ready 0/9
+READY 9/9 after 2 poll(s)
+STEP1 gradient scenes at bpc=8
+SCENE grad720_8 bpc=8 begin=1786611072 end=1786611074 wall_ms=1197 status=DONE
+SCENE grad4k_8 bpc=8 begin=1786611074 end=1786611077 wall_ms=2227 status=DONE
+STEP2 thermal scenes at bpc=8
+SCENE thermal720_8 bpc=8 begin=1786611078 end=1786611080 wall_ms=1400 status=DONE
+SCENE thermal4k_8 bpc=8 begin=1786611080 end=1786611083 wall_ms=3494 status=DONE
+STEP3 temporal + multi at bpc=8
+SCENE temporal720_8 bpc=8 begin=1786611085 end=1786611086 wall_ms=1231 status=DONE
+SCENE multi720_8 bpc=8 begin=1786611086 end=1786611088 wall_ms=1254 status=DONE
+STEP4 gradient scenes at bpc=32
+SCENE grad720_32 bpc=32 begin=1786611089 end=1786611091 wall_ms=1342 status=DONE
+SCENE grad4k_32 bpc=32 begin=1786611091 end=1786611096 wall_ms=4839 status=DONE
+SAVED E:\Code\AePlugin_Dynamicfx\scripts\out\m7\2025\m7.aep
+RESULT M7BENCH complete
+RESULT_DONE

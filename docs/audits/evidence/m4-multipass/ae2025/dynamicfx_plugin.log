@@ -1,0 +1,56 @@
+[1786563393] registered with AEGP at global setup
+[1786563393] AEGP idle hook registered
+[1786563393] params setup: ADR-0013 topology
+[1786563393] params setup: complete
+[1786563394] idle observation: compiled: 2 passes, 1 params
+[1786563394] idle slot ui applied: 1 bound, 1 defaults written
+[1786563394] idle state token updated: Active(747630102619078)
+[1786563407] status: compiled: 2 passes, 1 params
+[1786563407] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1786563407] definition resolved from process registry
+[1786563407] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1786563407] status: compiled: 3 passes, 1 params
+[1786563407] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1786563407] pipelines built: 2 pass(es), plan 2 step(s), 1 physical intermediate(s) (~300 KiB transient at 320x240) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786563407] idle slot ui applied: 1 bound, 0 defaults written
+[1786563407] idle state token updated: Active(441874660771964)
+[1786563407] definition resolved from process registry
+[1786563407] pipelines built: 3 pass(es), plan 3 step(s), 2 physical intermediate(s) (~600 KiB transient at 320x240) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786563416] definition resolved from process registry
+[1786563416] pipelines built: 3 pass(es), plan 3 step(s), 2 physical intermediate(s) (~600 KiB transient at 320x240) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786563416] definition resolved from process registry
+[1786563416] pipelines built: 3 pass(es), plan 3 step(s), 2 physical intermediate(s) (~600 KiB transient at 320x240) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786563421] status: compiled: 1 pass, 1 params
+[1786563421] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1786563421] idle slot ui applied: 1 bound, 0 defaults written
+[1786563421] idle state token updated: Active(340566766980533)
+[1786563421] definition resolved from process registry
+[1786563421] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786563429] definition resolved from process registry
+[1786563429] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786563429] definition resolved from process registry
+[1786563429] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786563435] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1786563435] idle slot ui applied: 1 bound, 0 defaults written
+[1786563435] idle state token updated: Active(1852353459387270)
+[1786563435] definition resolved from process registry
+[1786563435] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786563443] definition resolved from process registry
+[1786563443] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786563443] definition resolved from process registry
+[1786563443] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786563449] idle observation: envelope line 3: cycle involving pass `a`
+[1786563449] idle state token updated: Invalid(6)
+[1786563449] status: E6 envelope line 3: cycle involving pass `a`
+[1786563485] registered with AEGP at global setup
+[1786563485] AEGP idle hook registered
+[1786563485] params setup: ADR-0013 topology
+[1786563485] params setup: complete
+[1786563486] idle observation: compiled: 2 passes, 1 params
+[1786563486] idle slot ui applied: 1 bound, 1 defaults written
+[1786563486] idle state token updated: Active(747630102619078)
+[1786563499] status: compiled: 2 passes, 1 params
+[1786563499] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1786563499] definition resolved from process registry
+[1786563499] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1786563499] pipelines built: 2 pass(es), plan 2 step(s), 1 physical intermediate(s) (~300 KiB transient at 320x240) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")

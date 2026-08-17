@@ -1,0 +1,32 @@
+CHECK acc8 f5 (shuffled) = 0.094117656 expect 0.094117647 PASS
+CHECK acc8 f0 (shuffled) = 0.015686275 expect 0.015686275 PASS
+CHECK acc8 f12 (shuffled) = 0.203921586 expect 0.203921569 PASS
+CHECK acc8 f3 (shuffled) = 0.062745102 expect 0.062745098 PASS
+CHECK acc8 f20 (shuffled) = 0.250980407 expect 0.250980392 PASS
+CHECK acc8 f8 (shuffled) = 0.141176477 expect 0.141176471 PASS
+CHECK acc8 f30 (shuffled) = 0.250980407 expect 0.250980392 PASS
+CHECK acc8 f12 (shuffled) = 0.203921586 expect 0.203921569 PASS
+CHECK acc8 f1 (shuffled) = 0.031372551 expect 0.031372549 PASS
+CHECK acc8 f15 (shuffled) = 0.250980407 expect 0.250980392 PASS
+CHECK acc8 f16 (shuffled) = 0.250980407 expect 0.250980392 PASS
+CHECK acc8 f7 (shuffled) = 0.125490203 expect 0.125490196 PASS
+CHECK acc32 f10 (shuffled) = 0.171875000 expect 0.171875000 PASS
+CHECK acc32 f2 (shuffled) = 0.046875000 expect 0.046875000 PASS
+CHECK acc32 f0 (shuffled) = 0.015625000 expect 0.015625000 PASS
+CHECK acc32 f25 (shuffled) = 0.250000000 expect 0.250000000 PASS
+CHECK acc32 f6 (shuffled) = 0.109375000 expect 0.109375000 PASS
+CHECK acc32 f15 (shuffled) = 0.250000000 expect 0.250000000 PASS
+CHECK acc32 f40 (shuffled) = 0.250000000 expect 0.250000000 PASS
+CHECK acc32 f6 (shuffled) = 0.109375000 expect 0.109375000 PASS
+CHECK acc32 f20 (@window 8) = 0.125000000 expect 0.125000000 PASS
+CHECK acc32 f3 (@window 8) = 0.062500000 expect 0.062500000 PASS
+CHECK rq f0 = 4 expect 4 PASS
+CHECK rq f15 = 64 expect 64 PASS
+CHECK rq f24 = 64 expect 64 PASS
+CHECK rq sequence: 25 frames, 0 wrong
+CHECK ar f0 = 4 expect 4 PASS
+CHECK ar f15 = 64 expect 64 PASS
+CHECK ar f24 = 64 expect 64 PASS
+CHECK ar sequence: 25 frames, 0 wrong
+RECORD windowed renders logged: 96
+CHECKS_RESULT fails=0

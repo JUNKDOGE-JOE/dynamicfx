@@ -1,0 +1,49 @@
+[19:01:27] battery4 started
+[19:01:27] SUITE m1 BEGIN
+[19:01:27] STEP scripts\m1\run_m1.ps1 -Year 2025
+[19:02:30] STEP_OK scripts\m1\run_m1.ps1 -Year 2025
+[19:02:36] STEP scripts\m1\run_m1.ps1 -Year 2025 -Aerender
+[19:02:49] STEP_OK scripts\m1\run_m1.ps1 -Year 2025 -Aerender
+[19:02:54] STEP scripts\m1\run_m1.ps1 -Year 2025 -Checks
+[19:02:55] STEP_OK scripts\m1\run_m1.ps1 -Year 2025 -Checks
+[19:03:00] SUITE m1 PASS
+[19:03:00] SUITE m2 BEGIN
+[19:03:00] STEP scripts\m2\run_m2.ps1 -Year 2025
+[19:03:58] STEP_OK scripts\m2\run_m2.ps1 -Year 2025
+[19:04:03] STEP scripts\m2\run_m2.ps1 -Year 2025 -Checks
+[19:04:04] STEP_OK scripts\m2\run_m2.ps1 -Year 2025 -Checks
+[19:04:09] SUITE m2 PASS
+[19:04:09] SUITE m3 BEGIN
+[19:04:09] STEP scripts\m3\run_m3.ps1 -Year 2025
+[19:06:07] STEP_OK scripts\m3\run_m3.ps1 -Year 2025
+[19:06:12] STEP scripts\m3\run_m3.ps1 -Year 2025 -Session4
+[19:09:34] STEP_OK scripts\m3\run_m3.ps1 -Year 2025 -Session4
+[19:09:39] STEP scripts\m3\run_m3.ps1 -Year 2025 -Aerender
+[19:09:52] STEP_OK scripts\m3\run_m3.ps1 -Year 2025 -Aerender
+[19:09:57] STEP scripts\m3\run_m3.ps1 -Year 2025 -Checks
+[19:09:58] STEP_OK scripts\m3\run_m3.ps1 -Year 2025 -Checks
+[19:10:03] SUITE m3 PASS
+[19:10:03] SUITE m4 BEGIN
+[19:10:03] STEP scripts\m4\run_m4.ps1 -Year 2025
+[19:12:18] STEP_OK scripts\m4\run_m4.ps1 -Year 2025
+[19:12:23] STEP scripts\m4\run_m4.ps1 -Year 2025 -Checks
+[19:12:24] STEP_OK scripts\m4\run_m4.ps1 -Year 2025 -Checks
+[19:12:29] SUITE m4 PASS
+[19:12:29] SUITE m5 BEGIN
+[19:12:29] STEP scripts\m5\run_m5.ps1 -Year 2025
+[19:13:40] STEP_OK scripts\m5\run_m5.ps1 -Year 2025
+[19:13:45] STEP scripts\m5\run_m5.ps1 -Year 2025 -Checks
+[19:13:45] STEP_OK scripts\m5\run_m5.ps1 -Year 2025 -Checks
+[19:13:50] SUITE m5 PASS
+[19:13:50] SUITE m6 BEGIN
+[19:13:50] STEP scripts\m6\run_m6.ps1 -Year 2025
+[19:15:08] STEP_OK scripts\m6\run_m6.ps1 -Year 2025
+[19:15:13] STEP scripts\m6\run_m6.ps1 -Year 2025 -QuitAE
+[19:15:16] STEP_OK scripts\m6\run_m6.ps1 -Year 2025 -QuitAE
+[19:15:21] STEP scripts\m6\run_m6.ps1 -Year 2025 -Aerender
+[19:15:36] STEP_OK scripts\m6\run_m6.ps1 -Year 2025 -Aerender
+[19:15:41] STEP scripts\m6\run_m6.ps1 -Year 2025 -Checks
+[19:15:42] STEP_OK scripts\m6\run_m6.ps1 -Year 2025 -Checks
+[19:15:47] SUITE m6 PASS
+[19:15:47] BATTERY4 PASS
+[19:15:47] BATTERY4_DONE

@@ -1,0 +1,174 @@
+# Implementation status
+
+> **This file is the only authority for what is true now.**  
+> Architecture intent belongs in [ARCHITECTURE.md](ARCHITECTURE.md); future sequencing belongs in [ROADMAP.md](ROADMAP.md); verification truth belongs in [TEST_MATRIX.md](TEST_MATRIX.md).
+
+## Snapshot
+
+| Field | Value |
+|---|---|
+| Status date | 2026-08-15 |
+| Working branch at initialization | `codex/stabilize-programmatic-flow` |
+| Current milestone | **M7 — Performance, SmartRender, and MFR** |
+| Milestone state | **M7 COMPLETE (exited 2026-08-14; TR-M7-001…006). All M0-M7 milestones are exited with evidence on Windows AE 2025. Cumulative M7: −36…−53% p50 everywhere, temporal @16 −81%, 4K float halved, ROI ~3.5× on small requests with identical pixels, WYSIWYG verified, MFR stance measured and confirmed, budgets enforced. The milestone sequence is exhausted; work moves to host-matrix expansion and recorded follow-ups** |
+| Runtime code in `src/` | Target architecture end-to-end for one pass: topology, observation, idle observer, session-token transport, ABI v1 GPU path (DX12) |
+| Target architecture implementation | Complete through M7 on Windows: params/observation/persistence/multi-pass/depths/temporal/perf all live; AE 2025 + AE 2026 full-suite verified |
+| Current audit | [M7 Performance/SmartRender/MFR](audits/07-performance-mfr.md) (complete; all M0-M7 audits closed) |
+| Released | **0.0.2 public pre-release, 2026-08-14** (TR-REL-002: color defaults, slider precision, Details dialog, logical-resolution ABI) — previously **0.0.1, 2026-08-14** — [github.com/JUNKDOGE-JOE/dynamicfx](https://github.com/JUNKDOGE-JOE/dynamicfx) (curated public repo, MIT) + Releases v0.0.1 (TR-REL-001) and v0.0.2 (`DynamicFX-0.0.2-win-x64.zip`, TR-REL-002); the development record moved into this repository on 2026-08-17 per [ADR-0036](adr/0036-single-repository-record.md) |
+| Record location | **This repository is the whole record** (code + ADRs + audits + test matrix + evidence). The former private repo `dynamicfx-dev` was archived read-only on 2026-08-17, frozen at `d07755c` on branch `codex/stabilize-programmatic-flow`; it holds the unredacted history and is never a write target. One document is withheld from publication and its six citation redactions are listed in [ADR-0036 §4](adr/0036-single-repository-record.md). |
+| Exact next action | **Develop from a clone of this repository, not the old local tree.** The working copy at the former private path still points at the archived remote and still carries the withheld document in its history — commits made there go nowhere and must never be pushed here (ADR-0036 §2). After that, pick the next feature. The release is live at <https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.0.3> (pre-release), the curated public tree is pushed, and the private record is tagged `v0.0.3` ([TR-REL-003](TEST_MATRIX.md#tr-rel-003--003-release-verification)). Nothing is in flight. The two strongest candidates from this cycle's own findings are (a) making the build byte-reproducible, which the release procedure currently works around by never rebuilding after verification, and (b) the growth-pool label limitation, which needs the `AEGP_SetStreamName` undo-group requirement understood before it can be retried. Both are recorded below; neither is scheduled. |
+
+The M0 documentation set is committed (governance baseline `fe3ada7`, then the ADR-0009 staging commit). A future session must still inspect `git status` and recent commits rather than assuming a clean tree.
+
+## What is complete
+
+### Approved and documented
+
+- Product and engineering decisions P1-P11 are fixed in [ARCHITECTURE.md](ARCHITECTURE.md) and the Accepted ADRs.
+- Competitor static research produced adopt/defer/reject boundaries that are recorded in [ARCHITECTURE.md](ARCHITECTURE.md) and the ADRs; the research document itself is not published ([ADR-0036](adr/0036-single-repository-record.md)).
+- The target runtime is an in-place breaking rewrite of the unreleased `DynamicFx`.
+- Language selection, extensible frontends, multi-pass RenderGraph, stable parameter IDs, new state schema, identity/cache separation, host matrix, image-quality order, and optional authoring scope are documented.
+- Repository handoff rules, milestone structure, test evidence policy, ADR process, and audit process are documented.
+- Governance check `TR-M0-001` is `PASS`: [raw report](audits/00-governance-check.txt) and [M0 audit](audits/00-architecture-contract.md).
+- Format-ADR acceptance is staged at milestone entries by [ADR-0009](adr/0009-staged-format-adr-acceptance.md); the M0-blocking set is ADRs 0010-0014.
+- The M0 transport feasibility spike (TR-M0-002..TR-M0-007) is defined in [TEST_MATRIX.md](TEST_MATRIX.md) and gates M0 exit alongside the ADRs.
+- The M0 governance baseline is committed at `fe3ada7`.
+- Transport spike executed on AE 2025 (25.6.6x4): TR-M0-002..007 all `PASS`. Evidence in [TEST_MATRIX.md](TEST_MATRIX.md) and `docs/audits/evidence/m0-transport-spike/ae2025/`. Instruments: `scripts/spike/s*.jsx`, driver `run_spike.ps1`, checkers `check_png.py`/`check_psd.py`, probe crate `spike/probe/`. AE 2026 re-verification remains `NOT_RUN`.
+- Spike results feeding ADR-0012/0013: expressions carry ≥16 MB byte-exact; sequence flatten round-trips 16 MB (but a 33 MB project crashed AE → cap payload size); Popup menus are fixed at PARAMS_SETUP (no runtime mutation); the arb-parameter value write path is ineffective (drop DefinitionData, use the sequence snapshot); scripted writes don't reach the plugin as commits (idle observer required).
+- ADR-0012 and ADR-0013 were **Accepted 2026-08-12** with explicit user approval, completing the M0-blocking format set: `@dynamicfx` reserved prefix with fail-closed versioning, 4 MiB committed-source cap, 8 MiB persisted-snapshot budget; ParamId grammar with single-generation aliases, a 104-slot v1 pool table (no Popup kind), append-only growth, and removal of the DefinitionData parameter. `ARCHITECTURE.md` §4/§4.2/§7.1/§13/§23 are synced to the accepted contracts.
+- **M0 exited 2026-08-12.** [ROADMAP.md](ROADMAP.md) and the [M0 audit](audits/00-architecture-contract.md) record the exit; the [M1 audit](audits/01-first-frame.md) was created at entry.
+- M1 domain first slice (2026-08-12): host-agnostic modules `src/frontend/` (ADR-0010 Language registry; ADR-0012 source classifier and size limits), `src/definition/param.rs` (ADR-0013 ParamId grammar, reserved names, vec4 Color+Float pairing, shared ID/alias namespace), `src/binding.rs` (`V1_POOLS` single config source, fresh BindingPlan with atomic overflow rejection).
+- M1 topology + observation slice (2026-08-12): `src/host/params.rs` declares the ADR-0013 topology (5 heads + 104 pool slots; `declaration_order()` is the unit-tested index contract); `src/frontend/glsl.rs` implements `LanguageFrontend` (naga parse, ABI v1 head/binding checks, parameter reflection); `src/definition/effect.rs` lowers raw source to a one-pass `EffectDefinition`; `src/lib.rs` rewritten (observe → classify → frontend → publish; zero-byte flatten per ADR-0009; prototype transport and `idle.rs` deleted per ADR-0004/0013).
+- M2 slice 1 (2026-08-12): `binding::build_with_reuse` — exact-ID then single-generation alias inheritance, kind-change reallocation, hole-filling free allocation, atomic capacity over the complete plan (six new tests; 44 green). Lowering seeds reuse from the previous plan so source edits keep keyframed slots. Slot names + DynamicStream visibility apply from UI callbacks AND from the idle observer via AEGP (scripted path needs no UI callback).
+- **M4 exited 2026-08-13** (TR-M4-001 `PASS`, artifact `F0AFAE74…`, [04-multipass-graph.md](audits/04-multipass-graph.md)): entry ADRs 0018/0019/0020 Accepted, then `frontend/grammar.rs` (envelope parser + full rule catalogue, line-numbered `E6`), `plan.rs` (deterministic first-fit aliasing, chain/diamond goldens), multi-input frontend (reserved bindings budgeted by the manifest), effect-wide parameter merge, unified multi-pass executor (raw = implicit one-pass plan). Host: two-pass invert chain exact; three-pass chain equals the generator with 2 physical intermediates logged; raw/envelope identity; cyclic graph `E6 line 3` in Status AND the token; no-alias A/B identical. Finding fixed same-day: the idle sync's M1-era "envelope → E3" rule published lying Invalid tokens (run 1 archived; caught by the numeric probes).
+- **M3 exited 2026-08-12** (TR-M3-001 `PASS`, artifact `82CEA1AA…`, [03-persistence-render-clone.md](audits/03-persistence-render-clone.md)): entry ADRs 0015/0016/0017 Accepted, then `identity.rs` (BLAKE3 domain hashing, golden-pinned), `diagnostics.rs` (u16 append-only registry), `persistence.rs` (`DFXS` v1 codec, CRC-32, every-byte-flip tested), ADR-0015 token states live (word 70 = E17 observed), snapshot-seeded restore. Host: fresh-process reopen and **aerender both render the shader pixel-exact without Compile**; corruption fails closed and recovers via the expression; duplicates isolate (51 vs 115); torn token loses to the snapshot and is corrected; save stays clean under continued idle. Findings: reopen slot-UI restore defect fixed (staleness probe); measured host fact — each AEGP token write costs one undo entry.
+- **M2 exited 2026-08-12** with three PASS records on AE 2025 ([02-keyframed-params.md](audits/02-keyframed-params.md)): TR-M2-001 (keyframed interpolation exact 0/102/204; source edits keep slots+keyframes by stable ID), TR-M2-002 (`@param` grammar live — labels/ranges/defaults/alias; defaults-before-streams holds at gray 127; rename-with-alias keeps keyframes, new defaults never touch inherited bindings), TR-M2-003 (value encodings pinned for int/bool/color/point/angle in one five-band fixture; bool = `int + hint:bool` per ADR-0011 "bool as i32" — std140 rejects bool members, caught in the unit-pinned fixture; 49-float overflow rejected atomically with visible diagnostic + pass-through). v1 boundary recorded: color/point annotation defaults are scalar-only-rejected pending AEGP value plumbing.
+- **M1 exited 2026-08-12 with the first verified frame on AE 2025.** GPU path rewritten to ABI v1 (DX12-only per ADR-0014, adapter identity in evidence), session-token transport (StateToken stream + process registry, fail-closed on miss), idle observer ported (`src/host/idle.rs`). TR-M1-001..004 all `PASS`: 38 Rust tests; warning-free release build (`BDDB51F1…`, toolchain 1.97.1 pinned); 110-property tree loads and survives save/reopen with Language locked to GLSL; scripted gradient shader rendered with numerically exact probes; invalid source → diagnostic + byte-exact pass-through; aerender measured fail-closed pass-through (M3 closes it). Evidence: [TEST_MATRIX.md](TEST_MATRIX.md) result records + [audits/evidence/m1-first-frame/ae2025/](audits/evidence/m1-first-frame/ae2025/); audit: [01-first-frame.md](audits/01-first-frame.md).
+
+### Prototype baseline evidence
+
+A `cargo test --all` run was executed against the pre-rewrite prototype during the project-understanding session:
+
+```text
+19 passed; 0 failed
+warnings: validate_glsl and wrap_source are unused
+```
+
+Status: `PROTOTYPE_BASELINE`.
+
+This result does **not** verify the target parameter topology, Language frontend, RenderGraph, state schema v1, multi-pass execution, Windows AE 2023-2026, high-precision formats, temporal feedback, SmartRender, or MFR. See [TEST_MATRIX.md](TEST_MATRIX.md).
+
+## What is not implemented
+
+No target-architecture runtime code has been completed for:
+
+- color/point annotation default values (v1-rejected as scalar-only; needs AEGP Color/TwoD stream-value plumbing);
+- per-pass timing evidence (deferred to M7's measurement framework);
+- target identity/hash domains and caches;
+- temporal history resources;
+- Windows AE 2023-2026 target regression;
+- ROI-aware smart rendering, render caching, or MFR (a minimal SmartFX entry exists for float color per the M5 scope note; every smart render currently renders the full frame — M7);
+- an idle-compile → frame-cache invalidation mechanism (frames rendered pre-compile stay cached until an ordinary dirty; measured at M5, noted for M6/M7);
+- local effect packages or optional editor.
+
+The current source files still implement the prototype GLSL/single-pass/SourceChannel/flattened-v3 design and are expected to be replaced rather than preserved for compatibility.
+
+## Target host verification
+
+| Host | Target rewrite status |
+|---|---|
+| Windows AE 2023 | `BLOCKED`: AE 23.0 itself fast-fails at launch on this machine — exit 0xC0000409 ~10 s, measured 2026-08-14 both WITH and WITHOUT DynamicFx installed (A/B); suspect 23.0-vintage host vs RTX 5080 driver. Retest after updating AE 2023 to its latest 23.x |
+| Windows AE 2024 | `NOT_RUN` (`BLOCKED`: host not installed; release gate per ADR-0014 §7) |
+| Windows AE 2025 | All M1-M7 rows `PASS` (TR-M1…TR-M7-006; exit artifact `4AD318E6…`, 2026-08-14) |
+| Windows AE 2026 | Full-suite `PASS` (TR-Y26-001, AE 26.3, exit artifact `4AD318E6…`, 2026-08-14) |
+| Windows aerender | M1 leg measured: fail-closed pass-through (shader transport arrives with M3); shader-output rows `NOT_RUN` |
+| Apple Silicon macOS | Out of current implementation scope; follows Windows stability |
+
+Do not change any target entry to `PASS` here directly. First add a complete result to [TEST_MATRIX.md](TEST_MATRIX.md), link its raw evidence and audit, then summarize it here.
+
+## Current blockers and unknowns
+
+M0 and M1 both exited 2026-08-12 (format ADRs 0010-0014 Accepted; transport spike 6/6 PASS; first frame verified on AE 2025). No blocker gates M2 implementation — ADR-0009 requires no M2-entry ADR.
+
+Non-blocking follow-ups:
+
+- shader output under aerender and after project reopen waits on M3 persistence (fail-closed pass-through until then — by design, measured);
+- AE 2026: M1 harness re-run plus the M0 spike re-verification (both `NOT_RUN`);
+- probe plugin uninstall from AE 2025 after the 2026 spike re-run;
+- AE 2023/2024 host provisioning remains a release gate (ADR-0014 §7);
+- M3/M4/M6-staged contracts stay session-local until their entry ADRs are Accepted.
+
+Contracts staged to later milestone entries (M3: StateToken with undo/dirty semantics and the diagnostic code registry, sequence schema v1, hash/canonical serialization; M4: full envelope grammar, intermediate format policy, ExecutionPlan aliasing; M6: temporal seek/reset, history format policy) must remain session-local and non-persistent until their entry ADRs are Accepted.
+
+These are format ADRs, not invitations to revisit the Accepted product decisions.
+
+## Agreed plan after M7
+
+The M0-M7 milestone ladder is exhausted (M7 exited 2026-08-14). Sequencing is now release-driven; [ROADMAP.md](ROADMAP.md) holds the ordering authority, this section holds the contents and current position. Agreed with the user 2026-08-15.
+
+### 0.0.3 batch — ACTIVE
+
+1. **Not-ready marker — code-complete 2026-08-15, host-`NOT_RUN`.** Two findings reshaped this item before implementation, both recorded in [TR-0015-001](TEST_MATRIX.md#tr-0015-001--not-ready-marker-e53):
+   - *A pixel marker driven from the render side is not buildable.* "Committed but unpublished" and "never authored" are identical on every signal a render clone can see — StateToken 0, no snapshot, and a `Source` slider reading its own 0.0 default either way, because the committed expression ends in `;0`. Reading the expression text needs AEGP, which render-side code may not call. Any render-side marker would therefore also mark every freshly-applied effect.
+   - *The measured 25 s was not bridge slowness.* The idle hook scans every instance every second ([idle.rs](../src/host/idle.rs)); in the audit-07 scenario the script itself held the main thread through a blind `$.sleep`, so **no idle pass ran at all**. The same mechanism explains the second failure there (a host modal blocking the idle window).
+
+   Delivered instead: **(A)** `Diag::PublicationPending = 53` published by the idle bridge where it previously wrote nothing, which is what makes the state observable at all — plus an honest UI status when `registry_insert` is refused; **(B)** the scripted readiness contract documented publicly with a working `scheduleTask` poll, since B is the only half that covers the scenario that actually burned us. A supplies the signal B polls on.
+2. **`examples/` — done 2026-08-15** ([TR-EX-001](TEST_MATRIX.md#tr-ex-001--shipped-examples-compile)). `thermal.glsl` (6-pass graph) ported verbatim from the M7 benchmark shader plus ADR-0026 hex defaults; `orb.glsl` (new) showcases temporal feedback, which thermal does not. Both are compiled by `cargo test` from their exact shipped bytes, so the grammar cannot drift away from them. `examples/` is now inside the governance link check. **Visual result is unverified** — the benchmark never set parameter values, so thermal's intended palette has never rendered on a host.
+3. **Ride-along, already committed:** the [ADR-0028](adr/0028-details-button-and-slider-precision.md) belt-and-braces precision line in `configure_slots`.
+
+**Batch exit:** one host pass on AE 2025 + 2026 covering the TR-0015-001 host leg and the full M1-M7 batteries, then package and release. Per-fix host runs are deliberately avoided; the inner loop stays unit-tests + governance.
+
+### Then, in order — both pulled into this batch 2026-08-15 at the user's direction (write both controls, then run one host pass)
+
+1. **Layer-input parameters `hint:layer`** — [public issue #1](https://github.com/JUNKDOGE-JOE/dynamicfx/issues/1). [ADR-0030](adr/0030-layer-input-parameters.md) Accepted; **code-complete 2026-08-15**, host-`NOT_RUN` ([TR-0030-001](TEST_MATRIX.md#tr-0030-001--layer-input-parameters)).
+2. **Gradient control `hint:gradient`** — [public issue #2](https://github.com/JUNKDOGE-JOE/dynamicfx/issues/2). [ADR-0031](adr/0031-gradient-parameters.md) Accepted, its §2 corrected by [ADR-0032](adr/0032-gradients-are-graph-resources.md) (an unexecutable binding rule found during ADR-0030 implementation). **Code-complete 2026-08-15**, host-`NOT_RUN` ([TR-0031-001](TEST_MATRIX.md#tr-0031-001--gradient-parameters)) — including the §7 Drawbot editor, which is the least verifiable surface in the batch.
+
+3. **Point 3D `hint:point3d`** — [ADR-0034](adr/0034-point3d-parameters.md) Accepted 2026-08-15, **code-complete 2026-08-16**, host-`NOT_RUN` ([TR-0034-001](TEST_MATRIX.md#tr-0034-001--point-3d-parameters)). Closes the last kind [ADR-0013](adr/0013-paramid-grammar-and-pools.md) §3 left *reserved*. A shader could not declare a three-component **spatial** value at all, because [ADR-0026](adr/0026-color-parameter-default-annotation.md) makes every `vec3` a colour; the workaround was three separate floats, which loses the crosshair widget and gives three keyframe streams where the user expects one.
+4. **Paths `hint:path`** — [ADR-0035](adr/0035-path-parameters.md) Accepted 2026-08-15, **code-complete 2026-08-16**, host-`NOT_RUN` ([TR-0035-001](TEST_MATRIX.md#tr-0035-001--path-parameters)). A mask was the one piece of AE authoring a shader could not see. Delivered as an `N x 2` `Rgba32Float` vertex texture whose **width is the vertex count**, so the count cannot disagree with the data; Beziers are delivered rather than flattened, because the sampling density is the shader's business.
+
+**Host pass on AE 2025, 2026-08-16 — everything green, and it earned its keep.** All five f003 legs land on their predicted pixel values, and the run found **four defects that unit tests, the release build and the governance check had all passed**:
+
+1. **Layer inputs had never worked.** `PF_CHECKOUT_LAYER` was handed the declaration position (110) where AE wants the parameter index (111) — index 110 is the `Details` button, so AE answered `BadCallbackParameter` every frame, silently.
+2. **External layer pixels were uploaded unconverted** — AE's ARGB straight into an RGBA working format, so the shader read `(a,r,g,b)`. Confirmed arithmetically: a cyan solid composited to exactly the magenta the channel shift predicts.
+3. **A render clone resolved its definition after staging external resources**, so the first frame of every clone staged nothing and bound the zero texture. This affected layers, gradients and paths alike; it is the likeliest true cause of the "gradient renders black on the first frame" symptom patched around earlier.
+4. **Fixing (3) on the SmartRender side alone** made PreRender and SmartRender disagree on checkout counts, and After Effects aborted the render with *"Node received more checkout requests than expected"*. Both sides now resolve, and PreRender records exactly the ids AE accepted.
+
+Two of these were invisible to the harness as written, and one had already produced a false pass, so the harness was corrected in the same pass:
+
+- **The layer leg could not fail.** It returned the referenced layer verbatim while that layer sat underneath the effect layer in the comp, so "transparent black over the source solid" and "a correct read of the source solid" rendered identically. It now composites over the effect's own input, so the two phases must differ.
+- **After Effects' disk cache survives a restart and is not keyed on the plug-in binary.** A rebuilt AEX rendering a byte-identical comp got the *previous* build's frames served back — no render call, nothing in the log, and a PSD that reads as fresh evidence. That cost one host cycle. Every f003 render now purges first and logs `PURGE ok=1`.
+
+**The gradient editor was removed, 2026-08-16, at the user's instruction.** Reproducing the shipping reference effect's canvas declaration byte for byte still crashed AE 2025 on expand with zero editor log lines written, so the fault is not in the declaration and no further host cycles were spent guessing. [ADR-0033](adr/0033-gradient-stops-are-ordinary-parameters.md) §6 was written to make exactly this affordable: the value lives in ordinary stop parameters, so dropping the editor costs presentation, not the feature. `Pool(Gradient, g)` survives as an inert invisible float — the binding anchor, holding its declaration index. `PF_OutFlag_CUSTOM_UI` went with it. Because nothing selects a stop any more, the `Stops` count now drives how many stop groups are visible and defaults to 2 rather than 8.
+
+**Topology growth.** Four pools have been appended since 0.0.2: Layer (4), Gradient (2), Point 3D (8), Path (2), plus the 50 ADR-0033 stop parameters — 66 declared parameters in total, all *after* the ADR-0028 `Details` button. `Details` is index 109 in every project saved by 0.0.2, and widening `V1_POOLS` instead would have slid it to 117, silently repointing a released parameter stream. `binding::GROWTH_POOLS` carries the rule; `released_prefix_is_frozen_through_details` pins the frozen 110-position prefix and `growth_pool_property_indexes_match_the_harness` pins the probe indexes the JSX legs hard-code.
+
+### Host matrix
+
+AE 2024 provisioning is **deliberately deferred** (user decision 2026-08-15): releases continue as pre-releases under [ADR-0027](adr/0027-0.0.1-prerelease-scope.md), which already permits shipping the verified host subset. No new ADR is required — [ADR-0014](adr/0014-windows-host-protocol.md) §7's four-year gate is untouched and remains the 1.0 gate. AE 2023 retest still waits on the host itself.
+
+### Recorded, not scheduled
+
+- **Harness proxy imprecision (pre-existing, found 2026-08-15).** Several M1/M3 evidence scripts log `token_nonzero=(value > 0)` as a stand-in for "published". That has always been imprecise — every published diagnostic (token state `0b10`) is non-zero too, so an `Invalid` outcome scores as 1 — and E53 adds one more state to the same weak predicate. The exact test is `% 4 === 1` (Active). Only the one site that *gates* behavior was corrected (`scripts/m7/m7bench.jsx`); the logging sites are untouched because the scenarios they cover do not reach an Invalid state. Sweep the remaining sites when those suites are next edited.
+- **Point 3D default units are unmeasured (recorded 2026-08-16).** Whether PF reads a Point 3D's *declared* `x/y` default as a percentage of the frame (as Point 2D's is) or as absolute pixels is not established — the SDK header is not vendored with the crate, and the host leg sets the value explicitly, so it settles the *value* encoding (confirmed normalized in x/y, pixels in z) and not the default's units. Both readings put the shipped default somewhere visible, so it is safe unresolved.
+- **Growth-pool slots show a generic label (measured 2026-08-16, AE 2025 and 2026).** Layer, Gradient, Point 3D and Path rows display their pool name instead of the shader's `label:`, while every V1 kind displays it correctly — from one shader, in one read, and unchanged a full idle window later, so it is not refresh timing. `PF_UpdateParamUI` reports success and AE ignores the name. The AEGP second route (`AEGP_SetStreamName`, the same trick that fixes the Hidden flag for `PF_Param_ANGLE`) **was implemented and hung the host** — it is documented as Undoable and froze AE before one leg completed, so it was reverted rather than shipped. Cosmetic only: value, keyframes, identity and rendering are unaffected. Reopen when the undo-group requirement is understood.
+- **A path input on an adapter without `FLOAT32_FILTERABLE` is untested (recorded 2026-08-16).** The verified adapter (RTX 5080, DX12) has the feature. Without it the path texture is refused and the zero texture binds with a log line, which is the designed behaviour but has never been executed.
+- **Path tangent semantics are unmeasured (recorded 2026-08-16).** Whether `PF_PathVertex`'s `tan_in_*`/`tan_out_*` are offsets from the vertex or absolute handle positions is not established. `src/path.rs` normalizes them either way and says so; the TR-0035-001 host leg settles it, and no shader should be told which reading applies before then.
+- **Point parameters have no usable starting position (found 2026-08-15 while authoring `examples/orb.glsl`).** `vec2` binds to a Point2D pool slot whose fixed default is (50, 50) *pixels* — the top-left corner of any real comp — and annotation defaults for points are still v1-rejected, so a shader cannot ship a sensible one. The orb example avoids `vec2` for this reason. Closing it needs the same AEGP TwoD stream-value plumbing already listed for point defaults; a normalized-default convention would also have to be decided.
+- **Public README version is stale**: it still reads `0.0.1 — pre-release` in both this repo and the public one, though 0.0.2 shipped 2026-08-14. Correct it as part of the 0.0.3 release step.
+
+### Condition-triggered, not scheduled
+
+- frame-cache eviction — only if real projects surface VRAM pressure;
+- historical-input temporal windows ([ADR-0025](adr/0025-windowed-resimulation.md) §4 v1);
+- idle-bridge publication throughput — the marker makes the symptom visible; reducing the ~25 s latency itself stays open;
+- color/point annotation defaults beyond the v1 scalar-only boundary (needs AEGP Color/TwoD stream-value plumbing).
+
+## Update rules
+
+At the end of every implementation session:
+
+1. update the test matrix with commands actually run;
+2. update the current audit with outcome and residual risks;
+3. update this file with current reality and one exact next action;
+4. update the roadmap only when milestone state/order/blockers changed;
+5. never record progress only in chat.

@@ -1,0 +1,6 @@
+INVALID_PNG saved m1d_invalid.png expect passthrough solid (10,200,30)
+INVALID_STATUS [Status: GLSL error: Error { kin] token=0
+RQ applied=[Photoshop]
+AEP saved m1_ar.aep
+RESULT M1E status=[Status: GLSL error: Error { kin] rq=[Photoshop]
+RESULT_DONE

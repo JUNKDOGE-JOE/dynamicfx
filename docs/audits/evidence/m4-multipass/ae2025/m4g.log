@@ -1,0 +1,3 @@
+NOALIAS two-pass set exprErr=[]
+RESULT M4G expr_set=1
+RESULT_DONE

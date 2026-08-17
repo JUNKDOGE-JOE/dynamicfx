@@ -1,0 +1,6 @@
+PUBLISHED token_nonzero=1 slot1=[gain]
+KEYFRAMES numKeys=2
+RQ applied=[Photoshop] span=0.4
+AEP saved m3.aep
+RESULT M3B token_nonzero=1 numKeys=2
+RESULT_DONE

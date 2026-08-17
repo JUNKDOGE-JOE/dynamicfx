@@ -1,0 +1,11 @@
+--- numeric checks (8-bit expectations) ---
+CHECK m2b_t0.png SKIP (missing)
+CHECK m2b_t04.png SKIP (missing)
+CHECK m2b_t08.png SKIP (missing)
+CHECK m2d_t04.png SKIP (missing)
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2e_default.png (160,120) = 127,127,127,255 (channels=4, 8-bit; 8-bit=127,127,127,255)
+EXPECT [128, 128, 128] tol=2 (8-bit terms) -> PASS
+CHECK m2e_default.png (160,120) expect (128,128,128) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2g_t04.png (160,120) = 127,127,127,255 (channels=4, 8-bit; 8-bit=127,127,127,255)
+EXPECT [128, 128, 128] tol=3 (8-bit terms) -> PASS
+CHECK m2g_t04.png (160,120) expect (128,128,128) exit=0

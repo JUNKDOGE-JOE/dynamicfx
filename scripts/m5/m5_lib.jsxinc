@@ -1,0 +1,153 @@
+// Shared helpers for the M5 harness scenarios (TR-M5-001, ADR-0021).
+function m5Out() {
+    return ($.getenv("DFX_M5_OUT") || "E:/Code/AePlugin_Dynamicfx/scripts/out/m5/dev") + "/";
+}
+function m5Log(file, s) {
+    var f = new File(m5Out() + file);
+    f.encoding = "UTF-8";
+    if (f.open("a")) { f.write(s + "\n"); f.close(); }
+}
+function m5Find(name) {
+    for (var j = 1; j <= app.project.numItems; j++) {
+        if (app.project.item(j) instanceof CompItem && app.project.item(j).name === name) {
+            return app.project.item(j);
+        }
+    }
+    return null;
+}
+function m5Fx(comp) {
+    // The probe nulls sit above the shader layer; find it by name.
+    for (var i = 1; i <= comp.numLayers; i++) {
+        if (comp.layer(i).name === "input") {
+            return comp.layer(i).property("ADBE Effect Parade").property(1);
+        }
+    }
+    return comp.layer(1).property("ADBE Effect Parade").property(1);
+}
+// Generator: white reference strip (y < h/8), then a horizontal ramp
+// c = (x+0.5)/w. Depth-transparent by design (ADR-0021 §3).
+function m5RampWhite() {
+    return "#version 450\n" +
+        "layout(location = 0) in vec2 v_uv;\n" +
+        "layout(location = 0) out vec4 outColor;\n" +
+        "layout(set = 0, binding = 2) uniform FxUniforms {\n" +
+        "    vec2 u_resolution;\n" +
+        "    float u_time;\n" +
+        "    float u_frame;\n" +
+        "};\n" +
+        "void main() {\n" +
+        "    float c = v_uv.x;\n" +
+        "    if (v_uv.y < 0.125) { c = 1.0; }\n" +
+        "    outColor = vec4(c, c, c, 1.0);\n" +
+        "}\n";
+}
+// Generator with out-of-[0,1] bands for the 32-bpc survival probes:
+// y<1/4 over-white 2.0; y<1/2 negative -0.5; y<3/4 white 1.0; else ramp.
+function m5Hdr() {
+    return "#version 450\n" +
+        "layout(location = 0) in vec2 v_uv;\n" +
+        "layout(location = 0) out vec4 outColor;\n" +
+        "layout(set = 0, binding = 2) uniform FxUniforms {\n" +
+        "    vec2 u_resolution;\n" +
+        "    float u_time;\n" +
+        "    float u_frame;\n" +
+        "};\n" +
+        "void main() {\n" +
+        "    float c;\n" +
+        "    if (v_uv.y < 0.25) { c = 2.0; }\n" +
+        "    else if (v_uv.y < 0.5) { c = -0.5; }\n" +
+        "    else if (v_uv.y < 0.75) { c = 1.0; }\n" +
+        "    else { c = v_uv.x; }\n" +
+        "    outColor = vec4(c, c, c, 1.0);\n" +
+        "}\n";
+}
+function m5Invert() {
+    return "#version 450\n" +
+        "layout(location = 0) in vec2 v_uv;\n" +
+        "layout(location = 0) out vec4 outColor;\n" +
+        "layout(set = 0, binding = 0) uniform texture2D u_input;\n" +
+        "layout(set = 0, binding = 1) uniform sampler u_sampler;\n" +
+        "layout(set = 0, binding = 2) uniform FxUniforms {\n" +
+        "    vec2 u_resolution;\n" +
+        "    float u_time;\n" +
+        "    float u_frame;\n" +
+        "};\n" +
+        "void main() {\n" +
+        "    vec4 c = texture(sampler2D(u_input, u_sampler), v_uv);\n" +
+        "    outColor = vec4(1.0 - c.rgb, 1.0);\n" +
+        "}\n";
+}
+// Three-pass double invert of a generator body: mathematically identity,
+// but every hop rides a physical intermediate — the precision staircase
+// probe on this output is the ADR-0019/0021 intermediate-format evidence.
+function m5Chain(genBody) {
+    return "@dynamicfx 1\n@graph\npass gen: input -> a\npass inv1: a -> b\npass inv2: b -> output\n@end\n" +
+        "@pass gen\n" + genBody + "@endpass\n" +
+        "@pass inv1\n" + m5Invert() + "@endpass\n" +
+        "@pass inv2\n" + m5Invert() + "@endpass\n";
+}
+// Filter exposing the alpha relationship AE delivers (ADR-0021 §4): the
+// received RGB is republished at alpha 1.0, plus a white reference strip.
+function m5AlphaProbe() {
+    return "#version 450\n" +
+        "layout(location = 0) in vec2 v_uv;\n" +
+        "layout(location = 0) out vec4 outColor;\n" +
+        "layout(set = 0, binding = 0) uniform texture2D u_input;\n" +
+        "layout(set = 0, binding = 1) uniform sampler u_sampler;\n" +
+        "layout(set = 0, binding = 2) uniform FxUniforms {\n" +
+        "    vec2 u_resolution;\n" +
+        "    float u_time;\n" +
+        "    float u_frame;\n" +
+        "};\n" +
+        "void main() {\n" +
+        "    vec4 t = texture(sampler2D(u_input, u_sampler), v_uv);\n" +
+        "    vec3 c = t.rgb;\n" +
+        "    if (v_uv.y < 0.125) { c = vec3(1.0, 1.0, 1.0); }\n" +
+        "    outColor = vec4(c, 1.0);\n" +
+        "}\n";
+}
+// New 320x240 comp with a black solid carrying DynamicFx and the given
+// committed source (scripted writes rely on the idle observer, TR-M0-005).
+function m5NewShaderComp(name, src) {
+    var comp = app.project.items.addComp(name, 320, 240, 1.0, 1.0, 25);
+    comp.bgColor = [0, 0, 0];
+    var solid = comp.layers.addSolid([0, 0, 0], "input", 320, 240, 1.0, 1.0);
+    var fx = solid.property("ADBE Effect Parade").addProperty("DynamicFx");
+    fx.property(2).expression = "`" + src + "`;0";
+    return comp;
+}
+// Render one comp to a single-frame PSD via the ASCII-named "Photoshop"
+// template, retargeting the output-module Depth. The checker reads the
+// actual file depth from the PSD header, so a failed Depth set fails
+// visibly in the probes, never silently.
+function m5RenderPSD(logName, comp, base, depthStr) {
+    var rq = app.project.renderQueue;
+    var item = rq.items.add(comp);
+    item.render = true;
+    try { item.timeSpanStart = 0; item.timeSpanDuration = comp.frameDuration; } catch (eT) {}
+    var om = item.outputModule(1);
+    var applied = "";
+    for (var t = 0; t < om.templates.length; t++) {
+        if (om.templates[t] === "Photoshop") { om.applyTemplate("Photoshop"); applied = "Photoshop"; break; }
+    }
+    var before = ""; try { before = om.getSettings(GetSettingsFormat.STRING)["Depth"]; } catch (eB) {}
+    try { om.setSettings({ "Depth": depthStr }); } catch (eS) { m5Log(logName, "SETDEPTH_ERR " + String(eS)); }
+    var after = ""; try { after = om.getSettings(GetSettingsFormat.STRING)["Depth"]; } catch (eA) {}
+    om.file = new File(m5Out() + base + "_[#####].psd");
+    m5Log(logName, "RQ " + base + " tmpl=[" + applied + "] depth [" + before + "] -> [" + after + "] want [" + depthStr + "]");
+    // A failed export (e.g. the 32-bpc "unexpected export error \1" modal,
+    // measured on this host) must not abort the scenario chain — the PSDs
+    // are visible artifacts, not the numeric gates.
+    try {
+        rq.render();
+        m5Log(logName, "RENDERED " + base + " status=" + String(item.status));
+    } catch (eX) {
+        m5Log(logName, "RENDER_ERR " + base + " " + String(eX));
+    }
+    try { item.remove(); } catch (eR) {}
+}
+function m5Status(logName, tag, comp) {
+    var s = "";
+    try { s = m5Fx(comp).property(4).name; } catch (e1) {}
+    m5Log(logName, "STATUS " + tag + " [" + s + "]");
+}

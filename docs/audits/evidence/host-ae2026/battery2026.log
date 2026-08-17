@@ -1,0 +1,57 @@
+[13:52:21] battery2026 started
+[13:52:21] SUITE m7-after BEGIN
+[13:52:21] STEP scripts\m7\run_m7.ps1 -Year 2026
+[13:53:31] STEP_OK scripts\m7\run_m7.ps1 -Year 2026
+[13:53:36] STEP scripts\m7\run_m7.ps1 -Year 2026 -QuitAE
+[13:53:39] STEP_OK scripts\m7\run_m7.ps1 -Year 2026 -QuitAE
+[13:53:44] STEP scripts\m7\run_m7.ps1 -Year 2026 -Summarize
+[13:53:44] STEP_OK scripts\m7\run_m7.ps1 -Year 2026 -Summarize
+[13:53:49] SUITE m7-after PASS
+[13:53:49] SUITE m1 BEGIN
+[13:53:49] STEP scripts\m1\run_m1.ps1 -Year 2026
+[13:54:43] STEP_OK scripts\m1\run_m1.ps1 -Year 2026
+[13:54:48] STEP scripts\m1\run_m1.ps1 -Year 2026 -Aerender
+[13:54:57] STEP_OK scripts\m1\run_m1.ps1 -Year 2026 -Aerender
+[13:55:02] STEP scripts\m1\run_m1.ps1 -Year 2026 -Checks
+[13:55:03] STEP_OK scripts\m1\run_m1.ps1 -Year 2026 -Checks
+[13:55:08] SUITE m1 PASS
+[13:55:08] SUITE m2 BEGIN
+[13:55:08] STEP scripts\m2\run_m2.ps1 -Year 2026
+[13:56:02] STEP_OK scripts\m2\run_m2.ps1 -Year 2026
+[13:56:07] STEP scripts\m2\run_m2.ps1 -Year 2026 -Checks
+[13:56:08] STEP_OK scripts\m2\run_m2.ps1 -Year 2026 -Checks
+[13:56:13] SUITE m2 PASS
+[13:56:13] SUITE m3 BEGIN
+[13:56:13] STEP scripts\m3\run_m3.ps1 -Year 2026
+[13:57:53] STEP_OK scripts\m3\run_m3.ps1 -Year 2026
+[13:57:58] STEP scripts\m3\run_m3.ps1 -Year 2026 -Session4
+[14:00:55] STEP_OK scripts\m3\run_m3.ps1 -Year 2026 -Session4
+[14:01:00] STEP scripts\m3\run_m3.ps1 -Year 2026 -Aerender
+[14:01:09] STEP_OK scripts\m3\run_m3.ps1 -Year 2026 -Aerender
+[14:01:14] STEP scripts\m3\run_m3.ps1 -Year 2026 -Checks
+[14:01:15] STEP_OK scripts\m3\run_m3.ps1 -Year 2026 -Checks
+[14:01:20] SUITE m3 PASS
+[14:01:20] SUITE m4 BEGIN
+[14:01:20] STEP scripts\m4\run_m4.ps1 -Year 2026
+[14:03:23] STEP_OK scripts\m4\run_m4.ps1 -Year 2026
+[14:03:28] STEP scripts\m4\run_m4.ps1 -Year 2026 -Checks
+[14:03:29] STEP_OK scripts\m4\run_m4.ps1 -Year 2026 -Checks
+[14:03:34] SUITE m4 PASS
+[14:03:34] SUITE m5 BEGIN
+[14:03:34] STEP scripts\m5\run_m5.ps1 -Year 2026
+[14:04:40] STEP_OK scripts\m5\run_m5.ps1 -Year 2026
+[14:04:45] STEP scripts\m5\run_m5.ps1 -Year 2026 -Checks
+[14:04:45] STEP_OK scripts\m5\run_m5.ps1 -Year 2026 -Checks
+[14:04:50] SUITE m5 PASS
+[14:04:50] SUITE m6 BEGIN
+[14:04:50] STEP scripts\m6\run_m6.ps1 -Year 2026
+[14:06:03] STEP_OK scripts\m6\run_m6.ps1 -Year 2026
+[14:06:08] STEP scripts\m6\run_m6.ps1 -Year 2026 -QuitAE
+[14:06:11] STEP_OK scripts\m6\run_m6.ps1 -Year 2026 -QuitAE
+[14:06:16] STEP scripts\m6\run_m6.ps1 -Year 2026 -Aerender
+[14:06:26] STEP_OK scripts\m6\run_m6.ps1 -Year 2026 -Aerender
+[14:06:31] STEP scripts\m6\run_m6.ps1 -Year 2026 -Checks
+[14:06:32] STEP_OK scripts\m6\run_m6.ps1 -Year 2026 -Checks
+[14:06:37] SUITE m6 PASS
+[14:06:37] BATTERY PASS
+[14:06:37] BATTERY_DONE

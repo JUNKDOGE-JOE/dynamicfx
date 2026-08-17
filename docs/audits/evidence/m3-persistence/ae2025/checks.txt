@@ -1,0 +1,30 @@
+--- numeric checks: expect (51,51,0) at center, t=0.4 ---
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3c_reopen.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3c_reopen.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3d_t04.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3d_t04.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3f_recover.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3f_recover.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3g_layer1.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3g_layer1.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3g_layer2.png (160,120) = 115,115,0,255 (channels=4, 8-bit; 8-bit=115,115,0,255)
+EXPECT [115, 115, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3g_layer2.png (160,120) expect (115,115,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3h1_torn.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3h1_torn.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3h4_undo.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3h4_undo.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3h3_invalid.png (160,120) = 10,200,30,255 (channels=4, 8-bit; 8-bit=10,200,30,255)
+EXPECT [10, 200, 30] tol=2 (8-bit terms) -> PASS
+CHECK m3h3_invalid.png (160,120) expect (10,200,30) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3e_corrupt.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+INFO m3e_corrupt.png value above (passthrough solid or already recovered; m3f is the criterion)
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3_ar_00010.psd (160,120) = raw [51, 51, 0] (8-bit, 320x240; 8-bit [51, 51, 0])
+EXPECT rgb8=[51, 51, 0] tol=4 -> PASS
+CHECK aerender PSD (160,120) expect (51,51,0) exit=0

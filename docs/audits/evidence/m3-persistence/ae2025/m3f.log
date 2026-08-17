@@ -1,0 +1,4 @@
+RECOVERED status=[Status: idle] token_nonzero=1 numKeys=2
+PNG saved m3f_recover.png expect (51,51,0) again
+RESULT M3F token_nonzero=1 numKeys=2
+RESULT_DONE

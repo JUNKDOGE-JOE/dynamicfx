@@ -1,0 +1,1177 @@
+[1786612531] registered with AEGP at global setup
+[1786612531] AEGP idle hook registered
+[1786612531] params setup: ADR-0013 topology
+[1786612531] params setup: complete
+[1786612685] idle observation: compiled: 1 pass, 0 params
+[1786612685] idle slot ui applied: 0 bound, 0 defaults written
+[1786612685] idle state token updated: Active(1451249372630276)
+[1786612685] idle observation: compiled: 1 pass, 0 params
+[1786612685] idle slot ui applied: 0 bound, 0 defaults written
+[1786612685] idle state token updated: Active(1451249372630276)
+[1786612685] idle observation: compiled: 1 pass, 0 params
+[1786612685] idle slot ui applied: 0 bound, 0 defaults written
+[1786612685] idle state token updated: Active(1451249372630276)
+[1786612685] idle observation: compiled: 1 pass, 0 params
+[1786612685] idle slot ui applied: 0 bound, 0 defaults written
+[1786612685] idle state token updated: Active(1451249372630276)
+[1786612685] idle observation: compiled: 1 pass, 0 params
+[1786612685] idle slot ui applied: 0 bound, 0 defaults written
+[1786612685] idle state token updated: Active(1451249372630276)
+[1786612685] idle observation: compiled: 1 pass, 0 params
+[1786612685] idle slot ui applied: 0 bound, 0 defaults written
+[1786612685] idle state token updated: Active(1451249372630276)
+[1786612685] idle observation: compiled: 1 pass, 0 params
+[1786612685] idle slot ui applied: 0 bound, 0 defaults written
+[1786612685] idle state token updated: Active(1808721205814908)
+[1786612685] idle observation: compiled: 6 passes, 10 params
+[1786612685] idle slot ui applied: 16 bound, 4 defaults written
+[1786612685] idle state token updated: Active(2000363954371444)
+[1786612685] idle observation: compiled: 6 passes, 10 params
+[1786612685] idle slot ui applied: 16 bound, 4 defaults written
+[1786612685] idle state token updated: Active(2000363954371444)
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] definition resolved from process registry
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=0 step=1024 lstep=1024 scale=25600
+[1786612690] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=0 conv_in=0.630 upload=0.439 gpu=2.379 readback=0.219 conv_out=0.541 total=8.446
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=1024 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=1 conv_in=0.255 upload=0.782 gpu=0.843 readback=0.266 conv_out=0.447 total=2.603
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=2048 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=2 conv_in=0.428 upload=0.494 gpu=0.600 readback=0.212 conv_out=0.476 total=2.217
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=3072 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=3 conv_in=0.311 upload=0.594 gpu=0.639 readback=0.222 conv_out=0.572 total=2.349
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=4096 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=4 conv_in=0.505 upload=0.658 gpu=0.639 readback=0.580 conv_out=0.489 total=2.884
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=9216 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=9 conv_in=0.260 upload=0.429 gpu=0.514 readback=0.285 conv_out=0.492 total=1.990
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=11264 step=1024 lstep=1024 scale=25600
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=11 conv_in=0.271 upload=0.522 gpu=0.617 readback=0.222 conv_out=0.433 total=2.074
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=12288 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=12 conv_in=0.315 upload=0.426 gpu=0.877 readback=0.197 conv_out=0.394 total=2.217
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=10240 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=10 conv_in=0.292 upload=0.536 gpu=0.475 readback=0.167 conv_out=0.442 total=1.918
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=8192 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=8 conv_in=0.249 upload=0.493 gpu=0.496 readback=0.171 conv_out=0.490 total=1.907
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=5120 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=5 conv_in=0.286 upload=0.530 gpu=0.483 readback=0.305 conv_out=0.470 total=2.083
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=13312 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=13 conv_in=0.297 upload=0.411 gpu=1.102 readback=0.388 conv_out=0.578 total=2.784
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=17408 step=1024 lstep=1024 scale=25600
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=17 conv_in=0.280 upload=0.408 gpu=0.433 readback=0.201 conv_out=0.525 total=1.856
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=15360 step=1024 lstep=1024 scale=25600
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=15 conv_in=0.242 upload=0.473 gpu=0.447 readback=0.232 conv_out=0.416 total=1.817
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=14336 step=1024 lstep=1024 scale=25600
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=14 conv_in=0.227 upload=0.423 gpu=1.351 readback=0.200 conv_out=0.397 total=2.605
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=16384 step=1024 lstep=1024 scale=25600
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=16 conv_in=0.232 upload=0.499 gpu=1.134 readback=0.147 conv_out=0.388 total=2.407
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=6144 step=1024 lstep=1024 scale=25600
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=6 conv_in=0.235 upload=0.456 gpu=0.653 readback=0.153 conv_out=0.391 total=1.894
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=18432 step=1024 lstep=1024 scale=25600
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=18 conv_in=0.223 upload=0.432 gpu=0.637 readback=0.154 conv_out=0.523 total=1.976
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=19456 step=1024 lstep=1024 scale=25600
+[1786612690] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612690] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=19 conv_in=0.456 upload=0.412 gpu=0.617 readback=0.281 conv_out=0.384 total=2.158
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=7168 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=7 conv_in=0.269 upload=0.658 gpu=0.515 readback=0.318 conv_out=0.437 total=2.204
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=20480 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=20 conv_in=0.273 upload=0.482 gpu=0.432 readback=0.141 conv_out=0.380 total=1.714
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=21504 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=21 conv_in=0.240 upload=0.471 gpu=0.487 readback=0.161 conv_out=0.400 total=1.770
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=22528 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=22 conv_in=0.225 upload=0.381 gpu=0.456 readback=0.144 conv_out=0.379 total=1.592
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=23552 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=23 conv_in=0.231 upload=0.370 gpu=0.502 readback=0.282 conv_out=0.509 total=1.902
+[1786612690] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=24576 step=1024 lstep=1024 scale=25600
+[1786612690] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=24 conv_in=0.222 upload=0.368 gpu=1.600 readback=0.214 conv_out=0.543 total=2.954
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] definition resolved from process registry
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=0 step=1024 lstep=1024 scale=25600
+[1786612692] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 3840x2160, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=0 conv_in=5.207 upload=1.573 gpu=1.507 readback=2.331 conv_out=4.535 total=18.420
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=4096 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=4 conv_in=4.222 upload=2.059 gpu=1.816 readback=3.713 conv_out=4.735 total=16.557
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=6144 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=6 conv_in=3.129 upload=2.065 gpu=1.444 readback=3.785 conv_out=5.387 total=15.829
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=8192 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=8 conv_in=2.733 upload=1.935 gpu=1.880 readback=2.920 conv_out=4.195 total=13.676
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=10240 step=1024 lstep=1024 scale=25600
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=10 conv_in=2.397 upload=1.971 gpu=2.036 readback=2.726 conv_out=4.446 total=13.590
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=7168 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=7 conv_in=2.338 upload=2.447 gpu=1.798 readback=3.189 conv_out=4.505 total=14.291
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=9216 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=9 conv_in=2.598 upload=2.161 gpu=1.985 readback=2.336 conv_out=4.136 total=13.227
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=11264 step=1024 lstep=1024 scale=25600
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=11 conv_in=2.650 upload=2.771 gpu=1.962 readback=2.510 conv_out=4.131 total=14.036
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=2048 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=2 conv_in=2.723 upload=2.623 gpu=1.891 readback=2.550 conv_out=3.818 total=13.617
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=13312 step=1024 lstep=1024 scale=25600
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=13 conv_in=2.565 upload=2.122 gpu=1.799 readback=3.254 conv_out=4.084 total=13.834
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=3072 step=1024 lstep=1024 scale=25600
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=3 conv_in=2.522 upload=1.957 gpu=2.165 readback=2.746 conv_out=4.015 total=13.416
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=12288 step=1024 lstep=1024 scale=25600
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=12 conv_in=2.393 upload=1.965 gpu=1.803 readback=2.763 conv_out=4.001 total=12.938
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=14336 step=1024 lstep=1024 scale=25600
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=14 conv_in=5.131 upload=4.928 gpu=2.043 readback=5.299 conv_out=8.196 total=25.619
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=15360 step=1024 lstep=1024 scale=25600
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=15 conv_in=4.169 upload=3.059 gpu=2.226 readback=2.624 conv_out=4.256 total=16.362
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=1024 step=1024 lstep=1024 scale=25600
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=1 conv_in=2.352 upload=2.732 gpu=1.907 readback=3.060 conv_out=4.277 total=14.340
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=5120 step=1024 lstep=1024 scale=25600
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=5 conv_in=2.482 upload=2.094 gpu=1.871 readback=4.132 conv_out=7.083 total=17.680
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=16384 step=1024 lstep=1024 scale=25600
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=16 conv_in=3.729 upload=3.058 gpu=1.843 readback=3.534 conv_out=4.847 total=17.028
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=17408 step=1024 lstep=1024 scale=25600
+[1786612692] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612692] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=17 conv_in=2.569 upload=3.065 gpu=2.019 readback=3.420 conv_out=4.479 total=15.565
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=18432 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=18 conv_in=3.528 upload=2.909 gpu=2.369 readback=2.904 conv_out=4.193 total=15.918
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=19456 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=19 conv_in=2.663 upload=2.361 gpu=1.805 readback=3.100 conv_out=4.727 total=14.670
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=21504 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=21 conv_in=4.385 upload=4.727 gpu=2.220 readback=3.284 conv_out=5.068 total=19.699
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=20480 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=20 conv_in=3.212 upload=3.398 gpu=1.849 readback=3.114 conv_out=5.461 total=17.049
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=22528 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=22 conv_in=3.473 upload=3.710 gpu=1.953 readback=3.090 conv_out=4.694 total=16.936
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=23552 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=23 conv_in=2.977 upload=2.664 gpu=2.233 readback=2.526 conv_out=4.017 total=14.429
+[1786612692] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=24576 step=1024 lstep=1024 scale=25600
+[1786612692] perf: depth=U8 dims=3840x2160 passes=1 iters=1 frame=24 conv_in=2.919 upload=3.022 gpu=2.113 readback=5.303 conv_out=6.378 total=19.751
+[1786612695] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612695] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612695] definition resolved from process registry
+[1786612695] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=3072 step=1024 lstep=1024 scale=25600
+[1786612695] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612695] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] pipelines built: 6 pass(es), plan 6 step(s), 3 physical intermediate(s) (~10800 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=3 conv_in=0.618 upload=0.452 gpu=2.513 readback=0.252 conv_out=0.396 total=8.702
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=2048 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=2 conv_in=0.252 upload=0.535 gpu=0.775 readback=0.285 conv_out=0.416 total=2.339
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=1024 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=1 conv_in=0.288 upload=0.603 gpu=0.806 readback=0.299 conv_out=0.433 total=2.485
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=0 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=0 conv_in=0.305 upload=0.683 gpu=0.698 readback=0.267 conv_out=0.446 total=2.483
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=6144 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=6 conv_in=0.294 upload=0.554 gpu=1.398 readback=0.269 conv_out=0.498 total=3.079
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=12288 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=12 conv_in=0.266 upload=0.674 gpu=0.837 readback=0.565 conv_out=0.788 total=3.174
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=11264 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=11 conv_in=0.236 upload=0.543 gpu=0.748 readback=0.220 conv_out=0.514 total=2.302
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=9216 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=9 conv_in=0.365 upload=0.575 gpu=0.658 readback=0.141 conv_out=0.366 total=2.164
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=8192 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=8 conv_in=0.273 upload=0.613 gpu=1.069 readback=0.431 conv_out=0.516 total=2.944
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=13312 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=13 conv_in=0.257 upload=0.566 gpu=0.775 readback=0.388 conv_out=0.641 total=2.686
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=5120 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=5 conv_in=0.311 upload=0.762 gpu=0.995 readback=0.248 conv_out=0.591 total=2.960
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=15360 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=15 conv_in=0.246 upload=0.460 gpu=0.998 readback=0.226 conv_out=0.428 total=2.397
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=14336 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=14 conv_in=0.226 upload=0.466 gpu=0.735 readback=0.244 conv_out=0.453 total=2.164
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=16384 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=16 conv_in=0.275 upload=0.507 gpu=0.679 readback=0.195 conv_out=0.432 total=2.142
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=18432 step=1024 lstep=1024 scale=25600
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=18 conv_in=0.247 upload=0.524 gpu=1.299 readback=0.244 conv_out=0.442 total=2.795
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=22528 step=1024 lstep=1024 scale=25600
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=22 conv_in=0.245 upload=0.614 gpu=1.107 readback=0.302 conv_out=0.463 total=2.781
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=19456 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=19 conv_in=0.240 upload=0.545 gpu=0.708 readback=0.196 conv_out=0.407 total=2.143
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=21504 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=21 conv_in=0.226 upload=0.543 gpu=1.248 readback=0.223 conv_out=0.417 total=2.698
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=23552 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=23 conv_in=0.230 upload=0.506 gpu=0.719 readback=0.146 conv_out=0.360 total=2.006
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=7168 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=7 conv_in=0.219 upload=0.499 gpu=0.647 readback=0.157 conv_out=0.409 total=1.973
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=20480 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=20 conv_in=0.298 upload=0.645 gpu=1.380 readback=0.145 conv_out=0.410 total=2.925
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=24576 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=24 conv_in=0.233 upload=0.485 gpu=0.731 readback=0.290 conv_out=0.413 total=2.197
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=4096 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=4 conv_in=0.292 upload=0.595 gpu=0.908 readback=0.239 conv_out=0.371 total=2.483
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=10240 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=10 conv_in=0.299 upload=0.637 gpu=0.770 readback=0.281 conv_out=0.470 total=2.501
+[1786612696] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612696] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612696] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=2000363954371444 compiled=true snap=false t=17408 step=1024 lstep=1024 scale=25600
+[1786612696] perf: depth=U8 dims=1280x720 passes=6 iters=1 frame=17 conv_in=0.229 upload=0.477 gpu=0.727 readback=0.273 conv_out=0.541 total=2.283
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] definition resolved from process registry
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=1024 step=1024 lstep=1024 scale=25600
+[1786612697] pipelines built: 6 pass(es), plan 6 step(s), 3 physical intermediate(s) (~97200 KiB transient at 3840x2160, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=1 conv_in=5.567 upload=1.785 gpu=2.749 readback=2.220 conv_out=4.599 total=27.635
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=3072 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=3 conv_in=2.452 upload=2.192 gpu=3.034 readback=2.291 conv_out=4.666 total=14.701
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=2048 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=2 conv_in=2.778 upload=1.846 gpu=3.255 readback=2.265 conv_out=4.092 total=14.304
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=10240 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=10 conv_in=3.202 upload=2.768 gpu=3.735 readback=2.590 conv_out=4.129 total=16.520
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=9216 step=1024 lstep=1024 scale=25600
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=9 conv_in=2.436 upload=2.554 gpu=3.213 readback=2.227 conv_out=3.896 total=14.401
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=8192 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=8 conv_in=2.417 upload=2.546 gpu=3.458 readback=2.613 conv_out=3.871 total=14.964
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=4096 step=1024 lstep=1024 scale=25600
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=4 conv_in=2.482 upload=2.353 gpu=3.242 readback=2.413 conv_out=4.585 total=15.142
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=11264 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=11 conv_in=2.433 upload=2.033 gpu=3.440 readback=2.601 conv_out=4.295 total=14.864
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=6144 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=6 conv_in=2.243 upload=2.317 gpu=3.021 readback=2.721 conv_out=4.139 total=14.507
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=12288 step=1024 lstep=1024 scale=25600
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=12 conv_in=2.610 upload=2.204 gpu=3.353 readback=2.459 conv_out=4.283 total=14.967
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=13312 step=1024 lstep=1024 scale=25600
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=13 conv_in=2.397 upload=2.233 gpu=3.029 readback=2.151 conv_out=4.038 total=13.916
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=0 step=1024 lstep=1024 scale=25600
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=0 conv_in=2.368 upload=2.102 gpu=3.241 readback=2.286 conv_out=3.782 total=13.844
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=14336 step=1024 lstep=1024 scale=25600
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=14 conv_in=2.710 upload=2.824 gpu=5.017 readback=4.289 conv_out=4.987 total=19.898
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=15360 step=1024 lstep=1024 scale=25600
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=15 conv_in=3.427 upload=2.984 gpu=3.377 readback=2.776 conv_out=5.513 total=18.174
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=5120 step=1024 lstep=1024 scale=25600
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=5 conv_in=2.805 upload=2.496 gpu=3.395 readback=3.122 conv_out=5.678 total=17.572
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=7168 step=1024 lstep=1024 scale=25600
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=7 conv_in=2.813 upload=2.428 gpu=3.775 readback=4.017 conv_out=5.305 total=18.418
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=16384 step=1024 lstep=1024 scale=25600
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=16 conv_in=3.286 upload=3.163 gpu=3.024 readback=2.725 conv_out=4.559 total=16.840
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=17408 step=1024 lstep=1024 scale=25600
+[1786612697] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612697] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=17 conv_in=2.928 upload=2.418 gpu=3.415 readback=2.796 conv_out=4.376 total=16.027
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=18432 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=18 conv_in=2.546 upload=2.262 gpu=3.446 readback=2.693 conv_out=4.825 total=15.844
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=19456 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=19 conv_in=2.861 upload=2.774 gpu=3.322 readback=2.409 conv_out=3.850 total=15.297
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=20480 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=20 conv_in=2.517 upload=2.222 gpu=3.022 readback=2.853 conv_out=4.334 total=15.031
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=21504 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=21 conv_in=2.481 upload=2.634 gpu=3.491 readback=3.509 conv_out=5.924 total=18.115
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=22528 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=22 conv_in=2.652 upload=2.598 gpu=3.066 readback=2.775 conv_out=4.786 total=15.944
+[1786612697] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=23552 step=1024 lstep=1024 scale=25600
+[1786612697] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=23 conv_in=2.905 upload=2.780 gpu=3.483 readback=3.364 conv_out=5.778 total=18.406
+[1786612698] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612698] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612698] render enter: Some(U8) in=3840x2160 out=4608x2592 win=(-384,-216) token=2000363954371444 compiled=true snap=false t=24576 step=1024 lstep=1024 scale=25600
+[1786612698] perf: depth=U8 dims=3840x2160 passes=6 iters=1 frame=24 conv_in=6.563 upload=2.733 gpu=3.443 readback=2.576 conv_out=4.515 total=19.915
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] definition resolved from process registry
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=1024 step=1024 lstep=1024 scale=25600
+[1786612702] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786612702] temporal window: 2 iteration(s) (W=16) at frame 1 (raw 1)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=2 frame=1 conv_in=0.619 upload=0.448 gpu=0.958 readback=0.239 conv_out=0.440 total=3.594
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=5120 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 6 iteration(s) (W=16) at frame 5 (raw 5)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=6 frame=5 conv_in=0.239 upload=1.602 gpu=1.860 readback=0.242 conv_out=0.442 total=4.512
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=9216 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 10 iteration(s) (W=16) at frame 9 (raw 9)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=10 frame=9 conv_in=0.247 upload=0.857 gpu=1.920 readback=0.293 conv_out=0.560 total=3.989
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=8192 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 9 iteration(s) (W=16) at frame 8 (raw 8)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=9 frame=8 conv_in=0.248 upload=0.896 gpu=1.409 readback=0.280 conv_out=0.490 total=3.534
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=2048 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 3 iteration(s) (W=16) at frame 2 (raw 2)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=3 frame=2 conv_in=0.267 upload=0.779 gpu=1.024 readback=0.257 conv_out=0.489 total=2.954
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=10240 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 11 iteration(s) (W=16) at frame 10 (raw 10)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=11 frame=10 conv_in=0.401 upload=0.622 gpu=0.835 readback=0.245 conv_out=0.458 total=2.718
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=12288 step=1024 lstep=1024 scale=25600
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] temporal window: 13 iteration(s) (W=16) at frame 12 (raw 12)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=13 frame=12 conv_in=0.248 upload=0.748 gpu=2.737 readback=0.238 conv_out=0.419 total=4.667
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=14336 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 15 iteration(s) (W=16) at frame 14 (raw 14)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=15 frame=14 conv_in=0.324 upload=0.974 gpu=2.785 readback=0.271 conv_out=0.448 total=5.021
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=13312 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 14 iteration(s) (W=16) at frame 13 (raw 13)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=14 frame=13 conv_in=0.528 upload=0.648 gpu=1.334 readback=0.235 conv_out=0.407 total=3.408
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=7168 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 8 iteration(s) (W=16) at frame 7 (raw 7)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=8 frame=7 conv_in=0.235 upload=0.444 gpu=0.756 readback=0.238 conv_out=0.465 total=2.332
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=0 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 1 iteration(s) (W=16) at frame 0 (raw 0)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=0 conv_in=0.241 upload=0.380 gpu=0.391 readback=0.211 conv_out=0.417 total=1.779
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=4096 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 5 iteration(s) (W=16) at frame 4 (raw 4)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=5 frame=4 conv_in=0.244 upload=0.574 gpu=0.683 readback=0.348 conv_out=0.639 total=2.628
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=20480 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 16 iteration(s) (W=16) at frame 20 (raw 20)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=16 frame=20 conv_in=0.238 upload=0.853 gpu=1.436 readback=0.210 conv_out=0.444 total=3.294
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=15360 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 16 iteration(s) (W=16) at frame 15 (raw 15)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=16 frame=15 conv_in=0.281 upload=0.679 gpu=1.353 readback=0.210 conv_out=0.421 total=3.191
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=19456 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 16 iteration(s) (W=16) at frame 19 (raw 19)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=16 frame=19 conv_in=0.333 upload=0.702 gpu=1.523 readback=0.319 conv_out=0.554 total=3.677
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=18432 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 16 iteration(s) (W=16) at frame 18 (raw 18)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=16 frame=18 conv_in=0.355 upload=0.771 gpu=1.255 readback=0.276 conv_out=0.473 total=3.277
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=16384 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 16 iteration(s) (W=16) at frame 16 (raw 16)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=16 frame=16 conv_in=0.241 upload=0.997 gpu=2.303 readback=0.278 conv_out=0.498 total=4.427
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=22528 step=1024 lstep=1024 scale=25600
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] temporal window: 16 iteration(s) (W=16) at frame 22 (raw 22)
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=16 frame=22 conv_in=0.317 upload=0.734 gpu=1.855 readback=0.217 conv_out=0.500 total=4.086
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=24576 step=1024 lstep=1024 scale=25600
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] temporal window: 16 iteration(s) (W=16) at frame 24 (raw 24)
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612702] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=16 frame=24 conv_in=0.249 upload=0.605 gpu=1.059 readback=0.225 conv_out=0.466 total=2.730
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=21504 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 16 iteration(s) (W=16) at frame 21 (raw 21)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=16 frame=21 conv_in=0.237 upload=0.556 gpu=0.766 readback=0.211 conv_out=0.431 total=2.312
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=3072 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 4 iteration(s) (W=16) at frame 3 (raw 3)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=4 frame=3 conv_in=0.216 upload=0.383 gpu=1.560 readback=0.292 conv_out=0.467 total=3.023
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=23552 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 16 iteration(s) (W=16) at frame 23 (raw 23)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=16 frame=23 conv_in=0.221 upload=0.601 gpu=1.625 readback=0.369 conv_out=0.548 total=3.529
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=6144 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 7 iteration(s) (W=16) at frame 6 (raw 6)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=7 frame=6 conv_in=0.242 upload=0.511 gpu=0.600 readback=0.200 conv_out=0.486 total=2.173
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=11264 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 12 iteration(s) (W=16) at frame 11 (raw 11)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=12 frame=11 conv_in=0.309 upload=0.619 gpu=1.070 readback=0.209 conv_out=0.499 total=2.960
+[1786612702] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1808721205814908 compiled=true snap=false t=17408 step=1024 lstep=1024 scale=25600
+[1786612702] temporal window: 16 iteration(s) (W=16) at frame 17 (raw 17)
+[1786612702] perf: depth=U8 dims=1280x720 passes=1 iters=16 frame=17 conv_in=0.221 upload=0.537 gpu=0.790 readback=0.190 conv_out=0.388 total=2.247
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] definition resolved from process registry
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=3072 step=1024 lstep=1024 scale=25600
+[1786612703] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=3 conv_in=0.569 upload=0.298 gpu=0.531 readback=0.156 conv_out=0.384 total=2.488
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=4096 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] definition resolved from process registry
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=3072 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=4 conv_in=0.217 upload=0.281 gpu=0.612 readback=0.169 conv_out=0.418 total=1.701
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=2048 step=1024 lstep=1024 scale=25600
+[1786612703] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=2 conv_in=0.306 upload=0.491 gpu=0.526 readback=0.215 conv_out=0.533 total=2.080
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=7168 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=3 conv_in=0.807 upload=0.337 gpu=0.414 readback=0.542 conv_out=0.631 total=3.414
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=4096 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] definition resolved from process registry
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=3072 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=7 conv_in=0.432 upload=0.639 gpu=0.794 readback=0.439 conv_out=0.520 total=2.831
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=6144 step=1024 lstep=1024 scale=25600
+[1786612703] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=4 conv_in=0.547 upload=0.415 gpu=0.452 readback=0.186 conv_out=0.503 total=2.108
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=2048 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=6 conv_in=0.326 upload=0.596 gpu=0.694 readback=0.426 conv_out=0.683 total=2.734
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=5120 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=2 conv_in=0.751 upload=0.386 gpu=0.608 readback=0.318 conv_out=0.402 total=2.475
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=7168 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=3 conv_in=1.428 upload=0.366 gpu=0.581 readback=0.798 conv_out=0.919 total=4.838
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=4096 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=5 conv_in=0.261 upload=0.354 gpu=1.133 readback=0.334 conv_out=0.885 total=2.976
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=1024 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] definition resolved from process registry
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=3072 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=7 conv_in=0.774 upload=0.457 gpu=0.566 readback=0.753 conv_out=1.287 total=3.844
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=6144 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=4 conv_in=0.641 upload=0.464 gpu=0.807 readback=0.350 conv_out=0.435 total=2.703
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=2048 step=1024 lstep=1024 scale=25600
+[1786612703] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=1 conv_in=0.737 upload=0.509 gpu=1.369 readback=0.937 conv_out=0.825 total=4.388
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=0 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=6 conv_in=0.627 upload=0.895 gpu=1.325 readback=0.451 conv_out=0.737 total=4.045
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=5120 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=2 conv_in=0.856 upload=0.660 gpu=5.860 readback=0.532 conv_out=0.596 total=8.514
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=7168 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=0 conv_in=0.375 upload=5.798 gpu=0.819 readback=0.415 conv_out=0.676 total=8.097
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=5 conv_in=0.316 upload=4.124 gpu=0.780 readback=0.860 conv_out=0.750 total=6.841
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=1024 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=3 conv_in=1.308 upload=1.213 gpu=0.753 readback=1.226 conv_out=1.285 total=11.440
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=4096 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=7 conv_in=0.967 upload=0.547 gpu=0.825 readback=0.987 conv_out=1.333 total=4.671
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=6144 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=1 conv_in=0.962 upload=0.797 gpu=0.969 readback=0.285 conv_out=1.638 total=4.665
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=4 conv_in=0.949 upload=0.486 gpu=1.020 readback=0.527 conv_out=0.820 total=3.813
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=0 step=1024 lstep=1024 scale=25600
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=2048 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=6 conv_in=0.849 upload=0.606 gpu=0.598 readback=1.246 conv_out=0.888 total=4.201
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=5120 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=2 conv_in=0.836 upload=0.743 gpu=0.626 readback=0.777 conv_out=1.286 total=4.279
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=7168 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=0 conv_in=1.132 upload=0.763 gpu=1.698 readback=0.497 conv_out=0.760 total=4.861
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=5 conv_in=0.826 upload=0.881 gpu=0.462 readback=0.750 conv_out=1.252 total=4.184
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=1024 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=7 conv_in=0.783 upload=0.702 gpu=0.501 readback=0.719 conv_out=0.766 total=3.480
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=6144 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=1 conv_in=0.827 upload=0.504 gpu=0.487 readback=0.745 conv_out=0.481 total=3.053
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=0 step=1024 lstep=1024 scale=25600
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=6 conv_in=0.738 upload=0.472 gpu=0.907 readback=0.330 conv_out=0.783 total=3.242
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=5120 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=0 conv_in=0.580 upload=0.477 gpu=0.524 readback=0.319 conv_out=0.660 total=2.570
+[1786612703] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=5 conv_in=0.463 upload=0.669 gpu=0.735 readback=0.230 conv_out=0.467 total=2.570
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=1024 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=1 conv_in=0.562 upload=0.415 gpu=0.490 readback=0.282 conv_out=0.475 total=2.233
+[1786612703] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=0 step=1024 lstep=1024 scale=25600
+[1786612703] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=0 conv_in=0.546 upload=0.404 gpu=0.474 readback=0.170 conv_out=0.491 total=2.093
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=9216 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=9 conv_in=0.261 upload=0.497 gpu=0.591 readback=0.304 conv_out=0.554 total=2.221
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=10240 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=9216 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=10 conv_in=0.235 upload=0.513 gpu=0.592 readback=0.250 conv_out=0.585 total=2.181
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=12288 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=9 conv_in=0.381 upload=0.423 gpu=0.500 readback=0.402 conv_out=0.687 total=2.401
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=10240 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=12 conv_in=0.226 upload=0.428 gpu=0.499 readback=0.335 conv_out=0.503 total=1.999
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=11264 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=9216 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=11 conv_in=0.253 upload=0.580 gpu=0.547 readback=0.505 conv_out=0.788 total=2.685
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=14336 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=10 conv_in=0.524 upload=0.926 gpu=0.562 readback=0.597 conv_out=1.140 total=3.762
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=12288 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=9 conv_in=0.833 upload=0.492 gpu=0.530 readback=1.208 conv_out=1.198 total=4.276
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=10240 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=9216 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=14 conv_in=0.713 upload=1.592 gpu=1.176 readback=0.780 conv_out=1.545 total=5.819
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=16384 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=12 conv_in=1.415 upload=0.432 gpu=1.777 readback=1.103 conv_out=0.982 total=5.721
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=11264 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=9 conv_in=0.498 upload=0.645 gpu=0.612 readback=0.632 conv_out=2.042 total=4.440
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=10 conv_in=1.106 upload=1.410 gpu=1.106 readback=1.803 conv_out=0.872 total=6.310
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=12288 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=10240 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=16 conv_in=1.442 upload=1.387 gpu=1.372 readback=0.856 conv_out=1.808 total=6.883
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=11 conv_in=1.509 upload=0.781 gpu=1.344 readback=0.727 conv_out=2.189 total=6.563
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=15360 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=12 conv_in=0.711 upload=0.535 gpu=0.607 readback=0.653 conv_out=1.332 total=3.851
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=14336 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=11264 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=10 conv_in=1.401 upload=0.769 gpu=0.662 readback=0.335 conv_out=1.725 total=4.899
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=12288 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=14 conv_in=0.873 upload=0.720 gpu=0.689 readback=0.751 conv_out=0.792 total=3.838
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=16384 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=15 conv_in=1.122 upload=0.979 gpu=0.701 readback=1.098 conv_out=1.393 total=5.307
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=11 conv_in=0.297 upload=0.628 gpu=1.209 readback=0.561 conv_out=1.232 total=3.935
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=8192 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=12 conv_in=1.005 upload=0.665 gpu=0.554 readback=0.525 conv_out=1.829 total=4.594
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=14336 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=16 conv_in=0.934 upload=0.623 gpu=0.693 readback=0.324 conv_out=0.853 total=3.435
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=11264 step=1024 lstep=1024 scale=25600
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=15360 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=8 conv_in=0.874 upload=0.534 gpu=0.759 readback=0.458 conv_out=1.472 total=4.105
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=13312 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=14 conv_in=0.650 upload=0.448 gpu=0.894 readback=0.481 conv_out=0.700 total=3.180
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=16384 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=15 conv_in=0.967 upload=0.838 gpu=0.646 readback=0.718 conv_out=0.852 total=4.031
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=8192 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=11 conv_in=1.314 upload=0.827 gpu=0.678 readback=0.856 conv_out=1.110 total=4.803
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=14336 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=13 conv_in=0.567 upload=0.520 gpu=1.617 readback=1.066 conv_out=1.800 total=5.586
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=16 conv_in=0.622 upload=0.703 gpu=0.985 readback=1.113 conv_out=1.554 total=4.991
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=17408 step=1024 lstep=1024 scale=25600
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=15360 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=8 conv_in=0.556 upload=1.014 gpu=1.044 readback=0.441 conv_out=1.798 total=4.860
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=13312 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=14 conv_in=1.011 upload=0.857 gpu=0.621 readback=1.462 conv_out=1.903 total=5.867
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=16384 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=17 conv_in=1.016 upload=0.661 gpu=0.948 readback=0.443 conv_out=1.656 total=4.736
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=18432 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=15 conv_in=1.435 upload=0.786 gpu=0.766 readback=1.373 conv_out=1.244 total=5.613
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=8192 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=13 conv_in=0.588 upload=0.633 gpu=0.701 readback=1.066 conv_out=1.422 total=4.422
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=17408 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=16 conv_in=0.973 upload=0.952 gpu=1.473 readback=0.460 conv_out=1.203 total=5.076
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=15360 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=18 conv_in=0.964 upload=1.164 gpu=1.477 readback=1.447 conv_out=1.913 total=6.980
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=8 conv_in=0.428 upload=0.642 gpu=1.394 readback=1.270 conv_out=1.806 total=5.549
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=19456 step=1024 lstep=1024 scale=25600
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=13312 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=17 conv_in=1.000 upload=1.175 gpu=0.718 readback=0.539 conv_out=0.978 total=4.418
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=15 conv_in=0.943 upload=1.303 gpu=0.634 readback=0.961 conv_out=1.691 total=5.548
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=8192 step=1024 lstep=1024 scale=25600
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=18432 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=13 conv_in=0.653 upload=0.850 gpu=0.895 readback=0.991 conv_out=1.776 total=5.187
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=17408 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=19 conv_in=1.848 upload=0.776 gpu=1.281 readback=1.122 conv_out=1.136 total=6.175
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=20480 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=8 conv_in=1.212 upload=1.208 gpu=0.813 readback=0.783 conv_out=0.994 total=5.023
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=13312 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=18 conv_in=0.975 upload=0.636 gpu=0.806 readback=1.625 conv_out=1.980 total=6.035
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=19456 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=17 conv_in=1.349 upload=1.189 gpu=0.823 readback=0.972 conv_out=1.710 total=6.055
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=18432 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=13 conv_in=1.122 upload=0.856 gpu=0.670 readback=0.562 conv_out=0.800 total=4.020
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=17408 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=20 conv_in=1.467 upload=1.812 gpu=1.152 readback=0.954 conv_out=1.731 total=7.130
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=21504 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=19 conv_in=0.967 upload=1.089 gpu=0.749 readback=1.168 conv_out=1.408 total=5.395
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=20480 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=18 conv_in=0.968 upload=0.906 gpu=1.016 readback=0.806 conv_out=2.158 total=5.866
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=19456 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=17 conv_in=0.802 upload=0.694 gpu=1.167 readback=0.579 conv_out=1.023 total=4.278
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=18432 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=21 conv_in=1.090 upload=0.795 gpu=0.893 readback=1.320 conv_out=2.860 total=6.973
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=20 conv_in=1.205 upload=0.951 gpu=0.890 readback=1.787 conv_out=1.986 total=6.831
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=21504 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=19 conv_in=1.674 upload=1.399 gpu=1.459 readback=1.104 conv_out=1.489 total=7.143
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=20480 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=18 conv_in=1.375 upload=0.992 gpu=0.895 readback=1.385 conv_out=1.063 total=5.728
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=19456 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=21 conv_in=1.008 upload=1.540 gpu=0.767 readback=0.798 conv_out=1.082 total=5.213
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=20 conv_in=0.770 upload=0.885 gpu=0.759 readback=1.033 conv_out=1.299 total=4.764
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=19 conv_in=0.572 upload=1.104 gpu=0.996 readback=0.630 conv_out=0.922 total=4.236
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=21504 step=1024 lstep=1024 scale=25600
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=20480 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=20 conv_in=0.453 upload=0.825 gpu=0.993 readback=0.502 conv_out=1.094 total=3.876
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=21 conv_in=0.661 upload=0.776 gpu=1.072 readback=0.593 conv_out=1.208 total=4.325
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=21504 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=21 conv_in=0.305 upload=0.379 gpu=1.308 readback=0.220 conv_out=0.415 total=2.634
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=22528 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=22 conv_in=0.242 upload=0.539 gpu=0.504 readback=0.343 conv_out=0.631 total=2.266
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=24576 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=22528 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=24 conv_in=0.623 upload=0.391 gpu=0.550 readback=0.456 conv_out=0.790 total=2.828
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=23552 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=22 conv_in=0.402 upload=0.629 gpu=0.763 readback=0.467 conv_out=1.150 total=3.425
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=24576 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=23 conv_in=0.539 upload=0.672 gpu=0.568 readback=0.289 conv_out=0.735 total=2.814
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=22528 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=24 conv_in=0.324 upload=0.536 gpu=0.586 readback=0.380 conv_out=0.665 total=2.500
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=23552 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=22 conv_in=0.404 upload=0.673 gpu=0.610 readback=0.679 conv_out=0.662 total=3.038
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=24576 step=1024 lstep=1024 scale=25600
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=22528 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=23 conv_in=0.869 upload=0.622 gpu=0.776 readback=0.413 conv_out=0.917 total=3.606
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=24 conv_in=0.577 upload=0.533 gpu=0.703 readback=0.495 conv_out=1.100 total=3.416
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=23552 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=22 conv_in=0.524 upload=0.573 gpu=0.689 readback=0.352 conv_out=0.468 total=2.621
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=24576 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=24 conv_in=0.349 upload=0.476 gpu=0.532 readback=0.251 conv_out=0.664 total=2.281
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=23 conv_in=0.554 upload=0.550 gpu=0.798 readback=0.734 conv_out=0.706 total=3.359
+[1786612704] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612704] render enter: Some(U8) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=23552 step=1024 lstep=1024 scale=25600
+[1786612704] perf: depth=U8 dims=1280x720 passes=1 iters=1 frame=23 conv_in=0.298 upload=0.407 gpu=0.530 readback=0.305 conv_out=0.469 total=2.016
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=1024 step=1024 lstep=1024 scale=25600
+[1786612706] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1280x720, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=1 conv_in=2.369 upload=1.152 gpu=0.907 readback=1.058 conv_out=1.675 total=8.994
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=0 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=0 conv_in=1.104 upload=1.109 gpu=1.330 readback=1.185 conv_out=1.521 total=6.260
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=8192 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=8 conv_in=1.007 upload=0.969 gpu=0.890 readback=0.997 conv_out=1.727 total=5.600
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=3072 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=3 conv_in=0.983 upload=1.131 gpu=1.003 readback=0.848 conv_out=1.637 total=5.610
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=9216 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=9 conv_in=1.036 upload=1.518 gpu=0.916 readback=1.007 conv_out=1.684 total=6.172
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=12288 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=12 conv_in=1.019 upload=0.995 gpu=1.458 readback=0.879 conv_out=1.603 total=5.964
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=7168 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=7 conv_in=0.996 upload=1.518 gpu=0.959 readback=0.865 conv_out=1.536 total=5.886
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=10240 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=10 conv_in=1.065 upload=1.327 gpu=0.844 readback=0.827 conv_out=1.624 total=5.696
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=11264 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=11 conv_in=1.077 upload=1.272 gpu=0.979 readback=0.891 conv_out=1.636 total=5.863
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=13312 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=13 conv_in=0.870 upload=1.034 gpu=0.753 readback=1.041 conv_out=1.501 total=5.206
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=15360 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=15 conv_in=0.978 upload=1.105 gpu=0.982 readback=0.951 conv_out=1.731 total=5.755
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=14336 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=14 conv_in=0.955 upload=1.145 gpu=0.899 readback=0.816 conv_out=1.512 total=5.336
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=2048 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=2 conv_in=0.961 upload=1.181 gpu=1.098 readback=0.843 conv_out=1.751 total=5.842
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=17408 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=17 conv_in=1.377 upload=1.086 gpu=1.249 readback=1.089 conv_out=1.767 total=6.579
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=5120 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=5 conv_in=1.314 upload=1.898 gpu=1.590 readback=1.130 conv_out=1.594 total=7.538
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=16384 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=16 conv_in=0.910 upload=1.498 gpu=1.337 readback=0.900 conv_out=1.738 total=6.394
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=18432 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=18 conv_in=1.245 upload=1.604 gpu=1.265 readback=1.698 conv_out=2.935 total=8.766
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=19456 step=1024 lstep=1024 scale=25600
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=19 conv_in=0.952 upload=1.202 gpu=0.827 readback=1.047 conv_out=1.794 total=5.830
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=21504 step=1024 lstep=1024 scale=25600
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=21 conv_in=1.072 upload=1.118 gpu=1.660 readback=1.078 conv_out=1.579 total=6.519
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=4096 step=1024 lstep=1024 scale=25600
+[1786612706] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612706] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=4 conv_in=1.092 upload=1.173 gpu=0.967 readback=0.902 conv_out=1.844 total=5.988
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=20480 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=20 conv_in=1.046 upload=1.254 gpu=1.020 readback=1.617 conv_out=2.538 total=7.490
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=22528 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=22 conv_in=1.495 upload=1.077 gpu=1.121 readback=1.075 conv_out=2.056 total=6.835
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=6144 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=6 conv_in=1.167 upload=1.117 gpu=1.172 readback=1.104 conv_out=1.561 total=6.129
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=23552 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=23 conv_in=1.220 upload=1.955 gpu=0.870 readback=0.815 conv_out=1.706 total=6.576
+[1786612706] render enter: Some(F32) in=1280x720 out=1536x864 win=(-128,-72) token=1451249372630276 compiled=true snap=false t=24576 step=1024 lstep=1024 scale=25600
+[1786612706] perf: depth=F32 dims=1280x720 passes=1 iters=1 frame=24 conv_in=0.878 upload=1.107 gpu=1.117 readback=0.840 conv_out=2.516 total=6.468
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=3072 step=1024 lstep=1024 scale=25600
+[1786612708] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 3840x2160, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=3 conv_in=20.289 upload=19.837 gpu=10.264 readback=9.520 conv_out=14.421 total=99.563
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=6144 step=1024 lstep=1024 scale=25600
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=6 conv_in=9.065 upload=20.493 gpu=10.971 readback=9.907 conv_out=13.954 total=64.407
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=4096 step=1024 lstep=1024 scale=25600
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=4 conv_in=9.232 upload=20.516 gpu=10.594 readback=9.263 conv_out=13.306 total=62.928
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=5120 step=1024 lstep=1024 scale=25600
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=5 conv_in=8.788 upload=20.344 gpu=10.439 readback=9.006 conv_out=13.098 total=61.695
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=7168 step=1024 lstep=1024 scale=25600
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=7 conv_in=9.126 upload=23.115 gpu=10.896 readback=9.697 conv_out=13.100 total=65.950
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=1024 step=1024 lstep=1024 scale=25600
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=1 conv_in=8.765 upload=19.945 gpu=11.067 readback=9.931 conv_out=15.417 total=65.141
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=0 step=1024 lstep=1024 scale=25600
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=0 conv_in=17.227 upload=28.589 gpu=12.497 readback=8.616 conv_out=13.019 total=79.969
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=8192 step=1024 lstep=1024 scale=25600
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=8 conv_in=8.872 upload=23.741 gpu=12.981 readback=8.762 conv_out=23.811 total=78.183
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=2048 step=1024 lstep=1024 scale=25600
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=2 conv_in=12.792 upload=21.000 gpu=11.782 readback=11.086 conv_out=17.845 total=74.521
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=9216 step=1024 lstep=1024 scale=25600
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=9 conv_in=9.834 upload=20.594 gpu=11.507 readback=9.750 conv_out=17.556 total=69.258
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=10240 step=1024 lstep=1024 scale=25600
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=10 conv_in=16.123 upload=24.710 gpu=11.125 readback=9.912 conv_out=15.807 total=77.697
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=11264 step=1024 lstep=1024 scale=25600
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612708] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=11 conv_in=11.893 upload=22.512 gpu=10.885 readback=10.221 conv_out=14.454 total=69.980
+[1786612708] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=12288 step=1024 lstep=1024 scale=25600
+[1786612708] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612708] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=12 conv_in=10.761 upload=26.859 gpu=14.177 readback=14.797 conv_out=15.629 total=82.245
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=13312 step=1024 lstep=1024 scale=25600
+[1786612709] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612709] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=13 conv_in=10.360 upload=23.750 gpu=11.997 readback=9.478 conv_out=14.064 total=69.666
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=14336 step=1024 lstep=1024 scale=25600
+[1786612709] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612709] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=14 conv_in=9.455 upload=23.423 gpu=12.013 readback=20.808 conv_out=17.085 total=82.813
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=15360 step=1024 lstep=1024 scale=25600
+[1786612709] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612709] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=15 conv_in=11.715 upload=23.748 gpu=12.847 readback=9.868 conv_out=14.035 total=72.232
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=16384 step=1024 lstep=1024 scale=25600
+[1786612709] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612709] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=16 conv_in=10.448 upload=22.701 gpu=13.491 readback=17.934 conv_out=18.557 total=83.161
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=17408 step=1024 lstep=1024 scale=25600
+[1786612709] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612709] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=17 conv_in=12.116 upload=23.526 gpu=11.826 readback=10.217 conv_out=13.797 total=71.501
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=18432 step=1024 lstep=1024 scale=25600
+[1786612709] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1786612709] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=18 conv_in=9.929 upload=21.107 gpu=11.925 readback=16.987 conv_out=24.838 total=84.811
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=19456 step=1024 lstep=1024 scale=25600
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=19 conv_in=13.124 upload=21.402 gpu=11.377 readback=10.884 conv_out=14.356 total=71.161
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=20480 step=1024 lstep=1024 scale=25600
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=20 conv_in=9.858 upload=22.605 gpu=12.255 readback=15.856 conv_out=23.899 total=84.499
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=21504 step=1024 lstep=1024 scale=25600
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=21 conv_in=11.694 upload=21.715 gpu=12.617 readback=10.650 conv_out=13.965 total=70.657
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=22528 step=1024 lstep=1024 scale=25600
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=22 conv_in=9.462 upload=23.305 gpu=13.219 readback=10.234 conv_out=19.103 total=75.340
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=23552 step=1024 lstep=1024 scale=25600
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=23 conv_in=16.415 upload=22.072 gpu=10.932 readback=11.365 conv_out=16.155 total=76.958
+[1786612709] render enter: Some(F32) in=3840x2160 out=4608x2592 win=(-384,-216) token=1451249372630276 compiled=true snap=false t=24576 step=1024 lstep=1024 scale=25600
+[1786612709] perf: depth=F32 dims=3840x2160 passes=1 iters=1 frame=24 conv_in=10.356 upload=20.297 gpu=10.807 readback=9.451 conv_out=19.708 total=70.636

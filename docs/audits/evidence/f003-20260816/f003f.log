@@ -1,0 +1,15 @@
+SHADER_WRITTEN
+TICK state=object
+TOKEN word=7011974206248405 state=1
+STATUS [Status: idle]
+POINT3D_SLOT index=117 name=[Point 3D 01] valueType=6413
+COLOR_SLOT index=78 name=[Tint] valueType=6418
+DISTINCT_CONTROLS 1
+ASSIGN ok=1 value=40,60,50 err=
+KEYS 2 err=
+PURGE ok=1
+RENDERED f003f_point3d tmpl=[Photoshop] status=3019
+EXPECT frame0 rgb(64,128,128) from x=40/160 y=60/120 z=50/100
+EXPECT frame1 differs (the stream is keyframed)
+RESULT F003F rendered=1
+RESULT_DONE

@@ -1,0 +1,51 @@
+aerender version 25.6.6x4
+PROGRESS: Launching After Effects...
+PROGRESS:  ��2026/8/12����15:52:34��: ��ʼ�ϳɡ�m1����
+
+PROGRESS:  ��Ⱦ����: �������
+PROGRESS:  Ʒ��: ���
+PROGRESS:  �ֱ���: ��ȫ
+PROGRESS:  ��С: 320 x 240
+PROGRESS:  ����ʹ��: ��ʹ�ô���
+PROGRESS:  Ч��: ��ǰ����
+PROGRESS:  ���̸��ٻ���: ֻ��
+PROGRESS:  ��ɫ���: ��ǰ����
+PROGRESS:  ֡���: ��ѡ��ͼ���
+PROGRESS:  ����Ⱦ: ��
+PROGRESS:  Pulldown: ��
+PROGRESS:  �˶�ģ��: ��ѡ��ͼ���
+PROGRESS:   
+PROGRESS:  ����: ��ǰ����
+PROGRESS:  ʱ����: �Զ���
+PROGRESS:  ��ʼ: 0:00:00:00
+PROGRESS:  ����: 0:00:00:00
+PROGRESS:  ����ʱ��: 0:00:00:01
+PROGRESS:  ֡����: 25.00 ���ϳɣ�
+PROGRESS:  ������: ȫ���ر�
+PROGRESS:  ���������ļ�: ��
+PROGRESS:  
+PROGRESS:  ���ģ��: Photoshop
+PROGRESS:  �����: E:\Code\AePlugin_Dynamicfx\scripts\out\m1\2025\m1_ar_[#####].psd
+PROGRESS:  ��ʽ: Photoshop ����
+PROGRESS:  �����Ϣ: -
+PROGRESS:  ��ʼ֡: 0
+PROGRESS:  �����Ƶ: -
+PROGRESS:  ͨ��: RGB + Alpha
+PROGRESS:  ���: ��������������ɫ
+PROGRESS:  ��ɫ: Ԥ��
+PROGRESS:  ������С: -
+PROGRESS:  �ü�: -
+PROGRESS:  ���մ�С: 320 x 240
+PROGRESS:  �����ļ�: -
+PROGRESS:  Ƕ�������ļ�: 
+PROGRESS:   
+PROGRESS:  ��Ⱦ����: ��
+PROGRESS:   
+PROGRESS:   
+PROGRESS:   
+PROGRESS:  
+PROGRESS:  0:00:00:00 (1): 0 ��
+PROGRESS:  ��2026/8/12����15:52:34��: ��ɵĺϳɡ�m1����
+
+
+PROGRESS:  ������ʱ��: 0 ��

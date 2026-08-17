@@ -1,0 +1,33 @@
+SETUP bpc=8 ws=[None]
+SETUP comps ready; idle window scheduled
+STEP2 shuffled reads at bpc=8 (W=16)
+PROBE m6acc8 frame 5 = 0.094117656
+PROBE m6acc8 frame 0 = 0.015686275
+PROBE m6acc8 frame 12 = 0.203921586
+PROBE m6acc8 frame 3 = 0.062745102
+PROBE m6acc8 frame 20 = 0.250980407
+PROBE m6acc8 frame 8 = 0.141176477
+PROBE m6acc8 frame 30 = 0.250980407
+PROBE m6acc8 frame 12 = 0.203921586
+PROBE m6acc8 frame 1 = 0.031372551
+PROBE m6acc8 frame 15 = 0.250980407
+PROBE m6acc8 frame 16 = 0.250980407
+PROBE m6acc8 frame 7 = 0.125490203
+STEP3 shuffled reads at bpc=32 (W=16)
+PROBE m6acc32 frame 10 = 0.171875000
+PROBE m6acc32 frame 2 = 0.046875000
+PROBE m6acc32 frame 0 = 0.015625000
+PROBE m6acc32 frame 25 = 0.250000000
+PROBE m6acc32 frame 6 = 0.109375000
+PROBE m6acc32 frame 15 = 0.250000000
+PROBE m6acc32 frame 40 = 0.250000000
+PROBE m6acc32 frame 6 = 0.109375000
+STEP4 recompiled with @window 8
+STEP5 post-recompile reads (W=8)
+PROBE m6acc32 frame 20 = 0.125000000
+PROBE m6acc32 frame 3 = 0.062500000
+RQ template=[Photoshop]
+RENDERED rq status=3019
+SAVED E:\Code\AePlugin_Dynamicfx\scripts\out\m6\2025\m6.aep
+RESULT M6ALL complete
+RESULT_DONE

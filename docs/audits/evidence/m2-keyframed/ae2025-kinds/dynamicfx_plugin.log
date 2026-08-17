@@ -1,0 +1,14 @@
+[1786539722] registered with AEGP at global setup
+[1786539722] AEGP idle hook registered
+[1786539722] params setup: ADR-0013 topology
+[1786539722] params setup: complete
+[1786539723] idle observation: compiled: 1 pass, 5 params
+[1786539723] idle slot ui applied: 5 bound, 3 defaults written
+[1786539723] idle state token updated: 000366b697eb447b
+[1786539736] status: compiled: 1 pass, 5 params
+[1786539736] slots configured: 5 bound (names_ok=true, visibility_ok=true)
+[1786539736] definition resolved from process registry
+[1786539736] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1786539736] pipeline built (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1786539738] status: definition rejected: PoolOverflow { kind: Float, capacity: 48, required: 49 }
+[1786539739] idle state token updated: 0000000000000000

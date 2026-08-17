@@ -1,0 +1,18 @@
+--- numeric checks (8-bit expectations, tolerance 3) ---
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m1\2025\m1c_gui.png (16,16) = 13,17,0,255 (channels=4, 8-bit; 8-bit=13,17,0,255)
+EXPECT [13, 18, 0] tol=3 (8-bit terms) -> PASS
+CHECK gradient (16,16) expect (13,18,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m1\2025\m1c_gui.png (160,120) = 128,128,0,255 (channels=4, 8-bit; 8-bit=128,128,0,255)
+EXPECT [128, 128, 0] tol=3 (8-bit terms) -> PASS
+CHECK gradient (160,120) expect (128,128,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m1\2025\m1c_gui.png (304,224) = 243,239,0,255 (channels=4, 8-bit; 8-bit=243,239,0,255)
+EXPECT [243, 239, 0] tol=3 (8-bit terms) -> PASS
+CHECK gradient (304,224) expect (243,239,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m1\2025\m1d_invalid.png (160,120) = 10,200,30,255 (channels=4, 8-bit; 8-bit=10,200,30,255)
+EXPECT [10, 200, 30] tol=2 (8-bit terms) -> PASS
+CHECK passthrough (160,120) expect (10,200,30) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m1\2025\m1_ar_00000.psd (160,120) = raw [10, 200, 30] (8-bit, 320x240; 8-bit [10, 200, 30])
+EXPECT rgb8=[128, 128, 0] tol=4 -> FAIL
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m1\2025\m1_ar_00000.psd (160,120) = raw [10, 200, 30] (8-bit, 320x240; 8-bit [10, 200, 30])
+EXPECT rgb8=[10, 200, 30] tol=4 -> PASS
+CHECK aerender PSD: gradient_match=0 passthrough_match=1

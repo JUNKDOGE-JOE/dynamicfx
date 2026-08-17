@@ -1,0 +1,16 @@
+GRADIENT_SLOT index=115 name=[Gradient 01] valueType=6417
+TOTAL_PROPERTIES 177
+STOP_PARAM [127] name=[Gradient 01 Stops] valueType=6417
+STOP_PARAM [128] name=[G01 Stop 01 Pos] valueType=6417
+STOP_PARAM [129] name=[G01 Stop 01 Color] valueType=6418
+STOP_PARAM [130] name=[G01 Stop 01 Alpha] valueType=6417
+STOP_PARAM [131] name=[G01 Stop 02 Pos] valueType=6417
+TICK state=object
+TOKEN word=2015436036639029 state=1
+STATUS [Status: idle]
+PURGE ok=1
+RENDERED f003b_default tmpl=[Photoshop] status=3019
+EXPECT horizontal black->white ramp, row-constant
+SAVED E:\Code\AePlugin_Dynamicfx\scripts\out\f003\2025\f003b.aep
+RESULT F003B rendered=1
+RESULT_DONE

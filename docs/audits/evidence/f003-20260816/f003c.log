@@ -1,0 +1,8 @@
+BEFORE_WRITE word=0
+SHADER_WRITTEN
+SAW word=5455196333778457 state=1 payload=1363799083444614
+STATUS [Status: idle]
+POLLS 1 distinct_words=[5455196333778457]
+RESULT F003C ready=1 saw_e53=0
+EXPECT ready=1 saw_e53=0 (an ordinary compile never transits E53)
+RESULT_DONE

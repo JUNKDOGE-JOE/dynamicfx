@@ -1,0 +1,14 @@
+SHADER_WRITTEN layers=2
+LAYER_SLOT index=111 name=[Layer 01]
+PHASE none_selected
+TICK state=object
+TOKEN word=1058260892460869 state=1 ready=1
+STATUS [Status: idle]
+PURGE ok=1
+RENDERED f003a_none tmpl=[Photoshop] status=3019
+ASSIGN ok=1 target_index=2 err=
+PURGE ok=1
+RENDERED f003a_assigned tmpl=[Photoshop] status=3019
+EXPECT none=rgb(200,40,40) assigned=rgb(20,180,220)
+RESULT F003A rendered=2
+RESULT_DONE
