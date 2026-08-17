@@ -34,6 +34,28 @@ Never install into the shared `Common\Plug-ins\7.0\MediaCore` folder —
 Premiere Pro scans it too. Restart After Effects; the effect appears as
 **DynamicFx**.
 
+## AI assistant skill
+
+You do not have to hand-write GLSL. This repo ships a skill for AI coding
+assistants (Claude Code, Cursor, and similar) that teaches them the exact
+syntax this plug-in expects — writing shaders from scratch, converting
+existing Shadertoy/GLSL code, and fixing compile errors. One line, from
+your project root:
+
+```bash
+mkdir -p .claude/skills/dynamicfx-shaders && for f in SKILL.md porting.md reference.md; do curl -fsSL "https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/$f" -o ".claude/skills/dynamicfx-shaders/$f"; done
+```
+
+Or paste this to your assistant: *Download SKILL.md, porting.md and
+reference.md from
+https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/
+and save all three into .claude/skills/dynamicfx-shaders/ in this project,
+then confirm the skill is installed.*
+
+Then ask it things like *"convert this Shadertoy shader to DynamicFX"* or
+*"write me a heat-haze effect with keyframeable controls"*. Details:
+[skills/dynamicfx-shaders/INSTALL.md](skills/dynamicfx-shaders/INSTALL.md).
+
 ## Quick start
 
 Apply DynamicFx to a layer, then put your shader on the `Source` parameter
@@ -82,6 +104,21 @@ declare passes and connections in the `@graph` block; `prev` as a pass
 input plus `// @window N` enables temporal feedback (windowed
 re-simulation: every frame is self-contained — scrubbing, render-queue
 order, and aerender all agree exactly).
+
+## Examples
+
+[`examples/`](examples/) has complete, working shaders to paste in:
+
+- [`thermal.glsl`](examples/thermal.glsl) — a six-pass heat signature: warped
+  fBm field, two separable blur chains, palette compositing. Shows multi-pass
+  graphs and effect-wide parameters.
+- [`orb.glsl`](examples/orb.glsl) — an orbiting light with a decaying trail.
+  Shows temporal feedback (`prev` + `@window`), plus angle and checkbox
+  controls.
+
+Both are compiled by the test suite on every build, so they cannot drift out
+of sync with the grammar. See [`examples/README.md`](examples/README.md) for
+how to apply one.
 
 ## Language guide
 
@@ -281,33 +318,6 @@ Parameters are allocated from fixed pools, which is what keeps their AE
 identity stable across source edits. The per-shader ceilings are the "Slots"
 column above. Exceeding one rejects the definition with `E32` rather than
 silently dropping a control.
-
-## Examples
-
-[`examples/`](examples/) has complete, working shaders to paste in:
-
-- [`thermal.glsl`](examples/thermal.glsl) — a six-pass heat signature: warped
-  fBm field, two separable blur chains, palette compositing. Shows multi-pass
-  graphs and effect-wide parameters.
-- [`orb.glsl`](examples/orb.glsl) — an orbiting light with a decaying trail.
-  Shows temporal feedback (`prev` + `@window`), plus angle and checkbox
-  controls.
-
-Both are compiled by the test suite on every build, so they cannot drift out
-of sync with the grammar. See [`examples/README.md`](examples/README.md) for
-how to apply one.
-
-## AI assistant skill
-
-`skills/dynamicfx-shaders/` is a skill for AI coding assistants (Claude Code, Cursor, and similar) that teaches them the envelope syntax, the shader ABI, `@param` declarations, and how to port existing Shadertoy/GLSL shaders to DynamicFX. One-line install from your project root:
-
-```bash
-mkdir -p .claude/skills/dynamicfx-shaders && for f in SKILL.md porting.md reference.md; do curl -fsSL "https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/$f" -o ".claude/skills/dynamicfx-shaders/$f"; done
-```
-
-Or paste this to your assistant: *Download SKILL.md, porting.md and reference.md from https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/ and save all three into .claude/skills/dynamicfx-shaders/ in this project, then confirm the skill is installed.*
-
-See [skills/dynamicfx-shaders/INSTALL.md](skills/dynamicfx-shaders/INSTALL.md) for details.
 
 ## Scripting: wait for readiness before you render
 
