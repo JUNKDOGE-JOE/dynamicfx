@@ -1,2 +1,7 @@
 /target
+/dist
+/.setup
 Cargo.lock
+
+/scripts/out
+/spike/probe/target
