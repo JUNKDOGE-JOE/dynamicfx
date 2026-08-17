@@ -297,6 +297,18 @@ Both are compiled by the test suite on every build, so they cannot drift out
 of sync with the grammar. See [`examples/README.md`](examples/README.md) for
 how to apply one.
 
+## AI assistant skill
+
+`skills/dynamicfx-shaders/` is a skill for AI coding assistants (Claude Code, Cursor, and similar) that teaches them the envelope syntax, the shader ABI, `@param` declarations, and how to port existing Shadertoy/GLSL shaders to DynamicFX. One-line install from your project root:
+
+```bash
+mkdir -p .claude/skills/dynamicfx-shaders && for f in SKILL.md porting.md reference.md; do curl -fsSL "https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/$f" -o ".claude/skills/dynamicfx-shaders/$f"; done
+```
+
+Or paste this to your assistant: *Download SKILL.md, porting.md and reference.md from https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/ and save all three into .claude/skills/dynamicfx-shaders/ in this project, then confirm the skill is installed.*
+
+See [skills/dynamicfx-shaders/INSTALL.md](skills/dynamicfx-shaders/INSTALL.md) for details.
+
 ## Scripting: wait for readiness before you render
 
 If a script applies DynamicFx and writes the `Source` expression, it must
