@@ -411,6 +411,15 @@ Thank you to everyone supporting DynamicFX!
 |---|---|
 | **PAO** — our first sponsor! | ¥5 |
 
+## Acknowledgements
+
+Inspired by [tweak_shader](https://github.com/mobile-bungalow/tweak_shader) and
+its [After Effects plug-in](https://github.com/mobile-bungalow/tweak_shader_ae_plugin)
+by mobile-bungalow — the nearest prior art for running arbitrary shaders inside
+After Effects, and where DynamicFX learned to hide unused parameter slots with
+the AEGP `DynamicStream` flag instead of the PUI invisible flag. No code is
+shared: DynamicFX is an independent implementation.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
