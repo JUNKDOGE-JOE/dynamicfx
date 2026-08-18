@@ -275,6 +275,8 @@
 
 Items 2-5 were pulled forward into the 0.0.3 batch at the user's direction: write the controls first, then spend one host pass on all of them, rather than one host cycle per feature. The [ADR-0031](adr/0031-gradient-parameters.md) §7 custom-UI editor was **dropped** from item 3 on 2026-08-16 after it crashed the host in every configuration tried; ADR-0033 §6 made that a presentation loss rather than a feature loss, which is why it did not reopen the decision.
 
+6. **0.0.4 — pool valid-range fix — SHIPPED 2026-08-19** ([public issue #5](https://github.com/JUNKDOGE-JOE/dynamicfx/issues/5), [ADR-0037](adr/0037-pool-valid-range-and-slider-range.md)). Added 2026-08-19 at the user's direction ("file the issue, answer the old ones, then fix"); a released-contract defect, so it preceded the two unscheduled candidates (byte-reproducible build; growth-pool labels). [TR-0037-001](TEST_MATRIX.md#tr-0037-001--pool-valid-range-float1-negative-int10) `PASS` on AE 2025 and 2026 with the m2/m3 batteries green; released as a pre-release per [TR-REL-004](TEST_MATRIX.md#tr-rel-004--004-release-verification).
+
 **Host matrix:** AE 2024 provisioning is deliberately deferred; releases stay pre-releases under [ADR-0027](adr/0027-0.0.1-prerelease-scope.md). [ADR-0014](adr/0014-windows-host-protocol.md) §7's four-year matrix is **not** superseded and remains the 1.0 gate.
 
 **Next exact action:** See [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md). It is intentionally not duplicated here.

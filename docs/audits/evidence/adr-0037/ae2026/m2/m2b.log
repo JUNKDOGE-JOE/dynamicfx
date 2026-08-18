@@ -1,0 +1,5 @@
+SLOTS slot1=[gain] slot2=[Float 02] status=[Status: idle]
+KEYFRAMES numKeys=2
+PNGS saved t0/t04/t08 expect gray 0 / 102 / 204
+RESULT M2B slot1=[gain] numKeys=2
+RESULT_DONE

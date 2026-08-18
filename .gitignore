@@ -5,3 +5,6 @@ Cargo.lock
 
 /scripts/out
 /spike/probe/target
+
+# Python bytecode from the harness gate scripts (scripts/f003/f003h_check.py imports scripts/m1)
+__pycache__/

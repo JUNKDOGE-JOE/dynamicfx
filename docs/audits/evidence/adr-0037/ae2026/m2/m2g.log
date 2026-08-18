@@ -1,0 +1,4 @@
+AFTER_RENAME slot1=[Volume] numKeys=2
+PNG saved m2g_t04.png expect gray 128 (keyframes 0->1 at t=0.4, default 0.9 NOT applied)
+RESULT M2G slot1=[Volume] numKeys=2
+RESULT_DONE

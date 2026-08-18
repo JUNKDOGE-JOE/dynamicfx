@@ -1,0 +1,4 @@
+AFTER_EDIT slot1=[gain] slot2=[extra] slot1_numKeys=2
+PNG saved m2d_t04.png expect gray 102 (gain keyframes intact, extra=0)
+RESULT M2D slot1=[gain] slot2=[extra] numKeys=2
+RESULT_DONE

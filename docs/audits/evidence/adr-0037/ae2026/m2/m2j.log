@@ -1,0 +1,4 @@
+OVERFLOW_STATUS [Status: E32 definition rejected] token=130
+PNG saved m2i_overflow.png expect passthrough solid (10,200,30)
+RESULT M2J status=[Status: E32 definition rejected] token=130
+RESULT_DONE

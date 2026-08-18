@@ -11,7 +11,7 @@ single authority for what renders.
 
 ## Status
 
-`0.0.3` — pre-release.
+`0.0.4` — pre-release.
 
 | Host (Windows) | Status |
 |---|---|
@@ -211,7 +211,7 @@ One comment line per parameter, anywhere in the source:
 | Entry | Meaning |
 |---|---|
 | `label:"Some Text"` | the row name in Effect Controls (quotes optional if one word) |
-| `min:<number>` `max:<number>` | slider range |
+| `min:<number>` `max:<number>` | slider range (give both) — the range the control drags over, not a hard limit; see the note below |
 | `default:<number>[,<number>...]` | initial value, 1-4 components |
 | `default:#RRGGBB` / `default:#RRGGBBAA` | colour initial value (`hint:color` only) |
 | `alias:<id>[,<id>...]` | previous names, so renaming a uniform keeps its keyframes |
@@ -246,6 +246,16 @@ The GLSL type picks the control; `hint:` overrides it where a type is ambiguous.
 
 Notes that will save you time:
 
+- **`min:`/`max:` set the slider, not a clamp.** The shader receives whatever
+  value After Effects shows in the row. If a value outside the declared range
+  reaches the row — an expression, a keyframe set before you narrowed the
+  range, or the host letting you type it — it is passed through; the runtime
+  never clamps. An un-annotated slider shows `0..1` and an un-annotated
+  integer `0..10`, and both take values far outside that. If your shader needs
+  a hard limit, `clamp()` it. (0.0.3 and earlier clamped every float slider to
+  `0..1` and every integer to `0..10` *at render*, whatever `min:`/`max:` said
+  — a defect, [issue #5](https://github.com/JUNKDOGE-JOE/dynamicfx/issues/5),
+  fixed by [ADR-0037](docs/adr/0037-pool-valid-range-and-slider-range.md).)
 - **`vec3` is a colour by default.** Spatial `vec3`s must say `hint:point3d`,
   because flipping the default would silently retype every existing shader's
   colours.

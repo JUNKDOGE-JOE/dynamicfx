@@ -1,0 +1,6 @@
+ANNOTATED slot1=[Master Level] value=0.5
+PNG saved m2e_default.png expect gray 128 (default 0.5, no stream touched)
+KEYFRAMES numKeys=2
+RENAME set exprErr=[]
+RESULT M2F slot1=[Master Level] value=0.5 numKeys=2
+RESULT_DONE

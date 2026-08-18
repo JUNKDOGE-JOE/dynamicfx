@@ -74,6 +74,27 @@ pub fn default_stop_position(stop: usize) -> f64 {
     }
 }
 
+/// ADR-0037 §1: the *valid* range the Float and Integer pools register at
+/// `PARAMS_SETUP`. This is the only range After Effects clamps a rendered
+/// value to, and `PF_UpdateParamUI` cannot change it later — the SDK header
+/// lists `slider_min`, `slider_max`, `precision` and `display_flags` as the
+/// only slider fields it touches. Registering `0..1` here (0.0.1–0.0.3) put a
+/// permanent ceiling of 1.0 under every float parameter and 10 under every
+/// integer, whatever the shader's `@param min:/max:` said (public issue #5).
+///
+/// The magnitude is exactly representable in the `f32` the SDK stores the
+/// float bounds in, fits `i32` for the integer pool, and is a finite typing
+/// bound. The *slider* range stays the display default (`0..1` / `0..10`) and
+/// is what the annotation reconfigures per binding.
+pub const POOL_FLOAT_VALID_RANGE: (f32, f32) = (-1_000_000_000.0, 1_000_000_000.0);
+pub const POOL_INT_VALID_RANGE: (i32, i32) = (-1_000_000_000, 1_000_000_000);
+
+/// Display range of an unbound / un-annotated Float slot (ADR-0037 §1). A
+/// bound slot's `@param min:/max:` replaces it through `PF_UpdateParamUI`.
+pub const POOL_FLOAT_SLIDER_RANGE: (f32, f32) = (0.0, 1.0);
+/// Display range of an unbound / un-annotated Integer slot.
+pub const POOL_INT_SLIDER_RANGE: (i32, i32) = (0, 10);
+
 /// Head parameters in declaration order, after AE's implicit input layer.
 const HEAD: [ParamKey; 5] = [
     ParamKey::Language,
@@ -315,14 +336,16 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
             ParamKey::Pool(kind, i) => {
                 let name = default_slot_name(kind, i);
                 match kind {
+                    // ADR-0037: the valid range is wide and fixed here; the
+                    // slider range is the display default a binding replaces.
                     PoolKind::Float => params.add_with_flags(
                         key,
                         &name,
                         ae::FloatSliderDef::setup(|f| {
-                            f.set_slider_min(0.0);
-                            f.set_slider_max(1.0);
-                            f.set_valid_min(0.0);
-                            f.set_valid_max(1.0);
+                            f.set_slider_min(POOL_FLOAT_SLIDER_RANGE.0);
+                            f.set_slider_max(POOL_FLOAT_SLIDER_RANGE.1);
+                            f.set_valid_min(POOL_FLOAT_VALID_RANGE.0);
+                            f.set_valid_max(POOL_FLOAT_VALID_RANGE.1);
                             f.set_default(0.0);
                             // Unset precision is the zeroed field = integer
                             // stepping — floats dragged like ints (0.0.1
@@ -337,10 +360,10 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
                         key,
                         &name,
                         ae::SliderDef::setup(|s| {
-                            s.set_slider_min(0);
-                            s.set_slider_max(10);
-                            s.set_valid_min(0);
-                            s.set_valid_max(10);
+                            s.set_slider_min(POOL_INT_SLIDER_RANGE.0);
+                            s.set_slider_max(POOL_INT_SLIDER_RANGE.1);
+                            s.set_valid_min(POOL_INT_VALID_RANGE.0);
+                            s.set_valid_max(POOL_INT_VALID_RANGE.1);
                             s.set_default(0);
                         }),
                         ae::ParamFlag::START_COLLAPSED,
@@ -617,6 +640,11 @@ mod tests {
             Some(127),
             "f003b_gradient.jsx reads the stop block from property 127"
         );
+        // TR-0037-001 (f003h_range.jsx) drives the first two Float slots and
+        // the first Integer slot; these are frozen V1 positions.
+        assert_eq!(property_index(ParamKey::Pool(PoolKind::Float, 0)), Some(6), "f003h: wide");
+        assert_eq!(property_index(ParamKey::Pool(PoolKind::Float, 1)), Some(7), "f003h: neg");
+        assert_eq!(property_index(ParamKey::Pool(PoolKind::Integer, 0)), Some(54), "f003h: count");
     }
 
     /// Stream indexes are declaration positions + 1 (input layer at 0).
@@ -629,5 +657,38 @@ mod tests {
         assert_eq!(stream_of(ParamKey::Language), Some(LANGUAGE_STREAM_INDEX));
         assert_eq!(stream_of(ParamKey::Source), Some(SOURCE_STREAM_INDEX));
         assert_eq!(stream_of(ParamKey::StateToken), Some(STATE_TOKEN_STREAM_INDEX));
+    }
+
+    /// ADR-0037 §1. The registered valid range is the only range After Effects
+    /// clamps a rendered value to, and it cannot be changed after
+    /// `PARAMS_SETUP`; a narrow one here is the public-issue-#5 defect (every
+    /// float above 1 and every int above 10 reached the shader clamped). The
+    /// pins: wide enough for any plausible shader value, symmetric so negatives
+    /// pass, exactly representable in the `f32` the SDK stores the float bounds
+    /// in, and the display (slider) defaults still the modest `0..1` / `0..10`
+    /// that an un-annotated slot shows.
+    #[test]
+    fn pool_valid_ranges_are_wide_symmetric_and_exact() {
+        let (fmin, fmax) = POOL_FLOAT_VALID_RANGE;
+        assert_eq!(fmin, -fmax, "float valid range is symmetric");
+        assert!(fmax >= 1_000_000_000.0, "float valid range covers ±1e9");
+        // Exact in f32: 1e9 = 2^9 · 1953125 and 1953125 < 2^24, so the
+        // conversion the SDK performs loses nothing.
+        assert_eq!(fmax as f64, 1_000_000_000.0_f64);
+        assert_eq!(fmax as i64, 1_000_000_000_i64);
+
+        let (imin, imax) = POOL_INT_VALID_RANGE;
+        assert_eq!(imin, -imax, "int valid range is symmetric");
+        assert!(imax >= 1_000_000_000, "int valid range covers ±1e9");
+
+        // The display defaults are unchanged from 0.0.1: a modest range an
+        // un-annotated slot drags over, replaced per binding by @param.
+        assert_eq!(POOL_FLOAT_SLIDER_RANGE, (0.0, 1.0));
+        assert_eq!(POOL_INT_SLIDER_RANGE, (0, 10));
+
+        // The slider default lies inside the valid range (AE rejects a
+        // definition whose display range exceeds its valid range).
+        assert!(fmin <= POOL_FLOAT_SLIDER_RANGE.0 && POOL_FLOAT_SLIDER_RANGE.1 <= fmax);
+        assert!(imin <= POOL_INT_SLIDER_RANGE.0 && POOL_INT_SLIDER_RANGE.1 <= imax);
     }
 }

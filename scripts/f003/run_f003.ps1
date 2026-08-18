@@ -40,6 +40,7 @@ $map = [ordered]@{
     c = 'f003c_marker.jsx'
     f = 'f003f_point3d.jsx'
     g = 'f003g_path.jsx'
+    h = 'f003h_range.jsx'
 }
 
 function Wait-Sentinel([string]$log, [int]$timeout) {

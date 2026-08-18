@@ -7,8 +7,8 @@ Full entry syntax: `// @param <identifier> [entry ...]`, placed near the corresp
 | Entry | Form | Applies to |
 |---|---|---|
 | `label:"text"` | quoted display name | all types (ignored by host for `layer`/`gradient`/`point3d`/`path` — see below) |
-| `min:<n>` | number | numeric types |
-| `max:<n>` | number | numeric types |
+| `min:<n>` | number | numeric types — slider (drag) range, give both; not a clamp: the shader receives the row's value as shown, so `clamp()` in the shader if a hard limit matters (ADR-0037) |
+| `max:<n>` | number | numeric types — see `min:` |
 | `default:<value>` | number (1-4 components) or `#RRGGBB`/`#RRGGBBAA` | numeric types / `hint:color` only for hex form; 6-digit hex implies alpha 1.0 |
 | `alias:<old-id>` | identifier | any — preserves keyframes across a parameter rename |
 | `hint:` | one of `angle`, `color`, `bool`, `layer`, `gradient`, `point3d`, `path` | see mapping table below |

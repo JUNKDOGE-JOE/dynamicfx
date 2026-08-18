@@ -1,0 +1,40 @@
+[1787080006] registered with AEGP at global setup
+[1787080006] AEGP idle hook registered
+[1787080006] params setup: ADR-0013 topology
+[1787080006] params setup: complete
+[1787080007] idle observation: compiled: 1 pass, 1 params
+[1787080007] idle slot ui applied: 1 bound, 0 defaults written
+[1787080007] idle state token updated: Active(2216516983183946)
+[1787080020] status: compiled: 1 pass, 1 params
+[1787080020] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1787080020] definition resolved from process registry
+[1787080020] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1787080020] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787080022] status: compiled: 1 pass, 2 params
+[1787080022] slots configured: 2 bound (names_ok=true, visibility_ok=true)
+[1787080023] idle slot ui applied: 2 bound, 0 defaults written
+[1787080023] idle state token updated: Active(1941602393916702)
+[1787080023] definition resolved from process registry
+[1787080023] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787080039] idle observation: compiled: 1 pass, 1 params
+[1787080039] idle slot ui applied: 1 bound, 1 defaults written
+[1787080039] idle state token updated: Active(863572850775124)
+[1787080052] status: compiled: 1 pass, 1 params
+[1787080052] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1787080052] definition resolved from process registry
+[1787080052] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787080052] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1787080053] idle slot ui applied: 1 bound, 0 defaults written
+[1787080053] idle state token updated: Active(712769357332756)
+[1787080053] definition resolved from process registry
+[1787080053] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787080070] idle observation: compiled: 1 pass, 5 params
+[1787080070] idle slot ui applied: 5 bound, 3 defaults written
+[1787080070] idle state token updated: Active(7721819948317)
+[1787080082] status: compiled: 1 pass, 5 params
+[1787080082] slots configured: 5 bound (names_ok=true, visibility_ok=true)
+[1787080083] definition resolved from process registry
+[1787080083] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787080084] status: E32 definition rejected: PoolOverflow { kind: Float, capacity: 48, required: 49 }
+[1787080084] slots hidden (no definition)
+[1787080085] idle state token updated: Invalid(32)

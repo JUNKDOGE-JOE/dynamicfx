@@ -1,0 +1,27 @@
+SHADER_WRITTEN
+TOKEN word=1377159834527233 state=1
+STATUS [Status: idle]
+RANGE wide  name=[Wide] min=-1000000000 max=1000000000 value=40
+RANGE neg   name=[Neg] min=-1000000000 max=1000000000 value=-0.60000002384186
+RANGE count name=[Count] min=-1000000000 max=1000000000 value=60
+PURGE ok=1
+RENDERED f003h_defaults tmpl=[Photoshop] status=3019
+EXPECT f003h_defaults rgb(51,51,153) from wide=40 neg=-0.6 count=60
+EXPECT_OLD_ARTIFACT rgb(1,128,26) (clamped 1.0 / 0.0 / 10)
+ASSIGN ok=3/3 wide=150 neg=0.2 count=80 err=[]
+TYPING_BOUND wide=0.3 (below declared min 2) -> accepted
+RANGE_AFTER wide  name=[Wide] min=-1000000000 max=1000000000 value=150
+RANGE_AFTER neg   name=[Neg] min=-1000000000 max=1000000000 value=0.20000000298023
+RANGE_AFTER count name=[Count] min=-1000000000 max=1000000000 value=80
+PURGE ok=1
+RENDERED f003h_set tmpl=[Photoshop] status=3019
+EXPECT f003h_set rgb(191,153,204) from wide=150 neg=0.2 count=80
+EXPECT_OLD_ARTIFACT rgb(1,128,26)
+THERMAL_WRITTEN bytes=7746
+THERMAL_TOKEN word=8260635289964409 state=1 status=[Status: idle]
+THERMAL_RANGE glow name=[Glow Radius] min=-1000000000 max=1000000000 value=1.20000004768372
+PURGE ok=1
+RENDERED f003h_thermal tmpl=[Photoshop] status=3019
+EXPECT f003h_thermal VISUAL: the intended palette (deep/main/light body, hot core, rim, glow) at glow=1.2 — evidence PSD, no numeric gate
+RESULT F003H rendered=3
+RESULT_DONE

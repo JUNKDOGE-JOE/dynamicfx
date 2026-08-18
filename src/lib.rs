@@ -1719,16 +1719,39 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
                         // (annotation-driven; display metadata only — the
                         // default VALUE is written by the idle observer to
                         // fresh bindings via AEGP).
+                        //
+                        // ADR-0037 §2: `@param min:/max:` is the SLIDER range.
+                        // The SDK header on `PF_UpdateParamUI` lists
+                        // slider_min/slider_max/precision/display_flags as the
+                        // only slider fields it changes; the valid range is
+                        // fixed at PARAMS_SETUP (wide, `params.rs`) and is what
+                        // After Effects clamps a rendered value to AND what it
+                        // validates a scripted setValue against. The valid_*
+                        // writes below are a measured no-op on both paths:
+                        // TR-0037-001 set `min:2 max:200` then setValue(0.3)
+                        // and AE *accepted* it on 2025 and 2026. They stay
+                        // only so the stored def is internally consistent;
+                        // nothing reads them back. A binding without a
+                        // declared range gets the display default slider range
+                        // and the wide valid range, so a slot that once
+                        // carried `2..200` does not hand its old range to the
+                        // next parameter that lands on it.
                         if let Some(config) = config {
                             if let Ok(mut param) = p.as_param_mut() {
                                 match &mut param {
                                     ae::Param::FloatSlider(f) => {
-                                        if let (Some(min), Some(max)) = (config.min, config.max) {
-                                            f.set_slider_min(min);
-                                            f.set_slider_max(max);
-                                            f.set_valid_min(min);
-                                            f.set_valid_max(max);
-                                        }
+                                        let (valid, slider) = (
+                                            host::params::POOL_FLOAT_VALID_RANGE,
+                                            host::params::POOL_FLOAT_SLIDER_RANGE,
+                                        );
+                                        let (smin, smax, vmin, vmax) = match (config.min, config.max) {
+                                            (Some(min), Some(max)) => (min, max, min, max),
+                                            _ => (slider.0, slider.1, valid.0, valid.1),
+                                        };
+                                        f.set_slider_min(smin);
+                                        f.set_slider_max(smax);
+                                        f.set_valid_min(vmin);
+                                        f.set_valid_max(vmax);
                                         if let Some(default) = config.default {
                                             f.set_default(default as f64);
                                         }
@@ -1739,12 +1762,20 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
                                         f.set_precision(ae::Precision::Hundredths);
                                     }
                                     ae::Param::Slider(s) => {
-                                        if let (Some(min), Some(max)) = (config.min, config.max) {
-                                            s.set_slider_min(min as i32);
-                                            s.set_slider_max(max as i32);
-                                            s.set_valid_min(min as i32);
-                                            s.set_valid_max(max as i32);
-                                        }
+                                        let (valid, slider) = (
+                                            host::params::POOL_INT_VALID_RANGE,
+                                            host::params::POOL_INT_SLIDER_RANGE,
+                                        );
+                                        let (smin, smax, vmin, vmax) = match (config.min, config.max) {
+                                            (Some(min), Some(max)) => {
+                                                (min as i32, max as i32, min as i32, max as i32)
+                                            }
+                                            _ => (slider.0, slider.1, valid.0, valid.1),
+                                        };
+                                        s.set_slider_min(smin);
+                                        s.set_slider_max(smax);
+                                        s.set_valid_min(vmin);
+                                        s.set_valid_max(vmax);
                                         if let Some(default) = config.default {
                                             s.set_default(default as i32);
                                         }

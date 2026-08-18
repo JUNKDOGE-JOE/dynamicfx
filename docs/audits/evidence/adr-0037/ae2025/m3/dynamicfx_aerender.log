@@ -1,0 +1,60 @@
+[1787080200] registered with AEGP at global setup
+[1787080200] AEGP idle hook registered
+[1787080200] params setup: ADR-0013 topology
+[1787080200] params setup: complete
+[1787080201] idle observation: compiled: 1 pass, 1 params
+[1787080201] idle slot ui applied: 1 bound, 0 defaults written
+[1787080201] idle state token updated: Active(1334301862297414)
+[1787080237] registered with AEGP at global setup
+[1787080237] AEGP idle hook registered
+[1787080237] params setup: ADR-0013 topology
+[1787080237] params setup: complete
+[1787080237] status: compiled: 1 pass, 1 params
+[1787080237] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1787080237] definition resolved from process registry
+[1787080237] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1787080237] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787080238] idle slot ui applied: 1 bound, 0 defaults written
+[1787080273] registered with AEGP at global setup
+[1787080273] AEGP idle hook registered
+[1787080273] params setup: ADR-0013 topology
+[1787080273] params setup: complete
+[1787080273] status: compiled: 1 pass, 1 params
+[1787080273] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1787080273] definition resolved from process registry
+[1787080273] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1787080273] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787080274] idle slot ui applied: 1 bound, 0 defaults written
+[1787080309] registered with AEGP at global setup
+[1787080309] AEGP idle hook registered
+[1787080309] params setup: ADR-0013 topology
+[1787080309] params setup: complete
+[1787080309] status: compiled: 1 pass, 1 params
+[1787080309] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1787080309] status: compiled: 1 pass, 1 params
+[1787080309] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1787080309] definition resolved from process registry
+[1787080309] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1787080310] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787080310] definition resolved from process registry
+[1787080310] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787080310] idle slot ui applied: 1 bound, 0 defaults written
+[1787080311] idle slot ui applied: 1 bound, 0 defaults written
+[1787080311] token/snapshot fingerprint mismatch; snapshot wins
+[1787080311] definition rebuilt from snapshot
+[1787080311] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787080311] token/snapshot fingerprint mismatch; snapshot wins
+[1787080311] definition rebuilt from snapshot
+[1787080311] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787080312] idle slot ui applied: 1 bound, 0 defaults written
+[1787080312] idle state token updated: Active(1334301862297414)
+[1787080326] idle observation: pass `main`: GLSL error: Error { kind: InvalidToken(Identifier("broken"), [Eof]), meta: Span { start: 0, end: 6 } }
+[1787080326] idle state token updated: Invalid(17)
+[1787080339] idle observation: compiled: 1 pass, 1 params
+[1787080407] registered with AEGP at global setup
+[1787080407] AEGP idle hook registered
+[1787080407] params setup: ADR-0013 topology
+[1787080407] params setup: complete
+[1787080407] definition rebuilt from snapshot
+[1787080407] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+[1787080407] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 320x240, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")

@@ -63,6 +63,7 @@ Use [TEMPLATE.md](TEMPLATE.md). Ordinary implementation details and bug fixes do
 | [0034](0034-point3d-parameters.md) | Point 3D parameters (`hint:point3d`) — closes ADR-0013's reserved kind | Accepted |
 | [0035](0035-path-parameters.md) | Path parameters (`hint:path`) — masks as an N×2 vertex texture, count from `textureSize` | Accepted |
 | [0036](0036-single-repository-record.md) | Single-repository record — the public repo is the whole record; one document withheld, redactions listed | Accepted |
+| [0037](0037-pool-valid-range-and-slider-range.md) | Pool slider valid ranges are wide and fixed at `PARAMS_SETUP`; `@param min:/max:` is the slider range; the runtime never clamps | Accepted |
 
 ## Format ADRs (staged per ADR-0009)
 
@@ -109,4 +110,5 @@ Post-M7 (follow-up features):
 - [0033 gradient stops are ordinary parameters](0033-gradient-stops-are-ordinary-parameters.md) — Accepted 2026-08-15 (withdraws 0031's arbitrary-data value after it crashed AE; parameter structure matched against a shipping reference effect);
 - [0034 Point 3D parameters](0034-point3d-parameters.md) — Accepted 2026-08-15 (closes the ADR-0013 §3 reservation; `vec3` stays a colour unless annotated);
 - [0035 path parameters](0035-path-parameters.md) — Accepted 2026-08-15 (masks as vertex textures; Beziers delivered, not flattened);
-- [0036 single-repository record](0036-single-repository-record.md) — Accepted 2026-08-17 (public repo becomes the whole record after the private one was archived; competitor analysis withheld, its six citation redactions listed).
+- [0036 single-repository record](0036-single-repository-record.md) — Accepted 2026-08-17 (public repo becomes the whole record after the private one was archived; competitor analysis withheld, its six citation redactions listed);
+- [0037 pool valid range and slider range](0037-pool-valid-range-and-slider-range.md) — Accepted 2026-08-19 (public issue #5: `PF_UpdateParamUI` cannot change `valid_*`, so the registered `0..1`/`0..10` ranges clamped every float above 1 and int above 10 at render; wide registered range, annotation range = slider range, runtime never clamps).
