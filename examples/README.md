@@ -63,10 +63,41 @@ and `hint:bool` controls alongside colors.
 
 Turn **Composite Over Layer** off to see the orb alone on transparency.
 
+### [`apple-thermal.glsl`](apple-thermal.glsl) — event-style thermal logo (ten passes)
+
+A thermal-camera look in the style of a well-known 2025 event invitation:
+black top face, hot bands that drift along parts of the contour (red-orange
+edge → yellow → white → light-blue tail), a thin light-blue edge line where
+the shape is cold, and a wide blue glow outside the shape that warms up next
+to hot regions.
+
+Built as ten passes: two separable blurs of the alpha (a small one for the
+edge line, a wide one for the diffusion field, hi/lo-encoded so the smooth
+field survives 8-bpc intermediates), a temperature pass (regional-heat noise
+× a contour-band profile, plus a "wall direction" boost so the lower-left
+contours run hotter), a medium blur of the temperature for softness, a wide
+blur of the temperature for the outer glow, and one colouring pass that maps
+temperature through a palette (`Use Custom Ramp` swaps in a `hint:gradient`).
+
+Demonstrates a 10-pass graph with two independent blur chains over a scalar
+field, hi/lo encoding of a smooth field on 8-bpc intermediates, an integer
+lattice hash for value noise (the `fract(sin(dot))` hash breaks on cell
+borders for large arguments), `hint:angle`, `hint:bool` and `hint:gradient`
+controls, and an output whose alpha extends beyond the source (the glow) while
+the shape's own coverage is kept.
+
+Drive it with a logo or text that has an **alpha channel**, and give the
+layer canvas margin — the glow can only be drawn inside the layer's extent, so
+precompose a 512-px logo into a 1024-px comp (or use a padded PNG). Pixel
+controls (`Heat Depth`, `Wall Thickness`, `Outer Glow Radius`) are tuned for a
+logo about 400 px across; scale them with your artwork.
+
 ## Verification status
 
-Both files are compiled through the real frontend by
+All three files are compiled through the real frontend by
 `cargo test example_tests` on every build, so a grammar, ABI, or annotation
 change cannot silently break them. That test proves they **compile**; the
 palettes and default values are authored choices and are checked visually at
-release time, not by the test.
+release time, not by the test. `apple-thermal.glsl` was rendered on
+After Effects 2025 with the 0.0.4 build when it was added (evidence under
+`docs/audits/evidence/examples/`).

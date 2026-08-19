@@ -932,6 +932,11 @@ mod example_tests {
     fn orb_example_compiles() {
         compiles("orb.glsl", include_str!("../examples/orb.glsl"));
     }
+
+    #[test]
+    fn apple_thermal_example_compiles() {
+        compiles("apple-thermal.glsl", include_str!("../examples/apple-thermal.glsl"));
+    }
 }
 
 /// Failed observations keyed by attempt fingerprint, so the idle sync can
