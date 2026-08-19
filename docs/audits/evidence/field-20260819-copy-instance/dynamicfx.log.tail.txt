@@ -1,0 +1,66 @@
+ process registry
+[1787088837] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~16384 KiB transient at 1024x1024, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787088894] idle observation: compiled: 10 passes, 22 params
+[1787088894] idle slot ui applied: 21 bound, 0 defaults written
+[1787088894] idle state token updated: Active(1768691869955912)
+[1787088895] definition resolved from process registry
+[1787088895] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~16384 KiB transient at 1024x1024, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787088897] slots configured: 22 bound (names_ok=true, visibility_ok=true)
+[1787088953] idle observation: compiled: 10 passes, 22 params
+[1787088953] idle slot ui applied: 21 bound, 0 defaults written
+[1787088953] idle state token updated: Active(1780799501728372)
+[1787088953] definition resolved from process registry
+[1787088953] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~16384 KiB transient at 1024x1024, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787088956] slots configured: 22 bound (names_ok=true, visibility_ok=true)
+[1787089025] idle observation: compiled: 10 passes, 22 params
+[1787089025] idle slot ui applied: 21 bound, 0 defaults written
+[1787089025] idle state token updated: Active(483593922004446)
+[1787089025] definition resolved from process registry
+[1787089025] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~16384 KiB transient at 1024x1024, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787089028] slots configured: 22 bound (names_ok=true, visibility_ok=true)
+[1787089072] idle observation: compiled: 10 passes, 22 params
+[1787089072] idle slot ui applied: 21 bound, 0 defaults written
+[1787089072] idle state token updated: Active(1458714035157161)
+[1787089072] definition resolved from process registry
+[1787089072] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~16384 KiB transient at 1024x1024, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787089075] slots configured: 22 bound (names_ok=true, visibility_ok=true)
+[1787089127] idle observation: compiled: 10 passes, 22 params
+[1787089127] idle slot ui applied: 21 bound, 0 defaults written
+[1787089127] idle state token updated: Active(2147787174075987)
+[1787089127] definition resolved from process registry
+[1787089127] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~16384 KiB transient at 1024x1024, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787089130] slots configured: 22 bound (names_ok=true, visibility_ok=true)
+[1787089172] idle observation: compiled: 10 passes, 22 params
+[1787089172] idle slot ui applied: 21 bound, 0 defaults written
+[1787089172] idle state token updated: Active(1415189204360950)
+[1787089173] definition resolved from process registry
+[1787089173] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~16384 KiB transient at 1024x1024, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787089176] slots configured: 22 bound (names_ok=true, visibility_ok=true)
+[1787089241] idle observation: compiled: 10 passes, 22 params
+[1787089241] idle slot ui applied: 21 bound, 0 defaults written
+[1787089241] idle state token updated: Active(8694892850103)
+[1787089241] definition resolved from process registry
+[1787089241] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~16384 KiB transient at 1024x1024, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787089244] slots configured: 22 bound (names_ok=true, visibility_ok=true)
+[1787089697] slots configured: 22 bound (names_ok=true, visibility_ok=true)
+[1787089698] idle slot ui applied: 21 bound, 0 defaults written
+[1787089698] idle state token updated: Active(910384189002160)
+[1787089698] definition resolved from process registry
+[1787089698] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~16384 KiB transient at 1024x1024, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787089752] idle observation: compiled: 10 passes, 22 params
+[1787089753] definition resolved from process registry
+[1787089753] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~15 KiB transient at 31x31, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787089754] status: compiled: 10 passes, 22 params
+[1787089754] slots configured: 22 bound (names_ok=true, visibility_ok=true)
+[1787089754] definition resolved from process registry
+[1787089754] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~4096 KiB transient at 512x512, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+[1787089794] status: compiled: 10 passes, 22 params
+[1787089794] slots configured: 22 bound (names_ok=true, visibility_ok=true)
+[1787090069] status: E5 no expression on Source
+[1787090069] slots hidden (no definition)
+[1787090069] status: compiled: 10 passes, 22 params
+[1787090069] slots configured: 22 bound (names_ok=true, visibility_ok=true)
+[1787090070] idle slot ui applied: 21 bound, 21 defaults written
+[1787090070] idle state token updated: Active(8694892850103)
+[1787090070] definition resolved from process registry
+[1787090070] pipelines built: 10 pass(es), plan 10 step(s), 4 physical intermediate(s) (~16384 KiB transient at 1024x1024, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
