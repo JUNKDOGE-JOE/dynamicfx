@@ -53,3 +53,23 @@ $ grep -rlaE "$LOCAL_PATH_TERMS" . --exclude-dir=.git --exclude-dir=adr-0036
      directory and an anonymous Windows account name, which is what an evidence
      record needs to be reproducible (ADR-0036 section 5). No credential, no
      personal identity, no third-party data. Editing them would alter evidence.
+
+----------------------------------------------------------------------------
+Push scan, 2026-08-19 (before pushing 85bd676..26a906e + this record)
+Scope: `git diff b1cb0f7..HEAD` (added lines) and the tracked tree at HEAD.
+Patterns held in shell variables as above; not reproduced here.
+
+$ python scripts/check_governance.py
+RESULT=PASS  (errors=0, accepted_adrs=37)
+
+$ git diff b1cb0f7..HEAD | grep -i -c "$VENDOR_TERMS"        -> 0
+$ git grep -i -l "$VENDOR_TERMS" HEAD                        -> (no matches)
+$ withheld document present in HEAD tree?                    -> absent
+$ added lines matching "$CREDENTIAL_TERMS"                   -> 0
+$ added lines matching "$LOCAL_PATH_TERMS"                   -> 0
+$ host identifiers added: GPU model/driver and Windows build in the two new
+  evidence READMEs and TR rows -- the same identifiers already published in
+  TR-0037-001 / TR-REL-004; required by the evidence policy, retained.
+Content pushed: TR-BIND-002 defect record + evidence (issue #6),
+examples/apple-thermal.glsl + README + compile test + TR-EX-001 evidence
+(own renders only; no third-party footage).
