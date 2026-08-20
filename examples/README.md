@@ -92,12 +92,43 @@ precompose a 512-px logo into a 1024-px comp (or use a padded PNG). Pixel
 controls (`Heat Depth`, `Wall Thickness`, `Outer Glow Radius`) are tuned for a
 logo about 400 px across; scale them with your artwork.
 
+### [`ink-bleed.glsl`](ink-bleed.glsl) — nine-pass analog chromatic bleed
+
+An analog, organic "wet ink" titling look from one effect: the source's ink
+diffuses into a three-octave blur pyramid whose radius differs per RGB
+channel, elongated along a smear axis, with turbulence-driven color patches
+tinted into the ink *before* the blur so the colors spread organically. The
+same turbulence melts the source into the cloud (smooth or 45° halftone
+screen), erodes it away (Dissolve), and warps it. On top: a thresholded
+multi-layer glow with an inner→outer tint gradient, film halation, an
+anamorphic flare, ink-drip streaks, echo ghosts, paper fiber, edge-ink rings
+and midtone film grain.
+
+Demonstrates a 9-pass graph whose blur pyramid is shared by two consumers
+(the bleed cloud and the glow read the same three octaves at different
+weights), per-channel Gaussian sigmas in one separable pass, pre-blur
+linearization behind a `Linear Light` checkbox (what makes small highlights
+bloom photographically), per-pixel tap jitter instead of more taps, int
+sliders + `hint:bool` checkboxes + an angle-driven `Evolution`, and NaN
+discipline: every `pow()` base is clamped strictly positive, because a base
+that hits exactly 0 NaNs on some GPU stacks and `0 * NaN` poisons a whole
+accumulator column (it renders as a razor-straight black seam).
+
+Works directly on footage for a full-frame analog wash, or as a titling
+effect: black comp-sized solid with `adjustmentLayer` on, above white text,
+with an opaque black backdrop at the bottom of the stack. The output replaces
+the frame with alpha 1, so the carrier solid must be black. Pixel controls
+are tuned for 1080p titles; scale Bleed Amount / Glow Radius / Turbulence
+Scale with your frame.
+
 ## Verification status
 
-All three files are compiled through the real frontend by
+All four files are compiled through the real frontend by
 `cargo test example_tests` on every build, so a grammar, ABI, or annotation
 change cannot silently break them. That test proves they **compile**; the
 palettes and default values are authored choices and are checked visually at
 release time, not by the test. `apple-thermal.glsl` was rendered on
 After Effects 2025 with the 0.0.4 build when it was added (evidence under
-`docs/audits/evidence/examples/`).
+`docs/audits/evidence/examples/`). `ink-bleed.glsl` was authored and
+visually checked on After Effects 2026 with the 0.0.4 build; its check used
+licensed footage, so no evidence bundle is committed for it.

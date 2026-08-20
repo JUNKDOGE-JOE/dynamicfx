@@ -937,6 +937,11 @@ mod example_tests {
     fn apple_thermal_example_compiles() {
         compiles("apple-thermal.glsl", include_str!("../examples/apple-thermal.glsl"));
     }
+
+    #[test]
+    fn ink_bleed_example_compiles() {
+        compiles("ink-bleed.glsl", include_str!("../examples/ink-bleed.glsl"));
+    }
 }
 
 /// Failed observations keyed by attempt fingerprint, so the idle sync can
