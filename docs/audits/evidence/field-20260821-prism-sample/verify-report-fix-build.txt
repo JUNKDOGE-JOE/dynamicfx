@@ -1,0 +1,26 @@
+[open] prism_verify.aep | 26.3x87
+[host] AE 26.3x87 | installed DynamicFx.aex = fix build 24E963FB (verified) | 2026-08-21 17:24:26 local
+[0] purged; log 60/577
+[1] scheduled; work area 3+4; initial log count 60/577
+begin log=60/577
+cycle 0 t=1787304267413 stop->time 3.50 log=60/577
+cycle 0 t=1787304267484 play from 3.00
+cycle 1 t=1787304268871 stop->time 3.87 log=60/577
+cycle 1 t=1787304268971 play from 3.20
+cycle 2 t=1787304270366 stop->time 4.24 log=60/577
+cycle 2 t=1787304270432 play from 3.37
+cycle 3 t=1787304271819 stop->time 4.61 log=60/577
+cycle 3 t=1787304271925 play from 3.57
+cycle 4 t=1787304273317 stop->time 3.50 log=60/577
+cycle 4 t=1787304273378 play from 3.00
+cycle 5 t=1787304274781 stop->time 3.87 log=60/577
+cycle 5 t=1787304274887 play from 3.20
+cycle 6 t=1787304276287 stop->time 4.24 log=62/579
+cycle 6 t=1787304276351 play from 3.37
+cycle 7 t=1787304277716 stop->time 4.61 log=62/579
+cycle 7 t=1787304277865 play from 3.57
+cycle 8 t=1787304279289 stop->time 3.50 log=62/579
+[1] after preview: log 62/579 (InterruptCancel lines are EXPECTED and correct now — the fix propagates them)
+[2] sampled 120 frames from cache in 55s; failures=[]; log 62/579
+[3] persistent dips (luma >0.006 below neighbour median): 0  (pre-fix 0.0.4 baseline was 7)
+[VERDICT] PASS — no persistent dropped-layer frame after an interrupted preview.

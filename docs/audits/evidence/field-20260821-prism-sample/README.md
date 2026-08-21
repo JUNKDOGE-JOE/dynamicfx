@@ -91,12 +91,29 @@ In the `SmartRender` arm, treat an aborted input checkout as an abort: return `E
 
 Purge the cache (`Edit ▸ Purge ▸ All Memory & Disk Cache`) after interrupting a preview, or export through the Render Queue / `aerender` (batch renders never interrupt, so they are always clean).
 
+### Fix and host verification (2026-08-21)
+
+Fixed at commit `cfccd5d` (implemented by `gpt-5.6-sol`, reviewed and verified by Fable). In `src/lib.rs` `Command::SmartRender`, an aborted input checkout now checks the bound layer parameters back in, clears the per-frame thread-locals, and returns `Err(e)` (propagating `InterruptCancel`) so AE discards the frame; `fill(0)` runs only for a true `Ok(None)` empty input.
+
+Verified on the fix build: `cargo build --release` → `dynamicfx.dll` 8,544,768 B, SHA-256 `24E963FB19E735252A5D21CFBBF48864A597D38A7A38D461F6B3B9A34F3D22F2`, installed to AE 2026 (`scripts/install.bat 2026`, installed hash re-verified). `cargo test` → **131 passed**. Host (AE 2026 26.3x87, same machine/GPU as above): open the sample → purge → interrupted-preview loop → sample the work area from cache → flag frames >0.006 luma below their neighbour median.
+
+```
+round 0 (verify_fix.py): dips=0   (pre-fix baseline was 7)
+round 1 (verify_rounds.py): checkout-failed 62->71, dips=0
+round 2 (verify_rounds.py): checkout-failed 71->76, dips=0
+```
+
+`smart render input checkout failed: InterruptCancel` still appears every round — the interrupts still happen; they are now propagated so AE discards the frame instead of caching a partial one. Full readouts in `verify-report-fix-build.txt`; the post-fix plug-in log window is `dynamicfx.log.post-fix-verified.txt`.
+
+**Not shipped:** the released 0.0.4 in the wild still has the bug; a re-release is a separate packaging step (sequenced with the #6 fix).
+
 ### Artifacts
 
 - `cached-frame-missing-layer1.png` — f111 (cached vs purged) and f181 (cached vs re-read) side by side with a ×6 difference map; the difference is exactly Layer 1’s flare.
-- `reproduction-report.txt` — full run log: purge → interrupted preview → sampling → persistence/recovery table.
-- `dynamicfx.log.interrupt-window.txt` — plug-in log for the reproduction window, epoch stamps converted to local time.
-- `missing_frame_repro.py`, `mf_preview_interrupt.jsx`, `frame_stats.py` — the harness.
+- `reproduction-report.txt` — full pre-fix run: purge → interrupted preview → sampling → persistence/recovery table.
+- `dynamicfx.log.interrupt-window.txt` — plug-in log for the pre-fix reproduction window, epoch stamps converted to local time.
+- `verify-report-fix-build.txt`, `dynamicfx.log.post-fix-verified.txt` — the fix-build host verification and its log window.
+- `missing_frame_repro.py`, `verify_fix.py`, `verify_rounds.py`, `mf_preview_interrupt.jsx`, `frame_stats.py` — the harness (pre-fix repro and post-fix verification).
 
 ---
 

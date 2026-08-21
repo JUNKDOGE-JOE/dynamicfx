@@ -1,0 +1,29 @@
+2026-08-21 17:24:22  registered with AEGP at global setup
+2026-08-21 17:24:22  AEGP idle hook registered
+2026-08-21 17:24:22  params setup: ADR-0013 topology
+2026-08-21 17:24:22  params setup: complete
+2026-08-21 17:24:22  definition rebuilt from snapshot
+2026-08-21 17:24:22  definition resolved from process registry
+2026-08-21 17:24:22  status: compiled: 1 pass, 12 params
+2026-08-21 17:24:22  gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+2026-08-21 17:24:22  slots configured: 15 bound (names_ok=true, visibility_ok=true)
+2026-08-21 17:24:22  pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 120x76, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+2026-08-21 17:24:22  pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 122x76, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+2026-08-21 17:24:22  idle observation: compiled: 1 pass, 12 params
+2026-08-21 17:24:22  idle slot ui applied: 15 bound, 0 defaults written
+2026-08-21 17:24:34  smart render input checkout failed: InterruptCancel
+2026-08-21 17:24:34  smart render input checkout failed: InterruptCancel
+2026-08-21 17:26:21  smart render input checkout failed: InterruptCancel
+2026-08-21 17:26:22  smart render input checkout failed: InterruptCancel
+2026-08-21 17:26:22  smart render input checkout failed: InterruptCancel
+2026-08-21 17:26:28  smart render input checkout failed: InterruptCancel
+2026-08-21 17:26:28  smart render input checkout failed: InterruptCancel
+2026-08-21 17:26:31  smart render input checkout failed: InterruptCancel
+2026-08-21 17:26:31  smart render input checkout failed: InterruptCancel
+2026-08-21 17:26:31  smart render input checkout failed: InterruptCancel
+2026-08-21 17:26:31  smart render input checkout failed: InterruptCancel
+2026-08-21 17:27:29  smart render input checkout failed: InterruptCancel
+2026-08-21 17:27:31  smart render input checkout failed: InterruptCancel
+2026-08-21 17:27:31  smart render input checkout failed: InterruptCancel
+2026-08-21 17:27:31  smart render input checkout failed: InterruptCancel
+2026-08-21 17:27:31  smart render input checkout failed: InterruptCancel
