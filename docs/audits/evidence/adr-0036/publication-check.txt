@@ -73,3 +73,44 @@ $ host identifiers added: GPU model/driver and Windows build in the two new
 Content pushed: TR-BIND-002 defect record + evidence (issue #6),
 examples/apple-thermal.glsl + README + compile test + TR-EX-001 evidence
 (own renders only; no third-party footage).
+
+----------------------------------------------------------------------------
+Push scan, 2026-08-21 (before pushing 3d1950c..eefb365 + this record)
+Scope: `git diff 3d1950c..HEAD` (added lines) and the tracked tree at HEAD.
+Patterns held in shell variables as before; not reproduced here.
+
+$ python scripts/check_governance.py
+RESULT=PASS  (errors=0, accepted_adrs=37)
+
+$ git diff 3d1950c..HEAD | grep '^+' | grep -i "$VENDOR_TERMS"        -> 0
+$ added lines with binary-analysis markers (PIPL/OutFlags/decoded/extracted) -> 0
+$ withheld competitor document present in HEAD tree?                  -> absent
+$ git ls-files | grep -iE "compet|vendor"                            -> (no matches)
+$ added lines matching "$CREDENTIAL_TERMS"                            -> 0
+  (the only token= in the added content is the benign 51-bit session
+   token 3763537382884453, source-derived, already published in TR-BIND-002)
+$ ae-mcp panel client aemcp.py (holds the auth-token path) published?  -> no,
+  not copied into the evidence dir; the copied harness scripts only `import
+  aemcp` and carry no token or token path.
+$ added lines matching "$LOCAL_PATH_TERMS"                            -> 3 files
+  ./docs/TEST_MATRIX.md                     (AE install paths, as existing TR rows)
+  ./docs/audits/evidence/field-20260821-prism-sample/README.md
+  ./docs/audits/evidence/field-20260821-prism-sample/copy_flicker_repro.py
+  -> retained deliberately: the project dir, an anonymous Windows account name
+     ("A"), the scratchpad session dir, and the AE 2026 install path — exactly
+     what the evidence policy needs to be reproducible (ADR-0036 section 5).
+     No credential, no personal identity, no third-party data.
+
+Content pushed: the two 0.0.4 field-defect records on the prism sample
+(TR-CACHE-001 / issue #7 interrupted-render cache poisoning, and the
+TR-BIND-002 / issue #6 copy-flicker AE-2026 confirmation) with evidence;
+the SmartRender InterruptCancel fix (cfccd5d) and its AE-2026 host
+verification. Host identifiers added (GPU model/driver, Windows build, AE
+2026 build, artifact hashes) are the same class already published in
+TR-REL-004 / TR-Y26-001, required by the evidence policy.
+
+Note on own-content: cached-frame-missing-layer1.png and the post-fix
+renders are frames of the user's `prism` composition (an abstract
+chromatic-dispersion flare, no text/identifying content), published at the
+user's direction as defect evidence — comparable to the example renders
+already in the record. The user's `.aep` file itself is not committed.
