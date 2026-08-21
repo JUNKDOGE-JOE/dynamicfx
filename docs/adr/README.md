@@ -64,14 +64,13 @@ Use [TEMPLATE.md](TEMPLATE.md). Ordinary implementation details and bug fixes do
 | [0035](0035-path-parameters.md) | Path parameters (`hint:path`) — masks as an N×2 vertex texture, count from `textureSize` | Accepted |
 | [0036](0036-single-repository-record.md) | Single-repository record — the public repo is the whole record; one document withheld, redactions listed | Accepted |
 | [0037](0037-pool-valid-range-and-slider-range.md) | Pool slider valid ranges are wide and fixed at `PARAMS_SETUP`; `@param min:/max:` is the slider range; the runtime never clamps | Accepted |
+| [0038](0038-registry-key-per-binding-plan.md) | Process registry keyed per `(source fingerprint, plan identity)` with session lineage aliases; the idle observer applies slot UI from the instance's own artifact — fixes TR-BIND-002/#6 (copy corrupts/flickers). Mechanism B chosen; A (source-shared registry value) deferred | Accepted |
 
 ## Under review (Proposed)
 
 A `Proposed` ADR is under active decision review and freezes no persistent contract yet (it is not counted among the Accepted decisions and is not a binding record until Accepted).
 
-| ADR | Decision | Status |
-|---|---|---|
-| [0038](0038-registry-key-per-binding-plan.md) | Process registry keyed per binding plan, not per source alone — fixes TR-BIND-002/#6 (copy corrupts/flickers). Two mechanisms drafted; **B (compound `(source, plan)` key) recommended**, A (source-shared registry value) deferred; user picks at Acceptance | Proposed |
+_No ADR is under review at the moment (ADR-0038 was Accepted on 2026-08-21)._
 
 ## Format ADRs (staged per ADR-0009)
 
@@ -120,3 +119,4 @@ Post-M7 (follow-up features):
 - [0035 path parameters](0035-path-parameters.md) — Accepted 2026-08-15 (masks as vertex textures; Beziers delivered, not flattened);
 - [0036 single-repository record](0036-single-repository-record.md) — Accepted 2026-08-17 (public repo becomes the whole record after the private one was archived; competitor analysis withheld, its six citation redactions listed);
 - [0037 pool valid range and slider range](0037-pool-valid-range-and-slider-range.md) — Accepted 2026-08-19 (public issue #5: `PF_UpdateParamUI` cannot change `valid_*`, so the registered `0..1`/`0..10` ranges clamped every float above 1 and int above 10 at render; wide registered range, annotation range = slider range, runtime never clamps).
+- [0038 registry key per binding plan](0038-registry-key-per-binding-plan.md) — Accepted 2026-08-21 (public issue #6: the process registry keyed a per-instance artifact by source alone, so the last same-source instance to compile overwrote the other's slot mapping and layer wiring; key becomes `(source, plan identity)` with session lineage aliases, the idle observer uses the instance's own artifact, `StateToken`/schema unchanged; mechanism A deferred);
