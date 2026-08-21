@@ -65,6 +65,14 @@ Use [TEMPLATE.md](TEMPLATE.md). Ordinary implementation details and bug fixes do
 | [0036](0036-single-repository-record.md) | Single-repository record — the public repo is the whole record; one document withheld, redactions listed | Accepted |
 | [0037](0037-pool-valid-range-and-slider-range.md) | Pool slider valid ranges are wide and fixed at `PARAMS_SETUP`; `@param min:/max:` is the slider range; the runtime never clamps | Accepted |
 
+## Under review (Proposed)
+
+A `Proposed` ADR is under active decision review and freezes no persistent contract yet (it is not counted among the Accepted decisions and is not a binding record until Accepted).
+
+| ADR | Decision | Status |
+|---|---|---|
+| [0038](0038-registry-key-per-binding-plan.md) | Process registry keyed per binding plan, not per source alone — fixes TR-BIND-002/#6 (copy corrupts/flickers). Two mechanisms drafted; **B (compound `(source, plan)` key) recommended**, A (source-shared registry value) deferred; user picks at Acceptance | Proposed |
+
 ## Format ADRs (staged per ADR-0009)
 
 Format ADRs are accepted at the entry of the milestone that first implements or persists each contract ([ADR-0009](0009-staged-format-adr-acceptance.md)). Create numbered ADRs from 0010 onward. Until its ADR is Accepted, a staged contract remains session-local and non-contractual.
