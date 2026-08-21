@@ -114,3 +114,47 @@ renders are frames of the user's `prism` composition (an abstract
 chromatic-dispersion flare, no text/identifying content), published at the
 user's direction as defect evidence — comparable to the example renders
 already in the record. The user's `.aep` file itself is not committed.
+
+----------------------------------------------------------------------------
+Push scan, 2026-08-21 (before pushing e588830..357b482 + this record; release 0.0.5)
+Scope: `git diff e588830..HEAD` (3141 added lines in 29 files) and the tracked
+tree at HEAD. Scanner: a small Python script applying the same classes of
+pattern as before (credential terms, personal e-mail, user-profile/scratchpad
+paths, project-dir paths, binary-analysis markers, competitor/vendor words);
+patterns not reproduced here.
+
+$ python scripts/check_governance.py
+RESULT=PASS  (errors=0, accepted_adrs=38)
+
+credential terms in added lines                                       -> 2, both benign:
+  scripts/aemcp.py reads the ae-mcp panel token from the user's own
+  `~/.ae-mcp/auth-token` at run time (a generic profile-relative path; no
+  value is stored or printed — the health output strips it), and the
+  evidence README says so in words. The client is published this time
+  because the evidence scripts import it; it carries no auth material.
+personal e-mail addresses in added lines                              -> 0
+user-profile / scratchpad paths in added lines                        -> 0
+  (harness reports write `%TEMP%`; the copied reports were scrubbed)
+project-dir paths (E:\Code\AePlugin_Dynamicfx) in added lines          -> 52 lines, 6 files:
+  the curated M2/M3 runner logs (PIXEL probe lines naming the output PNGs)
+  and four `aerender_stdout.txt` files naming their output folder
+  -> retained deliberately, as in the previous scans: the evidence needs the
+     artefact paths to be reproducible (ADR-0036 section 5); no credential,
+     no personal identity, no third-party data.
+binary-analysis markers (decoded/extracted/...) in added lines        -> 2, both our own
+  `persistence.rs` test decoding our own snapshot format; nothing about a
+  third-party binary.
+competitor/vendor words in added lines                                -> 0
+withheld competitor document present in HEAD tree?                    -> absent
+$ git ls-files | grep -iE "compet|vendor"                             -> (no matches)
+token files in the tracked tree (auth-token / *.token / .env)         -> (none)
+
+Content pushed: ADR-0038 (Accepted) and its implementation — the registry
+keyed per (source, plan) with the hidden PlanToken stream — the TR-BIND-002
+harness with pre-fix FAIL and fix-build PASS evidence on AE 2025 + 2026,
+the fix-build M2/M3 battery logs (TR-0038-001), the 0.0.5 release record
+(TR-REL-005) and the package version bump. Host identifiers (GPU model,
+Windows build, AE builds, artifact hashes) are the same class already
+published in TR-REL-004 / TR-Y26-001 and required by the evidence policy.
+The harness PNG/PSD frames are synthetic probe renders (coloured quadrants
+over solid layers), not user content.
