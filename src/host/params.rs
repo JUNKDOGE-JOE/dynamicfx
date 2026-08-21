@@ -37,6 +37,11 @@ pub enum ParamKey {
     /// ADR-0033: one field of one stop of one gradient. Ordinary parameters,
     /// so AE owns their persistence, undo, copy/paste and keyframes.
     GradientStop(usize, usize, GradientField),
+    /// ADR-0038 §7: hidden primitive carrying the plan identity of the
+    /// published artifact beside the StateToken, so a render clone names its
+    /// own instance's entry even when its flattened copy predates the
+    /// compile. Appended after every gradient stop (ADR-0013 §5 growth).
+    PlanToken,
 }
 
 /// The three ordinary parameters that make up one gradient stop (ADR-0033 §1).
@@ -141,7 +146,17 @@ pub fn declaration_order() -> Vec<ParamKey> {
             }
         }
     }
+    // ADR-0038 §7: the plan token rides at the tail so every released index
+    // keeps its position; projects saved before it restore the default 0,
+    // which the resolver reads as "no plan word".
+    order.push(ParamKey::PlanToken);
     order
+}
+
+/// AEGP stream index of the plan token: the last declared parameter, so it
+/// is derived rather than pinned like the head constants.
+pub fn plan_token_stream_index() -> i32 {
+    stream_index_of(ParamKey::PlanToken).expect("plan token is declared")
 }
 
 /// Placeholder pool label; real names arrive when a definition binds a slot.
@@ -232,16 +247,20 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
                     ae::ParamUIFlags::empty(),
                 )?;
             }
-            ParamKey::StateToken => {
+            ParamKey::StateToken | ParamKey::PlanToken => {
                 params.add_with_flags(
                     key,
-                    "State Token (internal)",
+                    if key == ParamKey::StateToken {
+                        "State Token (internal)"
+                    } else {
+                        "Plan Token (internal)"
+                    },
                     ae::FloatSliderDef::setup(|f| {
                         f.set_slider_min(0.0);
                         f.set_slider_max(1.0);
                         f.set_valid_min(0.0);
-                        // Room for an exactly representable f64 integer word;
-                        // the M3 ADR fixes the actual token layout.
+                        // Room for an exactly representable f64 integer word
+                        // (ADR-0015 token layout; ADR-0038 §7 plan word).
                         f.set_valid_max(9_007_199_254_740_992.0);
                         f.set_precision(ae::Precision::Integer);
                         f.set_default(0.0);
@@ -545,7 +564,10 @@ mod tests {
         // parameters, all strictly after Details.
         let pools: usize = GROWTH_POOLS.iter().map(|(_, capacity)| capacity).sum();
         let stops = GRADIENTS * (1 + STOPS_PER_GRADIENT * 3);
-        assert_eq!(order.len(), 110 + pools + stops);
+        // ADR-0038 §7: the plan token is the single parameter after the stops.
+        assert_eq!(order.len(), 110 + pools + stops + 1);
+        assert_eq!(order[order.len() - 1], ParamKey::PlanToken);
+        assert_eq!(plan_token_stream_index() as usize, order.len());
         // 4 Layer + 2 Gradient anchors + 8 Point 3D + 2 Path, then
         // 2 x (1 count + 8 x 3 stop fields).
         assert_eq!(pools, 16);
@@ -555,11 +577,11 @@ mod tests {
             "the pool segment carries pool slots only"
         );
         assert!(
-            order[110 + pools..].iter().all(|k| matches!(
+            order[110 + pools..110 + pools + stops].iter().all(|k| matches!(
                 k,
                 ParamKey::GradientCount(_) | ParamKey::GradientStop(..)
             )),
-            "the tail carries ADR-0033 stop parameters only"
+            "the stop segment carries ADR-0033 stop parameters only"
         );
     }
 
@@ -657,6 +679,7 @@ mod tests {
         assert_eq!(stream_of(ParamKey::Language), Some(LANGUAGE_STREAM_INDEX));
         assert_eq!(stream_of(ParamKey::Source), Some(SOURCE_STREAM_INDEX));
         assert_eq!(stream_of(ParamKey::StateToken), Some(STATE_TOKEN_STREAM_INDEX));
+        assert_eq!(stream_of(ParamKey::PlanToken), Some(plan_token_stream_index()));
     }
 
     /// ADR-0037 §1. The registered valid range is the only range After Effects

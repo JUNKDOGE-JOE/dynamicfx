@@ -78,7 +78,7 @@ pub enum DecodeError {
     SchemaUnknown { schema: u16, flags: u16 },
 }
 
-fn kind_byte(kind: PoolKind) -> u8 {
+pub(crate) fn kind_byte(kind: PoolKind) -> u8 {
     match kind {
         PoolKind::Float => 0,
         PoolKind::Integer => 1,
@@ -360,5 +360,27 @@ mod tests {
         assert_eq!(plan.bindings.len(), 2);
         assert!(plan.bindings.iter().all(|b| b.inherited));
         assert_eq!(plan.bindings[1].slots.len(), 2);
+    }
+
+    /// The registry keys on the plan identity and a reopened clone
+    /// recomputes it from the wire format, so the identity must survive
+    /// encode → decode → restore exactly.
+    #[test]
+    fn snapshot_round_trip_preserves_plan_identity() {
+        let snapshot = sample();
+        let original = snapshot.to_previous_plan();
+        let payload = encode(&snapshot).expect("sample snapshot should encode");
+        let decoded = decode(&payload).expect("sample snapshot should decode");
+        assert_eq!(
+            crate::identity::plan_identity(&decoded.to_previous_plan()),
+            crate::identity::plan_identity(&original)
+        );
+        // The restore seed flips every binding to inherited; identity is
+        // indifferent to that by contract.
+        let fresh = Snapshot::from_state(LanguageId::GLSL, 17, "source", &original);
+        assert_eq!(
+            crate::identity::plan_identity(&fresh.to_previous_plan()),
+            crate::identity::plan_identity(&original)
+        );
     }
 }

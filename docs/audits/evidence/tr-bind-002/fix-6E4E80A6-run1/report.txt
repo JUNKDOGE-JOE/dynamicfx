@@ -1,0 +1,125 @@
+[host] AE 26.3x87 | 2026-08-21 19:49:22 local | log %TEMP%\dynamicfx.log
+=== compile order AB (order-AB) ===
+  A v1 compiled: Status: compiled: 1 pass, 5 par
+  A v2 compiled: Status: compiled: 1 pass, 8 par
+  A names after migration: 6=p1|7=p2|8=p3|9=p0|102=a1|103=a0|111=texB|112=texA
+  B v2 compiled: Status: idle
+  B names (fresh): 6=p0|7=p1|8=p2|9=p3|102=a0|103=a1|111=Layer 01|112=Layer 02
+  A names after both compiled: 6=p1|7=p2|8=p3|9=p0|102=a1|103=a0|111=texB|112=texA
+  A slot names match its own plan
+  B names after both compiled: 6=p0|7=p1|8=p2|9=p3|102=a0|103=a1|111=Layer 01|112=Layer 02
+  B slot names match its own plan
+  render order-AB r0 A: quadrants {'TL': (51, 76, 102), 'TR': (25, 51, 25), 'BL': (0, 255, 0), 'BR': (255, 0, 0)}
+    order-AB r0 A TL               got=(51, 76, 102)   expect=(26, 51, 76)    MISMATCH
+    order-AB r0 A TR               got=(25, 51, 25)    expect=(102, 26, 51)   MISMATCH
+    order-AB r0 A BL               got=(0, 255, 0)     expect=(255, 0, 0)     MISMATCH
+    order-AB r0 A BR               got=(255, 0, 0)     expect=(0, 255, 0)     MISMATCH
+  render order-AB r1 A: quadrants {'TL': (51, 76, 102), 'TR': (25, 51, 25), 'BL': (0, 255, 0), 'BR': (255, 0, 0)}
+    order-AB r1 A TL               got=(51, 76, 102)   expect=(26, 51, 76)    MISMATCH
+    order-AB r1 A TR               got=(25, 51, 25)    expect=(102, 26, 51)   MISMATCH
+    order-AB r1 A BL               got=(0, 255, 0)     expect=(255, 0, 0)     MISMATCH
+    order-AB r1 A BR               got=(255, 0, 0)     expect=(0, 255, 0)     MISMATCH
+  render order-AB r0 B: quadrants {'TL': (127, 153, 178), 'TR': (204, 127, 178), 'BL': (0, 0, 255), 'BR': (255, 255, 0)}
+    order-AB r0 B TL               got=(127, 153, 178) expect=(128, 153, 178) OK
+    order-AB r0 B TR               got=(204, 127, 178) expect=(204, 128, 178) OK
+    order-AB r0 B BL               got=(0, 0, 255)     expect=(0, 0, 255)     OK
+    order-AB r0 B BR               got=(255, 255, 0)   expect=(255, 255, 0)   OK
+  render order-AB r1 B: quadrants {'TL': (127, 153, 178), 'TR': (204, 127, 178), 'BL': (0, 0, 255), 'BR': (255, 255, 0)}
+    order-AB r1 B TL               got=(127, 153, 178) expect=(128, 153, 178) OK
+    order-AB r1 B TR               got=(204, 127, 178) expect=(204, 128, 178) OK
+    order-AB r1 B BL               got=(0, 0, 255)     expect=(0, 0, 255)     OK
+    order-AB r1 B BR               got=(255, 255, 0)   expect=(255, 255, 0)   OK
+  log deltas (order-AB): resolved from process registry 86->86, via lineage 0->0, rebuilt from snapshot 6->6, idle slot ui applied 100->103, pipelines built 92->94, without this instance's artifact 0->0, resolved by latest entry 0->2, adopting latest entry 0->0, not this plan; passing through 0->0, missed registry 0->0   <-- STRICT line moved or log unreadable
+=== compile order BA (order-BA) ===
+  B v2 compiled: Status: idle
+  B names (fresh): 6=p0|7=p1|8=p2|9=p3|102=a0|103=a1|111=Layer 01|112=Layer 02
+  A v1 compiled: Status: compiled: 1 pass, 5 par
+  A v2 compiled: Status: compiled: 1 pass, 8 par
+  A names after migration: 6=p1|7=p2|8=p3|9=p0|102=a1|103=a0|111=texB|112=texA
+  A names after both compiled: 6=p1|7=p2|8=p3|9=p0|102=a1|103=a0|111=texB|112=texA
+  A slot names match its own plan
+  B names after both compiled: 6=p0|7=p1|8=p2|9=p3|102=a0|103=a1|111=Layer 01|112=Layer 02
+  B slot names match its own plan
+  render order-BA r0 A: quadrants {'TL': (25, 51, 76), 'TR': (102, 25, 51), 'BL': (255, 0, 0), 'BR': (0, 255, 0)}
+    order-BA r0 A TL               got=(25, 51, 76)    expect=(26, 51, 76)    OK
+    order-BA r0 A TR               got=(102, 25, 51)   expect=(102, 26, 51)   OK
+    order-BA r0 A BL               got=(255, 0, 0)     expect=(255, 0, 0)     OK
+    order-BA r0 A BR               got=(0, 255, 0)     expect=(0, 255, 0)     OK
+  render order-BA r1 A: quadrants {'TL': (25, 51, 76), 'TR': (102, 25, 51), 'BL': (255, 0, 0), 'BR': (0, 255, 0)}
+    order-BA r1 A TL               got=(25, 51, 76)    expect=(26, 51, 76)    OK
+    order-BA r1 A TR               got=(102, 25, 51)   expect=(102, 26, 51)   OK
+    order-BA r1 A BL               got=(255, 0, 0)     expect=(255, 0, 0)     OK
+    order-BA r1 A BR               got=(0, 255, 0)     expect=(0, 255, 0)     OK
+  render order-BA r0 B: quadrants {'TL': (204, 127, 153), 'TR': (178, 178, 127), 'BL': (255, 255, 0), 'BR': (0, 0, 255)}
+    order-BA r0 B TL               got=(204, 127, 153) expect=(128, 153, 178) MISMATCH
+    order-BA r0 B TR               got=(178, 178, 127) expect=(204, 128, 178) MISMATCH
+    order-BA r0 B BL               got=(255, 255, 0)   expect=(0, 0, 255)     MISMATCH
+    order-BA r0 B BR               got=(0, 0, 255)     expect=(255, 255, 0)   MISMATCH
+  render order-BA r1 B: quadrants {'TL': (204, 127, 153), 'TR': (178, 178, 127), 'BL': (255, 255, 0), 'BR': (0, 0, 255)}
+    order-BA r1 B TL               got=(204, 127, 153) expect=(128, 153, 178) MISMATCH
+    order-BA r1 B TR               got=(178, 178, 127) expect=(204, 128, 178) MISMATCH
+    order-BA r1 B BL               got=(255, 255, 0)   expect=(0, 0, 255)     MISMATCH
+    order-BA r1 B BR               got=(0, 0, 255)     expect=(255, 255, 0)   MISMATCH
+  log deltas (order-BA): resolved from process registry 86->86, via lineage 0->0, rebuilt from snapshot 6->6, idle slot ui applied 103->106, pipelines built 94->96, without this instance's artifact 0->0, resolved by latest entry 2->4, adopting latest entry 0->0, not this plan; passing through 0->0, missed registry 0->0   <-- STRICT line moved or log unreadable
+=== compile order AB (reopen-src) ===
+  A v1 compiled: Status: compiled: 1 pass, 5 par
+  A v2 compiled: Status: compiled: 1 pass, 8 par
+  A names after migration: 6=p1|7=p2|8=p3|9=p0|102=a1|103=a0|111=texB|112=texA
+  B v2 compiled: Status: idle
+  B names (fresh): 6=p0|7=p1|8=p2|9=p3|102=a0|103=a1|111=Layer 01|112=Layer 02
+  A names after both compiled: 6=p1|7=p2|8=p3|9=p0|102=a1|103=a0|111=texB|112=texA
+  A slot names match its own plan
+  B names after both compiled: 6=p0|7=p1|8=p2|9=p3|102=a0|103=a1|111=Layer 01|112=Layer 02
+  B slot names match its own plan
+  render reopen-src r0 A: quadrants {'TL': (51, 76, 102), 'TR': (25, 51, 25), 'BL': (0, 255, 0), 'BR': (255, 0, 0)}
+    reopen-src r0 A TL             got=(51, 76, 102)   expect=(26, 51, 76)    MISMATCH
+    reopen-src r0 A TR             got=(25, 51, 25)    expect=(102, 26, 51)   MISMATCH
+    reopen-src r0 A BL             got=(0, 255, 0)     expect=(255, 0, 0)     MISMATCH
+    reopen-src r0 A BR             got=(255, 0, 0)     expect=(0, 255, 0)     MISMATCH
+  render reopen-src r1 A: quadrants {'TL': (51, 76, 102), 'TR': (25, 51, 25), 'BL': (0, 255, 0), 'BR': (255, 0, 0)}
+    reopen-src r1 A TL             got=(51, 76, 102)   expect=(26, 51, 76)    MISMATCH
+    reopen-src r1 A TR             got=(25, 51, 25)    expect=(102, 26, 51)   MISMATCH
+    reopen-src r1 A BL             got=(0, 255, 0)     expect=(255, 0, 0)     MISMATCH
+    reopen-src r1 A BR             got=(255, 0, 0)     expect=(0, 255, 0)     MISMATCH
+  render reopen-src r0 B: quadrants {'TL': (127, 153, 178), 'TR': (204, 127, 178), 'BL': (0, 0, 255), 'BR': (255, 255, 0)}
+    reopen-src r0 B TL             got=(127, 153, 178) expect=(128, 153, 178) OK
+    reopen-src r0 B TR             got=(204, 127, 178) expect=(204, 128, 178) OK
+    reopen-src r0 B BL             got=(0, 0, 255)     expect=(0, 0, 255)     OK
+    reopen-src r0 B BR             got=(255, 255, 0)   expect=(255, 255, 0)   OK
+  render reopen-src r1 B: quadrants {'TL': (127, 153, 178), 'TR': (204, 127, 178), 'BL': (0, 0, 255), 'BR': (255, 255, 0)}
+    reopen-src r1 B TL             got=(127, 153, 178) expect=(128, 153, 178) OK
+    reopen-src r1 B TR             got=(204, 127, 178) expect=(204, 128, 178) OK
+    reopen-src r1 B BL             got=(0, 0, 255)     expect=(0, 0, 255)     OK
+    reopen-src r1 B BR             got=(255, 255, 0)   expect=(255, 255, 0)   OK
+  log deltas (reopen-src): resolved from process registry 86->86, via lineage 0->0, rebuilt from snapshot 6->6, idle slot ui applied 106->109, pipelines built 96->98, without this instance's artifact 0->0, resolved by latest entry 4->6, adopting latest entry 0->0, not this plan; passing through 0->0, missed registry 0->0   <-- STRICT line moved or log unreadable
+=== reopen leg (same session) ===
+  A names after reopen: 6=p1|7=p2|8=p3|9=p0|102=a1|103=a0|111=Layer 01|112=Layer 02
+  A slot names match its own plan
+  B names after reopen: 6=p0|7=p1|8=p2|9=p3|102=a0|103=a1|111=Layer 01|112=Layer 02
+  B slot names match its own plan
+  render reopen A: quadrants {'TL': (25, 51, 76), 'TR': (102, 25, 51), 'BL': (255, 0, 0), 'BR': (0, 255, 0)}
+    reopen A TL                    got=(25, 51, 76)    expect=(26, 51, 76)    OK
+    reopen A TR                    got=(102, 25, 51)   expect=(102, 26, 51)   OK
+    reopen A BL                    got=(255, 0, 0)     expect=(255, 0, 0)     OK
+    reopen A BR                    got=(0, 255, 0)     expect=(0, 255, 0)     OK
+  render reopen B: quadrants {'TL': (127, 153, 178), 'TR': (204, 127, 178), 'BL': (0, 0, 255), 'BR': (255, 255, 0)}
+    reopen B TL                    got=(127, 153, 178) expect=(128, 153, 178) OK
+    reopen B TR                    got=(204, 127, 178) expect=(204, 128, 178) OK
+    reopen B BL                    got=(0, 0, 255)     expect=(0, 0, 255)     OK
+    reopen B BR                    got=(255, 255, 0)   expect=(255, 255, 0)   OK
+  log deltas (reopen): resolved from process registry 86->88, via lineage 0->0, rebuilt from snapshot 6->6, idle slot ui applied 109->111, pipelines built 98->100, without this instance's artifact 0->0, resolved by latest entry 6->6, adopting latest entry 0->0, not this plan; passing through 0->0, missed registry 0->0
+=== aerender leg (fresh process, cold registry) ===
+  output module templates applied: [Photoshop,Photoshop]
+  aerender exit=0 in 9s
+  render aerender A: quadrants {'TL': (25, 51, 76), 'TR': (102, 25, 51), 'BL': (255, 0, 0), 'BR': (0, 255, 0)}
+    aerender A TL                  got=(25, 51, 76)    expect=(26, 51, 76)    OK
+    aerender A TR                  got=(102, 25, 51)   expect=(102, 26, 51)   OK
+    aerender A BL                  got=(255, 0, 0)     expect=(255, 0, 0)     OK
+    aerender A BR                  got=(0, 255, 0)     expect=(0, 255, 0)     OK
+  render aerender B: quadrants {'TL': (127, 153, 178), 'TR': (204, 127, 178), 'BL': (0, 0, 255), 'BR': (255, 255, 0)}
+    aerender B TL                  got=(127, 153, 178) expect=(128, 153, 178) OK
+    aerender B TR                  got=(204, 127, 178) expect=(204, 128, 178) OK
+    aerender B BL                  got=(0, 0, 255)     expect=(0, 0, 255)     OK
+    aerender B BR                  got=(255, 255, 0)   expect=(255, 255, 0)   OK
+  log deltas (aerender): resolved from process registry 88->88, via lineage 0->0, rebuilt from snapshot 6->8, idle slot ui applied 111->111, pipelines built 100->102, without this instance's artifact 0->0, resolved by latest entry 6->6, adopting latest entry 0->0, not this plan; passing through 0->0, missed registry 0->0
+[VERDICT] FAIL — see MISMATCH / CHANGED / STRICT lines above

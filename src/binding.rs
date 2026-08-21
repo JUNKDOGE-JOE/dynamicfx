@@ -111,6 +111,14 @@ pub struct BindingPlan {
     pub bindings: Vec<ParamBinding>,
 }
 
+impl BindingPlan {
+    pub(crate) fn mapping(&self) -> impl Iterator<Item = (&ParamId, &[SlotRef])> {
+        self.bindings
+            .iter()
+            .map(|binding| (&binding.id, binding.slots.as_slice()))
+    }
+}
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum BindingError {
     /// Diagnostic classes param-grammar/reserved-id and alias-conflict.

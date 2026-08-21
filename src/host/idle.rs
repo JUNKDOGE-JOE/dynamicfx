@@ -207,6 +207,7 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                     // One malformed instance must not stop the project scan.
                     let call_result = catch_unwind(AssertUnwindSafe(|| {
                         if effects.installed_key_from_layer_effect(&effect_ref)? == target_key {
+                            let _ = crate::take_general_reply();
                             effects.effect_call_generic(
                                 &effect_ref,
                                 state.plugin_id,
@@ -214,11 +215,19 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                                 &ae::Command::CompletelyGeneral,
                                 None::<&()>,
                             )?;
+                            let general_reply = crate::take_general_reply();
 
                             // CompletelyGeneral published into the process
                             // registry; mirror the token into the primitive
                             // stream so render clones can resolve it.
-                            sync_state_token(state, &streams, &raw_streams, &effect_ref, layer_time)?;
+                            sync_state_token(
+                                state,
+                                &streams,
+                                &raw_streams,
+                                &effect_ref,
+                                layer_time,
+                                general_reply,
+                            )?;
                         }
                         Ok::<(), ae::Error>(())
                     }));
@@ -254,6 +263,7 @@ fn sync_state_token(
     raw_streams: &RawStreamSuite6,
     effect_ref: &ae::aegp::EffectRefHandle,
     layer_time: ae::Time,
+    general_reply: Option<crate::GeneralReply>,
 ) -> Result<(), ae::Error> {
     let language_stream =
         streams.new_effect_stream_by_index(effect_ref, state.plugin_id, LANGUAGE_STREAM_INDEX)?;
@@ -275,6 +285,7 @@ fn sync_state_token(
     // outcome. A pending mark may only fill an empty stream, never overwrite
     // one (see the guard after `current` is read).
     let mut pending = false;
+    let mut own_compiled = None;
     let desired_state = match language {
         None => TokenState::Invalid(Diag::LanguageUnknown.code()),
         Some(language) => {
@@ -304,23 +315,44 @@ fn sync_state_token(
                         // the registry/failure map the observation filled.
                         Ok(SourceClass::Envelope { .. }) | Ok(SourceClass::Raw) => {
                             let fp = crate::session_token(language, &source);
-                            if crate::registry_contains(fp) {
-                                TokenState::Active(fp)
-                            } else if let Some(code) = crate::failure_code_for(fp) {
-                                TokenState::Invalid(code)
-                            } else {
-                                // CompletelyGeneral already had its turn (it
-                                // runs immediately before this call) and still
-                                // produced neither a registry entry nor a
-                                // failure code: a refused registry insert, a
-                                // `block_rebind` instance, or an expression
-                                // that changed between the two AEGP reads.
-                                // Publishing E53 is what stops a render clone
-                                // from reading this instance as "nothing
-                                // authored yet" — the two states are otherwise
-                                // identical on every signal a clone can see.
-                                pending = true;
-                                TokenState::Invalid(Diag::PublicationPending.code())
+                            let reply_view = general_reply
+                                .as_ref()
+                                .map(|reply| (reply.token, reply.compiled.is_some(), reply.code));
+                            match decide_token(
+                                fp,
+                                reply_view,
+                                crate::registry_contains_source(fp),
+                                crate::failure_code_for(fp),
+                            ) {
+                                TokenDecision::Active => {
+                                    own_compiled = general_reply
+                                        .as_ref()
+                                        .filter(|reply| reply.token == fp)
+                                        .and_then(|reply| reply.compiled.clone());
+                                    if own_compiled.is_none() {
+                                        crate::diag::log(
+                                            "idle: publishing token without this instance's artifact; slot ui skipped",
+                                        );
+                                    }
+                                    TokenState::Active(fp)
+                                }
+                                TokenDecision::Invalid(code) => TokenState::Invalid(code),
+                                TokenDecision::Pending => {
+                                    // CompletelyGeneral already had its turn
+                                    // (it runs immediately before this call)
+                                    // and still produced neither a registry
+                                    // entry nor a failure code: a refused
+                                    // registry insert, a `block_rebind`
+                                    // instance, or an expression that changed
+                                    // between the two AEGP reads. Publishing
+                                    // E53 is what stops a render clone from
+                                    // reading this instance as "nothing
+                                    // authored yet" — the two states are
+                                    // otherwise identical on every signal a
+                                    // clone can see.
+                                    pending = true;
+                                    TokenState::Invalid(Diag::PublicationPending.code())
+                                }
                             }
                         }
                     },
@@ -357,6 +389,36 @@ fn sync_state_token(
         return Ok(());
     }
 
+    // The plan word rides beside the token (ADR-0038 §7): the identity of
+    // this instance's published plan, 0 when nothing is published. Written
+    // only when it differs, like the token, so a scan never dirties the
+    // project for nothing.
+    let desired_plan = match (&desired_state, own_compiled.as_ref()) {
+        (TokenState::Active(_), Some(compiled)) => {
+            crate::identity::plan_identity(&compiled.definition().binding)
+        }
+        _ => 0,
+    };
+    let plan_stream = streams.new_effect_stream_by_index(
+        effect_ref,
+        state.plugin_id,
+        crate::host::params::plan_token_stream_index(),
+    )?;
+    let current_plan = match streams.new_stream_value(
+        &plan_stream,
+        state.plugin_id,
+        ae::aegp::TimeMode::LayerTime,
+        layer_time,
+        true,
+    )? {
+        StreamValue::OneD(value) => value,
+        _ => return Ok(()),
+    };
+    if !pending && current_plan != desired_plan as f64 {
+        raw_streams.set_one_d(state.plugin_id, &plan_stream, desired_plan as f64)?;
+        crate::diag::log(&format!("idle plan token updated: {desired_plan:#x}"));
+    }
+
     let desired_f64 = crate::encode_token_state(desired_state);
     // Exact comparison avoids dirtying the project on every scan (the word
     // is ≤ 2^53 and exactly representable).
@@ -365,11 +427,11 @@ fn sync_state_token(
         // WITHOUT the slot UI (stream renames do not persist; measured in
         // TR-M3-001's first run). Spot-check one slot's name and republish
         // the UI when it disagrees.
-        if let crate::TokenState::Active(fp) = desired_state {
-            if let Some(compiled) = crate::registry_get(fp) {
-                if slot_ui_out_of_date(state, streams, effect_ref, &compiled)? {
+        if matches!(desired_state, crate::TokenState::Active(_)) {
+            if let Some(compiled) = own_compiled.as_ref() {
+                if slot_ui_out_of_date(state, streams, effect_ref, compiled)? {
                     if let Err(err) =
-                        apply_slot_ui(state, streams, raw_streams, effect_ref, &compiled)
+                        apply_slot_ui(state, streams, raw_streams, effect_ref, compiled)
                     {
                         crate::diag::log(&format!("idle slot ui refresh failed: {err:?}"));
                     }
@@ -384,8 +446,8 @@ fn sync_state_token(
     // via AEGP, then the token. Failures log and skip — the token still
     // publishes so rendering works.
     if desired != 0 {
-        if let Some(compiled) = crate::registry_get(desired) {
-            if let Err(err) = apply_slot_ui(state, streams, raw_streams, effect_ref, &compiled) {
+        if let Some(compiled) = own_compiled.as_ref() {
+            if let Err(err) = apply_slot_ui(state, streams, raw_streams, effect_ref, compiled) {
                 crate::diag::log(&format!("idle slot ui failed: {err:?}"));
             }
         }
@@ -394,6 +456,84 @@ fn sync_state_token(
     raw_streams.set_one_d(state.plugin_id, &token_stream, desired_f64)?;
     crate::diag::log(&format!("idle state token updated: {desired_state:?}"));
     Ok(())
+}
+
+/// What the StateToken stream should say for one instance (ADR-0038 §5).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum TokenDecision {
+    Active,
+    Invalid(u16),
+    /// Neither the instance nor the registry can account for the source yet;
+    /// the caller publishes the E53 pending mark.
+    Pending,
+}
+
+/// The instance's own reply decides first — its artifact, or its own
+/// diagnostic — so another instance's success on the same text can neither
+/// mark a failed instance `Active` nor hide its real code. Only a missing
+/// or mismatched reply (the call failed, or the expression changed between
+/// the two stream reads) falls back to the per-source view the observation
+/// filled. `reply` is `(token, has_artifact, code)`.
+fn decide_token(
+    fp: u64,
+    reply: Option<(u64, bool, crate::diagnostics::Diag)>,
+    source_registered: bool,
+    failure_code: Option<u16>,
+) -> TokenDecision {
+    use crate::diagnostics::Diag;
+    match reply {
+        Some((token, true, _)) if token == fp => TokenDecision::Active,
+        Some((_, _, code)) if code != Diag::Ok => TokenDecision::Invalid(code.code()),
+        _ if source_registered => TokenDecision::Active,
+        _ => match failure_code {
+            Some(code) => TokenDecision::Invalid(code),
+            None => TokenDecision::Pending,
+        },
+    }
+}
+
+#[cfg(test)]
+mod token_decision_tests {
+    use super::{decide_token, TokenDecision};
+    use crate::diagnostics::Diag;
+
+    const FP: u64 = 0x1234;
+
+    #[test]
+    fn own_artifact_wins() {
+        assert_eq!(decide_token(FP, Some((FP, true, Diag::Ok)), false, None), TokenDecision::Active);
+        // Even when the per-source view disagrees.
+        assert_eq!(
+            decide_token(FP, Some((FP, true, Diag::Ok)), false, Some(Diag::PoolOverflow.code())),
+            TokenDecision::Active
+        );
+    }
+
+    #[test]
+    fn own_failure_is_not_masked_by_another_instance() {
+        assert_eq!(
+            decide_token(FP, Some((0, false, Diag::PoolOverflow)), true, None),
+            TokenDecision::Invalid(Diag::PoolOverflow.code())
+        );
+        assert_eq!(
+            decide_token(FP, Some((0, false, Diag::SnapshotSchemaUnknown)), true, None),
+            TokenDecision::Invalid(Diag::SnapshotSchemaUnknown.code())
+        );
+    }
+
+    #[test]
+    fn no_usable_reply_falls_back_to_the_source_view() {
+        assert_eq!(decide_token(FP, None, true, None), TokenDecision::Active);
+        assert_eq!(
+            decide_token(FP, None, false, Some(Diag::PoolOverflow.code())),
+            TokenDecision::Invalid(Diag::PoolOverflow.code())
+        );
+        assert_eq!(decide_token(FP, None, false, None), TokenDecision::Pending);
+        // A reply for a different text (the expression changed between the
+        // two reads) is not this instance's verdict on `fp`.
+        assert_eq!(decide_token(FP, Some((FP + 1, true, Diag::Ok)), true, None), TokenDecision::Active);
+        assert_eq!(decide_token(FP, Some((FP + 1, true, Diag::Ok)), false, None), TokenDecision::Pending);
+    }
 }
 
 /// One-read staleness probe: compare the first pool slot's current stream

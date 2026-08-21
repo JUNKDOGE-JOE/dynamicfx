@@ -114,6 +114,7 @@ round 2 (verify_rounds.py): checkout-failed 71->76, dips=0
 - `dynamicfx.log.interrupt-window.txt` — plug-in log for the pre-fix reproduction window, epoch stamps converted to local time.
 - `verify-report-fix-build.txt`, `dynamicfx.log.post-fix-verified.txt` — the fix-build host verification and its log window.
 - `missing_frame_repro.py`, `verify_fix.py`, `verify_rounds.py`, `mf_preview_interrupt.jsx`, `frame_stats.py` — the harness (pre-fix repro and post-fix verification).
+- These scripts `import aemcp`, the ae-mcp `/exec` client; it was a per-session helper when they ran and now lives in the repository at [`scripts/aemcp.py`](../../../../scripts/aemcp.py) — put `scripts/` on `sys.path` (or copy the file beside them) to re-run them.
 
 ---
 

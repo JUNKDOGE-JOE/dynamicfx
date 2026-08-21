@@ -1,0 +1,77 @@
+[host] AE 26.3x87 | 2026-08-21 18:19:46 local | log %TEMP%\dynamicfx.log
+=== compile order AB ===
+  A v1 compiled: Status: compiled: 1 pass, 5 par
+  A v2 compiled: Status: compiled: 1 pass, 8 par
+  A names after migration: 6=p1|7=p2|8=p3|9=p0|102=a1|103=a0|111=texB|112=texA
+  B v2 compiled: Status: idle
+  B names (fresh): 6=p0|7=p1|8=p2|9=p3|102=a0|103=a1|111=Layer 01|112=Layer 02
+  A names after both compiled: 6=p0|7=p1|8=p2|9=p3|102=a0|103=a1|111=texB|112=texA
+  B names after both compiled: 6=p0|7=p1|8=p2|9=p3|102=a0|103=a1|111=Layer 01|112=Layer 02
+    A: slot 6 is 'p0', expected 'p1'
+    A: slot 7 is 'p1', expected 'p2'
+    A: slot 8 is 'p2', expected 'p3'
+    A: slot 9 is 'p3', expected 'p0'
+    A: slot 102 is 'a0', expected 'a1'
+    A: slot 103 is 'a1', expected 'a0'
+  A slot names DO NOT match its own plan
+  B slot names match its own plan
+  !! slot names of A CHANGED after B compiled (idle observer applied a foreign plan)
+  render A (round 0): quadrants {'TL': (51, 76, 102), 'TR': (25, 51, 25), 'BL': (0, 255, 0), 'BR': (255, 0, 0)}
+    AB A TL                            got=(51, 76, 102)   expect=(26, 51, 76)    MISMATCH
+    AB A TR                            got=(25, 51, 25)    expect=(102, 26, 51)   MISMATCH
+    AB A BL                            got=(0, 255, 0)     expect=(255, 0, 0)     MISMATCH
+    AB A BR                            got=(255, 0, 0)     expect=(0, 255, 0)     MISMATCH
+  render A (round 1): quadrants {'TL': (51, 76, 102), 'TR': (25, 51, 25), 'BL': (0, 255, 0), 'BR': (255, 0, 0)}
+    AB A TL                            got=(51, 76, 102)   expect=(26, 51, 76)    MISMATCH
+    AB A TR                            got=(25, 51, 25)    expect=(102, 26, 51)   MISMATCH
+    AB A BL                            got=(0, 255, 0)     expect=(255, 0, 0)     MISMATCH
+    AB A BR                            got=(255, 0, 0)     expect=(0, 255, 0)     MISMATCH
+  render B (round 0): quadrants {'TL': (127, 153, 178), 'TR': (204, 127, 178), 'BL': (0, 0, 255), 'BR': (255, 255, 0)}
+    AB B TL                            got=(127, 153, 178) expect=(128, 153, 178) OK
+    AB B TR                            got=(204, 127, 178) expect=(204, 128, 178) OK
+    AB B BL                            got=(0, 0, 255)     expect=(0, 0, 255)     OK
+    AB B BR                            got=(255, 255, 0)   expect=(255, 255, 0)   OK
+  render B (round 1): quadrants {'TL': (127, 153, 178), 'TR': (204, 127, 178), 'BL': (0, 0, 255), 'BR': (255, 255, 0)}
+    AB B TL                            got=(127, 153, 178) expect=(128, 153, 178) OK
+    AB B TR                            got=(204, 127, 178) expect=(204, 128, 178) OK
+    AB B BL                            got=(0, 0, 255)     expect=(0, 0, 255)     OK
+    AB B BR                            got=(255, 255, 0)   expect=(255, 255, 0)   OK
+  log deltas: resolved from process registry 74->76, rebuilt from snapshot 5->5, idle slot ui applied 77->81, pipelines built 79->81, resolved by latest entry 0->0, not this plan; passing through 0->0, missed registry 0->0
+=== compile order BA ===
+  B v2 compiled: Status: idle
+  B names (fresh): 6=p0|7=p1|8=p2|9=p3|102=a0|103=a1|111=Layer 01|112=Layer 02
+  A v1 compiled: Status: compiled: 1 pass, 5 par
+  A v2 compiled: Status: compiled: 1 pass, 8 par
+  A names after migration: 6=p1|7=p2|8=p3|9=p0|102=a1|103=a0|111=texB|112=texA
+  A names after both compiled: 6=p1|7=p2|8=p3|9=p0|102=a1|103=a0|111=texB|112=texA
+  B names after both compiled: 6=p1|7=p2|8=p3|9=p0|102=a1|103=a0|111=Layer 01|112=Layer 02
+  A slot names match its own plan
+    B: slot 6 is 'p1', expected 'p0'
+    B: slot 7 is 'p2', expected 'p1'
+    B: slot 8 is 'p3', expected 'p2'
+    B: slot 9 is 'p0', expected 'p3'
+    B: slot 102 is 'a1', expected 'a0'
+    B: slot 103 is 'a0', expected 'a1'
+  B slot names DO NOT match its own plan
+  render A (round 0): quadrants {'TL': (25, 51, 76), 'TR': (102, 25, 51), 'BL': (255, 0, 0), 'BR': (0, 255, 0)}
+    BA A TL                            got=(25, 51, 76)    expect=(26, 51, 76)    OK
+    BA A TR                            got=(102, 25, 51)   expect=(102, 26, 51)   OK
+    BA A BL                            got=(255, 0, 0)     expect=(255, 0, 0)     OK
+    BA A BR                            got=(0, 255, 0)     expect=(0, 255, 0)     OK
+  render A (round 1): quadrants {'TL': (25, 51, 76), 'TR': (102, 25, 51), 'BL': (255, 0, 0), 'BR': (0, 255, 0)}
+    BA A TL                            got=(25, 51, 76)    expect=(26, 51, 76)    OK
+    BA A TR                            got=(102, 25, 51)   expect=(102, 26, 51)   OK
+    BA A BL                            got=(255, 0, 0)     expect=(255, 0, 0)     OK
+    BA A BR                            got=(0, 255, 0)     expect=(0, 255, 0)     OK
+  render B (round 0): quadrants {'TL': (204, 127, 153), 'TR': (178, 178, 127), 'BL': (255, 255, 0), 'BR': (0, 0, 255)}
+    BA B TL                            got=(204, 127, 153) expect=(128, 153, 178) MISMATCH
+    BA B TR                            got=(178, 178, 127) expect=(204, 128, 178) MISMATCH
+    BA B BL                            got=(255, 255, 0)   expect=(0, 0, 255)     MISMATCH
+    BA B BR                            got=(0, 0, 255)     expect=(255, 255, 0)   MISMATCH
+  render B (round 1): quadrants {'TL': (204, 127, 153), 'TR': (178, 178, 127), 'BL': (255, 255, 0), 'BR': (0, 0, 255)}
+    BA B TL                            got=(204, 127, 153) expect=(128, 153, 178) MISMATCH
+    BA B TR                            got=(178, 178, 127) expect=(204, 128, 178) MISMATCH
+    BA B BL                            got=(255, 255, 0)   expect=(0, 0, 255)     MISMATCH
+    BA B BR                            got=(0, 0, 255)     expect=(255, 255, 0)   MISMATCH
+  log deltas: resolved from process registry 76->78, rebuilt from snapshot 5->5, idle slot ui applied 81->85, pipelines built 81->83, resolved by latest entry 0->0, not this plan; passing through 0->0, missed registry 0->0
+[VERDICT] FAIL — see MISMATCH / CHANGED lines above

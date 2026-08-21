@@ -1,0 +1,95 @@
+aerender version 26.3x87
+PROGRESS: Launching After Effects...
+PROGRESS:  “2026/8/21”“18:31:15”: 开始合成“bind”。
+
+PROGRESS:  渲染设置: 最佳设置
+PROGRESS:  品质: 最佳
+PROGRESS:  分辨率: 完全
+PROGRESS:  大小: 320 x 240
+PROGRESS:  代理使用: 不使用代理
+PROGRESS:  效果: 当前设置
+PROGRESS:  磁盘高速缓存: 只读
+PROGRESS:  颜色深度: 当前设置
+PROGRESS:  帧混合: 对选中图层打开
+PROGRESS:  场渲染: 关
+PROGRESS:  Pulldown: 关
+PROGRESS:  运动模糊: 对选中图层打开
+PROGRESS:   
+PROGRESS:  单独: 当前设置
+PROGRESS:   
+PROGRESS:  时间跨度: 自定义
+PROGRESS:  开始: 00012
+PROGRESS:  结束: 00013
+PROGRESS:  持续时间: 00001
+PROGRESS:  帧速率: 25.00 （合成）
+PROGRESS:  引导层: 全部关闭
+PROGRESS:  跳过现有文件: 关
+PROGRESS:  
+PROGRESS:  输出模块: Photoshop
+PROGRESS:  输出到: E:\Code\AePlugin_Dynamicfx\scripts\out\bind\20260821_183039\aer_bind_[#####].psd
+PROGRESS:  格式: Photoshop 序列
+PROGRESS:  输出信息: -
+PROGRESS:  开始帧: 12
+PROGRESS:  输出音频: -
+PROGRESS:  通道: RGB + Alpha
+PROGRESS:  深度: 数百万种以上颜色
+PROGRESS:  颜色: 预乘
+PROGRESS:  调整大小: -
+PROGRESS:  裁剪: -
+PROGRESS:  最终大小: 320 x 240
+PROGRESS:  配置文件: -
+PROGRESS:  嵌入配置文件: 
+PROGRESS:   
+PROGRESS:  渲染后动作: 无
+PROGRESS:   
+PROGRESS:   
+PROGRESS:   
+PROGRESS:  
+PROGRESS:  00012 (1): 0 秒
+PROGRESS:  “2026/8/21”“18:31:15”: 开始合成“bind2”。
+
+PROGRESS:  渲染设置: 最佳设置
+PROGRESS:  品质: 最佳
+PROGRESS:  分辨率: 完全
+PROGRESS:  大小: 320 x 240
+PROGRESS:  代理使用: 不使用代理
+PROGRESS:  效果: 当前设置
+PROGRESS:  磁盘高速缓存: 只读
+PROGRESS:  颜色深度: 当前设置
+PROGRESS:  帧混合: 对选中图层打开
+PROGRESS:  场渲染: 关
+PROGRESS:  Pulldown: 关
+PROGRESS:  运动模糊: 对选中图层打开
+PROGRESS:   
+PROGRESS:  单独: 当前设置
+PROGRESS:   
+PROGRESS:  时间跨度: 自定义
+PROGRESS:  开始: 00012
+PROGRESS:  结束: 00013
+PROGRESS:  持续时间: 00001
+PROGRESS:  帧速率: 25.00 （合成）
+PROGRESS:  引导层: 全部关闭
+PROGRESS:  跳过现有文件: 关
+PROGRESS:  
+PROGRESS:  输出模块: Photoshop
+PROGRESS:  输出到: E:\Code\AePlugin_Dynamicfx\scripts\out\bind\20260821_183039\aer_bind2_[#####].psd
+PROGRESS:  格式: Photoshop 序列
+PROGRESS:  输出信息: -
+PROGRESS:  开始帧: 12
+PROGRESS:  输出音频: -
+PROGRESS:  通道: RGB + Alpha
+PROGRESS:  深度: 数百万种以上颜色
+PROGRESS:  颜色: 预乘
+PROGRESS:  调整大小: -
+PROGRESS:  裁剪: -
+PROGRESS:  最终大小: 320 x 240
+PROGRESS:  配置文件: -
+PROGRESS:  嵌入配置文件: 
+PROGRESS:   
+PROGRESS:  渲染后动作: 无
+PROGRESS:   
+PROGRESS:   
+PROGRESS:   
+PROGRESS:  
+PROGRESS:  00012 (1): 0 秒
+

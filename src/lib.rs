@@ -385,16 +385,47 @@ fn perf_log_enabled() -> bool {
     })
 }
 
-/// Session-local process registry: token → compiled effect. UI instances
-/// insert; render clones resolve. Cleared only by process exit; a stale
-/// persisted token from an earlier session simply misses here.
-fn registry() -> &'static Mutex<TokenMap<u64, Arc<CompiledEffect>>> {
-    static REGISTRY: OnceLock<Mutex<TokenMap<u64, Arc<CompiledEffect>>>> = OnceLock::new();
+/// One source's compiled artifacts, keyed by binding-plan identity
+/// (ADR-0038 §2). Two instances of one source legitimately hold different
+/// plans, and an artifact embeds its plan (stream map and layer wiring), so
+/// the plan is part of the key.
+#[derive(Default)]
+struct RegistryBucket {
+    entries: TokenMap<u64, Arc<CompiledEffect>>,
+    /// Past plan id → the current plan of the instance that once held it,
+    /// so a stale render clone still lands on its own instance's entry.
+    /// `None` once two publications disagreed on the target (a duplicate
+    /// and its original diverging): an ambiguous alias never resolves again.
+    aliases: TokenMap<u64, Option<u64>>,
+    /// Plan of the most recent successful publication, equal-mapping
+    /// republications included — the best guess for a clone that cannot
+    /// name its plan.
+    latest: Option<u64>,
+}
+
+/// Session-local process registry: source fingerprint → binding-plan bucket.
+/// UI instances insert; render clones resolve. Cleared only by process exit;
+/// a stale persisted token from an earlier session simply misses here.
+fn registry() -> &'static Mutex<TokenMap<u64, RegistryBucket>> {
+    static REGISTRY: OnceLock<Mutex<TokenMap<u64, RegistryBucket>>> = OnceLock::new();
     REGISTRY.get_or_init(|| Mutex::new(TokenMap::new()))
 }
 
-pub(crate) fn registry_get(token: u64) -> Option<Arc<CompiledEffect>> {
-    registry().lock().ok()?.get(&token).cloned()
+/// Direct entry first, then an unambiguous lineage alias. The flag tells the
+/// caller which one answered.
+fn registry_get_with_origin(token: u64, plan_id: u64) -> Option<(Arc<CompiledEffect>, bool)> {
+    let map = registry().lock().ok()?;
+    let bucket = map.get(&token)?;
+    if let Some(compiled) = bucket.entries.get(&plan_id) {
+        return Some((Arc::clone(compiled), false));
+    }
+    let target = (*bucket.aliases.get(&plan_id)?)?;
+    bucket.entries.get(&target).map(|compiled| (Arc::clone(compiled), true))
+}
+
+#[cfg(test)]
+fn registry_get(token: u64, plan_id: u64) -> Option<Arc<CompiledEffect>> {
+    registry_get_with_origin(token, plan_id).map(|(compiled, _)| compiled)
 }
 
 impl CompiledEffect {
@@ -461,28 +492,70 @@ pub(crate) fn slot_configs(
     configs
 }
 
-pub(crate) fn registry_contains(token: u64) -> bool {
-    registry().lock().is_ok_and(|map| map.contains_key(&token))
+pub(crate) fn registry_contains_source(token: u64) -> bool {
+    registry().lock().is_ok_and(|map| {
+        map.get(&token).is_some_and(|bucket| !bucket.entries.is_empty())
+    })
 }
 
-/// Insert under `token`; returns false when a different source already owns
-/// the token (51-bit truncation collision — fail closed, never render the
-/// wrong shader).
-fn registry_insert(token: u64, compiled: Arc<CompiledEffect>) -> bool {
+fn registry_latest(token: u64) -> Option<Arc<CompiledEffect>> {
+    let map = registry().lock().ok()?;
+    let bucket = map.get(&token)?;
+    bucket.latest.and_then(|plan_id| bucket.entries.get(&plan_id).cloned())
+}
+
+/// Two plans are one mapping when their ParamId → slot tables agree. The
+/// `inherited` flag is compile-transient default-writing state and must not
+/// split an entry (ADR-0038 §1).
+fn plan_mappings_equal(left: &binding::BindingPlan, right: &binding::BindingPlan) -> bool {
+    left.mapping().eq(right.mapping())
+}
+
+/// Insert under `(token, plan_id)`; the caller passes the plan identity it
+/// already computed for its lineage. Collisions fail closed rather than
+/// serving source or binding data the key does not name; an equal mapping
+/// keeps the existing artifact, so same-plan instances never evict each
+/// other. `latest` follows every successful publication.
+fn registry_insert(
+    token: u64,
+    plan_id: u64,
+    compiled: Arc<CompiledEffect>,
+    lineage: &[u64],
+) -> bool {
     let Ok(mut map) = registry().lock() else { return false };
-    match map.get(&token) {
+    let bucket = map.entry(token).or_default();
+    if bucket.entries.values().next().is_some_and(|existing| {
+        existing.definition.graph.passes[0].source != compiled.definition.graph.passes[0].source
+    }) {
+        diag::log("session token collision; publication refused");
+        return false;
+    }
+    match bucket.entries.get(&plan_id) {
         Some(existing)
-            if existing.definition.graph.passes[0].source
-                != compiled.definition.graph.passes[0].source =>
+            if !plan_mappings_equal(&existing.definition.binding, &compiled.definition.binding) =>
         {
-            diag::log("session token collision; publication refused");
-            false
+            diag::log("binding plan identity collision; publication refused");
+            return false;
         }
-        _ => {
-            map.insert(token, compiled);
-            true
+        Some(_) => {}
+        None => {
+            bucket.entries.insert(plan_id, compiled);
         }
     }
+    bucket.latest = Some(plan_id);
+    for &past_id in lineage.iter().filter(|&&id| id != plan_id) {
+        match bucket.aliases.get(&past_id) {
+            None => {
+                bucket.aliases.insert(past_id, Some(plan_id));
+            }
+            Some(Some(existing)) if *existing == plan_id => {}
+            Some(Some(_)) => {
+                bucket.aliases.insert(past_id, None);
+            }
+            Some(None) => {}
+        }
+    }
+    true
 }
 
 /// Session token for one (language, committed source) pair: the ADR-0017
@@ -944,6 +1017,323 @@ mod example_tests {
     }
 }
 
+#[cfg(test)]
+mod registry_tests {
+    use super::*;
+    use crate::binding::{BindingPlan, ParamBinding, PoolKind, SlotRef};
+    use crate::definition::param::ParamId;
+
+    fn source(marker: &str) -> String {
+        format!(
+            r#"#version 450
+// {marker}
+layout(location = 0) in vec2 v_uv;
+layout(location = 0) out vec4 outColor;
+layout(set = 0, binding = 0) uniform texture2D u_in;
+layout(set = 0, binding = 1) uniform sampler u_s;
+layout(set = 0, binding = 2) uniform FxUniforms {{
+    vec2 u_resolution;
+    float u_time;
+    float u_frame;
+    float p0;
+    float p1;
+    float p2;
+    float p3;
+}};
+void main() {{
+    float keep = (p0 + p1 + p2 + p3) * 0.0;
+    outColor = texture(sampler2D(u_in, u_s), v_uv) + vec4(keep);
+}}
+"#
+        )
+    }
+
+    fn migrated_previous() -> BindingPlan {
+        BindingPlan {
+            bindings: ["p1", "p2", "p3"]
+                .into_iter()
+                .enumerate()
+                .map(|(index, id)| ParamBinding {
+                    id: ParamId::new(id).unwrap(),
+                    slots: vec![SlotRef { kind: PoolKind::Float, index }],
+                    inherited: true,
+                })
+                .collect(),
+        }
+    }
+
+    fn compile(source: &str, previous: Option<&BindingPlan>) -> (u64, Arc<CompiledEffect>) {
+        let (code, status, compiled) =
+            evaluate_committed_source(LanguageId::GLSL, source, previous);
+        assert_eq!(code, Diag::Ok, "{status}");
+        compiled.expect("registry fixture should compile")
+    }
+
+    fn plan_id(effect: &CompiledEffect) -> u64 {
+        identity::plan_identity(&effect.definition.binding)
+    }
+
+    /// Publish the way the runtime does: under the artifact's own plan id.
+    fn insert(fp: u64, effect: &Arc<CompiledEffect>, lineage: &[u64]) -> bool {
+        registry_insert(fp, plan_id(effect), Arc::clone(effect), lineage)
+    }
+
+    fn snapshot_of(plan: &BindingPlan, fingerprint: u64) -> persistence::Snapshot {
+        persistence::Snapshot::from_state(LanguageId::GLSL, fingerprint, "src", plan)
+    }
+
+    #[test]
+    fn one_source_keeps_distinct_plan_entries() {
+        let source = source("registry test: distinct plans");
+        let (fp, first) = compile(&source, None);
+        let (_, second) = compile(&source, Some(&migrated_previous()));
+        let first_id = plan_id(&first);
+        let second_id = plan_id(&second);
+        assert_ne!(first_id, second_id);
+
+        assert!(insert(fp, &first, &[first_id]));
+        assert!(insert(fp, &second, &[second_id]));
+        assert!(Arc::ptr_eq(&registry_get(fp, first_id).unwrap(), &first));
+        assert!(Arc::ptr_eq(&registry_get(fp, second_id).unwrap(), &second));
+    }
+
+    #[test]
+    fn equal_plan_republication_keeps_the_first_arc() {
+        let source = source("registry test: equal plan");
+        let (fp, first) = compile(&source, None);
+        let (_, second) = compile(&source, Some(&first.definition.binding));
+        let id = plan_id(&first);
+        assert_eq!(id, plan_id(&second));
+        assert!(plan_mappings_equal(&first.definition.binding, &second.definition.binding));
+        // Only `inherited` differs — not part of the mapping.
+        assert_ne!(first.definition.binding, second.definition.binding);
+        assert!(!Arc::ptr_eq(&first, &second));
+
+        assert!(insert(fp, &first, &[id]));
+        assert!(insert(fp, &second, &[id]));
+        let stored = registry_get(fp, id).unwrap();
+        assert!(Arc::ptr_eq(&stored, &first));
+        assert!(!Arc::ptr_eq(&stored, &second));
+    }
+
+    #[test]
+    fn alias_resolves_until_a_direct_entry_takes_precedence() {
+        let source = source("registry test: alias precedence");
+        let (fp, direct) = compile(&source, None);
+        let (_, current) = compile(&source, Some(&migrated_previous()));
+        let past_id = plan_id(&direct);
+        let current_id = plan_id(&current);
+
+        assert!(insert(fp, &current, &[past_id, current_id]));
+        let (hit, via_lineage) = registry_get_with_origin(fp, past_id).unwrap();
+        assert!(Arc::ptr_eq(&hit, &current));
+        assert!(via_lineage);
+
+        assert!(insert(fp, &direct, &[past_id]));
+        let (hit, via_lineage) = registry_get_with_origin(fp, past_id).unwrap();
+        assert!(Arc::ptr_eq(&hit, &direct));
+        assert!(!via_lineage);
+    }
+
+    /// A duplicate and its original share every plan from before the copy;
+    /// once they diverge, neither may claim the other's stale clones.
+    #[test]
+    fn ambiguous_aliases_stay_unresolved() {
+        let source = source("registry test: alias ambiguity");
+        let (fp, first) = compile(&source, None);
+        let (_, second) = compile(&source, Some(&migrated_previous()));
+        let shared_past = 0xa11a_5000_0000_0001u64;
+        assert_ne!(shared_past, plan_id(&first));
+        assert_ne!(shared_past, plan_id(&second));
+
+        assert!(insert(fp, &first, &[shared_past]));
+        assert!(Arc::ptr_eq(&registry_get(fp, shared_past).unwrap(), &first));
+        assert!(insert(fp, &second, &[shared_past]));
+        assert!(registry_get(fp, shared_past).is_none());
+        // Re-asserting either target does not revive it.
+        assert!(insert(fp, &first, &[shared_past]));
+        assert!(registry_get(fp, shared_past).is_none());
+        // Direct entries are untouched.
+        assert!(Arc::ptr_eq(&registry_get(fp, plan_id(&first)).unwrap(), &first));
+        assert!(Arc::ptr_eq(&registry_get(fp, plan_id(&second)).unwrap(), &second));
+    }
+
+    #[test]
+    fn contains_source_and_latest_follow_every_publication() {
+        let source = source("registry test: latest");
+        let (fp, first) = compile(&source, None);
+        let (_, second) = compile(&source, Some(&migrated_previous()));
+        assert!(!registry_contains_source(fp));
+        assert!(registry_latest(fp).is_none());
+
+        assert!(insert(fp, &first, &[plan_id(&first)]));
+        assert!(registry_contains_source(fp));
+        assert!(Arc::ptr_eq(&registry_latest(fp).unwrap(), &first));
+
+        assert!(insert(fp, &second, &[plan_id(&second)]));
+        assert!(Arc::ptr_eq(&registry_latest(fp).unwrap(), &second));
+
+        // An equal-mapping republication keeps the stored Arc but is still
+        // the most recent publication.
+        assert!(insert(fp, &first, &[plan_id(&first)]));
+        assert!(Arc::ptr_eq(&registry_latest(fp).unwrap(), &first));
+    }
+
+    #[test]
+    fn source_and_plan_identity_collisions_are_refused() {
+        let source_a = source("registry test: source collision A");
+        let source_b = source("registry test: source collision B");
+        let (fp, first) = compile(&source_a, None);
+        let (_, foreign_source) = compile(&source_b, None);
+        assert!(insert(fp, &first, &[plan_id(&first)]));
+        assert!(!insert(fp, &foreign_source, &[plan_id(&first)]));
+
+        let source = source("registry test: plan identity collision");
+        let (fp, first) = compile(&source, None);
+        let (_, different_plan) = compile(&source, Some(&migrated_previous()));
+        let forced_id = 0x6b65_792d_636f_6c6c;
+        assert!(registry_insert(fp, forced_id, Arc::clone(&first), &[]));
+        assert!(!registry_insert(fp, forced_id, different_plan, &[]));
+        assert!(Arc::ptr_eq(&registry_get(fp, forced_id).unwrap(), &first));
+    }
+
+    /// The seed order is the same for reuse, resolution and flatten.
+    #[test]
+    fn own_plan_prefers_live_then_last_good_then_snapshot() {
+        let source = source("registry test: own plan order");
+        let (fp, live) = compile(&source, None);
+        let migrated = migrated_previous();
+        let other = BindingPlan {
+            bindings: vec![ParamBinding {
+                id: ParamId::new("q").unwrap(),
+                slots: vec![SlotRef { kind: PoolKind::Angle, index: 3 }],
+                inherited: true,
+            }],
+        };
+        let mut local = Local {
+            compiled: Some(Arc::clone(&live)),
+            last_good: Some(snapshot_of(&migrated, fp)),
+            snapshot: Some(snapshot_of(&other, fp)),
+            ..Local::default()
+        };
+        let ids = local.own_plan_ids();
+        assert_eq!(ids.len(), 3);
+        assert_eq!(ids[0], plan_id(&live));
+        assert_eq!(ids[1], identity::plan_identity(&migrated));
+        assert_eq!(ids[2], identity::plan_identity(&other));
+        assert!(plan_mappings_equal(&local.own_plan().unwrap(), &live.definition.binding));
+
+        local.compiled = None;
+        assert!(plan_mappings_equal(&local.own_plan().unwrap(), &migrated));
+        assert_eq!(local.own_plan_ids()[0], identity::plan_identity(&migrated));
+
+        local.last_good = None;
+        assert!(plan_mappings_equal(&local.own_plan().unwrap(), &other));
+
+        local.snapshot = None;
+        assert!(local.own_plan().is_none());
+        assert!(local.own_plan_ids().is_empty());
+    }
+
+    /// A failed compile drops the live definition; the next success must
+    /// still inherit the migrated slots rather than fall back to
+    /// declaration order.
+    #[test]
+    fn failed_compile_keeps_the_reuse_seed() {
+        let source = source("registry test: reuse seed survives failure");
+        let (fp, migrated) = compile(&source, Some(&migrated_previous()));
+        let mut local = Local { compiled: Some(Arc::clone(&migrated)), ..Local::default() };
+        local.remember_good(LanguageId::GLSL, fp, &migrated);
+        // The failed observation clears the live definition only.
+        local.clear_definition();
+        let seed = local.own_plan().expect("last good compile seeds reuse");
+        let (_, again) = compile(&source, Some(&seed));
+        assert!(plan_mappings_equal(&again.definition.binding, &migrated.definition.binding));
+        assert_eq!(plan_id(&again), plan_id(&migrated));
+    }
+
+    #[test]
+    fn follows_stream_table() {
+        use TokenState::*;
+        let cases: [(TokenState, bool, bool, u64, bool); 10] = [
+            // (state, self_authored, has_definition, local_token, follows)
+            (Active(7), false, true, 7, false),  // stream names what is held
+            (Active(7), true, true, 7, false),
+            (Active(8), true, true, 7, false),   // own definition outranks a lagging stream
+            (Uninitialized, true, true, 7, false),
+            (Invalid(9), true, true, 7, false),
+            (Corrupt, true, true, 7, false),
+            (Active(8), false, true, 7, true),   // a clone follows the stream
+            (Active(8), false, false, 0, true),  // a clone's very first resolve
+            (Uninitialized, true, false, 0, true), // nothing held: nothing to keep
+            (Corrupt, false, true, 7, true),
+        ];
+        for (state, self_authored, has_definition, local_token, expected) in cases {
+            assert_eq!(
+                follows_stream(state, self_authored, has_definition, local_token),
+                expected,
+                "{state:?} self_authored={self_authored} has_definition={has_definition} token={local_token}"
+            );
+        }
+    }
+
+    fn flatten_of(local: Local) -> Vec<u8> {
+        let (version, bytes) = <LocalMutex as AdobePluginInstance>::flatten(&Mutex::new(local))
+            .expect("flatten never fails");
+        assert_eq!(version, 1);
+        bytes
+    }
+
+    /// Without a live definition an instance still persists its plan — the
+    /// last good compile first, else the restored snapshot — unless its
+    /// source block was observed absent.
+    #[test]
+    fn flatten_persists_last_good_or_snapshot_without_a_live_definition() {
+        let good = snapshot_of(&migrated_previous(), 11);
+        let restored = snapshot_of(
+            &BindingPlan {
+                bindings: vec![ParamBinding {
+                    id: ParamId::new("r").unwrap(),
+                    slots: vec![SlotRef { kind: PoolKind::Float, index: 5 }],
+                    inherited: true,
+                }],
+            },
+            12,
+        );
+
+        let both = Local {
+            last_good: Some(good.clone()),
+            snapshot: Some(restored.clone()),
+            ..Local::default()
+        };
+        assert_eq!(persistence::decode(&flatten_of(both)).unwrap(), good);
+
+        let only_restored = Local { snapshot: Some(restored.clone()), ..Local::default() };
+        assert_eq!(persistence::decode(&flatten_of(only_restored)).unwrap(), restored);
+
+        let absent = Local {
+            last_good: Some(good.clone()),
+            snapshot: Some(restored.clone()),
+            source_absent: true,
+            ..Local::default()
+        };
+        assert!(flatten_of(absent).is_empty());
+
+        // A failed compile persists nothing either: the stream may still
+        // read Active for that text, and a saved snapshot would outvote the
+        // broken expression on reopen.
+        let failed = Local {
+            last_good: Some(good),
+            snapshot: Some(restored),
+            status_code: Diag::SpirvEmit,
+            ..Local::default()
+        };
+        assert!(flatten_of(failed).is_empty());
+
+        assert!(flatten_of(Local::default()).is_empty());
+    }
+}
+
 /// Failed observations keyed by attempt fingerprint, so the idle sync can
 /// publish the real diagnostic code for a source it cannot recompile itself.
 /// Session-local; successful compiles remove their entry.
@@ -1027,6 +1417,24 @@ struct Local {
     /// Restored ADR-0016 snapshot: the render clone's authority and the UI
     /// side's slot-inheritance seed. Never overrides a fresh observation.
     snapshot: Option<persistence::Snapshot>,
+    /// Session-local plan ancestry used to resolve stale render clones to
+    /// this instance's current artifact. It is never flattened or persisted.
+    plan_lineage: Vec<u64>,
+    /// The last definition this instance compiled successfully this session:
+    /// the reuse seed once the live definition is gone (a failed compile must
+    /// not demote a migrated plan to declaration order) and what `flatten`
+    /// emits when there is nothing better (ADR-0038 §3). Session-local; the
+    /// restored `snapshot` keeps its own meaning.
+    last_good: Option<persistence::Snapshot>,
+    /// The last observation found no source block (no expression, or not a
+    /// `...`;0 block). `flatten` then persists nothing, as before, while
+    /// `snapshot`/`last_good` stay in memory for in-session recovery.
+    source_absent: bool,
+    /// `compiled` came from this instance's own observation rather than from
+    /// the registry or a snapshot rebuild. Such a definition is not revised
+    /// by the StateToken stream, which lags the instance's own compile by up
+    /// to one idle tick (ADR-0038 §4).
+    self_authored: bool,
     /// SnapshotSchemaUnknown refuses implicit re-binding (ADR-0016 §1);
     /// only an explicit Compile clears this.
     block_rebind: bool,
@@ -1058,6 +1466,10 @@ impl Default for Local {
             compiled: None,
             pipelines: None,
             snapshot: None,
+            plan_lineage: Vec::new(),
+            last_good: None,
+            source_absent: false,
+            self_authored: false,
             block_rebind: false,
             configured_token: None,
             visibility_token: None,
@@ -1066,6 +1478,89 @@ impl Default for Local {
             scratch_out: Vec::new(),
         }
     }
+}
+
+impl Local {
+    /// The plan this instance considers its own, in seed order: the live
+    /// definition, then the last good compile of this session, then the
+    /// restored snapshot (ADR-0038 §3). Reuse, resolution and flatten all
+    /// read the same order so the insert key and the resolve key agree.
+    fn own_plan(&self) -> Option<binding::BindingPlan> {
+        self.compiled
+            .as_ref()
+            .map(|compiled| compiled.definition.binding.clone())
+            .or_else(|| self.last_good.as_ref().map(persistence::Snapshot::to_previous_plan))
+            .or_else(|| self.snapshot.as_ref().map(persistence::Snapshot::to_previous_plan))
+    }
+
+    /// Every plan identity this instance can claim, in the same seed order
+    /// and without repeats — a stale clone may hold a newer definition than
+    /// its snapshot, and either may be the registered one.
+    fn own_plan_ids(&self) -> Vec<u64> {
+        let mut ids = Vec::with_capacity(3);
+        let candidates = [
+            self.compiled.as_ref().map(|c| identity::plan_identity(&c.definition.binding)),
+            self.last_good.as_ref().map(|s| identity::plan_identity(&s.to_previous_plan())),
+            self.snapshot.as_ref().map(|s| identity::plan_identity(&s.to_previous_plan())),
+        ];
+        for id in candidates.into_iter().flatten() {
+            if !ids.contains(&id) {
+                ids.push(id);
+            }
+        }
+        ids
+    }
+
+    fn record_lineage(&mut self, ids: impl IntoIterator<Item = u64>) {
+        for id in ids {
+            if !self.plan_lineage.contains(&id) {
+                self.plan_lineage.push(id);
+            }
+        }
+    }
+
+    fn remember_good(&mut self, language: LanguageId, token: u64, compiled: &CompiledEffect) {
+        self.last_good = Some(persistence::Snapshot::from_state(
+            language,
+            token,
+            &compiled.source,
+            &compiled.definition.binding,
+        ));
+    }
+
+    /// Take a definition from the registry: from now on the stream is
+    /// followed again.
+    fn adopt_definition(&mut self, token: u64, compiled: Arc<CompiledEffect>) {
+        self.token = token;
+        self.compiled = Some(compiled);
+        self.pipelines = None;
+        self.self_authored = false;
+    }
+
+    fn clear_definition(&mut self) {
+        self.token = 0;
+        self.compiled = None;
+        self.pipelines = None;
+        self.self_authored = false;
+    }
+}
+
+/// Whether a `Local` lets the StateToken stream revise what it holds
+/// (ADR-0038 §4). An instance that authored its definition keeps it: the
+/// stream is transport for render clones and lags the instance's own compile
+/// by up to one idle tick, and the next observation settles any real
+/// disagreement. Everything else resolves unless the stream already names
+/// the definition held.
+fn follows_stream(
+    state: TokenState,
+    self_authored: bool,
+    has_definition: bool,
+    local_token: u64,
+) -> bool {
+    if self_authored && has_definition {
+        return false;
+    }
+    !matches!(state, TokenState::Active(fp) if fp == local_token)
 }
 
 thread_local! {
@@ -1089,6 +1584,24 @@ thread_local! {
 
     static SMART_LAYERS: std::cell::RefCell<Vec<Option<ExternalPixels>>> =
         const { std::cell::RefCell::new(Vec::new()) };
+
+    /// Synchronous main-thread reply from CompletelyGeneral to the idle
+    /// observer: the outcome of the exact instance just observed.
+    static GENERAL_REPLY: std::cell::RefCell<Option<GeneralReply>> =
+        const { std::cell::RefCell::new(None) };
+}
+
+/// What one instance reports back to the idle observer after its
+/// CompletelyGeneral observation (ADR-0038 §5): its token and artifact when
+/// it has one, and its own diagnostic when it does not.
+pub(crate) struct GeneralReply {
+    pub token: u64,
+    pub compiled: Option<Arc<CompiledEffect>>,
+    pub code: Diag,
+}
+
+pub(crate) fn take_general_reply() -> Option<GeneralReply> {
+    GENERAL_REPLY.with(|reply| reply.borrow_mut().take())
 }
 
 /// FNV-1a over an observation kind tag, the selected language, and the
@@ -1276,6 +1789,7 @@ fn observe_core(plugin: &mut PluginState, local: &mut Local, force: bool) -> Res
     };
 
     let observation = observe_source(plugin)?;
+    local.source_absent = !matches!(&observation, Observation::Committed(_));
     let (attempt, code, status, compiled) = match observation {
         Observation::NoExpression => (
             observation_fingerprint(1, language, ""),
@@ -1295,15 +1809,17 @@ fn observe_core(plugin: &mut PluginState, local: &mut Local, force: bool) -> Res
                 return Ok(false);
             }
             // Slots follow stable IDs across definition changes (ADR-0013
-            // §2): the previous plan — live binding or restored snapshot —
-            // seeds reuse so keyframes survive edits and reopen alike.
-            let previous = local
-                .compiled
-                .as_ref()
-                .map(|c| c.definition.binding.clone())
-                .or_else(|| local.snapshot.as_ref().map(|s| s.to_previous_plan()));
+            // §2): the previous plan — live binding, last good compile, or
+            // restored snapshot — seeds reuse so keyframes survive edits,
+            // failed compiles and reopen alike.
+            let previous = local.own_plan();
+            let previous_id = previous.as_ref().map(identity::plan_identity);
             let (code, status, compiled) =
                 evaluate_committed_source(language, &committed, previous.as_ref());
+            if let Some((_, effect)) = &compiled {
+                let result_id = identity::plan_identity(&effect.definition.binding);
+                local.record_lineage(previous_id.into_iter().chain(std::iter::once(result_id)));
+            }
             // Record the outcome for the idle sync's Invalid publication.
             let fp = session_token(language, &committed);
             if let Ok(mut failures) = failure_codes().lock() {
@@ -1327,7 +1843,9 @@ fn observe_core(plugin: &mut PluginState, local: &mut Local, force: bool) -> Res
     // render passes through instead of reviving a stale definition.
     match compiled {
         Some((token, effect)) => {
-            let published = registry_insert(token, Arc::clone(&effect));
+            let result_id = identity::plan_identity(&effect.definition.binding);
+            let published =
+                registry_insert(token, result_id, Arc::clone(&effect), &local.plan_lineage);
             if !published {
                 // The registry refused this fingerprint (ADR-0015 §"Costs":
                 // the insert guards against cross-content collisions). The
@@ -1339,13 +1857,13 @@ fn observe_core(plugin: &mut PluginState, local: &mut Local, force: bool) -> Res
                     "compiled, but publication was refused; press Compile".to_string();
             }
             local.token = if published { token } else { 0 };
+            local.remember_good(language, token, &effect);
             local.compiled = Some(effect);
             local.pipelines = None;
+            local.self_authored = true;
         }
         None => {
-            local.token = 0;
-            local.compiled = None;
-            local.pipelines = None;
+            local.clear_definition();
         }
     }
     Ok(true)
@@ -2000,7 +2518,23 @@ fn set_status(plugin: &mut PluginState, local: &mut Local, status: String) {
 /// ignored by AE); the idle observer mirrors it via AEGP for scripted paths.
 fn publish_token_param(plugin: &mut PluginState, local: &Local) {
     let desired = encode_token_state(desired_token_state(local.token, local.status_code));
-    if let Ok(mut p) = plugin.params.get_mut(ParamKey::StateToken) {
+    write_word_param(plugin, ParamKey::StateToken, desired);
+    write_word_param(plugin, ParamKey::PlanToken, plan_word(local) as f64);
+}
+
+/// The plan word an instance publishes beside its token (ADR-0038 §7): the
+/// identity of the published artifact's plan, 0 when nothing is published.
+fn plan_word(local: &Local) -> u64 {
+    match (&local.compiled, local.token) {
+        (Some(compiled), token) if token != 0 => {
+            identity::plan_identity(&compiled.definition.binding)
+        }
+        _ => 0,
+    }
+}
+
+fn write_word_param(plugin: &mut PluginState, key: ParamKey, desired: f64) {
+    if let Ok(mut p) = plugin.params.get_mut(key) {
         if let Ok(mut param) = p.as_param_mut() {
             if let ae::Param::FloatSlider(def) = &mut param {
                 if def.value() != desired {
@@ -2010,6 +2544,22 @@ fn publish_token_param(plugin: &mut PluginState, local: &Local) {
             }
         }
     }
+}
+
+/// Read a hidden integer word parameter; anything non-integral or out of
+/// the exact range reads as 0 ("no word").
+fn read_word_param(plugin: &PluginState, key: ParamKey) -> u64 {
+    let value = match plugin.params.get(key) {
+        Ok(p) => match p.as_float_slider() {
+            Ok(slider) => slider.value(),
+            Err(_) => return 0,
+        },
+        Err(_) => return 0,
+    };
+    if !value.is_finite() || value < 0.0 || value.fract() != 0.0 || value > (1u64 << 53) as f64 {
+        return 0;
+    }
+    value as u64
 }
 
 /// Current values for every bound slot, in declaration order, encoded per
@@ -2155,54 +2705,110 @@ fn resolve_transported_definition(plugin: &PluginState, local: &mut Local) {
         },
         Err(_) => f64::NAN,
     };
-    match decode_token_state(word) {
-        TokenState::Active(fp) if fp == local.token => {}
+    let state = decode_token_state(word);
+    if !follows_stream(state, local.self_authored, local.compiled.is_some(), local.token) {
+        if !matches!(state, TokenState::Active(fp) if fp == local.token) {
+            diag::verbose("token stream lags this instance's own definition; keeping it");
+        }
+        return;
+    }
+    match state {
         TokenState::Active(fp) => {
-            if let Some(compiled) = registry_get(fp) {
-                local.token = fp;
-                local.compiled = Some(compiled);
-                local.pipelines = None;
-                diag::log("definition resolved from process registry");
-            } else if local.snapshot.is_some() {
-                // Fresh process (reopen/aerender): the snapshot is
-                // the authority. A fingerprint mismatch means a torn
-                // token/snapshot pair — the checksummed snapshot
-                // wins (ADR-0015 §2).
-                if local.snapshot.as_ref().is_some_and(|s| s.fingerprint != fp) {
-                    diag::log("token/snapshot fingerprint mismatch; snapshot wins");
-                }
-                resolve_from_snapshot(local);
-            } else {
-                diag::verbose("token missed registry with no snapshot; passing through");
-                local.token = 0;
-                local.compiled = None;
-                local.pipelines = None;
-            }
+            let plan_word = read_word_param(plugin, ParamKey::PlanToken);
+            resolve_active(fp, plan_word, local);
         }
         TokenState::Uninitialized => {
-            if local.compiled.is_some() {
-                local.token = 0;
-                local.compiled = None;
-                local.pipelines = None;
-            } else if local.snapshot.is_some() {
-                // Token stream says "nothing" but a snapshot exists:
-                // torn pair, snapshot wins.
-                resolve_from_snapshot(local);
+            // Token stream says "nothing". With a snapshot that is a torn
+            // pair and the snapshot wins — consistently, so a definition
+            // already rebuilt from it is kept rather than cleared and rebuilt
+            // again on the next call of the same frame. A cleared source
+            // reaches a clone through its next re-flatten (an empty payload),
+            // not through this word.
+            if local.snapshot.is_some() {
+                if local.compiled.is_none() {
+                    resolve_from_snapshot(local);
+                }
+            } else if local.compiled.is_some() {
+                local.clear_definition();
             }
         }
         TokenState::Invalid(code) => {
             if local.compiled.is_some() {
-                local.token = 0;
-                local.compiled = None;
-                local.pipelines = None;
+                local.clear_definition();
             }
             diag::verbose(&format!("token carries diagnostic E{code}; passing through"));
         }
         TokenState::Corrupt => {
             diag::log("state token corrupt; passing through (E52)");
-            local.token = 0;
-            local.compiled = None;
-            local.pipelines = None;
+            local.clear_definition();
+        }
+    }
+}
+
+/// The stream names a live definition this `Local` does not hold yet
+/// (ADR-0038 §4). The transported plan word comes first — it is the
+/// publishing instance's own statement of its plan and reaches clones
+/// whose flattened copy predates the compile — then the plans this `Local`
+/// holds; a snapshot decides only when it is the current source or the
+/// registry is cold; the most recent publication is the last resort, always
+/// logged as such.
+fn resolve_active(fp: u64, plan_word: u64, local: &mut Local) {
+    let mut own = local.own_plan_ids();
+    if plan_word != 0 {
+        own.retain(|id| *id != plan_word);
+        own.insert(0, plan_word);
+    }
+    for plan_id in &own {
+        if let Some((compiled, via_lineage)) = registry_get_with_origin(fp, *plan_id) {
+            local.adopt_definition(fp, compiled);
+            diag::log(if via_lineage {
+                "definition resolved from process registry via lineage"
+            } else {
+                "definition resolved from process registry"
+            });
+            return;
+        }
+    }
+    if let Some(snapshot) = &local.snapshot {
+        if snapshot.fingerprint == fp {
+            resolve_from_snapshot(local);
+            return;
+        }
+        if !registry_contains_source(fp) {
+            // Fresh process (reopen/aerender) or a torn token/snapshot
+            // pair: the checksummed snapshot wins (ADR-0015 §2).
+            diag::log("token/snapshot fingerprint mismatch; snapshot wins");
+            resolve_from_snapshot(local);
+            return;
+        }
+        // The token's source is real and published; rebuilding the
+        // snapshot's older source would recompile it on every frame.
+        match registry_latest(fp) {
+            Some(compiled) => {
+                diag::log(
+                    "registry knows this source; stale snapshot does not win; adopting latest entry",
+                );
+                local.adopt_definition(fp, compiled);
+            }
+            None => {
+                diag::verbose("token missed registry with no snapshot; passing through");
+                local.clear_definition();
+            }
+        }
+        return;
+    }
+    match registry_latest(fp) {
+        Some(compiled) => {
+            diag::log(if own.is_empty() {
+                "definition resolved by latest entry for source; clone carries no plan"
+            } else {
+                "registry has this source but not this plan; adopting latest entry"
+            });
+            local.adopt_definition(fp, compiled);
+        }
+        None => {
+            diag::verbose("token missed registry with no snapshot; passing through");
+            local.clear_definition();
         }
     }
 }
@@ -2213,14 +2819,16 @@ fn resolve_transported_definition(plugin: &PluginState, local: &mut Local) {
 fn resolve_from_snapshot(local: &mut Local) {
     let Some(snapshot) = local.snapshot.clone() else { return };
     let previous = snapshot.to_previous_plan();
+    let previous_id = identity::plan_identity(&previous);
     let (code, status, compiled) =
         evaluate_committed_source(snapshot.language, &snapshot.source, Some(&previous));
     match compiled {
         Some((fp, effect)) => {
-            registry_insert(fp, Arc::clone(&effect));
-            local.token = fp;
-            local.compiled = Some(effect);
-            local.pipelines = None;
+            let result_id = identity::plan_identity(&effect.definition.binding);
+            local.record_lineage([previous_id, result_id]);
+            registry_insert(fp, result_id, Arc::clone(&effect), &local.plan_lineage);
+            local.remember_good(snapshot.language, fp, &effect);
+            local.adopt_definition(fp, effect);
             local.status_code = Diag::Ok;
             local.status_text = status;
             diag::log("definition rebuilt from snapshot");
@@ -2228,9 +2836,7 @@ fn resolve_from_snapshot(local: &mut Local) {
         None => {
             // A snapshot that no longer compiles (e.g. compiler drift):
             // fail closed with the real diagnostic.
-            local.token = 0;
-            local.compiled = None;
-            local.pipelines = None;
+            local.clear_definition();
             local.status_code = code;
             local.status_text = status;
             diag::log(&format!("snapshot rebuild failed: E{}", code.code()));
@@ -2285,7 +2891,28 @@ impl AdobePluginInstance for LocalMutex {
         // map. No definition → empty payload (a fresh instance).
         let local = self.lock().map_err(|_| Error::Generic)?;
         let Some(compiled) = &local.compiled else {
-            return Ok((1, Vec::new()));
+            // No live definition. An instance that has not observed yet this
+            // session (reopened, or a render clone) still persists its plan —
+            // the last good compile, else the restored snapshot — so its
+            // clones are never plan-less (ADR-0038 §4). One whose last
+            // observation found no source block, or failed to compile,
+            // persists nothing: the StateToken stream may still read
+            // `Active` for that text until the idle mirror catches up, and a
+            // saved snapshot would then outvote the broken expression on
+            // reopen.
+            if local.source_absent || local.status_code != Diag::Ok {
+                return Ok((1, Vec::new()));
+            }
+            let Some(snapshot) = local.last_good.as_ref().or(local.snapshot.as_ref()) else {
+                return Ok((1, Vec::new()));
+            };
+            return Ok((
+                1,
+                persistence::encode(snapshot).unwrap_or_else(|e| {
+                    diag::log(&format!("snapshot encode refused: {e:?}"));
+                    Vec::new()
+                }),
+            ));
         };
         let defn = &compiled.definition;
         let snapshot = persistence::Snapshot::from_state(
@@ -2842,7 +3469,17 @@ impl AdobePluginInstance for LocalMutex {
             // lands on the next UI callback).
             Command::CompletelyGeneral => {
                 let mut local = self.lock().map_err(|_| Error::Generic)?;
-                if observe_core(plugin, &mut local, false)? {
+                let changed = observe_core(plugin, &mut local, false)?;
+                // Reported every tick, not only on change: the observer
+                // needs this instance's own artifact for the slot UI and its
+                // own diagnostic for the token (ADR-0038 §5).
+                let reply = GeneralReply {
+                    token: local.token,
+                    compiled: if local.token != 0 { local.compiled.clone() } else { None },
+                    code: local.status_code,
+                };
+                GENERAL_REPLY.with(|slot| *slot.borrow_mut() = Some(reply));
+                if changed {
                     diag::log(&format!("idle observation: {}", local.status_text));
                     drop(local);
                     plugin.out_data.set_force_rerender();
@@ -2927,9 +3564,7 @@ impl AdobePluginInstance for LocalMutex {
                             // from interactive use, 2026-08-16, after the
                             // SmartRender side was fixed alone). The two sides
                             // must see the same definition or neither may act.
-                            if local.compiled.is_none() {
-                                resolve_transported_definition(plugin, &mut local);
-                            }
+                resolve_transported_definition(plugin, &mut local);
                             local
                                 .compiled
                                 .as_ref()
@@ -2990,9 +3625,7 @@ impl AdobePluginInstance for LocalMutex {
                     // Resolve BEFORE reading `externals`: see
                     // `resolve_transported_definition`. Without this the first
                     // frame of every render clone stages nothing.
-                    if local.compiled.is_none() {
-                        resolve_transported_definition(plugin, &mut local);
-                    }
+                resolve_transported_definition(plugin, &mut local);
                     local
                         .compiled
                         .as_ref()

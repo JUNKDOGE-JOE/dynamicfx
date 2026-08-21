@@ -1,0 +1,95 @@
+aerender version 26.3x87
+PROGRESS: Launching After Effects...
+PROGRESS:  ��2026/8/21����19:59:06��: ��ʼ�ϳɡ�bind����
+
+PROGRESS:  ��Ⱦ����: �������
+PROGRESS:  Ʒ��: ���
+PROGRESS:  �ֱ���: ��ȫ
+PROGRESS:  ��С: 320 x 240
+PROGRESS:  ����ʹ��: ��ʹ�ô���
+PROGRESS:  Ч��: ��ǰ����
+PROGRESS:  ���̸��ٻ���: ֻ��
+PROGRESS:  ��ɫ���: ��ǰ����
+PROGRESS:  ֡���: ��ѡ��ͼ���
+PROGRESS:  ����Ⱦ: ��
+PROGRESS:  Pulldown: ��
+PROGRESS:  �˶�ģ��: ��ѡ��ͼ���
+PROGRESS:   
+PROGRESS:  ����: ��ǰ����
+PROGRESS:   
+PROGRESS:  ʱ����: �Զ���
+PROGRESS:  ��ʼ: 00012
+PROGRESS:  ����: 00013
+PROGRESS:  ����ʱ��: 00001
+PROGRESS:  ֡����: 25.00 ���ϳɣ�
+PROGRESS:  ������: ȫ���ر�
+PROGRESS:  ���������ļ�: ��
+PROGRESS:  
+PROGRESS:  ���ģ��: Photoshop
+PROGRESS:  �����: E:\Code\AePlugin_Dynamicfx\scripts\out\bind\20260821_195818\aer_bind_[#####].psd
+PROGRESS:  ��ʽ: Photoshop ����
+PROGRESS:  �����Ϣ: -
+PROGRESS:  ��ʼ֡: 12
+PROGRESS:  �����Ƶ: -
+PROGRESS:  ͨ��: RGB + Alpha
+PROGRESS:  ���: ��������������ɫ
+PROGRESS:  ��ɫ: Ԥ��
+PROGRESS:  ������С: -
+PROGRESS:  �ü�: -
+PROGRESS:  ���մ�С: 320 x 240
+PROGRESS:  �����ļ�: -
+PROGRESS:  Ƕ�������ļ�: 
+PROGRESS:   
+PROGRESS:  ��Ⱦ����: ��
+PROGRESS:   
+PROGRESS:   
+PROGRESS:   
+PROGRESS:  
+PROGRESS:  00012 (1): 0 ��
+PROGRESS:  ��2026/8/21����19:59:06��: ��ʼ�ϳɡ�bind2����
+
+PROGRESS:  ��Ⱦ����: �������
+PROGRESS:  Ʒ��: ���
+PROGRESS:  �ֱ���: ��ȫ
+PROGRESS:  ��С: 320 x 240
+PROGRESS:  ����ʹ��: ��ʹ�ô���
+PROGRESS:  Ч��: ��ǰ����
+PROGRESS:  ���̸��ٻ���: ֻ��
+PROGRESS:  ��ɫ���: ��ǰ����
+PROGRESS:  ֡���: ��ѡ��ͼ���
+PROGRESS:  ����Ⱦ: ��
+PROGRESS:  Pulldown: ��
+PROGRESS:  �˶�ģ��: ��ѡ��ͼ���
+PROGRESS:   
+PROGRESS:  ����: ��ǰ����
+PROGRESS:   
+PROGRESS:  ʱ����: �Զ���
+PROGRESS:  ��ʼ: 00012
+PROGRESS:  ����: 00013
+PROGRESS:  ����ʱ��: 00001
+PROGRESS:  ֡����: 25.00 ���ϳɣ�
+PROGRESS:  ������: ȫ���ر�
+PROGRESS:  ���������ļ�: ��
+PROGRESS:  
+PROGRESS:  ���ģ��: Photoshop
+PROGRESS:  �����: E:\Code\AePlugin_Dynamicfx\scripts\out\bind\20260821_195818\aer_bind2_[#####].psd
+PROGRESS:  ��ʽ: Photoshop ����
+PROGRESS:  �����Ϣ: -
+PROGRESS:  ��ʼ֡: 12
+PROGRESS:  �����Ƶ: -
+PROGRESS:  ͨ��: RGB + Alpha
+PROGRESS:  ���: ��������������ɫ
+PROGRESS:  ��ɫ: Ԥ��
+PROGRESS:  ������С: -
+PROGRESS:  �ü�: -
+PROGRESS:  ���մ�С: 320 x 240
+PROGRESS:  �����ļ�: -
+PROGRESS:  Ƕ�������ļ�: 
+PROGRESS:   
+PROGRESS:  ��Ⱦ����: ��
+PROGRESS:   
+PROGRESS:   
+PROGRESS:   
+PROGRESS:  
+PROGRESS:  00012 (1): 0 ��
+

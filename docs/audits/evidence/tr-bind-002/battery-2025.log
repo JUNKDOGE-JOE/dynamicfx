@@ -1,0 +1,242 @@
+=== battery 2025 start 2026-08-21T20:13:12 ===
+### STEP scripts\m3\run_m3.ps1 -Year 2025 -Session4 @ 20:13:12 (AfterFX running: False)
+... starting AfterFX
+>>> m3a
+    EXPR set exprErr=[]
+    RESULT M3A expr_set=1
+    RESULT_DONE
+... idle window 12s
+>>> m3b
+    PUBLISHED token_nonzero=1 slot1=[gain]
+    KEYFRAMES numKeys=2
+    RQ applied=[Photoshop] span=0.4
+    AEP saved m3.aep
+    RESULT M3B token_nonzero=1 numKeys=2
+    RESULT_DONE
+<<< AE exited
+... starting AfterFX
+>>> m3c
+    REOPEN numKeys=2 token_nonzero=1
+    PNG saved m3c_reopen.png expect (51,51,0) via snapshot path, no Compile click
+    RESULT M3C numKeys=2
+    RESULT_DONE
+... idle window 12s
+>>> m3d
+    RESTORED slot1=[gain] status=[Status: idle] numKeys=2
+    RESULT M3D slot1=[gain] numKeys=2
+    RESULT_DONE
+<<< AE exited
+corrupted raw DFXS at offset 72160 (flipped byte 72184)
+... starting AfterFX
+>>> m3e
+    CORRUPT_OPEN status=[Status: idle] (first frame may be passthrough)
+    RESULT M3E opened=1
+    RESULT_DONE
+... idle window 12s
+>>> m3f
+    RECOVERED status=[Status: idle] token_nonzero=1 numKeys=2
+    PNG saved m3f_recover.png expect (51,51,0) again
+    RESULT M3F token_nonzero=1 numKeys=2
+    RESULT_DONE
+<<< AE exited
+GUI sessions complete.
+... starting AfterFX
+>>> m3g
+    DUP layer1_keys=2 layer2_keys=0 layer2_value=0.89999997615814
+    PNGS layer1 expect (51,51,0); layer2 expect (115,115,0)
+    RESULT M3G l1_keys=2 l2_value=0.89999997615814
+    RESULT_DONE
+>>> m3h1
+    TORN before=5337207449189657 written=5
+    PNG saved m3h1_torn.png expect (51,51,0) — snapshot wins over the torn token
+    RESULT M3H1 before=5337207449189657
+    RESULT_DONE
+... idle window 12s
+>>> m3h2
+    CORRECTED token=5337207449189657 (must differ from 5 and be nonzero)
+    INVALID committed for the undo leg
+    RESULT M3H2 corrected=5337207449189657
+    RESULT_DONE
+... idle window 12s
+>>> m3h3
+    INVALID_STATE token=70 png expect passthrough solid (10,200,30)
+    UNDO pressed=3 exprHead=[`#version 450
+    layout(location ]
+    RESULT M3H3 token_during_invalid=70
+    RESULT_DONE
+... idle window 12s
+>>> m3h4
+    CONVERGED token_nonzero=1 png expect (51,51,0) again
+    SAVED dirty_after_save=false
+    RESULT M3H4 token_nonzero=1 dirty_after_save=false
+    RESULT_DONE
+... idle window 12s
+>>> m3h5
+    IDLE_LATER dirty=false (expect false)
+    RESULT M3H5 dirty=false
+    RESULT_DONE
+<<< AE exited
+Session 4 complete.
+### STEP EXIT 0
+### STEP scripts\m3\run_m3.ps1 -Year 2025 -Aerender @ 20:16:28 (AfterFX running: False)
+>>> aerender m3
+<<< aerender exit=0
+### STEP EXIT 0
+### STEP scripts\m3\run_m3.ps1 -Year 2025 -Checks @ 20:16:39 (AfterFX running: False)
+--- numeric checks: expect (51,51,0) at center, t=0.4 ---
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3c_reopen.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3c_reopen.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3d_t04.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3d_t04.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3f_recover.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3f_recover.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3g_layer1.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3g_layer1.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3g_layer2.png (160,120) = 115,115,0,255 (channels=4, 8-bit; 8-bit=115,115,0,255)
+EXPECT [115, 115, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3g_layer2.png (160,120) expect (115,115,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3h1_torn.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3h1_torn.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3h4_undo.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+EXPECT [51, 51, 0] tol=3 (8-bit terms) -> PASS
+CHECK m3h4_undo.png (160,120) expect (51,51,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3h3_invalid.png (160,120) = 10,200,30,255 (channels=4, 8-bit; 8-bit=10,200,30,255)
+EXPECT [10, 200, 30] tol=2 (8-bit terms) -> PASS
+CHECK m3h3_invalid.png (160,120) expect (10,200,30) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3e_corrupt.png (160,120) = 51,51,0,255 (channels=4, 8-bit; 8-bit=51,51,0,255)
+INFO m3e_corrupt.png value above (passthrough solid or already recovered; m3f is the criterion)
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m3\2025\m3_ar_00010.psd (160,120) = raw [51, 51, 0] (8-bit, 320x240; 8-bit [51, 51, 0])
+EXPECT rgb8=[51, 51, 0] tol=4 -> PASS
+CHECK aerender PSD (160,120) expect (51,51,0) exit=0
+### STEP EXIT 0
+### STEP scripts\m2\run_m2.ps1 -Year 2025 @ 20:16:40 (AfterFX running: False)
+... warm-starting AfterFX
+... AfterFX warm
+>>> m2a (m2a_write.jsx)
+<<< m2a done
+    EXPR set len=277 exprErr=[]
+    RESULT M2A expr_set=1
+    RESULT_DONE
+... idle window 12s (observer)
+>>> m2b (m2b_keyframe.jsx)
+<<< m2b done
+    SLOTS slot1=[gain] slot2=[Float 02] status=[Status: idle]
+    KEYFRAMES numKeys=2
+    PNGS saved t0/t04/t08 expect gray 0 / 102 / 204
+    RESULT M2B slot1=[gain] numKeys=2
+    RESULT_DONE
+>>> m2c (m2c_edit.jsx)
+<<< m2c done
+    EDIT set exprErr=[]
+    RESULT M2C edit_set=1
+    RESULT_DONE
+... idle window 12s (observer)
+>>> m2d (m2d_verify.jsx)
+<<< m2d done
+    AFTER_EDIT slot1=[gain] slot2=[extra] slot1_numKeys=2
+    PNG saved m2d_t04.png expect gray 102 (gain keyframes intact, extra=0)
+    RESULT M2D slot1=[gain] slot2=[extra] numKeys=2
+    RESULT_DONE
+>>> m2q (m2q_quit.jsx)
+<<< quit requested
+GUI pass complete.
+### STEP EXIT 0
+### STEP scripts\m2\run_m2.ps1 -Year 2025 -Scenarios e,f,g,h,h2,i,j,q @ 20:17:34 (AfterFX running: False)
+... warm-starting AfterFX
+... AfterFX warm
+>>> m2e (m2e_annotation.jsx)
+<<< m2e done
+    EXPR set exprErr=[]
+    RESULT M2E expr_set=1
+    RESULT_DONE
+... idle window 12s (observer)
+>>> m2f (m2f_alias.jsx)
+<<< m2f done
+    ANNOTATED slot1=[Master Level] value=0.5
+    PNG saved m2e_default.png expect gray 128 (default 0.5, no stream touched)
+    KEYFRAMES numKeys=2
+    RENAME set exprErr=[]
+    RESULT M2F slot1=[Master Level] value=0.5 numKeys=2
+    RESULT_DONE
+... idle window 12s (observer)
+>>> m2g (m2g_verify.jsx)
+<<< m2g done
+    AFTER_RENAME slot1=[Volume] numKeys=2
+    PNG saved m2g_t04.png expect gray 128 (keyframes 0->1 at t=0.4, default 0.9 NOT applied)
+    RESULT M2G slot1=[Volume] numKeys=2
+    RESULT_DONE
+>>> m2h (m2h_kinds.jsx)
+<<< m2h done
+    EXPR set exprErr=[]
+    RESULT M2H expr_set=1
+    RESULT_DONE
+... idle window 12s (observer)
+>>> m2h2 (m2h2_values.jsx)
+<<< m2h2 done
+    SLOT_NAMES count->Count=[Count] flag=[flag] tint=[tint] center=[center] sweep=[sweep]
+    DEFAULTS count=3 flag=1 sweep=90
+    VALUES set tint=[1,0.5,0.25] center=[240,60]
+    PNG saved m2h_kinds.png bands: count 77 / flag 255 / tint (255,128,64) / center (191,64,0) / sweep 64
+    RESULT M2H2 defaults count=3 flag=1 sweep=90
+    RESULT_DONE
+>>> m2i (m2i_overflow.jsx)
+<<< m2i done
+    OVERFLOW_EXPR set (49 floats) exprErr=[]
+    RESULT M2I overflow_set=1
+    RESULT_DONE
+... idle window 12s (observer)
+>>> m2j (m2j_overflow_verify.jsx)
+<<< m2j done
+    OVERFLOW_STATUS [Status: E32 definition rejected] token=130
+    PNG saved m2i_overflow.png expect passthrough solid (10,200,30)
+    RESULT M2J status=[Status: E32 definition rejected] token=130
+    RESULT_DONE
+>>> m2q (m2q_quit.jsx)
+<<< quit requested
+GUI pass complete.
+### STEP EXIT 0
+### STEP scripts\m2\run_m2.ps1 -Year 2025 -Checks @ 20:18:59 (AfterFX running: False)
+--- numeric checks (8-bit expectations) ---
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2b_t0.png (160,120) = 0,0,0,255 (channels=4, 8-bit; 8-bit=0,0,0,255)
+EXPECT [0, 0, 0] tol=2 (8-bit terms) -> PASS
+CHECK m2b_t0.png (160,120) expect (0,0,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2b_t04.png (160,120) = 102,102,102,255 (channels=4, 8-bit; 8-bit=102,102,102,255)
+EXPECT [102, 102, 102] tol=3 (8-bit terms) -> PASS
+CHECK m2b_t04.png (160,120) expect (102,102,102) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2b_t08.png (160,120) = 204,204,204,255 (channels=4, 8-bit; 8-bit=204,204,204,255)
+EXPECT [204, 204, 204] tol=3 (8-bit terms) -> PASS
+CHECK m2b_t08.png (160,120) expect (204,204,204) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2d_t04.png (160,120) = 102,102,102,255 (channels=4, 8-bit; 8-bit=102,102,102,255)
+EXPECT [102, 102, 102] tol=3 (8-bit terms) -> PASS
+CHECK m2d_t04.png (160,120) expect (102,102,102) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2e_default.png (160,120) = 127,127,127,255 (channels=4, 8-bit; 8-bit=127,127,127,255)
+EXPECT [128, 128, 128] tol=2 (8-bit terms) -> PASS
+CHECK m2e_default.png (160,120) expect (128,128,128) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2g_t04.png (160,120) = 127,127,127,255 (channels=4, 8-bit; 8-bit=127,127,127,255)
+EXPECT [128, 128, 128] tol=3 (8-bit terms) -> PASS
+CHECK m2g_t04.png (160,120) expect (128,128,128) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2h_kinds.png (32,120) = 76,76,76,255 (channels=4, 8-bit; 8-bit=76,76,76,255)
+EXPECT [77, 77, 77] tol=3 (8-bit terms) -> PASS
+CHECK m2h_kinds.png (32,120) expect (77,77,77) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2h_kinds.png (96,120) = 255,255,255,255 (channels=4, 8-bit; 8-bit=255,255,255,255)
+EXPECT [255, 255, 255] tol=2 (8-bit terms) -> PASS
+CHECK m2h_kinds.png (96,120) expect (255,255,255) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2h_kinds.png (160,120) = 255,128,64,255 (channels=4, 8-bit; 8-bit=255,128,64,255)
+EXPECT [255, 128, 64] tol=3 (8-bit terms) -> PASS
+CHECK m2h_kinds.png (160,120) expect (255,128,64) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2h_kinds.png (224,120) = 191,64,0,255 (channels=4, 8-bit; 8-bit=191,64,0,255)
+EXPECT [191, 64, 0] tol=3 (8-bit terms) -> PASS
+CHECK m2h_kinds.png (224,120) expect (191,64,0) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2h_kinds.png (288,120) = 64,64,64,255 (channels=4, 8-bit; 8-bit=64,64,64,255)
+EXPECT [64, 64, 64] tol=3 (8-bit terms) -> PASS
+CHECK m2h_kinds.png (288,120) expect (64,64,64) exit=0
+PIXEL E:\Code\AePlugin_Dynamicfx\scripts\out\m2\2025\m2i_overflow.png (160,120) = 10,200,30,255 (channels=4, 8-bit; 8-bit=10,200,30,255)
+EXPECT [10, 200, 30] tol=2 (8-bit terms) -> PASS
+CHECK m2i_overflow.png (160,120) expect (10,200,30) exit=0
+### STEP EXIT 0
+=== battery 2025 end 2026-08-21T20:19:00 ===
