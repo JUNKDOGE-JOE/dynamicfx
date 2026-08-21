@@ -11,7 +11,7 @@ single authority for what renders.
 
 ## Status
 
-`0.0.4` — pre-release.
+`0.0.5` — pre-release.
 
 | Host (Windows) | Status |
 |---|---|
