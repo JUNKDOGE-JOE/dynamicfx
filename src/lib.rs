@@ -2969,11 +2969,17 @@ impl AdobePluginInstance for LocalMutex {
                     .copied()
                     .unwrap_or((0, 0));
                 let cb = extra.callbacks();
-                let checked_out = match cb.checkout_layer_pixels(0) {
+                let input = cb.checkout_layer_pixels(0);
+                let checked_out = match input {
                     Ok(v) => v,
                     Err(e) => {
                         diag::log(&format!("smart render input checkout failed: {e:?}"));
-                        None
+                        for id in SMART_CHECKOUTS.with(|c| c.borrow().clone()) {
+                            let _ = cb.checkin_layer_pixels(id);
+                        }
+                        SMART_CHECKOUTS.with(|c| c.borrow_mut().clear());
+                        SMART_LAYERS.with(|l| l.borrow_mut().clear());
+                        return Err(e);
                     }
                 };
                 // ADR-0030: copy each bound layer's pixels for this frame.
