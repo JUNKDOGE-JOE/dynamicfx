@@ -1,0 +1,28 @@
+2026-08-21 15:08:38  smart render input checkout failed: InterruptCancel
+2026-08-21 15:08:38  smart render input checkout failed: InterruptCancel
+2026-08-21 15:08:38  smart render input checkout failed: InterruptCancel
+2026-08-21 15:08:38  smart render input checkout failed: InterruptCancel
+2026-08-21 15:08:44  smart render input checkout failed: InterruptCancel
+2026-08-21 15:08:44  smart render input checkout failed: InterruptCancel
+2026-08-21 15:08:44  smart render input checkout failed: InterruptCancel
+2026-08-21 15:08:44  smart render input checkout failed: InterruptCancel
+2026-08-21 15:08:47  smart render input checkout failed: InterruptCancel
+2026-08-21 15:08:47  smart render input checkout failed: InterruptCancel
+2026-08-21 15:12:31  definition resolved from process registry
+2026-08-21 15:12:31  definition resolved from process registry
+2026-08-21 15:12:31  pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 120x76, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+2026-08-21 15:12:31  pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 122x76, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+2026-08-21 15:12:31  status: compiled: 1 pass, 12 params
+2026-08-21 15:12:31  slots configured: 15 bound (names_ok=true, visibility_ok=true)
+2026-08-21 15:12:32  idle observation: compiled: 1 pass, 12 params
+2026-08-21 15:12:32  idle slot ui applied: 15 bound, 0 defaults written
+2026-08-21 15:12:46  status: compiled: 1 pass, 12 params
+2026-08-21 15:12:46  slots configured: 15 bound (names_ok=true, visibility_ok=true)
+2026-08-21 15:12:46  status: compiled: 1 pass, 12 params
+2026-08-21 15:12:46  slots configured: 15 bound (names_ok=true, visibility_ok=true)
+2026-08-21 15:12:46  definition resolved from process registry
+2026-08-21 15:12:46  pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 57x23, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+2026-08-21 15:12:46  idle observation: compiled: 1 pass, 12 params
+2026-08-21 15:12:54  definition resolved from process registry
+2026-08-21 15:12:55  pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 1920x1080, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 ")
+2026-08-21 15:13:03  smart render input checkout failed: InterruptCancel

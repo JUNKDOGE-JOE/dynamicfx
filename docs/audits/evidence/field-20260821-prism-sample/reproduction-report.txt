@@ -1,0 +1,34 @@
+host 26.3x87 | project prism_copy.aep | 2026-08-21 15:08:36 local
+[0] purged; log: 38 checkout-failed / 513 lines
+[1] scheduled; work area 3+4; initial log count 38/513
+begin log=38/513
+cycle 0 t=1787296116929 stop->time 3.50 log=38/513
+cycle 0 t=1787296117000 play from 3.00
+cycle 1 t=1787296118429 stop->time 3.87 log=38/513
+cycle 1 t=1787296118557 play from 3.20
+cycle 2 t=1787296119978 stop->time 4.24 log=42/517
+cycle 2 t=1787296120044 play from 3.37
+cycle 3 t=1787296121437 stop->time 4.61 log=42/517
+cycle 3 t=1787296121572 play from 4.27
+cycle 4 t=1787296122977 stop->time 3.50 log=42/517
+cycle 4 t=1787296123040 play from 3.00
+cycle 5 t=1787296124438 stop->time 3.87 log=42/517
+cycle 5 t=1787296124571 play from 3.20
+cycle 6 t=1787296125978 stop->time 4.24 log=46/521
+cycle 6 t=1787296126042 play from 3.37
+cycle 7 t=1787296127451 stop->time 4.61 log=46/521
+cycle 7 t=1787296127587 play from 3.57
+cycle 8 t=1787296128973 stop->time 3.50 log=48/523
+    log after preview: 48 checkout-failed (+10) / 523 lines; new stamps: [1787294979] InterruptCancel;[1787294979] InterruptCancel;[1787296118] InterruptCancel;[1787296118] InterruptCancel;[1787296118] InterruptCancel;[1787296118] InterruptCancel;[1787296124] InterruptCancel;[1787296124] InterruptCancel;[1787296124] InterruptCancel;[1787296124] InterruptCancel;[1787296127] InterruptCancel;[1787296127] InterruptCancel
+[2] sampled 120 frames (no purge) in 50s; failures=[]
+    log after sampling: 48 checkout-failed (+0 during sampling) / 523 lines
+    dips (luma > 0.006 below neighbour median): 7 -> f111: 0.1740 vs 0.1896 (-0.0156), f153: 0.1802 vs 0.1992 (-0.0190), f154: 0.1801 vs 0.1994 (-0.0192), f155: 0.1912 vs 0.1996 (-0.0084), f156: 0.1915 vs 0.2007 (-0.0093), f181: 0.1791 vs 0.2006 (-0.0215), f183: 0.1926 vs 0.2003 (-0.0077)
+ frame  sampled   reread   purged
+   111   0.1740    0.174     0.19
+   153   0.1802   0.1998   0.1998
+   154   0.1801      0.2      0.2
+   155   0.1912   0.2003   0.2003
+   156   0.1915   0.2005   0.2005
+   181   0.1791   0.2005   0.2005
+   183   0.1926   0.2004   0.2004
+[3] log at end: 48 checkout-failed / 523 lines
