@@ -2,8 +2,6 @@
 
 This folder is an AI-agent skill that teaches AI coding assistants (Claude Code, Cursor, etc.) how to write and port shaders for the [DynamicFX](https://github.com/JUNKDOGE-JOE/dynamicfx) After Effects plugin.
 
-> **Note:** The one-line installers below assume this folder is published at `skills/dynamicfx-shaders/` on the repository's `main` branch. Until then, copy the folder manually.
-
 ## One-line install (paste to your AI assistant)
 
 **English:**

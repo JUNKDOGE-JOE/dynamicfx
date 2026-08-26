@@ -24,6 +24,8 @@ Guidance for converting existing shaders (chiefly Shadertoy) into DynamicFX's `@
 
 Shadertoy's `fragCoord`/`iResolution` convention places the origin at the bottom-left. Whether DynamicFX's `v_uv` origin matches is not documented upstream — **verify visually after conversion**. If the image appears vertically flipped, apply `uv.y = 1.0 - uv.y` as an empirical fix, not as an assumed default.
 
+**Canvas size is the layer, not the screen.** A Shadertoy shader paints the whole viewport; in DynamicFX the equivalent is the layer's own frame, and nothing outside it exists (SKILL.md → "Canvas = the layer's own frame"). Ports of bloom/glow/halo/shadow or displacement effects should declare their reach with `hint:canvas` (0.0.6+, SKILL.md → "Canvas expansion"); on older installs precompose the source with transparent margin instead.
+
 ## Structural classification
 
 Classify each source shader before converting:
@@ -42,6 +44,8 @@ When porting, scan the source for magic constants that a user would plausibly wa
 - Numeric magic constant `X` → `min:0 max:<4×X> default:<X>` as a starting range (empirical convention, not a spec rule — adjust to taste).
 - Color constants (`vec3(r,g,b)` literals used as a fixed color) → `hint:color default:#RRGGBB`.
 - Respect the per-type parameter pool ceilings (see reference.md). If a port would exceed a pool, merge related constants into fewer parameters or drop the least useful ones — do not attempt to "fit" everything and trigger `E32`.
+- **Place members per pass (0.0.6+).** Give each pass its own `FxUniforms` block containing only the heads plus what that pass reads — the panel groups parameters under the pass that exclusively owns them, and copy-pasting one mega-block into every pass collapses the whole panel into `Main`. Annotate each `@param` name exactly once across the source (a second annotation is `E19`); repeating the MEMBER in several blocks is fine and makes the parameter shared/`Main`.
+- **If the effect paints beyond the source pixels** (glow/bloom/halo/shadow/displacement — most Shadertoy full-viewport looks do once confined to a layer), pick its reach parameter and add `hint:canvas` to it so the port isn't clipped at the layer frame. Multi-pass ports: name passes for humans — the names are the panel group headers.
 
 ## Worked example
 
