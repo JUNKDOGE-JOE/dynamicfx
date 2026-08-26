@@ -32,12 +32,12 @@
             "@endpass\n";
 
         var fx = solid.property("ADBE Effect Parade").addProperty("DynamicFx");
-        fx.property(2).expression = f003Wrap(shader);
+        fx.property(3).expression = f003Wrap(shader);
 
         // Select the layer so the Effect Controls panel shows this effect.
         solid.selected = true;
         var name = "<unread>";
-        try { name = fx.property(115).name; } catch (e) { name = "ERR " + String(e); }
+        try { name = fx.property(132).name; } catch (e) { name = "ERR " + String(e); }
         f003Log(LOG, "READY gradient_slot=[" + name + "] numProperties=" + fx.numProperties);
         f003Log(LOG, "NEXT expand the DynamicFx twirl in Effect Controls to trigger a draw");
         f003Log(LOG, "RESULT_DONE");

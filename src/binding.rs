@@ -1,10 +1,8 @@
 //! v1 parameter pools and BindingPlan allocation (ADR-0013).
 //!
-//! `V1_POOLS` is the single configuration source (ADR-0013 §3): the
-//! PARAMS_SETUP declaration, validation, and documentation all derive from
-//! it. Growth is append-only — a released index never changes kind, moves,
-//! or dies — so plans carry explicit slot tables, never contiguity
-//! assumptions.
+//! Main-pool and per-pass-bank allocation (ADR-0013, ADR-0040). Plans carry
+//! explicit kind-local slot indexes, so physical declaration order remains a
+//! host concern and inherited holes remain safe.
 
 use crate::definition::param::{
     validate_declarations, DeclarationError, ParamDeclaration, ParamId,
@@ -35,8 +33,7 @@ pub enum PoolKind {
     Point3D,
 }
 
-/// The pool table released in 0.0.1: 104 slots, declared *before* the
-/// ADR-0028 `Details` button. Frozen — see `GROWTH_POOLS`.
+/// The pool table released in 0.0.1: 104 stable Main-slot identities.
 pub const V1_POOLS: &[(PoolKind, usize)] = &[
     (PoolKind::Float, 48),
     (PoolKind::Integer, 8),
@@ -46,14 +43,9 @@ pub const V1_POOLS: &[(PoolKind, usize)] = &[
     (PoolKind::Angle, 8),
 ];
 
-/// Pools added after 0.0.2 shipped (ADR-0030, ADR-0031).
-///
-/// These are declared *after* `Details`, not appended to `V1_POOLS`, and the
-/// distinction is a persistence contract rather than a style choice: AE
-/// matches effect parameter streams by declaration order, `Details` occupies
-/// index 109 in every project saved by 0.0.2, and widening `V1_POOLS` would
-/// slide it to 117 — silently repointing a released parameter. ADR-0013 §5
-/// requires growth at the tail, and after `Details` *is* the tail.
+/// Main-only pools added after the v1 table shipped (ADR-0030–ADR-0035).
+/// Their separate table preserves each released `Pool(kind, index)` identity
+/// while ADR-0040 is free to place those keys inside `Main`.
 pub const GROWTH_POOLS: &[(PoolKind, usize)] = &[
     (PoolKind::Layer, 4),
     // ADR-0033 §2: two gradients, because each now costs 26 declared
@@ -70,18 +62,46 @@ pub const GROWTH_POOLS: &[(PoolKind, usize)] = &[
     (PoolKind::Path, 2),
 ];
 
+/// Fixed pass-bank topology. Main-only kinds deliberately have no row here.
+pub const BANK_GROUPS: usize = 12;
+pub const BANK_POOLS: &[(PoolKind, usize)] = &[
+    (PoolKind::Float, 8),
+    (PoolKind::Integer, 2),
+    (PoolKind::Bool, 2),
+    (PoolKind::Color, 3),
+    (PoolKind::Point2D, 2),
+    (PoolKind::Angle, 1),
+];
+
 /// Every pool that can be allocated, in allocation order. Physical
 /// declaration order is `host::params::declaration_order`'s business, and it
 /// is deliberately not the same sequence.
-pub fn all_pools() -> impl Iterator<Item = &'static (PoolKind, usize)> {
-    V1_POOLS.iter().chain(GROWTH_POOLS.iter())
+pub fn all_pools() -> impl Iterator<Item = (PoolKind, usize)> {
+    V1_POOLS
+        .iter()
+        .chain(GROWTH_POOLS.iter())
+        .map(|(kind, _)| (*kind, pool_capacity(*kind)))
 }
 
-pub fn pool_capacity(kind: PoolKind) -> usize {
-    all_pools()
+pub fn main_pool_capacity(kind: PoolKind) -> usize {
+    V1_POOLS
+        .iter()
+        .chain(GROWTH_POOLS.iter())
         .find(|(k, _)| *k == kind)
         .map(|(_, capacity)| *capacity)
         .unwrap_or(0)
+}
+
+pub fn bank_capacity(kind: PoolKind) -> usize {
+    BANK_POOLS
+        .iter()
+        .find(|(k, _)| *k == kind)
+        .map(|(_, capacity)| *capacity)
+        .unwrap_or(0)
+}
+
+pub fn pool_capacity(kind: PoolKind) -> usize {
+    main_pool_capacity(kind) + BANK_GROUPS * bank_capacity(kind)
 }
 
 /// A slot within one kind's pool. Indexes are kind-local; after future
@@ -137,7 +157,13 @@ impl From<DeclarationError> for BindingError {
 /// Fresh allocation for a definition with no previous plan (the first apply
 /// path): equivalent to reuse against an empty plan.
 pub fn build_fresh(decls: &[ParamDeclaration]) -> Result<BindingPlan, BindingError> {
-    build_with_reuse(decls, &BindingPlan { bindings: Vec::new() })
+    build_fresh_counted(decls).map(|(plan, _)| plan)
+}
+
+pub(crate) fn build_fresh_counted(
+    decls: &[ParamDeclaration],
+) -> Result<(BindingPlan, usize), BindingError> {
+    build_with_reuse_counted(decls, &BindingPlan { bindings: Vec::new() })
 }
 
 /// Allocation against a previous plan (ADR-0013 §2, architecture §11.1):
@@ -145,13 +171,21 @@ pub fn build_fresh(decls: &[ParamDeclaration]) -> Result<BindingPlan, BindingErr
 /// matching a previous binding's ID inherits (single-generation, never a
 /// chain). Inheritance requires the slot-kind requirements to be unchanged —
 /// a kind change correctly reads as a different parameter and reallocates.
-/// Unmatched declarations take ascending free slots per kind. Capacity is
-/// validated over the complete plan before anything is returned (atomic
-/// rejection; keyframed streams on inherited slots survive untouched).
+/// Unmatched declarations take ascending free slots in their assigned bank,
+/// spilling to ascending Main holes when needed. Capacity is validated over
+/// the complete plan before anything is returned (atomic rejection;
+/// keyframed streams on inherited slots survive untouched).
 pub fn build_with_reuse(
     decls: &[ParamDeclaration],
     previous: &BindingPlan,
 ) -> Result<BindingPlan, BindingError> {
+    build_with_reuse_counted(decls, previous).map(|(plan, _)| plan)
+}
+
+pub(crate) fn build_with_reuse_counted(
+    decls: &[ParamDeclaration],
+    previous: &BindingPlan,
+) -> Result<(BindingPlan, usize), BindingError> {
     validate_declarations(decls)?;
 
     let prev_by_id: std::collections::HashMap<&str, &ParamBinding> =
@@ -205,36 +239,71 @@ pub fn build_with_reuse(
         }
     }
 
-    // Pass 2: fill unmatched declarations from ascending free indexes,
-    // skipping inherited slots (plans carry explicit tables, so holes are
-    // fine — ADR-0013 §5).
-    let mut next_index: std::collections::HashMap<PoolKind, usize> = Default::default();
-    let mut allocate = |kind: PoolKind| -> SlotRef {
-        let cursor = next_index.entry(kind).or_default();
-        loop {
-            let slot = SlotRef { kind, index: *cursor };
-            *cursor += 1;
-            if !taken.contains(&slot) {
-                return slot;
-            }
+    // Pass 2: inheritance stays authoritative. Only fresh declarations consult
+    // their lowering-assigned bank; a full bank spills the whole parameter to
+    // Main so multi-slot values never split across panel groups (ADR-0040 §4).
+    let mut bindings = Vec::with_capacity(decls.len());
+    let mut bank_spills = 0;
+    for (decl, inherited) in decls.iter().zip(inherited) {
+        if let Some(slots) = inherited {
+            bindings.push(ParamBinding { id: decl.id.clone(), slots, inherited: true });
+            continue;
         }
-    };
-    let bindings = decls
-        .iter()
-        .zip(inherited)
-        .map(|(decl, inherited)| {
-            let was_inherited = inherited.is_some();
-            let slots = inherited.unwrap_or_else(|| {
-                decl.ty
-                    .slot_requirements()
-                    .iter()
-                    .map(|kind| allocate(*kind))
-                    .collect()
+
+        let requirements = decl.ty.slot_requirements();
+        let bank = decl.bank.filter(|group| {
+            *group < BANK_GROUPS && requirements.iter().all(|kind| bank_capacity(*kind) > 0)
+        });
+        let mut slots = bank.and_then(|group| {
+            allocate_requirements(requirements, &taken, |kind| {
+                let start = main_pool_capacity(kind) + group * bank_capacity(kind);
+                start..start + bank_capacity(kind)
+            })
+        });
+        if bank.is_some() && slots.is_none() {
+            bank_spills += 1;
+        }
+        if slots.is_none() {
+            slots = allocate_requirements(requirements, &taken, |kind| {
+                0..main_pool_capacity(kind)
             });
-            ParamBinding { id: decl.id.clone(), slots, inherited: was_inherited }
-        })
-        .collect();
-    Ok(BindingPlan { bindings })
+        }
+        let Some(slots) = slots else {
+            let kind = requirements
+                .iter()
+                .copied()
+                .find(|kind| {
+                    (0..main_pool_capacity(*kind))
+                        .all(|index| taken.contains(&SlotRef { kind: *kind, index }))
+                })
+                .unwrap_or(requirements[0]);
+            return Err(BindingError::PoolOverflow {
+                kind,
+                capacity: main_pool_capacity(kind),
+                required: required.get(&kind).copied().unwrap_or(0),
+            });
+        };
+        taken.extend(slots.iter().copied());
+        bindings.push(ParamBinding { id: decl.id.clone(), slots, inherited: false });
+    }
+    Ok((BindingPlan { bindings }, bank_spills))
+}
+
+fn allocate_requirements(
+    requirements: &[PoolKind],
+    taken: &std::collections::HashSet<SlotRef>,
+    range_for: impl Fn(PoolKind) -> std::ops::Range<usize>,
+) -> Option<Vec<SlotRef>> {
+    let mut reserved = std::collections::HashSet::new();
+    let mut slots = Vec::with_capacity(requirements.len());
+    for kind in requirements {
+        let slot = range_for(*kind)
+            .map(|index| SlotRef { kind: *kind, index })
+            .find(|slot| !taken.contains(slot) && !reserved.contains(slot))?;
+        reserved.insert(slot);
+        slots.push(slot);
+    }
+    Some(slots)
 }
 
 #[cfg(test)]
@@ -243,7 +312,14 @@ mod tests {
     use crate::definition::param::ShaderParamType;
 
     fn decl(id: &str, ty: ShaderParamType) -> ParamDeclaration {
-        ParamDeclaration { id: ParamId::new(id).unwrap(), ty, aliases: vec![], ui: Default::default() }
+        ParamDeclaration {
+            id: ParamId::new(id).unwrap(),
+            ty,
+            aliases: vec![],
+            ui: Default::default(),
+            canvas: false,
+            bank: None,
+        }
     }
 
     #[test]
@@ -254,6 +330,15 @@ mod tests {
         let mut kinds: Vec<PoolKind> = V1_POOLS.iter().map(|(k, _)| *k).collect();
         kinds.dedup();
         assert_eq!(kinds.len(), V1_POOLS.len());
+        assert_eq!(pool_capacity(PoolKind::Float), 48 + BANK_GROUPS * 8);
+        assert_eq!(pool_capacity(PoolKind::Integer), 8 + BANK_GROUPS * 2);
+        assert_eq!(pool_capacity(PoolKind::Bool), 16 + BANK_GROUPS * 2);
+        assert_eq!(pool_capacity(PoolKind::Color), 12 + BANK_GROUPS * 3);
+        assert_eq!(pool_capacity(PoolKind::Point2D), 12 + BANK_GROUPS * 2);
+        assert_eq!(pool_capacity(PoolKind::Angle), 8 + BANK_GROUPS);
+        for kind in [PoolKind::Layer, PoolKind::Gradient, PoolKind::Point3D, PoolKind::Path] {
+            assert_eq!(pool_capacity(kind), main_pool_capacity(kind));
+        }
     }
 
     #[test]
@@ -272,6 +357,31 @@ mod tests {
                 kind: PoolKind::Float,
                 capacity: 48,
                 required: 49
+            })
+        );
+    }
+
+    #[test]
+    fn total_float_capacity_includes_every_bank() {
+        let mut full: Vec<_> =
+            (0..48).map(|i| decl(&format!("main{i}"), ShaderParamType::Float)).collect();
+        for group in 0..BANK_GROUPS {
+            for local in 0..bank_capacity(PoolKind::Float) {
+                let mut item = decl(&format!("bank{group}_{local}"), ShaderParamType::Float);
+                item.bank = Some(group);
+                full.push(item);
+            }
+        }
+        assert_eq!(full.len(), pool_capacity(PoolKind::Float));
+        assert!(build_fresh(&full).is_ok());
+
+        full.push(decl("overflow", ShaderParamType::Float));
+        assert_eq!(
+            build_fresh(&full),
+            Err(BindingError::PoolOverflow {
+                kind: PoolKind::Float,
+                capacity: pool_capacity(PoolKind::Float),
+                required: pool_capacity(PoolKind::Float) + 1,
             })
         );
     }
@@ -350,6 +460,8 @@ mod tests {
             ty,
             aliases: vec![ParamId::new(alias).unwrap()],
             ui: Default::default(),
+            canvas: false,
+            bank: None,
         }
     }
 

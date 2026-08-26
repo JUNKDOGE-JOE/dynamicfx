@@ -46,8 +46,8 @@
             "    else              c = vec3(sweep / 360.0);\n" +
             "    outColor = vec4(c, 1.0);\n" +
             "}\n";
-        fx.property(2).expression = "`" + src + "`;0";
-        logLine("EXPR set exprErr=[" + fx.property(2).expressionError + "]");
+        fx.property(3).expression = "`" + src + "`;0";
+        logLine("EXPR set exprErr=[" + fx.property(3).expressionError + "]");
         logLine("RESULT M2H expr_set=1");
     } catch (e) {
         logLine("SCRIPT_ERROR " + String(e));

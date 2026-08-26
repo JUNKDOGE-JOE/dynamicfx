@@ -24,9 +24,15 @@
         comp.saveFrameToPng(0.4, new File(OUT + "m2d_t04.png"));
 
         var slot1 = "", slot2 = "", keys = -1;
-        try { slot1 = fx.property(6).name; } catch (e1) {}
-        try { slot2 = fx.property(7).name; } catch (e2) {}
-        try { keys = fx.property(6).numKeys; } catch (e3) {}
+        function byName(label) {
+            for (var i = 1; i <= fx.numProperties; i++) {
+                try { if (fx.property(i).name === label) return fx.property(i); } catch (eB) {}
+            }
+            return null;
+        }
+        slot1 = byName("gain") ? "gain" : "MISSING";
+        slot2 = byName("extra") ? "extra" : "MISSING";
+        try { keys = byName("gain").numKeys; } catch (e3) {}
         logLine("AFTER_EDIT slot1=[" + slot1 + "] slot2=[" + slot2 + "] slot1_numKeys=" + keys);
         logLine("PNG saved m2d_t04.png expect gray 102 (gain keyframes intact, extra=0)");
         logLine("RESULT M2D slot1=[" + slot1 + "] slot2=[" + slot2 + "] numKeys=" + keys);

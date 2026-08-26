@@ -41,7 +41,7 @@
             "@endpass\n";
 
         var fx = solid.property("ADBE Effect Parade").addProperty("DynamicFx");
-        fx.property(2).expression = f003Wrap(shader);
+        fx.property(3).expression = f003Wrap(shader);
         f003Log(LOG, "SHADER_WRITTEN");
 
         // The Point 3D pool starts at declaration index 116 (5 heads + 104 v1
@@ -97,7 +97,7 @@ function f003fAfterIdle() {
         } catch (e) { probe = "ERR " + String(e); }
         // The Color pool starts at declaration index 5+48+8+16 = 77, property 78.
         try {
-            var c = s.fx.property(78);
+            var c = s.fx.property(86);
             tint = c.name;
             tintType = String(c.propertyValueType);
         } catch (e) { tint = "ERR " + String(e); }
@@ -144,7 +144,7 @@ function f003fFinish() {
         // tells the two apart (2026-08-16).
         var late = "<unread>", lateColor = "<unread>";
         try { late = s.fx.property(s.slot).name; } catch (e) { late = "ERR " + String(e); }
-        try { lateColor = s.fx.property(78).name; } catch (e) {}
+        try { lateColor = s.fx.property(86).name; } catch (e) {}
         f003Log(s.log, "LATE_NAMES point3d=[" + late + "] color=[" + lateColor + "]");
         f003RenderPsd(s.log, s.comp, "f003f_point3d");
         f003Log(s.log, "EXPECT frame0 rgb(64,128,128) from x=40/160 y=60/120 z=50/100");

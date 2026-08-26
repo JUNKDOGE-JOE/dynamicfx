@@ -118,6 +118,8 @@ pub enum FrontendError {
     /// A reflected user parameter is invalid (ParamId grammar/reserved name)
     /// or has a type outside the v1 set.
     Param(String),
+    /// `hint:canvas` names a reflected member outside the scalar Float kind.
+    CanvasWrongKind(String),
 }
 
 /// A language implementation: parses and validates one pass module of raw

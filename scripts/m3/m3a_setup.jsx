@@ -30,8 +30,8 @@
             "    float gain;\n" +
             "};\n" +
             "void main() { outColor = vec4(v_uv * gain, 0.0, 1.0); }\n";
-        fx.property(2).expression = "`" + src + "`;0";
-        logLine("EXPR set exprErr=[" + fx.property(2).expressionError + "]");
+        fx.property(3).expression = "`" + src + "`;0";
+        logLine("EXPR set exprErr=[" + fx.property(3).expressionError + "]");
         logLine("RESULT M3A expr_set=1");
     } catch (e) {
         logLine("SCRIPT_ERROR " + String(e));

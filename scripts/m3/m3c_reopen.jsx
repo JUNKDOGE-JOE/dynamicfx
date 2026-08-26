@@ -22,8 +22,8 @@
         }
         var fx = comp.layer(1).property("ADBE Effect Parade").property(1);
         var keys = -1, tokenValue = -1;
-        try { keys = fx.property(6).numKeys; } catch (e1) {}
-        try { tokenValue = fx.property(5).value; } catch (e2) {}
+        try { keys = fx.property(14).numKeys; } catch (e1) {}
+        try { tokenValue = fx.property(6).value; } catch (e2) {}
 
         comp.openInViewer();
         comp.saveFrameToPng(0.4, new File(OUT + "m3c_reopen.png"));

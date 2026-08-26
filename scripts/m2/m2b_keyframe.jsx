@@ -23,13 +23,19 @@
         // hidden (hidden state is not scripting-visible; the plugin log's
         // "idle slot ui applied" line is the visibility evidence).
         var slot1 = "", slot2 = "", status = "";
-        try { slot1 = fx.property(6).name; } catch (e1) {}
-        try { slot2 = fx.property(7).name; } catch (e2) {}
-        try { status = fx.property(4).name; } catch (e3) {}
+        function byName(label) {
+            for (var i = 1; i <= fx.numProperties; i++) {
+                try { if (fx.property(i).name === label) return fx.property(i); } catch (eB) {}
+            }
+            return null;
+        }
+        slot1 = byName("gain") ? "gain" : "MISSING";
+        slot2 = "n/a";
+        try { status = fx.property(5).name; } catch (e3) {}
         logLine("SLOTS slot1=[" + slot1 + "] slot2=[" + slot2 + "] status=[" + status + "]");
 
         // Keyframe the bound slot: 0.0 at t=0, 0.8 at t=0.8s (frame 20).
-        var gain = fx.property(6);
+        var gain = byName("gain");
         gain.setValueAtTime(0, 0.0);
         gain.setValueAtTime(0.8, 0.8);
         logLine("KEYFRAMES numKeys=" + gain.numKeys);

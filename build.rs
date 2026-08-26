@@ -89,6 +89,12 @@ fn pipl_properties() -> Vec<Property> {
             OutFlags::UseOutputExtent |
             OutFlags::DeepColorAware |
             OutFlags::SendUpdateParamsUI |
+            // ADR-0039: the output world may exceed the layer frame (the
+            // canvas — declared expansion or upstream extent). Without this
+            // flag AE clips the output world to the layer regardless of
+            // max_result_rect. The repair path below re-emits the PiPL
+            // bytes, so the added bit is byte-safe like every other flag.
+            OutFlags::IExpandBuffer |
             // The shader output depends on u_time (and the shader source
             // itself) even when no AE parameter changes — without this flag
             // AE caches the frame forever and the preview never updates.

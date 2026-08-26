@@ -23,8 +23,8 @@
         comp.saveFrameToPng(0, new File(OUT + "m2i_overflow.png"));
 
         var statusName = "", tokenValue = -1;
-        try { statusName = fx.property(4).name; } catch (e1) {}
-        try { tokenValue = fx.property(5).value; } catch (e2) {}
+        try { statusName = fx.property(5).name; } catch (e1) {}
+        try { tokenValue = fx.property(6).value; } catch (e2) {}
         logLine("OVERFLOW_STATUS [" + statusName + "] token=" + tokenValue);
         logLine("PNG saved m2i_overflow.png expect passthrough solid (10,200,30)");
         logLine("RESULT M2J status=[" + statusName + "] token=" + tokenValue);

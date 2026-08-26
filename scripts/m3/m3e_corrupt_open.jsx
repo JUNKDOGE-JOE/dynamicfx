@@ -23,7 +23,7 @@
         comp.openInViewer();
         comp.saveFrameToPng(0.4, new File(OUT + "m3e_corrupt.png"));
         var status = "";
-        try { status = fx.property(4).name; } catch (e1) {}
+        try { status = fx.property(5).name; } catch (e1) {}
         logLine("CORRUPT_OPEN status=[" + status + "] (first frame may be passthrough)");
         logLine("RESULT M3E opened=1");
     } catch (e) {

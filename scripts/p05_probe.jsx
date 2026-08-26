@@ -18,11 +18,11 @@
         }
         if (fx) {
             lines.push("effect found, numProperties: " + fx.numProperties);
-            var src = fx.property(1);
+            var src = fx.property(2);
             lines.push("Source expr len: " + src.expression.length);
             lines.push("Source expr head: " + src.expression.substring(0, 40));
-            lines.push("F01 value: " + fx.property(5).value);
-            var st = fx.property(3);
+            lines.push("F01 value: " + fx.property(6).value);
+            var st = fx.property(4);
             lines.push("Status name: " + st.name);
         } else {
             lines.push("DynamicFx effect NOT on layer");

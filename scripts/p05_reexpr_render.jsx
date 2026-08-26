@@ -34,11 +34,11 @@
             "}\n" +
             "// poke v2\n";
 
-        fx.property(1).expression = "`" + glsl + "`;0";
-        say("expr re-set, len=" + fx.property(1).expression.length);
+        fx.property(2).expression = "`" + glsl + "`;0";
+        say("expr re-set, len=" + fx.property(2).expression.length);
 
         $.sleep(2000);
-        say("status param: " + fx.property(3).name);
+        say("status param: " + fx.property(4).name);
 
         app.purge(PurgeTarget.ALL_CACHES);
         comp.saveFrameToPng(0.5, new File("E:/Code/AePlugin_Dynamicfx/scripts/out/dynfx_p05.png"));

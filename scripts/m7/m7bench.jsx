@@ -32,7 +32,7 @@ function m7CountReady() {
             var fxs = comp.layer(i).property("ADBE Effect Parade");
             if (!fxs || fxs.numProperties < 1) { continue; }
             total++;
-            try { if (fxs.property(1).property(5).value % 4 === 1) { ready++; } } catch (e) {}
+            try { if (fxs.property(2).property(5).value % 4 === 1) { ready++; } } catch (e) {}
         }
     }
     return { ready: ready, total: total };

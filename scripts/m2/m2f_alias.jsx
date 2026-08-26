@@ -20,8 +20,8 @@
         var fx = comp.layer(1).property("ADBE Effect Parade").property(1);
 
         var slotName = "", slotValue = -1;
-        try { slotName = fx.property(6).name; } catch (e1) {}
-        try { slotValue = fx.property(6).value; } catch (e2) {}
+        try { slotName = fx.property(14).name; } catch (e1) {}
+        try { slotValue = fx.property(14).value; } catch (e2) {}
         logLine("ANNOTATED slot1=[" + slotName + "] value=" + slotValue);
 
         comp.openInViewer();
@@ -30,7 +30,7 @@
 
         // Keyframe, then rename with alias. The new default:0.9 must NOT
         // overwrite the inherited binding's keyframes.
-        var level = fx.property(6);
+        var level = fx.property(14);
         level.setValueAtTime(0, 0.0);
         level.setValueAtTime(0.8, 1.0);
         logLine("KEYFRAMES numKeys=" + level.numKeys);
@@ -46,8 +46,8 @@
             "    float volume;\n" +
             "};\n" +
             "void main() { outColor = vec4(volume, volume, volume, 1.0); }\n";
-        fx.property(2).expression = "`" + src + "`;0";
-        logLine("RENAME set exprErr=[" + fx.property(2).expressionError + "]");
+        fx.property(3).expression = "`" + src + "`;0";
+        logLine("RENAME set exprErr=[" + fx.property(3).expressionError + "]");
         logLine("RESULT M2F slot1=[" + slotName + "] value=" + slotValue + " numKeys=" + level.numKeys);
     } catch (e) {
         logLine("SCRIPT_ERROR " + String(e));

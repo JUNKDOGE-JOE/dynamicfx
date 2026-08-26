@@ -51,6 +51,18 @@ pub enum Diag {
     /// would hide corruption and make the format's guarantees untestable, so
     /// the resource binds transparent black and says why.
     GradientMalformed = 54,
+    /// One effect may expose only one canvas authority. This is checked after
+    /// cross-pass parameter merging so repeated uses of one ParamId stay legal.
+    /// ADR-0039 §1.
+    CanvasDuplicate = 55,
+    /// A canvas authority must retain the ordinary scalar Float pool kind;
+    /// other parameter kinds fail closed under their own stable code.
+    /// ADR-0039 §1.
+    CanvasWrongKind = 56,
+    /// A canvas dimension would exceed the device texture limit; the canvas
+    /// fell back to the layer frame and the frame rendered under the released
+    /// contract. Degradation, never a crash. ADR-0039 §6.
+    CanvasTooLarge = 57,
 }
 
 /// The registry rows, in ascending code order. Append-only forever.
@@ -77,6 +89,9 @@ pub const REGISTRY: &[Diag] = &[
     Diag::TokenCorrupt,
     Diag::PublicationPending,
     Diag::GradientMalformed,
+    Diag::CanvasDuplicate,
+    Diag::CanvasWrongKind,
+    Diag::CanvasTooLarge,
 ];
 
 impl Diag {
@@ -143,6 +158,9 @@ mod tests {
                         | Diag::TokenCorrupt
                         | Diag::PublicationPending
                         | Diag::GradientMalformed
+                        | Diag::CanvasDuplicate
+                        | Diag::CanvasWrongKind
+                        | Diag::CanvasTooLarge
                 ),
                 _ => false,
             };

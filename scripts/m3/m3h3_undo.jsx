@@ -18,7 +18,7 @@
             }
         }
         var fx = comp.layer(1).property("ADBE Effect Parade").property(1);
-        var tokenDuringInvalid = fx.property(5).value;
+        var tokenDuringInvalid = fx.property(6).value;
         comp.openInViewer();
         comp.saveFrameToPng(0.4, new File(OUT + "m3h3_invalid.png"));
         logLine("INVALID_STATE token=" + tokenDuringInvalid +
@@ -31,7 +31,7 @@
         for (var u = 0; u < 4; u++) {
             app.executeCommand(16); // Edit > Undo
             presses++;
-            try { exprAfterUndo = fx.property(2).expression.substring(0, 30); } catch (e1) {}
+            try { exprAfterUndo = fx.property(3).expression.substring(0, 30); } catch (e1) {}
             if (exprAfterUndo.indexOf("broken") === -1) { break; }
         }
         logLine("UNDO pressed=" + presses + " exprHead=[" + exprAfterUndo + "]");

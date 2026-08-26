@@ -50,7 +50,7 @@
             "@endpass\n";
 
         var fx = target.property("ADBE Effect Parade").addProperty("DynamicFx");
-        fx.property(2).expression = f003Wrap(shader);
+        fx.property(3).expression = f003Wrap(shader);
         f003Log(LOG, "SHADER_WRITTEN layers=" + comp.numLayers);
 
         // The Layer pool starts at declaration index 110 (5 heads + 104 v1

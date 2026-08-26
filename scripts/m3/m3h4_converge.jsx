@@ -18,7 +18,7 @@
             }
         }
         var fx = comp.layer(1).property("ADBE Effect Parade").property(1);
-        var token = fx.property(5).value;
+        var token = fx.property(6).value;
         comp.openInViewer();
         comp.saveFrameToPng(0.4, new File(OUT + "m3h4_undo.png"));
         logLine("CONVERGED token_nonzero=" + (token > 0 ? 1 : 0) +

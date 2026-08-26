@@ -9,10 +9,10 @@
         comp.openInViewer();
         comp.saveFrameToPng(0, new File(m4Out() + "m4c_three.png"));
         var status = "";
-        try { status = fx.property(4).name; } catch (e1) {}
+        try { status = fx.property(5).name; } catch (e1) {}
         m4Log("m4c.log", "THREE_PASS status=[" + status + "] png expect center (64,64,0)");
 
-        fx.property(2).expression = "`" + m4GenPass() + "`;0";
+        fx.property(3).expression = "`" + m4GenPass() + "`;0";
         m4Log("m4c.log", "RAW set");
         m4Log("m4c.log", "RESULT M4C status=[" + status + "]");
     } catch (e) {

@@ -1,3 +1,5 @@
+#![allow(linker_messages)]
+
 //! DynamicFx — an open shader runtime controlled through ordinary After
 //! Effects properties.
 //!
@@ -15,6 +17,7 @@
 //! registry miss → pass-through until re-observation), so no persisted byte
 //! carries meaning before the M3 ADR (ADR-0009). Nothing is flattened.
 
+mod canvas;
 mod diag;
 mod render;
 mod source;
@@ -182,7 +185,7 @@ fn read_path(
         })
     };
 
-    let key = ParamKey::Pool(binding::PoolKind::Path, path_index);
+    let key = host::params::key_for_slot(binding::PoolKind::Path, path_index);
     let Some(id) = params.get(key).ok().and_then(|p| p.as_path().ok().map(|p| p.path_id()))
     else {
         diag::log(&format!("path {path_index}: selector unreadable"));
@@ -977,6 +980,91 @@ mod gradient_param_tests {
     }
 }
 
+#[cfg(test)]
+mod canvas_param_tests {
+    use super::*;
+
+    fn scalar_source(hint: &str, ty: &str) -> String {
+        format!(
+            r#"#version 450
+layout(location = 0) out vec4 outColor;
+// @param reach min:0 max:512 default:64{hint}
+layout(set = 0, binding = 2) uniform FxUniforms {{
+    vec2 u_resolution;
+    float u_time;
+    float u_frame;
+    {ty} reach;
+}};
+void main() {{ outColor = vec4(float(reach) + u_time + u_frame + u_resolution.x); }}
+"#
+        )
+    }
+
+    fn compile(source: &str) -> (Diag, String, Option<(u64, Arc<CompiledEffect>)>) {
+        evaluate_committed_source(frontend::LanguageId::GLSL, source, None)
+    }
+
+    #[test]
+    fn canvas_float_compiles_with_the_normal_float_binding() {
+        let (code, status, annotated) = compile(&scalar_source(" hint:canvas", "float"));
+        assert_eq!(code, Diag::Ok, "{status}");
+        let (_, annotated) = annotated.expect("annotated float");
+        assert_eq!(
+            annotated.definition.canvas_param.as_ref().map(definition::param::ParamId::as_str),
+            Some("reach")
+        );
+        assert_eq!(
+            annotated.definition.params[0].ty,
+            definition::param::ShaderParamType::Float
+        );
+
+        let (_, _, plain) = compile(&scalar_source("", "float"));
+        let (_, plain) = plain.expect("plain float");
+        assert_eq!(annotated.definition.binding, plain.definition.binding);
+        assert_eq!(
+            annotated.definition.binding.bindings[0].slots[0].kind,
+            binding::PoolKind::Float
+        );
+    }
+
+    #[test]
+    fn source_without_canvas_declaration_has_no_canvas_authority() {
+        let (code, status, compiled) = compile(&scalar_source("", "float"));
+        assert_eq!(code, Diag::Ok, "{status}");
+        let (_, compiled) = compiled.expect("plain float");
+        assert_eq!(compiled.definition.canvas_param, None);
+    }
+
+    #[test]
+    fn two_canvas_parameters_fail_closed_with_e55() {
+        let source = r#"#version 450
+layout(location = 0) out vec4 outColor;
+// @param reach hint:canvas
+// @param spread hint:canvas
+layout(set = 0, binding = 2) uniform FxUniforms {
+    vec2 u_resolution;
+    float u_time;
+    float u_frame;
+    float reach;
+    float spread;
+};
+void main() { outColor = vec4(reach + spread + u_time + u_frame + u_resolution.x); }
+"#;
+        let (code, status, compiled) = compile(source);
+        assert_eq!(code, Diag::CanvasDuplicate, "{status}");
+        assert_eq!(code.code(), 55);
+        assert!(compiled.is_none());
+    }
+
+    #[test]
+    fn canvas_on_non_float_fails_closed_with_e56() {
+        let (code, status, compiled) = compile(&scalar_source(" hint:canvas", "int"));
+        assert_eq!(code, Diag::CanvasWrongKind, "{status}");
+        assert_eq!(code.code(), 56);
+        assert!(compiled.is_none());
+    }
+}
+
 /// The shipped `examples/` sources are compiled by the real pipeline here, so
 /// a grammar, ABI, or annotation change that would break a user's copy-paste
 /// breaks the build first. These are the exact bytes in the public repo —
@@ -1014,6 +1102,28 @@ mod example_tests {
     #[test]
     fn ink_bleed_example_compiles() {
         compiles("ink-bleed.glsl", include_str!("../examples/ink-bleed.glsl"));
+    }
+
+    /// ADR-0039: the shipped canvas-expansion demo. Also pins that its
+    /// `hint:canvas` declaration reaches the definition, and that stripping
+    /// the annotation still compiles — the host legs render exactly that
+    /// no-hint twin on a padded precomp as the equivalence reference.
+    #[test]
+    fn reach_ring_example_compiles_and_declares_the_canvas() {
+        let source = include_str!("../examples/reach-ring.glsl");
+        compiles("reach-ring.glsl", source);
+        let (_, _, compiled) = evaluate_committed_source(frontend::LanguageId::GLSL, source, None);
+        let (_, compiled) = compiled.expect("compiles above");
+        assert_eq!(
+            compiled.definition.canvas_param.as_ref().map(definition::param::ParamId::as_str),
+            Some("reach")
+        );
+        let twin = source.replace(" hint:canvas", "");
+        assert_ne!(twin, source, "the annotation is present to strip");
+        let (code, status, twin_compiled) =
+            evaluate_committed_source(frontend::LanguageId::GLSL, &twin, None);
+        assert_eq!(code, Diag::Ok, "no-hint twin: {status}");
+        assert_eq!(twin_compiled.expect("twin compiles").1.definition.canvas_param, None);
     }
 }
 
@@ -1443,6 +1553,9 @@ struct Local {
     /// path retries without redoing the other (prototype lesson).
     configured_token: Option<u64>,
     visibility_token: Option<u64>,
+    /// A host that refuses Hidden on topic streams keeps the verified visible
+    /// fallback for this instance; repeated UI callbacks must not probe it.
+    group_visibility_disabled: bool,
     /// Cached GPU frame resources (M7 item 1); rebuilt automatically when
     /// token/depth/size/plan shape change. Guarded by the instance lock the
     /// whole render holds, so MFR clones never share one.
@@ -1451,6 +1564,10 @@ struct Local {
     /// per-render megabyte allocations showed up in the baseline totals.
     scratch_in: Vec<u8>,
     scratch_out: Vec<u8>,
+    /// ADR-0039: tight conversion target when the canvas exceeds the input
+    /// world and the converted rows are then placed into `scratch_in` at the
+    /// canvas offset. Unused (empty) on the frame-equal fast path.
+    scratch_stage: Vec<u8>,
 }
 
 impl Default for Local {
@@ -1473,9 +1590,11 @@ impl Default for Local {
             block_rebind: false,
             configured_token: None,
             visibility_token: None,
+            group_visibility_disabled: false,
             frame_cache: None,
             scratch_in: Vec::new(),
             scratch_out: Vec::new(),
+            scratch_stage: Vec::new(),
         }
     }
 }
@@ -1569,6 +1688,14 @@ thread_local! {
     /// `Local` would race concurrent frames of one instance under MFR
     /// (`SUPPORTS_THREADED_RENDERING`, ADR-0023 §4).
     static SMART_WINDOW: std::cell::Cell<Option<(i32, i32)>> =
+        const { std::cell::Cell::new(None) };
+
+    /// ADR-0039 canvas for the frame being rendered on THIS thread — resolved
+    /// once in SmartPreRender, transported through `pre_render_data`, and set
+    /// beside SMART_WINDOW so `render` consumes the stash instead of
+    /// re-deriving geometry (the two sides must be incapable of disagreeing).
+    /// `None` = the legacy path: the canvas is the input world itself.
+    static SMART_CANVAS: std::cell::Cell<Option<canvas::Rect>> =
         const { std::cell::Cell::new(None) };
 
     /// ADR-0030 layer pixels for the frame being rendered on THIS thread,
@@ -2024,7 +2151,14 @@ fn evaluate_committed_source(
                 })
                 .unwrap_or_default();
             let aliases = annotations.get(input).map(|a| a.aliases.clone()).unwrap_or_default();
-            params.push(definition::param::ParamDeclaration { id, ty, aliases, ui });
+            params.push(definition::param::ParamDeclaration {
+                id,
+                ty,
+                aliases,
+                ui,
+                canvas: false,
+                bank: None,
+            });
         }
     }
     let (def, maps) = match definition::effect::lower_graph(
@@ -2039,6 +2173,13 @@ fn evaluate_committed_source(
             return (
                 Diag::ParamRejected,
                 format!("parameter `{name}` has conflicting types across passes"),
+                None,
+            )
+        }
+        Err(definition::effect::LowerError::DuplicateCanvas { first, second }) => {
+            return (
+                Diag::CanvasDuplicate,
+                format!("canvas parameters `{first}` and `{second}` are both declared"),
                 None,
             )
         }
@@ -2064,11 +2205,10 @@ fn evaluate_committed_source(
         })
         .collect();
 
-    let status = format!(
-        "compiled: {} pass{}, {} params",
+    let status = compiled_status(
         def.graph.passes.len(),
-        if def.graph.passes.len() == 1 { "" } else { "es" },
-        def.params.len()
+        def.params.len(),
+        def.bank_spills,
     );
     let uses_prev = exec_plan
         .steps
@@ -2100,7 +2240,7 @@ fn evaluate_committed_source(
             let slot = def.binding.bindings.get(index)?.slots.first()?;
             let param_index = declaration
                 .iter()
-                .position(|k| *k == host::params::ParamKey::Pool(slot.kind, slot.index))?;
+                .position(|k| *k == host::params::key_for_slot(slot.kind, slot.index))?;
             match slot.kind {
                 // +1: `param_index` is a declaration position, and every AE
                 // parameter index is one higher (input layer at 0).
@@ -2131,6 +2271,31 @@ fn evaluate_committed_source(
     (Diag::Ok, status, Some((token, compiled)))
 }
 
+fn compiled_status(pass_count: usize, param_count: usize, bank_spills: usize) -> String {
+    let mut status = format!(
+        "compiled: {pass_count} pass{}, {param_count} params",
+        if pass_count == 1 { "" } else { "es" }
+    );
+    if bank_spills != 0 {
+        status.push_str(&format!(" ({bank_spills} spilled to Main)"));
+    }
+    status
+}
+
+#[cfg(test)]
+mod compiled_status_tests {
+    use super::compiled_status;
+
+    #[test]
+    fn spill_suffix_is_present_only_when_needed() {
+        assert_eq!(compiled_status(1, 3, 0), "compiled: 1 pass, 3 params");
+        assert_eq!(
+            compiled_status(2, 9, 1),
+            "compiled: 2 passes, 9 params (1 spilled to Main)"
+        );
+    }
+}
+
 fn frontend_error_status(err: frontend::FrontendError) -> (Diag, String) {
     match err {
         frontend::FrontendError::Parse(msg) => (Diag::GlslParse, format!("GLSL error: {msg}")),
@@ -2140,6 +2305,10 @@ fn frontend_error_status(err: frontend::FrontendError) -> (Diag, String) {
         frontend::FrontendError::Param(msg) => {
             (Diag::ParamRejected, format!("parameter rejected: {msg}"))
         }
+        frontend::FrontendError::CanvasWrongKind(name) => (
+            Diag::CanvasWrongKind,
+            format!("parameter rejected: `{name}`: hint:canvas applies to float members only"),
+        ),
     }
 }
 
@@ -2198,14 +2367,16 @@ fn set_slot_hidden(
 /// lesson, kept as a hard rule).
 fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
     // No definition (fresh instance, cleared source): hide the ENTIRE pool
-    // once — an uncompiled effect exposing 104 unbound controls floods the
-    // Effect Controls panel and measurably drags it (user report).
+    // once — an uncompiled effect exposing hundreds of unbound controls
+    // floods the Effect Controls panel and measurably drags it (user report).
     let Some(compiled) = local.compiled.clone() else {
+        let empty = std::collections::HashMap::new();
+        if local.configured_token != Some(0) && apply_pass_group_names(plugin, None) {
+            local.configured_token = Some(0);
+        }
         if local.visibility_token != Some(0) {
-            let empty = std::collections::HashMap::new();
-            if apply_visibility(plugin, &empty).is_ok() {
+            if apply_visibility(plugin, &empty, None, &mut local.group_visibility_disabled).is_ok() {
                 local.visibility_token = Some(0);
-                local.configured_token = None;
                 diag::log("slots hidden (no definition)");
             }
         }
@@ -2222,6 +2393,7 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
 
     let mut names_ok = true;
     if configure_names {
+        names_ok &= apply_pass_group_names(plugin, Some(&compiled.definition));
         // Every pool, not just the V1 ones: a bound `hint:layer` slot must
         // carry the shader's own name exactly as a bound float does. The
         // growth pools were left out of this loop when they were appended, so
@@ -2231,16 +2403,16 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
             // (ADR-0033 §6), so its label would never be seen. The gradient's
             // shader name goes on the stop rows below instead — the rows the
             // user actually edits.
-            if *kind == binding::PoolKind::Gradient {
+            if kind == binding::PoolKind::Gradient {
                 continue;
             }
-            for i in 0..*capacity {
-                let slot = binding::SlotRef { kind: *kind, index: i };
+            for i in 0..capacity {
+                let slot = binding::SlotRef { kind, index: i };
                 let config = configs.get(&slot);
                 let label = config
                     .map(|c| c.label.clone())
-                    .unwrap_or_else(|| host::params::default_slot_name(*kind, i));
-                match plugin.params.get_mut(ParamKey::Pool(*kind, i)) {
+                    .unwrap_or_else(|| host::params::default_slot_name(kind, i));
+                match plugin.params.get_mut(host::params::key_for_slot(kind, i)) {
                     Ok(mut p) => {
                         names_ok &= p.set_name(&label).is_ok();
                         // Range/default metadata for bound scalar slots
@@ -2359,7 +2531,13 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
 
     let mut visibility_ok = true;
     if configure_visibility {
-        visibility_ok = apply_visibility(plugin, &configs).is_ok();
+        visibility_ok = apply_visibility(
+            plugin,
+            &configs,
+            Some(&compiled.definition),
+            &mut local.group_visibility_disabled,
+        )
+        .is_ok();
     }
 
     if configure_names && names_ok {
@@ -2374,22 +2552,99 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
     ));
 }
 
+fn apply_pass_group_names(plugin: &mut PluginState, definition: Option<&EffectDefinition>) -> bool {
+    let mut names_ok = true;
+    for group in 0..binding::BANK_GROUPS {
+        let live_name = definition
+            .and_then(|definition| definition.graph.passes.get(group))
+            .map(|pass| pass.name.as_str());
+        let label = host::params::pass_group_name(group, live_name);
+        match plugin.params.get_mut(ParamKey::PassGroupStart(group)) {
+            Ok(mut param) => {
+                names_ok &= param.set_name(&label).is_ok();
+                names_ok &= param.update_param_ui().is_ok();
+            }
+            Err(err) => {
+                names_ok = false;
+                diag::log(&format!("pass group name lookup failed ({group}): {err:?}"));
+            }
+        }
+    }
+    names_ok
+}
+
 /// Clip a label to `n` characters on a char boundary. PF parameter names are
 /// capped at 31 bytes, and a byte-wise cut could split a multi-byte character.
 fn clip(label: &str, n: usize) -> String {
     label.chars().take(n).collect()
 }
 
-/// Apply hidden flags for every pool slot (bound = visible).
+/// Apply hidden flags for every pool slot and presentation-only group row.
 fn apply_visibility(
     plugin: &mut PluginState,
     configs: &std::collections::HashMap<binding::SlotRef, SlotConfig>,
+    definition: Option<&EffectDefinition>,
+    group_visibility_disabled: &mut bool,
 ) -> Result<(), Error> {
     let plugin_id = plugin.global.plugin_id()?;
     let pf_iface = ae::aegp::suites::PFInterface::new()?;
     let effect_suite = ae::aegp::suites::Effect::new()?;
     let effect_ref = pf_iface.new_effect_for_effect(plugin.in_data.effect_ref(), plugin_id)?;
     let mut result = Ok(());
+
+    if !*group_visibility_disabled {
+        let plan = definition.map(|definition| &definition.binding);
+        let group_keys = (0..binding::BANK_GROUPS)
+            .flat_map(|group| {
+                [ParamKey::PassGroupStart(group), ParamKey::PassGroupEnd(group)]
+            })
+            .chain((0..host::params::GRADIENTS).flat_map(|gradient| {
+                [
+                    ParamKey::GradientGroupStart(gradient),
+                    ParamKey::GradientGroupEnd(gradient),
+                ]
+            }));
+        let group_keys: Vec<_> = group_keys.collect();
+        let mut group_error = None;
+        for key in &group_keys {
+            let hidden = host::params::group_hidden(plan, *key)
+                .expect("only presentation group rows are walked");
+            let Some(index) = host::params::stream_index_of(*key) else { continue };
+            if let Err(err) = set_slot_hidden(plugin, &effect_ref, index, hidden) {
+                group_error = Some(err);
+                break;
+            }
+        }
+
+        if let Some(err) = group_error {
+            *group_visibility_disabled = true;
+            for key in &group_keys {
+                if let Some(index) = host::params::stream_index_of(*key) {
+                    let _ = set_slot_hidden(plugin, &effect_ref, index, false);
+                }
+                if let Ok(mut param) = plugin.params.get_mut(*key) {
+                    let mut flags = param.ui_flags();
+                    flags.set(ae::ParamUIFlags::INVISIBLE, false);
+                    param.set_ui_flags(flags);
+                    let _ = param.update_param_ui();
+                }
+            }
+            diag::log(&format!(
+                "group hidden flags unsupported for this instance; keeping groups visible: {err:?}"
+            ));
+        } else {
+            for key in &group_keys {
+                let hidden = host::params::group_hidden(plan, *key)
+                    .expect("only presentation group rows are walked");
+                if let Ok(mut param) = plugin.params.get_mut(*key) {
+                    let mut flags = param.ui_flags();
+                    flags.set(ae::ParamUIFlags::INVISIBLE, hidden);
+                    param.set_ui_flags(flags);
+                    let _ = param.update_param_ui();
+                }
+            }
+        }
+    }
 
     // ADR-0033 presentation. The reference gradient effect keeps every stop
     // parameter in the topology but shows only ONE stop group at a time — the
@@ -2453,9 +2708,10 @@ fn apply_visibility(
     }
 
     for (kind, capacity) in binding::all_pools() {
-        for i in 0..*capacity {
-            let slot = binding::SlotRef { kind: *kind, index: i };
-            let Some(stream_index) = host::params::stream_index_of(ParamKey::Pool(*kind, i))
+        for i in 0..capacity {
+            let slot = binding::SlotRef { kind, index: i };
+            let key = host::params::key_for_slot(kind, i);
+            let Some(stream_index) = host::params::stream_index_of(key)
             else {
                 continue;
             };
@@ -2463,7 +2719,7 @@ fn apply_visibility(
             // a shader binds it. Everything else shows exactly when bound,
             // which the growth pools never did: four "Layer" rows sat in the
             // panel of every instance, bound or not.
-            let hidden = !configs.contains_key(&slot) || *kind == binding::PoolKind::Gradient;
+            let hidden = !configs.contains_key(&slot) || kind == binding::PoolKind::Gradient;
             if let Err(e) = set_slot_hidden(plugin, &effect_ref, stream_index, hidden) {
                 diag::log(&format!("slot hidden flag failed ({kind:?} {i}): {e:?}"));
                 result = Err(e);
@@ -2473,7 +2729,7 @@ fn apply_visibility(
             // flags land, AEGP names read back correctly, the dials render
             // anyway — and nameless). PF_PUI_INVISIBLE through
             // PF_UpdateParamUI is honored for every param type.
-            if let Ok(mut p) = plugin.params.get_mut(ParamKey::Pool(*kind, i)) {
+            if let Ok(mut p) = plugin.params.get_mut(key) {
                 let mut flags = p.ui_flags();
                 if flags.contains(ae::ParamUIFlags::INVISIBLE) != hidden {
                     flags.set(ae::ParamUIFlags::INVISIBLE, hidden);
@@ -2566,12 +2822,51 @@ fn read_word_param(plugin: &PluginState, key: ParamKey) -> u64 {
 /// ABI v1 (value-encoding semantics are fixture-pinned at M2; v1 passes
 /// sliders raw, colors as 0..1 RGB, points normalized to the frame,
 /// angles in degrees).
+/// ADR-0039 §4: the per-frame geometry SmartPreRender resolved and stashed —
+/// SmartRender and `render` consume it verbatim, so the two sides cannot
+/// disagree on checkouts or canvas (the "more checkout requests than
+/// expected" class of split).
+#[derive(Debug, Clone, Copy, PartialEq)]
+struct SmartGeom {
+    /// Requested output window origin in layer space (the released ROI
+    /// hand-off, unchanged).
+    window: (i32, i32),
+    /// The resolved canvas rect in layer space.
+    canvas: canvas::Rect,
+    /// Which checkout id carries the input pixels: 0 (the base layer-frame
+    /// checkout) unless upstream content beyond the frame needed the second,
+    /// canvas-rect checkout.
+    input_id: u32,
+}
+
+/// Checkout id of the canvas-rect input checkout. External layer ids are
+/// `1..=externals`; this must never collide (the external pool is 4 slots).
+const EXTENDED_INPUT_CHECKOUT: u32 = 4096;
+
+/// The declared canvas expansion in logical pixels at the current time, when
+/// this definition declares one (ADR-0039 §1). Reads the bound Float slot
+/// through the same parameter path every other uniform uses.
+fn canvas_margin_logical(plugin: &mut PluginState, compiled: &CompiledEffect) -> Option<f32> {
+    let defn = &compiled.definition;
+    let target = defn.canvas_param.as_ref()?;
+    let index = defn.params.iter().position(|d| &d.id == target)?;
+    let slot = defn.binding.bindings.get(index)?.slots.first()?;
+    let p = plugin.params.get(host::params::key_for_slot(slot.kind, slot.index)).ok()?;
+    let v = p.as_float_slider().ok()?.value() as f32;
+    Some(v.max(0.0))
+}
+
 fn read_bound_values(
     plugin: &mut PluginState,
     compiled: &CompiledEffect,
-    width: usize,
-    height: usize,
+    cvs: canvas::Rect,
 ) -> Vec<[f32; 4]> {
+    // ADR-0039: points are authored in layer pixels while `v_uv` spans the
+    // canvas; shifting by the canvas origin keeps a point on the same visual
+    // pixel (pad-precomp equivalence). A frame-equal canvas has origin (0,0)
+    // and reproduces the released encoding exactly.
+    let width = cvs.width().max(1) as f32;
+    let height = cvs.height().max(1) as f32;
     let defn = &compiled.definition;
     defn.params
         .iter()
@@ -2582,7 +2877,7 @@ fn read_bound_values(
                 bound
                     .slots
                     .get(j)
-                    .map(|s| ParamKey::Pool(s.kind, s.index))
+                    .map(|s| host::params::key_for_slot(s.kind, s.index))
             };
             match decl.ty {
                 ShaderParamType::Float => {
@@ -2626,8 +2921,8 @@ fn read_bound_values(
                         if let Ok(p) = plugin.params.get(key) {
                             if let Ok(pt) = p.as_point() {
                                 let (px, py) = pt.value();
-                                out[0] = px as f32 / width.max(1) as f32;
-                                out[1] = py as f32 / height.max(1) as f32;
+                                out[0] = (px as f32 - cvs.left as f32) / width;
+                                out[1] = (py as f32 - cvs.top as f32) / height;
                             }
                         }
                     }
@@ -2644,8 +2939,8 @@ fn read_bound_values(
                         if let Ok(p) = plugin.params.get(key) {
                             if let Ok(pt) = p.as_point3d() {
                                 let (px, py, pz) = pt.value();
-                                out[0] = px as f32 / width.max(1) as f32;
-                                out[1] = py as f32 / height.max(1) as f32;
+                                out[0] = (px as f32 - cvs.left as f32) / width;
+                                out[1] = (py as f32 - cvs.top as f32) / height;
                                 out[2] = pz as f32;
                             }
                         }
@@ -2987,6 +3282,9 @@ impl AdobePluginInstance for LocalMutex {
         // ROI window stashed by the SmartRender arm on this thread; legacy
         // renders get the whole frame at origin zero.
         let window = SMART_WINDOW.with(|w| w.take()).unwrap_or((0, 0));
+        // ADR-0039 canvas from the same stash; `None` (legacy path) makes the
+        // canvas the input world itself further down.
+        let canvas_stash = SMART_CANVAS.with(|c| c.take());
 
         // Opportunistic main-thread observation (also aerender's only path
         // until M3 persistence): a fresh observation is authoritative over
@@ -3080,19 +3378,32 @@ impl AdobePluginInstance for LocalMutex {
                 }
 
                 if let (Some(_), Some(compiled)) = (&local.pipelines, &local.compiled) {
-                    // ABI v1 uv/u_resolution span the full input frame
-                    // (ADR-0011 §6); AE's ROI requests only narrow what is
-                    // written back, never what is rendered. Placement: the
-                    // input world sits at its ORIGIN in layer space (tight
-                    // buffers — text/shape layers — carry non-zero origins;
-                    // ignoring them pinned content to the corner, measured),
-                    // and the output world starts at the request's corner,
-                    // so input (0,0) lands at origin − request.
+                    // ADR-0039: uv/u_resolution span the CANVAS, resolved in
+                    // SmartPreRender and consumed from the stash; the legacy
+                    // path (no stash) uses the input world itself, which is
+                    // the released geometry bit for bit. AE's ROI requests
+                    // only narrow what is written back, never what is
+                    // rendered. Placement: the input world sits at its
+                    // ORIGIN in layer space (tight buffers — text/shape
+                    // layers — carry non-zero origins; ignoring them pinned
+                    // content to the corner, measured), the canvas carries
+                    // its own origin, and the output world starts at the
+                    // request's corner — so canvas (0,0) lands at
+                    // canvas.origin − request.
                     let rw = in_layer.width();
                     let rh = in_layer.height();
                     let origin = in_layer.origin();
-                    let dest_x = origin.h - window.0;
-                    let dest_y = origin.v - window.1;
+                    let world = canvas::Rect {
+                        left: origin.h,
+                        top: origin.v,
+                        right: origin.h + rw as i32,
+                        bottom: origin.v + rh as i32,
+                    };
+                    let cvs = canvas_stash.unwrap_or(world);
+                    let cw = cvs.width() as usize;
+                    let ch = cvs.height() as usize;
+                    let dest_x = cvs.left - window.0;
+                    let dest_y = cvs.top - window.1;
                     let dx = dest_x.max(0) as usize;
                     let dy = dest_y.max(0) as usize;
                     let ox = (-dest_x).max(0) as usize;
@@ -3100,12 +3411,12 @@ impl AdobePluginInstance for LocalMutex {
                     let ow = out_layer
                         .width()
                         .saturating_sub(dx)
-                        .min(rw.saturating_sub(ox));
+                        .min(cw.saturating_sub(ox));
                     let oh = out_layer
                         .height()
                         .saturating_sub(dy)
-                        .min(rh.saturating_sub(oy));
-                    if rw > 0 && rh > 0 && ow > 0 && oh > 0 {
+                        .min(ch.saturating_sub(oy));
+                    if cw > 0 && ch > 0 && ow > 0 && oh > 0 {
                         let time = plugin.in_data.current_timestamp() as f32;
                         let frame = plugin.in_data.current_frame() as f32;
                         let t_render = std::time::Instant::now();
@@ -3119,6 +3430,7 @@ impl AdobePluginInstance for LocalMutex {
                             frame_cache,
                             scratch_in,
                             scratch_out,
+                            scratch_stage,
                             ..
                         } = &mut *local;
 
@@ -3127,23 +3439,56 @@ impl AdobePluginInstance for LocalMutex {
                         // reorder for U8/F32, the lossless U15↔f32 mapping
                         // for 16-bpc.
                         let bpp = depth.bpp();
-                        scratch_in.resize(rw * rh * bpp, 0);
-                        let input_px: &mut [u8] = scratch_in;
+                        scratch_in.resize(cw * ch * bpp, 0);
                         let (in_buf, in_stride) = (in_layer.buffer(), in_layer.buffer_stride());
-                        match depth {
-                            render::Depth::U8 => {
-                                render::argb8_to_rgba8(in_buf, in_stride, rw, rh, input_px)
+                        if cvs == world {
+                            // Canvas ≡ input world: convert straight into the
+                            // upload buffer — the released fast path, no
+                            // extra copy.
+                            let input_px: &mut [u8] = scratch_in;
+                            match depth {
+                                render::Depth::U8 => {
+                                    render::argb8_to_rgba8(in_buf, in_stride, rw, rh, input_px)
+                                }
+                                render::Depth::U15 => render::argb_u15_to_rgba_f32(
+                                    in_buf, in_stride, rw, rh, input_px,
+                                ),
+                                render::Depth::F32 => render::argb_f32_to_rgba_f32(
+                                    in_buf, in_stride, rw, rh, input_px,
+                                ),
                             }
-                            render::Depth::U15 => render::argb_u15_to_rgba_f32(
-                                in_buf, in_stride, rw, rh, input_px,
-                            ),
-                            render::Depth::F32 => render::argb_f32_to_rgba_f32(
-                                in_buf, in_stride, rw, rh, input_px,
-                            ),
+                        } else {
+                            // ADR-0039: convert tight, then place the input
+                            // world at its offset inside the canvas; the
+                            // margin stays transparent black (all-zero bytes
+                            // in every working encoding).
+                            scratch_stage.resize(rw * rh * bpp, 0);
+                            let stage: &mut [u8] = scratch_stage;
+                            match depth {
+                                render::Depth::U8 => {
+                                    render::argb8_to_rgba8(in_buf, in_stride, rw, rh, stage)
+                                }
+                                render::Depth::U15 => render::argb_u15_to_rgba_f32(
+                                    in_buf, in_stride, rw, rh, stage,
+                                ),
+                                render::Depth::F32 => render::argb_f32_to_rgba_f32(
+                                    in_buf, in_stride, rw, rh, stage,
+                                ),
+                            }
+                            scratch_in.fill(0);
+                            if let Some((sx, sy, px2, py2, w, h)) = canvas::place(&world, &cvs) {
+                                for y in 0..h {
+                                    let src = ((sy + y) * rw + sx) * bpp;
+                                    let dst = ((py2 + y) * cw + px2) * bpp;
+                                    scratch_in[dst..dst + w * bpp]
+                                        .copy_from_slice(&scratch_stage[src..src + w * bpp]);
+                                }
+                            }
                         }
+                        let input_px: &mut [u8] = scratch_in;
                         let conv_in_ms = t_render.elapsed().as_secs_f32() * 1000.0;
 
-                        let global_values = read_bound_values(plugin, &compiled, rw, rh);
+                        let global_values = read_bound_values(plugin, &compiled, cvs);
                         // Per-pass uniform values via each pass's member map.
                         let per_pass_values: Vec<Vec<[f32; 4]>> = compiled
                             .passes
@@ -3159,7 +3504,7 @@ impl AdobePluginInstance for LocalMutex {
                         let rect = if roi_enabled() {
                             (ox, oy, ow, oh)
                         } else {
-                            (0, 0, rw, rh)
+                            (0, 0, cw, ch)
                         };
                         let (rect_x, rect_y, rect_w, rect_h) = rect;
                         scratch_out.resize(rect_w * rect_h * bpp, 0);
@@ -3192,8 +3537,8 @@ impl AdobePluginInstance for LocalMutex {
                         let mut transient: Option<render::FrameCache> = None;
                         let cache_slot: &mut Option<render::FrameCache> = if render::cache_within_budget(
                             depth,
-                            rw,
-                            rh,
+                            cw,
+                            ch,
                             compiled.plan.physical_count,
                             window.is_some(),
                         ) {
@@ -3205,13 +3550,17 @@ impl AdobePluginInstance for LocalMutex {
                             diag::verbose("frame cache over budget; transient resources this render");
                             &mut transient
                         };
+                        // ADR-0039: canvas dims key the cache, so a canvas
+                        // change (expansion edit, upstream edit) rebuilds
+                        // every frame resource — temporal history included —
+                        // rather than resampling old extents.
                         render::ensure_frame_cache(
                             gpu,
                             cache_slot,
                             set.token,
                             depth,
-                            rw,
-                            rh,
+                            cw,
+                            ch,
                             compiled.plan.physical_count,
                             window.is_some(),
                         );
@@ -3221,8 +3570,8 @@ impl AdobePluginInstance for LocalMutex {
                         let ds_x = plugin.in_data.downsample_x();
                         let ds_y = plugin.in_data.downsample_y();
                         let logical_res = (
-                            render::logical_size(rw, ds_x.num, ds_x.den),
-                            render::logical_size(rh, ds_y.num, ds_y.den),
+                            render::logical_size(cw, ds_x.num, ds_x.den),
+                            render::logical_size(ch, ds_y.num, ds_y.den),
                         );
                         // ADR-0030: pixels checked out by the SmartRender
                         // arm on this thread, in TexSlot::Layer ordinal order.
@@ -3243,8 +3592,12 @@ impl AdobePluginInstance for LocalMutex {
                             .map(|entry| {
                                 let e = entry.as_ref()?;
                                 if let Some(vertices) = e.vertices.as_ref() {
-                                    let (width, samples) =
-                                        path::encode(vertices, rw as f32, rh as f32);
+                                    let (width, samples) = path::encode(
+                                        vertices,
+                                        (cvs.left as f32, cvs.top as f32),
+                                        cw as f32,
+                                        ch as f32,
+                                    );
                                     return Some((
                                         render::encode_samples(&samples, render::Depth::F32),
                                         width,
@@ -3312,9 +3665,9 @@ impl AdobePluginInstance for LocalMutex {
                             &compiled.plan,
                             &per_pass_values,
                             input_px,
-                            rw * bpp,
-                            rw,
-                            rh,
+                            cw * bpp,
+                            cw,
+                            ch,
                             time,
                             frame,
                             logical_res,
@@ -3502,14 +3855,14 @@ impl AdobePluginInstance for LocalMutex {
                 let requested = req.rect;
                 let cb = extra.callbacks();
                 let in_data = plugin.in_data;
-                // ABI v1 fixes uv/u_resolution to the full layer frame
-                // (ADR-0011 §6). AE's ROI requests (a sampleImage of a few
-                // pixels arrives as a ~12x12 rect — measured live) must not
-                // shrink the render, so the INPUT checkout covers the whole
-                // layer. The declared result must echo the request (AE
-                // errors 25::237 on anything larger — measured live); the
-                // GPU renders full-frame and only the requested window is
-                // written back, guided by the origin stashed here.
+                // The base input checkout stays the layer's own frame: AE's
+                // ROI requests (a sampleImage of a few pixels arrives as a
+                // ~12x12 rect — measured live) must not shrink the render,
+                // and this checkout's PF_CheckoutResult carries the upstream
+                // extent the ADR-0039 canvas needs. The declared result must
+                // echo the request (AE errors 25::237 on anything larger —
+                // measured live); the GPU renders the full canvas and only
+                // the requested window is written back.
                 req.rect.left = 0;
                 req.rect.top = 0;
                 req.rect.right = in_data.width();
@@ -3522,7 +3875,66 @@ impl AdobePluginInstance for LocalMutex {
                     in_data.time_step(),
                     in_data.time_scale(),
                 ) {
-                    Ok(_) => {
+                    Ok(res) => {
+                        // ADR-0039 §1: the upstream extent — the stable,
+                        // request-independent signal an upstream Grow Bounds
+                        // emits. The released code discarded it (`Ok(_)`),
+                        // which is exactly why Grow Bounds was a no-op
+                        // (TR-BOUNDS-001 tiles A ≡ B).
+                        let upstream = canvas::Rect {
+                            left: res.max_result_rect.left,
+                            top: res.max_result_rect.top,
+                            right: res.max_result_rect.right,
+                            bottom: res.max_result_rect.bottom,
+                        };
+                        // Resolve here too, not only in SmartRender: the two
+                        // sides must see the same definition or neither may
+                        // act ("more checkout requests than expected",
+                        // 2026-08-16). The declared margin rides the same
+                        // resolve.
+                        let (declared_logical, externals_early) = {
+                            let mut local = self.lock().map_err(|_| Error::Generic)?;
+                            resolve_transported_definition(plugin, &mut local);
+                            let declared = local
+                                .compiled
+                                .as_ref()
+                                .and_then(|c| canvas_margin_logical(plugin, c));
+                            let externals = local
+                                .compiled
+                                .as_ref()
+                                .map(|c| c.externals.clone())
+                                .unwrap_or_default();
+                            (declared, externals)
+                        };
+                        // Declared expansion is logical pixels (ADR-0029);
+                        // the canvas lives in render pixels, per axis.
+                        let ds_x = in_data.downsample_x();
+                        let ds_y = in_data.downsample_y();
+                        let declared = declared_logical.map(|m| {
+                            (
+                                canvas::margin_physical(m, ds_x.num, ds_x.den),
+                                canvas::margin_physical(m, ds_y.num, ds_y.den),
+                            )
+                        });
+                        let max_dim = render::gpu()
+                            .map(|g| g.max_texture_dim())
+                            .unwrap_or(render::FALLBACK_MAX_TEXTURE_DIM)
+                            as i32;
+                        let resolved = canvas::resolve(
+                            in_data.width(),
+                            in_data.height(),
+                            Some(upstream),
+                            declared,
+                            max_dim,
+                        );
+                        if resolved.limited {
+                            diag::log(&format!(
+                                "E{} canvas too large (declared {declared:?}, upstream {upstream:?}, device max {max_dim}); rendering the layer frame",
+                                Diag::CanvasTooLarge.code()
+                            ));
+                        }
+                        let c = resolved.canvas;
+                        let frame = canvas::Rect::frame(in_data.width(), in_data.height());
                         let r = ae::Rect {
                             left: requested.left,
                             top: requested.top,
@@ -3531,46 +3943,69 @@ impl AdobePluginInstance for LocalMutex {
                         };
                         extra.set_result_rect(r);
                         // max_result_rect declares where the shader COULD
-                        // produce content: the whole frame. Echoing the tiny
-                        // request here made AE cache "empty everywhere else",
-                        // so later samples outside the first ROI returned
-                        // permanent black without rendering (measured live).
-                        // It must also CONTAIN the result rect — requests can
-                        // reach outside the layer bounds and a bare full
-                        // frame then fails 25::237 (measured live) — so take
-                        // the union.
+                        // produce content: the canvas (ADR-0039 — previously
+                        // the layer frame). Echoing the tiny request here
+                        // made AE cache "empty everywhere else", so later
+                        // samples outside the first ROI returned permanent
+                        // black without rendering (measured live). It must
+                        // also CONTAIN the result rect — requests can reach
+                        // outside the canvas and a bare canvas then fails
+                        // 25::237 (measured live) — so take the union.
                         extra.set_max_result_rect(ae::Rect {
-                            left: requested.left.min(0),
-                            top: requested.top.min(0),
-                            right: requested.right.max(in_data.width()),
-                            bottom: requested.bottom.max(in_data.height()),
+                            left: requested.left.min(c.left),
+                            top: requested.top.min(c.top),
+                            right: requested.right.max(c.right),
+                            bottom: requested.bottom.max(c.bottom),
                         });
-                        extra.set_pre_render_data::<(i32, i32)>((requested.left, requested.top));
+                        // Content beyond the base checkout exists only when
+                        // the upstream extent exceeds the frame inside the
+                        // canvas; only then is the second, canvas-rect input
+                        // checkout worth a render request. Its failure
+                        // degrades to transparent margins, never a lost
+                        // frame.
+                        let mut input_id: u32 = 0;
+                        if !frame.contains(&c.intersect(&upstream)) {
+                            req.rect.left = c.left;
+                            req.rect.top = c.top;
+                            req.rect.right = c.right;
+                            req.rect.bottom = c.bottom;
+                            match cb.checkout_layer(
+                                0,
+                                EXTENDED_INPUT_CHECKOUT as i32,
+                                &req,
+                                in_data.current_time(),
+                                in_data.time_step(),
+                                in_data.time_scale(),
+                            ) {
+                                Ok(_) => input_id = EXTENDED_INPUT_CHECKOUT,
+                                Err(e) => diag::log(&format!(
+                                    "extended input checkout failed: {e:?}; canvas margins render transparent"
+                                )),
+                            }
+                        }
+                        extra.set_pre_render_data::<SmartGeom>(SmartGeom {
+                            window: (requested.left, requested.top),
+                            canvas: c,
+                            input_id,
+                        });
+                        // External checkouts cover the CANVAS rect below:
+                        // same rect ⇒ same uv span ⇒ ADR-0030 §4 comp-space
+                        // alignment holds on the expanded canvas exactly as
+                        // it held on the frame.
+                        req.rect.left = c.left;
+                        req.rect.top = c.top;
+                        req.rect.right = c.right;
+                        req.rect.bottom = c.bottom;
 
                         // ADR-0030: one checkout per bound layer parameter,
-                        // with the SAME full-frame rect and time as the input
-                        // so `uv` addresses the same point in every texture
-                        // (§4 comp space). Checkout ids start at 1 — 0 is the
-                        // effect's own input. A failed checkout is logged and
-                        // left unbound: the shader then reads zeros (§5)
-                        // rather than the frame failing.
-                        let externals = {
-                            let mut local = self.lock().map_err(|_| Error::Generic)?;
-                            // Resolve here too, not only in SmartRender. AE
-                            // counts checkouts: if PreRender skips a layer this
-                            // frame and SmartRender then asks for its pixels,
-                            // the host aborts the render with "Node received
-                            // more checkout requests than expected" (reported
-                            // from interactive use, 2026-08-16, after the
-                            // SmartRender side was fixed alone). The two sides
-                            // must see the same definition or neither may act.
-                resolve_transported_definition(plugin, &mut local);
-                            local
-                                .compiled
-                                .as_ref()
-                                .map(|c| c.externals.clone())
-                                .unwrap_or_default()
-                        };
+                        // with the SAME rect and time as the input so `uv`
+                        // addresses the same point in every texture (§4 comp
+                        // space). Checkout ids start at 1 — 0 is the effect's
+                        // own input. A failed checkout is logged and left
+                        // unbound: the shader then reads zeros (§5) rather
+                        // than the frame failing. The externals list came
+                        // from the resolve above.
+                        let externals = externals_early;
                         // Exactly the ids AE accepted. SmartRender asks for
                         // these and checks in these — never a superset, which
                         // is the same accounting mistake from the other end.
@@ -3599,12 +4034,33 @@ impl AdobePluginInstance for LocalMutex {
                 }
             }
             Command::SmartRender { extra } => {
-                let window = extra
-                    .pre_render_data::<(i32, i32)>()
+                let geom = extra
+                    .pre_render_data::<SmartGeom>()
                     .copied()
-                    .unwrap_or((0, 0));
+                    .unwrap_or(SmartGeom {
+                        window: (0, 0),
+                        canvas: canvas::Rect::frame(
+                            plugin.in_data.width(),
+                            plugin.in_data.height(),
+                        ),
+                        input_id: 0,
+                    });
+                let window = geom.window;
                 let cb = extra.callbacks();
-                let input = cb.checkout_layer_pixels(0);
+                // When the canvas-rect checkout carries the content, the base
+                // checkout is consumed and released immediately: every id
+                // PreRender declared gets exactly one pixels/checkin pair,
+                // so the host's checkout accounting never sees a dangling
+                // declaration (the TR-CACHE-001 balancing discipline).
+                if geom.input_id != 0 {
+                    match cb.checkout_layer_pixels(0) {
+                        Ok(_) => {
+                            let _ = cb.checkin_layer_pixels(0);
+                        }
+                        Err(e) => diag::log(&format!("base input release failed: {e:?}")),
+                    }
+                }
+                let input = cb.checkout_layer_pixels(geom.input_id);
                 let checked_out = match input {
                     Ok(v) => v,
                     Err(e) => {
@@ -3711,6 +4167,7 @@ impl AdobePluginInstance for LocalMutex {
                 if let Ok(Some(mut out_layer)) = cb.checkout_output() {
                     if let Some(in_layer) = &checked_out {
                         SMART_WINDOW.with(|w| w.set(Some(window)));
+                        SMART_CANVAS.with(|c| c.set(Some(geom.canvas)));
                         AdobePluginInstance::render(self, plugin, in_layer, &mut out_layer)?;
                     } else {
                         // No input frame (adjustment layer over nothing):
@@ -3721,12 +4178,13 @@ impl AdobePluginInstance for LocalMutex {
                     }
                 }
                 SMART_LAYERS.with(|l| l.borrow_mut().clear());
+                SMART_CANVAS.with(|c| c.set(None));
                 for id in SMART_CHECKOUTS.with(|c| c.borrow().clone()) {
                     let _ = cb.checkin_layer_pixels(id);
                 }
                 SMART_CHECKOUTS.with(|c| c.borrow_mut().clear());
                 if checked_out.is_some() {
-                    let _ = cb.checkin_layer_pixels(0);
+                    let _ = cb.checkin_layer_pixels(geom.input_id);
                 }
             }
             _ => {}

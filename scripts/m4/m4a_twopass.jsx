@@ -13,8 +13,8 @@
         comp.bgColor = [0, 0, 0];
         var solid = comp.layers.addSolid([10 / 255, 200 / 255, 30 / 255], "input", 320, 240, 1.0, 1.0);
         var fx = solid.property("ADBE Effect Parade").addProperty("DynamicFx");
-        fx.property(2).expression = "`" + m4TwoPassEnvelope() + "`;0";
-        m4Log("m4a.log", "TWO_PASS set exprErr=[" + fx.property(2).expressionError + "]");
+        fx.property(3).expression = "`" + m4TwoPassEnvelope() + "`;0";
+        m4Log("m4a.log", "TWO_PASS set exprErr=[" + fx.property(3).expressionError + "]");
         m4Log("m4a.log", "RESULT M4A expr_set=1");
     } catch (e) {
         m4Log("m4a.log", "SCRIPT_ERROR " + String(e));

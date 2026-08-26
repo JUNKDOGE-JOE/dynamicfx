@@ -133,6 +133,11 @@ pub struct ParamDeclaration {
     pub ty: ShaderParamType,
     pub aliases: Vec<ParamId>,
     pub ui: ParamUiMeta,
+    /// Role metadata only; binding and uniform delivery still follow `ty`.
+    pub canvas: bool,
+    /// Preferred pass bank for fresh allocation. This is lowering metadata;
+    /// it never enters the source grammar, persisted plan, or wire formats.
+    pub(crate) bank: Option<usize>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -197,12 +202,16 @@ mod tests {
                 ty: ShaderParamType::Float,
                 aliases: vec![],
                 ui: Default::default(),
+                canvas: false,
+                bank: None,
             },
             ParamDeclaration {
                 id: ParamId::new("speed").unwrap(),
                 ty: ShaderParamType::Float,
                 aliases: vec![],
                 ui: Default::default(),
+                canvas: false,
+                bank: None,
             },
         ];
         assert!(validate_declarations(&dup_id).is_err());
@@ -213,12 +222,16 @@ mod tests {
                 ty: ShaderParamType::Float,
                 aliases: vec![],
                 ui: Default::default(),
+                canvas: false,
+                bank: None,
             },
             ParamDeclaration {
                 id: ParamId::new("velocity").unwrap(),
                 ty: ShaderParamType::Float,
                 aliases: vec![ParamId::new("speed").unwrap()],
                 ui: Default::default(),
+                canvas: false,
+                bank: None,
             },
         ];
         assert!(validate_declarations(&alias_hits_id).is_err());
@@ -229,12 +242,16 @@ mod tests {
                 ty: ShaderParamType::Float,
                 aliases: vec![ParamId::new("rate").unwrap()],
                 ui: Default::default(),
+                canvas: false,
+                bank: None,
             },
             ParamDeclaration {
                 id: ParamId::new("tint").unwrap(),
                 ty: ShaderParamType::Vec3Color,
                 aliases: vec![],
                 ui: Default::default(),
+                canvas: false,
+                bank: None,
             },
         ];
         assert!(validate_declarations(&clean).is_ok());

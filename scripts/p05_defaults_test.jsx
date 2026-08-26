@@ -33,12 +33,12 @@
             "    outColor = vec4(floor(c.rgb * u_levels) / u_levels, 1.0);\n" +
             "}\n";
 
-        var p1 = fx.property(1);
+        var p1 = fx.property(2);
         say("p1 name=" + p1.name + " matchName=" + p1.matchName);
         p1.expression = "`" + glsl + "`;0";
         say("expr set, readback len=" + p1.expression.length);
 
-        var p5 = fx.property(5);
+        var p5 = fx.property(6);
         say("p5 name=" + p5.name);
         p5.setValue(16.0);
         say("p5 set, readback=" + p5.value);

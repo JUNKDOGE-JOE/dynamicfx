@@ -23,8 +23,8 @@
         comp.saveFrameToPng(0.4, new File(OUT + "m2g_t04.png"));
 
         var slotName = "", keys = -1;
-        try { slotName = fx.property(6).name; } catch (e1) {}
-        try { keys = fx.property(6).numKeys; } catch (e2) {}
+        try { slotName = fx.property(14).name; } catch (e1) {}
+        try { keys = fx.property(14).numKeys; } catch (e2) {}
         logLine("AFTER_RENAME slot1=[" + slotName + "] numKeys=" + keys);
         logLine("PNG saved m2g_t04.png expect gray 128 (keyframes 0->1 at t=0.4, default 0.9 NOT applied)");
         logLine("RESULT M2G slot1=[" + slotName + "] numKeys=" + keys);

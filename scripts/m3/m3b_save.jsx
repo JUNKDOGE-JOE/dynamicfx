@@ -19,11 +19,11 @@
         var fx = comp.layer(1).property("ADBE Effect Parade").property(1);
 
         var tokenValue = -1, slot1 = "";
-        try { tokenValue = fx.property(5).value; } catch (e1) {}
-        try { slot1 = fx.property(6).name; } catch (e2) {}
+        try { tokenValue = fx.property(6).value; } catch (e1) {}
+        try { slot1 = fx.property(14).name; } catch (e2) {}
         logLine("PUBLISHED token_nonzero=" + (tokenValue > 0 ? 1 : 0) + " slot1=[" + slot1 + "]");
 
-        var gain = fx.property(6);
+        var gain = fx.property(14);
         gain.setValueAtTime(0, 0.0);
         gain.setValueAtTime(0.8, 0.8);
         logLine("KEYFRAMES numKeys=" + gain.numKeys);

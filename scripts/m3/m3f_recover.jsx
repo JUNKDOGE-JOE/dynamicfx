@@ -21,9 +21,9 @@
         comp.openInViewer();
         comp.saveFrameToPng(0.4, new File(OUT + "m3f_recover.png"));
         var status = "", tokenValue = -1, keys = -1;
-        try { status = fx.property(4).name; } catch (e1) {}
-        try { tokenValue = fx.property(5).value; } catch (e2) {}
-        try { keys = fx.property(6).numKeys; } catch (e3) {}
+        try { status = fx.property(5).name; } catch (e1) {}
+        try { tokenValue = fx.property(6).value; } catch (e2) {}
+        try { keys = fx.property(14).numKeys; } catch (e3) {}
         logLine("RECOVERED status=[" + status + "] token_nonzero=" + (tokenValue > 0 ? 1 : 0) + " numKeys=" + keys);
         logLine("PNG saved m3f_recover.png expect (51,51,0) again");
         logLine("RESULT M3F token_nonzero=" + (tokenValue > 0 ? 1 : 0) + " numKeys=" + keys);

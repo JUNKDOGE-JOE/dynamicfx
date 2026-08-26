@@ -11,6 +11,7 @@ use crate::frontend::envelope::{self, SourceClass};
 use crate::host::params::{LANGUAGE_STREAM_INDEX, SOURCE_STREAM_INDEX, STATE_TOKEN_STREAM_INDEX};
 use after_effects as ae;
 use ae::aegp::{ItemType, StreamReferenceHandle, StreamValue};
+use std::collections::{HashMap, HashSet};
 use std::panic::{catch_unwind, AssertUnwindSafe};
 use std::ptr;
 use std::sync::{
@@ -34,6 +35,16 @@ pub struct IdleState {
     alive: Arc<AtomicBool>,
     dynamicfx_key: Option<ae::aegp::InstalledEffectKey>,
     last_scan: Option<Instant>,
+    group_ui_tokens: HashMap<InstanceKey, u64>,
+    group_visibility_failures: HashSet<InstanceKey>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+struct InstanceKey {
+    project_index: i32,
+    item_id: i32,
+    layer_id: u32,
+    effect_index: i32,
 }
 
 impl IdleState {
@@ -50,6 +61,8 @@ impl IdleState {
             alive,
             dynamicfx_key: None,
             last_scan: None,
+            group_ui_tokens: HashMap::new(),
+            group_visibility_failures: HashSet::new(),
         }
     }
 }
@@ -114,6 +127,7 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
         return Ok(());
     };
 
+    let mut seen_instances = HashSet::new();
     for project_index in 0..projects.num_projects()? {
         let project = match projects.project_by_index(project_index) {
             Ok(project) => project,
@@ -149,6 +163,13 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                     continue;
                 }
             }
+            let item_id = match items.item_id(&item) {
+                Ok(id) => id,
+                Err(err) => {
+                    crate::diag::log(&format!("idle item id failed: {err:?}"));
+                    continue;
+                }
+            };
             let comp = match comps.comp_from_item(&item) {
                 Ok(Some(comp)) => comp,
                 Ok(None) => continue,
@@ -174,6 +195,13 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                         continue;
                     }
                 };
+                let layer_id = match layers.layer_id(&layer) {
+                    Ok(id) => id,
+                    Err(err) => {
+                        crate::diag::log(&format!("idle layer id failed: {err:?}"));
+                        continue;
+                    }
+                };
                 let layer_time =
                     match layers.layer_current_time(&layer, ae::aegp::TimeMode::LayerTime) {
                         Ok(time) => time,
@@ -192,6 +220,13 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                 };
 
                 for effect_index in 0..effect_count {
+                    let instance_key = InstanceKey {
+                        project_index: project_index as i32,
+                        item_id,
+                        layer_id,
+                        effect_index,
+                    };
+                    seen_instances.insert(instance_key);
                     let effect_ref = match effects.layer_effect_by_index(
                         &layer,
                         state.plugin_id,
@@ -227,6 +262,7 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                                 &effect_ref,
                                 layer_time,
                                 general_reply,
+                                instance_key,
                             )?;
                         }
                         Ok::<(), ae::Error>(())
@@ -250,6 +286,9 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
         }
     }
 
+    state.group_ui_tokens.retain(|key, _| seen_instances.contains(key));
+    state.group_visibility_failures.retain(|key| seen_instances.contains(key));
+
     Ok(())
 }
 
@@ -258,12 +297,13 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
 /// serve it. Anything unobservable or uncompiled publishes 0, so render
 /// clones fail closed instead of reviving stale state.
 fn sync_state_token(
-    state: &IdleState,
+    state: &mut IdleState,
     streams: &ae::aegp::suites::Stream,
     raw_streams: &RawStreamSuite6,
     effect_ref: &ae::aegp::EffectRefHandle,
     layer_time: ae::Time,
     general_reply: Option<crate::GeneralReply>,
+    instance_key: InstanceKey,
 ) -> Result<(), ae::Error> {
     let language_stream =
         streams.new_effect_stream_by_index(effect_ref, state.plugin_id, LANGUAGE_STREAM_INDEX)?;
@@ -381,6 +421,24 @@ fn sync_state_token(
         _ => return Ok(()),
     };
 
+    if state.group_ui_tokens.get(&instance_key).copied() != Some(desired) {
+        match apply_group_ui(state, streams, effect_ref, own_compiled.as_deref()) {
+            Ok(group_visibility_failed) => {
+                if group_visibility_failed
+                    && state.group_visibility_failures.insert(instance_key)
+                {
+                    crate::diag::log(
+                        "idle group hidden flags unsupported for this instance; keeping groups visible",
+                    );
+                }
+            }
+            Err(err) => crate::diag::log(&format!("idle group ui failed: {err:?}")),
+        }
+        // Presentation failures deliberately settle on the static/visible
+        // fallback instead of probing the same instance every idle tick.
+        state.group_ui_tokens.insert(instance_key, desired);
+    }
+
     // A pending mark fills an empty stream only. It must never clobber a
     // reopened project's saved Active word (still the recovery authority
     // when the registry is cold) nor a more specific diagnostic already
@@ -456,6 +514,75 @@ fn sync_state_token(
     raw_streams.set_one_d(state.plugin_id, &token_stream, desired_f64)?;
     crate::diag::log(&format!("idle state token updated: {desired_state:?}"));
     Ok(())
+}
+
+fn apply_group_ui(
+    state: &IdleState,
+    streams: &ae::aegp::suites::Stream,
+    effect_ref: &ae::aegp::EffectRefHandle,
+    compiled: Option<&crate::CompiledEffect>,
+) -> Result<bool, ae::Error> {
+    use crate::host::params::{group_hidden, pass_group_name, stream_index_of, ParamKey};
+
+    let dyn_suite = ae::aegp::suites::DynamicStream::new()?;
+    let definition = compiled.map(crate::CompiledEffect::definition);
+    let plan = definition.map(|definition| &definition.binding);
+
+    for group in 0..crate::binding::BANK_GROUPS {
+        let live_name = definition
+            .and_then(|definition| definition.graph.passes.get(group))
+            .map(|pass| pass.name.as_str());
+        let label = pass_group_name(group, live_name);
+        let Some(index) = stream_index_of(ParamKey::PassGroupStart(group)) else { continue };
+        let stream = streams.new_effect_stream_by_index(effect_ref, state.plugin_id, index)?;
+        if let Err(err) = dyn_suite.set_stream_name(&stream, &label) {
+            crate::diag::log(&format!("idle pass group name failed ({group}): {err:?}"));
+        }
+    }
+
+    let keys = (0..crate::binding::BANK_GROUPS)
+        .flat_map(|group| {
+            [ParamKey::PassGroupStart(group), ParamKey::PassGroupEnd(group)]
+        })
+        .chain((0..crate::host::params::GRADIENTS).flat_map(|gradient| {
+            [
+                ParamKey::GradientGroupStart(gradient),
+                ParamKey::GradientGroupEnd(gradient),
+            ]
+        }));
+    let keys: Vec<_> = keys.collect();
+    for key in &keys {
+        let hidden = group_hidden(plan, *key).expect("only presentation group rows are walked");
+        let Some(index) = stream_index_of(*key) else { continue };
+        let stream = streams.new_effect_stream_by_index(effect_ref, state.plugin_id, index)?;
+        if dyn_suite
+            .set_dynamic_stream_flag(
+                &stream,
+                ae::aegp::DynamicStreamFlags::Hidden,
+                false,
+                hidden,
+            )
+            .is_err()
+        {
+            for restore_key in &keys {
+                let Some(restore_index) = stream_index_of(*restore_key) else { continue };
+                if let Ok(restore_stream) = streams.new_effect_stream_by_index(
+                    effect_ref,
+                    state.plugin_id,
+                    restore_index,
+                ) {
+                    let _ = dyn_suite.set_dynamic_stream_flag(
+                        &restore_stream,
+                        ae::aegp::DynamicStreamFlags::Hidden,
+                        false,
+                        false,
+                    );
+                }
+            }
+            return Ok(true);
+        }
+    }
+    Ok(false)
 }
 
 /// What the StateToken stream should say for one instance (ADR-0038 §5).
@@ -547,10 +674,13 @@ fn slot_ui_out_of_date(
     compiled: &crate::CompiledEffect,
 ) -> Result<bool, ae::Error> {
     use crate::binding::{PoolKind, SlotRef};
-    use crate::host::params::{default_slot_name, stream_index_of, ParamKey};
+    use crate::host::params::{default_slot_name, stream_index_of};
 
     let probe = SlotRef { kind: PoolKind::Float, index: 0 };
-    let Some(stream_index) = stream_index_of(ParamKey::Pool(probe.kind, probe.index)) else {
+    let Some(stream_index) = stream_index_of(crate::host::params::key_for_slot(
+        probe.kind,
+        probe.index,
+    )) else {
         return Ok(false);
     };
     let configs = crate::slot_configs(compiled.definition());
@@ -574,17 +704,17 @@ fn apply_slot_ui(
     effect_ref: &ae::aegp::EffectRefHandle,
     compiled: &crate::CompiledEffect,
 ) -> Result<(), ae::Error> {
-    use crate::binding::{PoolKind, SlotRef, V1_POOLS};
-    use crate::host::params::{default_slot_name, stream_index_of, ParamKey};
+    use crate::binding::{all_pools, PoolKind, SlotRef};
+    use crate::host::params::{default_slot_name, key_for_slot, stream_index_of};
 
     let dyn_suite = ae::aegp::suites::DynamicStream::new()?;
     let configs = crate::slot_configs(compiled.definition());
     let mut bound = 0usize;
     let mut defaults_written = 0usize;
-    for (kind, capacity) in V1_POOLS {
-        for i in 0..*capacity {
-            let slot = SlotRef { kind: *kind, index: i };
-            let Some(stream_index) = stream_index_of(ParamKey::Pool(*kind, i)) else { continue };
+    for (kind, capacity) in all_pools() {
+        for i in 0..capacity {
+            let slot = SlotRef { kind, index: i };
+            let Some(stream_index) = stream_index_of(key_for_slot(kind, i)) else { continue };
             let stream =
                 streams.new_effect_stream_by_index(effect_ref, state.plugin_id, stream_index)?;
             let config = configs.get(&slot);
@@ -593,7 +723,7 @@ fn apply_slot_ui(
                     bound += 1;
                     (config.label.clone(), false)
                 }
-                None => (default_slot_name(*kind, i), true),
+                None => (default_slot_name(kind, i), true),
             };
             dyn_suite.set_stream_name(&stream, &label)?;
             dyn_suite.set_dynamic_stream_flag(
@@ -615,7 +745,7 @@ fn apply_slot_ui(
                         defaults_written += 1;
                     }
                 }
-                if config.fresh && *kind == PoolKind::Color {
+                if config.fresh && kind == PoolKind::Color {
                     if let Some([r, g, b, _a]) = config.color_default {
                         // Alpha rides the companion Float slot; the color
                         // stream itself is written opaque.

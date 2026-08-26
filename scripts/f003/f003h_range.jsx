@@ -58,7 +58,7 @@
             "@endpass\n";
 
         var fx = solid.property("ADBE Effect Parade").addProperty("DynamicFx");
-        fx.property(2).expression = f003Wrap(shader);
+        fx.property(3).expression = f003Wrap(shader);
         f003Log(LOG, "SHADER_WRITTEN");
 
         $.global.f003hState = {
@@ -176,7 +176,7 @@ function f003hSet() {
         var comp2 = f003NewComp("f003h_thermal", 320, 180, 8);
         var solid2 = comp2.layers.addSolid([0.1, 0.1, 0.1], "thermal", 320, 180, 1.0);
         var fx2 = solid2.property("ADBE Effect Parade").addProperty("DynamicFx");
-        fx2.property(2).expression = f003Wrap(src);
+        fx2.property(3).expression = f003Wrap(src);
         f003Log(s.log, "THERMAL_WRITTEN bytes=" + src.length);
         s.comp2 = comp2; s.fx2 = fx2; s.tries = 0;
         app.scheduleTask("f003hThermalWait()", 3000, false);

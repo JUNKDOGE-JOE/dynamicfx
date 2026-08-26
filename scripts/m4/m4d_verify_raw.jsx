@@ -12,7 +12,7 @@
 
         var one = "@dynamicfx 1\n@graph\npass main: input -> output\n@end\n" +
             "@pass main\n" + m4GenPass() + "@endpass\n";
-        fx.property(2).expression = "`" + one + "`;0";
+        fx.property(3).expression = "`" + one + "`;0";
         m4Log("m4d.log", "ONE_PASS_ENVELOPE set");
         m4Log("m4d.log", "RESULT M4D staged=1");
     } catch (e) {

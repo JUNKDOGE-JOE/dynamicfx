@@ -202,7 +202,7 @@ function m5Step5() {
         var lay = alpha.layers.add(src);
         lay.name = "input";
         var fx = lay.property("ADBE Effect Parade").addProperty("DynamicFx");
-        fx.property(2).expression = "`" + m5AlphaProbe() + "`;0";
+        fx.property(3).expression = "`" + m5AlphaProbe() + "`;0";
         m5AddProbes(alpha, ALPHA_PTS, true);
         m5AddProbes(alpha, ALPHA_SRC_PTS, false);
 

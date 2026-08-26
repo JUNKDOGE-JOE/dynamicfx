@@ -954,6 +954,16 @@ pub fn execute_plan(
 /// AE hands effects buffers scaled by downsample_x/y (num/den ratios); the
 /// shader-visible u_resolution reports the full-resolution frame so pixel-
 /// based shader math is invariant across preview resolutions.
+/// Largest 2D texture edge the device accepts — the ADR-0039 §6 cap on the
+/// canvas. Callers without a device yet use wgpu's guaranteed default.
+pub const FALLBACK_MAX_TEXTURE_DIM: u32 = 8192;
+
+impl Gpu {
+    pub fn max_texture_dim(&self) -> u32 {
+        self.device.limits().max_texture_dimension_2d
+    }
+}
+
 pub fn logical_size(physical: usize, num: i32, den: u32) -> f32 {
     if num <= 0 || den == 0 {
         return physical as f32;

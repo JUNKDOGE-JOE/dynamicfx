@@ -38,7 +38,7 @@
             "@endpass\n";
 
         var fx = solid.property("ADBE Effect Parade").addProperty("DynamicFx");
-        fx.property(2).expression = f003Wrap(shader);
+        fx.property(3).expression = f003Wrap(shader);
 
         // Gradient slots follow the four Layer slots: 5 heads + 104 v1 slots
         // + Details (109) + Layer 0..3 (110..113) => Gradient 0 at 114,

@@ -11,7 +11,7 @@
 //!        | default:#RRGGBB[AA]               (hint:color only, ADR-0026)
 //!        | alias:<id>[,<id>]*
 //!        | hint:angle | hint:color | hint:layer | hint:gradient
-//!        | hint:point3d | hint:path
+//!        | hint:point3d | hint:path | hint:canvas
 //! ```
 //!
 //! Error policy (fail closed without punishing leftovers): a malformed entry
@@ -45,6 +45,7 @@ pub enum Hint {
     /// would otherwise be. The default is deliberately unchanged, so this hint
     /// is the only way to reach the kind.
     Point3D,
+    Canvas,
 }
 
 #[derive(Debug, Clone, Default, PartialEq)]
@@ -175,6 +176,7 @@ pub fn parse_annotations(source: &str) -> Result<HashMap<String, Annotation>, An
                         "color" => Hint::Color,
                         "point3d" => Hint::Point3D,
                         "path" => Hint::Path,
+                        "canvas" => Hint::Canvas,
                         other => return Err(err(line_no, format!("unknown hint `{other}`"))),
                     };
                     set_once(line_no, "hint", &mut annotation.hint, hint)?;

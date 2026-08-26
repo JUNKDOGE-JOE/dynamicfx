@@ -45,7 +45,7 @@
             "@endpass\n";
 
         var fx = solid.property("ADBE Effect Parade").addProperty("DynamicFx");
-        fx.property(2).expression = f003Wrap(shader);
+        fx.property(3).expression = f003Wrap(shader);
 
         // A closed rectangle mask with corners at known pixel positions. AE
         // reports N segments and N+1 vertices for a closed path, so a

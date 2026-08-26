@@ -35,7 +35,7 @@ var F003C_POLLS = 0;
         // Record the pre-write word so "never authored" is in the evidence
         // alongside every later state.
         f003Log(LOG, "BEFORE_WRITE word=" + f003TokenState(fx).word);
-        fx.property(2).expression = f003Wrap(shader);
+        fx.property(3).expression = f003Wrap(shader);
         f003Log(LOG, "SHADER_WRITTEN");
 
         $.global.f003cState = { fx: fx, log: LOG };

@@ -1,13 +1,14 @@
-//! The ADR-0013 AE parameter topology: fixed head parameters plus the 104
-//! pool slots, declared in one deterministic order derived from
-//! `binding::V1_POOLS`.
+//! The AE parameter topology and stable stream identities (ADR-0013,
+//! ADR-0040).
 //!
-//! AE matches effect parameter streams by declaration order across project
-//! loads, so `declaration_order()` is a persistent contract: a released
-//! index never changes kind, moves, or dies; all growth appends at the tail
-//! (ADR-0013 §5).
+//! After Effects restores streams by the murmur3 id derived from each
+//! `ParamKey`'s `Debug` rendering. Existing renderings are therefore a
+//! persistence contract even when declaration order changes.
 
-use crate::binding::{PoolKind, GROWTH_POOLS, V1_POOLS};
+use crate::binding::{
+    bank_capacity, main_pool_capacity, BindingPlan, PoolKind, SlotRef, BANK_GROUPS, BANK_POOLS,
+    GROWTH_POOLS, V1_POOLS,
+};
 use crate::frontend;
 use after_effects as ae;
 
@@ -15,6 +16,8 @@ use after_effects as ae;
 /// kind-local slot `i` of one pool.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ParamKey {
+    SetupStart,
+    SetupEnd,
     /// Non-time-varying language selector (ADR-0010).
     Language,
     /// Float slider whose committed expression carries the source (ADR-0001).
@@ -28,9 +31,8 @@ pub enum ParamKey {
     /// ADR fixes the layout — interim encodings must not persist (ADR-0009).
     StateToken,
     Pool(PoolKind, usize),
-    /// ADR-0028: appended after every pool slot (append-only growth per
-    /// ADR-0013) — a button that pops the full, untruncated status text
-    /// (the Status name is capped at 31 chars by PF).
+    /// ADR-0028: button that pops the full, untruncated status text (the
+    /// Status name is capped at 31 chars by PF).
     Details,
     /// ADR-0033: how many of a gradient's eight stops are live.
     GradientCount(usize),
@@ -40,8 +42,15 @@ pub enum ParamKey {
     /// ADR-0038 §7: hidden primitive carrying the plan identity of the
     /// published artifact beside the StateToken, so a render clone names its
     /// own instance's entry even when its flattened copy predates the
-    /// compile. Appended after every gradient stop (ADR-0013 §5 growth).
+    /// compile.
     PlanToken,
+    Bank(usize, PoolKind, usize),
+    MainStart,
+    MainEnd,
+    GradientGroupStart(usize),
+    GradientGroupEnd(usize),
+    PassGroupStart(usize),
+    PassGroupEnd(usize),
 }
 
 /// The three ordinary parameters that make up one gradient stop (ADR-0033 §1).
@@ -111,50 +120,93 @@ const HEAD: [ParamKey; 5] = [
 
 /// AEGP effect stream indexes (the implicit input layer occupies 0, so a
 /// declared parameter's stream index is its declaration position + 1).
-pub const LANGUAGE_STREAM_INDEX: i32 = 1;
-pub const SOURCE_STREAM_INDEX: i32 = 2;
-pub const STATE_TOKEN_STREAM_INDEX: i32 = 5;
+pub const LANGUAGE_STREAM_INDEX: i32 = 2;
+pub const SOURCE_STREAM_INDEX: i32 = 3;
+pub const STATE_TOKEN_STREAM_INDEX: i32 = 6;
 
-/// The complete declaration order — the persistent index contract.
+/// The complete grouped declaration order. Stream identity is pinned by the
+/// `ParamKey` id table; this order controls only panel topology (ADR-0040 §1).
 pub fn declaration_order() -> Vec<ParamKey> {
-    let mut order: Vec<ParamKey> = HEAD.to_vec();
+    let mut order = vec![ParamKey::SetupStart];
+    order.extend(HEAD);
+    order.push(ParamKey::Details);
+    order.push(ParamKey::PlanToken);
+    order.push(ParamKey::SetupEnd);
+    order.push(ParamKey::MainStart);
     for (kind, capacity) in V1_POOLS {
         for i in 0..*capacity {
             order.push(ParamKey::Pool(*kind, i));
         }
     }
-    // ADR-0028 append-only growth: Details rides after every pool slot so
-    // all 0.0.1 indexes stay stable.
-    order.push(ParamKey::Details);
-    // ADR-0030/0031 growth: after Details, never inside the V1 loop above —
-    // Details is index 109 in every project saved by 0.0.2, and widening the
-    // V1 pools would slide it. See `binding::GROWTH_POOLS`.
     for (kind, capacity) in GROWTH_POOLS {
+        if *kind == PoolKind::Gradient {
+            continue;
+        }
         for i in 0..*capacity {
             order.push(ParamKey::Pool(*kind, i));
         }
     }
-    // ADR-0033: a gradient's stops are ordinary parameters. `Pool(Gradient, g)`
-    // above is the preview/canvas row; the value lives in these. Declared last
-    // so every index before them — including Details at 109 and the ADR-0030
-    // Layer slots — keeps its position.
     for g in 0..GRADIENTS {
+        order.push(ParamKey::GradientGroupStart(g));
+        order.push(ParamKey::Pool(PoolKind::Gradient, g));
         order.push(ParamKey::GradientCount(g));
         for stop in 0..STOPS_PER_GRADIENT {
             for field in [GradientField::Position, GradientField::Color, GradientField::Alpha] {
                 order.push(ParamKey::GradientStop(g, stop, field));
             }
         }
+        order.push(ParamKey::GradientGroupEnd(g));
     }
-    // ADR-0038 §7: the plan token rides at the tail so every released index
-    // keeps its position; projects saved before it restore the default 0,
-    // which the resolver reads as "no plan word".
-    order.push(ParamKey::PlanToken);
+    order.push(ParamKey::MainEnd);
+    for group in 0..BANK_GROUPS {
+        order.push(ParamKey::PassGroupStart(group));
+        for (kind, capacity) in BANK_POOLS {
+            for local in 0..*capacity {
+                let slot = slot_for_key(ParamKey::Bank(group, *kind, local))
+                    .expect("declared bank key has a slot");
+                order.push(key_for_slot(slot.kind, slot.index));
+            }
+        }
+        order.push(ParamKey::PassGroupEnd(group));
+    }
     order
 }
 
-/// AEGP stream index of the plan token: the last declared parameter, so it
-/// is derived rather than pinned like the head constants.
+/// Translate a binding-plan slot into its physical topology key.
+pub fn key_for_slot(kind: PoolKind, index: usize) -> ParamKey {
+    let main = main_pool_capacity(kind);
+    if index < main {
+        return ParamKey::Pool(kind, index);
+    }
+    let capacity = bank_capacity(kind);
+    assert!(capacity > 0, "Main-only pool index {index} is out of range for {kind:?}");
+    let offset = index - main;
+    let group = offset / capacity;
+    assert!(group < BANK_GROUPS, "pool index {index} is out of range for {kind:?}");
+    ParamKey::Bank(group, kind, offset % capacity)
+}
+
+/// Inverse of `key_for_slot`; group markers and ordinary controls have no
+/// binding slot.
+pub fn slot_for_key(key: ParamKey) -> Option<SlotRef> {
+    match key {
+        ParamKey::Pool(kind, index) if index < main_pool_capacity(kind) => {
+            Some(SlotRef { kind, index })
+        }
+        ParamKey::Bank(group, kind, local)
+            if group < BANK_GROUPS && local < bank_capacity(kind) =>
+        {
+            Some(SlotRef {
+                kind,
+                index: main_pool_capacity(kind) + group * bank_capacity(kind) + local,
+            })
+        }
+        _ => None,
+    }
+}
+
+/// AEGP stream index of the plan token. It is derived because only the five
+/// fixed heads have direct observer constants.
 pub fn plan_token_stream_index() -> i32 {
     stream_index_of(ParamKey::PlanToken).expect("plan token is declared")
 }
@@ -178,7 +230,15 @@ fn kind_label(kind: PoolKind) -> &'static str {
 /// Default (unbound) display name of a pool slot — the single source for
 /// PARAMS_SETUP and for restoring a slot's label when a binding goes away.
 pub fn default_slot_name(kind: PoolKind, index: usize) -> String {
-    format!("{} {:02}", kind_label(kind), index + 1)
+    match key_for_slot(kind, index) {
+        ParamKey::Pool(_, local) => format!("{} {:02}", kind_label(kind), local + 1),
+        ParamKey::Bank(group, _, local) => default_bank_slot_name(group, kind, local),
+        _ => unreachable!("slot keys are Pool or Bank"),
+    }
+}
+
+fn default_bank_slot_name(group: usize, kind: PoolKind, index: usize) -> String {
+    format!("P{:02} {} {:02}", group + 1, kind_label(kind), index + 1)
 }
 
 /// AEGP effect stream index of a declared parameter (declaration position
@@ -193,8 +253,130 @@ pub fn stream_index_of(key: ParamKey) -> Option<i32> {
 /// Declare the full topology. Iterates `declaration_order()` so the declared
 /// indexes and the contract remain one source.
 pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
-    for key in declaration_order() {
+    let order = declaration_order();
+    let mut cursor = 0;
+    declare_range(params, &order, &mut cursor, None)?;
+    assert_eq!(cursor, order.len(), "all parameter declarations were consumed");
+    Ok(())
+}
+
+fn declare_range(
+    params: &mut ae::Parameters<ParamKey>,
+    order: &[ParamKey],
+    cursor: &mut usize,
+    end: Option<ParamKey>,
+) -> Result<(), ae::Error> {
+    while *cursor < order.len() {
+        let key = order[*cursor];
+        *cursor += 1;
+        if Some(key) == end {
+            return Ok(());
+        }
         match key {
+            ParamKey::SetupStart => params.add_group(
+                key,
+                ParamKey::SetupEnd,
+                "Setup",
+                group_starts_collapsed(key),
+                |inner| declare_range(inner, order, cursor, Some(ParamKey::SetupEnd)),
+            )?,
+            ParamKey::MainStart => params.add_group(
+                key,
+                ParamKey::MainEnd,
+                "Main",
+                group_starts_collapsed(key),
+                |inner| declare_range(inner, order, cursor, Some(ParamKey::MainEnd)),
+            )?,
+            ParamKey::GradientGroupStart(g) => params.add_group(
+                key,
+                ParamKey::GradientGroupEnd(g),
+                &format!("Gradient {:02}", g + 1),
+                group_starts_collapsed(key),
+                |inner| {
+                    declare_range(inner, order, cursor, Some(ParamKey::GradientGroupEnd(g)))
+                },
+            )?,
+            ParamKey::PassGroupStart(group) => params.add_group(
+                key,
+                ParamKey::PassGroupEnd(group),
+                &default_pass_group_name(group),
+                group_starts_collapsed(key),
+                |inner| {
+                    declare_range(inner, order, cursor, Some(ParamKey::PassGroupEnd(group)))
+                },
+            )?,
+            ParamKey::SetupEnd
+            | ParamKey::MainEnd
+            | ParamKey::GradientGroupEnd(_)
+            | ParamKey::PassGroupEnd(_) => {
+                panic!("unexpected group end marker {key:?}")
+            }
+            _ => declare_one(params, key)?,
+        }
+    }
+    assert!(end.is_none(), "missing group end marker {end:?}");
+    Ok(())
+}
+
+fn group_starts_collapsed(key: ParamKey) -> bool {
+    match key {
+        ParamKey::SetupStart => false,
+        ParamKey::MainStart
+        | ParamKey::GradientGroupStart(_)
+        | ParamKey::PassGroupStart(_) => true,
+        _ => unreachable!("{key:?} is not a group start"),
+    }
+}
+
+pub fn default_pass_group_name(group: usize) -> String {
+    format!("Pass {}", group + 1)
+}
+
+pub fn pass_group_name(group: usize, live_name: Option<&str>) -> String {
+    live_name
+        .filter(|name| !name.trim().is_empty())
+        .map(|name| name.chars().take(31).collect())
+        .unwrap_or_else(|| default_pass_group_name(group))
+}
+
+/// Returns the desired Hidden flag for presentation-only group rows. Setup
+/// and Main are topology anchors and therefore have no dynamic visibility.
+pub fn group_hidden(plan: Option<&BindingPlan>, key: ParamKey) -> Option<bool> {
+    let bound = |candidate: ParamKey| {
+        plan.is_some_and(|plan| {
+            plan.bindings.iter().flat_map(|binding| &binding.slots).any(|slot| {
+                let slot_key = key_for_slot(slot.kind, slot.index);
+                match (candidate, slot_key) {
+                    (ParamKey::PassGroupStart(group), ParamKey::Bank(bound_group, _, _))
+                    | (ParamKey::PassGroupEnd(group), ParamKey::Bank(bound_group, _, _)) => {
+                        group == bound_group
+                    }
+                    (
+                        ParamKey::GradientGroupStart(group),
+                        ParamKey::Pool(PoolKind::Gradient, bound_group),
+                    )
+                    | (
+                        ParamKey::GradientGroupEnd(group),
+                        ParamKey::Pool(PoolKind::Gradient, bound_group),
+                    ) => group == bound_group,
+                    _ => false,
+                }
+            })
+        })
+    };
+
+    match key {
+        ParamKey::PassGroupStart(_)
+        | ParamKey::PassGroupEnd(_)
+        | ParamKey::GradientGroupStart(_)
+        | ParamKey::GradientGroupEnd(_) => Some(!bound(key)),
+        ParamKey::SetupStart | ParamKey::SetupEnd | ParamKey::MainStart | ParamKey::MainEnd => None,
+        _ => None,
+    }
+}
+
+fn declare_one(params: &mut ae::Parameters<ParamKey>, key: ParamKey) -> Result<(), ae::Error> {
+    match key {
             ParamKey::Language => {
                 let menu = frontend::popup_menu();
                 params.add_with_flags(
@@ -352,8 +534,14 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
                     }),
                 )?;
             }
-            ParamKey::Pool(kind, i) => {
-                let name = default_slot_name(kind, i);
+            key @ (ParamKey::Pool(..) | ParamKey::Bank(..)) => {
+                let (kind, name) = match key {
+                    ParamKey::Pool(kind, index) => (kind, default_slot_name(kind, index)),
+                    ParamKey::Bank(group, kind, index) => {
+                        (kind, default_bank_slot_name(group, kind, index))
+                    }
+                    _ => unreachable!(),
+                };
                 match kind {
                     // ADR-0037: the valid range is wide and fixed here; the
                     // slider range is the display default a binding replaces.
@@ -489,11 +677,8 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
                     // by itself.
                     //
                     // The slot survives as an inert, permanently invisible
-                    // float: it is the binding anchor `hint:gradient` resolves
-                    // to, and it holds its declaration index so the ADR-0013 §5
-                    // append-only topology contract still holds for every
-                    // parameter declared after it. It is never shown and never
-                    // read.
+                    // float: it is the stable binding anchor `hint:gradient`
+                    // resolves to. It is never shown and never read.
                     PoolKind::Gradient => params.add_with_flags(
                         key,
                         &name,
@@ -509,7 +694,16 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
                     )?,
                 }
             }
-        }
+            ParamKey::SetupStart
+            | ParamKey::SetupEnd
+            | ParamKey::MainStart
+            | ParamKey::MainEnd
+            | ParamKey::GradientGroupStart(_)
+            | ParamKey::GradientGroupEnd(_)
+            | ParamKey::PassGroupStart(_)
+            | ParamKey::PassGroupEnd(_) => {
+                unreachable!("group markers are declared by add_group")
+            }
     }
     Ok(())
 }
@@ -552,76 +746,170 @@ mod tests {
     }
 
     #[test]
-    fn topology_has_five_heads_104_pool_slots_and_details() {
+    fn grouped_topology_has_balanced_nested_markers() {
         let order = declaration_order();
-        assert_eq!(&order[..5], &HEAD);
-        // The 0.0.2 prefix is frozen: 5 heads + 104 V1 pool slots, then
-        // Details at 109. Every project saved by a released build binds its
-        // parameter streams to these positions, so this assertion may only
-        // ever be *extended* past index 109 — never renumbered.
-        assert_eq!(order[109], ParamKey::Details);
-        // ADR-0030/0031/0034/0035 pool growth, then the ADR-0033 stop
-        // parameters, all strictly after Details.
-        let pools: usize = GROWTH_POOLS.iter().map(|(_, capacity)| capacity).sum();
-        let stops = GRADIENTS * (1 + STOPS_PER_GRADIENT * 3);
-        // ADR-0038 §7: the plan token is the single parameter after the stops.
-        assert_eq!(order.len(), 110 + pools + stops + 1);
-        assert_eq!(order[order.len() - 1], ParamKey::PlanToken);
-        assert_eq!(plan_token_stream_index() as usize, order.len());
-        // 4 Layer + 2 Gradient anchors + 8 Point 3D + 2 Path, then
-        // 2 x (1 count + 8 x 3 stop fields).
-        assert_eq!(pools, 16);
-        assert_eq!(stops, 50);
-        assert!(
-            order[110..110 + pools].iter().all(|k| matches!(k, ParamKey::Pool(..))),
-            "the pool segment carries pool slots only"
-        );
-        assert!(
-            order[110 + pools..110 + pools + stops].iter().all(|k| matches!(
-                k,
-                ParamKey::GradientCount(_) | ParamKey::GradientStop(..)
-            )),
-            "the stop segment carries ADR-0033 stop parameters only"
-        );
-    }
+        assert_eq!(order[0], ParamKey::SetupStart);
+        assert_eq!(&order[1..6], &HEAD);
+        assert_eq!(order[6], ParamKey::Details);
+        assert_eq!(order[7], ParamKey::PlanToken);
+        assert_eq!(order[8], ParamKey::SetupEnd);
+        assert_eq!(order[9], ParamKey::MainStart);
 
-    /// The released prefix cannot move. Reconstructing it from the frozen
-    /// `V1_POOLS` table and comparing against the live order is what makes a
-    /// later append fail loudly if someone widens a V1 pool instead of
-    /// appending to `GROWTH_POOLS`.
-    #[test]
-    fn released_prefix_is_frozen_through_details() {
-        let order = declaration_order();
-        let mut expected: Vec<ParamKey> = HEAD.to_vec();
-        for (kind, capacity) in V1_POOLS {
-            for i in 0..*capacity {
-                expected.push(ParamKey::Pool(*kind, i));
+        let v1_slots: usize = V1_POOLS.iter().map(|(_, capacity)| capacity).sum();
+        let main_growth: usize = GROWTH_POOLS
+            .iter()
+            .filter(|(kind, _)| *kind != PoolKind::Gradient)
+            .map(|(_, capacity)| capacity)
+            .sum();
+        let gradient_rows =
+            GRADIENTS * (1 + 1 + STOPS_PER_GRADIENT * 3 + 2);
+        let bank_slots: usize = BANK_POOLS.iter().map(|(_, capacity)| capacity).sum();
+        assert_eq!(v1_slots, 104);
+        assert_eq!(main_growth, 14);
+        assert_eq!(bank_slots, 18);
+        assert_eq!(
+            BANK_POOLS,
+            &[
+                (PoolKind::Float, 8),
+                (PoolKind::Integer, 2),
+                (PoolKind::Bool, 2),
+                (PoolKind::Color, 3),
+                (PoolKind::Point2D, 2),
+                (PoolKind::Angle, 1),
+            ]
+        );
+        let expected = HEAD.len()
+            + 2
+            + 2
+            + 2
+            + v1_slots
+            + main_growth
+            + gradient_rows
+            + BANK_GROUPS * (bank_slots + 2);
+        assert_eq!(order.len(), expected);
+
+        let mut stack = Vec::new();
+        for key in &order {
+            match *key {
+                ParamKey::SetupStart => {
+                    assert!(stack.is_empty(), "Setup must be top-level");
+                    stack.push(*key);
+                }
+                ParamKey::MainStart => {
+                    assert!(stack.is_empty(), "Main must be top-level");
+                    stack.push(*key);
+                }
+                ParamKey::GradientGroupStart(_) => {
+                    assert_eq!(stack.last(), Some(&ParamKey::MainStart));
+                    stack.push(*key);
+                }
+                ParamKey::PassGroupStart(_) => {
+                    assert!(stack.is_empty(), "pass groups must be top-level");
+                    stack.push(*key);
+                }
+                ParamKey::SetupEnd => assert_eq!(stack.pop(), Some(ParamKey::SetupStart)),
+                ParamKey::MainEnd => assert_eq!(stack.pop(), Some(ParamKey::MainStart)),
+                ParamKey::GradientGroupEnd(g) => {
+                    assert_eq!(stack.pop(), Some(ParamKey::GradientGroupStart(g)))
+                }
+                ParamKey::PassGroupEnd(group) => {
+                    assert_eq!(stack.pop(), Some(ParamKey::PassGroupStart(group)))
+                }
+                _ => {}
             }
         }
-        expected.push(ParamKey::Details);
-        assert_eq!(expected.len(), 110);
-        assert_eq!(&order[..110], &expected[..]);
+        assert!(stack.is_empty(), "every group marker must be balanced");
     }
 
-    /// The pool segment mirrors V1_POOLS exactly: table order, kind-local
-    /// indexes 0..capacity, no gaps. This is the index contract a future
-    /// append must extend at the tail only.
     #[test]
-    fn pool_segment_mirrors_the_configuration_source() {
-        let order = declaration_order();
-        let mut expected = Vec::new();
-        for (kind, capacity) in V1_POOLS {
-            for i in 0..*capacity {
-                expected.push(ParamKey::Pool(*kind, i));
+    fn setup_is_the_only_group_declared_expanded() {
+        assert!(!group_starts_collapsed(ParamKey::SetupStart));
+        assert!(group_starts_collapsed(ParamKey::MainStart));
+        for group in 0..BANK_GROUPS {
+            assert!(group_starts_collapsed(ParamKey::PassGroupStart(group)));
+        }
+        for gradient in 0..GRADIENTS {
+            assert!(group_starts_collapsed(ParamKey::GradientGroupStart(gradient)));
+        }
+    }
+
+    /// Released `Debug` renderings are persisted AE stream identities. The
+    /// former declaration-index freeze is superseded by this id contract
+    /// (ADR-0040 §1).
+    #[test]
+    fn debug_renderings_and_murmur3_ids_are_golden_and_collision_free() {
+        use std::hash::{Hash, Hasher};
+
+        let golden = [
+            (ParamKey::SetupStart, "SetupStart"),
+            (ParamKey::SetupEnd, "SetupEnd"),
+            (ParamKey::Language, "Language"),
+            (ParamKey::Source, "Source"),
+            (ParamKey::Compile, "Compile"),
+            (ParamKey::Status, "Status"),
+            (ParamKey::StateToken, "StateToken"),
+            (ParamKey::Details, "Details"),
+            (ParamKey::PlanToken, "PlanToken"),
+            (ParamKey::Pool(PoolKind::Float, 0), "Pool(Float, 0)"),
+            (ParamKey::Pool(PoolKind::Float, 47), "Pool(Float, 47)"),
+            (ParamKey::Pool(PoolKind::Gradient, 0), "Pool(Gradient, 0)"),
+            (ParamKey::GradientCount(0), "GradientCount(0)"),
+            (
+                ParamKey::GradientStop(0, 0, GradientField::Position),
+                "GradientStop(0, 0, Position)",
+            ),
+            (ParamKey::MainStart, "MainStart"),
+            (ParamKey::MainEnd, "MainEnd"),
+            (ParamKey::GradientGroupStart(0), "GradientGroupStart(0)"),
+            (ParamKey::GradientGroupEnd(0), "GradientGroupEnd(0)"),
+            (ParamKey::PassGroupStart(0), "PassGroupStart(0)"),
+            (ParamKey::PassGroupEnd(0), "PassGroupEnd(0)"),
+            (ParamKey::Bank(0, PoolKind::Float, 0), "Bank(0, Float, 0)"),
+        ];
+        for (key, expected) in golden {
+            assert_eq!(
+                format!("{key:?}"),
+                expected,
+                "ParamKey Debug rendering changed; this breaks persisted AE stream identity"
+            );
+        }
+
+        let mut renderings = std::collections::HashSet::new();
+        let mut ids = std::collections::HashMap::new();
+        for key in declaration_order() {
+            let rendering = format!("{key:?}");
+            assert!(
+                renderings.insert(rendering.clone()),
+                "duplicate ParamKey Debug rendering: {rendering}"
+            );
+            let mut hasher = hash32::Murmur3Hasher::default();
+            rendering.hash(&mut hasher);
+            let id = hasher.finish() as i32;
+            assert!(
+                ids.insert(id, rendering.clone()).is_none(),
+                "murmur3 id collision for {rendering}: {id}"
+            );
+        }
+    }
+
+    #[test]
+    fn slot_key_mapping_is_bijective() {
+        for (kind, capacity) in crate::binding::all_pools() {
+            for index in 0..capacity {
+                let slot = SlotRef { kind, index };
+                assert_eq!(slot_for_key(key_for_slot(kind, index)), Some(slot));
             }
         }
-        assert_eq!(&order[5..109], &expected[..]);
+        assert_eq!(
+            default_slot_name(PoolKind::Float, main_pool_capacity(PoolKind::Float)),
+            "P01 Float 01"
+        );
     }
 
     #[test]
     fn every_pool_kind_has_a_label() {
         for (kind, _) in crate::binding::all_pools() {
-            assert!(!kind_label(*kind).is_empty());
+            assert!(!kind_label(kind).is_empty());
         }
     }
 
@@ -635,38 +923,73 @@ mod tests {
         let property_index = |key: ParamKey| {
             order.iter().position(|k| *k == key).map(|p| p + 1)
         };
-        assert_eq!(
-            property_index(ParamKey::Pool(PoolKind::Layer, 0)),
-            Some(111),
-            "f003a_layer.jsx probes property 111"
-        );
+        assert_eq!(property_index(ParamKey::Pool(PoolKind::Layer, 0)), Some(115));
         assert_eq!(
             property_index(ParamKey::Pool(PoolKind::Gradient, 0)),
-            Some(115),
-            "f003b_gradient.jsx probes property 115"
+            Some(130)
         );
-        // ADR-0034/0035 appended ten more pool slots between the gradient
-        // anchors and the stop parameters, so the stop block starts ten later.
         assert_eq!(
             property_index(ParamKey::Pool(PoolKind::Point3D, 0)),
-            Some(117),
-            "f003f_point3d.jsx probes property 117"
+            Some(119)
         );
+        assert_eq!(property_index(ParamKey::Pool(PoolKind::Path, 0)), Some(127));
+        assert_eq!(property_index(ParamKey::GradientCount(0)), Some(131));
+        assert_eq!(property_index(ParamKey::Pool(PoolKind::Float, 0)), Some(11));
+        assert_eq!(property_index(ParamKey::Pool(PoolKind::Float, 1)), Some(12));
+        assert_eq!(property_index(ParamKey::Pool(PoolKind::Integer, 0)), Some(59));
         assert_eq!(
-            property_index(ParamKey::Pool(PoolKind::Path, 0)),
-            Some(125),
-            "f003g_path.jsx probes property 125"
+            property_index(ParamKey::Bank(0, PoolKind::Float, 0)),
+            Some(187)
         );
-        assert_eq!(
-            property_index(ParamKey::GradientCount(0)),
-            Some(127),
-            "f003b_gradient.jsx reads the stop block from property 127"
-        );
-        // TR-0037-001 (f003h_range.jsx) drives the first two Float slots and
-        // the first Integer slot; these are frozen V1 positions.
-        assert_eq!(property_index(ParamKey::Pool(PoolKind::Float, 0)), Some(6), "f003h: wide");
-        assert_eq!(property_index(ParamKey::Pool(PoolKind::Float, 1)), Some(7), "f003h: neg");
-        assert_eq!(property_index(ParamKey::Pool(PoolKind::Integer, 0)), Some(54), "f003h: count");
+    }
+
+    #[test]
+    fn group_presentation_decisions_follow_the_binding_plan() {
+        use crate::binding::{ParamBinding, SlotRef};
+        use crate::definition::param::ParamId;
+
+        for group in 0..BANK_GROUPS {
+            assert_eq!(group_hidden(None, ParamKey::PassGroupStart(group)), Some(true));
+            assert_eq!(group_hidden(None, ParamKey::PassGroupEnd(group)), Some(true));
+        }
+        for gradient in 0..GRADIENTS {
+            assert_eq!(group_hidden(None, ParamKey::GradientGroupStart(gradient)), Some(true));
+            assert_eq!(group_hidden(None, ParamKey::GradientGroupEnd(gradient)), Some(true));
+        }
+        assert_eq!(group_hidden(None, ParamKey::SetupStart), None);
+        assert_eq!(group_hidden(None, ParamKey::MainStart), None);
+
+        let pass_slot = slot_for_key(ParamKey::Bank(2, PoolKind::Float, 0)).unwrap();
+        let plan = BindingPlan {
+            bindings: vec![
+                ParamBinding {
+                    id: ParamId::new("pass_value").unwrap(),
+                    slots: vec![pass_slot],
+                    inherited: false,
+                },
+                ParamBinding {
+                    id: ParamId::new("gradient_value").unwrap(),
+                    slots: vec![SlotRef { kind: PoolKind::Gradient, index: 1 }],
+                    inherited: false,
+                },
+            ],
+        };
+        assert_eq!(group_hidden(Some(&plan), ParamKey::PassGroupStart(2)), Some(false));
+        assert_eq!(group_hidden(Some(&plan), ParamKey::PassGroupEnd(2)), Some(false));
+        assert_eq!(group_hidden(Some(&plan), ParamKey::PassGroupStart(1)), Some(true));
+        assert_eq!(group_hidden(Some(&plan), ParamKey::GradientGroupStart(1)), Some(false));
+        assert_eq!(group_hidden(Some(&plan), ParamKey::GradientGroupEnd(1)), Some(false));
+        assert_eq!(group_hidden(Some(&plan), ParamKey::GradientGroupStart(0)), Some(true));
+    }
+
+    #[test]
+    fn pass_group_names_use_live_names_with_pf_fallbacks() {
+        assert_eq!(pass_group_name(0, Some("blur_h")), "blur_h");
+        assert_eq!(pass_group_name(1, None), "Pass 2");
+        assert_eq!(pass_group_name(2, Some("   ")), "Pass 3");
+        let long = "abcdefghijklmnopqrstuvwxyz0123456789";
+        assert_eq!(pass_group_name(0, Some(long)), "abcdefghijklmnopqrstuvwxyz01234");
+        assert_eq!(pass_group_name(0, Some(long)).chars().count(), 31);
     }
 
     /// Stream indexes are declaration positions + 1 (input layer at 0).

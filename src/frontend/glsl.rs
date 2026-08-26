@@ -199,8 +199,13 @@ fn reflect_user_params(
         // ones are contract and fail closed on any inconsistency.
         let mut aliases = Vec::new();
         let mut ui = ParamUiMeta::default();
+        let mut canvas = false;
         if let Some(annotation) = annotations.get(&name) {
             match (annotation.hint, ty) {
+                (Some(Hint::Canvas), ShaderParamType::Float) => canvas = true,
+                (Some(Hint::Canvas), _) => {
+                    return Err(FrontendError::CanvasWrongKind(name));
+                }
                 (Some(Hint::Angle), ShaderParamType::Float) => ty = ShaderParamType::AngleFloat,
                 (Some(Hint::Angle), _) => {
                     return Err(FrontendError::Param(format!(
@@ -319,7 +324,7 @@ fn reflect_user_params(
             }
         };
         entries.push(UniformEntry { offset: member.offset as usize, words, int });
-        params.push(ParamDeclaration { id, ty, aliases, ui });
+        params.push(ParamDeclaration { id, ty, aliases, ui, canvas, bank: None });
     }
     let layout = UniformBlockLayout { block_size: (*span as usize).max(16), entries };
     Ok((params, layout))
@@ -507,6 +512,31 @@ void main() { outColor = vec4(sweep + level + u_time + u_frame) + vec4(u_resolut
         assert_eq!(aliases, vec!["gain"]);
         // `ghost` names no member: stale annotations are ignored.
         assert_eq!(pm.params.len(), 2);
+    }
+
+    #[test]
+    fn canvas_hint_marks_a_scalar_float_without_retyping_it() {
+        let src = r#"
+#version 450
+layout(location = 0) out vec4 outColor;
+// @param reach min:0 max:512 default:64 hint:canvas
+layout(set = 0, binding = 2) uniform FxUniforms {
+    vec2 u_resolution;
+    float u_time;
+    float u_frame;
+    float reach;
+};
+void main() { outColor = vec4(reach + u_time + u_frame + u_resolution.x); }
+"#;
+        let pm = parse(src).expect("canvas float");
+        assert_eq!(pm.params[0].ty, ShaderParamType::Float);
+        assert!(pm.params[0].canvas);
+
+        let wrong_kind = src.replace("float reach;", "int reach;");
+        assert!(matches!(
+            parse(&wrong_kind),
+            Err(FrontendError::CanvasWrongKind(name)) if name == "reach"
+        ));
     }
 
     /// ADR-0034. The whole point of the hint is that it is the ONLY way to

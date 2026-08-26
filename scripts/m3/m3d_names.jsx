@@ -18,9 +18,9 @@
         }
         var fx = comp.layer(1).property("ADBE Effect Parade").property(1);
         var slot1 = "", status = "", keys = -1;
-        try { slot1 = fx.property(6).name; } catch (e1) {}
-        try { status = fx.property(4).name; } catch (e2) {}
-        try { keys = fx.property(6).numKeys; } catch (e3) {}
+        try { slot1 = fx.property(14).name; } catch (e1) {}
+        try { status = fx.property(5).name; } catch (e2) {}
+        try { keys = fx.property(14).numKeys; } catch (e3) {}
         comp.openInViewer();
         comp.saveFrameToPng(0.4, new File(OUT + "m3d_t04.png"));
         logLine("RESTORED slot1=[" + slot1 + "] status=[" + status + "] numKeys=" + keys);

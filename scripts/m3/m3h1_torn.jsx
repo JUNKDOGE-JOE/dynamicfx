@@ -21,10 +21,10 @@
         // Undo the m3g layer edits so session 4 continues from a clean comp.
         while (comp.numLayers > 1) { comp.layer(1).remove(); }
         var fx = comp.layer(1).property("ADBE Effect Parade").property(1);
-        var before = fx.property(5).value;
+        var before = fx.property(6).value;
         // (1<<2)|1 = 5.0: a well-formed Active token whose fingerprint (1)
         // matches nothing in the registry.
-        fx.property(5).setValue(5);
+        fx.property(6).setValue(5);
         logLine("TORN before=" + before + " written=5");
         comp.openInViewer();
         comp.saveFrameToPng(0.4, new File(OUT + "m3h1_torn.png"));

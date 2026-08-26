@@ -14,7 +14,7 @@
         }
         if (!comp) throw new Error("comp not found");
         var fx = comp.layer(1).property("Effects").property("DynamicFx");
-        say("expr len: " + fx.property(1).expression.length);
+        say("expr len: " + fx.property(2).expression.length);
 
         app.purge(PurgeTarget.ALL_CACHES);
         say("caches purged");

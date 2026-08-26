@@ -58,7 +58,7 @@ function m6Step4() {
     m6Guard("step4", function () {
         // Recompile with a smaller window: the plateau must follow W.
         var fx = m6Fx(m6Find("m6acc32"));
-        fx.property(2).expression = "`" + m6AccSource("1.0/64.0", 8) + "`;0";
+        fx.property(3).expression = "`" + m6AccSource("1.0/64.0", 8) + "`;0";
         m6Log(M6LOG, "STEP4 recompiled with @window 8");
         app.scheduleTask("m6Step5()", 14000, false);
     });

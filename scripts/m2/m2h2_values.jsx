@@ -23,23 +23,31 @@
         }
         var fx = comp.layer(1).property("ADBE Effect Parade").property(1);
 
+        // Layout-proof: address bound slots by their applied LABEL, never by
+        // property index. Index literals here went stale across the ADR-0040/41
+        // topology shifts twice (the second time hidden by a repin gap), so the
+        // lookup is now by the names the idle observer applied.
+        function byName(label) {
+            for (var i = 1; i <= fx.numProperties; i++) {
+                try { if (fx.property(i).name === label) return fx.property(i); } catch (eB) {}
+            }
+            return null;
+        }
+        var labels = ["Count", "flag", "tint", "center", "sweep"];
         var names = [];
-        var probes = [[54, "count->Count"], [62, "flag"], [78, "tint"], [90, "center"], [102, "sweep"]];
-        for (var i = 0; i < probes.length; i++) {
-            var nm = "";
-            try { nm = fx.property(probes[i][0]).name; } catch (eN) {}
-            names.push(probes[i][1] + "=[" + nm + "]");
+        for (var i = 0; i < labels.length; i++) {
+            names.push(labels[i] + "=[" + (byName(labels[i]) ? "found" : "MISSING") + "]");
         }
         logLine("SLOT_NAMES " + names.join(" "));
         var countValue = -1, flagValue = -1, sweepValue = -1;
-        try { countValue = fx.property(54).value; } catch (e1) {}
-        try { flagValue = fx.property(62).value; } catch (e2) {}
-        try { sweepValue = fx.property(102).value; } catch (e3) {}
+        try { countValue = byName("Count").value; } catch (e1) {}
+        try { flagValue = byName("flag").value ? 1 : 0; } catch (e2) {}
+        try { sweepValue = byName("sweep").value; } catch (e3) {}
         logLine("DEFAULTS count=" + countValue + " flag=" + flagValue + " sweep=" + sweepValue);
 
         // Color takes 0..1 RGBA; Point takes comp pixels.
-        fx.property(78).setValue([1, 0.5, 0.25, 1]);
-        fx.property(90).setValue([240, 60]);
+        byName("tint").setValue([1, 0.5, 0.25, 1]);
+        byName("center").setValue([240, 60]);
         logLine("VALUES set tint=[1,0.5,0.25] center=[240,60]");
 
         comp.openInViewer();

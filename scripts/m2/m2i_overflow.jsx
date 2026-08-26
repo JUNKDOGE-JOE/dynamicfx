@@ -31,8 +31,8 @@
             members +
             "};\n" +
             "void main() { outColor = vec4(f0, f1, f48, 1.0); }\n";
-        fx.property(2).expression = "`" + src + "`;0";
-        logLine("OVERFLOW_EXPR set (49 floats) exprErr=[" + fx.property(2).expressionError + "]");
+        fx.property(3).expression = "`" + src + "`;0";
+        logLine("OVERFLOW_EXPR set (49 floats) exprErr=[" + fx.property(3).expressionError + "]");
         logLine("RESULT M2I overflow_set=1");
     } catch (e) {
         logLine("SCRIPT_ERROR " + String(e));

@@ -18,12 +18,12 @@
             }
         }
         var fx = comp.layer(1).property("ADBE Effect Parade").property(1);
-        var corrected = fx.property(5).value;
+        var corrected = fx.property(6).value;
         logLine("CORRECTED token=" + corrected + " (must differ from 5 and be nonzero)");
 
         // Undo leg: commit an invalid source (this goes on the undo stack).
         app.beginUndoGroup("dfx invalid edit");
-        fx.property(2).expression = "`broken source`;0";
+        fx.property(3).expression = "`broken source`;0";
         app.endUndoGroup();
         logLine("INVALID committed for the undo leg");
         logLine("RESULT M3H2 corrected=" + corrected);

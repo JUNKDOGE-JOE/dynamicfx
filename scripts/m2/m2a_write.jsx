@@ -31,9 +31,9 @@
             "    float gain;\n" +
             "};\n" +
             "void main() { outColor = vec4(gain, gain, gain, 1.0); }\n";
-        fx.property(2).expression = "`" + src + "`;0";
-        logLine("EXPR set len=" + fx.property(2).expression.length +
-            " exprErr=[" + fx.property(2).expressionError + "]");
+        fx.property(3).expression = "`" + src + "`;0";
+        logLine("EXPR set len=" + fx.property(3).expression.length +
+            " exprErr=[" + fx.property(3).expressionError + "]");
         logLine("RESULT M2A expr_set=1");
     } catch (e) {
         logLine("SCRIPT_ERROR " + String(e));
