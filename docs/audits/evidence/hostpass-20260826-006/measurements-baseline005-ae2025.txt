@@ -1,0 +1,5 @@
+[measure] tag=baseline005-ae2025 ae=25.6.6x4
+addProperty ms per sample: [9.0, 5.0, 5.0] (median 5)
+exec RTT ms with 3 instances: median 19.8 (p90 45.8)
+exec RTT ms with 0 instances: median 10.0 (p90 26.5)
+one-instance .aep bytes: 170213

@@ -1,0 +1,89 @@
+Status: compiled: 10 passes, 22
+{
+ "heads": [
+  "1=Setup"
+ ],
+ "Main": [
+  "11=Flow Speed",
+  "12=Heat Depth (px)",
+  "13=Edge Line (px)",
+  "14=Wall Thickness (px)",
+  "15=Wall Heat",
+  "16=Rim Warmth",
+  "17=Edge Line Heat",
+  "18=Core Temp",
+  "19=Flow Scale",
+  "20=Flow Amount",
+  "21=Turbulence",
+  "22=Contrast",
+  "23=Heat Bias",
+  "24=Outer Glow",
+  "25=Outer Glow Radius (px)",
+  "26=Softness",
+  "27=Softness Radius (px)",
+  "28=Grain",
+  "67=Use Custom Ramp",
+  "107=Wall Direction",
+  "108=Heat Bias Direction",
+  "130=Custom Ramp",
+  "131=Custom Ramp Stops",
+  "132=Custom Ramp 01 Pos",
+  "133=Custom Ramp 01 Color",
+  "134=Custom Ramp 01 Alpha",
+  "135=Custom Ramp 02 Pos",
+  "136=Custom Ramp 02 Color",
+  "137=Custom Ramp 02 Alpha",
+  "138=Custom Ramp 03 Pos",
+  "139=Custom Ramp 03 Color",
+  "140=Custom Ramp 03 Alpha",
+  "141=Custom Ramp 04 Pos",
+  "142=Custom Ramp 04 Color",
+  "143=Custom Ramp 04 Alpha",
+  "144=Custom Ramp 05 Pos",
+  "145=Custom Ramp 05 Color",
+  "146=Custom Ramp 05 Alpha",
+  "147=Custom Ramp 06 Pos",
+  "148=Custom Ramp 06 Color",
+  "149=Custom Ramp 06 Alpha",
+  "150=Custom Ramp 07 Pos",
+  "151=Custom Ramp 07 Color",
+  "152=Custom Ramp 07 Alpha",
+  "153=Custom Ramp 08 Pos",
+  "154=Custom Ramp 08 Color",
+  "155=Custom Ramp 08 Alpha"
+ ],
+ "Pass1-marker": [
+  "186=sh"
+ ],
+ "Pass2-marker": [
+  "206=sv"
+ ],
+ "Pass3-marker": [
+  "226=dh"
+ ],
+ "Pass4-marker": [
+  "246=dv"
+ ],
+ "Pass5-marker": [
+  "266=temp"
+ ],
+ "Pass6-marker": [
+  "286=sbh"
+ ],
+ "Pass7-marker": [
+  "306=sbv"
+ ],
+ "Pass8-marker": [
+  "326=th"
+ ],
+ "Pass9-marker": [
+  "346=tv"
+ ],
+ "Pass10-marker": [
+  "366=col"
+ ],
+ "Pass13-marker": [
+  "426=效果不透明度",
+  "426=GPU 渲染"
+ ]
+}

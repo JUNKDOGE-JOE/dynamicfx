@@ -1,0 +1,2 @@
+Status: idle
+11=Shared Gain | 186=warm | 187=Warm Tint | 206=cool | 207=Cool Tint

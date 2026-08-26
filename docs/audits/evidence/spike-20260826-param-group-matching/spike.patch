@@ -1,0 +1,81 @@
+diff --git a/src/host/params.rs b/src/host/params.rs
+index 5e4bc32..fadf658 100644
+--- a/src/host/params.rs
++++ b/src/host/params.rs
+@@ -42,6 +42,12 @@ pub enum ParamKey {
+     /// own instance's entry even when its flattened copy predates the
+     /// compile. Appended after every gradient stop (ADR-0013 §5 growth).
+     PlanToken,
++    /// SPIKE TR-GRP-001 ONLY (never ship): a topic wrapped around the Float
++    /// pool to shift every declaration index after the heads, so a project
++    /// saved by 0.0.5 measures whether AE re-matches streams by declaration
++    /// index or by `PF_ParamDef.uu.id`.
++    SpikeGroupStart,
++    SpikeGroupEnd,
+ }
+ 
+ /// The three ordinary parameters that make up one gradient stop (ADR-0033 §1).
+@@ -150,6 +156,19 @@ pub fn declaration_order() -> Vec<ParamKey> {
+     // keeps its position; projects saved before it restore the default 0,
+     // which the resolver reads as "no plan word".
+     order.push(ParamKey::PlanToken);
++    // SPIKE TR-GRP-001: wrap the Float pool in a topic. Start lands at the
++    // released Float 01 position (5) and End right after Float 48, shifting
++    // the floats by +1 and everything after them by +2.
++    let float_first = order
++        .iter()
++        .position(|k| *k == ParamKey::Pool(PoolKind::Float, 0))
++        .expect("float pool declared");
++    order.insert(float_first, ParamKey::SpikeGroupStart);
++    let float_last = order
++        .iter()
++        .position(|k| matches!(k, ParamKey::Pool(PoolKind::Float, i) if *i + 1 == crate::binding::pool_capacity(PoolKind::Float)))
++        .expect("last float declared");
++    order.insert(float_last + 1, ParamKey::SpikeGroupEnd);
+     order
+ }
+ 
+@@ -193,7 +212,32 @@ pub fn stream_index_of(key: ParamKey) -> Option<i32> {
+ /// Declare the full topology. Iterates `declaration_order()` so the declared
+ /// indexes and the contract remain one source.
+ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
+-    for key in declaration_order() {
++    let order = declaration_order();
++    let mut i = 0;
++    while i < order.len() {
++        if order[i] == ParamKey::SpikeGroupStart {
++            let end = order
++                .iter()
++                .position(|k| *k == ParamKey::SpikeGroupEnd)
++                .expect("spike group end is declared");
++            let inner: Vec<ParamKey> = order[i + 1..end].to_vec();
++            params.add_group(ParamKey::SpikeGroupStart, ParamKey::SpikeGroupEnd, "Floats", true, |p| {
++                for k in inner {
++                    declare_one(p, k)?;
++                }
++                Ok(())
++            })?;
++            i = end + 1;
++        } else {
++            declare_one(params, order[i])?;
++            i += 1;
++        }
++    }
++    Ok(())
++}
++
++fn declare_one(params: &mut ae::Parameters<ParamKey>, key: ParamKey) -> Result<(), ae::Error> {
++    {
+         match key {
+             ParamKey::Language => {
+                 let menu = frontend::popup_menu();
+@@ -509,6 +553,9 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
+                     )?,
+                 }
+             }
++            ParamKey::SpikeGroupStart | ParamKey::SpikeGroupEnd => {
++                unreachable!("group markers are declared by add_group in setup")
++            }
+         }
+     }
+     Ok(())

@@ -1,0 +1,5 @@
+[measure] tag=batch-ae2026 ae=26.3x87
+addProperty ms per sample: [13.0, 7.0, 8.0] (median 8)
+exec RTT ms with 3 instances: median 14.6 (p90 30.2)
+exec RTT ms with 0 instances: median 12.2 (p90 31.6)
+one-instance .aep bytes: 294311

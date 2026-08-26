@@ -1,0 +1,20 @@
+[host] AE 25.6.6x4
+  index check (cvs): Source (use expression)|Float 01|Color 01
+  ref160 compiled: Status: idle
+  ref256 compiled: Status: idle
+  ref160 bbox=(240, 240, 784, 784) layer=[384..640] allowed reach=160
+  ref256 bbox=(240, 240, 784, 784) layer=[384..640] allowed reach=160
+  cvs compiled: Status: compiled: 1 pass, 2 par
+  L1 bbox=(384, 384, 640, 640) layer=[384..640] allowed reach=0
+  grow_bounds matchName: 'Red Giant GrowBounds'
+  grow_bounds params: Pixels|合成选项
+  L2 bbox=(240, 240, 784, 784) layer=[384..640] allowed reach=160
+  L2 vs ref256 mean|diff|=0.000 peak=0 (tolerance mean<=2.0)
+  cvs compiled: Status: compiled: 1 pass, 2 par
+  L3 bbox=(240, 240, 784, 784) layer=[384..640] allowed reach=160
+  L3 vs ref160 mean|diff|=0.000 peak=0 (tolerance mean<=2.0)
+  grow_bounds params: Pixels|合成选项
+  L4 bbox=(326, 326, 698, 698) layer=[384..640] allowed reach=64
+  L5 t=0 bbox=(384, 384, 640, 640) layer=[384..640] allowed reach=0
+  L5 t=1 bbox=(204, 204, 820, 820) layer=[384..640] allowed reach=200
+[VERDICT] PASS - every canvas leg behaved per ADR-0039

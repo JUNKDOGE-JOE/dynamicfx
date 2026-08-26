@@ -1,0 +1,14 @@
+KEPT Float 01           want=11.5 after=11.5
+KEPT Float 48           want=-3.25 after=-3.25
+KEPT Int 01             want=7.0 after=7.0
+KEPT Bool 01            want=1.0 after=1.0
+KEPT Color 01           want=[0.1, 0.2, 0.3, 1.0] after=[0.1, 0.2, 0.3, 1.0]
+KEPT Point 01           want=[30.0, 40.0] after=[30.0, 40.0]
+KEPT Angle 01           want=45.0 after=45.0
+KEPT Point 3D 01        want=[10.0, 20.0, 30.0] after=[10.0, 20.0, 30.0]
+KEPT Layer 01           want=2.0 after=2.0
+KEPT Gradient 01 Stops  want=5.0 after=5.0
+KEPT G01 Stop 01 Pos    want=0.42 after=0.42
+KEPT Float 02 keyframes nk=2 k0=1.25 k1=2.5
+KEPT Float 03 expression='0.123'
+[VERDICT] PASS - all probes intact (r3-ae2025)

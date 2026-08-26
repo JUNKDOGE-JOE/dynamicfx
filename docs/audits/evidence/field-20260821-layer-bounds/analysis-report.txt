@@ -1,0 +1,6 @@
+A: visible bbox x256..768 y256..768 size 512x512; visible px 262144, outside the 512 square 0 (0.0%)
+B: visible bbox x256..768 y256..768 size 512x512; visible px 262144, outside the 512 square 0 (0.0%)
+C: visible bbox x119..885 y92..947 size 766x855; visible px 515254, outside the 512 square 253110 (49.1%)
+B vs C: mean |diff| 13.799, max 255, px differing >8: 437288
+A vs C: mean |diff| 13.799, max 255, px differing >8: 437288
+inner square A vs C: mean |diff| 20.071; B vs C: 20.071
