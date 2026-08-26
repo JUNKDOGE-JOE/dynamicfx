@@ -390,6 +390,23 @@ parameters by **numeric property index**, those indexes shifted once in
 0.0.6 (group rows occupy positions). Address rows by name instead — names
 and matchNames are stable.
 
+### Performance: passes are the price
+
+Every pass renders a full-canvas texture, so frame cost scales roughly with
+`passes × canvas area` — a 9-pass graph at 1080p is ~9 full-screen draws per
+frame, and temporal (`@window`) shaders multiply that again by their window.
+When previews feel slow, the pass count is the first place to look:
+
+- **Use as few passes as the algorithm truly needs.** Merge stages that don't
+  read each other's intermediate results — chained per-pixel math (tint →
+  contrast → grain) belongs in ONE pass, not three.
+- **Keep the passes that earn their cost.** A separable blur's
+  horizontal/vertical pair is cheaper than the same radius in one pass —
+  don't merge those. But ask whether you need three blur octaves when two
+  read the same on screen.
+- Bigger canvases (`hint:canvas`, upstream Grow Bounds) raise the price of
+  *every* pass; declare the reach you need, not the reach you might want.
+
 ## Scripting: wait for readiness before you render
 
 If a script applies DynamicFx and writes the `Source` expression, it must
