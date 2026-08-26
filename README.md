@@ -115,9 +115,17 @@ order, and aerender all agree exactly).
 - [`orb.glsl`](examples/orb.glsl) — an orbiting light with a decaying trail.
   Shows temporal feedback (`prev` + `@window`), plus angle and checkbox
   controls.
+- [`apple-thermal.glsl`](examples/apple-thermal.glsl) — a ten-pass thermal
+  look with layered blur chains; the biggest shipped graph.
+- [`ink-bleed.glsl`](examples/ink-bleed.glsl) — analog chromatic-bleed
+  titling: a nine-pass blur pyramid with per-channel spread and
+  turbulence-driven tinting.
+- [`reach-ring.glsl`](examples/reach-ring.glsl) — a halo whose radius slider
+  is also the canvas boundary (`hint:canvas`): the glow is never clipped at
+  the layer edge.
 
-Both are compiled by the test suite on every build, so they cannot drift out
-of sync with the grammar. See [`examples/README.md`](examples/README.md) for
+All of them are compiled by the test suite on every build, so they cannot
+drift out of sync with the grammar. See [`examples/README.md`](examples/README.md) for
 how to apply one.
 
 ## Language guide
@@ -234,6 +242,7 @@ The GLSL type picks the control; `hint:` overrides it where a type is ambiguous.
 |---|---|---|---|---|
 | `float x;` | — | Slider | as shown | 48 |
 | `float x;` | `hint:angle` | Angle dial | degrees | 8 |
+| `float x;` | `hint:canvas` | Slider, **and** the canvas boundary | logical pixels, as shown | uses a Float slot |
 | `int x;` | — | Integer slider | as shown | 8 |
 | `int x;` | `hint:bool` | Checkbox | `0` or `1` | 16 |
 | `vec2 x;` | — | Point (crosshair) | normalized to the frame (`0..1`) | 12 |
@@ -322,12 +331,64 @@ int   n  = textureSize(sampler2D(u_path, u_s), 0).x;
 vec2  v0 = texelFetch(sampler2D(u_path, u_s), ivec2(0, 0), 0).xy;
 ```
 
+### Canvas expansion
+
+By default a shader's canvas is the layer's own frame **unioned with whatever
+an upstream buffer-expanding effect provides** — put a Grow Bounds above
+DynamicFx and your glow gets that many extra pixels to paint into, no shader
+changes needed. (Before 0.0.6 the upstream expansion was ignored and
+everything clipped at the layer edge — [issue #8](https://github.com/JUNKDOGE-JOE/dynamicfx/issues/8).)
+
+To make the reach part of the shader itself, mark **one** float parameter as
+the canvas authority:
+
+```glsl
+// @param reach label:"Reach (px)" min:0 max:512 default:160 hint:canvas
+```
+
+The canvas becomes the layer frame grown by that parameter's value (logical
+pixels per side, keyframeable), and the declaration **replaces** the upstream
+signal — your boundary is law, even under a Grow Bounds. The parameter is
+still an ordinary slider your shader reads as a uniform, so a halo radius can
+be its own canvas authority — see
+[`examples/reach-ring.glsl`](examples/reach-ring.glsl).
+
+What the shader sees on an expanded canvas is exactly what it would see on a
+manually padded precomp: `u_resolution` and `v_uv` span the canvas, the input
+sits centered with transparent margins, and points, 3D points and mask
+vertices keep pointing at the same visual pixels. Two declarations in one
+source is a compile error (`E55`); `hint:canvas` on a non-float is `E56`; an
+expansion beyond the GPU's texture limit falls back to the layer frame with
+`E57` in the log. Bigger canvases cost proportionally more VRAM and render
+time, and changing the canvas size resets temporal (`@window`) history.
+
 ### Capacity
 
 Parameters are allocated from fixed pools, which is what keeps their AE
 identity stable across source edits. The per-shader ceilings are the "Slots"
-column above. Exceeding one rejects the definition with `E32` rather than
-silently dropping a control.
+column above, and a multi-pass shader gets more: each of the first twelve
+passes carries its own bank (8 floats, 2 integers, 2 checkboxes, 3 colours,
+2 points, 1 angle) for the parameters only it uses. Exceeding everything
+rejects the definition with `E32` rather than silently dropping a control.
+
+### The panel: Main and per-pass groups
+
+Since 0.0.6 the Effect Controls panel is grouped: shared parameters (used by
+more than one pass, or by a single-pass shader) live in a collapsed **Main**
+group at the top, each gradient nests inside it, and the parameters that
+belong to exactly one pass of a multi-pass shader get that pass's **Pass N**
+group — shown under the pass's own name from your `@graph` manifest, and
+hidden entirely while no parameter of yours lives there (the head controls
+sit in an always-expanded **Setup** group above everything). Grouping is
+presentation only — values, keyframes, expressions and
+saved projects carry over untouched, and a parameter that already has
+keyframes keeps its slot (and its group) across source edits rather than
+losing them to a regroup.
+
+One breaking note for scripters: if your ExtendScript addresses DynamicFx
+parameters by **numeric property index**, those indexes shifted once in
+0.0.6 (group rows occupy positions). Address rows by name instead — names
+and matchNames are stable.
 
 ## Scripting: wait for readiness before you render
 

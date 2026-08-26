@@ -37,9 +37,9 @@ Use [TEMPLATE.md](TEMPLATE.md). Ordinary implementation details and bug fixes do
 | [0008](0008-product-scope-and-delivery-order.md) | Product scope and delivery order | Accepted |
 | [0009](0009-staged-format-adr-acceptance.md) | Staged format-ADR acceptance and M0 transport spike | Accepted |
 | [0010](0010-stable-language-ids.md) | Stable Language numeric IDs | Accepted |
-| [0011](0011-shader-abi-v1-core.md) | Shader ABI v1 core | Accepted |
+| [0011](0011-shader-abi-v1-core.md) | Shader ABI v1 core | Accepted (§5 canvas extended by 0039) |
 | [0012](0012-source-envelope-marker-and-limits.md) | Source envelope marker and size limits | Accepted |
-| [0013](0013-paramid-grammar-and-pools.md) | ParamId grammar, parameter pools, and growth policy | Accepted |
+| [0013](0013-paramid-grammar-and-pools.md) | ParamId grammar, parameter pools, and growth policy | Accepted (§5 index mechanism superseded by 0040; capacity growth stands) |
 | [0014](0014-windows-host-protocol.md) | Windows AE 2023-2026 build/install/test protocol | Accepted |
 | [0015](0015-statetoken-and-diagnostics.md) | StateToken v1 layout, publication semantics, diagnostic registry | Accepted |
 | [0016](0016-sequence-schema-v1.md) | Sequence schema v1 — codec, limits, checksum | Accepted |
@@ -54,7 +54,7 @@ Use [TEMPLATE.md](TEMPLATE.md). Ordinary implementation details and bug fixes do
 | [0025](0025-windowed-resimulation.md) | Temporal v2 — windowed re-simulation (`@window`, self-contained frames) | Accepted |
 | [0026](0026-color-parameter-default-annotation.md) | Color parameter `default:` annotation | Accepted |
 | [0027](0027-0.0.1-prerelease-scope.md) | 0.0.1 pre-release scope (verified-host subset; four-year gate kept for 1.0) | Accepted |
-| [0028](0028-details-button-and-slider-precision.md) | Details button (topology append) and float-slider precision | Accepted |
+| [0028](0028-details-button-and-slider-precision.md) | Details button (topology append) and float-slider precision | Accepted (frozen-index rationale superseded by 0040) |
 | [0029](0029-logical-resolution-abi.md) | `u_resolution` is the logical full-resolution frame size | Accepted |
 | [0030](0030-layer-input-parameters.md) | Layer input parameters (`hint:layer`) — Layer pool, comp-space `uv`, temporal refused | Accepted |
 | [0031](0031-gradient-parameters.md) | Gradient parameters (`hint:gradient`) — 8-stop format, 256×1 float LUT, custom-UI editor | Accepted (§2 superseded by 0032; §3/§6/§7 by 0033) |
@@ -65,12 +65,15 @@ Use [TEMPLATE.md](TEMPLATE.md). Ordinary implementation details and bug fixes do
 | [0036](0036-single-repository-record.md) | Single-repository record — the public repo is the whole record; one document withheld, redactions listed | Accepted |
 | [0037](0037-pool-valid-range-and-slider-range.md) | Pool slider valid ranges are wide and fixed at `PARAMS_SETUP`; `@param min:/max:` is the slider range; the runtime never clamps | Accepted |
 | [0038](0038-registry-key-per-binding-plan.md) | Process registry keyed per `(source fingerprint, plan identity)` with session lineage aliases; the idle observer applies slot UI from the instance's own artifact — fixes TR-BIND-002/#6 (copy corrupts/flickers). Mechanism B chosen; A (source-shared registry value) deferred | Accepted |
+| [0039](0039-canvas-expansion.md) | Canvas expansion — a shader-declared expansion `@param` is the boundary when present; undeclared sources use layer frame ∪ upstream extent (Grow Bounds works); pad-precomp semantics, `EXPAND_BUFFER`, no new AE-side topology | Accepted |
+| [0040](0040-parameter-groups-and-id-identity.md) | Per-pass parameter groups over partitioned banks (`Main` on top = wrapped existing pools; automatic assignment from pass reflection); param id replaces declaration index as stream identity (TR-GRP-001 `ID_MATCH`) | Accepted |
+| [0041](0041-panel-polish.md) | Panel polish — expanded `Setup` group around the head controls; empty pass/gradient groups hidden by the slot mechanism; pass groups renamed to their envelope names via `PF_UpdateParamUI` (fallbacks = the verified pre-polish state) | Accepted |
 
 ## Under review (Proposed)
 
 A `Proposed` ADR is under active decision review and freezes no persistent contract yet (it is not counted among the Accepted decisions and is not a binding record until Accepted).
 
-_No ADR is under review at the moment (ADR-0038 was Accepted on 2026-08-21)._
+_No ADR is under review at the moment (ADR-0041 was Accepted on 2026-08-26)._
 
 ## Format ADRs (staged per ADR-0009)
 
@@ -120,3 +123,6 @@ Post-M7 (follow-up features):
 - [0036 single-repository record](0036-single-repository-record.md) — Accepted 2026-08-17 (public repo becomes the whole record after the private one was archived; competitor analysis withheld, its six citation redactions listed);
 - [0037 pool valid range and slider range](0037-pool-valid-range-and-slider-range.md) — Accepted 2026-08-19 (public issue #5: `PF_UpdateParamUI` cannot change `valid_*`, so the registered `0..1`/`0..10` ranges clamped every float above 1 and int above 10 at render; wide registered range, annotation range = slider range, runtime never clamps).
 - [0038 registry key per binding plan](0038-registry-key-per-binding-plan.md) — Accepted 2026-08-21 (public issue #6: the process registry keyed a per-instance artifact by source alone, so the last same-source instance to compile overwrote the other's slot mapping and layer wiring; key becomes `(source, plan identity)` with session lineage aliases, the idle observer uses the instance's own artifact, `StateToken`/schema unchanged; mechanism A deferred);
+- [0039 canvas expansion](0039-canvas-expansion.md) — Accepted 2026-08-26 (public issue #8 / TR-BOUNDS-001: a shader-declared expansion `@param` is the canvas boundary when present, undeclared sources use the layer frame ∪ upstream extent so Grow Bounds works out of the box; pad-precomp-equivalent semantics, margin samples transparent; `EXPAND_BUFFER` SmartFX protocol; no new AE-side topology);
+- [0040 per-pass parameter groups and id identity](0040-parameter-groups-and-id-identity.md) — Accepted 2026-08-26 (user requirement: per-pass groups with shared parameters on top; `Main` = the existing pools wrapped id-safe, twelve partitioned pass banks, automatic assignment from pass reflection, keyframe stability outranks regrouping; param id replaces declaration index as stream identity per the TR-GRP-001 `ID_MATCH` measurement; supersedes ADR-0013 §5's index mechanism and ADR-0028's frozen-index rationale);
+- [0041 panel polish](0041-panel-polish.md) — Accepted 2026-08-26 (same-day scope extension by user decision: expanded `Setup` group wrapping the head controls, empty pass/gradient groups hidden through the slot mechanism, pass groups renamed to their envelope names through `PF_UpdateParamUI`; both presentation items degrade to the verified pre-polish state when the host refuses; verified by TR-0041-001 on the final 0.0.6 artifact).

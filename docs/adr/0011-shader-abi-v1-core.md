@@ -1,6 +1,6 @@
 # ADR-0011: Shader ABI v1 core
 
-- Status: Accepted
+- Status: Accepted; the §5 canvas is extended from the layer frame to the [ADR-0039](0039-canvas-expansion.md) canvas (declared expansion, else layer ∪ upstream extent) — every other decision stands
 - Date: 2026-08-11
 - Owners: DynamicFX project
 - Related architecture: [../ARCHITECTURE.md](../ARCHITECTURE.md) §6.1, §8, §14, §16

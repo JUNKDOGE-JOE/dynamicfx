@@ -1,6 +1,6 @@
 # ADR-0013: ParamId grammar, parameter pools, and growth policy
 
-- Status: Accepted
+- Status: Accepted; the §5 index-stability mechanism (declaration order as the persistence contract) is superseded by [ADR-0040](0040-parameter-groups-and-id-identity.md)'s param-id identity — append-only capacity growth and every other decision stand
 - Date: 2026-08-12
 - Owners: DynamicFX project
 - Related architecture: [../ARCHITECTURE.md](../ARCHITECTURE.md) §4, §11, §13

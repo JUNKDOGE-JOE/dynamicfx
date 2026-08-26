@@ -1,6 +1,6 @@
 # ADR-0028: Details button and float-slider precision
 
-- Status: Accepted
+- Status: Accepted; the frozen-declaration-index rationale for the append position is superseded by [ADR-0040](0040-parameter-groups-and-id-identity.md)'s param-id identity ([TR-GRP-001](../TEST_MATRIX.md#tr-grp-001--parameter-stream-matching-across-layout-change-spike) measured id matching) — the button itself and the precision decision stand
 - Date: 2026-08-14
 - Deciders: user (design specified from first-user feedback) + assistant session
 
