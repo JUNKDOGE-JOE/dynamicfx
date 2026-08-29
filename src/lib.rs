@@ -245,6 +245,145 @@ fn paint_degraded_preview(extra: &ae::EventExtra) -> Result<(), ae::Error> {
     )
 }
 
+#[cfg(feature = "editor")]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+struct GrabbedStop {
+    gradient_index: usize,
+    stop_index: usize,
+}
+
+/// One mouse can own one process-local gesture. Rendering never consults this
+/// slot, and every terminal or failed drag clears it.
+#[cfg(feature = "editor")]
+static GRADIENT_DRAG: Mutex<Option<GrabbedStop>> = Mutex::new(None);
+
+#[cfg(feature = "editor")]
+const GRADIENT_STOP_HIT_RADIUS_PX: f32 = 6.0;
+
+#[cfg(feature = "editor")]
+fn abandon_gradient_drag() -> Result<(), String> {
+    match GRADIENT_DRAG.lock() {
+        Ok(mut slot) => {
+            *slot = None;
+            Ok(())
+        }
+        Err(poisoned) => {
+            *poisoned.into_inner() = None;
+            Err("drag state lock poisoned".to_owned())
+        }
+    }
+}
+
+#[cfg(feature = "editor")]
+fn set_gradient_drag(grabbed: GrabbedStop) -> Result<(), String> {
+    match GRADIENT_DRAG.lock() {
+        Ok(mut slot) => {
+            *slot = Some(grabbed);
+            Ok(())
+        }
+        Err(poisoned) => {
+            *poisoned.into_inner() = None;
+            Err("drag state lock poisoned".to_owned())
+        }
+    }
+}
+
+#[cfg(feature = "editor")]
+fn gradient_drag() -> Result<Option<GrabbedStop>, String> {
+    match GRADIENT_DRAG.lock() {
+        Ok(slot) => Ok(*slot),
+        Err(poisoned) => {
+            *poisoned.into_inner() = None;
+            Err("drag state lock poisoned".to_owned())
+        }
+    }
+}
+
+#[cfg(feature = "editor")]
+fn handle_gradient_click(
+    params: &ae::Parameters<ParamKey>,
+    extra: &mut ae::EventExtra,
+    gradient_index: usize,
+) -> Result<(), String> {
+    abandon_gradient_drag()?;
+    let value = read_gradient(params, gradient_index)?;
+    let positions: Vec<_> = value.stops.iter().map(|stop| stop.position).collect();
+    let frame = extra.current_frame();
+    let geometry = gradient::RampGeometry::new(frame.left as f32, frame.right as f32);
+    if let Some(stop_index) = gradient::nearest_stop(
+        extra.screen_point().h as f32,
+        geometry,
+        &positions,
+        GRADIENT_STOP_HIT_RADIUS_PX,
+    ) {
+        set_gradient_drag(GrabbedStop { gradient_index, stop_index })?;
+        extra.set_send_drag(true);
+    }
+    Ok(())
+}
+
+#[cfg(feature = "editor")]
+fn write_gradient_stop_position(
+    params: &mut ae::Parameters<ParamKey>,
+    gradient_index: usize,
+    stop_index: usize,
+    position: f32,
+) -> Result<(), String> {
+    use host::params::GradientField;
+
+    params
+        .get_mut(ParamKey::GradientStop(
+            gradient_index,
+            stop_index,
+            GradientField::Position,
+        ))
+        .map_err(|error| format!("position checkout failed ({error:?})"))?
+        .as_float_slider_mut()
+        .map_err(|error| format!("position type mismatch ({error:?})"))?
+        .set_value(f64::from(position));
+    Ok(())
+}
+
+#[cfg(feature = "editor")]
+fn handle_gradient_drag(
+    params: &mut ae::Parameters<ParamKey>,
+    extra: &mut ae::EventExtra,
+    gradient_index: usize,
+) -> Result<bool, String> {
+    let Some(grabbed) = gradient_drag()? else {
+        return Ok(false);
+    };
+    if grabbed.gradient_index != gradient_index {
+        return Ok(false);
+    }
+
+    extra.set_send_drag(true);
+    extra.set_event_out_flags(ae::EventOutFlags::HANDLED_EVENT);
+    let last = extra.last_time();
+    let result = (|| {
+        let value = read_gradient(params, gradient_index)?;
+        if grabbed.stop_index >= value.stops.len() {
+            return Err(format!(
+                "gradient {gradient_index}: grabbed stop {} is no longer live",
+                grabbed.stop_index
+            ));
+        }
+        let positions: Vec<_> = value.stops.iter().map(|stop| stop.position).collect();
+        let frame = extra.current_frame();
+        let geometry = gradient::RampGeometry::new(frame.left as f32, frame.right as f32);
+        let target = geometry.x_to_position(extra.screen_point().h as f32);
+        let position = gradient::clamp_position(target, grabbed.stop_index, &positions);
+        write_gradient_stop_position(params, gradient_index, grabbed.stop_index, position)
+    })();
+    if last || result.is_err() {
+        let cleared = abandon_gradient_drag();
+        if result.is_ok() {
+            cleared?;
+        }
+    }
+    result.map(|()| true)
+}
+
 /// Check out one AE mask and walk its vertices (ADR-0035).
 ///
 /// Never fails the render: an unassigned selector, a deleted mask, or a path
@@ -1880,19 +2019,32 @@ impl AdobePluginGlobal for Global {
         let mut command = command;
         #[cfg(feature = "editor")]
         if let ae::Command::Event { extra } = &mut command {
-            if matches!(extra.event(), ae::Event::Draw(_))
-                && extra.effect_area() == ae::EffectArea::Control
-            {
-                if let Some(ParamKey::GradientCanvas(gradient_index)) =
-                    host::params::key_for_param_index(extra.param_index())
-                {
-                    if let Err(reason) = paint_gradient_preview(_params, extra, gradient_index) {
-                        let degraded = paint_degraded_preview(extra).err();
-                        log::warn!(
-                            "gradient {gradient_index} preview degraded: {reason}; degraded fill: {degraded:?}"
-                        );
+            if extra.effect_area() == ae::EffectArea::Control {
+                let canvas = host::params::key_for_param_index(extra.param_index());
+                match (extra.event(), canvas) {
+                    (ae::Event::Draw(_), Some(ParamKey::GradientCanvas(gradient_index))) => {
+                        if let Err(reason) = paint_gradient_preview(_params, extra, gradient_index) {
+                            let degraded = paint_degraded_preview(extra).err();
+                            log::warn!(
+                                "gradient {gradient_index} preview degraded: {reason}; degraded fill: {degraded:?}"
+                            );
+                        }
+                        extra.set_event_out_flags(ae::EventOutFlags::HANDLED_EVENT);
                     }
-                    extra.set_event_out_flags(ae::EventOutFlags::HANDLED_EVENT);
+                    (ae::Event::Click(_), Some(ParamKey::GradientCanvas(gradient_index))) => {
+                        extra.set_event_out_flags(ae::EventOutFlags::HANDLED_EVENT);
+                        if let Err(reason) =
+                            handle_gradient_click(_params, extra, gradient_index)
+                        {
+                            log::warn!("gradient {gradient_index} click abandoned: {reason}");
+                        }
+                    }
+                    (ae::Event::Drag(_), Some(ParamKey::GradientCanvas(gradient_index))) => {
+                        if let Err(reason) = handle_gradient_drag(_params, extra, gradient_index) {
+                            log::warn!("gradient {gradient_index} drag abandoned: {reason}");
+                        }
+                    }
+                    _ => {}
                 }
             }
             return Ok(());

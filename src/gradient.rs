@@ -49,6 +49,40 @@ impl RampGeometry {
     }
 }
 
+#[cfg(any(feature = "editor", test))]
+pub fn nearest_stop(
+    x_px: f32,
+    geometry: RampGeometry,
+    positions: &[f32],
+    radius: f32,
+) -> Option<usize> {
+    let mut nearest = None;
+    for (index, position) in positions.iter().copied().enumerate() {
+        let distance = (geometry.position_to_x(position) - x_px).abs();
+        if distance <= radius
+            && nearest.is_none_or(|(_, nearest_distance)| distance < nearest_distance)
+        {
+            nearest = Some((index, distance));
+        }
+    }
+    nearest.map(|(index, _)| index)
+}
+
+#[cfg(any(feature = "editor", test))]
+pub fn clamp_position(target: f32, index: usize, positions: &[f32]) -> f32 {
+    let lower = if index == 0 {
+        0.0
+    } else {
+        positions.get(index - 1).copied().unwrap_or(0.0)
+    };
+    let upper = index
+        .checked_add(1)
+        .and_then(|next| positions.get(next))
+        .copied()
+        .unwrap_or(1.0);
+    target.max(lower).min(upper)
+}
+
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Stop {
     pub position: f32,
@@ -306,5 +340,50 @@ mod tests {
         assert_eq!(geometry.x_to_position(99.0), 0.0);
     }
 
+    #[test]
+    fn nearest_stop_hits_first_and_last_at_the_radius_boundary() {
+        let geometry = RampGeometry::new(10.0, 110.0);
+        let positions = [0.0, 0.5, 1.0];
+        assert_eq!(nearest_stop(4.0, geometry, &positions, 6.0), Some(0));
+        assert_eq!(nearest_stop(116.0, geometry, &positions, 6.0), Some(2));
+        assert_eq!(nearest_stop(17.0, geometry, &positions, 6.0), None);
+    }
 
+    #[test]
+    fn nearest_stop_chooses_the_closest_tick() {
+        let geometry = RampGeometry::new(0.0, 100.0);
+        let positions = [0.25, 0.5, 0.75];
+        assert_eq!(nearest_stop(46.0, geometry, &positions, 30.0), Some(1));
+    }
+
+    #[test]
+    fn nearest_stop_tie_chooses_the_lower_index() {
+        let geometry = RampGeometry::new(0.0, 100.0);
+        let positions = [0.25, 0.75];
+        assert_eq!(nearest_stop(50.0, geometry, &positions, 30.0), Some(0));
+    }
+
+    #[test]
+    fn clamp_position_bounds_an_interior_stop_by_both_neighbors() {
+        let positions = [0.1, 0.4, 0.8];
+        assert_eq!(clamp_position(0.0, 1, &positions), 0.1);
+        assert_eq!(clamp_position(0.6, 1, &positions), 0.6);
+        assert_eq!(clamp_position(1.0, 1, &positions), 0.8);
+    }
+
+    #[test]
+    fn clamp_position_uses_ramp_edges_for_first_and_last_stops() {
+        let positions = [0.2, 0.6, 0.9];
+        assert_eq!(clamp_position(-1.0, 0, &positions), 0.0);
+        assert_eq!(clamp_position(0.9, 0, &positions), 0.6);
+        assert_eq!(clamp_position(0.0, 2, &positions), 0.6);
+        assert_eq!(clamp_position(2.0, 2, &positions), 1.0);
+    }
+
+    #[test]
+    fn clamp_position_allows_equal_neighbors() {
+        let positions = [0.4, 0.4, 0.4];
+        assert_eq!(clamp_position(0.0, 1, &positions), 0.4);
+        assert_eq!(clamp_position(1.0, 1, &positions), 0.4);
+    }
 }
