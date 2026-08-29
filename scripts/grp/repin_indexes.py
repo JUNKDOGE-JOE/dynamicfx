@@ -7,6 +7,10 @@ Both orders are reconstructed here from the same constants the plugin uses
 generated map against the spot table the slice-3 report recorded; `dry` lists
 every rewrite it would make; `apply` performs them. Run `apply` only after
 the live phase-A check has confirmed the map on the installed batch build.
+
+The editor modes map the grouped order to the editor-flavor order, where a
+canvas is the first row in each gradient group. An applied file records that
+index-flavor contract because adjacent grouped and editor indexes overlap.
 """
 import json, os, re, sys
 
@@ -58,10 +62,25 @@ def new_order():
     return order
 
 
+def editor_order():
+    order = []
+    for key in new_order():
+        order.append(key)
+        if key.startswith("GGroupStart:"):
+            order.append(f"GCanvas:{key.rsplit(':', 1)[1]}")
+    return order
+
+
 def index_map():
     old = {key: i + 1 for i, key in enumerate(old_order())}
     new = {key: i + 1 for i, key in enumerate(new_order())}
     return {old[k]: new[k] for k in old}
+
+
+def editor_index_map():
+    new = {key: i + 1 for i, key in enumerate(new_order())}
+    editor = {key: i + 1 for i, key in enumerate(editor_order())}
+    return {new[k]: editor[k] for k in new}
 
 
 # The ADR-0041 report's spot table (old -> new); `verify` fails loudly on drift.
@@ -70,6 +89,15 @@ REPORT_TABLE = {
     6: 11, 7: 12, 8: 13, 53: 58, 54: 59, 62: 67, 78: 83, 90: 95, 102: 107,
     111: 115, 115: 130, 127: 131, 128: 132, 117: 119, 125: 127,
 }
+
+# Pins both unchanged growth pools and the two insertion boundaries.
+EDITOR_REPORT_TABLE = {
+    115: 115, 119: 119, 127: 127,
+    129: 129, 130: 131, 131: 132, 156: 157,
+    157: 158, 158: 160, 159: 161, 184: 186,
+    185: 187, 187: 189,
+}
+EDITOR_FLAVOR_NOTE = "Numeric DynamicFx property indexes target the editor declaration order."
 
 # Harness files that address effect params by numeric property index. The
 # spike driver is deliberately absent: its dumps are recorded evidence of the
@@ -102,22 +130,27 @@ def files():
                     yield os.path.join(path, name)
 
 
-def sweep(write):
-    mapping = index_map()
+def sweep(write, mapping=None, flavor_note=None):
+    if mapping is None:
+        mapping = index_map()
     total = 0
     for path in files():
         with open(path, encoding="utf-8") as f:
             text = f.read()
         hits = []
+        already_pinned = flavor_note is not None and flavor_note in text
 
         def sub(m):
             old = int(m.group("idx"))
-            new = mapping.get(old, old)
+            new = old if already_pinned else mapping.get(old, old)
             hits.append((old, new))
             return f"{m.group('recv')}{new}{m.group('close')}"
 
         out = SITE.sub(sub, text)
         changed = [(o, n) for o, n in hits if o != n]
+        if write and changed and flavor_note is not None:
+            prefix = "#" if path.endswith(".py") else "//"
+            out = f"{prefix} {flavor_note}\n" + out
         if hits:
             rel = os.path.relpath(path, repo_root())
             print(f"{rel}: {len(hits)} site(s), {len(changed)} shifted "
@@ -139,6 +172,29 @@ def verify():
     print(f"map OK: {len(mapping)} params, old 177 -> new {len(new_order())} declared rows")
 
 
+def verify_editor():
+    mapping = editor_index_map()
+    bad = {
+        current: (mapping.get(current), editor)
+        for current, editor in EDITOR_REPORT_TABLE.items()
+        if mapping.get(current) != editor
+    }
+    assert not bad, f"map disagrees with the editor report: {bad}"
+
+    first_shift = new_order().index("Gradient:0") + 1
+    second_shift = new_order().index("Gradient:1") + 1
+    assert first_shift == 130 and second_shift == 158
+    assert all(mapping[i] == i for i in range(1, first_shift))
+    assert all(mapping[i] == i + 1 for i in range(first_shift, second_shift))
+    assert all(mapping[i] == i + 2 for i in range(second_shift, len(new_order()) + 1))
+    assert GRADS == 2
+    assert len(editor_order()) == len(new_order()) + 2
+    print(
+        f"editor map OK: {len(mapping)} params, grouped {len(new_order())} "
+        f"-> editor {len(editor_order())} declared rows"
+    )
+
+
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "verify"
     if cmd == "verify":
@@ -149,8 +205,19 @@ def main():
     elif cmd == "apply":
         verify()
         sweep(write=True)
+    elif cmd == "verify-editor":
+        verify_editor()
+    elif cmd == "dry-editor":
+        verify_editor()
+        sweep(write=False, mapping=editor_index_map(), flavor_note=EDITOR_FLAVOR_NOTE)
+    elif cmd == "apply-editor":
+        verify_editor()
+        sweep(write=True, mapping=editor_index_map(), flavor_note=EDITOR_FLAVOR_NOTE)
     else:
-        raise SystemExit("usage: repin_indexes.py verify|dry|apply")
+        raise SystemExit(
+            "usage: repin_indexes.py "
+            "verify|dry|apply|verify-editor|dry-editor|apply-editor"
+        )
 
 
 if __name__ == "__main__":
