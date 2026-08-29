@@ -8,7 +8,10 @@ license = "MIT"
 crate-type = ["cdylib"]
 
 [features]
-default = ["editor"]
+# The ADR-0042 gradient editor is complete and host-verified (TR-0042-001) but
+# SHELVED by user decision 2026-08-29: default builds ship the 0.0.6 surface.
+# Re-enable with `--features editor` (docs/gradient-editor.md).
+default = []
 editor = []
 
 [dependencies]

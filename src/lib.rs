@@ -358,7 +358,10 @@ fn handle_gradient_drag(
     }
 
     extra.set_send_drag(true);
-    extra.set_event_out_flags(ae::EventOutFlags::HANDLED_EVENT);
+    // UPDATE_NOW repaints the control after each drag event; without it AE
+    // repaints only when the drag ends (measured 2026-08-29: the viewport
+    // followed the writes live while the canvas tick stayed frozen).
+    extra.set_event_out_flags(ae::EventOutFlags::HANDLED_EVENT | ae::EventOutFlags::UPDATE_NOW);
     let last = extra.last_time();
     let result = (|| {
         let value = read_gradient(params, gradient_index)?;
