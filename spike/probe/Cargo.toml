@@ -18,3 +18,4 @@ after-effects = "0.4"
 
 [build-dependencies]
 pipl = "0.1"
+winres = "0.1"

@@ -1,3 +1,6 @@
+#![allow(linker_messages)]
+#![cfg_attr(cui_nil_seq, allow(dead_code))]
+
 //! DynamicFx Probe — throwaway M0 transport-spike instrument (ADR-0009).
 //!
 //! Measures After Effects host behavior only; contains no DynamicFX
@@ -77,6 +80,11 @@ enum Params {
     MutatePopup,
     /// Slider renamed with probe state, mirroring the prototype Status param.
     Status,
+    MuteDraw,
+    #[cfg(leg_u1)]
+    UiCanvas,
+    #[cfg(leg_u2b)]
+    PodArb,
 }
 
 #[derive(Clone, Debug, Default, PartialEq, PartialOrd, Serialize, Deserialize)]
@@ -108,6 +116,25 @@ impl ae::ArbitraryData<ProbeBlob> for ProbeBlob {
     }
 }
 
+#[cfg(leg_u2b)]
+#[derive(Clone, Debug, Default, PartialEq, PartialOrd, Serialize, Deserialize)]
+#[serde(crate = "ae::serde")]
+struct PodBlob {
+    vals: [f32; 8],
+}
+
+#[cfg(leg_u2b)]
+impl ae::ArbitraryData<PodBlob> for PodBlob {
+    fn interpolate(&self, other: &PodBlob, value: f64) -> PodBlob {
+        let value = value as f32;
+        let mut vals = [0.0; 8];
+        for (result, (from, to)) in vals.iter_mut().zip(self.vals.iter().zip(other.vals.iter())) {
+            *result = from + (to - from) * value;
+        }
+        PodBlob { vals }
+    }
+}
+
 #[derive(Default)]
 struct Global;
 
@@ -117,13 +144,19 @@ struct Instance {
     popup_mutated: bool,
 }
 
+#[cfg(not(cui_nil_seq))]
 ae::define_effect!(Global, Instance, Params);
+// Discriminant build: identical params and events, unit sequence type - the
+// only variable separating the working upstream custom-UI examples from the
+// crashing non-unit-sequence plug-ins.
+#[cfg(cui_nil_seq)]
+ae::define_effect!(Global, (), Params);
 
 impl AdobePluginGlobal for Global {
     fn params_setup(
         &self,
         params: &mut ae::Parameters<Params>,
-        _: ae::InData,
+        _in_data: ae::InData,
         _: ae::OutData,
     ) -> Result<(), Error> {
         log("params setup: begin");
@@ -137,6 +170,7 @@ impl AdobePluginGlobal for Global {
         }))?;
         let mut blob = ae::ArbitraryDef::new();
         blob.set_default(ProbeBlob::default())?;
+        #[cfg(all(not(leg_u2), not(cui_legs)))]
         params.add_with_flags(
             Params::Blob,
             "Probe Blob",
@@ -144,6 +178,27 @@ impl AdobePluginGlobal for Global {
             ae::ParamFlag::CANNOT_TIME_VARY,
             ae::ParamUIFlags::empty(),
         )?;
+        // An arb param with no drawn control is not a valid ECW row on AE 2025
+        // (measured: modal "effect control not supported", wedging the bridge),
+        // so CUI-leg builds keep the value but hide the row.
+        #[cfg(all(not(leg_u2), cui_legs))]
+        params.add_with_flags(
+            Params::Blob,
+            "Probe Blob",
+            blob,
+            ae::ParamFlag::CANNOT_TIME_VARY,
+            ae::ParamUIFlags::NO_ECW_UI,
+        )?;
+        #[cfg(leg_u2)]
+        params.add_customized(Params::Blob, "Probe Blob", blob, |param| {
+            param.set_flags(ae::ParamFlag::CANNOT_TIME_VARY);
+            param.set_ui_flags(
+                ae::ParamUIFlags::CONTROL | ae::ParamUIFlags::DO_NOT_ERASE_CONTROL,
+            );
+            param.set_ui_width(200);
+            param.set_ui_height(80);
+            -1
+        })?;
         params.add(Params::PopupProbe, "Popup Probe", ae::PopupDef::setup(|p| {
             p.set_options(&["Alpha", "Beta", "Gamma", "Delta"]);
             p.set_default(1);
@@ -158,6 +213,61 @@ impl AdobePluginGlobal for Global {
             f.set_valid_max(1.0);
             f.set_default(0.0);
         }))?;
+        params.add(
+            Params::MuteDraw,
+            "Mute Draw (U2a)",
+            ae::CheckBoxDef::setup(|c| {
+                c.set_default(false);
+            }),
+        )?;
+        // Color, not Float: a Float's CONTROL canvas renders collapsed by
+        // default (measured 2026-08-28) and expanding it by hand is what the
+        // interactive legs must avoid; a Color+CONTROL canvas (the upstream
+        // custom_ecw_ui shape) is visible immediately on apply.
+        #[cfg(leg_u1)]
+        params.add_customized(
+            Params::UiCanvas,
+            "U1 Std Canvas",
+            ae::ColorDef::setup(|c| {
+                c.set_default(ae::Pixel8 { alpha: 255, red: 224, green: 128, blue: 32 });
+            }),
+            |param| {
+                param.set_ui_flags(ae::ParamUIFlags::CONTROL);
+                param.set_ui_width(200);
+                param.set_ui_height(80);
+                -1
+            },
+        )?;
+        #[cfg(leg_u2b)]
+        {
+            let mut pod = ae::ArbitraryDef::new();
+            pod.set_default(PodBlob::default())?;
+            params.add_customized(Params::PodArb, "U2b POD Arb", pod, |param| {
+                param.set_flags(ae::ParamFlag::CANNOT_TIME_VARY);
+                param.set_ui_flags(
+                    ae::ParamUIFlags::CONTROL | ae::ParamUIFlags::DO_NOT_ERASE_CONTROL,
+                );
+                param.set_ui_width(200);
+                param.set_ui_height(80);
+                -1
+            })?;
+        }
+        // PF_REGISTER_UI is what makes AE deliver PF_Cmd_EVENT to effect-window
+        // custom controls at all: every unregistered leg logged zero EVT lines
+        // while upstream's registered samples drew and clicked on the same host
+        // (measured 2026-08-28). DFX_PROBE_NO_REGUI=1 skips the call so one
+        // byte-identical artifact serves both arms of that comparison.
+        #[cfg(cui_legs)]
+        {
+            if std::env::var_os("DFX_PROBE_NO_REGUI").is_some() {
+                log("REGISTER_UI skipped (DFX_PROBE_NO_REGUI)");
+            } else {
+                let res = _in_data
+                    .interact()
+                    .register_ui(ae::CustomUIInfo::new().events(ae::CustomEventFlags::EFFECT));
+                log(&format!("REGISTER_UI res={res:?}"));
+            }
+        }
         log("params setup: complete");
         Ok(())
     }
@@ -167,11 +277,107 @@ impl AdobePluginGlobal for Global {
         command: ae::Command,
         _: ae::InData,
         _: ae::OutData,
-        _: &mut ae::Parameters<Params>,
+        params: &mut ae::Parameters<Params>,
     ) -> Result<(), ae::Error> {
         if let ae::Command::ArbitraryCallback { mut extra } = command {
             log(&format!("ARB_CB fn={}", extra.which_function()));
             extra.dispatch::<ProbeBlob, _>(Params::Blob)?;
+            #[cfg(leg_u2b)]
+            extra.dispatch::<PodBlob, _>(Params::PodArb)?;
+            return Ok(());
+        }
+        if let ae::Command::Event { mut extra } = command {
+            let event = extra.event();
+            let event_name = match event {
+                ae::Event::None => "None",
+                ae::Event::NewContext => "NewContext",
+                ae::Event::Activate => "Activate",
+                ae::Event::Click(_) => "Click",
+                ae::Event::Drag(_) => "Drag",
+                ae::Event::Draw(_) => "Draw",
+                ae::Event::Deactivate => "Deactivate",
+                ae::Event::CloseContext => "CloseContext",
+                ae::Event::Idle => "Idle",
+                ae::Event::AdjustCursor(_) => "AdjustCursor",
+                ae::Event::Keydown(_) => "Keydown",
+                ae::Event::MouseExited => "MouseExited",
+            };
+            log(&format!("EVT {event_name}"));
+
+            match event {
+                ae::Event::Draw(_) if extra.effect_area() == ae::EffectArea::Control => {
+                    let param_index = extra.param_index();
+                    let muted = params.get(Params::MuteDraw)?.as_checkbox()?.value();
+                    if muted {
+                        log(&format!("DRAW muted idx={param_index}"));
+                        return Ok(());
+                    }
+
+                    log(&format!("DRAW begin idx={param_index}"));
+                    let drawbot = extra.context_handle().drawing_reference()?;
+                    log("DRAW drawbot_acquired");
+                    let surface = drawbot.surface()?;
+                    let frame = extra.current_frame();
+                    let rect = ae::drawbot::RectF32 {
+                        left: frame.left as f32,
+                        top: frame.top as f32,
+                        width: frame.width() as f32,
+                        height: frame.height() as f32,
+                    };
+                    let color = match param_index % 3 {
+                        0 => ae::drawbot::ColorRgba {
+                            red: 0.85,
+                            green: 0.15,
+                            blue: 0.15,
+                            alpha: 1.0,
+                        },
+                        1 => ae::drawbot::ColorRgba {
+                            red: 0.15,
+                            green: 0.70,
+                            blue: 0.20,
+                            alpha: 1.0,
+                        },
+                        _ => ae::drawbot::ColorRgba {
+                            red: 0.15,
+                            green: 0.30,
+                            blue: 0.90,
+                            alpha: 1.0,
+                        },
+                    };
+                    surface.paint_rect(&color, &rect)?;
+                    log("DRAW painted");
+                    extra.set_event_out_flags(ae::EventOutFlags::HANDLED_EVENT);
+                }
+                // Click/Drag measure the two facts the 2026-08-15 editor relied on
+                // without host evidence: drag tracking via send_drag, and whether
+                // screen_point shares current_frame's coordinate space.
+                ae::Event::Click(_) => {
+                    let idx = extra.param_index();
+                    if extra.effect_area() == ae::EffectArea::Control {
+                        let sp = extra.screen_point();
+                        let cf = extra.current_frame();
+                        extra.set_send_drag(true);
+                        extra.set_event_out_flags(ae::EventOutFlags::HANDLED_EVENT);
+                        log(&format!(
+                            "CLICK idx={idx} sp=({},{}) frame=({},{},{},{})",
+                            sp.h, sp.v, cf.left, cf.top, cf.right, cf.bottom
+                        ));
+                    } else {
+                        log(&format!("EVT Click idx={idx} area=title"));
+                    }
+                }
+                ae::Event::Drag(_) => {
+                    let sp = extra.screen_point();
+                    let last = extra.last_time();
+                    extra.set_send_drag(true);
+                    extra.set_event_out_flags(ae::EventOutFlags::HANDLED_EVENT);
+                    log(&format!(
+                        "DRAG idx={} sp=({},{}) last={}",
+                        extra.param_index(), sp.h, sp.v, last
+                    ));
+                }
+                _ => {}
+            }
             return Ok(());
         }
         if matches!(command, ae::Command::GlobalSetup) {
