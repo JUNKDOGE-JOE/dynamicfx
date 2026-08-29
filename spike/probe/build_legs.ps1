@@ -11,6 +11,10 @@ $builds = @(
     @{ Legs = 'u2b'; Artifact = 'u2b' }
     @{ Legs = 'u1,u2,u2b'; Artifact = 'u1-u2-u2b' }
     @{ Legs = 'u1nil'; Artifact = 'u1nil' }
+    @{ Legs = 'u3'; Artifact = 'u3' }
+    @{ Legs = 'u4'; Artifact = 'u4' }
+    @{ Legs = 'u146'; Artifact = 'u146' }
+    @{ Legs = 'u3,u4,u146'; Artifact = 'u3-u4-u146' }
 )
 
 function Get-Sha256Hex([string] $path) {

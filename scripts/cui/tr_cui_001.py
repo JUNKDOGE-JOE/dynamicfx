@@ -54,6 +54,10 @@ VARIANTS = {
     "u2b": "DynamicFxProbe-u2b.aex",
     "all": "DynamicFxProbe-u1-u2-u2b.aex",
     "u1nil": "DynamicFxProbe-u1nil.aex",
+    "u3": "DynamicFxProbe-u3.aex",
+    "u4": "DynamicFxProbe-u4.aex",
+    "u146": "DynamicFxProbe-u146.aex",
+    "u3u4u146": "DynamicFxProbe-u3-u4-u146.aex",
 }
 SAMPLES = {"Custom_ECW_UI.aex": "custom_ecw_ui.dll", "ColorGrid.aex": "colorgrid.dll"}
 

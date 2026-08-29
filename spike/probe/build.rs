@@ -13,6 +13,9 @@ fn main() {
         "leg_u1",
         "leg_u2",
         "leg_u2b",
+        "leg_u3",
+        "leg_u4",
+        "leg_u146",
         "cui_legs",
         "cui_nil_seq",
     ] {
@@ -25,12 +28,18 @@ fn main() {
     let mut leg_u1 = false;
     let mut leg_u2 = false;
     let mut leg_u2b = false;
+    let mut leg_u3 = false;
+    let mut leg_u4 = false;
+    let mut leg_u146 = false;
     let mut nil_seq = false;
     for leg in legs.split(',').map(str::trim).filter(|leg| !leg.is_empty()) {
         match leg {
             "u1" => leg_u1 = true,
             "u2" => leg_u2 = true,
             "u2b" => leg_u2b = true,
+            "u3" => leg_u3 = true,
+            "u4" => leg_u4 = true,
+            "u146" => leg_u146 = true,
             // u1 canvas with the sequence type swapped to () - the
             // discriminant for the Event-path sequence-handle crash.
             "u1nil" => {
@@ -47,13 +56,16 @@ fn main() {
         (leg_u1, "leg_u1"),
         (leg_u2, "leg_u2"),
         (leg_u2b, "leg_u2b"),
+        (leg_u3, "leg_u3"),
+        (leg_u4, "leg_u4"),
+        (leg_u146, "leg_u146"),
     ] {
         if enabled {
             println!("cargo:rustc-cfg={cfg_name}");
         }
     }
 
-    let custom_ui = leg_u1 || leg_u2 || leg_u2b;
+    let custom_ui = leg_u1 || leg_u2 || leg_u2b || leg_u3 || leg_u4 || leg_u146;
     if custom_ui {
         // Any-leg marker: CUI builds hide the M0-era undrawn arb param, whose
         // bare ECW row raises a modal on AE 2025 and wedges the JSX bridge.

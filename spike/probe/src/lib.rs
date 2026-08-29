@@ -68,6 +68,74 @@ fn fnv1a(data: &[u8]) -> u64 {
     hash
 }
 
+#[cfg(leg_u3)]
+const U3_WRITE_MECHANISM: &str = "FloatSliderDef::set_value + ChangeFlag::CHANGED_VALUE";
+
+#[cfg(leg_u3)]
+fn u3_normalized_x(extra: &ae::EventExtra) -> f64 {
+    let point = extra.screen_point();
+    let frame = extra.current_frame();
+    let width = frame.width().max(1);
+    (f64::from(point.h - frame.left) / f64::from(width)).clamp(0.0, 1.0)
+}
+
+#[cfg(leg_u3)]
+fn u3_write_sibling(
+    params: &mut ae::Parameters<Params>,
+    value: f64,
+) -> Result<&'static str, ae::Error> {
+    params
+        .get_mut(Params::U3Sibling)?
+        .as_float_slider_mut()?
+        .set_value(value);
+    Ok(U3_WRITE_MECHANISM)
+}
+
+#[cfg(leg_u4)]
+fn u4_open_picker(params: &ae::Parameters<Params>) {
+    let seed = match params.get(Params::U4Canvas) {
+        Ok(param) => match param.as_color() {
+            Ok(color) => color.value(),
+            Err(error) => {
+                log(&format!(
+                    "U4_PICKER res=seed_error({error:?}) color=unavailable"
+                ));
+                return;
+            }
+        },
+        Err(error) => {
+            log(&format!(
+                "U4_PICKER res=checkout_error({error:?}) color=unavailable"
+            ));
+            return;
+        }
+    };
+    let scale = 1.0 / 255.0;
+    let sample = ae::PixelF32 {
+        alpha: f32::from(seed.alpha) * scale,
+        red: f32::from(seed.red) * scale,
+        green: f32::from(seed.green) * scale,
+        blue: f32::from(seed.blue) * scale,
+    };
+    let result = ae::pf::suites::App::new().and_then(|suite| {
+        suite.color_picker_dialog(Some("DynamicFx Probe U4"), &sample, true)
+    });
+    match result {
+        Ok(color) => log(&format!(
+            "U4_PICKER res=picked color=({:.6},{:.6},{:.6},{:.6})",
+            color.red, color.green, color.blue, color.alpha
+        )),
+        Err(ae::Error::InterruptCancel) => log(&format!(
+            "U4_PICKER res=cancelled color=({:.6},{:.6},{:.6},{:.6})",
+            sample.red, sample.green, sample.blue, sample.alpha
+        )),
+        Err(error) => log(&format!(
+            "U4_PICKER res=error({error:?}) color=({:.6},{:.6},{:.6},{:.6})",
+            sample.red, sample.green, sample.blue, sample.alpha
+        )),
+    }
+}
+
 #[derive(Eq, PartialEq, Hash, Clone, Copy, Debug)]
 enum Params {
     /// Requested blob size in KB; 0 clears the blob.
@@ -83,6 +151,14 @@ enum Params {
     MuteDraw,
     #[cfg(leg_u1)]
     UiCanvas,
+    #[cfg(leg_u3)]
+    U3Canvas,
+    #[cfg(leg_u3)]
+    U3Sibling,
+    #[cfg(leg_u4)]
+    U4Canvas,
+    #[cfg(leg_u146)]
+    U146Canvas,
     #[cfg(leg_u2b)]
     PodArb,
 }
@@ -238,6 +314,75 @@ impl AdobePluginGlobal for Global {
                 -1
             },
         )?;
+        #[cfg(leg_u3)]
+        params.add_customized(
+            Params::U3Canvas,
+            "U3 Canvas",
+            ae::ColorDef::setup(|c| {
+                c.set_default(ae::Pixel8 {
+                    alpha: 255,
+                    red: 64,
+                    green: 160,
+                    blue: 224,
+                });
+            }),
+            |param| {
+                param.set_ui_flags(ae::ParamUIFlags::CONTROL);
+                param.set_ui_width(200);
+                param.set_ui_height(80);
+                -1
+            },
+        )?;
+        #[cfg(leg_u3)]
+        params.add(
+            Params::U3Sibling,
+            "U3 Sibling",
+            ae::FloatSliderDef::setup(|f| {
+                f.set_slider_min(0.0);
+                f.set_slider_max(1.0);
+                f.set_valid_min(0.0);
+                f.set_valid_max(1.0);
+                f.set_default(0.0);
+            }),
+        )?;
+        #[cfg(leg_u4)]
+        params.add_customized(
+            Params::U4Canvas,
+            "U4 Canvas",
+            ae::ColorDef::setup(|c| {
+                c.set_default(ae::Pixel8 {
+                    alpha: 255,
+                    red: 192,
+                    green: 96,
+                    blue: 224,
+                });
+            }),
+            |param| {
+                param.set_ui_flags(ae::ParamUIFlags::CONTROL);
+                param.set_ui_width(200);
+                param.set_ui_height(80);
+                -1
+            },
+        )?;
+        #[cfg(leg_u146)]
+        params.add_customized(
+            Params::U146Canvas,
+            "U146 Canvas",
+            ae::ColorDef::setup(|c| {
+                c.set_default(ae::Pixel8 {
+                    alpha: 255,
+                    red: 96,
+                    green: 208,
+                    blue: 128,
+                });
+            }),
+            |param| {
+                param.set_ui_flags(ae::ParamUIFlags::CONTROL);
+                param.set_ui_width(200);
+                param.set_ui_height(46);
+                -1
+            },
+        )?;
         #[cfg(leg_u2b)]
         {
             let mut pod = ae::ArbitraryDef::new();
@@ -354,6 +499,16 @@ impl AdobePluginGlobal for Global {
                 ae::Event::Click(_) => {
                     let idx = extra.param_index();
                     if extra.effect_area() == ae::EffectArea::Control {
+                        #[cfg(leg_u3)]
+                        if Some(idx) == params.index(Params::U3Canvas) {
+                            let value = u3_normalized_x(&extra);
+                            let res = u3_write_sibling(params, value);
+                            log(&format!("U3_CLICK_WRITE value={value:.6} res={res:?}"));
+                        }
+                        #[cfg(leg_u4)]
+                        if Some(idx) == params.index(Params::U4Canvas) {
+                            u4_open_picker(params);
+                        }
                         let sp = extra.screen_point();
                         let cf = extra.current_frame();
                         extra.set_send_drag(true);
@@ -367,13 +522,23 @@ impl AdobePluginGlobal for Global {
                     }
                 }
                 ae::Event::Drag(_) => {
+                    let idx = extra.param_index();
                     let sp = extra.screen_point();
                     let last = extra.last_time();
+                    #[cfg(leg_u3)]
+                    if last
+                        && extra.effect_area() == ae::EffectArea::Control
+                        && Some(idx) == params.index(Params::U3Canvas)
+                    {
+                        let value = u3_normalized_x(&extra);
+                        let res = u3_write_sibling(params, value);
+                        log(&format!("U3_DRAG_WRITE value={value:.6} res={res:?}"));
+                    }
                     extra.set_send_drag(true);
                     extra.set_event_out_flags(ae::EventOutFlags::HANDLED_EVENT);
                     log(&format!(
                         "DRAG idx={} sp=({},{}) last={}",
-                        extra.param_index(), sp.h, sp.v, last
+                        idx, sp.h, sp.v, last
                     ));
                 }
                 _ => {}
@@ -413,6 +578,21 @@ impl Instance {
 
     fn sync(&mut self, plugin: &mut PluginState, commit: bool) {
         let kb = Self::read_kb(plugin);
+        #[cfg(leg_u3)]
+        match plugin.params.get(Params::U3Sibling) {
+            Ok(param) => match param.as_float_slider() {
+                Ok(slider) => log(&format!(
+                    "U3_READ value={:.6} commit={commit}",
+                    slider.value()
+                )),
+                Err(error) => log(&format!(
+                    "U3_READ value=unavailable commit={commit} res={error:?}"
+                )),
+            },
+            Err(error) => log(&format!(
+                "U3_READ value=unavailable commit={commit} res={error:?}"
+            )),
+        }
         // Record kb unconditionally on commit so flatten() carries the
         // intended sequence-payload size. The arb-blob write below is a
         // separate (negative) probe of the ParamDef write path and must not
