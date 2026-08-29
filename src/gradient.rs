@@ -20,6 +20,35 @@ pub const MAX_STOPS: usize = 8;
 /// costs 4 KB at float precision.
 pub const LUT_WIDTH: usize = 256;
 
+/// Host-free ramp geometry. The frame bounds come from AE's live event frame,
+/// because the host may stretch a declared custom control to a wider column.
+#[derive(Debug, Clone, Copy, PartialEq)]
+#[cfg(any(feature = "editor", test))]
+pub struct RampGeometry {
+    left: f32,
+    right: f32,
+}
+
+#[cfg(any(feature = "editor", test))]
+impl RampGeometry {
+    pub fn new(left: f32, right: f32) -> Self {
+        Self { left, right: right.max(left) }
+    }
+
+    pub fn position_to_x(self, position: f32) -> f32 {
+        self.left + position.clamp(0.0, 1.0) * (self.right - self.left)
+    }
+
+    pub fn x_to_position(self, x: f32) -> f32 {
+        let width = self.right - self.left;
+        if width <= f32::EPSILON {
+            0.0
+        } else {
+            ((x - self.left) / width).clamp(0.0, 1.0)
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Stop {
     pub position: f32,
@@ -242,6 +271,39 @@ mod tests {
         for pair in lut.windows(2) {
             assert!(pair[1][0] >= pair[0][0], "ramp must not go backwards");
         }
+    }
+
+    #[test]
+    fn ramp_geometry_maps_both_edges_and_clamps_outside() {
+        let geometry = RampGeometry::new(12.0, 212.0);
+        assert_eq!(geometry.position_to_x(0.0), 12.0);
+        assert_eq!(geometry.position_to_x(1.0), 212.0);
+        assert_eq!(geometry.position_to_x(-1.0), 12.0);
+        assert_eq!(geometry.position_to_x(2.0), 212.0);
+        assert_eq!(geometry.x_to_position(12.0), 0.0);
+        assert_eq!(geometry.x_to_position(212.0), 1.0);
+    }
+
+    #[test]
+    fn ramp_geometry_uses_the_stretched_frame_and_round_trips() {
+        let geometry = RampGeometry::new(0.0, 280.0);
+        assert_eq!(geometry.position_to_x(0.5), 140.0);
+        assert_ne!(
+            geometry.position_to_x(0.5),
+            100.0,
+            "declared 200px is not draw geometry"
+        );
+        for position in [0.0, 0.125, 0.5, 0.875, 1.0] {
+            let round_trip = geometry.x_to_position(geometry.position_to_x(position));
+            assert!((round_trip - position).abs() < 1e-6);
+        }
+    }
+
+    #[test]
+    fn zero_width_ramp_geometry_is_stable() {
+        let geometry = RampGeometry::new(5.0, 5.0);
+        assert_eq!(geometry.position_to_x(0.75), 5.0);
+        assert_eq!(geometry.x_to_position(99.0), 0.0);
     }
 
 

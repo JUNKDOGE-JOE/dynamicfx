@@ -23,8 +23,9 @@ fn main() {
     // reads at GLOBAL_SETUP, and also writes the PiPL resource. Its resource
     // path is byte-unsafe (see `repair_pipl_resource`), so the resource is
     // rebuilt afterwards; the env vars from this call are correct and stay.
-    pipl::plugin_build(pipl_properties());
-    repair_pipl_resource();
+    let editor = std::env::var_os("CARGO_FEATURE_EDITOR").is_some();
+    pipl::plugin_build(pipl_properties(editor));
+    repair_pipl_resource(editor);
 }
 
 /// pipl 0.1.1 serializes the PiPL as an RC **string literal** of `\xNN`
@@ -42,12 +43,12 @@ fn main() {
 /// An RC file reference is copied verbatim, so no code page can touch it.
 /// Recompiling overwrites pipl's `resource.rc` in OUT_DIR, so exactly one PiPL
 /// reaches the linker.
-fn repair_pipl_resource() {
+fn repair_pipl_resource(editor: bool) {
     if !cfg!(target_os = "windows") {
         return;
     }
     let out_dir = std::env::var("OUT_DIR").expect("OUT_DIR is always set for build scripts");
-    let bytes = pipl::build_pipl(pipl_properties()).expect("PiPL serialization");
+    let bytes = pipl::build_pipl(pipl_properties(editor)).expect("PiPL serialization");
     let bin = std::path::Path::new(&out_dir).join("pipl.bin");
     std::fs::write(&bin, &bytes).expect("write pipl.bin");
 
@@ -59,7 +60,33 @@ fn repair_pipl_resource() {
 }
 
 #[rustfmt::skip]
-fn pipl_properties() -> Vec<Property> {
+fn pipl_properties(editor: bool) -> Vec<Property> {
+    let mut out_flags =
+        OutFlags::PixIndependent |
+        OutFlags::UseOutputExtent |
+        OutFlags::DeepColorAware |
+        OutFlags::SendUpdateParamsUI |
+        // ADR-0039: the output world may exceed the layer frame (the
+        // canvas — declared expansion or upstream extent). Without this
+        // flag AE clips the output world to the layer regardless of
+        // max_result_rect. The repair path below re-emits the PiPL
+        // bytes, so the added bit is byte-safe like every other flag.
+        OutFlags::IExpandBuffer |
+        // The shader output depends on u_time (and the shader source
+        // itself) even when no AE parameter changes — without this flag
+        // AE caches the frame forever and the preview never updates.
+        OutFlags::NonParamVary;
+    if editor {
+        // ADR-0042: the gradient-editor canvases carry PF_PUI_CONTROL, and AE
+        // validates at PARAMS_SETUP — "no custom ui outflag, but param has
+        // ui_width or ui_height or PF_PUI_TOPIC/CONTROL flags" refuses the
+        // whole effect — so this bit rides the same `editor` feature as every
+        // CONTROL declaration and the register_ui call; they can only appear
+        // together. Bit 15 sets the high bit of flags byte 1 (0x86 with
+        // today's flags): code-page-unsafe, covered by `repair_pipl_resource`.
+        out_flags |= OutFlags::CustomUI;
+    }
+
     vec![
         Property::Kind(PIPLType::AEEffect),
         Property::Name("DynamicFx"),
@@ -78,34 +105,13 @@ fn pipl_properties() -> Vec<Property> {
             // Subversion bumps with out-flag changes (M5 SmartFX entry,
             // M6 threaded rendering) so AE's plugin cache re-reads the PIPL.
             version: 1,
-            subversion: 5,
+            subversion: if editor { 6 } else { 5 },
             bugversion: 0,
             stage: Stage::Develop,
             build: 0,
         },
         Property::AE_Effect_Info_Flags(0),
-        Property::AE_Effect_Global_OutFlags(
-            OutFlags::PixIndependent |
-            OutFlags::UseOutputExtent |
-            OutFlags::DeepColorAware |
-            OutFlags::SendUpdateParamsUI |
-            // ADR-0039: the output world may exceed the layer frame (the
-            // canvas — declared expansion or upstream extent). Without this
-            // flag AE clips the output world to the layer regardless of
-            // max_result_rect. The repair path below re-emits the PiPL
-            // bytes, so the added bit is byte-safe like every other flag.
-            OutFlags::IExpandBuffer |
-            // The shader output depends on u_time (and the shader source
-            // itself) even when no AE parameter changes — without this flag
-            // AE caches the frame forever and the preview never updates.
-            // PF_OutFlag_CUSTOM_UI was set for the ADR-0031 §7 gradient
-            // editor and is gone with it (2026-08-15). AE validates the flag
-            // at PARAMS_SETUP and refuses the whole effect — "no custom ui
-            // outflag, but param has ui_width or ui_height or
-            // PF_PUI_TOPIC/CONTROL flags" — so it must return the moment any
-            // parameter carries PF_PUI_CONTROL again. No parameter does.
-            OutFlags::NonParamVary
-        ),
+        Property::AE_Effect_Global_OutFlags(out_flags),
         Property::AE_Effect_Global_OutFlags_2(
             // Deliberately NOT SupportsThreadedRendering yet: AE still uses a
             // separate render thread/project, but serializes this effect's

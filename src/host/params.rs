@@ -49,6 +49,8 @@ pub enum ParamKey {
     MainEnd,
     GradientGroupStart(usize),
     GradientGroupEnd(usize),
+    #[cfg(feature = "editor")]
+    GradientCanvas(usize),
     PassGroupStart(usize),
     PassGroupEnd(usize),
 }
@@ -123,6 +125,7 @@ const HEAD: [ParamKey; 5] = [
 pub const LANGUAGE_STREAM_INDEX: i32 = 2;
 pub const SOURCE_STREAM_INDEX: i32 = 3;
 pub const STATE_TOKEN_STREAM_INDEX: i32 = 6;
+const INPUT_LAYER_PARAM_COUNT: usize = 1;
 
 /// The complete grouped declaration order. Stream identity is pinned by the
 /// `ParamKey` id table; this order controls only panel topology (ADR-0040 §1).
@@ -148,6 +151,8 @@ pub fn declaration_order() -> Vec<ParamKey> {
     }
     for g in 0..GRADIENTS {
         order.push(ParamKey::GradientGroupStart(g));
+        #[cfg(feature = "editor")]
+        order.push(ParamKey::GradientCanvas(g));
         order.push(ParamKey::Pool(PoolKind::Gradient, g));
         order.push(ParamKey::GradientCount(g));
         for stop in 0..STOPS_PER_GRADIENT {
@@ -244,10 +249,20 @@ fn default_bank_slot_name(group: usize, kind: PoolKind, index: usize) -> String 
 /// AEGP effect stream index of a declared parameter (declaration position
 /// + 1; the implicit input layer occupies stream 0).
 pub fn stream_index_of(key: ParamKey) -> Option<i32> {
+    param_index_of(key).map(|index| index as i32)
+}
+
+pub fn param_index_of(key: ParamKey) -> Option<usize> {
     declaration_order()
         .iter()
         .position(|k| *k == key)
-        .map(|position| position as i32 + 1)
+        .map(|position| position + INPUT_LAYER_PARAM_COUNT)
+}
+
+pub fn key_for_param_index(index: usize) -> Option<ParamKey> {
+    declaration_order()
+        .get(index.checked_sub(INPUT_LAYER_PARAM_COUNT)?)
+        .copied()
 }
 
 /// Declare the full topology. Iterates `declaration_order()` so the declared
@@ -258,6 +273,20 @@ pub fn setup(params: &mut ae::Parameters<ParamKey>) -> Result<(), ae::Error> {
     declare_range(params, &order, &mut cursor, None)?;
     assert_eq!(cursor, order.len(), "all parameter declarations were consumed");
     Ok(())
+}
+
+/// The single declaration source for custom-control dimensions and the
+/// registration boundary that makes those controls safe for AE to paint.
+pub fn control_surface(key: ParamKey) -> Option<(u16, u16)> {
+    match key {
+        #[cfg(feature = "editor")]
+        ParamKey::GradientCanvas(_) => Some((200, 80)),
+        _ => None,
+    }
+}
+
+pub fn requires_custom_ui() -> bool {
+    declaration_order().into_iter().any(|key| control_surface(key).is_some())
 }
 
 fn declare_range(
@@ -339,8 +368,8 @@ pub fn pass_group_name(group: usize, live_name: Option<&str>) -> String {
         .unwrap_or_else(|| default_pass_group_name(group))
 }
 
-/// Returns the desired Hidden flag for presentation-only group rows. Setup
-/// and Main are topology anchors and therefore have no dynamic visibility.
+/// Returns the desired Hidden flag for presentation-only group and canvas
+/// rows. Setup and Main are topology anchors and have no dynamic visibility.
 pub fn group_hidden(plan: Option<&BindingPlan>, key: ParamKey) -> Option<bool> {
     let bound = |candidate: ParamKey| {
         plan.is_some_and(|plan| {
@@ -359,6 +388,11 @@ pub fn group_hidden(plan: Option<&BindingPlan>, key: ParamKey) -> Option<bool> {
                         ParamKey::GradientGroupEnd(group),
                         ParamKey::Pool(PoolKind::Gradient, bound_group),
                     ) => group == bound_group,
+                    #[cfg(feature = "editor")]
+                    (
+                        ParamKey::GradientCanvas(group),
+                        ParamKey::Pool(PoolKind::Gradient, bound_group),
+                    ) => group == bound_group,
                     _ => false,
                 }
             })
@@ -366,6 +400,8 @@ pub fn group_hidden(plan: Option<&BindingPlan>, key: ParamKey) -> Option<bool> {
     };
 
     match key {
+        #[cfg(feature = "editor")]
+        ParamKey::GradientCanvas(_) => Some(!bound(key)),
         ParamKey::PassGroupStart(_)
         | ParamKey::PassGroupEnd(_)
         | ParamKey::GradientGroupStart(_)
@@ -525,6 +561,29 @@ fn declare_one(params: &mut ae::Parameters<ParamKey>, key: ParamKey) -> Result<(
                     )?,
                 }
             }
+            #[cfg(feature = "editor")]
+            ParamKey::GradientCanvas(_) => {
+                let (width, height) = control_surface(key).expect("canvas has a control surface");
+                params.add_customized(
+                    key,
+                    "Preview",
+                    ae::ColorDef::setup(|c| {
+                        c.set_default(ae::Pixel8 {
+                            alpha: 255,
+                            red: 128,
+                            green: 128,
+                            blue: 128,
+                        });
+                    }),
+                    |param| {
+                        param.set_flags(ae::ParamFlag::CANNOT_TIME_VARY);
+                        param.set_ui_flags(ae::ParamUIFlags::CONTROL);
+                        param.set_ui_width(width);
+                        param.set_ui_height(height);
+                        -1
+                    },
+                )?;
+            }
             ParamKey::Details => {
                 params.add(
                     key,
@@ -665,20 +724,9 @@ fn declare_one(params: &mut ae::Parameters<ParamKey>, key: ParamKey) -> Result<(
                         ae::ParamFlag::START_COLLAPSED,
                         ae::ParamUIFlags::empty(),
                     )?,
-                    // ADR-0031 §7's custom-UI editor is gone (removed
-                    // 2026-08-15 by decision, after the canvas parameter took
-                    // the host down in every configuration tried: arbitrary
-                    // data with no callbacks, arbitrary data with callbacks,
-                    // and a float slider substituted to dodge both). ADR-0033
-                    // §6 anticipated exactly this — "the preview/editor may
-                    // therefore be [...] dropped entirely without making the
-                    // feature unusable" — because the gradient VALUE lives in
-                    // ordinary stop parameters that AE persists and keyframes
-                    // by itself.
-                    //
-                    // The slot survives as an inert, permanently invisible
-                    // float: it is the stable binding anchor `hint:gradient`
-                    // resolves to. It is never shown and never read.
+                    // Keep the binding anchor inert and invisible. The optional
+                    // editor canvas is a separate presentation-only stream, so
+                    // neither rendering nor binding identity can depend on it.
                     PoolKind::Gradient => params.add_with_flags(
                         key,
                         &name,
@@ -711,6 +759,105 @@ fn declare_one(params: &mut ae::Parameters<ParamKey>, key: ParamKey) -> Result<(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn shipped_declaration_order() -> Vec<ParamKey> {
+        let mut order = vec![ParamKey::SetupStart];
+        order.extend(HEAD);
+        order.push(ParamKey::Details);
+        order.push(ParamKey::PlanToken);
+        order.push(ParamKey::SetupEnd);
+        order.push(ParamKey::MainStart);
+        for (kind, capacity) in V1_POOLS {
+            for index in 0..*capacity {
+                order.push(ParamKey::Pool(*kind, index));
+            }
+        }
+        for (kind, capacity) in GROWTH_POOLS {
+            if *kind == PoolKind::Gradient {
+                continue;
+            }
+            for index in 0..*capacity {
+                order.push(ParamKey::Pool(*kind, index));
+            }
+        }
+        for gradient in 0..GRADIENTS {
+            order.push(ParamKey::GradientGroupStart(gradient));
+            order.push(ParamKey::Pool(PoolKind::Gradient, gradient));
+            order.push(ParamKey::GradientCount(gradient));
+            for stop in 0..STOPS_PER_GRADIENT {
+                for field in [
+                    GradientField::Position,
+                    GradientField::Color,
+                    GradientField::Alpha,
+                ] {
+                    order.push(ParamKey::GradientStop(gradient, stop, field));
+                }
+            }
+            order.push(ParamKey::GradientGroupEnd(gradient));
+        }
+        order.push(ParamKey::MainEnd);
+        for group in 0..BANK_GROUPS {
+            order.push(ParamKey::PassGroupStart(group));
+            for (kind, capacity) in BANK_POOLS {
+                for local in 0..*capacity {
+                    order.push(ParamKey::Bank(group, *kind, local));
+                }
+            }
+            order.push(ParamKey::PassGroupEnd(group));
+        }
+        order
+    }
+
+    #[test]
+    fn editor_boundary_is_one_control_surface_set() {
+        let surfaces: std::collections::HashSet<_> = declaration_order()
+            .into_iter()
+            .filter(|key| control_surface(*key).is_some())
+            .collect();
+        #[cfg(feature = "editor")]
+        let expected = std::collections::HashSet::from([
+            ParamKey::GradientCanvas(0),
+            ParamKey::GradientCanvas(1),
+        ]);
+        #[cfg(not(feature = "editor"))]
+        let expected = std::collections::HashSet::new();
+
+        assert_eq!(surfaces, expected);
+        assert_eq!(requires_custom_ui(), !surfaces.is_empty());
+        for key in surfaces {
+            assert_eq!(control_surface(key), Some((200, 80)));
+        }
+    }
+
+    #[test]
+    fn editor_topology_is_the_shipped_order_plus_first_row_canvases() {
+        let order = declaration_order();
+        let shipped = shipped_declaration_order();
+        #[cfg(not(feature = "editor"))]
+        assert_eq!(order, shipped);
+        #[cfg(feature = "editor")]
+        {
+            let without_canvases: Vec<_> = order
+                .iter()
+                .copied()
+                .filter(|key| !matches!(key, ParamKey::GradientCanvas(_)))
+                .collect();
+            assert_eq!(without_canvases, shipped);
+            for gradient in 0..GRADIENTS {
+                let start = order
+                    .iter()
+                    .position(|key| *key == ParamKey::GradientGroupStart(gradient))
+                    .unwrap();
+                assert_eq!(order[start + 1], ParamKey::GradientCanvas(gradient));
+                assert_eq!(order[start + 2], ParamKey::Pool(PoolKind::Gradient, gradient));
+            }
+        }
+        for key in order {
+            let index = param_index_of(key).unwrap();
+            assert_eq!(key_for_param_index(index), Some(key));
+        }
+        assert_eq!(key_for_param_index(0), None);
+    }
 
     /// The declared defaults must read back as a legal gradient. A default
     /// that fails `validate` would put every freshly bound gradient into `E54`
@@ -761,8 +908,8 @@ mod tests {
             .filter(|(kind, _)| *kind != PoolKind::Gradient)
             .map(|(_, capacity)| capacity)
             .sum();
-        let gradient_rows =
-            GRADIENTS * (1 + 1 + STOPS_PER_GRADIENT * 3 + 2);
+        let gradient_rows = GRADIENTS
+            * (1 + 1 + STOPS_PER_GRADIENT * 3 + 2 + usize::from(cfg!(feature = "editor")));
         let bank_slots: usize = BANK_POOLS.iter().map(|(_, capacity)| capacity).sum();
         assert_eq!(v1_slots, 104);
         assert_eq!(main_growth, 14);
@@ -840,7 +987,7 @@ mod tests {
     fn debug_renderings_and_murmur3_ids_are_golden_and_collision_free() {
         use std::hash::{Hash, Hasher};
 
-        let golden = [
+        let golden = vec![
             (ParamKey::SetupStart, "SetupStart"),
             (ParamKey::SetupEnd, "SetupEnd"),
             (ParamKey::Language, "Language"),
@@ -866,6 +1013,15 @@ mod tests {
             (ParamKey::PassGroupEnd(0), "PassGroupEnd(0)"),
             (ParamKey::Bank(0, PoolKind::Float, 0), "Bank(0, Float, 0)"),
         ];
+        #[cfg(feature = "editor")]
+        let golden = {
+            let mut golden = golden;
+            golden.extend([
+                (ParamKey::GradientCanvas(0), "GradientCanvas(0)"),
+                (ParamKey::GradientCanvas(1), "GradientCanvas(1)"),
+            ]);
+            golden
+        };
         for (key, expected) in golden {
             assert_eq!(
                 format!("{key:?}"),
@@ -920,26 +1076,30 @@ mod tests {
     #[test]
     fn growth_pool_property_indexes_match_the_harness() {
         let order = declaration_order();
+        let editor_offset = usize::from(cfg!(feature = "editor"));
         let property_index = |key: ParamKey| {
             order.iter().position(|k| *k == key).map(|p| p + 1)
         };
         assert_eq!(property_index(ParamKey::Pool(PoolKind::Layer, 0)), Some(115));
         assert_eq!(
             property_index(ParamKey::Pool(PoolKind::Gradient, 0)),
-            Some(130)
+            Some(130 + editor_offset)
         );
         assert_eq!(
             property_index(ParamKey::Pool(PoolKind::Point3D, 0)),
             Some(119)
         );
         assert_eq!(property_index(ParamKey::Pool(PoolKind::Path, 0)), Some(127));
-        assert_eq!(property_index(ParamKey::GradientCount(0)), Some(131));
+        assert_eq!(
+            property_index(ParamKey::GradientCount(0)),
+            Some(131 + editor_offset)
+        );
         assert_eq!(property_index(ParamKey::Pool(PoolKind::Float, 0)), Some(11));
         assert_eq!(property_index(ParamKey::Pool(PoolKind::Float, 1)), Some(12));
         assert_eq!(property_index(ParamKey::Pool(PoolKind::Integer, 0)), Some(59));
         assert_eq!(
             property_index(ParamKey::Bank(0, PoolKind::Float, 0)),
-            Some(187)
+            Some(187 + 2 * editor_offset)
         );
     }
 
@@ -953,8 +1113,13 @@ mod tests {
             assert_eq!(group_hidden(None, ParamKey::PassGroupEnd(group)), Some(true));
         }
         for gradient in 0..GRADIENTS {
-            assert_eq!(group_hidden(None, ParamKey::GradientGroupStart(gradient)), Some(true));
+            assert_eq!(
+                group_hidden(None, ParamKey::GradientGroupStart(gradient)),
+                Some(true)
+            );
             assert_eq!(group_hidden(None, ParamKey::GradientGroupEnd(gradient)), Some(true));
+            #[cfg(feature = "editor")]
+            assert_eq!(group_hidden(None, ParamKey::GradientCanvas(gradient)), Some(true));
         }
         assert_eq!(group_hidden(None, ParamKey::SetupStart), None);
         assert_eq!(group_hidden(None, ParamKey::MainStart), None);
@@ -977,7 +1142,12 @@ mod tests {
         assert_eq!(group_hidden(Some(&plan), ParamKey::PassGroupStart(2)), Some(false));
         assert_eq!(group_hidden(Some(&plan), ParamKey::PassGroupEnd(2)), Some(false));
         assert_eq!(group_hidden(Some(&plan), ParamKey::PassGroupStart(1)), Some(true));
-        assert_eq!(group_hidden(Some(&plan), ParamKey::GradientGroupStart(1)), Some(false));
+        assert_eq!(
+            group_hidden(Some(&plan), ParamKey::GradientGroupStart(1)),
+            Some(false)
+        );
+        #[cfg(feature = "editor")]
+        assert_eq!(group_hidden(Some(&plan), ParamKey::GradientCanvas(1)), Some(false));
         assert_eq!(group_hidden(Some(&plan), ParamKey::GradientGroupEnd(1)), Some(false));
         assert_eq!(group_hidden(Some(&plan), ParamKey::GradientGroupStart(0)), Some(true));
     }

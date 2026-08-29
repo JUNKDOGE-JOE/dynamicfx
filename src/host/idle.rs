@@ -551,6 +551,12 @@ fn apply_group_ui(
             ]
         }));
     let keys: Vec<_> = keys.collect();
+    #[cfg(feature = "editor")]
+    let keys = {
+        let mut keys = keys;
+        keys.extend((0..crate::host::params::GRADIENTS).map(ParamKey::GradientCanvas));
+        keys
+    };
     for key in &keys {
         let hidden = group_hidden(plan, *key).expect("only presentation group rows are walked");
         let Some(index) = stream_index_of(*key) else { continue };

@@ -7,6 +7,10 @@ license = "MIT"
 [lib]
 crate-type = ["cdylib"]
 
+[features]
+default = ["editor"]
+editor = []
+
 [dependencies]
 after-effects = "0.4"
 naga = { version = "29", default-features = false, features = ["glsl-in", "spv-out"] }

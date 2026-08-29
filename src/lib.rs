@@ -64,8 +64,54 @@ pub(crate) struct CompiledPass {
     extra_input_bindings: Vec<u32>,
 }
 
-/// Read one gradient's live stop parameters and bake its LUT into the working
-/// format (ADR-0031 §5, ADR-0033 §1).
+fn read_gradient(
+    params: &ae::Parameters<host::params::ParamKey>,
+    gradient_index: usize,
+) -> Result<gradient::Gradient, String> {
+    use host::params::{GradientField, ParamKey, STOPS_PER_GRADIENT};
+
+    let float_at = |key: ParamKey| -> Option<f32> {
+        params.get(key).ok()?.as_float_slider().ok().map(|f| f.value() as f32)
+    };
+    let color_at = |key: ParamKey| -> Option<[f32; 3]> {
+        let p = params.get(key).ok()?;
+        let c = p.as_color().ok()?.value();
+        Some([c.red as f32 / 255.0, c.green as f32 / 255.0, c.blue as f32 / 255.0])
+    };
+
+    let count = float_at(ParamKey::GradientCount(gradient_index))
+        .map(|value| value.round() as i32)
+        .unwrap_or(0);
+    let mut stops = Vec::with_capacity(STOPS_PER_GRADIENT);
+    for stop in 0..STOPS_PER_GRADIENT {
+        let position =
+            float_at(ParamKey::GradientStop(gradient_index, stop, GradientField::Position));
+        let rgb = color_at(ParamKey::GradientStop(gradient_index, stop, GradientField::Color));
+        let alpha = float_at(ParamKey::GradientStop(gradient_index, stop, GradientField::Alpha));
+        let (Some(position), Some(rgb), Some(alpha)) = (position, rgb, alpha) else {
+            return Err(format!("gradient {gradient_index}: stop {stop} parameters unreadable"));
+        };
+        stops.push(gradient::Stop { position, rgba: [rgb[0], rgb[1], rgb[2], alpha] });
+    }
+
+    if count < 1 || count as usize > STOPS_PER_GRADIENT {
+        return Err(format!(
+            "gradient {gradient_index}: stop count {count} outside 1..={STOPS_PER_GRADIENT}"
+        ));
+    }
+    let value = gradient::Gradient::from_parameters(count as usize, &stops);
+    value
+        .validate()
+        .map_err(|error| {
+            format!(
+                "gradient {gradient_index} rejected ({error:?}); binding transparent black"
+            )
+        })?;
+    Ok(value)
+}
+
+/// Bake one gradient's live parameter snapshot into the render working format
+/// (ADR-0031 §5, ADR-0033 §1).
 ///
 /// The LUT rides the render's working format rather than a fixed
 /// `Rgba32Float`: at 32-bpc that *is* float — satisfying the decision's reason,
@@ -79,55 +125,16 @@ fn bake_gradient(
     params: &ae::Parameters<host::params::ParamKey>,
     gradient_index: usize,
 ) -> Option<ExternalPixels> {
-    use host::params::{GradientField, ParamKey, STOPS_PER_GRADIENT};
-
-    let float_at = |key: ParamKey| -> Option<f32> {
-        params.get(key).ok()?.as_float_slider().ok().map(|f| f.value() as f32)
-    };
-    let color_at = |key: ParamKey| -> Option<[f32; 3]> {
-        let p = params.get(key).ok()?;
-        let c = p.as_color().ok()?.value();
-        Some([c.red as f32 / 255.0, c.green as f32 / 255.0, c.blue as f32 / 255.0])
-    };
-
-    let count = float_at(ParamKey::GradientCount(gradient_index))
-        .map(|v| v.round() as i32)
-        .unwrap_or(0);
-    let mut stops = Vec::with_capacity(STOPS_PER_GRADIENT);
-    for stop in 0..STOPS_PER_GRADIENT {
-        // Never `?` these away silently: an unreadable stop is a real fault
-        // and the project's policy is that nothing degrades to pass-through
-        // without a diagnostic.
-        let position =
-            float_at(ParamKey::GradientStop(gradient_index, stop, GradientField::Position));
-        let rgb = color_at(ParamKey::GradientStop(gradient_index, stop, GradientField::Color));
-        let alpha =
-            float_at(ParamKey::GradientStop(gradient_index, stop, GradientField::Alpha));
-        let (Some(position), Some(rgb), Some(alpha)) = (position, rgb, alpha) else {
+    let value = match read_gradient(params, gradient_index) {
+        Ok(value) => value,
+        Err(reason) => {
             diag::log(&diagnostics::status_text(
                 Diag::GradientMalformed,
-                &format!("gradient {gradient_index}: stop {stop} parameters unreadable"),
+                &reason,
             ));
             return None;
-        };
-        stops.push(gradient::Stop { position, rgba: [rgb[0], rgb[1], rgb[2], alpha] });
-    }
-
-    if count < 1 || count as usize > STOPS_PER_GRADIENT {
-        diag::log(&diagnostics::status_text(
-            Diag::GradientMalformed,
-            &format!("gradient {gradient_index}: stop count {count} outside 1..={STOPS_PER_GRADIENT}"),
-        ));
-        return None;
-    }
-    let value = gradient::Gradient::from_parameters(count as usize, &stops);
-    if let Err(e) = value.validate() {
-        diag::log(&diagnostics::status_text(
-            Diag::GradientMalformed,
-            &format!("gradient {gradient_index} rejected ({e:?}); binding transparent black"),
-        ));
-        return None;
-    }
+        }
+    };
 
     Some(ExternalPixels {
         pixels: Vec::new(),
@@ -138,6 +145,104 @@ fn bake_gradient(
         vertices: None,
         ae_pixels: false,
     })
+}
+
+#[cfg(feature = "editor")]
+fn paint_gradient_preview(
+    params: &ae::Parameters<host::params::ParamKey>,
+    extra: &ae::EventExtra,
+    gradient_index: usize,
+) -> Result<(), String> {
+    let value = read_gradient(params, gradient_index)?;
+    let drawbot = extra
+        .context_handle()
+        .drawing_reference()
+        .map_err(|error| format!("Drawbot acquisition failed ({error:?})"))?;
+    let surface = drawbot
+        .surface()
+        .map_err(|error| format!("surface failed ({error:?})"))?;
+    let frame = extra.current_frame();
+    let width = frame.width().max(0) as usize;
+    let height = frame.height().max(0) as usize;
+    if width == 0 || height == 0 {
+        return Ok(());
+    }
+
+    let geometry = gradient::RampGeometry::new(frame.left as f32, frame.right as f32);
+    let lut = value.bake_lut();
+    for column in 0..width {
+        let left = frame.left as f32 + column as f32;
+        let position = geometry.x_to_position(left + 0.5);
+        let sample_index = ((position * gradient::LUT_WIDTH as f32) as usize)
+            .min(gradient::LUT_WIDTH - 1);
+        let sample = lut[sample_index];
+        let alpha = sample[3].clamp(0.0, 1.0);
+        // Composite over mid-gray so alpha remains visible without adding a
+        // second geometry system for a checkerboard background.
+        let color = ae::drawbot::ColorRgba {
+            red: sample[0] * alpha + 0.5 * (1.0 - alpha),
+            green: sample[1] * alpha + 0.5 * (1.0 - alpha),
+            blue: sample[2] * alpha + 0.5 * (1.0 - alpha),
+            alpha: 1.0,
+        };
+        let rect = ae::drawbot::RectF32 {
+            left,
+            top: frame.top as f32,
+            width: 1.0,
+            height: height as f32,
+        };
+        surface
+            .paint_rect(&color, &rect)
+            .map_err(|error| format!("ramp paint failed ({error:?})"))?;
+    }
+
+    let tick_width = (width as f32).min(2.0);
+    let tick_height = (height as f32).min(10.0);
+    for stop in &value.stops {
+        let alpha = stop.rgba[3].clamp(0.0, 1.0);
+        let composite = [
+            stop.rgba[0] * alpha + 0.5 * (1.0 - alpha),
+            stop.rgba[1] * alpha + 0.5 * (1.0 - alpha),
+            stop.rgba[2] * alpha + 0.5 * (1.0 - alpha),
+        ];
+        let luminance = composite[0] * 0.2126 + composite[1] * 0.7152 + composite[2] * 0.0722;
+        let level = if luminance > 0.5 { 0.0 } else { 1.0 };
+        let color = ae::drawbot::ColorRgba {
+            red: level,
+            green: level,
+            blue: level,
+            alpha: 1.0,
+        };
+        let tick_x = geometry.position_to_x(stop.position);
+        let left = (tick_x - tick_width * 0.5)
+            .clamp(frame.left as f32, frame.right as f32 - tick_width);
+        let rect = ae::drawbot::RectF32 {
+            left,
+            top: frame.bottom as f32 - tick_height,
+            width: tick_width,
+            height: tick_height,
+        };
+        surface
+            .paint_rect(&color, &rect)
+            .map_err(|error| format!("stop tick paint failed ({error:?})"))?;
+    }
+    Ok(())
+}
+
+#[cfg(feature = "editor")]
+fn paint_degraded_preview(extra: &ae::EventExtra) -> Result<(), ae::Error> {
+    let drawbot = extra.context_handle().drawing_reference()?;
+    let surface = drawbot.surface()?;
+    let frame = extra.current_frame();
+    surface.paint_rect(
+        &ae::drawbot::ColorRgba { red: 0.35, green: 0.03, blue: 0.03, alpha: 1.0 },
+        &ae::drawbot::RectF32 {
+            left: frame.left as f32,
+            top: frame.top as f32,
+            width: frame.width().max(0) as f32,
+            height: frame.height().max(0) as f32,
+        },
+    )
 }
 
 /// Check out one AE mask and walk its vertices (ADR-0035).
@@ -1750,11 +1855,16 @@ impl AdobePluginGlobal for Global {
     fn params_setup(
         &self,
         params: &mut ae::Parameters<ParamKey>,
-        _: ae::InData,
+        in_data: ae::InData,
         _: ae::OutData,
     ) -> Result<(), Error> {
         diag::log("params setup: ADR-0013 topology");
         host::params::setup(params)?;
+        if host::params::requires_custom_ui() {
+            in_data
+                .interact()
+                .register_ui(ae::CustomUIInfo::new().events(ae::CustomEventFlags::EFFECT))?;
+        }
         diag::log("params setup: complete");
         Ok(())
     }
@@ -1764,15 +1874,34 @@ impl AdobePluginGlobal for Global {
         command: ae::Command,
         in_data: ae::InData,
         _: ae::OutData,
-        // The global handler took `params` only for the ADR-0031 §7 custom-UI
-        // editor, which is gone. Everything else that touches parameters runs
-        // on the instance side, where the sequence handle is available.
         _params: &mut ae::Parameters<ParamKey>,
     ) -> Result<(), ae::Error> {
+        #[cfg(feature = "editor")]
+        let mut command = command;
+        #[cfg(feature = "editor")]
+        if let ae::Command::Event { extra } = &mut command {
+            if matches!(extra.event(), ae::Event::Draw(_))
+                && extra.effect_area() == ae::EffectArea::Control
+            {
+                if let Some(ParamKey::GradientCanvas(gradient_index)) =
+                    host::params::key_for_param_index(extra.param_index())
+                {
+                    if let Err(reason) = paint_gradient_preview(_params, extra, gradient_index) {
+                        let degraded = paint_degraded_preview(extra).err();
+                        log::warn!(
+                            "gradient {gradient_index} preview degraded: {reason}; degraded fill: {degraded:?}"
+                        );
+                    }
+                    extra.set_event_out_flags(ae::EventOutFlags::HANDLED_EVENT);
+                }
+            }
+            return Ok(());
+        }
+
         // The §5.3 idle observer: scripted expression writes never arrive as
         // UserChangedParam (TR-M0-005), so a main-thread idle scan gives each
         // instance its observation opportunity and mirrors the session token.
-        if matches!(command, ae::Command::GlobalSetup) && !self.idle_registered {
+        if matches!(&command, ae::Command::GlobalSetup) && !self.idle_registered {
             let plugin_id = self.plugin_id()?;
             let state = host::idle::IdleState::new(
                 plugin_id,
@@ -1793,7 +1922,7 @@ impl AdobePluginGlobal for Global {
         // SmartRender) when both the raw pointer and the const-suite path
         // yield null, which leaves the output world untouched.
         if matches!(
-            command,
+            &command,
             ae::Command::SmartPreRender { .. } | ae::Command::SmartRender { .. }
         ) {
             let raw_null = unsafe { (*in_data.as_ptr()).sequence_data.is_null() };
@@ -1802,7 +1931,7 @@ impl AdobePluginGlobal for Global {
                 .const_sequence_data()
                 .map(|p| !p.is_null())
                 .unwrap_or(false);
-            let smart = matches!(command, ae::Command::SmartRender { .. });
+            let smart = matches!(&command, ae::Command::SmartRender { .. });
             // Per-render log policy (M7): serialized file appends on every
             // render cost real time under MFR — opt-in only.
             diag::verbose(&format!(
