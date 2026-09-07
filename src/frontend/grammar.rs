@@ -29,6 +29,10 @@ pub struct Envelope {
     pub passes: Vec<ManifestPass>,
     /// Unescaped pass bodies, parallel to `passes`.
     pub bodies: Vec<String>,
+    /// 1-based first source line after each `@pass`, parallel to the manifest.
+    /// Escaping preserves line count; columns remain pass-local after `@@`.
+    /// Diagnostic metadata only, never persisted or part of graph identity.
+    pub body_start_lines: Vec<usize>,
     /// Any pass reads `prev` (ADR-0023): the effect is temporal.
     pub uses_prev: bool,
 }
@@ -222,6 +226,7 @@ pub fn parse_envelope(source: &str) -> Result<Envelope, GrammarError> {
 
     // Manifest and section sets must match one-to-one, any order.
     let mut bodies = vec![None; passes.len()];
+    let mut body_start_lines = vec![0; passes.len()];
     for (name, body, line) in sections {
         let Some(position) = passes.iter().position(|p| p.name == name) else {
             return Err(err(line, format!("@pass `{name}` is not declared in @graph")));
@@ -230,6 +235,7 @@ pub fn parse_envelope(source: &str) -> Result<Envelope, GrammarError> {
             return Err(err(line, format!("duplicate @pass section `{name}`")));
         }
         bodies[position] = Some(body);
+        body_start_lines[position] = line + 1;
     }
     for (position, body) in bodies.iter().enumerate() {
         if body.is_none() {
@@ -241,7 +247,7 @@ pub fn parse_envelope(source: &str) -> Result<Envelope, GrammarError> {
     }
 
     let uses_prev = passes.iter().any(|p| p.inputs.iter().any(|i| i == RES_PREV));
-    Ok(Envelope { passes, bodies: bodies.into_iter().map(Option::unwrap).collect(), uses_prev })
+    Ok(Envelope { passes, bodies: bodies.into_iter().map(Option::unwrap).collect(), body_start_lines, uses_prev })
 }
 
 /// The v1 graph rules (ADR-0018 §3).

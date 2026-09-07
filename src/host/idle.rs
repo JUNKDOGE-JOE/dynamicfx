@@ -827,7 +827,7 @@ impl RawStreamSuite6 {
         stream_value.streamH = stream.as_ptr();
         stream_value.val.one_d = value;
         let err = unsafe { set_stream_value(plugin_id, stream.as_ptr(), &mut stream_value) };
-        if err == ae::sys::A_Err_NONE {
+        if err == ae::sys::A_Err_NONE as ae::sys::A_Err {
             Ok(())
         } else {
             crate::diag::log(&format!("AEGP_SetStreamValue failed: {err}"));
@@ -856,7 +856,7 @@ impl RawStreamSuite6 {
             blueF: b,
         };
         let err = unsafe { set_stream_value(plugin_id, stream.as_ptr(), &mut stream_value) };
-        if err == ae::sys::A_Err_NONE {
+        if err == ae::sys::A_Err_NONE as ae::sys::A_Err {
             Ok(())
         } else {
             crate::diag::log(&format!("AEGP_SetStreamValue(color) failed: {err}"));

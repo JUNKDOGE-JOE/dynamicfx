@@ -70,6 +70,8 @@ Use [TEMPLATE.md](TEMPLATE.md). Ordinary implementation details and bug fixes do
 | [0041](0041-panel-polish.md) | Panel polish — expanded `Setup` group around the head controls; empty pass/gradient groups hidden by the slot mechanism; pass groups renamed to their envelope names via `PF_UpdateParamUI` (fallbacks = the verified pre-polish state) | Accepted |
 | [0042](0042-gradient-editor-presentation-contract.md) | Gradient editor returns as pure presentation — per-gradient inert canvas params; `CustomUI` out-flag + `PF_PUI_CONTROL` + `register_ui` are one build-time atom with a boundary test (omitting `register_ui` is measured host-fatal); draw/hit-test from `current_frame`; edits only via ordinary parameter commits, staged by probe evidence | Accepted |
 
+[0043](0043-apple-silicon-host-protocol.md) — Apple Silicon macOS host protocol; Accepted 2026-09-08.
+
 ## Under review (Proposed)
 
 A `Proposed` ADR is under active decision review and freezes no persistent contract yet (it is not counted among the Accepted decisions and is not a binding record until Accepted).
@@ -128,3 +130,5 @@ Post-M7 (follow-up features):
 - [0040 per-pass parameter groups and id identity](0040-parameter-groups-and-id-identity.md) — Accepted 2026-08-26 (user requirement: per-pass groups with shared parameters on top; `Main` = the existing pools wrapped id-safe, twelve partitioned pass banks, automatic assignment from pass reflection, keyframe stability outranks regrouping; param id replaces declaration index as stream identity per the TR-GRP-001 `ID_MATCH` measurement; supersedes ADR-0013 §5's index mechanism and ADR-0028's frozen-index rationale);
 - [0041 panel polish](0041-panel-polish.md) — Accepted 2026-08-26 (same-day scope extension by user decision: expanded `Setup` group wrapping the head controls, empty pass/gradient groups hidden through the slot mechanism, pass groups renamed to their envelope names through `PF_UpdateParamUI`; both presentation items degrade to the verified pre-polish state when the host refuses; verified by TR-0041-001 on the final 0.0.6 artifact);
 - [0042 gradient editor presentation contract](0042-gradient-editor-presentation-contract.md) — Accepted 2026-08-28 (the custom-controls track unfroze after TR-CUI-001 Rounds 2–4 pinned the 2026-08-15 crash to declaring `PF_PUI_CONTROL` without calling `register_ui` — a WER-invisible host kill, `C000041D`, reproduced 3/3 on a byte-identical binary ± one call; the editor returns as pure presentation over the ADR-0033 value rows, which stand unchanged: per-gradient inert canvas parameters, one build-time custom-UI atom with a boundary unit test, `current_frame`-only geometry, edits only via ordinary parameter commits staged by probe evidence, AE 2026 host legs mandatory before release).
+
+| [0044](0044-wgsl-and-010-release.md) | Production WGSL frontend and 0.1.0 release scope | Accepted |

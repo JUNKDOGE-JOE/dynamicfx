@@ -8,6 +8,8 @@ pub mod annotation;
 pub mod envelope;
 pub mod glsl;
 pub mod grammar;
+mod shared;
+pub mod wgsl;
 
 use crate::definition::param::ParamDeclaration;
 
@@ -21,7 +23,7 @@ impl LanguageId {
     pub const INVALID: Self = Self(0);
     /// GLSL, the default language.
     pub const GLSL: Self = Self(1);
-    /// WGSL, registered by ADR-0010 but not implemented in Phase 1.
+    /// WGSL, activated by ADR-0044 without changing its reserved ID.
     pub const WGSL: Self = Self(2);
 }
 
@@ -35,7 +37,7 @@ struct LanguageEntry {
 /// The permanent registry. Rows may only be appended, with ascending IDs.
 const REGISTRY: &[LanguageEntry] = &[
     LanguageEntry { id: LanguageId::GLSL, display_name: "GLSL", implemented: true },
-    LanguageEntry { id: LanguageId::WGSL, display_name: "WGSL", implemented: false },
+    LanguageEntry { id: LanguageId::WGSL, display_name: "WGSL", implemented: true },
 ];
 
 pub fn default_language() -> LanguageId {
@@ -74,7 +76,7 @@ pub fn popup_position_for(id: LanguageId) -> Option<u32> {
 
 /// One validated pass module: language-neutral IR (naga is the shared IR all
 /// frontends lower into), the user parameter declarations reflected from it
-/// (ADR-0013 types), the std140 layout the GPU path uploads against, and the
+/// (ADR-0013 types), the reflected layout the GPU path uploads against, and the
 /// extra input bindings the module declares (set 0, bindings 3+ — the
 /// ADR-0011 reserved space consumed by ADR-0018 multi-input).
 #[derive(Debug, Clone)]
@@ -91,7 +93,8 @@ pub struct PassModule {
 /// the 16-byte builtin head (ADR-0011 §4) precedes every entry.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct UniformBlockLayout {
-    /// std140 span of the whole block, ≥ 16.
+    /// Reflected byte span of the whole block, ≥ 16. GLSL uses std140;
+    /// WGSL uses its native layout, including permitted explicit padding.
     pub block_size: usize,
     pub entries: Vec<UniformEntry>,
 }
@@ -144,6 +147,8 @@ pub trait LanguageFrontend: Sync {
 pub fn frontend_for(id: LanguageId) -> Option<&'static dyn LanguageFrontend> {
     if id == LanguageId::GLSL {
         Some(&glsl::GlslFrontend)
+    } else if id == LanguageId::WGSL {
+        Some(&wgsl::WgslFrontend)
     } else {
         None
     }
@@ -168,8 +173,8 @@ mod tests {
     }
 
     #[test]
-    fn v1_menu_is_exactly_glsl() {
-        assert_eq!(popup_menu(), vec!["GLSL"]);
+    fn wgsl_appends_to_the_original_glsl_menu() {
+        assert_eq!(popup_menu(), vec!["GLSL", "WGSL"]);
         assert_eq!(default_language(), LanguageId::GLSL);
     }
 
@@ -177,16 +182,19 @@ mod tests {
     fn position_and_id_map_both_ways() {
         assert_eq!(language_from_popup_position(1), Some(LanguageId::GLSL));
         assert_eq!(popup_position_for(LanguageId::GLSL), Some(1));
+        assert_eq!(language_from_popup_position(2), Some(LanguageId::WGSL));
+        assert_eq!(popup_position_for(LanguageId::WGSL), Some(2));
+        assert_eq!(frontend_for(LanguageId::WGSL).unwrap().language(), LanguageId::WGSL);
     }
 
     #[test]
     fn unknown_positions_and_ids_are_rejected_not_clamped() {
         assert_eq!(language_from_popup_position(0), None);
-        assert_eq!(language_from_popup_position(2), None);
+        assert_eq!(language_from_popup_position(3), None);
         assert_eq!(popup_position_for(LanguageId::INVALID), None);
-        // WGSL is registered but unimplemented: no menu position, not implemented.
-        assert_eq!(popup_position_for(LanguageId::WGSL), None);
-        assert!(!is_implemented(LanguageId::WGSL));
+        assert!(is_implemented(LanguageId::WGSL));
+        assert!(frontend_for(LanguageId::INVALID).is_none());
+        assert!(frontend_for(LanguageId(999)).is_none());
         assert!(!is_implemented(LanguageId(999)));
         assert!(is_implemented(LanguageId::GLSL));
     }

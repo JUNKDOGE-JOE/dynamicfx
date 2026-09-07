@@ -125,6 +125,19 @@ pub fn margin_physical(logical: f32, num: i32, den: u32) -> i32 {
     (logical * num as f32 / den as f32).ceil() as i32
 }
 
+/// The source layer dimensions in PF_InData stay full-resolution, unlike
+/// SmartFX pixel worlds and rectangles. Convert each dimension once before
+/// resolving the physical canvas. Round outward so an odd-sized layer keeps
+/// its final partial pixel, and retain the existing invalid-ratio fallback.
+pub fn dimension_physical(logical: i32, num: i32, den: u32) -> i32 {
+    let logical = logical.max(0);
+    if num <= 0 || den == 0 {
+        return logical;
+    }
+    let scaled = i64::from(logical) * i64::from(num);
+    ((scaled + i64::from(den) - 1) / i64::from(den)).min(i64::from(i32::MAX)) as i32
+}
+
 /// Where `inner` content lands inside `outer`, both in layer space:
 /// `(src_x, src_y, dst_x, dst_y, w, h)` with src offsets inner-local and dst
 /// offsets outer-local. `None` when they do not overlap.
@@ -222,6 +235,49 @@ mod tests {
         // Negative and non-finite clamp to zero.
         assert_eq!(margin_physical(-5.0, 1, 1), 0);
         assert_eq!(margin_physical(f32::NAN, 1, 1), 0);
+    }
+
+    #[test]
+    fn layer_dimensions_convert_to_render_pixels_once() {
+        assert_eq!(dimension_physical(1280, 1, 1), 1280);
+        assert_eq!(dimension_physical(1280, 1, 2), 640);
+        assert_eq!(dimension_physical(720, 1, 2), 360);
+        assert_eq!(dimension_physical(1280, 1, 4), 320);
+        assert_eq!(dimension_physical(720, 1, 4), 180);
+        assert_eq!(dimension_physical(1281, 1, 2), 641);
+        assert_eq!(dimension_physical(721, 1, 3), 241);
+        assert_eq!(dimension_physical(1281, 2, 3), 854);
+        assert_eq!(dimension_physical(0, 1, 2), 0);
+        assert_eq!(dimension_physical(-1, 1, 2), 0);
+        assert_eq!(dimension_physical(1280, 0, 2), 1280);
+        assert_eq!(dimension_physical(1280, 1, 0), 1280);
+        assert_eq!(dimension_physical(i32::MAX, i32::MAX, 1), i32::MAX);
+    }
+
+    #[test]
+    fn downsampled_canvas_matches_world_instead_of_cropping_a_quadrant() {
+        // Regression: PF_InData says 1280x720 at every resolution. Passing
+        // those logical dimensions to resolve made the canvas twice the
+        // actual Half world, then delivery copied only its upper-left quarter.
+        for denominator in [1, 2, 4] {
+            let width = dimension_physical(1280, 1, denominator);
+            let height = dimension_physical(720, 1, denominator);
+            let world = Rect::frame(width, height);
+            let resolved = resolve(width, height, Some(world), None, 16384);
+            assert_eq!(resolved.canvas, world);
+            assert_eq!(place(&world, &resolved.canvas),
+                       Some((0, 0, 0, 0, width as usize, height as usize)));
+            assert_eq!(width * denominator as i32, 1280);
+            assert_eq!(height * denominator as i32, 720);
+        }
+        // Both axis ratios and an authored logical margin are independent.
+        let width = dimension_physical(1280, 1, 2);
+        let height = dimension_physical(720, 1, 4);
+        let margin = (margin_physical(64.0, 1, 2), margin_physical(64.0, 1, 4));
+        let grown = Rect { left: -128, top: -64, right: 768, bottom: 244 };
+        assert_eq!(resolve(width, height, Some(grown), None, 16384).canvas, grown);
+        let declared = resolve(width, height, Some(grown), Some(margin), 16384);
+        assert_eq!(declared.canvas, Rect { left: -32, top: -16, right: 672, bottom: 196 });
     }
 
     #[test]

@@ -5,6 +5,7 @@ const PF_PLUG_IN_SUBVERS: u16 = 28;
 
 #[rustfmt::skip]
 fn main() {
+    println!("cargo:rerun-if-changed=build.rs");
     // after-effects-rs exposes these as destination-crate cfgs from its
     // generated entry point. Declare all of them for rustc's cfg checking and
     // keep a release panic boundary around EffectMain: several upstream host
@@ -94,18 +95,18 @@ fn pipl_properties(editor: bool) -> Vec<Property> {
 
         #[cfg(target_os = "windows")]
         Property::CodeWin64X86("EffectMain"),
-        #[cfg(target_os = "macos")]
+        #[cfg(all(target_os = "macos", target_arch = "x86_64"))]
         Property::CodeMacIntel64("EffectMain"),
-        #[cfg(target_os = "macos")]
+        #[cfg(all(target_os = "macos", target_arch = "aarch64"))]
         Property::CodeMacARM64("EffectMain"),
 
         Property::AE_PiPL_Version { major: 2, minor: 0 },
         Property::AE_Effect_Spec_Version { major: PF_PLUG_IN_VERSION, minor: PF_PLUG_IN_SUBVERS },
         Property::AE_Effect_Version {
-            // Subversion bumps with out-flag changes (M5 SmartFX entry,
-            // M6 threaded rendering) so AE's plugin cache re-reads the PIPL.
+            // 0.1.0 appends WGSL to the Language popup. Advance both flavor
+            // cache generations beyond the previous default=5/editor=6.
             version: 1,
-            subversion: if editor { 6 } else { 5 },
+            subversion: if editor { 8 } else { 7 },
             bugversion: 0,
             stage: Stage::Develop,
             build: 0,
@@ -131,6 +132,6 @@ fn pipl_properties(editor: bool) -> Vec<Property> {
         ),
         Property::AE_Effect_Match_Name("DynamicFx"),
         Property::AE_Reserved_Info(0),
-        Property::AE_Effect_Support_URL("https://github.com/dynamicfx/dynamicfx-ae"),
+        Property::AE_Effect_Support_URL("https://github.com/JUNKDOGE-JOE/dynamicfx"),
     ]
 }

@@ -8,6 +8,7 @@ pub mod params;
 /// ADR-0028: modal info dialog for the Details button. Win32 directly (no
 /// crate dependency); TASKMODAL so AE's own windows are blocked while the
 /// message is up, exactly like AE's native alerts. UI-command contexts only.
+#[cfg(target_os = "windows")]
 pub fn show_info_dialog(title: &str, text: &str) {
     #[link(name = "user32")]
     extern "system" {
@@ -32,4 +33,14 @@ pub fn show_info_dialog(title: &str, text: &str) {
             MB_OK | MB_ICONINFORMATION | MB_TASKMODAL,
         );
     }
+}
+
+/// Use the host's Unicode dialog on macOS; linking Win32 user32 prevents
+/// even loading a native ARM plugin. Called only from the Details UI event.
+#[cfg(not(target_os = "windows"))]
+pub fn show_info_dialog(
+    plugin_id: after_effects::aegp::PluginId,
+    text: &str,
+) -> Result<(), after_effects::Error> {
+    after_effects::aegp::suites::Utility::new()?.report_info_unicode(plugin_id, text)
 }

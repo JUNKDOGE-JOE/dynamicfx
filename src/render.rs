@@ -71,9 +71,14 @@ impl Depth {
 
 fn requested_backends() -> wgpu::Backends {
     match std::env::var("DYNAMICFX_BACKEND").as_deref() {
+        Ok("metal") => wgpu::Backends::METAL,
+        Ok("dx12") => wgpu::Backends::DX12,
         Ok("vulkan") => wgpu::Backends::VULKAN,
         Ok("gl") => wgpu::Backends::GL,
         Ok("all") => wgpu::Backends::all(),
+        // ADR-0043: use the native backend on each supported platform.
+        // DX12 cannot produce an adapter in a native macOS process.
+        _ if cfg!(target_os = "macos") => wgpu::Backends::METAL,
         _ => wgpu::Backends::DX12,
     }
 }
@@ -91,6 +96,7 @@ pub fn gpu() -> Option<&'static Gpu> {
             compatible_surface: None,
             force_fallback_adapter: false,
         }))
+        .map_err(|error| crate::diag::log(&format!("gpu unavailable: adapter: {error}")))
         .ok()?;
         let info = adapter.get_info();
         let adapter_summary = format!(
@@ -110,7 +116,9 @@ pub fn gpu() -> Option<&'static Gpu> {
             ));
         }
         let desc = wgpu::DeviceDescriptor { required_features: features, ..Default::default() };
-        let (device, queue) = pollster::block_on(adapter.request_device(&desc)).ok()?;
+        let (device, queue) = pollster::block_on(adapter.request_device(&desc))
+            .map_err(|error| crate::diag::log(&format!("gpu unavailable: device: {error}")))
+            .ok()?;
         Some(Gpu { device, queue, adapter_summary, features })
     })
     .as_ref()
@@ -437,7 +445,15 @@ pub fn ensure_frame_cache(
                 usage: wgpu::BufferUsages::COPY_DST | wgpu::BufferUsages::MAP_READ,
                 mapped_at_creation: false,
             }),
-            sampler: device.create_sampler(&wgpu::SamplerDescriptor::default()),
+            // ABI v1 (ADR-0011 §5) promises linear, clamp-to-edge sampling.
+            // wgpu defaults to Nearest: fractional displacement, blur taps,
+            // and gradient LUT reads otherwise expose visible texel steps.
+            sampler: device.create_sampler(&wgpu::SamplerDescriptor {
+                label: Some("dynamicfx-linear-clamp"),
+                mag_filter: wgpu::FilterMode::Linear,
+                min_filter: wgpu::FilterMode::Linear,
+                ..Default::default()
+            }),
             zero_tex: device.create_texture(&wgpu::TextureDescriptor {
                 usage: wgpu::TextureUsages::TEXTURE_BINDING,
                 ..base

@@ -1005,3 +1005,21 @@ src/
 - 每个 pass、pipeline 和资源缓存都有正确 identity；
 - Windows AE 2023、2024、2025、2026 分别有可重复测试证据；
 - 删除 editor、package 和网络后，AE project 仍可独立恢复和渲染。
+
+## 25. Apple Silicon implementation baseline
+
+[ADR-0043](adr/0043-apple-silicon-host-protocol.md) activates the planned macOS
+phase following Windows AE 2025/2026 verification. The native target is
+`aarch64-apple-darwin`, the default backend is Metal, and installation uses a
+year-specific AE plugin bundle. AE 2026 is the first validation target; the
+current result lives only in TEST_MATRIX. Windows retains DX12.
+
+## Production WGSL extension (0.1.0)
+
+[ADR-0044](adr/0044-wgsl-and-010-release.md) activates Language ID 2 through a
+native Naga WGSL frontend. Raw WGSL and escaped envelope bodies share the
+existing annotation, graph, parameter, source persistence and SPIR-V renderer
+contracts. Original WGSL uniform offsets/span drive uploads. GLSL remains
+the default; the append-only popup gains WGSL at position 2. No sequence or
+persistent hash encoding changes are needed. E21 identifies WGSL syntax or
+validation failures. Shipping status belongs to IMPLEMENTATION_STATUS.

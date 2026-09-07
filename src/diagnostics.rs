@@ -29,6 +29,8 @@ pub enum Diag {
     AbiViolation = 18,
     ParamRejected = 19,
     SpirvEmit = 20,
+    /// WGSL syntax or validation failure (ADR-0044); E17 remains GLSL-only.
+    WgslParse = 21,
     // 32-47: binding
     PoolOverflow = 32,
     AliasConflict = 33,
@@ -80,6 +82,7 @@ pub const REGISTRY: &[Diag] = &[
     Diag::AbiViolation,
     Diag::ParamRejected,
     Diag::SpirvEmit,
+    Diag::WgslParse,
     Diag::PoolOverflow,
     Diag::AliasConflict,
     Diag::GpuUnavailable,
@@ -147,6 +150,7 @@ mod tests {
                         | Diag::AbiViolation
                         | Diag::ParamRejected
                         | Diag::SpirvEmit
+                        | Diag::WgslParse
                 ),
                 32..=47 => matches!(diag, Diag::PoolOverflow | Diag::AliasConflict),
                 48..=63 => matches!(

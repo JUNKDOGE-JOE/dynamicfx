@@ -21,6 +21,8 @@ mod canvas;
 mod diag;
 mod render;
 mod source;
+#[cfg(test)]
+mod wgsl_tests;
 
 // M3 persistence layers (ADRs 0015-0017).
 pub mod diagnostics;
@@ -1351,6 +1353,11 @@ mod example_tests {
         compiles("ink-bleed.glsl", include_str!("../examples/ink-bleed.glsl"));
     }
 
+    #[test]
+    fn siri_glow_example_compiles() {
+        compiles("siri-glow.glsl", include_str!("../examples/siri-glow.glsl"));
+    }
+
     /// ADR-0039: the shipped canvas-expansion demo. Also pins that its
     /// `hint:canvas` declaration reaches the definition, and that stripping
     /// the annotation still compiles — the host legs render exactly that
@@ -2289,7 +2296,7 @@ fn evaluate_committed_source(
     committed: &str,
     previous: Option<&binding::BindingPlan>,
 ) -> (Diag, String, Option<(u64, Arc<CompiledEffect>)>) {
-    let (manifest, bodies) = match envelope::classify(committed) {
+    let (manifest, bodies, body_start_lines) = match envelope::classify(committed) {
         Err(SourceClassError::Oversize { bytes }) => {
             return (
                 Diag::SourceOversize,
@@ -2306,7 +2313,7 @@ fn evaluate_committed_source(
         }
         Ok(SourceClass::Envelope { version: 1 }) => {
             match frontend::grammar::parse_envelope(committed) {
-                Ok(env) => (env.passes, env.bodies),
+                Ok(env) => (env.passes, env.bodies, env.body_start_lines),
                 Err(e) => {
                     return (
                         Diag::EnvelopeSyntax,
@@ -2324,7 +2331,7 @@ fn evaluate_committed_source(
             )
         }
         Ok(SourceClass::Raw) => {
-            (definition::effect::single_pass_manifest(), vec![committed.to_string()])
+            (definition::effect::single_pass_manifest(), vec![committed.to_string()], vec![1])
         }
     };
 
@@ -2383,12 +2390,18 @@ fn evaluate_committed_source(
     };
 
     let mut pass_modules = Vec::with_capacity(manifest.len());
-    for (pass, body) in manifest.iter().zip(&bodies) {
+    for ((pass, body), body_start_line) in manifest.iter().zip(&bodies).zip(&body_start_lines) {
         match frontend_impl.parse_module(body, &annotations, pass.inputs.len()) {
             Ok(module) => pass_modules.push(module),
             Err(err) => {
-                let (code, text) = frontend_error_status(err);
-                return (code, format!("pass `{}`: {text}", pass.name), None);
+                let (code, text) = frontend_error_status(language, err);
+                // Naga's line/column is relative to the unescaped pass body.
+                // Expose its source origin without claiming that a column
+                // after @@ unescaping is the original envelope column.
+                return (code, format!(
+                    "pass `{}` (body starts at source line {body_start_line}): {text}",
+                    pass.name
+                ), None);
             }
         }
     }
@@ -2580,8 +2593,11 @@ mod compiled_status_tests {
     }
 }
 
-fn frontend_error_status(err: frontend::FrontendError) -> (Diag, String) {
+fn frontend_error_status(language: LanguageId, err: frontend::FrontendError) -> (Diag, String) {
     match err {
+        frontend::FrontendError::Parse(msg) if language == LanguageId::WGSL => {
+            (Diag::WgslParse, format!("WGSL error: {msg}"))
+        }
         frontend::FrontendError::Parse(msg) => (Diag::GlslParse, format!("GLSL error: {msg}")),
         frontend::FrontendError::Abi(msg) => {
             (Diag::AbiViolation, format!("ABI v1 violation: {msg}"))
@@ -4072,7 +4088,10 @@ impl AdobePluginInstance for LocalMutex {
                             local.status_code.code()
                         )
                     };
+                    #[cfg(target_os = "windows")]
                     host::show_info_dialog("DynamicFX", &text);
+                    #[cfg(not(target_os = "windows"))]
+                    host::show_info_dialog(plugin.global.plugin_id()?, &text)?;
                     return Ok(());
                 }
                 let mut local = self.lock().map_err(|_| Error::Generic)?;
@@ -4139,6 +4158,16 @@ impl AdobePluginInstance for LocalMutex {
                 let requested = req.rect;
                 let cb = extra.callbacks();
                 let in_data = plugin.in_data;
+                // PF_InData dimensions are always logical/full-resolution;
+                // SmartFX requests, worlds and the ADR-0039 canvas are in
+                // render pixels. Mixing these made Half/Quarter previews
+                // render a full-size canvas and deliver only its top-left.
+                let ds_x = in_data.downsample_x();
+                let ds_y = in_data.downsample_y();
+                let frame = canvas::Rect::frame(
+                    canvas::dimension_physical(in_data.width(), ds_x.num, ds_x.den),
+                    canvas::dimension_physical(in_data.height(), ds_y.num, ds_y.den),
+                );
                 // The base input checkout stays the layer's own frame: AE's
                 // ROI requests (a sampleImage of a few pixels arrives as a
                 // ~12x12 rect — measured live) must not shrink the render,
@@ -4149,8 +4178,8 @@ impl AdobePluginInstance for LocalMutex {
                 // the requested window is written back.
                 req.rect.left = 0;
                 req.rect.top = 0;
-                req.rect.right = in_data.width();
-                req.rect.bottom = in_data.height();
+                req.rect.right = frame.right;
+                req.rect.bottom = frame.bottom;
                 match cb.checkout_layer(
                     0,
                     0,
@@ -4192,8 +4221,6 @@ impl AdobePluginInstance for LocalMutex {
                         };
                         // Declared expansion is logical pixels (ADR-0029);
                         // the canvas lives in render pixels, per axis.
-                        let ds_x = in_data.downsample_x();
-                        let ds_y = in_data.downsample_y();
                         let declared = declared_logical.map(|m| {
                             (
                                 canvas::margin_physical(m, ds_x.num, ds_x.den),
@@ -4205,8 +4232,8 @@ impl AdobePluginInstance for LocalMutex {
                             .unwrap_or(render::FALLBACK_MAX_TEXTURE_DIM)
                             as i32;
                         let resolved = canvas::resolve(
-                            in_data.width(),
-                            in_data.height(),
+                            frame.width(),
+                            frame.height(),
                             Some(upstream),
                             declared,
                             max_dim,
@@ -4218,7 +4245,11 @@ impl AdobePluginInstance for LocalMutex {
                             ));
                         }
                         let c = resolved.canvas;
-                        let frame = canvas::Rect::frame(in_data.width(), in_data.height());
+                        diag::verbose(&format!(
+                            "smart geometry: logical={}x{} downsample={}/{}x{}/{} request={requested:?} upstream={upstream:?} frame={frame:?} canvas={c:?}",
+                            in_data.width(), in_data.height(),
+                            ds_x.num, ds_x.den, ds_y.num, ds_y.den,
+                        ));
                         let r = ae::Rect {
                             left: requested.left,
                             top: requested.top,
@@ -4318,14 +4349,16 @@ impl AdobePluginInstance for LocalMutex {
                 }
             }
             Command::SmartRender { extra } => {
+                let ds_x = plugin.in_data.downsample_x();
+                let ds_y = plugin.in_data.downsample_y();
                 let geom = extra
                     .pre_render_data::<SmartGeom>()
                     .copied()
                     .unwrap_or(SmartGeom {
                         window: (0, 0),
                         canvas: canvas::Rect::frame(
-                            plugin.in_data.width(),
-                            plugin.in_data.height(),
+                            canvas::dimension_physical(plugin.in_data.width(), ds_x.num, ds_x.den),
+                            canvas::dimension_physical(plugin.in_data.height(), ds_y.num, ds_y.den),
                         ),
                         input_id: 0,
                     });

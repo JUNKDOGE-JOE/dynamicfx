@@ -1,6 +1,6 @@
 [package]
 name = "dynamicfx"
-version = "0.0.6"
+version = "0.1.0"
 edition = "2021"
 license = "MIT"
 
@@ -16,7 +16,7 @@ editor = []
 
 [dependencies]
 after-effects = "0.4"
-naga = { version = "29", default-features = false, features = ["glsl-in", "spv-out"] }
+naga = { version = "29", default-features = false, features = ["glsl-in", "wgsl-in", "spv-out"] }
 wgpu = { version = "29", features = ["spirv"] }
 pollster = "1"
 log = "0.4"
