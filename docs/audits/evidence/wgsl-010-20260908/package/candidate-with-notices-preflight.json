@@ -1,0 +1,1862 @@
+{
+  "baseline_commit": "73d8b516163b36f539a2b30a8e163d07d576b9c5",
+  "working_tree": true,
+  "expected_version": "0.1.0",
+  "source_version": "0.1.0",
+  "version_matches": true,
+  "publication": {
+    "files_scanned": 1107,
+    "bytes_scanned": 47332239,
+    "candidate_tree_fingerprint": "e51a73bb447f2e4776d525776588070ea27830a7a2ac21481ea271596eef6bb9",
+    "credential_or_restricted_findings": [],
+    "machine_paths_requiring_purpose_review": [
+      {
+        "file": "docs/audits/evidence/field-20260821-prism-sample/mf_preview_interrupt.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/layer-origin/pos_repro.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/m0-transport-spike/ae2025/s0.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/m7-perf/ae2025/wysiwyg/wys2_setup.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/build-arm64-failed-1.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/build-arm64-failed-2.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/build-arm64-geometry.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/build-arm64-pass.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/bundle-final-recheck.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/bundle-geometry-verification.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/bundle-verification.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/test-default-geometry.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/test-default.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/test-editor-geometry.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/test-editor.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/build/test-siri-example.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/dynamicfx-excerpt.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/file-manifest.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-aerender.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-capture.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-cold-open.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-cold-open.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-demo-create.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-demo-save-source.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-demo-save.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-demo-save.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-demo-source.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-details.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-keyframes.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-keys-read.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-open-source.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-open.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-queue-inspect.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-queue-source.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-queue.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-queue.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-reopen.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-reopened-capture.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-siri-open-source.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final-siri-open.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/run-record.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/aerender-fixed.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/aerender-fresh.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/aerender.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/capture.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/fresh-queue.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/fresh-setup.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/keyframes.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/queue-fresh-source.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/queue.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/queue.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/ready.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/reopen.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/reopened-capture.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/reopened-keys.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/setup.applescript-unverified.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/setup.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/siri-capture.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/siri-probe.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/siri-setup.jsx",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/build/build-macos.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/build/build-record.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/build/package-final-candidate.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/build/wgsl-integration-tests.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/renders.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/summary.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/build.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-16-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-16-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-16-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-16-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-16-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-16-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-32-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-32-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-32-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-32-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-32-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-32-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-8-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-8-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-8-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-8-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-8-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-8-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/result.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-16-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-16-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-16-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-16-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-16-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-16-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-32-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-32-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-32-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-32-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-32-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-32-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-8-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-8-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-8-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-8-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-8-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-8-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-16-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-16-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-16-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-16-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-16-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-16-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-32-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-32-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-32-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-32-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-32-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-32-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-8-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-8-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-8-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-8-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-8-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-8-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/result.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-16-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-16-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-16-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-16-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-16-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-16-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-32-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-32-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-32-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-32-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-32-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-32-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-8-1pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-8-1pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-8-1pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-8-2pass-1x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-8-2pass-2x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-8-2pass-4x.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/independent-review/aligned96.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/independent-review/lastword65536.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/independent-review/summary.json",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/independent-review/tail24.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "scripts/release/preflight.py",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "spike/wgsl/evidence/gpu-initial.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "spike/wgsl/evidence/gpu.log",
+        "evidence_or_harness": true
+      },
+      {
+        "file": "spike/wgsl/evidence/tests.log",
+        "evidence_or_harness": true
+      }
+    ],
+    "manual_content_review": [
+      {
+        "file": "docs/audits/evidence/adr-0029/zm_full2.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0029/zm_half_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/f003h_defaults_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/f003h_set_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/f003h_thermal_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/f003h_thermal_preview.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m2/m2b_t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m2/m2b_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m2/m2b_t08.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m2/m2d_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m2/m2e_default.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m2/m2g_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m2/m2h_kinds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m2/m2i_overflow.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m3/m3_ar_00010.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m3/m3c_reopen.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m3/m3d_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m3/m3e_corrupt.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m3/m3f_recover.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m3/m3g_layer1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m3/m3g_layer2.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m3/m3h1_torn.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m3/m3h3_invalid.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2025/m3/m3h4_undo.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/f003h_defaults_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/f003h_set_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/f003h_thermal_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/f003h_thermal_preview.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m2/m2b_t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m2/m2b_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m2/m2b_t08.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m2/m2d_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m2/m2e_default.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m2/m2g_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m2/m2h_kinds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m2/m2i_overflow.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m3/m3_ar_00010.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m3/m3c_reopen.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m3/m3d_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m3/m3e_corrupt.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m3/m3f_recover.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m3/m3g_layer1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m3/m3g_layer2.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m3/m3h1_torn.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m3/m3h3_invalid.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/adr-0037/ae2026/m3/m3h4_undo.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/examples/apple-thermal-ae2025/frame_t2s.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/examples/apple-thermal-ae2025/timeline_0-8s_1fps.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/f003-20260816/f003a_assigned_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/f003-20260816/f003a_none_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/f003-20260816/f003b_default_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/f003-20260816/f003f_point3d_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/f003-20260816/f003g_assigned_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/f003-20260816/f003g_none_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/field-20260819-copy-instance/after-rebuild_t2.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/field-20260821-layer-bounds/abc-t2.0-a-clipped-b-growbounds-c-padded-precomp.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/field-20260821-prism-sample/cached-frame-missing-layer1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2025/L1-undeclared-plain.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2025/L2-undeclared-growbounds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2025/L3-declared-160.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2025/L4-declared-64-growbounds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2025/L5-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2025/L5-t1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2025/ref160.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2025/ref256.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2026/L1-undeclared-plain.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2026/L2-undeclared-growbounds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2026/L3-declared-160.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2026/L4-declared-64-growbounds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2026/L5-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2026/L5-t1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2026/ref160.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-ae2026/ref256.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r2-ae2025/L1-undeclared-plain.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r2-ae2025/L2-undeclared-growbounds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r2-ae2025/L3-declared-160.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r2-ae2025/L4-declared-64-growbounds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r2-ae2025/L5-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r2-ae2025/L5-t1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r2-ae2025/ref160.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r2-ae2025/ref256.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2025/L1-undeclared-plain.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2025/L2-undeclared-growbounds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2025/L3-declared-160.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2025/L4-declared-64-growbounds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2025/L5-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2025/L5-t1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2025/ref160.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2025/ref256.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2026/L1-undeclared-plain.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2026/L2-undeclared-growbounds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2026/L3-declared-160.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2026/L4-declared-64-growbounds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2026/L5-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2026/L5-t1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2026/ref160.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/canvas-r3-ae2026/ref256.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/grp-compile-appleth-ae2025-r2.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/grp-compile-appleth-ae2025-r3.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/grp-compile-appleth-ae2025.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/grp-compile-appleth-ae2026-r3.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/grp-compile-appleth-ae2026.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/size-probe-baseline005-ae2025.aep",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/size-probe-batch-ae2025.aep",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/size-probe-batch-ae2026.aep",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/size-probe-final-ae2025.aep",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/hostpass-20260826-006/size-probe-final-ae2026.aep",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/layer-origin/pos_repro_fixed.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m0-transport-spike/ae2025/s5_ar_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m0-transport-spike/ae2025/s5_gui.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m1-first-frame/ae2025/m1_ar_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m1-first-frame/ae2025/m1c_gui.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m1-first-frame/ae2025/m1d_invalid.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m2-keyframed/ae2025-annotation/m2e_default.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m2-keyframed/ae2025-annotation/m2g_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m2-keyframed/ae2025-kinds/m2h_kinds.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m2-keyframed/ae2025-kinds/m2i_overflow.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m2-keyframed/ae2025/m2b_t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m2-keyframed/ae2025/m2b_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m2-keyframed/ae2025/m2b_t08.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m2-keyframed/ae2025/m2d_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m3-persistence/ae2025/m3_ar_00010.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m3-persistence/ae2025/m3c_reopen.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m3-persistence/ae2025/m3d_t04.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m3-persistence/ae2025/m3f_recover.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m3-persistence/ae2025/m3g_layer1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m3-persistence/ae2025/m3g_layer2.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m3-persistence/ae2025/m3h1_torn.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m3-persistence/ae2025/m3h3_invalid.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m3-persistence/ae2025/m3h4_undo.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m4-multipass/ae2025/m4b_two.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m4-multipass/ae2025/m4c_three.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m4-multipass/ae2025/m4d_raw.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m4-multipass/ae2025/m4e_env1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m4-multipass/ae2025/m4f_bad.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m4-multipass/ae2025/m4h_noalias.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m5-pixel-formats/ae2025/m5_chain16_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m5-pixel-formats/ae2025/m5_hdr32_preview.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m6-temporal/ae2025/m6_ar_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m6-temporal/ae2025/m6_ar_00015.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m6-temporal/ae2025/m6_ar_00024.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m6-temporal/ae2025/m6_no_mfr_warning_effect_controls.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m6-temporal/ae2025/m6_rq_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m6-temporal/ae2025/m6_rq_00015.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m6-temporal/ae2025/m6_rq_00024.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m7-perf/ae2025/wysiwyg/wys2_postcompile.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/m7-perf/ae2025/wysiwyg/wys2_precompile.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_ramp_full_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_ramp_full_00001.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_ramp_half_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_ramp_half_00001.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_ramp_quarter_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_ramp_quarter_00001.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_siri_full.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_siri_full_00025.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_siri_full_00026.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_siri_half.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_siri_half_00025.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_siri_half_00026.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_siri_quarter.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_siri_quarter_00025.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/final-run/final_siri_quarter_00026.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/aerender_fixed_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/aerender_fixed_00001.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/capture_gradient.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/capture_multi.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/fresh_00000.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/fresh_00001.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/reopened-capture_gradient.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/reopened-capture_multi.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/siri_8bpc.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/siri_full_purged.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/siri_half.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/siri_t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/siri_t1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/macos-arm64-20260908/first-run/siri_t2.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/shader-quality-20260908/comparison.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/shader-quality-20260908/preview-corners.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/shader-quality-20260908/siri-t2.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/spike-20260826-param-group-matching/baseline.aep",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/aer_bind2_00012.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/aer_bind_00012.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/order-AB_A_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/order-AB_A_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/order-AB_B_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/order-AB_B_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/order-BA_A_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/order-BA_A_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/order-BA_B_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/order-BA_B_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/reopen-src_A_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/reopen-src_A_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/reopen-src_B_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/reopen-src_B_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/reopen_A.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-6E4E80A6-run1/reopen_B.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/aer_bind2_00012.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/aer_bind_00012.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/order-AB_A_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/order-AB_A_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/order-AB_B_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/order-AB_B_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/order-BA_A_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/order-BA_A_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/order-BA_B_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/order-BA_B_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/reopen-src_A_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/reopen-src_A_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/reopen-src_B_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/reopen-src_B_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/reopen_A.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-ae2025/reopen_B.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/aer_bind2_00012.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/aer_bind_00012.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/order-AB_A_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/order-AB_A_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/order-AB_B_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/order-AB_B_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/order-BA_A_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/order-BA_A_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/order-BA_B_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/order-BA_B_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/reopen-src_A_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/reopen-src_A_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/reopen-src_B_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/reopen-src_B_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/reopen_A.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/fix-FF1197D9-run2/reopen_B.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/AB_A_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/AB_A_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/AB_B_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/AB_B_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/BA_A_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/BA_A_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/BA_B_r0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/BA_B_r1.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/reopen-aerender/aer_bind2_00012.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/reopen-aerender/aer_bind_00012.psd",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/reopen-aerender/reopen_A.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/tr-bind-002/prefix-24E963FB/reopen-aerender/reopen_B.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/ui-visibility/uncompiled_head_only.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/contact-sheet.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s1-d16-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s1-d16-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s1-d32-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s1-d32-t1.25-black.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s1-d32-t1.25-repeat.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s1-d32-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s1-d8-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s1-d8-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s2-d16-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s2-d16-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s2-d32-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s2-d32-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s2-d8-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s2-d8-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s4-d16-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s4-d16-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s4-d32-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s4-d32-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s4-d8-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-field-s4-d8-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s1-d16-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s1-d16-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s1-d32-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s1-d32-t1.25-black.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s1-d32-t1.25-repeat.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s1-d32-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s1-d8-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s1-d8-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s2-d16-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s2-d16-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s2-d32-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s2-d32-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s2-d8-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s2-d8-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s4-d16-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s4-d16-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s4-d32-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s4-d32-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s4-d8-t0.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/examples/wgsl-multipass-s4-d8-t1.25.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-8-1pass-1x.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/glsl-8-2pass-1x.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-8-1pass-1x.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-first-instrument-failure/wgsl-8-2pass-1x.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-8-1pass-1x.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/glsl-8-2pass-1x.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-8-1pass-1x.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "docs/audits/evidence/wgsl-010-20260908/gpu-production/wgsl-8-2pass-1x.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "spike/wgsl/evidence/U8-1pass.png",
+        "reason": "visual or project content needs human review"
+      },
+      {
+        "file": "spike/wgsl/evidence/U8-2pass.png",
+        "reason": "visual or project content needs human review"
+      }
+    ],
+    "nonfiles_skipped": [],
+    "restricted_terms_check": "RUN",
+    "limitations": "Only file/category names are reported. Patterns do not prove the absence of every secret; images and historical vendor-specific terms need separate review."
+  },
+  "archive": {
+    "archive": "DynamicFX-0.1.0-macos-arm64.zip",
+    "archive_sha256": "10822b29ba432f5b01bd11eb8e6ccf3454615bd52f2c5cc0519c330e54203c54",
+    "archive_bytes": 3559448,
+    "checks": [
+      {
+        "check": "no recognized credentials in archive",
+        "passed": true
+      },
+      {
+        "check": "unique member paths",
+        "passed": true
+      },
+      {
+        "check": "relative nontraversing member paths",
+        "passed": true
+      },
+      {
+        "check": "no symlink members",
+        "passed": true
+      },
+      {
+        "check": "no Finder or AppleDouble metadata",
+        "passed": true
+      },
+      {
+        "check": "exactly one plugin bundle",
+        "passed": true
+      },
+      {
+        "check": "both plist versions match release",
+        "passed": true
+      },
+      {
+        "check": "complete bundle including signature and context",
+        "passed": true
+      },
+      {
+        "check": "Mach-O arm64 header",
+        "passed": true
+      },
+      {
+        "check": "executable permission preserved",
+        "passed": true
+      },
+      {
+        "check": "installation instructions outside bundle",
+        "passed": true
+      },
+      {
+        "check": "MIT license outside bundle",
+        "passed": true
+      },
+      {
+        "check": "one SHA256SUMS file",
+        "passed": true
+      },
+      {
+        "check": "SHA256SUMS entries match archived bytes",
+        "passed": true
+      },
+      {
+        "check": "checksum covers executable and PiPL",
+        "passed": true
+      }
+    ],
+    "identity": {
+      "binary_sha256": "91c8afdcdc6186ca2efa24ca1c06cbcbb619a659b62e77fbe69fe988f9323a22",
+      "binary_bytes": 7598656,
+      "version": "0.1.0"
+    },
+    "credential_members": [],
+    "passed": true,
+    "not_checked": "This byte check does not validate codesign, notarization, Gatekeeper, host behavior or correspondence to a source commit. Extract to a private temporary directory, verify with scripts/macos.py, then compare to the host-tested identity."
+  },
+  "automated_checks_passed": true,
+  "authorization_not_evaluated_by_script": true,
+  "authorization_note": "Static preflight checks artifact contents; it does not evaluate user authorization."
+}

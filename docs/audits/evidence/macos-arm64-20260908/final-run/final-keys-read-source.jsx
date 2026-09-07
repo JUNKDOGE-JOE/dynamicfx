@@ -1,0 +1,1 @@
+app.project.bitsPerChannel=32;app.purge(PurgeTarget.ALL_CACHES);var c=comp("DFX_param"),p=prop(fx(c),"Gain");return {t0:sample(c,160,120,0,0),t1:sample(c,160,120,1,0),keys:p.numKeys};

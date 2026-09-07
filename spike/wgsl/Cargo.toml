@@ -1,0 +1,13 @@
+[package]
+name = "dynamicfx-wgsl-spike"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Independent, non-shipping instrument. Nothing changes the plugin's registry.
+[workspace]
+
+[dependencies]
+naga = { version = "=29.0.4", features = ["glsl-in", "wgsl-in", "spv-out", "msl-out"] }
+wgpu = { version = "=29.0.4", features = ["spirv"] }
+pollster = "=1.0.1"

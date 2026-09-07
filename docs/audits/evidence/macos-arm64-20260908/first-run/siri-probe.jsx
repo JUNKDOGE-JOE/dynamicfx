@@ -1,0 +1,39 @@
+(function(){
+function encode(v) {
+ if(v===null || v===undefined)return "null";
+ if(typeof v==="boolean")return v?"true":"false";
+ if(typeof v==="number")return isFinite(v)?String(v):"null";
+ if(typeof v==="string")return '"'+v.replace(/[\\"\u0000-\u001f]/g,function(c){
+ var h=c.charCodeAt(0).toString(16);return "\\u"+("0000"+h).slice(-4);})+'"';
+ var a=[];if(v instanceof Array){for(var i=0;i<v.length;i++)a.push(encode(v[i]));return "["+a.join(",")+"]";}
+ for(var k in v)if(v.hasOwnProperty(k))a.push(encode(k)+":"+encode(v[k]));return "{"+a.join(",")+"}";
+}
+function comp(n) { for(var i=1;i<=app.project.numItems;i++) {
+  var c=app.project.item(i); if(c instanceof CompItem && c.name===n)return c;
+} throw Error("missing comp "+n); }
+function fx(c) {return c.layer("input").property("ADBE Effect Parade").property(1);}
+function prop(f,n) {for(var i=1;i<=f.numProperties;i++) {
+  if(f.property(i).name.indexOf(n)===0)return f.property(i);
+} throw Error("missing property "+n);}
+function source(f,s) {prop(f,"Source").expression="`"+s+"`;0";}
+function state(c) {var f=fx(c);return {name:c.name,token:prop(f,"State Token").value,
+ status:prop(f,"Status").name,source:prop(f,"Source").expression.length};}
+function states() {var a=[];for(var i=1;i<=app.project.numItems;i++) {
+ var c=app.project.item(i);if(c instanceof CompItem && c.name.indexOf("DFX_")===0)a.push(state(c));
+}return a;}
+function sample(c,x,y,t,ch) {
+ var p=c.layer("probe").property("ADBE Effect Parade").property(1).property(1);
+ p.expression='thisComp.layer("input").sampleImage(['+x+','+y+'],[0.49,0.49],true,'+t+')['+ch+']';
+ var v=p.valueAtTime(t,false);if(p.expressionError)throw Error(p.expressionError);return v;
+}
+
+try {var data=(function(){
+app.project.bitsPerChannel=32;var c=comp("DFX_siri");
+var p=c.layers.addNull(6);p.name="probe";p.property("ADBE Effect Parade").addProperty("ADBE Slider Control");
+var r={bpc:app.project.bitsPerChannel,ws:app.project.workingSpace,resolution:c.resolutionFactor,pixels:[]};
+for(var i=0;i<4;i++){var pos=[[640,26],[200,26],[26,360],[640,360]][i];var a=[];for(var ch=0;ch<4;ch++)a.push(sample(c,pos[0],pos[1],1,ch));r.pixels.push({xy:pos,rgba:a});}
+c.resolutionFactor=[1,1];app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(1,new File("/Users/junk_doge/Documents/DynamicFX/scripts/out/macos/ae2026"+"/siri_full_purged.png"));
+app.project.bitsPerChannel=8;app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(1,new File("/Users/junk_doge/Documents/DynamicFX/scripts/out/macos/ae2026"+"/siri_8bpc.png"));
+app.project.bitsPerChannel=32;return r;
+})();var res={ok:true,data:data};}catch(e){var res={ok:false,error:String(e),line:e.line};}
+var f=new File("/Users/junk_doge/Documents/DynamicFX/scripts/out/macos/ae2026/siri-probe.json");f.encoding='UTF-8';if(!f.open('w'))throw Error(f.error);f.write(encode(res));f.close();return encode(res);})();

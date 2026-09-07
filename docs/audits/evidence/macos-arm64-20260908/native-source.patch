@@ -1,0 +1,308 @@
+diff --git a/build.rs b/build.rs
+index cbe2565..df2e5c9 100644
+--- a/build.rs
++++ b/build.rs
+@@ -5,6 +5,7 @@ const PF_PLUG_IN_SUBVERS: u16 = 28;
+ 
+ #[rustfmt::skip]
+ fn main() {
++    println!("cargo:rerun-if-changed=build.rs");
+     // after-effects-rs exposes these as destination-crate cfgs from its
+     // generated entry point. Declare all of them for rustc's cfg checking and
+     // keep a release panic boundary around EffectMain: several upstream host
+@@ -94,9 +95,9 @@ fn pipl_properties(editor: bool) -> Vec<Property> {
+ 
+         #[cfg(target_os = "windows")]
+         Property::CodeWin64X86("EffectMain"),
+-        #[cfg(target_os = "macos")]
++        #[cfg(all(target_os = "macos", target_arch = "x86_64"))]
+         Property::CodeMacIntel64("EffectMain"),
+-        #[cfg(target_os = "macos")]
++        #[cfg(all(target_os = "macos", target_arch = "aarch64"))]
+         Property::CodeMacARM64("EffectMain"),
+ 
+         Property::AE_PiPL_Version { major: 2, minor: 0 },
+diff --git a/src/canvas.rs b/src/canvas.rs
+index 929f980..7e6652a 100644
+--- a/src/canvas.rs
++++ b/src/canvas.rs
+@@ -125,6 +125,19 @@ pub fn margin_physical(logical: f32, num: i32, den: u32) -> i32 {
+     (logical * num as f32 / den as f32).ceil() as i32
+ }
+ 
++/// The source layer dimensions in PF_InData stay full-resolution, unlike
++/// SmartFX pixel worlds and rectangles. Convert each dimension once before
++/// resolving the physical canvas. Round outward so an odd-sized layer keeps
++/// its final partial pixel, and retain the existing invalid-ratio fallback.
++pub fn dimension_physical(logical: i32, num: i32, den: u32) -> i32 {
++    let logical = logical.max(0);
++    if num <= 0 || den == 0 {
++        return logical;
++    }
++    let scaled = i64::from(logical) * i64::from(num);
++    ((scaled + i64::from(den) - 1) / i64::from(den)).min(i64::from(i32::MAX)) as i32
++}
++
+ /// Where `inner` content lands inside `outer`, both in layer space:
+ /// `(src_x, src_y, dst_x, dst_y, w, h)` with src offsets inner-local and dst
+ /// offsets outer-local. `None` when they do not overlap.
+@@ -224,6 +237,49 @@ mod tests {
+         assert_eq!(margin_physical(f32::NAN, 1, 1), 0);
+     }
+ 
++    #[test]
++    fn layer_dimensions_convert_to_render_pixels_once() {
++        assert_eq!(dimension_physical(1280, 1, 1), 1280);
++        assert_eq!(dimension_physical(1280, 1, 2), 640);
++        assert_eq!(dimension_physical(720, 1, 2), 360);
++        assert_eq!(dimension_physical(1280, 1, 4), 320);
++        assert_eq!(dimension_physical(720, 1, 4), 180);
++        assert_eq!(dimension_physical(1281, 1, 2), 641);
++        assert_eq!(dimension_physical(721, 1, 3), 241);
++        assert_eq!(dimension_physical(1281, 2, 3), 854);
++        assert_eq!(dimension_physical(0, 1, 2), 0);
++        assert_eq!(dimension_physical(-1, 1, 2), 0);
++        assert_eq!(dimension_physical(1280, 0, 2), 1280);
++        assert_eq!(dimension_physical(1280, 1, 0), 1280);
++        assert_eq!(dimension_physical(i32::MAX, i32::MAX, 1), i32::MAX);
++    }
++
++    #[test]
++    fn downsampled_canvas_matches_world_instead_of_cropping_a_quadrant() {
++        // Regression: PF_InData says 1280x720 at every resolution. Passing
++        // those logical dimensions to resolve made the canvas twice the
++        // actual Half world, then delivery copied only its upper-left quarter.
++        for denominator in [1, 2, 4] {
++            let width = dimension_physical(1280, 1, denominator);
++            let height = dimension_physical(720, 1, denominator);
++            let world = Rect::frame(width, height);
++            let resolved = resolve(width, height, Some(world), None, 16384);
++            assert_eq!(resolved.canvas, world);
++            assert_eq!(place(&world, &resolved.canvas),
++                       Some((0, 0, 0, 0, width as usize, height as usize)));
++            assert_eq!(width * denominator as i32, 1280);
++            assert_eq!(height * denominator as i32, 720);
++        }
++        // Both axis ratios and an authored logical margin are independent.
++        let width = dimension_physical(1280, 1, 2);
++        let height = dimension_physical(720, 1, 4);
++        let margin = (margin_physical(64.0, 1, 2), margin_physical(64.0, 1, 4));
++        let grown = Rect { left: -128, top: -64, right: 768, bottom: 244 };
++        assert_eq!(resolve(width, height, Some(grown), None, 16384).canvas, grown);
++        let declared = resolve(width, height, Some(grown), Some(margin), 16384);
++        assert_eq!(declared.canvas, Rect { left: -32, top: -16, right: 672, bottom: 196 });
++    }
++
+     #[test]
+     fn place_maps_inner_content_into_outer_coordinates() {
+         // A 512 world inside a canvas expanded 256 on every side.
+diff --git a/src/host/idle.rs b/src/host/idle.rs
+index 6eadd52..0ab5ddf 100644
+--- a/src/host/idle.rs
++++ b/src/host/idle.rs
+@@ -827,7 +827,7 @@ impl RawStreamSuite6 {
+         stream_value.streamH = stream.as_ptr();
+         stream_value.val.one_d = value;
+         let err = unsafe { set_stream_value(plugin_id, stream.as_ptr(), &mut stream_value) };
+-        if err == ae::sys::A_Err_NONE {
++        if err == ae::sys::A_Err_NONE as ae::sys::A_Err {
+             Ok(())
+         } else {
+             crate::diag::log(&format!("AEGP_SetStreamValue failed: {err}"));
+@@ -856,7 +856,7 @@ impl RawStreamSuite6 {
+             blueF: b,
+         };
+         let err = unsafe { set_stream_value(plugin_id, stream.as_ptr(), &mut stream_value) };
+-        if err == ae::sys::A_Err_NONE {
++        if err == ae::sys::A_Err_NONE as ae::sys::A_Err {
+             Ok(())
+         } else {
+             crate::diag::log(&format!("AEGP_SetStreamValue(color) failed: {err}"));
+diff --git a/src/host/mod.rs b/src/host/mod.rs
+index 9e756a9..9f5a67d 100644
+--- a/src/host/mod.rs
++++ b/src/host/mod.rs
+@@ -8,6 +8,7 @@ pub mod params;
+ /// ADR-0028: modal info dialog for the Details button. Win32 directly (no
+ /// crate dependency); TASKMODAL so AE's own windows are blocked while the
+ /// message is up, exactly like AE's native alerts. UI-command contexts only.
++#[cfg(target_os = "windows")]
+ pub fn show_info_dialog(title: &str, text: &str) {
+     #[link(name = "user32")]
+     extern "system" {
+@@ -33,3 +34,13 @@ pub fn show_info_dialog(title: &str, text: &str) {
+         );
+     }
+ }
++
++/// Use the host's Unicode dialog on macOS; linking Win32 user32 prevents
++/// even loading a native ARM plugin. Called only from the Details UI event.
++#[cfg(not(target_os = "windows"))]
++pub fn show_info_dialog(
++    plugin_id: after_effects::aegp::PluginId,
++    text: &str,
++) -> Result<(), after_effects::Error> {
++    after_effects::aegp::suites::Utility::new()?.report_info_unicode(plugin_id, text)
++}
+diff --git a/src/lib.rs b/src/lib.rs
+index 9025bad..4af92a2 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -1351,6 +1351,11 @@ mod example_tests {
+         compiles("ink-bleed.glsl", include_str!("../examples/ink-bleed.glsl"));
+     }
+ 
++    #[test]
++    fn siri_glow_example_compiles() {
++        compiles("siri-glow.glsl", include_str!("../examples/siri-glow.glsl"));
++    }
++
+     /// ADR-0039: the shipped canvas-expansion demo. Also pins that its
+     /// `hint:canvas` declaration reaches the definition, and that stripping
+     /// the annotation still compiles — the host legs render exactly that
+@@ -4072,7 +4077,10 @@ impl AdobePluginInstance for LocalMutex {
+                             local.status_code.code()
+                         )
+                     };
++                    #[cfg(target_os = "windows")]
+                     host::show_info_dialog("DynamicFX", &text);
++                    #[cfg(not(target_os = "windows"))]
++                    host::show_info_dialog(plugin.global.plugin_id()?, &text)?;
+                     return Ok(());
+                 }
+                 let mut local = self.lock().map_err(|_| Error::Generic)?;
+@@ -4139,6 +4147,16 @@ impl AdobePluginInstance for LocalMutex {
+                 let requested = req.rect;
+                 let cb = extra.callbacks();
+                 let in_data = plugin.in_data;
++                // PF_InData dimensions are always logical/full-resolution;
++                // SmartFX requests, worlds and the ADR-0039 canvas are in
++                // render pixels. Mixing these made Half/Quarter previews
++                // render a full-size canvas and deliver only its top-left.
++                let ds_x = in_data.downsample_x();
++                let ds_y = in_data.downsample_y();
++                let frame = canvas::Rect::frame(
++                    canvas::dimension_physical(in_data.width(), ds_x.num, ds_x.den),
++                    canvas::dimension_physical(in_data.height(), ds_y.num, ds_y.den),
++                );
+                 // The base input checkout stays the layer's own frame: AE's
+                 // ROI requests (a sampleImage of a few pixels arrives as a
+                 // ~12x12 rect — measured live) must not shrink the render,
+@@ -4149,8 +4167,8 @@ impl AdobePluginInstance for LocalMutex {
+                 // the requested window is written back.
+                 req.rect.left = 0;
+                 req.rect.top = 0;
+-                req.rect.right = in_data.width();
+-                req.rect.bottom = in_data.height();
++                req.rect.right = frame.right;
++                req.rect.bottom = frame.bottom;
+                 match cb.checkout_layer(
+                     0,
+                     0,
+@@ -4192,8 +4210,6 @@ impl AdobePluginInstance for LocalMutex {
+                         };
+                         // Declared expansion is logical pixels (ADR-0029);
+                         // the canvas lives in render pixels, per axis.
+-                        let ds_x = in_data.downsample_x();
+-                        let ds_y = in_data.downsample_y();
+                         let declared = declared_logical.map(|m| {
+                             (
+                                 canvas::margin_physical(m, ds_x.num, ds_x.den),
+@@ -4205,8 +4221,8 @@ impl AdobePluginInstance for LocalMutex {
+                             .unwrap_or(render::FALLBACK_MAX_TEXTURE_DIM)
+                             as i32;
+                         let resolved = canvas::resolve(
+-                            in_data.width(),
+-                            in_data.height(),
++                            frame.width(),
++                            frame.height(),
+                             Some(upstream),
+                             declared,
+                             max_dim,
+@@ -4218,7 +4234,11 @@ impl AdobePluginInstance for LocalMutex {
+                             ));
+                         }
+                         let c = resolved.canvas;
+-                        let frame = canvas::Rect::frame(in_data.width(), in_data.height());
++                        diag::verbose(&format!(
++                            "smart geometry: logical={}x{} downsample={}/{}x{}/{} request={requested:?} upstream={upstream:?} frame={frame:?} canvas={c:?}",
++                            in_data.width(), in_data.height(),
++                            ds_x.num, ds_x.den, ds_y.num, ds_y.den,
++                        ));
+                         let r = ae::Rect {
+                             left: requested.left,
+                             top: requested.top,
+@@ -4318,14 +4338,16 @@ impl AdobePluginInstance for LocalMutex {
+                 }
+             }
+             Command::SmartRender { extra } => {
++                let ds_x = plugin.in_data.downsample_x();
++                let ds_y = plugin.in_data.downsample_y();
+                 let geom = extra
+                     .pre_render_data::<SmartGeom>()
+                     .copied()
+                     .unwrap_or(SmartGeom {
+                         window: (0, 0),
+                         canvas: canvas::Rect::frame(
+-                            plugin.in_data.width(),
+-                            plugin.in_data.height(),
++                            canvas::dimension_physical(plugin.in_data.width(), ds_x.num, ds_x.den),
++                            canvas::dimension_physical(plugin.in_data.height(), ds_y.num, ds_y.den),
+                         ),
+                         input_id: 0,
+                     });
+diff --git a/src/render.rs b/src/render.rs
+index e1871b9..b4bce4f 100644
+--- a/src/render.rs
++++ b/src/render.rs
+@@ -71,9 +71,14 @@ impl Depth {
+ 
+ fn requested_backends() -> wgpu::Backends {
+     match std::env::var("DYNAMICFX_BACKEND").as_deref() {
++        Ok("metal") => wgpu::Backends::METAL,
++        Ok("dx12") => wgpu::Backends::DX12,
+         Ok("vulkan") => wgpu::Backends::VULKAN,
+         Ok("gl") => wgpu::Backends::GL,
+         Ok("all") => wgpu::Backends::all(),
++        // ADR-0043: use the native backend on each supported platform.
++        // DX12 cannot produce an adapter in a native macOS process.
++        _ if cfg!(target_os = "macos") => wgpu::Backends::METAL,
+         _ => wgpu::Backends::DX12,
+     }
+ }
+@@ -91,6 +96,7 @@ pub fn gpu() -> Option<&'static Gpu> {
+             compatible_surface: None,
+             force_fallback_adapter: false,
+         }))
++        .map_err(|error| crate::diag::log(&format!("gpu unavailable: adapter: {error}")))
+         .ok()?;
+         let info = adapter.get_info();
+         let adapter_summary = format!(
+@@ -110,7 +116,9 @@ pub fn gpu() -> Option<&'static Gpu> {
+             ));
+         }
+         let desc = wgpu::DeviceDescriptor { required_features: features, ..Default::default() };
+-        let (device, queue) = pollster::block_on(adapter.request_device(&desc)).ok()?;
++        let (device, queue) = pollster::block_on(adapter.request_device(&desc))
++            .map_err(|error| crate::diag::log(&format!("gpu unavailable: device: {error}")))
++            .ok()?;
+         Some(Gpu { device, queue, adapter_summary, features })
+     })
+     .as_ref()
+@@ -437,7 +445,15 @@ pub fn ensure_frame_cache(
+                 usage: wgpu::BufferUsages::COPY_DST | wgpu::BufferUsages::MAP_READ,
+                 mapped_at_creation: false,
+             }),
+-            sampler: device.create_sampler(&wgpu::SamplerDescriptor::default()),
++            // ABI v1 (ADR-0011 §5) promises linear, clamp-to-edge sampling.
++            // wgpu defaults to Nearest: fractional displacement, blur taps,
++            // and gradient LUT reads otherwise expose visible texel steps.
++            sampler: device.create_sampler(&wgpu::SamplerDescriptor {
++                label: Some("dynamicfx-linear-clamp"),
++                mag_filter: wgpu::FilterMode::Linear,
++                min_filter: wgpu::FilterMode::Linear,
++                ..Default::default()
++            }),
+             zero_tex: device.create_texture(&wgpu::TextureDescriptor {
+                 usage: wgpu::TextureUsages::TEXTURE_BINDING,
+                 ..base

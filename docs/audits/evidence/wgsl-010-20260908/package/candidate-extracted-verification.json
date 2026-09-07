@@ -1,0 +1,30 @@
+{
+  "extracted": "/private/tmp/dynamicfx-010-extracted-un_khzqo",
+  "verifier": {
+    "bundle": "/private/tmp/dynamicfx-010-extracted-un_khzqo/DynamicFx.plugin",
+    "version": "0.1.0",
+    "architectures": [
+      "arm64"
+    ],
+    "binary_sha256": "91c8afdcdc6186ca2efa24ca1c06cbcbb619a659b62e77fbe69fe988f9323a22",
+    "resource_sha256": "2004d2cca58db01ec3f0cac82a86ac9308a071f470aa417648ddb74eab85dcb2",
+    "binary_bytes": 7598656,
+    "pipl_outflags": "0x06000644",
+    "pipl_outflags2": "0x08801400",
+    "signature": "Executable=/private/tmp/dynamicfx-010-extracted-un_khzqo/DynamicFx.plugin/Contents/MacOS/DynamicFx\nIdentifier=com.dynamicfx.plugin\nFormat=bundle with Mach-O thin (arm64)\nCodeDirectory v=20500 size=14997 flags=0x10002(adhoc,runtime) hashes=462+3 location=embedded\nSignature=adhoc\nInfo.plist entries=10\nTeamIdentifier=not set\nRuntime Version=26.5.0\nSealed Resources version=2 rules=13 files=2\nInternal requirements count=0 size=12"
+  },
+  "notice_hash_checks": 253,
+  "local_image_checks": [
+    {
+      "from": "docs/shader-quality.md",
+      "image": "audits/evidence/shader-quality-20260908/siri-t2.png",
+      "exists": true
+    },
+    {
+      "from": "docs/shader-quality.md",
+      "image": "audits/evidence/shader-quality-20260908/preview-corners.png",
+      "exists": true
+    }
+  ],
+  "result": "PASS"
+}

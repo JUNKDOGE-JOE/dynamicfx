@@ -1,0 +1,1 @@
+var c=comp("DFX_siri");c.openInViewer();c.resolutionFactor=[1,1];for(var i=1;i<=c.numLayers;i++)c.layer(i).selected=false;c.layer("input").selected=true;return {state:state(c),resolution:c.resolutionFactor};

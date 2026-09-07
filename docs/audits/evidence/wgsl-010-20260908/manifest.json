@@ -1,0 +1,1899 @@
+[
+  {
+    "original": "scripts/out/010/tests-default.log",
+    "published": "build/tests-default.log",
+    "original_sha256": "0249eebffc54cc04eb6c1edc405c765c119a19cb859b8399b6eea957564a30db",
+    "published_sha256": "0249eebffc54cc04eb6c1edc405c765c119a19cb859b8399b6eea957564a30db",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/tests-editor.log",
+    "published": "build/tests-editor.log",
+    "original_sha256": "2fd5263e752aeaf7111cc50f4e3bf0b7097767a1c709deced879c6a167671007",
+    "published_sha256": "2fd5263e752aeaf7111cc50f4e3bf0b7097767a1c709deced879c6a167671007",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-integration-tests.log",
+    "published": "build/wgsl-integration-tests.log",
+    "original_sha256": "8438b8c1532598e5380219f7e0e26ed0ac3d04de239e2f9f395816c14522e9a7",
+    "published_sha256": "8438b8c1532598e5380219f7e0e26ed0ac3d04de239e2f9f395816c14522e9a7",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/build-macos.log",
+    "published": "build/build-macos.log",
+    "original_sha256": "815bede2a48bf48523c24c63a94cbc518eec1752b2e8166ab803102d17f5e9a3",
+    "published_sha256": "815bede2a48bf48523c24c63a94cbc518eec1752b2e8166ab803102d17f5e9a3",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/build-record.json",
+    "published": "build/build-record.json",
+    "original_sha256": "e593c491495a55b5dfc710e805c247c04d8faf2825cb0a2bb1604e1c9b9ed647",
+    "published_sha256": "e593c491495a55b5dfc710e805c247c04d8faf2825cb0a2bb1604e1c9b9ed647",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/package-final-candidate.json",
+    "published": "build/package-final-candidate.json",
+    "original_sha256": "c070b630cadca268c3da07c0cfcbe6423deb5b4b77133ddbd32b026fb8d9c8b4",
+    "published_sha256": "c070b630cadca268c3da07c0cfcbe6423deb5b4b77133ddbd32b026fb8d9c8b4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/Cargo.lock.txt",
+    "published": "build/Cargo.lock.txt",
+    "original_sha256": "4af148e8cb350674e90236096b536405bb74b54d5f9565f57573a43abfa2e306",
+    "published_sha256": "4af148e8cb350674e90236096b536405bb74b54d5f9565f57573a43abfa2e306",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/1pass.glsl",
+    "published": "gpu-first-instrument-failure/1pass.glsl",
+    "original_sha256": "2a5ae2ed2f3f876a43070e7f178fd5ddca4d90e6c4651daa499eb52f2c66b1ee",
+    "published_sha256": "2a5ae2ed2f3f876a43070e7f178fd5ddca4d90e6c4651daa499eb52f2c66b1ee",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/1pass.wgsl",
+    "published": "gpu-first-instrument-failure/1pass.wgsl",
+    "original_sha256": "fd30b9ec4e4ca8dc77495efe86b29b1052706071c8caaed9ecd135f87d95305a",
+    "published_sha256": "fd30b9ec4e4ca8dc77495efe86b29b1052706071c8caaed9ecd135f87d95305a",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/2pass.glsl",
+    "published": "gpu-first-instrument-failure/2pass.glsl",
+    "original_sha256": "de014caff2734b35208249bebedd4b8bdb4c6aaf3e42bf87ac982d864b264ea3",
+    "published_sha256": "de014caff2734b35208249bebedd4b8bdb4c6aaf3e42bf87ac982d864b264ea3",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/2pass.wgsl",
+    "published": "gpu-first-instrument-failure/2pass.wgsl",
+    "original_sha256": "ebff4acbf41e4ff098adea3042bc36f07910c1a7647e01d3ef7b96c2b1f63569",
+    "published_sha256": "ebff4acbf41e4ff098adea3042bc36f07910c1a7647e01d3ef7b96c2b1f63569",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/build.log",
+    "published": "gpu-first-instrument-failure/build.log",
+    "original_sha256": "2b0c8f451babb59197577ec83032fb705600c630de6e3d84be23f7cc14d091c3",
+    "published_sha256": "2b0c8f451babb59197577ec83032fb705600c630de6e3d84be23f7cc14d091c3",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-1pass-1x.f32",
+    "published": "gpu-first-instrument-failure/glsl-16-1pass-1x.f32.zlib",
+    "original_sha256": "014f979b06ea6f292e51583ad758773acf5416b9cb29dec3bf0f9d42ef865536",
+    "published_sha256": "1e696eaca23d3ddc93b668dfbf48b19510518373287b87267fea530ced0b85b2",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-1pass-1x.log",
+    "published": "gpu-first-instrument-failure/glsl-16-1pass-1x.log",
+    "original_sha256": "cb04e274135c8a7c6305769977e30aba0b7ab7859a337ccce58697a4f76e7a4f",
+    "published_sha256": "cb04e274135c8a7c6305769977e30aba0b7ab7859a337ccce58697a4f76e7a4f",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-1pass-2x.f32",
+    "published": "gpu-first-instrument-failure/glsl-16-1pass-2x.f32.zlib",
+    "original_sha256": "390b92048c4dbec634a89435a5d0dafd12a2dd1b9b465a47b7f719205f1b6fce",
+    "published_sha256": "8a551cfb9f89bd022737567028f31541d0d2b71999f7d95b48ff2e3314299df9",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-1pass-2x.log",
+    "published": "gpu-first-instrument-failure/glsl-16-1pass-2x.log",
+    "original_sha256": "4ad6cc78828de0d0c443ad6c27aceb870641cd43b6749d82d6724388a26dfeb7",
+    "published_sha256": "4ad6cc78828de0d0c443ad6c27aceb870641cd43b6749d82d6724388a26dfeb7",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-1pass-4x.f32",
+    "published": "gpu-first-instrument-failure/glsl-16-1pass-4x.f32.zlib",
+    "original_sha256": "9beda5c87450c664f78b8eff9359742d53980b12234e9fa25b645d231bcdc565",
+    "published_sha256": "76b64fd32eee57cbec8e7e7fc5e10be415d01d9a87dcd48e2d9ee595bee1b082",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-1pass-4x.log",
+    "published": "gpu-first-instrument-failure/glsl-16-1pass-4x.log",
+    "original_sha256": "0d2765aa2eedb5e416ca87f6feb02e07ae386c2ba7789d825f108ca479be6a59",
+    "published_sha256": "0d2765aa2eedb5e416ca87f6feb02e07ae386c2ba7789d825f108ca479be6a59",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-2pass-1x.f32",
+    "published": "gpu-first-instrument-failure/glsl-16-2pass-1x.f32.zlib",
+    "original_sha256": "9b238fd162a859e5e5d6ae1d46dbd115431ce1fcfda23812598c7dfeb0889946",
+    "published_sha256": "01029c93a9132cf562a970bf1c465e43050d486a0ceba03e9a034dca6cbf3a0a",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-2pass-1x.log",
+    "published": "gpu-first-instrument-failure/glsl-16-2pass-1x.log",
+    "original_sha256": "723160d4636b38e6b7b447dc64f772ef37f114db998fc06e43346eea015c4ea4",
+    "published_sha256": "723160d4636b38e6b7b447dc64f772ef37f114db998fc06e43346eea015c4ea4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-2pass-2x.f32",
+    "published": "gpu-first-instrument-failure/glsl-16-2pass-2x.f32.zlib",
+    "original_sha256": "04652e6ad8901867841a519f906670c97ac9f8a35db55268c0a8612f263d5127",
+    "published_sha256": "4b58b362b5d27c23b9b634506d0bee7bae36bb0f36da4d76fe6741c9428de34a",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-2pass-2x.log",
+    "published": "gpu-first-instrument-failure/glsl-16-2pass-2x.log",
+    "original_sha256": "024fa7f58c5e0710de25bfcd5e78f5c8c1a5931755ef13d2f0ad108bc3cea523",
+    "published_sha256": "024fa7f58c5e0710de25bfcd5e78f5c8c1a5931755ef13d2f0ad108bc3cea523",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-2pass-4x.f32",
+    "published": "gpu-first-instrument-failure/glsl-16-2pass-4x.f32.zlib",
+    "original_sha256": "e2f2c9a51bae2de01c174600f1524eaaccfd1975aaabbdd12e2879816940d26d",
+    "published_sha256": "8aa20b8a07b20d4e99c55e66048ae9868fe074b2cd44ee615ca9a625d6e283e8",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-16-2pass-4x.log",
+    "published": "gpu-first-instrument-failure/glsl-16-2pass-4x.log",
+    "original_sha256": "b1e872bfcb923e5c01ce212c2773b0c67b66f4d72dd03af965eea8cc8f10dfe6",
+    "published_sha256": "b1e872bfcb923e5c01ce212c2773b0c67b66f4d72dd03af965eea8cc8f10dfe6",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-1pass-1x.f32",
+    "published": "gpu-first-instrument-failure/glsl-32-1pass-1x.f32.zlib",
+    "original_sha256": "014f979b06ea6f292e51583ad758773acf5416b9cb29dec3bf0f9d42ef865536",
+    "published_sha256": "1e696eaca23d3ddc93b668dfbf48b19510518373287b87267fea530ced0b85b2",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-1pass-1x.log",
+    "published": "gpu-first-instrument-failure/glsl-32-1pass-1x.log",
+    "original_sha256": "57f2ca8743631ac9bb16581b658fc4ac7fe5c072f4d5d59ecaa73deb679422e4",
+    "published_sha256": "57f2ca8743631ac9bb16581b658fc4ac7fe5c072f4d5d59ecaa73deb679422e4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-1pass-2x.f32",
+    "published": "gpu-first-instrument-failure/glsl-32-1pass-2x.f32.zlib",
+    "original_sha256": "390b92048c4dbec634a89435a5d0dafd12a2dd1b9b465a47b7f719205f1b6fce",
+    "published_sha256": "8a551cfb9f89bd022737567028f31541d0d2b71999f7d95b48ff2e3314299df9",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-1pass-2x.log",
+    "published": "gpu-first-instrument-failure/glsl-32-1pass-2x.log",
+    "original_sha256": "aa45fc0550c62d36ef930f9c8ff98dec798fe8ce0e3350da6cf1069c0dc7f02e",
+    "published_sha256": "aa45fc0550c62d36ef930f9c8ff98dec798fe8ce0e3350da6cf1069c0dc7f02e",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-1pass-4x.f32",
+    "published": "gpu-first-instrument-failure/glsl-32-1pass-4x.f32.zlib",
+    "original_sha256": "9beda5c87450c664f78b8eff9359742d53980b12234e9fa25b645d231bcdc565",
+    "published_sha256": "76b64fd32eee57cbec8e7e7fc5e10be415d01d9a87dcd48e2d9ee595bee1b082",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-1pass-4x.log",
+    "published": "gpu-first-instrument-failure/glsl-32-1pass-4x.log",
+    "original_sha256": "b3edff1d6fbce471540438c701fdaf221e31bf88ba2f3d6fdbefe8db218cdc51",
+    "published_sha256": "b3edff1d6fbce471540438c701fdaf221e31bf88ba2f3d6fdbefe8db218cdc51",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-2pass-1x.f32",
+    "published": "gpu-first-instrument-failure/glsl-32-2pass-1x.f32.zlib",
+    "original_sha256": "9b238fd162a859e5e5d6ae1d46dbd115431ce1fcfda23812598c7dfeb0889946",
+    "published_sha256": "01029c93a9132cf562a970bf1c465e43050d486a0ceba03e9a034dca6cbf3a0a",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-2pass-1x.log",
+    "published": "gpu-first-instrument-failure/glsl-32-2pass-1x.log",
+    "original_sha256": "22aca59859b013974d3a09368957a97e917c00f3f54f6d9fd55e6dc0f1c321aa",
+    "published_sha256": "22aca59859b013974d3a09368957a97e917c00f3f54f6d9fd55e6dc0f1c321aa",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-2pass-2x.f32",
+    "published": "gpu-first-instrument-failure/glsl-32-2pass-2x.f32.zlib",
+    "original_sha256": "04652e6ad8901867841a519f906670c97ac9f8a35db55268c0a8612f263d5127",
+    "published_sha256": "4b58b362b5d27c23b9b634506d0bee7bae36bb0f36da4d76fe6741c9428de34a",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-2pass-2x.log",
+    "published": "gpu-first-instrument-failure/glsl-32-2pass-2x.log",
+    "original_sha256": "baa8107086ae4a3275d6ad67f0ecf0fad1c24635124f0414178ff5ede51590c8",
+    "published_sha256": "baa8107086ae4a3275d6ad67f0ecf0fad1c24635124f0414178ff5ede51590c8",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-2pass-4x.f32",
+    "published": "gpu-first-instrument-failure/glsl-32-2pass-4x.f32.zlib",
+    "original_sha256": "e2f2c9a51bae2de01c174600f1524eaaccfd1975aaabbdd12e2879816940d26d",
+    "published_sha256": "8aa20b8a07b20d4e99c55e66048ae9868fe074b2cd44ee615ca9a625d6e283e8",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-32-2pass-4x.log",
+    "published": "gpu-first-instrument-failure/glsl-32-2pass-4x.log",
+    "original_sha256": "0f271fa33f2cdb20d37b9beb17a85a4193d66854006caaf08c047ada28192703",
+    "published_sha256": "0f271fa33f2cdb20d37b9beb17a85a4193d66854006caaf08c047ada28192703",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-1pass-1x.f32",
+    "published": "gpu-first-instrument-failure/glsl-8-1pass-1x.f32.zlib",
+    "original_sha256": "08be3ecb3d01c7b094e409506e681d54261b4864361eac2f458967e21a585433",
+    "published_sha256": "fee89a38d5df7fd0649cb465b2d5ed05c8e42c26603c68fbb78f1ebb6328d6af",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-1pass-1x.log",
+    "published": "gpu-first-instrument-failure/glsl-8-1pass-1x.log",
+    "original_sha256": "44e4ceb344f7ecfa62aef0d6b95af1a6a5f005571c638923f25cee46c94e2ebc",
+    "published_sha256": "44e4ceb344f7ecfa62aef0d6b95af1a6a5f005571c638923f25cee46c94e2ebc",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-1pass-1x.png",
+    "published": "gpu-first-instrument-failure/glsl-8-1pass-1x.png",
+    "original_sha256": "71d8a4fae052486d1f3528b892ab17f7715621acef4e404c33d5df731e35b5fe",
+    "published_sha256": "71d8a4fae052486d1f3528b892ab17f7715621acef4e404c33d5df731e35b5fe",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-1pass-2x.f32",
+    "published": "gpu-first-instrument-failure/glsl-8-1pass-2x.f32.zlib",
+    "original_sha256": "14db25cec5279538e77cee8b366dae7ff9f404963f91d262a106e6a847c2576b",
+    "published_sha256": "74680f77b717304d31e3dea844464ef4cca3a25456a5561af4eb2116d1fb1bf0",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-1pass-2x.log",
+    "published": "gpu-first-instrument-failure/glsl-8-1pass-2x.log",
+    "original_sha256": "8ef9a7bc7589af249fe54e2ae57aa1e6886ded10d2d4a46abc5ab5068ba0adc0",
+    "published_sha256": "8ef9a7bc7589af249fe54e2ae57aa1e6886ded10d2d4a46abc5ab5068ba0adc0",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-1pass-4x.f32",
+    "published": "gpu-first-instrument-failure/glsl-8-1pass-4x.f32.zlib",
+    "original_sha256": "2e907aac01eb314490f20532cc2d31237e05eb11ae3b925d4db9d7cdb807868d",
+    "published_sha256": "6c6f998384b701ff84050ce5217c6592cf6e8d72e62619a669e617e1c12b8b03",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-1pass-4x.log",
+    "published": "gpu-first-instrument-failure/glsl-8-1pass-4x.log",
+    "original_sha256": "0e44f6e61142a10f8a9e701019905bd137dedc5eff1fd0731bb84733aebdb7c3",
+    "published_sha256": "0e44f6e61142a10f8a9e701019905bd137dedc5eff1fd0731bb84733aebdb7c3",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-2pass-1x.f32",
+    "published": "gpu-first-instrument-failure/glsl-8-2pass-1x.f32.zlib",
+    "original_sha256": "b4bda75d240e0d07dccfbae41f0c9e4b72b42381879c097312bab0d59db68959",
+    "published_sha256": "0d0d31fde57da9f7327e67739722451d8cd44e7312871a47029823898e0c72f7",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-2pass-1x.log",
+    "published": "gpu-first-instrument-failure/glsl-8-2pass-1x.log",
+    "original_sha256": "ee3296c856894e377cdf91bc3cdbf28919a41b2e71cb74c8ebfbe711e55ebc9b",
+    "published_sha256": "ee3296c856894e377cdf91bc3cdbf28919a41b2e71cb74c8ebfbe711e55ebc9b",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-2pass-1x.png",
+    "published": "gpu-first-instrument-failure/glsl-8-2pass-1x.png",
+    "original_sha256": "fda4e4bda280db9d5ee30f23fbc64f1ec732482077063a2455fdf57dcc772571",
+    "published_sha256": "fda4e4bda280db9d5ee30f23fbc64f1ec732482077063a2455fdf57dcc772571",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-2pass-2x.f32",
+    "published": "gpu-first-instrument-failure/glsl-8-2pass-2x.f32.zlib",
+    "original_sha256": "3c97c2c4d8b05ef7a3fbc727be9754dbc238869f65d3aa0b7f4b9752614da51b",
+    "published_sha256": "4f02c3f48ead0852acaf65595d2a62908213463845f305a84d60b0ac3be28064",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-2pass-2x.log",
+    "published": "gpu-first-instrument-failure/glsl-8-2pass-2x.log",
+    "original_sha256": "32d1cd3881beae11cbdb4ac329205dc9c3400b78006fcb1f4fdd29e812f542fb",
+    "published_sha256": "32d1cd3881beae11cbdb4ac329205dc9c3400b78006fcb1f4fdd29e812f542fb",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-2pass-4x.f32",
+    "published": "gpu-first-instrument-failure/glsl-8-2pass-4x.f32.zlib",
+    "original_sha256": "cd316f88630830da9af53241f258237799f489a91f2347cbd4d4a20a25331108",
+    "published_sha256": "80d6376a333dd3f98b52d461810744f2ccf60dc75851509a40d63e6f71451b05",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/glsl-8-2pass-4x.log",
+    "published": "gpu-first-instrument-failure/glsl-8-2pass-4x.log",
+    "original_sha256": "54034ec90541f5097c63018b8298468dee74a0b6385a3c3abb4e1556f65738f4",
+    "published_sha256": "54034ec90541f5097c63018b8298468dee74a0b6385a3c3abb4e1556f65738f4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/result.json",
+    "published": "gpu-first-instrument-failure/result.json",
+    "original_sha256": "c9619dee1e03e904fd33443ed2d71b46778f5185f6d00ebb0d85f69cfa02127e",
+    "published_sha256": "c9619dee1e03e904fd33443ed2d71b46778f5185f6d00ebb0d85f69cfa02127e",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-1pass-1x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-16-1pass-1x.f32.zlib",
+    "original_sha256": "962b03f5409f54fe3c52003bb2680314bc3f851d39793a007d0639d7440bea4b",
+    "published_sha256": "5e65a17c1008976267c79825cbee38458902ad398e864e0b7bfb559c94dc43a1",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-1pass-1x.log",
+    "published": "gpu-first-instrument-failure/wgsl-16-1pass-1x.log",
+    "original_sha256": "912752f166a7997a31b069ac6fc55f88ef089f6b6e3bb8bacae3c45c339bd759",
+    "published_sha256": "912752f166a7997a31b069ac6fc55f88ef089f6b6e3bb8bacae3c45c339bd759",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-1pass-2x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-16-1pass-2x.f32.zlib",
+    "original_sha256": "d26acba88ec32da75a02201565875a086099030e0b568bd408c24bd66f45e5bf",
+    "published_sha256": "6ca5f9a46b52919301bbe5af4042a03c9ec6298ca2736fa7d3827c4d38a57810",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-1pass-2x.log",
+    "published": "gpu-first-instrument-failure/wgsl-16-1pass-2x.log",
+    "original_sha256": "8fa078cdd94cbac0de1d565529dfde56d38afcd3625eccfaf5dd2c32d8686bae",
+    "published_sha256": "8fa078cdd94cbac0de1d565529dfde56d38afcd3625eccfaf5dd2c32d8686bae",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-1pass-4x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-16-1pass-4x.f32.zlib",
+    "original_sha256": "948e5674bcbb214fd693710adc442cd500016d41c776f8b968a8e38acee5a5a2",
+    "published_sha256": "530383ff873e14491e31c8de08c86f6aeef775363e40f1c118cb00dbbb2f49f3",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-1pass-4x.log",
+    "published": "gpu-first-instrument-failure/wgsl-16-1pass-4x.log",
+    "original_sha256": "3a9b165cd49cb43b609baceef6d4c50aa158cc63abd9353dba8b1446f1e81d14",
+    "published_sha256": "3a9b165cd49cb43b609baceef6d4c50aa158cc63abd9353dba8b1446f1e81d14",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-2pass-1x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-16-2pass-1x.f32.zlib",
+    "original_sha256": "091e78210eb0dc728681070dc9e666eede09d848b22c88e1421a7bb1014d2626",
+    "published_sha256": "e9e779d5e1ff3b23558cb7bb4415a4dabae86a9aba56b8893ea47b45705ef000",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-2pass-1x.log",
+    "published": "gpu-first-instrument-failure/wgsl-16-2pass-1x.log",
+    "original_sha256": "9bb261095c701de1747f5530ed8deef55bf876e77d96a8ffaf2f90f99625449c",
+    "published_sha256": "9bb261095c701de1747f5530ed8deef55bf876e77d96a8ffaf2f90f99625449c",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-2pass-2x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-16-2pass-2x.f32.zlib",
+    "original_sha256": "2a0cc6712d0f046eff27638b064782f8c5faf947581edfe17860b7fd3a84a9c5",
+    "published_sha256": "94b5eeea6756760f251a80ea7cf63e41d2478de88d06d66798335bd243ad42fe",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-2pass-2x.log",
+    "published": "gpu-first-instrument-failure/wgsl-16-2pass-2x.log",
+    "original_sha256": "d187969a8a7910207f94c07fa15f51f26734ad5bc4b4c94765579416fa7fccd8",
+    "published_sha256": "d187969a8a7910207f94c07fa15f51f26734ad5bc4b4c94765579416fa7fccd8",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-2pass-4x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-16-2pass-4x.f32.zlib",
+    "original_sha256": "781aaaedf1cf1c114d58d00e21808326de9d18cc17347dc94ba3aa5f49bb2352",
+    "published_sha256": "140155a81cf141d99a42eef622ed760c2d8851445c513e961a0b9b961c0674bf",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-16-2pass-4x.log",
+    "published": "gpu-first-instrument-failure/wgsl-16-2pass-4x.log",
+    "original_sha256": "0913436726b68dd50f834e9e59a3529d66ddfec7895919358f1bb882c393a589",
+    "published_sha256": "0913436726b68dd50f834e9e59a3529d66ddfec7895919358f1bb882c393a589",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-1pass-1x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-32-1pass-1x.f32.zlib",
+    "original_sha256": "962b03f5409f54fe3c52003bb2680314bc3f851d39793a007d0639d7440bea4b",
+    "published_sha256": "5e65a17c1008976267c79825cbee38458902ad398e864e0b7bfb559c94dc43a1",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-1pass-1x.log",
+    "published": "gpu-first-instrument-failure/wgsl-32-1pass-1x.log",
+    "original_sha256": "8f07924b2bd4046358fed4c6c1b074d46c887a29a7958379fbf9e2a69f1e32bc",
+    "published_sha256": "8f07924b2bd4046358fed4c6c1b074d46c887a29a7958379fbf9e2a69f1e32bc",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-1pass-2x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-32-1pass-2x.f32.zlib",
+    "original_sha256": "d26acba88ec32da75a02201565875a086099030e0b568bd408c24bd66f45e5bf",
+    "published_sha256": "6ca5f9a46b52919301bbe5af4042a03c9ec6298ca2736fa7d3827c4d38a57810",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-1pass-2x.log",
+    "published": "gpu-first-instrument-failure/wgsl-32-1pass-2x.log",
+    "original_sha256": "5e6a4e0fefc254a9824b801aabf20a38646165da0ba376db9f9dfb5b61b7faa2",
+    "published_sha256": "5e6a4e0fefc254a9824b801aabf20a38646165da0ba376db9f9dfb5b61b7faa2",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-1pass-4x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-32-1pass-4x.f32.zlib",
+    "original_sha256": "948e5674bcbb214fd693710adc442cd500016d41c776f8b968a8e38acee5a5a2",
+    "published_sha256": "530383ff873e14491e31c8de08c86f6aeef775363e40f1c118cb00dbbb2f49f3",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-1pass-4x.log",
+    "published": "gpu-first-instrument-failure/wgsl-32-1pass-4x.log",
+    "original_sha256": "0f84637f337421ebc92dccbda1fb5c3d2fc8ae175c009418b066296f129b8884",
+    "published_sha256": "0f84637f337421ebc92dccbda1fb5c3d2fc8ae175c009418b066296f129b8884",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-2pass-1x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-32-2pass-1x.f32.zlib",
+    "original_sha256": "091e78210eb0dc728681070dc9e666eede09d848b22c88e1421a7bb1014d2626",
+    "published_sha256": "e9e779d5e1ff3b23558cb7bb4415a4dabae86a9aba56b8893ea47b45705ef000",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-2pass-1x.log",
+    "published": "gpu-first-instrument-failure/wgsl-32-2pass-1x.log",
+    "original_sha256": "a7cfa3e8b69072485ce114d2f9f0d7c0e68e33b6b3153eec1ecf3a8d13187008",
+    "published_sha256": "a7cfa3e8b69072485ce114d2f9f0d7c0e68e33b6b3153eec1ecf3a8d13187008",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-2pass-2x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-32-2pass-2x.f32.zlib",
+    "original_sha256": "2a0cc6712d0f046eff27638b064782f8c5faf947581edfe17860b7fd3a84a9c5",
+    "published_sha256": "94b5eeea6756760f251a80ea7cf63e41d2478de88d06d66798335bd243ad42fe",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-2pass-2x.log",
+    "published": "gpu-first-instrument-failure/wgsl-32-2pass-2x.log",
+    "original_sha256": "949f2e59076ac447d618fd39444bd8a964cd024f6e0e0dfb382e03cc6bb5d3ca",
+    "published_sha256": "949f2e59076ac447d618fd39444bd8a964cd024f6e0e0dfb382e03cc6bb5d3ca",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-2pass-4x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-32-2pass-4x.f32.zlib",
+    "original_sha256": "781aaaedf1cf1c114d58d00e21808326de9d18cc17347dc94ba3aa5f49bb2352",
+    "published_sha256": "140155a81cf141d99a42eef622ed760c2d8851445c513e961a0b9b961c0674bf",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-32-2pass-4x.log",
+    "published": "gpu-first-instrument-failure/wgsl-32-2pass-4x.log",
+    "original_sha256": "8056e19de62bc93a4698a7df1e72c561e59fcddb3f6029dcdd26a3b20288a355",
+    "published_sha256": "8056e19de62bc93a4698a7df1e72c561e59fcddb3f6029dcdd26a3b20288a355",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-1pass-1x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-8-1pass-1x.f32.zlib",
+    "original_sha256": "f419fde75aa844f13e5b41cd6a8099305b5b1bbe05437161d17c0207d1b4a125",
+    "published_sha256": "c26b569431ce712363db37e1ce439767be0cd4d75238fc707c37c51e9253782f",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-1pass-1x.log",
+    "published": "gpu-first-instrument-failure/wgsl-8-1pass-1x.log",
+    "original_sha256": "0e194982efe4e1992b4b2691e3dc38155a2798097ec6748fc78d0f151916f0d4",
+    "published_sha256": "0e194982efe4e1992b4b2691e3dc38155a2798097ec6748fc78d0f151916f0d4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-1pass-1x.png",
+    "published": "gpu-first-instrument-failure/wgsl-8-1pass-1x.png",
+    "original_sha256": "ed61d196edb0cfecf3158f2ff7b01d3eb5205bf1de653118b1454133160d8cf4",
+    "published_sha256": "ed61d196edb0cfecf3158f2ff7b01d3eb5205bf1de653118b1454133160d8cf4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-1pass-2x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-8-1pass-2x.f32.zlib",
+    "original_sha256": "0ea4b531edc9a1337d8da38361e9cd9be574c535d47513a37835e27c1427c6cc",
+    "published_sha256": "4695113a2c3dd8d1af6deb58f7492da3793ce57f8e566277869b8d2c8e8bc246",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-1pass-2x.log",
+    "published": "gpu-first-instrument-failure/wgsl-8-1pass-2x.log",
+    "original_sha256": "a6d61e696f0837f129a4bc23b13458187bff46230fa6ec6a0b16d611303d4887",
+    "published_sha256": "a6d61e696f0837f129a4bc23b13458187bff46230fa6ec6a0b16d611303d4887",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-1pass-4x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-8-1pass-4x.f32.zlib",
+    "original_sha256": "41b9e659719ddce910eb968014e050306ae621e5941208d0d3b730bbd1219cf7",
+    "published_sha256": "3344581abe235a7cb552dccabc35cc8f068c395bbdb4ca0419539519ace2a2d9",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-1pass-4x.log",
+    "published": "gpu-first-instrument-failure/wgsl-8-1pass-4x.log",
+    "original_sha256": "7a1b9b4bdf30f8bed5a0dd14bd779f79e5e408b4622d1bb07ca16e442dfbfd2b",
+    "published_sha256": "7a1b9b4bdf30f8bed5a0dd14bd779f79e5e408b4622d1bb07ca16e442dfbfd2b",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-2pass-1x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-8-2pass-1x.f32.zlib",
+    "original_sha256": "d7cc9961aa57cbcad4ab52bf4da1d0a3898f9d1cf7f7538b3ea94b27fb20902f",
+    "published_sha256": "850c7fd06d1e175bad6016c94f59c60b7b128760527a088fa4a349756c3fa2ca",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-2pass-1x.log",
+    "published": "gpu-first-instrument-failure/wgsl-8-2pass-1x.log",
+    "original_sha256": "c3483ed6384d868e1f9f7c72cee28c01cc01794309087542ecfd8f92d783f76c",
+    "published_sha256": "c3483ed6384d868e1f9f7c72cee28c01cc01794309087542ecfd8f92d783f76c",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-2pass-1x.png",
+    "published": "gpu-first-instrument-failure/wgsl-8-2pass-1x.png",
+    "original_sha256": "3abd57f690aa6aee5ee6adee7e4ee52467d818e135574d3d5222b9a615da83b1",
+    "published_sha256": "3abd57f690aa6aee5ee6adee7e4ee52467d818e135574d3d5222b9a615da83b1",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-2pass-2x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-8-2pass-2x.f32.zlib",
+    "original_sha256": "b82b03485cb0e3daa65483134e08b2797cf4d8613cb85f22fadf52d0539638b1",
+    "published_sha256": "31f0fbaf73ec5a1b6eda26d3c7a55eb41db5fb6d4004fcb94353607afb7d8391",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-2pass-2x.log",
+    "published": "gpu-first-instrument-failure/wgsl-8-2pass-2x.log",
+    "original_sha256": "bd0d12e7d58360982ee2e3a7f15e235b48ce68a8a7944316e3de2e822dfb9274",
+    "published_sha256": "bd0d12e7d58360982ee2e3a7f15e235b48ce68a8a7944316e3de2e822dfb9274",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-2pass-4x.f32",
+    "published": "gpu-first-instrument-failure/wgsl-8-2pass-4x.f32.zlib",
+    "original_sha256": "4e09ad4de72428067251fe4083d834458d04752d166204686eafc291211167cb",
+    "published_sha256": "7b7559aa066fe0bf4ca1d29baade51301689a8244fcf7d62133ed3f570cd6470",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu/wgsl-8-2pass-4x.log",
+    "published": "gpu-first-instrument-failure/wgsl-8-2pass-4x.log",
+    "original_sha256": "d92af7ea5d20ea5af6573d1f6db168d86d9741eba7a92d15c8d7bae33d5b6b0e",
+    "published_sha256": "d92af7ea5d20ea5af6573d1f6db168d86d9741eba7a92d15c8d7bae33d5b6b0e",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/1pass.glsl",
+    "published": "gpu-production/1pass.glsl",
+    "original_sha256": "972ddf3d5d331f643bc00b740851a306c044e32b9cb104f9b26a1a2c39a154e4",
+    "published_sha256": "972ddf3d5d331f643bc00b740851a306c044e32b9cb104f9b26a1a2c39a154e4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/1pass.wgsl",
+    "published": "gpu-production/1pass.wgsl",
+    "original_sha256": "fd30b9ec4e4ca8dc77495efe86b29b1052706071c8caaed9ecd135f87d95305a",
+    "published_sha256": "fd30b9ec4e4ca8dc77495efe86b29b1052706071c8caaed9ecd135f87d95305a",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/2pass.glsl",
+    "published": "gpu-production/2pass.glsl",
+    "original_sha256": "82881be4ed77104bd575184f60036c5e4dd271cffba70a2a7100e2d1846be994",
+    "published_sha256": "82881be4ed77104bd575184f60036c5e4dd271cffba70a2a7100e2d1846be994",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/2pass.wgsl",
+    "published": "gpu-production/2pass.wgsl",
+    "original_sha256": "ebff4acbf41e4ff098adea3042bc36f07910c1a7647e01d3ef7b96c2b1f63569",
+    "published_sha256": "ebff4acbf41e4ff098adea3042bc36f07910c1a7647e01d3ef7b96c2b1f63569",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/build.log",
+    "published": "gpu-production/build.log",
+    "original_sha256": "44b8fd7edd5f31b3c13990c60f78fb24d66abebe8e770e0c54aee9390bbb5cde",
+    "published_sha256": "44b8fd7edd5f31b3c13990c60f78fb24d66abebe8e770e0c54aee9390bbb5cde",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-1pass-1x.f32",
+    "published": "gpu-production/glsl-16-1pass-1x.f32.zlib",
+    "original_sha256": "962b03f5409f54fe3c52003bb2680314bc3f851d39793a007d0639d7440bea4b",
+    "published_sha256": "5e65a17c1008976267c79825cbee38458902ad398e864e0b7bfb559c94dc43a1",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-1pass-1x.log",
+    "published": "gpu-production/glsl-16-1pass-1x.log",
+    "original_sha256": "2842a3d4117967922639b841fb721d663ca92c1d52dcc27ba3222cb1efbea191",
+    "published_sha256": "2842a3d4117967922639b841fb721d663ca92c1d52dcc27ba3222cb1efbea191",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-1pass-2x.f32",
+    "published": "gpu-production/glsl-16-1pass-2x.f32.zlib",
+    "original_sha256": "d26acba88ec32da75a02201565875a086099030e0b568bd408c24bd66f45e5bf",
+    "published_sha256": "6ca5f9a46b52919301bbe5af4042a03c9ec6298ca2736fa7d3827c4d38a57810",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-1pass-2x.log",
+    "published": "gpu-production/glsl-16-1pass-2x.log",
+    "original_sha256": "2d9d974026e0b4926fd053d2776c70ca5cecde7421b4027f2dbf516c9eec3665",
+    "published_sha256": "2d9d974026e0b4926fd053d2776c70ca5cecde7421b4027f2dbf516c9eec3665",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-1pass-4x.f32",
+    "published": "gpu-production/glsl-16-1pass-4x.f32.zlib",
+    "original_sha256": "948e5674bcbb214fd693710adc442cd500016d41c776f8b968a8e38acee5a5a2",
+    "published_sha256": "530383ff873e14491e31c8de08c86f6aeef775363e40f1c118cb00dbbb2f49f3",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-1pass-4x.log",
+    "published": "gpu-production/glsl-16-1pass-4x.log",
+    "original_sha256": "207bd39c89afb2a930c008ec2b47d1854e8d86ea99b55132e87db48617e284ce",
+    "published_sha256": "207bd39c89afb2a930c008ec2b47d1854e8d86ea99b55132e87db48617e284ce",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-2pass-1x.f32",
+    "published": "gpu-production/glsl-16-2pass-1x.f32.zlib",
+    "original_sha256": "091e78210eb0dc728681070dc9e666eede09d848b22c88e1421a7bb1014d2626",
+    "published_sha256": "e9e779d5e1ff3b23558cb7bb4415a4dabae86a9aba56b8893ea47b45705ef000",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-2pass-1x.log",
+    "published": "gpu-production/glsl-16-2pass-1x.log",
+    "original_sha256": "8c339e135f88abb15294365bbcb493eca7e8f809324c7a87e87da96028b61408",
+    "published_sha256": "8c339e135f88abb15294365bbcb493eca7e8f809324c7a87e87da96028b61408",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-2pass-2x.f32",
+    "published": "gpu-production/glsl-16-2pass-2x.f32.zlib",
+    "original_sha256": "2a0cc6712d0f046eff27638b064782f8c5faf947581edfe17860b7fd3a84a9c5",
+    "published_sha256": "94b5eeea6756760f251a80ea7cf63e41d2478de88d06d66798335bd243ad42fe",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-2pass-2x.log",
+    "published": "gpu-production/glsl-16-2pass-2x.log",
+    "original_sha256": "6e2b61fbd179af0babc2afefba1832a54d2067ec9905217410dd1464fc21197e",
+    "published_sha256": "6e2b61fbd179af0babc2afefba1832a54d2067ec9905217410dd1464fc21197e",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-2pass-4x.f32",
+    "published": "gpu-production/glsl-16-2pass-4x.f32.zlib",
+    "original_sha256": "781aaaedf1cf1c114d58d00e21808326de9d18cc17347dc94ba3aa5f49bb2352",
+    "published_sha256": "140155a81cf141d99a42eef622ed760c2d8851445c513e961a0b9b961c0674bf",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-16-2pass-4x.log",
+    "published": "gpu-production/glsl-16-2pass-4x.log",
+    "original_sha256": "05d75d29d9cb1596517d6c267cb3558273e461d850ec34557db622f23e157488",
+    "published_sha256": "05d75d29d9cb1596517d6c267cb3558273e461d850ec34557db622f23e157488",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-1pass-1x.f32",
+    "published": "gpu-production/glsl-32-1pass-1x.f32.zlib",
+    "original_sha256": "962b03f5409f54fe3c52003bb2680314bc3f851d39793a007d0639d7440bea4b",
+    "published_sha256": "5e65a17c1008976267c79825cbee38458902ad398e864e0b7bfb559c94dc43a1",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-1pass-1x.log",
+    "published": "gpu-production/glsl-32-1pass-1x.log",
+    "original_sha256": "b09835806bea947382f924b5ff16d975d9abeafa0fca125b370193df229a421b",
+    "published_sha256": "b09835806bea947382f924b5ff16d975d9abeafa0fca125b370193df229a421b",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-1pass-2x.f32",
+    "published": "gpu-production/glsl-32-1pass-2x.f32.zlib",
+    "original_sha256": "d26acba88ec32da75a02201565875a086099030e0b568bd408c24bd66f45e5bf",
+    "published_sha256": "6ca5f9a46b52919301bbe5af4042a03c9ec6298ca2736fa7d3827c4d38a57810",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-1pass-2x.log",
+    "published": "gpu-production/glsl-32-1pass-2x.log",
+    "original_sha256": "0f71e36d4c6f0774b8497f8490ae634002e8cafda3976714f45c7d20cea6be76",
+    "published_sha256": "0f71e36d4c6f0774b8497f8490ae634002e8cafda3976714f45c7d20cea6be76",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-1pass-4x.f32",
+    "published": "gpu-production/glsl-32-1pass-4x.f32.zlib",
+    "original_sha256": "948e5674bcbb214fd693710adc442cd500016d41c776f8b968a8e38acee5a5a2",
+    "published_sha256": "530383ff873e14491e31c8de08c86f6aeef775363e40f1c118cb00dbbb2f49f3",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-1pass-4x.log",
+    "published": "gpu-production/glsl-32-1pass-4x.log",
+    "original_sha256": "6d9ddff9e3d5ba023a7ce5957087723866c074c053aeac3fe890d1b14295ec30",
+    "published_sha256": "6d9ddff9e3d5ba023a7ce5957087723866c074c053aeac3fe890d1b14295ec30",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-2pass-1x.f32",
+    "published": "gpu-production/glsl-32-2pass-1x.f32.zlib",
+    "original_sha256": "091e78210eb0dc728681070dc9e666eede09d848b22c88e1421a7bb1014d2626",
+    "published_sha256": "e9e779d5e1ff3b23558cb7bb4415a4dabae86a9aba56b8893ea47b45705ef000",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-2pass-1x.log",
+    "published": "gpu-production/glsl-32-2pass-1x.log",
+    "original_sha256": "6c9139a54424c4bbcd9ead91f6aebe4b5fcf4b0924f0a419726f7df31fc01e0d",
+    "published_sha256": "6c9139a54424c4bbcd9ead91f6aebe4b5fcf4b0924f0a419726f7df31fc01e0d",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-2pass-2x.f32",
+    "published": "gpu-production/glsl-32-2pass-2x.f32.zlib",
+    "original_sha256": "2a0cc6712d0f046eff27638b064782f8c5faf947581edfe17860b7fd3a84a9c5",
+    "published_sha256": "94b5eeea6756760f251a80ea7cf63e41d2478de88d06d66798335bd243ad42fe",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-2pass-2x.log",
+    "published": "gpu-production/glsl-32-2pass-2x.log",
+    "original_sha256": "77d8cac1e354926cc7a66168d0d3baf5239f8cc8a5b086127eadd45640f55205",
+    "published_sha256": "77d8cac1e354926cc7a66168d0d3baf5239f8cc8a5b086127eadd45640f55205",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-2pass-4x.f32",
+    "published": "gpu-production/glsl-32-2pass-4x.f32.zlib",
+    "original_sha256": "781aaaedf1cf1c114d58d00e21808326de9d18cc17347dc94ba3aa5f49bb2352",
+    "published_sha256": "140155a81cf141d99a42eef622ed760c2d8851445c513e961a0b9b961c0674bf",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-32-2pass-4x.log",
+    "published": "gpu-production/glsl-32-2pass-4x.log",
+    "original_sha256": "4aa87c1b881860410bf0e43b2f4db98b66636ee9001f11c331ced23b8bd0f67d",
+    "published_sha256": "4aa87c1b881860410bf0e43b2f4db98b66636ee9001f11c331ced23b8bd0f67d",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-1pass-1x.f32",
+    "published": "gpu-production/glsl-8-1pass-1x.f32.zlib",
+    "original_sha256": "f419fde75aa844f13e5b41cd6a8099305b5b1bbe05437161d17c0207d1b4a125",
+    "published_sha256": "c26b569431ce712363db37e1ce439767be0cd4d75238fc707c37c51e9253782f",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-1pass-1x.log",
+    "published": "gpu-production/glsl-8-1pass-1x.log",
+    "original_sha256": "796db8e53894e3949c8f43f3700ed8016e566c9ac0bdfac29e89fd615ca0222c",
+    "published_sha256": "796db8e53894e3949c8f43f3700ed8016e566c9ac0bdfac29e89fd615ca0222c",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-1pass-1x.png",
+    "published": "gpu-production/glsl-8-1pass-1x.png",
+    "original_sha256": "ed61d196edb0cfecf3158f2ff7b01d3eb5205bf1de653118b1454133160d8cf4",
+    "published_sha256": "ed61d196edb0cfecf3158f2ff7b01d3eb5205bf1de653118b1454133160d8cf4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-1pass-2x.f32",
+    "published": "gpu-production/glsl-8-1pass-2x.f32.zlib",
+    "original_sha256": "0ea4b531edc9a1337d8da38361e9cd9be574c535d47513a37835e27c1427c6cc",
+    "published_sha256": "4695113a2c3dd8d1af6deb58f7492da3793ce57f8e566277869b8d2c8e8bc246",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-1pass-2x.log",
+    "published": "gpu-production/glsl-8-1pass-2x.log",
+    "original_sha256": "b87e3e4c387fd74a5e0d59e0ae172e020b482498474d18c948d78d11b3818d6f",
+    "published_sha256": "b87e3e4c387fd74a5e0d59e0ae172e020b482498474d18c948d78d11b3818d6f",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-1pass-4x.f32",
+    "published": "gpu-production/glsl-8-1pass-4x.f32.zlib",
+    "original_sha256": "41b9e659719ddce910eb968014e050306ae621e5941208d0d3b730bbd1219cf7",
+    "published_sha256": "3344581abe235a7cb552dccabc35cc8f068c395bbdb4ca0419539519ace2a2d9",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-1pass-4x.log",
+    "published": "gpu-production/glsl-8-1pass-4x.log",
+    "original_sha256": "054c1735708ae850b0ed45e72a467a71c5304d68644b52e869c1433c315ab9e4",
+    "published_sha256": "054c1735708ae850b0ed45e72a467a71c5304d68644b52e869c1433c315ab9e4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-2pass-1x.f32",
+    "published": "gpu-production/glsl-8-2pass-1x.f32.zlib",
+    "original_sha256": "d7cc9961aa57cbcad4ab52bf4da1d0a3898f9d1cf7f7538b3ea94b27fb20902f",
+    "published_sha256": "850c7fd06d1e175bad6016c94f59c60b7b128760527a088fa4a349756c3fa2ca",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-2pass-1x.log",
+    "published": "gpu-production/glsl-8-2pass-1x.log",
+    "original_sha256": "c32a942fa33e1501c87010ce2caeeab39ea8f59f58a8f3df007d8ee293a160c7",
+    "published_sha256": "c32a942fa33e1501c87010ce2caeeab39ea8f59f58a8f3df007d8ee293a160c7",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-2pass-1x.png",
+    "published": "gpu-production/glsl-8-2pass-1x.png",
+    "original_sha256": "3abd57f690aa6aee5ee6adee7e4ee52467d818e135574d3d5222b9a615da83b1",
+    "published_sha256": "3abd57f690aa6aee5ee6adee7e4ee52467d818e135574d3d5222b9a615da83b1",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-2pass-2x.f32",
+    "published": "gpu-production/glsl-8-2pass-2x.f32.zlib",
+    "original_sha256": "b82b03485cb0e3daa65483134e08b2797cf4d8613cb85f22fadf52d0539638b1",
+    "published_sha256": "31f0fbaf73ec5a1b6eda26d3c7a55eb41db5fb6d4004fcb94353607afb7d8391",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-2pass-2x.log",
+    "published": "gpu-production/glsl-8-2pass-2x.log",
+    "original_sha256": "2c6b86e404a66122fc43e0534759b1b1bd767e5c351574ddb650602f0aed05eb",
+    "published_sha256": "2c6b86e404a66122fc43e0534759b1b1bd767e5c351574ddb650602f0aed05eb",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-2pass-4x.f32",
+    "published": "gpu-production/glsl-8-2pass-4x.f32.zlib",
+    "original_sha256": "4e09ad4de72428067251fe4083d834458d04752d166204686eafc291211167cb",
+    "published_sha256": "7b7559aa066fe0bf4ca1d29baade51301689a8244fcf7d62133ed3f570cd6470",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/glsl-8-2pass-4x.log",
+    "published": "gpu-production/glsl-8-2pass-4x.log",
+    "original_sha256": "34803bf75ccc086bba1d95059952de82e8ba82e45e3b100cd0127b3205aa00b9",
+    "published_sha256": "34803bf75ccc086bba1d95059952de82e8ba82e45e3b100cd0127b3205aa00b9",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/result.json",
+    "published": "gpu-production/result.json",
+    "original_sha256": "6ebe2e9ac8481d49e08ea46ebac5131348e2c8a620ec6a50ca2af054017bfb8b",
+    "published_sha256": "6ebe2e9ac8481d49e08ea46ebac5131348e2c8a620ec6a50ca2af054017bfb8b",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-1pass-1x.f32",
+    "published": "gpu-production/wgsl-16-1pass-1x.f32.zlib",
+    "original_sha256": "962b03f5409f54fe3c52003bb2680314bc3f851d39793a007d0639d7440bea4b",
+    "published_sha256": "5e65a17c1008976267c79825cbee38458902ad398e864e0b7bfb559c94dc43a1",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-1pass-1x.log",
+    "published": "gpu-production/wgsl-16-1pass-1x.log",
+    "original_sha256": "20104f2b2506b99002b9475fce2caf7c733ab177747a1ac1d57d7840c1e40110",
+    "published_sha256": "20104f2b2506b99002b9475fce2caf7c733ab177747a1ac1d57d7840c1e40110",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-1pass-2x.f32",
+    "published": "gpu-production/wgsl-16-1pass-2x.f32.zlib",
+    "original_sha256": "d26acba88ec32da75a02201565875a086099030e0b568bd408c24bd66f45e5bf",
+    "published_sha256": "6ca5f9a46b52919301bbe5af4042a03c9ec6298ca2736fa7d3827c4d38a57810",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-1pass-2x.log",
+    "published": "gpu-production/wgsl-16-1pass-2x.log",
+    "original_sha256": "8965a36b31ec773de3ae67a4527399b8a0bf89b217c0c54840d45bdc58b7cf1b",
+    "published_sha256": "8965a36b31ec773de3ae67a4527399b8a0bf89b217c0c54840d45bdc58b7cf1b",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-1pass-4x.f32",
+    "published": "gpu-production/wgsl-16-1pass-4x.f32.zlib",
+    "original_sha256": "948e5674bcbb214fd693710adc442cd500016d41c776f8b968a8e38acee5a5a2",
+    "published_sha256": "530383ff873e14491e31c8de08c86f6aeef775363e40f1c118cb00dbbb2f49f3",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-1pass-4x.log",
+    "published": "gpu-production/wgsl-16-1pass-4x.log",
+    "original_sha256": "97bc3653d2dcf1baf4dfd043a253ba347c8a6889b76e8fc8c0a0ea5a6ee1e2f4",
+    "published_sha256": "97bc3653d2dcf1baf4dfd043a253ba347c8a6889b76e8fc8c0a0ea5a6ee1e2f4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-2pass-1x.f32",
+    "published": "gpu-production/wgsl-16-2pass-1x.f32.zlib",
+    "original_sha256": "091e78210eb0dc728681070dc9e666eede09d848b22c88e1421a7bb1014d2626",
+    "published_sha256": "e9e779d5e1ff3b23558cb7bb4415a4dabae86a9aba56b8893ea47b45705ef000",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-2pass-1x.log",
+    "published": "gpu-production/wgsl-16-2pass-1x.log",
+    "original_sha256": "7a171e762ab29c70cd6b5306517f03a842916001dff2528124f9c7007325e882",
+    "published_sha256": "7a171e762ab29c70cd6b5306517f03a842916001dff2528124f9c7007325e882",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-2pass-2x.f32",
+    "published": "gpu-production/wgsl-16-2pass-2x.f32.zlib",
+    "original_sha256": "2a0cc6712d0f046eff27638b064782f8c5faf947581edfe17860b7fd3a84a9c5",
+    "published_sha256": "94b5eeea6756760f251a80ea7cf63e41d2478de88d06d66798335bd243ad42fe",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-2pass-2x.log",
+    "published": "gpu-production/wgsl-16-2pass-2x.log",
+    "original_sha256": "75f4e2acb37ad0c7587710a9eea398a42d2359998eef8cecec1a3df8d30c8804",
+    "published_sha256": "75f4e2acb37ad0c7587710a9eea398a42d2359998eef8cecec1a3df8d30c8804",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-2pass-4x.f32",
+    "published": "gpu-production/wgsl-16-2pass-4x.f32.zlib",
+    "original_sha256": "781aaaedf1cf1c114d58d00e21808326de9d18cc17347dc94ba3aa5f49bb2352",
+    "published_sha256": "140155a81cf141d99a42eef622ed760c2d8851445c513e961a0b9b961c0674bf",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-16-2pass-4x.log",
+    "published": "gpu-production/wgsl-16-2pass-4x.log",
+    "original_sha256": "c9e3a06ff623b8ce31c96178556a8ebc95eaa407cd5cdbfafd6632e9356e55e3",
+    "published_sha256": "c9e3a06ff623b8ce31c96178556a8ebc95eaa407cd5cdbfafd6632e9356e55e3",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-1pass-1x.f32",
+    "published": "gpu-production/wgsl-32-1pass-1x.f32.zlib",
+    "original_sha256": "962b03f5409f54fe3c52003bb2680314bc3f851d39793a007d0639d7440bea4b",
+    "published_sha256": "5e65a17c1008976267c79825cbee38458902ad398e864e0b7bfb559c94dc43a1",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-1pass-1x.log",
+    "published": "gpu-production/wgsl-32-1pass-1x.log",
+    "original_sha256": "4c0dfa59f0d9ecf90a5801d35c3c6c614cdd21f904b3096bfa2176e4b36d9dd7",
+    "published_sha256": "4c0dfa59f0d9ecf90a5801d35c3c6c614cdd21f904b3096bfa2176e4b36d9dd7",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-1pass-2x.f32",
+    "published": "gpu-production/wgsl-32-1pass-2x.f32.zlib",
+    "original_sha256": "d26acba88ec32da75a02201565875a086099030e0b568bd408c24bd66f45e5bf",
+    "published_sha256": "6ca5f9a46b52919301bbe5af4042a03c9ec6298ca2736fa7d3827c4d38a57810",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-1pass-2x.log",
+    "published": "gpu-production/wgsl-32-1pass-2x.log",
+    "original_sha256": "afb542a232d5972d34ba00d1f65d815081d24ffb5b0c2d08aedf0a693a6b860f",
+    "published_sha256": "afb542a232d5972d34ba00d1f65d815081d24ffb5b0c2d08aedf0a693a6b860f",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-1pass-4x.f32",
+    "published": "gpu-production/wgsl-32-1pass-4x.f32.zlib",
+    "original_sha256": "948e5674bcbb214fd693710adc442cd500016d41c776f8b968a8e38acee5a5a2",
+    "published_sha256": "530383ff873e14491e31c8de08c86f6aeef775363e40f1c118cb00dbbb2f49f3",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-1pass-4x.log",
+    "published": "gpu-production/wgsl-32-1pass-4x.log",
+    "original_sha256": "d375a17625e7ac50214846ee0c2855f14813594d4c7cbe86869c67528e5564c1",
+    "published_sha256": "d375a17625e7ac50214846ee0c2855f14813594d4c7cbe86869c67528e5564c1",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-2pass-1x.f32",
+    "published": "gpu-production/wgsl-32-2pass-1x.f32.zlib",
+    "original_sha256": "091e78210eb0dc728681070dc9e666eede09d848b22c88e1421a7bb1014d2626",
+    "published_sha256": "e9e779d5e1ff3b23558cb7bb4415a4dabae86a9aba56b8893ea47b45705ef000",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-2pass-1x.log",
+    "published": "gpu-production/wgsl-32-2pass-1x.log",
+    "original_sha256": "d400ad495d6ed897e3bd79f4b7b33c36bd9991ad9680530c3a2305540f18ae5d",
+    "published_sha256": "d400ad495d6ed897e3bd79f4b7b33c36bd9991ad9680530c3a2305540f18ae5d",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-2pass-2x.f32",
+    "published": "gpu-production/wgsl-32-2pass-2x.f32.zlib",
+    "original_sha256": "2a0cc6712d0f046eff27638b064782f8c5faf947581edfe17860b7fd3a84a9c5",
+    "published_sha256": "94b5eeea6756760f251a80ea7cf63e41d2478de88d06d66798335bd243ad42fe",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-2pass-2x.log",
+    "published": "gpu-production/wgsl-32-2pass-2x.log",
+    "original_sha256": "981ea8124443f31c81b1863a069f46742809781e9a356a668840af2cf7803e4e",
+    "published_sha256": "981ea8124443f31c81b1863a069f46742809781e9a356a668840af2cf7803e4e",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-2pass-4x.f32",
+    "published": "gpu-production/wgsl-32-2pass-4x.f32.zlib",
+    "original_sha256": "781aaaedf1cf1c114d58d00e21808326de9d18cc17347dc94ba3aa5f49bb2352",
+    "published_sha256": "140155a81cf141d99a42eef622ed760c2d8851445c513e961a0b9b961c0674bf",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-32-2pass-4x.log",
+    "published": "gpu-production/wgsl-32-2pass-4x.log",
+    "original_sha256": "ec680b67aa8ea580e286fb5d0648907573a711e5f302e6de9fe015b45ae8e4f0",
+    "published_sha256": "ec680b67aa8ea580e286fb5d0648907573a711e5f302e6de9fe015b45ae8e4f0",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-1pass-1x.f32",
+    "published": "gpu-production/wgsl-8-1pass-1x.f32.zlib",
+    "original_sha256": "f419fde75aa844f13e5b41cd6a8099305b5b1bbe05437161d17c0207d1b4a125",
+    "published_sha256": "c26b569431ce712363db37e1ce439767be0cd4d75238fc707c37c51e9253782f",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-1pass-1x.log",
+    "published": "gpu-production/wgsl-8-1pass-1x.log",
+    "original_sha256": "646251cbcf6635f94e44a063902a9c9f7b3a9d47c9a9a41b5a536c193fa9cde9",
+    "published_sha256": "646251cbcf6635f94e44a063902a9c9f7b3a9d47c9a9a41b5a536c193fa9cde9",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-1pass-1x.png",
+    "published": "gpu-production/wgsl-8-1pass-1x.png",
+    "original_sha256": "ed61d196edb0cfecf3158f2ff7b01d3eb5205bf1de653118b1454133160d8cf4",
+    "published_sha256": "ed61d196edb0cfecf3158f2ff7b01d3eb5205bf1de653118b1454133160d8cf4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-1pass-2x.f32",
+    "published": "gpu-production/wgsl-8-1pass-2x.f32.zlib",
+    "original_sha256": "0ea4b531edc9a1337d8da38361e9cd9be574c535d47513a37835e27c1427c6cc",
+    "published_sha256": "4695113a2c3dd8d1af6deb58f7492da3793ce57f8e566277869b8d2c8e8bc246",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-1pass-2x.log",
+    "published": "gpu-production/wgsl-8-1pass-2x.log",
+    "original_sha256": "0155b517f37f5e3efc0960fdd4a08e82c5b2cf3c9ccd08bd335af3acbb2dfb85",
+    "published_sha256": "0155b517f37f5e3efc0960fdd4a08e82c5b2cf3c9ccd08bd335af3acbb2dfb85",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-1pass-4x.f32",
+    "published": "gpu-production/wgsl-8-1pass-4x.f32.zlib",
+    "original_sha256": "41b9e659719ddce910eb968014e050306ae621e5941208d0d3b730bbd1219cf7",
+    "published_sha256": "3344581abe235a7cb552dccabc35cc8f068c395bbdb4ca0419539519ace2a2d9",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-1pass-4x.log",
+    "published": "gpu-production/wgsl-8-1pass-4x.log",
+    "original_sha256": "6f5ba068ce3219ae83cd5e226220ef53fcc32c249c594de163e92c87671ee04b",
+    "published_sha256": "6f5ba068ce3219ae83cd5e226220ef53fcc32c249c594de163e92c87671ee04b",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-2pass-1x.f32",
+    "published": "gpu-production/wgsl-8-2pass-1x.f32.zlib",
+    "original_sha256": "d7cc9961aa57cbcad4ab52bf4da1d0a3898f9d1cf7f7538b3ea94b27fb20902f",
+    "published_sha256": "850c7fd06d1e175bad6016c94f59c60b7b128760527a088fa4a349756c3fa2ca",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-2pass-1x.log",
+    "published": "gpu-production/wgsl-8-2pass-1x.log",
+    "original_sha256": "c94ef3c9272cf21badfe98612c8267bb4b04ecbea334e983b3443a4684d0ccf0",
+    "published_sha256": "c94ef3c9272cf21badfe98612c8267bb4b04ecbea334e983b3443a4684d0ccf0",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-2pass-1x.png",
+    "published": "gpu-production/wgsl-8-2pass-1x.png",
+    "original_sha256": "3abd57f690aa6aee5ee6adee7e4ee52467d818e135574d3d5222b9a615da83b1",
+    "published_sha256": "3abd57f690aa6aee5ee6adee7e4ee52467d818e135574d3d5222b9a615da83b1",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-2pass-2x.f32",
+    "published": "gpu-production/wgsl-8-2pass-2x.f32.zlib",
+    "original_sha256": "b82b03485cb0e3daa65483134e08b2797cf4d8613cb85f22fadf52d0539638b1",
+    "published_sha256": "31f0fbaf73ec5a1b6eda26d3c7a55eb41db5fb6d4004fcb94353607afb7d8391",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-2pass-2x.log",
+    "published": "gpu-production/wgsl-8-2pass-2x.log",
+    "original_sha256": "ff35535c536d302958c718468b14c91a3d81b432406f954f1d52006f3037a4e4",
+    "published_sha256": "ff35535c536d302958c718468b14c91a3d81b432406f954f1d52006f3037a4e4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-2pass-4x.f32",
+    "published": "gpu-production/wgsl-8-2pass-4x.f32.zlib",
+    "original_sha256": "4e09ad4de72428067251fe4083d834458d04752d166204686eafc291211167cb",
+    "published_sha256": "7b7559aa066fe0bf4ca1d29baade51301689a8244fcf7d62133ed3f570cd6470",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-gpu-final/wgsl-8-2pass-4x.log",
+    "published": "gpu-production/wgsl-8-2pass-4x.log",
+    "original_sha256": "c4bb5a978ce33311a5b905da398b2cbe0f9125cb41f68c8ea70bb5d6f72f6d49",
+    "published_sha256": "c4bb5a978ce33311a5b905da398b2cbe0f9125cb41f68c8ea70bb5d6f72f6d49",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/contact-sheet.png",
+    "published": "examples/contact-sheet.png",
+    "original_sha256": "a94144430585b6261f393aaf19b09377b0663c6e78aaffbb73e4253079ecaec2",
+    "published_sha256": "a94144430585b6261f393aaf19b09377b0663c6e78aaffbb73e4253079ecaec2",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/renders.log",
+    "published": "examples/renders.log",
+    "original_sha256": "5126090fb54afb914fc45b0d4c003330b7979800245be2ec59bebbe271b60c9f",
+    "published_sha256": "5126090fb54afb914fc45b0d4c003330b7979800245be2ec59bebbe271b60c9f",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/summary.json",
+    "published": "examples/summary.json",
+    "original_sha256": "a2b6cb96137a90e43ada29799295cc8b03087dd4b1888c25e010ea502746ecd9",
+    "published_sha256": "a2b6cb96137a90e43ada29799295cc8b03087dd4b1888c25e010ea502746ecd9",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d16-t0.f32",
+    "published": "examples/wgsl-field-s1-d16-t0.f32.zlib",
+    "original_sha256": "4c0edf366250b3c4e80955444fa289a0233562db05673d2019f25b5a8e077bf1",
+    "published_sha256": "7bc5c6a6ae53c5dcfd1201c64af7f77987c84543f6ef649b82a5259e2666cab2",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d16-t0.png",
+    "published": "examples/wgsl-field-s1-d16-t0.png",
+    "original_sha256": "a3c8fd19cb4a5454303ed2c379dd623f473da1d8caf9d6817966db554c7cf32a",
+    "published_sha256": "a3c8fd19cb4a5454303ed2c379dd623f473da1d8caf9d6817966db554c7cf32a",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d16-t1.25.f32",
+    "published": "examples/wgsl-field-s1-d16-t1.25.f32.zlib",
+    "original_sha256": "ab98250354d06e5ff9c31cf32e1af0e5cc3e610dde7eed868391c91ee34f6bf4",
+    "published_sha256": "414e5362435ba47db705f72d29b53330249fc73e978524467ec044f6698bd314",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d16-t1.25.png",
+    "published": "examples/wgsl-field-s1-d16-t1.25.png",
+    "original_sha256": "991023e0f2be90cf6ce30fe8d50fff5066461dca5088320d66252098d4d3a17d",
+    "published_sha256": "991023e0f2be90cf6ce30fe8d50fff5066461dca5088320d66252098d4d3a17d",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t0.f32",
+    "published": "examples/wgsl-field-s1-d32-t0.f32.zlib",
+    "original_sha256": "4c0edf366250b3c4e80955444fa289a0233562db05673d2019f25b5a8e077bf1",
+    "published_sha256": "7bc5c6a6ae53c5dcfd1201c64af7f77987c84543f6ef649b82a5259e2666cab2",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t0.png",
+    "published": "examples/wgsl-field-s1-d32-t0.png",
+    "original_sha256": "a3c8fd19cb4a5454303ed2c379dd623f473da1d8caf9d6817966db554c7cf32a",
+    "published_sha256": "a3c8fd19cb4a5454303ed2c379dd623f473da1d8caf9d6817966db554c7cf32a",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t1.25-black.f32",
+    "published": "examples/wgsl-field-s1-d32-t1.25-black.f32.zlib",
+    "original_sha256": "da4754252012c4a93ff8ac50a27100247e9469da687ec30f5e7147b3ed779814",
+    "published_sha256": "c09f5e1a793210b382712edcb73bd4c9467a48e7838248f4f88776a45c7af050",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t1.25-black.png",
+    "published": "examples/wgsl-field-s1-d32-t1.25-black.png",
+    "original_sha256": "59a94f00af452bee5ff51ce1aece8ecdd51aeb7b035182d64f50af00037dfc02",
+    "published_sha256": "59a94f00af452bee5ff51ce1aece8ecdd51aeb7b035182d64f50af00037dfc02",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t1.25-repeat.f32",
+    "published": "examples/wgsl-field-s1-d32-t1.25-repeat.f32.zlib",
+    "original_sha256": "ab98250354d06e5ff9c31cf32e1af0e5cc3e610dde7eed868391c91ee34f6bf4",
+    "published_sha256": "414e5362435ba47db705f72d29b53330249fc73e978524467ec044f6698bd314",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t1.25-repeat.png",
+    "published": "examples/wgsl-field-s1-d32-t1.25-repeat.png",
+    "original_sha256": "991023e0f2be90cf6ce30fe8d50fff5066461dca5088320d66252098d4d3a17d",
+    "published_sha256": "991023e0f2be90cf6ce30fe8d50fff5066461dca5088320d66252098d4d3a17d",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t1.25.f32",
+    "published": "examples/wgsl-field-s1-d32-t1.25.f32.zlib",
+    "original_sha256": "ab98250354d06e5ff9c31cf32e1af0e5cc3e610dde7eed868391c91ee34f6bf4",
+    "published_sha256": "414e5362435ba47db705f72d29b53330249fc73e978524467ec044f6698bd314",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t1.25.png",
+    "published": "examples/wgsl-field-s1-d32-t1.25.png",
+    "original_sha256": "991023e0f2be90cf6ce30fe8d50fff5066461dca5088320d66252098d4d3a17d",
+    "published_sha256": "991023e0f2be90cf6ce30fe8d50fff5066461dca5088320d66252098d4d3a17d",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d8-t0.f32",
+    "published": "examples/wgsl-field-s1-d8-t0.f32.zlib",
+    "original_sha256": "ad97fe00534f121ff184cb393e9bace1cb04aeba10f54ade81ca0c5a2fabd4ba",
+    "published_sha256": "cce1451f73fcbe4391f56bbc193d5a3a3975e9f98059dce875d5e4c513d11a74",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d8-t0.png",
+    "published": "examples/wgsl-field-s1-d8-t0.png",
+    "original_sha256": "b646fd0f3e4e29d61feb3512a9f6b54259e3d6630520af1f51ad2fdd1f6caef5",
+    "published_sha256": "b646fd0f3e4e29d61feb3512a9f6b54259e3d6630520af1f51ad2fdd1f6caef5",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d8-t1.25.f32",
+    "published": "examples/wgsl-field-s1-d8-t1.25.f32.zlib",
+    "original_sha256": "82e3e62a971a541a0289070b43ec8dc3aaed933136ef52ffb494965b0d144860",
+    "published_sha256": "87a65a3574c2ccd25e1d857fc02e9b8189ef51cc52d0a2f25be653a782258bd1",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s1-d8-t1.25.png",
+    "published": "examples/wgsl-field-s1-d8-t1.25.png",
+    "original_sha256": "9ae3cf3fbea852ffe72f9c2bb3978eebf923caf8361d3dd8a9e01394a2fc0c6e",
+    "published_sha256": "9ae3cf3fbea852ffe72f9c2bb3978eebf923caf8361d3dd8a9e01394a2fc0c6e",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d16-t0.f32",
+    "published": "examples/wgsl-field-s2-d16-t0.f32.zlib",
+    "original_sha256": "0aaf24f3ca87fa20a469f66adad7491af6ef5fc0f8cd057fa8b7727c0c3e6ca4",
+    "published_sha256": "29d64da68cb97f2abe1c9c49dfc7f71c4aa117c48acd1b16fda0d7bc1d8a54aa",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d16-t0.png",
+    "published": "examples/wgsl-field-s2-d16-t0.png",
+    "original_sha256": "949090b4021f0d9cc22be7117e9b49656477aaa91f4a5968930330e6f6c932c4",
+    "published_sha256": "949090b4021f0d9cc22be7117e9b49656477aaa91f4a5968930330e6f6c932c4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d16-t1.25.f32",
+    "published": "examples/wgsl-field-s2-d16-t1.25.f32.zlib",
+    "original_sha256": "ba0d508f6d991fe361b892524b3b61797ce829fe25486a275b73fa1c26363051",
+    "published_sha256": "63c57fe9e6bfae98631c089222db6e99f08d8edb8cb16325786d84c73fd56616",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d16-t1.25.png",
+    "published": "examples/wgsl-field-s2-d16-t1.25.png",
+    "original_sha256": "0dcaf6632f4c8fcc71f1a615bf81e74f82536748c58652fd9c32c5e749afed58",
+    "published_sha256": "0dcaf6632f4c8fcc71f1a615bf81e74f82536748c58652fd9c32c5e749afed58",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d32-t0.f32",
+    "published": "examples/wgsl-field-s2-d32-t0.f32.zlib",
+    "original_sha256": "0aaf24f3ca87fa20a469f66adad7491af6ef5fc0f8cd057fa8b7727c0c3e6ca4",
+    "published_sha256": "29d64da68cb97f2abe1c9c49dfc7f71c4aa117c48acd1b16fda0d7bc1d8a54aa",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d32-t0.png",
+    "published": "examples/wgsl-field-s2-d32-t0.png",
+    "original_sha256": "949090b4021f0d9cc22be7117e9b49656477aaa91f4a5968930330e6f6c932c4",
+    "published_sha256": "949090b4021f0d9cc22be7117e9b49656477aaa91f4a5968930330e6f6c932c4",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d32-t1.25.f32",
+    "published": "examples/wgsl-field-s2-d32-t1.25.f32.zlib",
+    "original_sha256": "ba0d508f6d991fe361b892524b3b61797ce829fe25486a275b73fa1c26363051",
+    "published_sha256": "63c57fe9e6bfae98631c089222db6e99f08d8edb8cb16325786d84c73fd56616",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d32-t1.25.png",
+    "published": "examples/wgsl-field-s2-d32-t1.25.png",
+    "original_sha256": "0dcaf6632f4c8fcc71f1a615bf81e74f82536748c58652fd9c32c5e749afed58",
+    "published_sha256": "0dcaf6632f4c8fcc71f1a615bf81e74f82536748c58652fd9c32c5e749afed58",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d8-t0.f32",
+    "published": "examples/wgsl-field-s2-d8-t0.f32.zlib",
+    "original_sha256": "01c649ca7e4954ca06f388d2dacd66f6c48b8fb2c6979e8d6dd99add7ef382f1",
+    "published_sha256": "8da825018d5598148096c3bcb959eda9b92534894a944f470567e4b835fc7996",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d8-t0.png",
+    "published": "examples/wgsl-field-s2-d8-t0.png",
+    "original_sha256": "d302a2d80ca4532dcc4050c861057378d7f5d8d5f5d9a604e5afdb73a5a5c9de",
+    "published_sha256": "d302a2d80ca4532dcc4050c861057378d7f5d8d5f5d9a604e5afdb73a5a5c9de",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d8-t1.25.f32",
+    "published": "examples/wgsl-field-s2-d8-t1.25.f32.zlib",
+    "original_sha256": "18f6a0713ab34ea39157426929f5ffb66de041358452456c027beef23362b899",
+    "published_sha256": "11cc7fee2349da68d39c2f064836c27b0dcbb000c3021f3a58c49a1b2d179475",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s2-d8-t1.25.png",
+    "published": "examples/wgsl-field-s2-d8-t1.25.png",
+    "original_sha256": "f9c27850efa895539b10849cc4d95c5500d75723389678f0232136858bf6b00d",
+    "published_sha256": "f9c27850efa895539b10849cc4d95c5500d75723389678f0232136858bf6b00d",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d16-t0.f32",
+    "published": "examples/wgsl-field-s4-d16-t0.f32.zlib",
+    "original_sha256": "d5284f0124c8fa488fafc7ab886b17904551e8c09d78d3c89aafd98211421329",
+    "published_sha256": "4d3506cd3f9f283910d4c845791fbe2455e3c277f696dd06f40770ee1fad09ae",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d16-t0.png",
+    "published": "examples/wgsl-field-s4-d16-t0.png",
+    "original_sha256": "faecdf1d6c347a1bcc241c78b988deec1f9f8bb3edffd725797fac3be4e46538",
+    "published_sha256": "faecdf1d6c347a1bcc241c78b988deec1f9f8bb3edffd725797fac3be4e46538",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d16-t1.25.f32",
+    "published": "examples/wgsl-field-s4-d16-t1.25.f32.zlib",
+    "original_sha256": "e065541a2b5b5d922063c074751b57655dd413e4112c964784199835dbb32880",
+    "published_sha256": "432243968d3be746b3c0c1081de9a15e1f8964cc47a9cf684d80d43d7960df77",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d16-t1.25.png",
+    "published": "examples/wgsl-field-s4-d16-t1.25.png",
+    "original_sha256": "1fe02e968b4b34e43ca8d332249d87566f9e5f419d4180455ebc79cb61050502",
+    "published_sha256": "1fe02e968b4b34e43ca8d332249d87566f9e5f419d4180455ebc79cb61050502",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d32-t0.f32",
+    "published": "examples/wgsl-field-s4-d32-t0.f32.zlib",
+    "original_sha256": "d5284f0124c8fa488fafc7ab886b17904551e8c09d78d3c89aafd98211421329",
+    "published_sha256": "4d3506cd3f9f283910d4c845791fbe2455e3c277f696dd06f40770ee1fad09ae",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d32-t0.png",
+    "published": "examples/wgsl-field-s4-d32-t0.png",
+    "original_sha256": "faecdf1d6c347a1bcc241c78b988deec1f9f8bb3edffd725797fac3be4e46538",
+    "published_sha256": "faecdf1d6c347a1bcc241c78b988deec1f9f8bb3edffd725797fac3be4e46538",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d32-t1.25.f32",
+    "published": "examples/wgsl-field-s4-d32-t1.25.f32.zlib",
+    "original_sha256": "e065541a2b5b5d922063c074751b57655dd413e4112c964784199835dbb32880",
+    "published_sha256": "432243968d3be746b3c0c1081de9a15e1f8964cc47a9cf684d80d43d7960df77",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d32-t1.25.png",
+    "published": "examples/wgsl-field-s4-d32-t1.25.png",
+    "original_sha256": "1fe02e968b4b34e43ca8d332249d87566f9e5f419d4180455ebc79cb61050502",
+    "published_sha256": "1fe02e968b4b34e43ca8d332249d87566f9e5f419d4180455ebc79cb61050502",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d8-t0.f32",
+    "published": "examples/wgsl-field-s4-d8-t0.f32.zlib",
+    "original_sha256": "de1e4afc225d8879a308cd30f4818a3c3e247ed292b3c21183716e3ac9c0fbc9",
+    "published_sha256": "4676b4876eda4a58ca8fe7f9e3c4b4a6d79f4abe58da12306ca104c5d92f13d8",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d8-t0.png",
+    "published": "examples/wgsl-field-s4-d8-t0.png",
+    "original_sha256": "8ed8632bb2ffef44bacd2d4a893576418b641865d8f9cfa38eca4c0b661ceb8b",
+    "published_sha256": "8ed8632bb2ffef44bacd2d4a893576418b641865d8f9cfa38eca4c0b661ceb8b",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d8-t1.25.f32",
+    "published": "examples/wgsl-field-s4-d8-t1.25.f32.zlib",
+    "original_sha256": "8b65b6fc3456a0be6094f5ff79965b0133964c57e7b37ee691f71ac2c687d02b",
+    "published_sha256": "62e78d86fe4e412fc965fa42d1e1d8402f966c9933c9cce9da33afa8bc7e52ac",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-field-s4-d8-t1.25.png",
+    "published": "examples/wgsl-field-s4-d8-t1.25.png",
+    "original_sha256": "433d7ffececd03fd9fea1971bb3db9ec34b46df473e9c6dcfed67cba53837f14",
+    "published_sha256": "433d7ffececd03fd9fea1971bb3db9ec34b46df473e9c6dcfed67cba53837f14",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d16-t0.f32",
+    "published": "examples/wgsl-multipass-s1-d16-t0.f32.zlib",
+    "original_sha256": "e23499e4f0e7c6510ce0a8dabe37897de64dbf52358077323e71355f8ee6208d",
+    "published_sha256": "30c5e172310d9664f8b36d7aeddaf4060f57315d61a3d358d40dabff5d8c1630",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d16-t0.png",
+    "published": "examples/wgsl-multipass-s1-d16-t0.png",
+    "original_sha256": "f1c3c6490ef0abf7a455ea39cec8fc41d2f786ff940bb409241add19c3cbbe9d",
+    "published_sha256": "f1c3c6490ef0abf7a455ea39cec8fc41d2f786ff940bb409241add19c3cbbe9d",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d16-t1.25.f32",
+    "published": "examples/wgsl-multipass-s1-d16-t1.25.f32.zlib",
+    "original_sha256": "cc6a9fd6fea1313f009ed6bb17773fc1d2b081fe277cc9757cb6a0f977e0b064",
+    "published_sha256": "b4323af17d7977a942388e345d2d1bbb07717f11af61dde939d0bb0651fd746b",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d16-t1.25.png",
+    "published": "examples/wgsl-multipass-s1-d16-t1.25.png",
+    "original_sha256": "d9f79284ed249f6d87f8626b5d5a5ac9ff536582eeb898642b6623ea3a1cc8b7",
+    "published_sha256": "d9f79284ed249f6d87f8626b5d5a5ac9ff536582eeb898642b6623ea3a1cc8b7",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t0.f32",
+    "published": "examples/wgsl-multipass-s1-d32-t0.f32.zlib",
+    "original_sha256": "e23499e4f0e7c6510ce0a8dabe37897de64dbf52358077323e71355f8ee6208d",
+    "published_sha256": "30c5e172310d9664f8b36d7aeddaf4060f57315d61a3d358d40dabff5d8c1630",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t0.png",
+    "published": "examples/wgsl-multipass-s1-d32-t0.png",
+    "original_sha256": "f1c3c6490ef0abf7a455ea39cec8fc41d2f786ff940bb409241add19c3cbbe9d",
+    "published_sha256": "f1c3c6490ef0abf7a455ea39cec8fc41d2f786ff940bb409241add19c3cbbe9d",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t1.25-black.f32",
+    "published": "examples/wgsl-multipass-s1-d32-t1.25-black.f32.zlib",
+    "original_sha256": "045dd41626485029521730688df9b87e80ab0aca40dd3815a179543fc22d2484",
+    "published_sha256": "73ee5168b8f5a9c51ceb473bd40e12a6b92b1077eaa7de162b36d646007274b2",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t1.25-black.png",
+    "published": "examples/wgsl-multipass-s1-d32-t1.25-black.png",
+    "original_sha256": "93f9309ddb52de208fb482ece4975b2bf13606fc8b85bbf4de6720d86029e239",
+    "published_sha256": "93f9309ddb52de208fb482ece4975b2bf13606fc8b85bbf4de6720d86029e239",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t1.25-repeat.f32",
+    "published": "examples/wgsl-multipass-s1-d32-t1.25-repeat.f32.zlib",
+    "original_sha256": "cc6a9fd6fea1313f009ed6bb17773fc1d2b081fe277cc9757cb6a0f977e0b064",
+    "published_sha256": "b4323af17d7977a942388e345d2d1bbb07717f11af61dde939d0bb0651fd746b",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t1.25-repeat.png",
+    "published": "examples/wgsl-multipass-s1-d32-t1.25-repeat.png",
+    "original_sha256": "d9f79284ed249f6d87f8626b5d5a5ac9ff536582eeb898642b6623ea3a1cc8b7",
+    "published_sha256": "d9f79284ed249f6d87f8626b5d5a5ac9ff536582eeb898642b6623ea3a1cc8b7",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t1.25.f32",
+    "published": "examples/wgsl-multipass-s1-d32-t1.25.f32.zlib",
+    "original_sha256": "cc6a9fd6fea1313f009ed6bb17773fc1d2b081fe277cc9757cb6a0f977e0b064",
+    "published_sha256": "b4323af17d7977a942388e345d2d1bbb07717f11af61dde939d0bb0651fd746b",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t1.25.png",
+    "published": "examples/wgsl-multipass-s1-d32-t1.25.png",
+    "original_sha256": "d9f79284ed249f6d87f8626b5d5a5ac9ff536582eeb898642b6623ea3a1cc8b7",
+    "published_sha256": "d9f79284ed249f6d87f8626b5d5a5ac9ff536582eeb898642b6623ea3a1cc8b7",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d8-t0.f32",
+    "published": "examples/wgsl-multipass-s1-d8-t0.f32.zlib",
+    "original_sha256": "200939ef96cd7b488f57a8dfc91b7cf2833e092590a5b20938eb8991013fe6b2",
+    "published_sha256": "30263b37b38b592ab8ac6353d3d82863f5152059151a3f1ad187c66b3d55caf8",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d8-t0.png",
+    "published": "examples/wgsl-multipass-s1-d8-t0.png",
+    "original_sha256": "039c75fe7ddbfb4b5e9774c7b1a92020ad0d72276795f9fe52f48320fe2e1d6c",
+    "published_sha256": "039c75fe7ddbfb4b5e9774c7b1a92020ad0d72276795f9fe52f48320fe2e1d6c",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d8-t1.25.f32",
+    "published": "examples/wgsl-multipass-s1-d8-t1.25.f32.zlib",
+    "original_sha256": "7ff0b953b0a90fac1577fd7b14000d55115ace05092f92c43377351ac8eacff8",
+    "published_sha256": "edb97735700730680cd657cb8c09aeb1274034b930326975f12f27f13be4914b",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s1-d8-t1.25.png",
+    "published": "examples/wgsl-multipass-s1-d8-t1.25.png",
+    "original_sha256": "6da06fc9e35e9dbb95a5c26605b32f9d10b0e465cab74b7392605334db3a412d",
+    "published_sha256": "6da06fc9e35e9dbb95a5c26605b32f9d10b0e465cab74b7392605334db3a412d",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d16-t0.f32",
+    "published": "examples/wgsl-multipass-s2-d16-t0.f32.zlib",
+    "original_sha256": "4a2a8f3868ab78be6dd1e838704b6de6a46a1817aadbffb915ea15f46ce86931",
+    "published_sha256": "b038bf79bdd5d5b6ddf19bfb570e91dc953dbeecf3016c5f2b3471f27210c5ff",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d16-t0.png",
+    "published": "examples/wgsl-multipass-s2-d16-t0.png",
+    "original_sha256": "f7cf9f3c953650b683458bc5607c78547004168cae21495adafd65e3bb1442db",
+    "published_sha256": "f7cf9f3c953650b683458bc5607c78547004168cae21495adafd65e3bb1442db",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d16-t1.25.f32",
+    "published": "examples/wgsl-multipass-s2-d16-t1.25.f32.zlib",
+    "original_sha256": "e3a4d47c33485e5654cdc3e89669e045f901dae34d2ad3d9c01ff6b57e87ffe3",
+    "published_sha256": "dee67dd62a93e50c61a2f03e5e7b461bbb71af9862289e57359dccb33c5e6956",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d16-t1.25.png",
+    "published": "examples/wgsl-multipass-s2-d16-t1.25.png",
+    "original_sha256": "73ebee50340c3f0aa014d5f509a6e9564581c642c10e1b0f0ff3f8ee0e560315",
+    "published_sha256": "73ebee50340c3f0aa014d5f509a6e9564581c642c10e1b0f0ff3f8ee0e560315",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d32-t0.f32",
+    "published": "examples/wgsl-multipass-s2-d32-t0.f32.zlib",
+    "original_sha256": "4a2a8f3868ab78be6dd1e838704b6de6a46a1817aadbffb915ea15f46ce86931",
+    "published_sha256": "b038bf79bdd5d5b6ddf19bfb570e91dc953dbeecf3016c5f2b3471f27210c5ff",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d32-t0.png",
+    "published": "examples/wgsl-multipass-s2-d32-t0.png",
+    "original_sha256": "f7cf9f3c953650b683458bc5607c78547004168cae21495adafd65e3bb1442db",
+    "published_sha256": "f7cf9f3c953650b683458bc5607c78547004168cae21495adafd65e3bb1442db",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d32-t1.25.f32",
+    "published": "examples/wgsl-multipass-s2-d32-t1.25.f32.zlib",
+    "original_sha256": "e3a4d47c33485e5654cdc3e89669e045f901dae34d2ad3d9c01ff6b57e87ffe3",
+    "published_sha256": "dee67dd62a93e50c61a2f03e5e7b461bbb71af9862289e57359dccb33c5e6956",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d32-t1.25.png",
+    "published": "examples/wgsl-multipass-s2-d32-t1.25.png",
+    "original_sha256": "73ebee50340c3f0aa014d5f509a6e9564581c642c10e1b0f0ff3f8ee0e560315",
+    "published_sha256": "73ebee50340c3f0aa014d5f509a6e9564581c642c10e1b0f0ff3f8ee0e560315",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d8-t0.f32",
+    "published": "examples/wgsl-multipass-s2-d8-t0.f32.zlib",
+    "original_sha256": "dbe1ed2d84484d09eb577eb78f64d8a501eb078835605d72636a711980b251f6",
+    "published_sha256": "494a263755cc9d77457c0e845f6d4a8a5db577dcc8c802b2445e819efcc0ebe0",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d8-t0.png",
+    "published": "examples/wgsl-multipass-s2-d8-t0.png",
+    "original_sha256": "ddd59bf245aee595fc3a13f3fbb89a8ef8c68d92b5837dcb48c0a019d95173b0",
+    "published_sha256": "ddd59bf245aee595fc3a13f3fbb89a8ef8c68d92b5837dcb48c0a019d95173b0",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d8-t1.25.f32",
+    "published": "examples/wgsl-multipass-s2-d8-t1.25.f32.zlib",
+    "original_sha256": "1244c1042886cfbb65783b24ea95ea93c2dc32eed10a7fffe58eb65c05a64905",
+    "published_sha256": "2ee3f036beb1ecad4bee1f3842ca10d41ab80a8780001636e8baa82c960a6839",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s2-d8-t1.25.png",
+    "published": "examples/wgsl-multipass-s2-d8-t1.25.png",
+    "original_sha256": "4170ece295ba10a241d964f2d0b3afe7174bf13a585c8271d7edae5e73121aaf",
+    "published_sha256": "4170ece295ba10a241d964f2d0b3afe7174bf13a585c8271d7edae5e73121aaf",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d16-t0.f32",
+    "published": "examples/wgsl-multipass-s4-d16-t0.f32.zlib",
+    "original_sha256": "fa627ebff983ccbdbf6ae5a46a1bad4de3cf91f2206d281ad9da311c60f61845",
+    "published_sha256": "9d3ffccb07c61ac45c430b6fd183bfe7c95bac0fa1684a048712e00516aebda6",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d16-t0.png",
+    "published": "examples/wgsl-multipass-s4-d16-t0.png",
+    "original_sha256": "c46e4dc410be70ebea5dc931b1b2760d5a42e2ee75f188dee1b184bacfa0c8bb",
+    "published_sha256": "c46e4dc410be70ebea5dc931b1b2760d5a42e2ee75f188dee1b184bacfa0c8bb",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d16-t1.25.f32",
+    "published": "examples/wgsl-multipass-s4-d16-t1.25.f32.zlib",
+    "original_sha256": "55c7428d8dfbeb7efc06737c175403a9e0b272b1c94e64734e6001d31f05b535",
+    "published_sha256": "c7ce08d95b424f4c8190f2d497640af5aab194dc70b10450f9df8dca04ac9563",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d16-t1.25.png",
+    "published": "examples/wgsl-multipass-s4-d16-t1.25.png",
+    "original_sha256": "fade09add19c859342cd594a86b988b5c62696f6b6fc3cf0ee0f98fbffdc6712",
+    "published_sha256": "fade09add19c859342cd594a86b988b5c62696f6b6fc3cf0ee0f98fbffdc6712",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d32-t0.f32",
+    "published": "examples/wgsl-multipass-s4-d32-t0.f32.zlib",
+    "original_sha256": "fa627ebff983ccbdbf6ae5a46a1bad4de3cf91f2206d281ad9da311c60f61845",
+    "published_sha256": "9d3ffccb07c61ac45c430b6fd183bfe7c95bac0fa1684a048712e00516aebda6",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d32-t0.png",
+    "published": "examples/wgsl-multipass-s4-d32-t0.png",
+    "original_sha256": "c46e4dc410be70ebea5dc931b1b2760d5a42e2ee75f188dee1b184bacfa0c8bb",
+    "published_sha256": "c46e4dc410be70ebea5dc931b1b2760d5a42e2ee75f188dee1b184bacfa0c8bb",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d32-t1.25.f32",
+    "published": "examples/wgsl-multipass-s4-d32-t1.25.f32.zlib",
+    "original_sha256": "55c7428d8dfbeb7efc06737c175403a9e0b272b1c94e64734e6001d31f05b535",
+    "published_sha256": "c7ce08d95b424f4c8190f2d497640af5aab194dc70b10450f9df8dca04ac9563",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d32-t1.25.png",
+    "published": "examples/wgsl-multipass-s4-d32-t1.25.png",
+    "original_sha256": "fade09add19c859342cd594a86b988b5c62696f6b6fc3cf0ee0f98fbffdc6712",
+    "published_sha256": "fade09add19c859342cd594a86b988b5c62696f6b6fc3cf0ee0f98fbffdc6712",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d8-t0.f32",
+    "published": "examples/wgsl-multipass-s4-d8-t0.f32.zlib",
+    "original_sha256": "7fdedbf8ab927b8edce9fa7ff9218224e1644625d79e2437c3691f445edb8e3a",
+    "published_sha256": "934f16f044cc2da1b370f0b7ffbd32344a8142036d483d6481743cddd842f3bf",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d8-t0.png",
+    "published": "examples/wgsl-multipass-s4-d8-t0.png",
+    "original_sha256": "5650cb05cf5c9e7f90cfaace06067c176cb615e13df4553ee474773b7e1ea747",
+    "published_sha256": "5650cb05cf5c9e7f90cfaace06067c176cb615e13df4553ee474773b7e1ea747",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d8-t1.25.f32",
+    "published": "examples/wgsl-multipass-s4-d8-t1.25.f32.zlib",
+    "original_sha256": "5a1a06defe287d57713febbb7f499c0fff819a0d277aa06333faecdc3649ebfe",
+    "published_sha256": "3796f863a5418d26e362daecdeffc6ffe2aee4ad24c199db69229d46f51c1d9a",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-examples/wgsl-multipass-s4-d8-t1.25.png",
+    "published": "examples/wgsl-multipass-s4-d8-t1.25.png",
+    "original_sha256": "0a1d0a67f62ccbc3d36e99b689907dd2f40e64354136cae3c732fce599e799be",
+    "published_sha256": "0a1d0a67f62ccbc3d36e99b689907dd2f40e64354136cae3c732fce599e799be",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/aligned96.f32",
+    "published": "independent-review/aligned96.f32.zlib",
+    "original_sha256": "b1025ebea1ae2d20c86597d7b1f832d8f9aa10febea3f75e22b499ba7c899013",
+    "published_sha256": "dcdda0a75ec14efaef9bacab18f5855caec153d1dfbbd29a4e76ed45bf830ae4",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/aligned96.log",
+    "published": "independent-review/aligned96.log",
+    "original_sha256": "aad5010b69a816dff5196ed5f75b7c6fd99d9143121019aee963b7227e59c7ec",
+    "published_sha256": "aad5010b69a816dff5196ed5f75b7c6fd99d9143121019aee963b7227e59c7ec",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/aligned96.wgsl",
+    "published": "independent-review/aligned96.wgsl",
+    "original_sha256": "ab8501b40e176024ff3f3ec03d37ae7fc158828ef62024e047918abcd8836711",
+    "published_sha256": "ab8501b40e176024ff3f3ec03d37ae7fc158828ef62024e047918abcd8836711",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/cases.json",
+    "published": "independent-review/cases.json",
+    "original_sha256": "67d07e63fb7947cae62cb41275a987a86629878eca6062b5ba1a48bb23c0da37",
+    "published_sha256": "67d07e63fb7947cae62cb41275a987a86629878eca6062b5ba1a48bb23c0da37",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/lastword65536.f32",
+    "published": "independent-review/lastword65536.f32.zlib",
+    "original_sha256": "ea3d971177b6cca54016f17596ca25f5c53a8157207578d64a5a90c44edb8276",
+    "published_sha256": "5479350af942782f482fd7b006b353d1ea762c27bafdac18971b97ac5a82f907",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/lastword65536.log",
+    "published": "independent-review/lastword65536.log",
+    "original_sha256": "9459b7a12572e9c38ac3e6b2cfc06a9df1f8d17d0f0a56055321de9c8561f524",
+    "published_sha256": "9459b7a12572e9c38ac3e6b2cfc06a9df1f8d17d0f0a56055321de9c8561f524",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/lastword65536.wgsl",
+    "published": "independent-review/lastword65536.wgsl",
+    "original_sha256": "99618f98e5851e8f0a129a0cd0554daffab62edbe5fcc06d2ee7b9ae2a4c607e",
+    "published_sha256": "99618f98e5851e8f0a129a0cd0554daffab62edbe5fcc06d2ee7b9ae2a4c607e",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/review-notes.md",
+    "published": "independent-review/review-notes.md",
+    "original_sha256": "963279db54a6389e01c719995cdd982b4b189f2025fd04895aac2544c0c31e4f",
+    "published_sha256": "963279db54a6389e01c719995cdd982b4b189f2025fd04895aac2544c0c31e4f",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/review-source-sha256.json",
+    "published": "independent-review/review-source-sha256.json",
+    "original_sha256": "14a4455fbfe01ebaf540ed5f47b6c3037db841d72b02317b12ba2096af844540",
+    "published_sha256": "14a4455fbfe01ebaf540ed5f47b6c3037db841d72b02317b12ba2096af844540",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/summary.json",
+    "published": "independent-review/summary.json",
+    "original_sha256": "c8a15c8a71fb6e2c1b0ef8163ca037acfd5bd9ea74676dce08096d845bd6339f",
+    "published_sha256": "c8a15c8a71fb6e2c1b0ef8163ca037acfd5bd9ea74676dce08096d845bd6339f",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/tail24.f32",
+    "published": "independent-review/tail24.f32.zlib",
+    "original_sha256": "fcfdbeb69a92c23a5ec1d33295568f37ba312a6d2185ea8fe2d39dd8df9e2996",
+    "published_sha256": "6d05608c105519d516933d553ddb81b2ca8a27610a2aca926a18ed5e941263a0",
+    "zlib": true
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/tail24.log",
+    "published": "independent-review/tail24.log",
+    "original_sha256": "e10dade9db001fe59fcecd774a72cdf34c80753d9f97a694729453c4db8b12c0",
+    "published_sha256": "e10dade9db001fe59fcecd774a72cdf34c80753d9f97a694729453c4db8b12c0",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/wgsl-review/tail24.wgsl",
+    "published": "independent-review/tail24.wgsl",
+    "original_sha256": "7a95715257df54a4f0d11b77f649ed3a5a9d4ee35f85eb495e1e11f7e9636767",
+    "published_sha256": "7a95715257df54a4f0d11b77f649ed3a5a9d4ee35f85eb495e1e11f7e9636767",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/candidate-with-notices-package.json",
+    "published": "package/candidate-with-notices-package.json",
+    "original_sha256": "9bb6c42dea39b225453d3b55706fcf72de2c9687015a7445ecd202ef0430f7ae",
+    "published_sha256": "9bb6c42dea39b225453d3b55706fcf72de2c9687015a7445ecd202ef0430f7ae",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/candidate-with-notices-preflight.json",
+    "published": "package/candidate-with-notices-preflight.json",
+    "original_sha256": "031187f8a1f72c02fb59c7e61c966801968f9c68e09722a47349bd432fa5f6ed",
+    "published_sha256": "031187f8a1f72c02fb59c7e61c966801968f9c68e09722a47349bd432fa5f6ed",
+    "zlib": false
+  },
+  {
+    "original": "scripts/out/010/candidate-extracted-verification.json",
+    "published": "package/candidate-extracted-verification.json",
+    "original_sha256": "99e21f75fa2300c9567cef2572b810dd12339fb043cb9ae4b5e6c3b64d5459be",
+    "published_sha256": "99e21f75fa2300c9567cef2572b810dd12339fb043cb9ae4b5e6c3b64d5459be",
+    "zlib": false
+  },
+  {
+    "original": "/private/tmp/dynamicfx-010-third-party/manifest.json",
+    "published": "package/dependency-notices-manifest.json",
+    "original_sha256": "2d5db00600b683b5a9b5a77eb6efd50e1d4fd377163c15914f2444b6298d382d",
+    "published_sha256": "2d5db00600b683b5a9b5a77eb6efd50e1d4fd377163c15914f2444b6298d382d",
+    "zlib": false
+  }
+]

@@ -1,6 +1,6 @@
-// Side-by-side parameter dump: the reference gradient effect (bfxMapRamp)
+// Optional side-by-side property dump with an explicitly selected reference effect.
 // against DynamicFx. The question this answers is the one that reading a
-// stripped binary cannot: what does a *working* gradient control look like
+// source inspection cannot: what does a working gradient control look like
 // from the AE side — property type, group shape, sub-properties?
 #include "f003_lib.jsxinc"
 
@@ -34,18 +34,19 @@
         var solid = comp.layers.addSolid([0, 0, 0], "input", 320, 120, 1.0);
 
         var refFx = null, refErr = "";
-        // Try both the English and Chinese display names, plus the match name.
-        // Match name decoded straight from the reference PiPL (eMNA).
-        var candidates = ["bfx Map Ramp"];
-        for (var c = 0; c < candidates.length && !refFx; c++) {
-            try { refFx = solid.property("ADBE Effect Parade").addProperty(candidates[c]); }
+        // Optional, local reference chosen explicitly by the operator. No
+        // third-party product identity is embedded in the public harness.
+        var referenceMatchName = $.getenv("DYNAMICFX_REFERENCE_EFFECT") || "";
+        if (referenceMatchName !== "") {
+            try { refFx = solid.property("ADBE Effect Parade").addProperty(referenceMatchName); }
             catch (e) { refErr = String(e); }
         }
         if (refFx) {
-            dump(refFx, "REFERENCE bfxMapRamp");
-        } else {
+            dump(refFx, "REFERENCE");
+        } else if (referenceMatchName !== "") {
             f003Log(LOG, "REFERENCE not applicable: " + refErr);
-            f003Log(LOG, "available effect names must be checked in the Effects panel");
+        } else {
+            f003Log(LOG, "REFERENCE omitted: no explicit selection; dumping DynamicFx only");
         }
 
         var ours = solid.property("ADBE Effect Parade").addProperty("DynamicFx");

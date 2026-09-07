@@ -1,0 +1,1 @@
+var c=comp("Siri Glow");return {version:app.version,build:app.buildNumber,project:app.project.file.fsName,state:state(c),depth:app.project.bitsPerChannel,resolution:c.resolutionFactor,width:c.width,height:c.height};

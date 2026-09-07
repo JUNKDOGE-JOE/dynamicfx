@@ -1,0 +1,959 @@
+{
+  "utc": "2026-09-07T21:42:25.521474+00:00",
+  "kind": "production frontends and production GPU renderer; no AE boundary",
+  "command": "scripts/wgsl/compare_gpu.py --out scripts/out/010/wgsl-gpu-final",
+  "runner_sha256": "bee3e864a54826b2a4e9ebbeaf202529302ec5e30210851ae4e1fe386e96424f",
+  "source_sha256": {
+    "Cargo.toml": "6a2816ce681bb57c797b3f9e735287092a284fff447a2ac00766c4282c0ae719",
+    "Cargo.lock": "4af148e8cb350674e90236096b536405bb74b54d5f9565f57573a43abfa2e306",
+    "src/render.rs": "228a14cdf5070e8d021ec9199b541f3b787c5dd29d53f58264f34cc247fa0e16",
+    "src/frontend/annotation.rs": "b504e5a07b15c2b085c4c37ba20a465defaca3499c6c332dc437956857647c73",
+    "src/frontend/envelope.rs": "70332e2fb6e51ece670fc6939698fbf843c6a40874621b9dc50b37faed963c0b",
+    "src/frontend/glsl.rs": "ebe7eafb237dd63cb13d18d47d8fdb527f4b21b24f0cd3e9999d43ba08d729ab",
+    "src/frontend/grammar.rs": "3e950d6e928be867f0be18a4389fcc9e1473aa2c95173f9d09c4767e2c7b4b9f",
+    "src/frontend/mod.rs": "ab672a6f0f275cc34c9bee79273b934ccefaae957d22010b761ac4c948421164",
+    "src/frontend/shared.rs": "4709f5d661b394c11f40c382d917e8b8cd1189bbde4979dd52e5e3edc2733fd1",
+    "src/frontend/wgsl.rs": "a4a7951435ff23d5333144b4caeb65ba54ea6caba821350dd47da2d2d4eae565",
+    "scripts/quality/src/main.rs": "891e735f48632a48ce40dcee28b5db371609f9306a2d15c48ae8cec0cfa3875f"
+  },
+  "source_unchanged_during_run": true,
+  "pairs": [
+    {
+      "depth": 8,
+      "passes": 1,
+      "scale": 1,
+      "size": [
+        321,
+        239
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-8-1pass-1x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.glsl",
+          "source_blake3": "74643e7ad58d5eccb75f90f52e283498cd02cd034c2f60a466f34d2b35f2ac42",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "8"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-8-1pass-1x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.wgsl",
+          "source_blake3": "de2e6d6b55f1ff192247d7ae398ecaf2ee8229093450065562b2a10c0453ae64",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "8"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 8,
+      "passes": 1,
+      "scale": 2,
+      "size": [
+        161,
+        120
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-8-1pass-2x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.glsl",
+          "source_blake3": "74643e7ad58d5eccb75f90f52e283498cd02cd034c2f60a466f34d2b35f2ac42",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "8"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-8-1pass-2x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.wgsl",
+          "source_blake3": "de2e6d6b55f1ff192247d7ae398ecaf2ee8229093450065562b2a10c0453ae64",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "8"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 8,
+      "passes": 1,
+      "scale": 4,
+      "size": [
+        81,
+        60
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-8-1pass-4x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.glsl",
+          "source_blake3": "74643e7ad58d5eccb75f90f52e283498cd02cd034c2f60a466f34d2b35f2ac42",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "8"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-8-1pass-4x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.wgsl",
+          "source_blake3": "de2e6d6b55f1ff192247d7ae398ecaf2ee8229093450065562b2a10c0453ae64",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "8"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 8,
+      "passes": 2,
+      "scale": 1,
+      "size": [
+        321,
+        239
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-8-2pass-1x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.glsl",
+          "source_blake3": "4595f81b4248bed132870955e888db8976fafebfa7477ac297044843d40a4fa8",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "8"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-8-2pass-1x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.wgsl",
+          "source_blake3": "9203a4159f1546d9b2497f0848013bec71ded28129e8360a8289a80369c3fc4a",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "8"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 8,
+      "passes": 2,
+      "scale": 2,
+      "size": [
+        161,
+        120
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-8-2pass-2x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.glsl",
+          "source_blake3": "4595f81b4248bed132870955e888db8976fafebfa7477ac297044843d40a4fa8",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "8"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-8-2pass-2x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.wgsl",
+          "source_blake3": "9203a4159f1546d9b2497f0848013bec71ded28129e8360a8289a80369c3fc4a",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "8"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 8,
+      "passes": 2,
+      "scale": 4,
+      "size": [
+        81,
+        60
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-8-2pass-4x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.glsl",
+          "source_blake3": "4595f81b4248bed132870955e888db8976fafebfa7477ac297044843d40a4fa8",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "8"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-8-2pass-4x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.wgsl",
+          "source_blake3": "9203a4159f1546d9b2497f0848013bec71ded28129e8360a8289a80369c3fc4a",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "8"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 16,
+      "passes": 1,
+      "scale": 1,
+      "size": [
+        321,
+        239
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-16-1pass-1x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.glsl",
+          "source_blake3": "74643e7ad58d5eccb75f90f52e283498cd02cd034c2f60a466f34d2b35f2ac42",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "16"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-16-1pass-1x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.wgsl",
+          "source_blake3": "de2e6d6b55f1ff192247d7ae398ecaf2ee8229093450065562b2a10c0453ae64",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "16"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 16,
+      "passes": 1,
+      "scale": 2,
+      "size": [
+        161,
+        120
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-16-1pass-2x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.glsl",
+          "source_blake3": "74643e7ad58d5eccb75f90f52e283498cd02cd034c2f60a466f34d2b35f2ac42",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "16"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-16-1pass-2x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.wgsl",
+          "source_blake3": "de2e6d6b55f1ff192247d7ae398ecaf2ee8229093450065562b2a10c0453ae64",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "16"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 16,
+      "passes": 1,
+      "scale": 4,
+      "size": [
+        81,
+        60
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-16-1pass-4x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.glsl",
+          "source_blake3": "74643e7ad58d5eccb75f90f52e283498cd02cd034c2f60a466f34d2b35f2ac42",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "16"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-16-1pass-4x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.wgsl",
+          "source_blake3": "de2e6d6b55f1ff192247d7ae398ecaf2ee8229093450065562b2a10c0453ae64",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "16"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 16,
+      "passes": 2,
+      "scale": 1,
+      "size": [
+        321,
+        239
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-16-2pass-1x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.glsl",
+          "source_blake3": "4595f81b4248bed132870955e888db8976fafebfa7477ac297044843d40a4fa8",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "16"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-16-2pass-1x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.wgsl",
+          "source_blake3": "9203a4159f1546d9b2497f0848013bec71ded28129e8360a8289a80369c3fc4a",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "16"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 16,
+      "passes": 2,
+      "scale": 2,
+      "size": [
+        161,
+        120
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-16-2pass-2x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.glsl",
+          "source_blake3": "4595f81b4248bed132870955e888db8976fafebfa7477ac297044843d40a4fa8",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "16"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-16-2pass-2x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.wgsl",
+          "source_blake3": "9203a4159f1546d9b2497f0848013bec71ded28129e8360a8289a80369c3fc4a",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "16"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 16,
+      "passes": 2,
+      "scale": 4,
+      "size": [
+        81,
+        60
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-16-2pass-4x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.glsl",
+          "source_blake3": "4595f81b4248bed132870955e888db8976fafebfa7477ac297044843d40a4fa8",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "16"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-16-2pass-4x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.wgsl",
+          "source_blake3": "9203a4159f1546d9b2497f0848013bec71ded28129e8360a8289a80369c3fc4a",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "16"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 32,
+      "passes": 1,
+      "scale": 1,
+      "size": [
+        321,
+        239
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-32-1pass-1x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.glsl",
+          "source_blake3": "74643e7ad58d5eccb75f90f52e283498cd02cd034c2f60a466f34d2b35f2ac42",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "32"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-32-1pass-1x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.wgsl",
+          "source_blake3": "de2e6d6b55f1ff192247d7ae398ecaf2ee8229093450065562b2a10c0453ae64",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "32"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 32,
+      "passes": 1,
+      "scale": 2,
+      "size": [
+        161,
+        120
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-32-1pass-2x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.glsl",
+          "source_blake3": "74643e7ad58d5eccb75f90f52e283498cd02cd034c2f60a466f34d2b35f2ac42",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "32"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-32-1pass-2x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.wgsl",
+          "source_blake3": "de2e6d6b55f1ff192247d7ae398ecaf2ee8229093450065562b2a10c0453ae64",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "32"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 32,
+      "passes": 1,
+      "scale": 4,
+      "size": [
+        81,
+        60
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-32-1pass-4x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.glsl",
+          "source_blake3": "74643e7ad58d5eccb75f90f52e283498cd02cd034c2f60a466f34d2b35f2ac42",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "32"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-32-1pass-4x.f32",
+          "passes": 1,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.wgsl",
+          "source_blake3": "de2e6d6b55f1ff192247d7ae398ecaf2ee8229093450065562b2a10c0453ae64",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "32"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 32,
+      "passes": 2,
+      "scale": 1,
+      "size": [
+        321,
+        239
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-32-2pass-1x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.glsl",
+          "source_blake3": "4595f81b4248bed132870955e888db8976fafebfa7477ac297044843d40a4fa8",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "32"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 239,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-32-2pass-1x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.wgsl",
+          "source_blake3": "9203a4159f1546d9b2497f0848013bec71ded28129e8360a8289a80369c3fc4a",
+          "time": 1.25,
+          "width": 321,
+          "working_depth": "32"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 32,
+      "passes": 2,
+      "scale": 2,
+      "size": [
+        161,
+        120
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-32-2pass-2x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.glsl",
+          "source_blake3": "4595f81b4248bed132870955e888db8976fafebfa7477ac297044843d40a4fa8",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "32"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 120,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-32-2pass-2x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.wgsl",
+          "source_blake3": "9203a4159f1546d9b2497f0848013bec71ded28129e8360a8289a80369c3fc4a",
+          "time": 1.25,
+          "width": 161,
+          "working_depth": "32"
+        }
+      },
+      "passed": true
+    },
+    {
+      "depth": 32,
+      "passes": 2,
+      "scale": 4,
+      "size": [
+        81,
+        60
+      ],
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "byte_equal": true,
+      "finite": true,
+      "metadata": {
+        "glsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 1,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/glsl-32-2pass-4x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.glsl",
+          "source_blake3": "4595f81b4248bed132870955e888db8976fafebfa7477ac297044843d40a4fa8",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "32"
+        },
+        "wgsl": {
+          "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+          "finite": true,
+          "height": 60,
+          "language_id": 2,
+          "logical": [
+            321.0,
+            239.0
+          ],
+          "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-32-2pass-4x.f32",
+          "passes": 2,
+          "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+          "source": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/2pass.wgsl",
+          "source_blake3": "9203a4159f1546d9b2497f0848013bec71ded28129e8360a8289a80369c3fc4a",
+          "time": 1.25,
+          "width": 81,
+          "working_depth": "32"
+        }
+      },
+      "passed": true
+    }
+  ],
+  "passed": true
+}

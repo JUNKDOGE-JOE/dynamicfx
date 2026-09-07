@@ -1,0 +1,2 @@
+# Losslessly compressed pixel evidence must never be diffed or line-normalized.
+*.zlib binary

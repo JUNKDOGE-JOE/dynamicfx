@@ -293,7 +293,7 @@ void main() {
     vec2 res = u_resolution;
     float a = texture(sampler2D(u_in, u_s), v_uv).a;          // straight alpha = shape coverage
     float s = texture(sampler2D(u_soft, u_s), v_uv).r;         // small blur of alpha
-    vec2 dd = texture(sampler2D(u_diff, u_s), v_uv).rg;       // wide blur of alpha (hi/lo encoded)
+    vec2 dd = texelFetch(sampler2D(u_diff, u_s), ivec2(gl_FragCoord.xy), 0).rg;       // wide blur of alpha (hi/lo encoded)
     float d = (floor(dd.r * 8.0 - dd.g + 0.5) + dd.g) / 8.0;
 
     // --- wall band: how much of the shape lies "behind" this pixel along the wall direction ---
@@ -378,6 +378,22 @@ layout(set = 0, binding = 2) uniform FxUniforms {
     float bias_angle;
     int use_ramp;
 };
+// Packed RG is not a color: the fractional low channel wraps every 1/8.
+// Decode and premultiply EACH texel before interpolation. Filtering the
+// packed bytes first would create false temperature bands at those wraps.
+vec2 readTemperature(ivec2 p) {
+    ivec2 size = textureSize(sampler2D(u_in,u_s),0);
+    vec4 c = texelFetch(sampler2D(u_in,u_s),clamp(p,ivec2(0),size-1),0);
+    float t = (floor(c.r*8.0-c.g+0.5)+c.g)/8.0;
+    return vec2(t*c.b,c.b);
+}
+vec2 sampleTemperature(vec2 uv) {
+    vec2 p = uv*vec2(textureSize(sampler2D(u_in,u_s),0))-0.5;
+    ivec2 i = ivec2(floor(p));
+    vec2 f = fract(p);
+    return mix(mix(readTemperature(i),readTemperature(i+ivec2(1,0)),f.x),
+               mix(readTemperature(i+ivec2(0,1)),readTemperature(i+ivec2(1,1)),f.x),f.y);
+}
 void main() {
     float sigma = max(bloom_radius, 0.5);
     vec2 acc = vec2(0.0);
@@ -385,9 +401,7 @@ void main() {
     for (int i = -24; i <= 24; i++) {
         float x = float(i) * 3.0 * sigma / 24.0;
         float w = exp(-0.5 * x * x / (sigma * sigma));
-        vec4 c = texture(sampler2D(u_in, u_s), v_uv + vec2(x / u_resolution.x, 0.0));
-        float T = (floor(c.r * 8.0 - c.g + 0.5) + c.g) / 8.0;
-        acc += vec2(T * c.b, c.b) * w;
+        acc += sampleTemperature(v_uv + vec2(x / u_resolution.x, 0.0)) * w;
         ws += w;
     }
     outColor = vec4(acc / ws, 0.0, 1.0);                     // diffused temperature (T*a, a): thermal softness
@@ -470,6 +484,22 @@ layout(set = 0, binding = 2) uniform FxUniforms {
     float bias_angle;
     int use_ramp;
 };
+// Packed RG is not a color: the fractional low channel wraps every 1/8.
+// Decode and premultiply EACH texel before interpolation. Filtering the
+// packed bytes first would create false temperature bands at those wraps.
+vec2 readTemperature(ivec2 p) {
+    ivec2 size = textureSize(sampler2D(u_in,u_s),0);
+    vec4 c = texelFetch(sampler2D(u_in,u_s),clamp(p,ivec2(0),size-1),0);
+    float t = (floor(c.r*8.0-c.g+0.5)+c.g)/8.0;
+    return vec2(t*c.b,c.b);
+}
+vec2 sampleTemperature(vec2 uv) {
+    vec2 p = uv*vec2(textureSize(sampler2D(u_in,u_s),0))-0.5;
+    ivec2 i = ivec2(floor(p));
+    vec2 f = fract(p);
+    return mix(mix(readTemperature(i),readTemperature(i+ivec2(1,0)),f.x),
+               mix(readTemperature(i+ivec2(0,1)),readTemperature(i+ivec2(1,1)),f.x),f.y);
+}
 void main() {
     float sigma = max(halo_radius, 1.0);
     vec2 acc = vec2(0.0);
@@ -477,9 +507,7 @@ void main() {
     for (int i = -32; i <= 32; i++) {
         float x = float(i) * 3.0 * sigma / 32.0;
         float w = exp(-0.5 * x * x / (sigma * sigma));
-        vec4 c = texture(sampler2D(u_in, u_s), v_uv + vec2(x / u_resolution.x, 0.0));
-        float T = (floor(c.r * 8.0 - c.g + 0.5) + c.g) / 8.0;
-        acc += vec2(T * c.b, c.b) * w;
+        acc += sampleTemperature(v_uv + vec2(x / u_resolution.x, 0.0)) * w;
         ws += w;
     }
     outColor = vec4(acc / ws, 0.0, 1.0);                     // premultiplied temperature (T*a) and coverage (a), blurred
@@ -607,7 +635,7 @@ float dhash(vec2 p) {
     return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
 }
 void main() {
-    vec4 tf = texture(sampler2D(u_in, u_s), v_uv);
+    vec4 tf = texelFetch(sampler2D(u_in, u_s), ivec2(gl_FragCoord.xy), 0);
     float Tcrisp = (floor(tf.r * 8.0 - tf.g + 0.5) + tf.g) / 8.0;
     float a = tf.b;
     vec2 sb = texture(sampler2D(u_soft, u_s), v_uv).rg;        // diffused (T*a, a)

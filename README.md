@@ -1,28 +1,42 @@
 # DynamicFX
 
-**An open shader runtime for After Effects.** Write GLSL in an ordinary
+**An open shader runtime for After Effects.** Write GLSL or WGSL in an ordinary
 expression, get a real GPU effect — multi-pass render graphs, keyframeable
 parameters, temporal feedback, 8/16/32-bpc, all through normal AE workflows.
 
-DynamicFX is a native AEX plug-in written in Rust (naga + wgpu, DirectX 12).
+DynamicFX is a native plug-in written in Rust (naga + wgpu, DirectX 12 on
+Windows and Metal on Apple Silicon macOS).
 There is no editor to install, no service to run, no account, and no
 telemetry: the committed source on the effect's `Source` parameter is the
 single authority for what renders.
 
 ## Status
 
-`0.0.5` — pre-release.
+`0.1.0` is being prepared: production WGSL, native Apple Silicon support,
+and shader sampling/preview corrections. The public release remains 0.0.6
+until the new artifact completes validation and publication.
 
-| Host (Windows) | Status |
+| Release / host | Status |
 |---|---|
-| After Effects 2025 | Verified (full test battery on the release artifact) |
-| After Effects 2026 | Verified (full test battery on the release artifact) |
-| After Effects 2024 | Not yet verified (no host available) |
-| After Effects 2023 | Blocked: AE 23.0 itself fails to launch on the dev machine (with and without the plug-in) |
+| 0.1.0 / macOS Apple Silicon / AE 2026 | Final artifact validation in progress |
+| 0.1.0 / Windows | Build, host verification and artifact pending |
+| 0.0.6 / Windows / AE 2025 and 2026 | Historical released-artifact verification |
+| macOS Intel / Rosetta | Not supported by the ARM package |
 
-macOS (Apple Silicon) follows after Windows is stable.
+See [macOS setup](docs/macos-arm64.md) and the [test matrix](docs/TEST_MATRIX.md)
+for the exact artifact and host scope. The optional gradient editor remains
+shelved and disabled in the default release.
 
 ## Install
+
+For Apple Silicon macOS, use the macOS ARM archive from the
+[Releases page](https://github.com/JUNKDOGE-JOE/dynamicfx/releases) and follow
+its `INSTALL.txt`. Close AE before installing. The archive is ad-hoc signed,
+not notarized; its instructions include checksum verification and a quarantine
+step scoped to the downloaded bundle. Source builders can use
+`bash scripts/build-macos.sh`, then `bash scripts/install.sh 2026` (or `sudo`
+for the installation step if Adobe owns the folder). See
+[the macOS instructions](docs/macos-arm64.md).
 
 Copy `DynamicFx.aex` to the version-specific plug-ins folder, e.g.:
 
@@ -34,22 +48,27 @@ Never install into the shared `Common\Plug-ins\7.0\MediaCore` folder —
 Premiere Pro scans it too. Restart After Effects; the effect appears as
 **DynamicFx**.
 
+For finer procedural edges and noise, see the measured
+[shader-quality guide](docs/shader-quality.md) and
+[Siri-inspired glow example](examples/siri-glow.glsl). Select **WGSL** in the Language control to use the new frontend. See the
+[WGSL guide](skills/dynamicfx-shaders/wgsl.md) for its ABI, examples and envelope
+escaping; GLSL remains the default.
+
 ## AI assistant skill
 
-You do not have to hand-write GLSL. This repo ships a skill for AI coding
+You do not have to hand-write shaders. This repo ships a skill for AI coding
 assistants (Claude Code, Cursor, and similar) that teaches them the exact
 syntax this plug-in expects — writing shaders from scratch, converting
 existing Shadertoy/GLSL code, and fixing compile errors. One line, from
 your project root:
 
 ```bash
-mkdir -p .claude/skills/dynamicfx-shaders && for f in SKILL.md porting.md reference.md; do curl -fsSL "https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/$f" -o ".claude/skills/dynamicfx-shaders/$f"; done
+mkdir -p .claude/skills/dynamicfx-shaders && for f in SKILL.md porting.md reference.md quality.md wgsl.md; do curl -fsSL "https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/$f" -o ".claude/skills/dynamicfx-shaders/$f"; done
 ```
 
-Or paste this to your assistant: *Download SKILL.md, porting.md and
-reference.md from
+Or paste this to your assistant: *Download SKILL.md, porting.md, reference.md, quality.md and wgsl.md from
 https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/
-and save all three into .claude/skills/dynamicfx-shaders/ in this project,
+and save all five into .claude/skills/dynamicfx-shaders/ in this project,
 then confirm the skill is installed.*
 
 Then ask it things like *"convert this Shadertoy shader to DynamicFX"* or

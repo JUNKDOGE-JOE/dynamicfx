@@ -1,0 +1,4317 @@
+{
+  "schema": 1,
+  "product": "dynamicfx",
+  "version": "0.1.0",
+  "target": "aarch64-apple-darwin",
+  "cargo_lock_sha256": "4af148e8cb350674e90236096b536405bb74b54d5f9565f57573a43abfa2e306",
+  "cargo_toml_sha256": "6a2816ce681bb57c797b3f9e735287092a284fff447a2ac00766c4282c0ae719",
+  "scope": "Cargo target-filtered normal and build dependency graph; dev-only edges excluded. Conservative inventory, not a proof every crate is linked.",
+  "packages": [
+    {
+      "name": "after-effects",
+      "version": "0.4.0",
+      "license_expression": "Apache-2.0 OR BSD-3-Clause OR MIT OR Zlib",
+      "authors_from_manifest": [
+        "Adrian Eddy <adrian.eddy@gmail.com>, Moritz Moeller <virtualritz@protonmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/after-effects/0.4.0",
+      "files": [
+        {
+          "file": "licenses/after-effects-0.4.0/supplemental/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt",
+            "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+          }
+        }
+      ],
+      "upstream_commit": "6326884ee0af7bf9e1e3f4df0057149a7fb16b5d",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "selected_license": "Apache-2.0"
+    },
+    {
+      "name": "after-effects-sys",
+      "version": "0.4.0",
+      "license_expression": "Apache-2.0 OR BSD-3-Clause OR MIT OR Zlib",
+      "authors_from_manifest": [
+        "Adrian Eddy <adrian.eddy@gmail.com>, Moritz Moeller <virtualritz@protonmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/after-effects-sys/0.4.0",
+      "files": [
+        {
+          "file": "licenses/after-effects-sys-0.4.0/supplemental/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt",
+            "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+          }
+        }
+      ],
+      "upstream_commit": "035a3db39ce75979c03f255bb003474a5e4d3fd3",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "selected_license": "Apache-2.0"
+    },
+    {
+      "name": "aho-corasick",
+      "version": "1.1.5",
+      "license_expression": "Unlicense OR MIT",
+      "authors_from_manifest": [
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/aho-corasick/1.1.5",
+      "files": [
+        {
+          "file": "licenses/aho-corasick-1.1.5/COPYING",
+          "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "COPYING",
+            "crate_url": "https://crates.io/crates/aho-corasick/1.1.5"
+          }
+        },
+        {
+          "file": "licenses/aho-corasick-1.1.5/LICENSE-MIT",
+          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/aho-corasick/1.1.5"
+          }
+        },
+        {
+          "file": "licenses/aho-corasick-1.1.5/UNLICENSE",
+          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "UNLICENSE",
+            "crate_url": "https://crates.io/crates/aho-corasick/1.1.5"
+          }
+        }
+      ],
+      "upstream_commit": "5178060ce73d91938f8582d0360e3be031380440"
+    },
+    {
+      "name": "allocator-api2",
+      "version": "0.2.21",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Zakarum <zaq.dev@icloud.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/allocator-api2/0.2.21",
+      "files": [
+        {
+          "file": "licenses/allocator-api2-0.2.21/LICENSE-APACHE",
+          "sha256": "20fe7b00e904ed690e3b9fd6073784d3fc428141dbd10b81c01fd143d0797f58",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/allocator-api2/0.2.21"
+          }
+        },
+        {
+          "file": "licenses/allocator-api2-0.2.21/LICENSE-MIT",
+          "sha256": "36516aefdc84c5d5a1e7485425913a22dbda69eb1930c5e84d6ae4972b5194b9",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/allocator-api2/0.2.21"
+          }
+        }
+      ],
+      "upstream_commit": "63cd7fcc2f8854b5821c7054d026e8a4647acde1"
+    },
+    {
+      "name": "arrayvec",
+      "version": "0.7.8",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "bluss"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/arrayvec/0.7.8",
+      "files": [
+        {
+          "file": "licenses/arrayvec-0.7.8/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/arrayvec/0.7.8"
+          }
+        },
+        {
+          "file": "licenses/arrayvec-0.7.8/LICENSE-MIT",
+          "sha256": "4da95ec4ecb65b738d470b7d762894ad9c97da93e6cbfb18b570fc2c96f4b871",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/arrayvec/0.7.8"
+          }
+        }
+      ],
+      "upstream_commit": "0cb664cf505844348538230479b0040b44f3faf1"
+    },
+    {
+      "name": "ash",
+      "version": "0.38.0+1.3.281",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Maik Klein <maikklein@googlemail.com>",
+        "Benjamin Saunders <ben.e.saunders@gmail.com>",
+        "Marijn Suijten <marijn@traverseresearch.nl>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/ash/0.38.0+1.3.281",
+      "files": [
+        {
+          "file": "licenses/ash-0.38.0+1.3.281/LICENSE-APACHE",
+          "sha256": "0e8a410375e1ee5c75c6198b08b534fec6e5edef766cf971bab4a404542636ab",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/ash/0.38.0+1.3.281"
+          }
+        },
+        {
+          "file": "licenses/ash-0.38.0+1.3.281/LICENSE-MIT",
+          "sha256": "c733ccf8ab25df175a63d9d844677b98e3a5ab8f8de1c1616087e6868a7f948e",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/ash/0.38.0+1.3.281"
+          }
+        }
+      ],
+      "upstream_commit": "b724b78dac8d83879ed7a1aad2b91bb9f2beb5cf"
+    },
+    {
+      "name": "autocfg",
+      "version": "1.5.1",
+      "license_expression": "Apache-2.0 OR MIT",
+      "authors_from_manifest": [
+        "Josh Stone <cuviper@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "build"
+      ],
+      "crate_url": "https://crates.io/crates/autocfg/1.5.1",
+      "files": [
+        {
+          "file": "licenses/autocfg-1.5.1/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/autocfg/1.5.1"
+          }
+        },
+        {
+          "file": "licenses/autocfg-1.5.1/LICENSE-MIT",
+          "sha256": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/autocfg/1.5.1"
+          }
+        }
+      ],
+      "upstream_commit": "2799b09c24e6632f8e653c5cd8fc303e85a906ba"
+    },
+    {
+      "name": "bincode",
+      "version": "2.0.1",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Ty Overby <ty@pre-alpha.com>",
+        "Zoey Riordan <zoey@dos.cafe>",
+        "Victor Koenders <bincode@trangar.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/bincode/2.0.1",
+      "files": [
+        {
+          "file": "licenses/bincode-2.0.1/LICENSE.md",
+          "sha256": "90d7e062634054e6866d3c81e6a2b3058a840e6af733e98e80bdfe1a7dec6912",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.md",
+            "crate_url": "https://crates.io/crates/bincode/2.0.1"
+          }
+        }
+      ],
+      "upstream_commit": "4673360aa638b2b907dff24538de54f258d157da"
+    },
+    {
+      "name": "bincode_derive",
+      "version": "2.0.1",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Zoey Riordan <zoey@dos.cafe>",
+        "Victor Koenders <bincode@trangar.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/bincode_derive/2.0.1",
+      "files": [
+        {
+          "file": "licenses/bincode_derive-2.0.1/LICENSE.md",
+          "sha256": "90d7e062634054e6866d3c81e6a2b3058a840e6af733e98e80bdfe1a7dec6912",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.md",
+            "crate_url": "https://crates.io/crates/bincode_derive/2.0.1"
+          }
+        }
+      ],
+      "upstream_commit": "4673360aa638b2b907dff24538de54f258d157da"
+    },
+    {
+      "name": "bindgen",
+      "version": "0.72.1",
+      "license_expression": "BSD-3-Clause",
+      "authors_from_manifest": [
+        "Jyun-Yan You <jyyou.tw@gmail.com>",
+        "Emilio Cobos Álvarez <emilio@crisal.io>",
+        "Nick Fitzgerald <fitzgen@gmail.com>",
+        "The Servo project developers"
+      ],
+      "dependency_kinds": [
+        "build"
+      ],
+      "crate_url": "https://crates.io/crates/bindgen/0.72.1",
+      "files": [
+        {
+          "file": "licenses/bindgen-0.72.1/LICENSE",
+          "sha256": "c23953d9deb0a3312dbeaf6c128a657f3591acee45067612fa68405eaa4525db",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/bindgen/0.72.1"
+          }
+        }
+      ],
+      "upstream_commit": "d874de8d646d9b8a3e7ba2db2bcd52f2fba8f1f5"
+    },
+    {
+      "name": "bit-set",
+      "version": "0.9.1",
+      "license_expression": "Apache-2.0 OR MIT",
+      "authors_from_manifest": [
+        "Alexis Beingessner <a.beingessner@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/bit-set/0.9.1",
+      "files": [
+        {
+          "file": "licenses/bit-set-0.9.1/LICENSE-APACHE",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/bit-set/0.9.1"
+          }
+        },
+        {
+          "file": "licenses/bit-set-0.9.1/LICENSE-MIT",
+          "sha256": "6b56ddc7cd80419e5e22e075f2252d720f6cbe17e3e2c17383095ee2712bcffa",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/bit-set/0.9.1"
+          }
+        }
+      ],
+      "upstream_commit": "27a22d31fa766319a9ae1a16233ce95f2bdbc52b"
+    },
+    {
+      "name": "bit-vec",
+      "version": "0.9.1",
+      "license_expression": "Apache-2.0 OR MIT",
+      "authors_from_manifest": [
+        "Alexis Beingessner <a.beingessner@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/bit-vec/0.9.1",
+      "files": [
+        {
+          "file": "licenses/bit-vec-0.9.1/LICENSE-APACHE",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/bit-vec/0.9.1"
+          }
+        },
+        {
+          "file": "licenses/bit-vec-0.9.1/LICENSE-MIT",
+          "sha256": "f51ac2c59a222f7476ce507ca879960e2b64ea64bb2786eefdbeb7b0b538d1b7",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/bit-vec/0.9.1"
+          }
+        }
+      ],
+      "upstream_commit": "2fb0305422ff7fd915a107b91209abbff9fce50f"
+    },
+    {
+      "name": "bitflags",
+      "version": "2.13.1",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "The Rust Project Developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/bitflags/2.13.1",
+      "files": [
+        {
+          "file": "licenses/bitflags-2.13.1/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/bitflags/2.13.1"
+          }
+        },
+        {
+          "file": "licenses/bitflags-2.13.1/LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/bitflags/2.13.1"
+          }
+        }
+      ],
+      "upstream_commit": "f92a2921b41644b02ca5d50a6ace542e309e6a6f"
+    },
+    {
+      "name": "blake3",
+      "version": "1.8.7",
+      "license_expression": "CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception",
+      "authors_from_manifest": [
+        "Jack O'Connor <oconnor663@gmail.com>",
+        "Samuel Neves"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/blake3/1.8.7",
+      "files": [
+        {
+          "file": "licenses/blake3-1.8.7/LICENSE_A2",
+          "sha256": "00fcc7a934ddbc9ece2a7cc063ac788e284b703b1d705ccbba72d462aa97921e",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE_A2",
+            "crate_url": "https://crates.io/crates/blake3/1.8.7"
+          }
+        },
+        {
+          "file": "licenses/blake3-1.8.7/LICENSE_A2LLVM",
+          "sha256": "a5695f57ea0c221e0e8b7d784ff774c35e88c3d3270353646a925880bb3492cc",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE_A2LLVM",
+            "crate_url": "https://crates.io/crates/blake3/1.8.7"
+          }
+        },
+        {
+          "file": "licenses/blake3-1.8.7/LICENSE_CC0",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE_CC0",
+            "crate_url": "https://crates.io/crates/blake3/1.8.7"
+          }
+        }
+      ],
+      "upstream_commit": "f3149ec5bb5449af877ba20377a11008ff499fa2"
+    },
+    {
+      "name": "block2",
+      "version": "0.6.2",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Mads Marquart <mads@marquart.dk>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/block2/0.6.2",
+      "files": [
+        {
+          "file": "licenses/block2-0.6.2/supplemental/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/madsmtm/objc2/b4167b582b2f75f9a1be75495c41b765344fd03c/LICENSE.md",
+            "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54"
+          }
+        },
+        {
+          "file": "licenses/block2-0.6.2/supplemental/MIT.txt",
+          "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/MIT.txt",
+            "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5"
+          }
+        }
+      ],
+      "upstream_commit": "b4167b582b2f75f9a1be75495c41b765344fd03c",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared MIT license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "selected_license": "MIT"
+    },
+    {
+      "name": "bytemuck",
+      "version": "1.25.2",
+      "license_expression": "Zlib OR Apache-2.0 OR MIT",
+      "authors_from_manifest": [
+        "Lokathor <zefria@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/bytemuck/1.25.2",
+      "files": [
+        {
+          "file": "licenses/bytemuck-1.25.2/LICENSE-APACHE",
+          "sha256": "e3ba223bb1423f0aad8c3dfce0fe3148db48926d41e6fbc3afbbf5ff9e1c89cb",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/bytemuck/1.25.2"
+          }
+        },
+        {
+          "file": "licenses/bytemuck-1.25.2/LICENSE-MIT",
+          "sha256": "9df9ba60a11af705f2e451b53762686e615d86f76b169cf075c3237730dbd7e2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/bytemuck/1.25.2"
+          }
+        },
+        {
+          "file": "licenses/bytemuck-1.25.2/LICENSE-ZLIB",
+          "sha256": "84b34dd7608f7fb9b17bd588a6bf392bf7de504e2716f024a77d89f1b145a151",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-ZLIB",
+            "crate_url": "https://crates.io/crates/bytemuck/1.25.2"
+          }
+        }
+      ],
+      "upstream_commit": "f363643e951a7ac9e4b9921de982f2b0918902e3"
+    },
+    {
+      "name": "bytemuck_derive",
+      "version": "1.11.0",
+      "license_expression": "Zlib OR Apache-2.0 OR MIT",
+      "authors_from_manifest": [
+        "Lokathor <zefria@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/bytemuck_derive/1.11.0",
+      "files": [
+        {
+          "file": "licenses/bytemuck_derive-1.11.0/LICENSE-APACHE",
+          "sha256": "e3ba223bb1423f0aad8c3dfce0fe3148db48926d41e6fbc3afbbf5ff9e1c89cb",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/bytemuck_derive/1.11.0"
+          }
+        },
+        {
+          "file": "licenses/bytemuck_derive-1.11.0/LICENSE-MIT",
+          "sha256": "9df9ba60a11af705f2e451b53762686e615d86f76b169cf075c3237730dbd7e2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/bytemuck_derive/1.11.0"
+          }
+        },
+        {
+          "file": "licenses/bytemuck_derive-1.11.0/LICENSE-ZLIB",
+          "sha256": "84b34dd7608f7fb9b17bd588a6bf392bf7de504e2716f024a77d89f1b145a151",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-ZLIB",
+            "crate_url": "https://crates.io/crates/bytemuck_derive/1.11.0"
+          }
+        }
+      ],
+      "upstream_commit": "946e7a905f7651b1dfb568d5045b8bcff1b56f26"
+    },
+    {
+      "name": "byteorder",
+      "version": "1.5.0",
+      "license_expression": "Unlicense OR MIT",
+      "authors_from_manifest": [
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/byteorder/1.5.0",
+      "files": [
+        {
+          "file": "licenses/byteorder-1.5.0/COPYING",
+          "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "COPYING",
+            "crate_url": "https://crates.io/crates/byteorder/1.5.0"
+          }
+        },
+        {
+          "file": "licenses/byteorder-1.5.0/LICENSE-MIT",
+          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/byteorder/1.5.0"
+          }
+        },
+        {
+          "file": "licenses/byteorder-1.5.0/UNLICENSE",
+          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "UNLICENSE",
+            "crate_url": "https://crates.io/crates/byteorder/1.5.0"
+          }
+        }
+      ],
+      "upstream_commit": "ec068eefa042d494475db125c4b034bd8e9e34dd"
+    },
+    {
+      "name": "cc",
+      "version": "1.4.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "dependency_kinds": [
+        "build"
+      ],
+      "crate_url": "https://crates.io/crates/cc/1.4.0",
+      "files": [
+        {
+          "file": "licenses/cc-1.4.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/cc/1.4.0"
+          }
+        },
+        {
+          "file": "licenses/cc-1.4.0/LICENSE-MIT",
+          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/cc/1.4.0"
+          }
+        }
+      ],
+      "upstream_commit": "413c4ec5b2f45d2ee1f654940df244c09cc9fbb1"
+    },
+    {
+      "name": "cexpr",
+      "version": "0.6.0",
+      "license_expression": "Apache-2.0/MIT",
+      "authors_from_manifest": [
+        "Jethro Beekman <jethro@jbeekman.nl>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/cexpr/0.6.0",
+      "files": [
+        {
+          "file": "licenses/cexpr-0.6.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/cexpr/0.6.0"
+          }
+        },
+        {
+          "file": "licenses/cexpr-0.6.0/LICENSE-MIT",
+          "sha256": "d9771b8c6cf4426d3846de54c1febe20907f1eeadf7adfb5ade89a83bd9ea77f",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/cexpr/0.6.0"
+          }
+        }
+      ],
+      "upstream_commit": "c7ccdfbc37b508cfda1171ab4f89afaeb72e82f3"
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.4",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/cfg-if/1.0.4",
+      "files": [
+        {
+          "file": "licenses/cfg-if-1.0.4/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/cfg-if/1.0.4"
+          }
+        },
+        {
+          "file": "licenses/cfg-if-1.0.4/LICENSE-MIT",
+          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/cfg-if/1.0.4"
+          }
+        }
+      ],
+      "upstream_commit": "3510ca6abea34cbbc702509a4e50ea9709925eda"
+    },
+    {
+      "name": "cfg_aliases",
+      "version": "0.2.2",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Zicklag <zicklag@katharostech.com>"
+      ],
+      "dependency_kinds": [
+        "build"
+      ],
+      "crate_url": "https://crates.io/crates/cfg_aliases/0.2.2",
+      "files": [
+        {
+          "file": "licenses/cfg_aliases-0.2.2/LICENSE",
+          "sha256": "31b94860253d8ec7b4529f51901044d3b459d6292d996504a36b1bae3a36a812",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/cfg_aliases/0.2.2"
+          }
+        },
+        {
+          "file": "licenses/cfg_aliases-0.2.2/NOTICES.md",
+          "sha256": "1e2b7ade3fb228130408b9990cae6a7618eb314c75aa0b164bfe485d9d9756ee",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "NOTICES.md",
+            "crate_url": "https://crates.io/crates/cfg_aliases/0.2.2"
+          }
+        }
+      ],
+      "upstream_commit": "e069ce61e00fee423ac1dbe6a897f228f1774716"
+    },
+    {
+      "name": "clang-sys",
+      "version": "1.9.1",
+      "license_expression": "Apache-2.0",
+      "authors_from_manifest": [
+        "Kyle Mayes <kyle@mayeses.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/clang-sys/1.9.1",
+      "files": [
+        {
+          "file": "licenses/clang-sys-1.9.1/LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.txt",
+            "crate_url": "https://crates.io/crates/clang-sys/1.9.1"
+          }
+        }
+      ],
+      "upstream_commit": "8844c21292e54818d200980cd90a5498e2a5a644"
+    },
+    {
+      "name": "codespan-reporting",
+      "version": "0.13.1",
+      "license_expression": "Apache-2.0",
+      "authors_from_manifest": [
+        "Brendan Zabarauskas <bjzaba@yahoo.com.au>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/codespan-reporting/0.13.1",
+      "files": [
+        {
+          "file": "licenses/codespan-reporting-0.13.1/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/codespan-reporting/0.13.1"
+          }
+        }
+      ],
+      "upstream_commit": "ef354877a16c83e678051830b260a8f9a53778bd"
+    },
+    {
+      "name": "const_format",
+      "version": "0.2.36",
+      "license_expression": "Zlib",
+      "authors_from_manifest": [
+        "rodrimati1992 <rodrimatt1985@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/const_format/0.2.36",
+      "files": [
+        {
+          "file": "licenses/const_format-0.2.36/LICENSE-ZLIB.md",
+          "sha256": "c1e018d60dd011b335b5280b919bd3a75dbba81c6fbe24e2fc90cb235bdb6883",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-ZLIB.md",
+            "crate_url": "https://crates.io/crates/const_format/0.2.36"
+          }
+        }
+      ],
+      "upstream_commit": "6bcde171f0a9c59d8afc88492db52c7e1d343ebd"
+    },
+    {
+      "name": "const_format_proc_macros",
+      "version": "0.2.34",
+      "license_expression": "Zlib",
+      "authors_from_manifest": [
+        "rodrimati1992 <rodrimatt1985@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/const_format_proc_macros/0.2.34",
+      "files": [
+        {
+          "file": "licenses/const_format_proc_macros-0.2.34/LICENSE-ZLIB.md",
+          "sha256": "c1e018d60dd011b335b5280b919bd3a75dbba81c6fbe24e2fc90cb235bdb6883",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-ZLIB.md",
+            "crate_url": "https://crates.io/crates/const_format_proc_macros/0.2.34"
+          }
+        }
+      ],
+      "upstream_commit": "11db5143f0008b0d6065f42d8a08f29e59fbab1e"
+    },
+    {
+      "name": "constant_time_eq",
+      "version": "0.4.2",
+      "license_expression": "CC0-1.0 OR MIT-0 OR Apache-2.0",
+      "authors_from_manifest": [
+        "Cesar Eduardo Barros <cesarb@cesarb.eti.br>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/constant_time_eq/0.4.2",
+      "files": [
+        {
+          "file": "licenses/constant_time_eq-0.4.2/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/constant_time_eq/0.4.2"
+          }
+        },
+        {
+          "file": "licenses/constant_time_eq-0.4.2/LICENSE-CC0",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-CC0",
+            "crate_url": "https://crates.io/crates/constant_time_eq/0.4.2"
+          }
+        },
+        {
+          "file": "licenses/constant_time_eq-0.4.2/LICENSE-MIT0",
+          "sha256": "9a3aeb3f63659c4c6302d315e1d98784d1e8559858a47ff9562e091bb922d28d",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT0",
+            "crate_url": "https://crates.io/crates/constant_time_eq/0.4.2"
+          }
+        }
+      ],
+      "upstream_commit": "86f38ed9ad4d0500c5472bb8cb2ddc4fe5ac7143"
+    },
+    {
+      "name": "cstr-literal",
+      "version": "0.1.0",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "peelz <peelz.dev+rust@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/cstr-literal/0.1.0",
+      "files": [
+        {
+          "file": "licenses/cstr-literal-0.1.0/LICENSE",
+          "sha256": "a355b3fb66f80ca0299496e4049cb0c58cb5d5160c4c945c6c2365c71b3cee01",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/cstr-literal/0.1.0"
+          }
+        }
+      ],
+      "upstream_commit": "672dddd1d41d63beefe1b0803ae4c3fbd6e00f1d"
+    },
+    {
+      "name": "dashmap",
+      "version": "5.5.3",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Acrimon <joel.wejdenstal@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/dashmap/5.5.3",
+      "files": [
+        {
+          "file": "licenses/dashmap-5.5.3/LICENSE",
+          "sha256": "16692e8cee4aa06e3913787497eba2d47c42002014136f5da67be6ee640e28a3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/dashmap/5.5.3"
+          }
+        }
+      ],
+      "upstream_commit": "626b98dab3c124cd9cd4960d0306da5d65918dfc"
+    },
+    {
+      "name": "dispatch2",
+      "version": "0.3.1",
+      "license_expression": "Zlib OR Apache-2.0 OR MIT",
+      "authors_from_manifest": [
+        "Mads Marquart <mads@marquart.dk>",
+        "Mary <mary@mary.zone>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/dispatch2/0.3.1",
+      "files": [
+        {
+          "file": "licenses/dispatch2-0.3.1/supplemental/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/madsmtm/objc2/8852b424193ca41602281b3d7540d7c8ed51e49a/LICENSE.md",
+            "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54"
+          }
+        },
+        {
+          "file": "licenses/dispatch2-0.3.1/supplemental/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt",
+            "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+          }
+        }
+      ],
+      "upstream_commit": "8852b424193ca41602281b3d7540d7c8ed51e49a",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "selected_license": "Apache-2.0"
+    },
+    {
+      "name": "dlib",
+      "version": "0.5.3",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Elinor Berger <elinor@safaradeg.net>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/dlib/0.5.3",
+      "files": [
+        {
+          "file": "licenses/dlib-0.5.3/LICENSE.txt",
+          "sha256": "10e5daea68c3ab7da6468ea51860e9d4ac87ea6a9a2d34127beff17b7193b618",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.txt",
+            "crate_url": "https://crates.io/crates/dlib/0.5.3"
+          }
+        }
+      ],
+      "upstream_commit": "ab1a79fd8b92a331a5f123be9e1dcbbcbd48dbf8"
+    },
+    {
+      "name": "document-features",
+      "version": "0.2.12",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Slint Developers <info@slint.dev>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/document-features/0.2.12",
+      "files": [
+        {
+          "file": "licenses/document-features-0.2.12/LICENSE-APACHE",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/document-features/0.2.12"
+          }
+        },
+        {
+          "file": "licenses/document-features-0.2.12/LICENSE-MIT",
+          "sha256": "aa893340d14b9844625be6a50ac644169a01b52f0211cbf81b09e1874c8cd81d",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/document-features/0.2.12"
+          }
+        }
+      ],
+      "upstream_commit": "721e708012254b81760bd2befdae0970e7a2615e"
+    },
+    {
+      "name": "either",
+      "version": "1.17.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/either/1.17.0",
+      "files": [
+        {
+          "file": "licenses/either-1.17.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/either/1.17.0"
+          }
+        },
+        {
+          "file": "licenses/either-1.17.0/LICENSE-MIT",
+          "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/either/1.17.0"
+          }
+        }
+      ],
+      "upstream_commit": "e514cb110790f6394004b4c986f5589003594d85"
+    },
+    {
+      "name": "equivalent",
+      "version": "1.0.2",
+      "license_expression": "Apache-2.0 OR MIT",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/equivalent/1.0.2",
+      "files": [
+        {
+          "file": "licenses/equivalent-1.0.2/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/equivalent/1.0.2"
+          }
+        },
+        {
+          "file": "licenses/equivalent-1.0.2/LICENSE-MIT",
+          "sha256": "7365cc8878a1d7ce155a58c4ca09c3d7a6be413efa5334a80ea842912b669349",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/equivalent/1.0.2"
+          }
+        }
+      ],
+      "upstream_commit": "44cdd44f8b8ebb5f9ae096c7550a5e74ffb7d6ae"
+    },
+    {
+      "name": "fastrand",
+      "version": "2.5.0",
+      "license_expression": "Apache-2.0 OR MIT",
+      "authors_from_manifest": [
+        "Stjepan Glavina <stjepang@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/fastrand/2.5.0",
+      "files": [
+        {
+          "file": "licenses/fastrand-2.5.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/fastrand/2.5.0"
+          }
+        },
+        {
+          "file": "licenses/fastrand-2.5.0/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/fastrand/2.5.0"
+          }
+        }
+      ],
+      "upstream_commit": "7a1cc2c69ebde6cb3442809213db3fe19a2cb0ba"
+    },
+    {
+      "name": "find-msvc-tools",
+      "version": "0.1.9",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/find-msvc-tools/0.1.9",
+      "files": [
+        {
+          "file": "licenses/find-msvc-tools-0.1.9/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/find-msvc-tools/0.1.9"
+          }
+        },
+        {
+          "file": "licenses/find-msvc-tools-0.1.9/LICENSE-MIT",
+          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/find-msvc-tools/0.1.9"
+          }
+        }
+      ],
+      "upstream_commit": "0767349e1d1253e6849b4c2af2059db661f54343"
+    },
+    {
+      "name": "fixedbitset",
+      "version": "0.5.7",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "bluss"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/fixedbitset/0.5.7",
+      "files": [
+        {
+          "file": "licenses/fixedbitset-0.5.7/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/fixedbitset/0.5.7"
+          }
+        },
+        {
+          "file": "licenses/fixedbitset-0.5.7/LICENSE-MIT",
+          "sha256": "ce592787ff2321feab698a4c612237f4378cc658ebb1d472913e5802cc47afb4",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/fixedbitset/0.5.7"
+          }
+        }
+      ],
+      "upstream_commit": "f1db5d17dabc4b8f3ba68c1228a3ee7601c7f33c"
+    },
+    {
+      "name": "foldhash",
+      "version": "0.1.5",
+      "license_expression": "Zlib",
+      "authors_from_manifest": [
+        "Orson Peters <orsonpeters@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/foldhash/0.1.5",
+      "files": [
+        {
+          "file": "licenses/foldhash-0.1.5/LICENSE",
+          "sha256": "b1181a40b2a7b25cf66fd01481713bc1005df082c53ef73e851e55071b102744",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/foldhash/0.1.5"
+          }
+        }
+      ],
+      "upstream_commit": "42461756c3760f9165c90d9626a49e36980a1e47"
+    },
+    {
+      "name": "foldhash",
+      "version": "0.2.0",
+      "license_expression": "Zlib",
+      "authors_from_manifest": [
+        "Orson Peters <orsonpeters@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/foldhash/0.2.0",
+      "files": [
+        {
+          "file": "licenses/foldhash-0.2.0/LICENSE",
+          "sha256": "b1181a40b2a7b25cf66fd01481713bc1005df082c53ef73e851e55071b102744",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/foldhash/0.2.0"
+          }
+        }
+      ],
+      "upstream_commit": "8f878c636fda9c9e93384824ea45e06d03f009f5"
+    },
+    {
+      "name": "glob",
+      "version": "0.3.4",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "The Rust Project Developers"
+      ],
+      "dependency_kinds": [
+        "build",
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/glob/0.3.4",
+      "files": [
+        {
+          "file": "licenses/glob-0.3.4/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/glob/0.3.4"
+          }
+        },
+        {
+          "file": "licenses/glob-0.3.4/LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/glob/0.3.4"
+          }
+        }
+      ],
+      "upstream_commit": "cfa2a58f2e44373573f657ec25b3621e44714dee"
+    },
+    {
+      "name": "glow",
+      "version": "0.17.0",
+      "license_expression": "MIT OR Apache-2.0 OR Zlib",
+      "authors_from_manifest": [
+        "Joshua Groves <josh@joshgroves.com>",
+        "Dzmitry Malyshau <kvarkus@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/glow/0.17.0",
+      "files": [
+        {
+          "file": "licenses/glow-0.17.0/LICENSE-APACHE",
+          "sha256": "b8601fc79bdf8d8088f0938bea861ffc63ed0eebbedf25f44ab2cf2e85bd7edc",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/glow/0.17.0"
+          }
+        },
+        {
+          "file": "licenses/glow-0.17.0/LICENSE-MIT",
+          "sha256": "cdbd06e25b8c9c5d6019949d2de8123f56d29cee4166396423d2ba8c81700845",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/glow/0.17.0"
+          }
+        },
+        {
+          "file": "licenses/glow-0.17.0/LICENSE-ZLIB",
+          "sha256": "636f644f1e149eb62961657c0e34953681eff64435653912e7bd19992666faa5",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-ZLIB",
+            "crate_url": "https://crates.io/crates/glow/0.17.0"
+          }
+        }
+      ],
+      "upstream_commit": "0983efbc97fa4815f18990ef2a59540ede94f6f6"
+    },
+    {
+      "name": "gpu-allocator",
+      "version": "0.28.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Traverse Research <opensource@traverseresearch.nl>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/gpu-allocator/0.28.0",
+      "files": [
+        {
+          "file": "licenses/gpu-allocator-0.28.0/LICENSE-APACHE",
+          "sha256": "0178e21322b0e88aa3aeb3146f6a9611bc1f8df6d98bdfb34be28b9dd56a8107",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/gpu-allocator/0.28.0"
+          }
+        },
+        {
+          "file": "licenses/gpu-allocator-0.28.0/LICENSE-MIT",
+          "sha256": "ad41be6cc6538b29b9346648f41432b5e460bad6be073b5eeaa41320ea2921dc",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/gpu-allocator/0.28.0"
+          }
+        }
+      ],
+      "upstream_commit": "3d4466e3331c43d1f85b937b775427b07d7a32fe"
+    },
+    {
+      "name": "gpu-descriptor",
+      "version": "0.3.2",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Zakarum <zakarumych@ya.ru>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/gpu-descriptor/0.3.2",
+      "files": [
+        {
+          "file": "licenses/gpu-descriptor-0.3.2/supplemental/COPYING",
+          "sha256": "f72143f7e9d9fb8bd336b139fa22f825a299591c29f2f7338c5566347b137613",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/zakarumych/gpu-descriptor/bb28b4e55b742e0ea3e7a0968e7ee6287ba0e06a/COPYING",
+            "sha256": "f72143f7e9d9fb8bd336b139fa22f825a299591c29f2f7338c5566347b137613"
+          }
+        },
+        {
+          "file": "licenses/gpu-descriptor-0.3.2/supplemental/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt",
+            "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+          }
+        }
+      ],
+      "upstream_commit": "bb28b4e55b742e0ea3e7a0968e7ee6287ba0e06a",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "selected_license": "Apache-2.0"
+    },
+    {
+      "name": "gpu-descriptor-types",
+      "version": "0.2.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Zakarum <zakarumych@ya.ru>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/gpu-descriptor-types/0.2.0",
+      "files": [
+        {
+          "file": "licenses/gpu-descriptor-types-0.2.0/supplemental/COPYING",
+          "sha256": "f72143f7e9d9fb8bd336b139fa22f825a299591c29f2f7338c5566347b137613",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/zakarumych/gpu-descriptor/9f2fb9546591322e7b77ee1e79385e01effd85e4/COPYING",
+            "sha256": "f72143f7e9d9fb8bd336b139fa22f825a299591c29f2f7338c5566347b137613"
+          }
+        },
+        {
+          "file": "licenses/gpu-descriptor-types-0.2.0/supplemental/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt",
+            "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+          }
+        }
+      ],
+      "upstream_commit": "9f2fb9546591322e7b77ee1e79385e01effd85e4",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "selected_license": "Apache-2.0"
+    },
+    {
+      "name": "half",
+      "version": "2.7.1",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Kathryn Long <squeeself@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/half/2.7.1",
+      "files": [
+        {
+          "file": "licenses/half-2.7.1/LICENSE-APACHE",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/half/2.7.1"
+          }
+        },
+        {
+          "file": "licenses/half-2.7.1/LICENSE-MIT",
+          "sha256": "508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/half/2.7.1"
+          }
+        }
+      ],
+      "upstream_commit": "8cc891f3e4aad956eca7fa79b1f42f87ecd141ae"
+    },
+    {
+      "name": "hash32",
+      "version": "1.0.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Jorge Aparicio <jorge@japaric.io>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/hash32/1.0.0",
+      "files": [
+        {
+          "file": "licenses/hash32-1.0.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/hash32/1.0.0"
+          }
+        },
+        {
+          "file": "licenses/hash32-1.0.0/LICENSE-MIT",
+          "sha256": "c986bcdb83103d4ddf58aeb7b5302359782e54dc4eea14a0cc27c62dcbd50729",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/hash32/1.0.0"
+          }
+        }
+      ],
+      "upstream_commit": "7272d503e90e7af099b6394e57a90c149f91486d"
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.14.5",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/hashbrown/0.14.5",
+      "files": [
+        {
+          "file": "licenses/hashbrown-0.14.5/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/hashbrown/0.14.5"
+          }
+        },
+        {
+          "file": "licenses/hashbrown-0.14.5/LICENSE-MIT",
+          "sha256": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/hashbrown/0.14.5"
+          }
+        }
+      ],
+      "upstream_commit": "025d0f58b62d074f5fd660a22fe293cdc237d589"
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.15.5",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/hashbrown/0.15.5",
+      "files": [
+        {
+          "file": "licenses/hashbrown-0.15.5/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/hashbrown/0.15.5"
+          }
+        },
+        {
+          "file": "licenses/hashbrown-0.15.5/LICENSE-MIT",
+          "sha256": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/hashbrown/0.15.5"
+          }
+        }
+      ],
+      "upstream_commit": "b751eef8e99ccf3652046ef4a9e1ec47c1bfb78d"
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.16.1",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/hashbrown/0.16.1",
+      "files": [
+        {
+          "file": "licenses/hashbrown-0.16.1/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/hashbrown/0.16.1"
+          }
+        },
+        {
+          "file": "licenses/hashbrown-0.16.1/LICENSE-MIT",
+          "sha256": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/hashbrown/0.16.1"
+          }
+        }
+      ],
+      "upstream_commit": "1876e4f02708b93903d55ef598f68e82a826518f"
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.17.1",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/hashbrown/0.17.1",
+      "files": [
+        {
+          "file": "licenses/hashbrown-0.17.1/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/hashbrown/0.17.1"
+          }
+        },
+        {
+          "file": "licenses/hashbrown-0.17.1/LICENSE-MIT",
+          "sha256": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/hashbrown/0.17.1"
+          }
+        }
+      ],
+      "upstream_commit": "c62a63a61b7caf2de8f9ecb7b06a66b0ab6bdf3d"
+    },
+    {
+      "name": "hexf-parse",
+      "version": "0.2.1",
+      "license_expression": "CC0-1.0",
+      "authors_from_manifest": [
+        "Kang Seonghoon <public+rust@mearie.org>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/hexf-parse/0.2.1",
+      "files": [
+        {
+          "file": "licenses/hexf-parse-0.2.1/supplemental/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/CC0-1.0.txt",
+            "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+          }
+        }
+      ],
+      "upstream_commit": "4225763d744183d720f575ae96d04161b4d08ea0",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared CC0-1.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "selected_license": "CC0-1.0"
+    },
+    {
+      "name": "indexmap",
+      "version": "2.14.0",
+      "license_expression": "Apache-2.0 OR MIT",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/indexmap/2.14.0",
+      "files": [
+        {
+          "file": "licenses/indexmap-2.14.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/indexmap/2.14.0"
+          }
+        },
+        {
+          "file": "licenses/indexmap-2.14.0/LICENSE-MIT",
+          "sha256": "ecc269ef87fd38a1d98e30bfac9ba964a9dbd9315c3770fed98d4d7cb5882055",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/indexmap/2.14.0"
+          }
+        }
+      ],
+      "upstream_commit": "bcd165baeb12bdf6e57a31d9869e9839e25679c6"
+    },
+    {
+      "name": "itertools",
+      "version": "0.13.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "bluss"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/itertools/0.13.0",
+      "files": [
+        {
+          "file": "licenses/itertools-0.13.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/itertools/0.13.0"
+          }
+        },
+        {
+          "file": "licenses/itertools-0.13.0/LICENSE-MIT",
+          "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/itertools/0.13.0"
+          }
+        }
+      ],
+      "upstream_commit": "d5084d15e959b85d89a49e5cd33ad6267bc541a3"
+    },
+    {
+      "name": "itoa",
+      "version": "1.0.18",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/itoa/1.0.18",
+      "files": [
+        {
+          "file": "licenses/itoa-1.0.18/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/itoa/1.0.18"
+          }
+        },
+        {
+          "file": "licenses/itoa-1.0.18/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/itoa/1.0.18"
+          }
+        }
+      ],
+      "upstream_commit": "af77385d0daf4d0e949e81f2588be2e44f69f086"
+    },
+    {
+      "name": "khronos-egl",
+      "version": "6.0.0",
+      "license_expression": "MIT/Apache-2.0",
+      "authors_from_manifest": [
+        "Timothée Haudebourg <author@haudebourg.net>",
+        "Sean Kerr <sean@metatomic.io>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/khronos-egl/6.0.0",
+      "files": [
+        {
+          "file": "licenses/khronos-egl-6.0.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/khronos-egl/6.0.0"
+          }
+        },
+        {
+          "file": "licenses/khronos-egl-6.0.0/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/khronos-egl/6.0.0"
+          }
+        }
+      ],
+      "upstream_commit": "5605af04fb91ca3e5cc314ac374d21c452bb6855"
+    },
+    {
+      "name": "konst",
+      "version": "0.2.20",
+      "license_expression": "Zlib",
+      "authors_from_manifest": [
+        "rodrimati1992 <rodrimatt1985@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/konst/0.2.20",
+      "files": [
+        {
+          "file": "licenses/konst-0.2.20/LICENSE-ZLIB.md",
+          "sha256": "573e362dc50a6d9eb444cea38ef61587e16a0645cb8098ba13a2c42fdde72acd",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-ZLIB.md",
+            "crate_url": "https://crates.io/crates/konst/0.2.20"
+          }
+        }
+      ],
+      "upstream_commit": "ad6db2fc0d38b79ef0b34b18b81e4e71c09814f5"
+    },
+    {
+      "name": "konst_macro_rules",
+      "version": "0.2.19",
+      "license_expression": "Zlib",
+      "authors_from_manifest": [
+        "rodrimati1992 <rodrimatt1985@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/konst_macro_rules/0.2.19",
+      "files": [
+        {
+          "file": "licenses/konst_macro_rules-0.2.19/LICENSE-ZLIB.md",
+          "sha256": "573e362dc50a6d9eb444cea38ef61587e16a0645cb8098ba13a2c42fdde72acd",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-ZLIB.md",
+            "crate_url": "https://crates.io/crates/konst_macro_rules/0.2.19"
+          }
+        }
+      ],
+      "upstream_commit": "6463c1578d96c8b41f59a93496473be6212f6297"
+    },
+    {
+      "name": "libc",
+      "version": "0.2.189",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/libc/0.2.189",
+      "files": [
+        {
+          "file": "licenses/libc-0.2.189/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/libc/0.2.189"
+          }
+        },
+        {
+          "file": "licenses/libc-0.2.189/LICENSE-MIT",
+          "sha256": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/libc/0.2.189"
+          }
+        }
+      ],
+      "upstream_commit": "ef0906e20828777175f65caa7e681a0ce33c559a"
+    },
+    {
+      "name": "libloading",
+      "version": "0.8.9",
+      "license_expression": "ISC",
+      "authors_from_manifest": [
+        "Simonas Kazlauskas <libloading@kazlauskas.me>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/libloading/0.8.9",
+      "files": [
+        {
+          "file": "licenses/libloading-0.8.9/LICENSE",
+          "sha256": "b29f8b01452350c20dd1af16ef83b598fea3053578ccc1c7a0ef40e57be2620f",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/libloading/0.8.9"
+          }
+        }
+      ],
+      "upstream_commit": "f4ec9e702de2d0778bccff8525dc44e4cacac2d1"
+    },
+    {
+      "name": "libm",
+      "version": "0.2.16",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Alex Crichton <alex@alexcrichton.com>",
+        "Amanieu d'Antras <amanieu@gmail.com>",
+        "Jorge Aparicio <japaricious@gmail.com>",
+        "Trevor Gross <tg@trevorgross.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/libm/0.2.16",
+      "files": [
+        {
+          "file": "licenses/libm-0.2.16/LICENSE.txt",
+          "sha256": "3823dda7cf046602f4b4e77ec8e227863dc4736037cc85bb33d9f19febe16bb7",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.txt",
+            "crate_url": "https://crates.io/crates/libm/0.2.16"
+          }
+        }
+      ],
+      "upstream_commit": "dfd2203a4d6110820ad7bb65cafe1bf331a03a3d"
+    },
+    {
+      "name": "litrs",
+      "version": "1.0.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Lukas Kalbertodt <lukas.kalbertodt@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/litrs/1.0.0",
+      "files": [
+        {
+          "file": "licenses/litrs-1.0.0/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/litrs/1.0.0"
+          }
+        },
+        {
+          "file": "licenses/litrs-1.0.0/LICENSE-MIT",
+          "sha256": "7dc1552e88f49132cb358b1b962fc5e79fa42d70bcbb88c526d33e45b8e98036",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/litrs/1.0.0"
+          }
+        }
+      ],
+      "upstream_commit": "66ceed89adfd30d1fd04fabfdfe436aedc4cadbf"
+    },
+    {
+      "name": "lock_api",
+      "version": "0.4.14",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/lock_api/0.4.14",
+      "files": [
+        {
+          "file": "licenses/lock_api-0.4.14/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/lock_api/0.4.14"
+          }
+        },
+        {
+          "file": "licenses/lock_api-0.4.14/LICENSE-MIT",
+          "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/lock_api/0.4.14"
+          }
+        }
+      ],
+      "upstream_commit": "d7828fff7b5d6327ae608e82db45f888b344449a"
+    },
+    {
+      "name": "log",
+      "version": "0.4.33",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "The Rust Project Developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/log/0.4.33",
+      "files": [
+        {
+          "file": "licenses/log-0.4.33/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/log/0.4.33"
+          }
+        },
+        {
+          "file": "licenses/log-0.4.33/LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/log/0.4.33"
+          }
+        }
+      ],
+      "upstream_commit": "f405739f3a15a3f00680c793e1e1fa7e57d26ba4"
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.3",
+      "license_expression": "Unlicense OR MIT",
+      "authors_from_manifest": [
+        "Andrew Gallant <jamslam@gmail.com>",
+        "bluss"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/memchr/2.8.3",
+      "files": [
+        {
+          "file": "licenses/memchr-2.8.3/COPYING",
+          "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "COPYING",
+            "crate_url": "https://crates.io/crates/memchr/2.8.3"
+          }
+        },
+        {
+          "file": "licenses/memchr-2.8.3/LICENSE-MIT",
+          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/memchr/2.8.3"
+          }
+        },
+        {
+          "file": "licenses/memchr-2.8.3/UNLICENSE",
+          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "UNLICENSE",
+            "crate_url": "https://crates.io/crates/memchr/2.8.3"
+          }
+        }
+      ],
+      "upstream_commit": "5fdb40c054e1fff359a2f7bdf7f87a13b34b465d"
+    },
+    {
+      "name": "minimal-lexical",
+      "version": "0.2.1",
+      "license_expression": "MIT/Apache-2.0",
+      "authors_from_manifest": [
+        "Alex Huszagh <ahuszagh@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/minimal-lexical/0.2.1",
+      "files": [
+        {
+          "file": "licenses/minimal-lexical-0.2.1/LICENSE-APACHE",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/minimal-lexical/0.2.1"
+          }
+        },
+        {
+          "file": "licenses/minimal-lexical-0.2.1/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/minimal-lexical/0.2.1"
+          }
+        },
+        {
+          "file": "licenses/minimal-lexical-0.2.1/LICENSE.md",
+          "sha256": "dbe1fff0fb1314b6af94f161511406275cf01c5a32441fbf24528a57a051d599",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.md",
+            "crate_url": "https://crates.io/crates/minimal-lexical/0.2.1"
+          }
+        }
+      ],
+      "upstream_commit": "e997c46656ebe83e696b866bd954da1fa3f64eef"
+    },
+    {
+      "name": "naga",
+      "version": "29.0.4",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "gfx-rs developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/naga/29.0.4",
+      "files": [
+        {
+          "file": "licenses/naga-29.0.4/LICENSE.APACHE",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.APACHE",
+            "crate_url": "https://crates.io/crates/naga/29.0.4"
+          }
+        },
+        {
+          "file": "licenses/naga-29.0.4/LICENSE.MIT",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.MIT",
+            "crate_url": "https://crates.io/crates/naga/29.0.4"
+          }
+        }
+      ],
+      "upstream_commit": "e99f5305ded96ff7006f0714d043a7f735bd45c2"
+    },
+    {
+      "name": "nom",
+      "version": "7.1.3",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "contact@geoffroycouprie.com"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/nom/7.1.3",
+      "files": [
+        {
+          "file": "licenses/nom-7.1.3/LICENSE",
+          "sha256": "4dbda04344456f09a7a588140455413a9ac59b6b26a1ef7cdf9c800c012d87f0",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/nom/7.1.3"
+          }
+        }
+      ],
+      "upstream_commit": "869f8972a4383b13cf89574fda28cb7dbfd56517"
+    },
+    {
+      "name": "num-traits",
+      "version": "0.2.19",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "The Rust Project Developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/num-traits/0.2.19",
+      "files": [
+        {
+          "file": "licenses/num-traits-0.2.19/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/num-traits/0.2.19"
+          }
+        },
+        {
+          "file": "licenses/num-traits-0.2.19/LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/num-traits/0.2.19"
+          }
+        }
+      ],
+      "upstream_commit": "7ec3d41d39b28190ec1d42db38021107b3951f3a"
+    },
+    {
+      "name": "objc2",
+      "version": "0.6.4",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Mads Marquart <mads@marquart.dk>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/objc2/0.6.4",
+      "files": [
+        {
+          "file": "licenses/objc2-0.6.4/supplemental/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/madsmtm/objc2/8852b424193ca41602281b3d7540d7c8ed51e49a/LICENSE.md",
+            "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54"
+          }
+        },
+        {
+          "file": "licenses/objc2-0.6.4/supplemental/MIT.txt",
+          "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/MIT.txt",
+            "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5"
+          }
+        }
+      ],
+      "upstream_commit": "8852b424193ca41602281b3d7540d7c8ed51e49a",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared MIT license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "selected_license": "MIT"
+    },
+    {
+      "name": "objc2-core-foundation",
+      "version": "0.3.2",
+      "license_expression": "Zlib OR Apache-2.0 OR MIT",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/objc2-core-foundation/0.3.2",
+      "files": [
+        {
+          "file": "licenses/objc2-core-foundation-0.3.2/supplemental/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md",
+            "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54"
+          }
+        },
+        {
+          "file": "licenses/objc2-core-foundation-0.3.2/supplemental/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt",
+            "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+          }
+        }
+      ],
+      "upstream_commit": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "selected_license": "Apache-2.0"
+    },
+    {
+      "name": "objc2-encode",
+      "version": "4.1.0",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Mads Marquart <mads@marquart.dk>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/objc2-encode/4.1.0",
+      "files": [
+        {
+          "file": "licenses/objc2-encode-4.1.0/supplemental/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/madsmtm/objc2/8d214f5477365ffcbcbb7de058c86ed9a518efb7/LICENSE.md",
+            "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54"
+          }
+        },
+        {
+          "file": "licenses/objc2-encode-4.1.0/supplemental/MIT.txt",
+          "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/MIT.txt",
+            "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5"
+          }
+        }
+      ],
+      "upstream_commit": "8d214f5477365ffcbcbb7de058c86ed9a518efb7",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared MIT license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "selected_license": "MIT"
+    },
+    {
+      "name": "objc2-foundation",
+      "version": "0.3.2",
+      "license_expression": "MIT",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/objc2-foundation/0.3.2",
+      "files": [
+        {
+          "file": "licenses/objc2-foundation-0.3.2/supplemental/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md",
+            "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54"
+          }
+        },
+        {
+          "file": "licenses/objc2-foundation-0.3.2/supplemental/MIT.txt",
+          "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/MIT.txt",
+            "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5"
+          }
+        }
+      ],
+      "upstream_commit": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared MIT license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "selected_license": "MIT"
+    },
+    {
+      "name": "objc2-metal",
+      "version": "0.3.2",
+      "license_expression": "Zlib OR Apache-2.0 OR MIT",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/objc2-metal/0.3.2",
+      "files": [
+        {
+          "file": "licenses/objc2-metal-0.3.2/supplemental/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md",
+            "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54"
+          }
+        },
+        {
+          "file": "licenses/objc2-metal-0.3.2/supplemental/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt",
+            "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+          }
+        }
+      ],
+      "upstream_commit": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "selected_license": "Apache-2.0"
+    },
+    {
+      "name": "objc2-quartz-core",
+      "version": "0.3.2",
+      "license_expression": "Zlib OR Apache-2.0 OR MIT",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/objc2-quartz-core/0.3.2",
+      "files": [
+        {
+          "file": "licenses/objc2-quartz-core-0.3.2/supplemental/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md",
+            "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54"
+          }
+        },
+        {
+          "file": "licenses/objc2-quartz-core-0.3.2/supplemental/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt",
+            "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+          }
+        }
+      ],
+      "upstream_commit": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "selected_license": "Apache-2.0"
+    },
+    {
+      "name": "once_cell",
+      "version": "1.21.4",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Aleksey Kladov <aleksey.kladov@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/once_cell/1.21.4",
+      "files": [
+        {
+          "file": "licenses/once_cell-1.21.4/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/once_cell/1.21.4"
+          }
+        },
+        {
+          "file": "licenses/once_cell-1.21.4/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/once_cell/1.21.4"
+          }
+        }
+      ],
+      "upstream_commit": "80fe900b21f6d76c1a2ed74d3343e8a3a88c46d0"
+    },
+    {
+      "name": "ordered-float",
+      "version": "5.3.0",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Jonathan Reem <jonathan.reem@gmail.com>",
+        "Matt Brubeck <mbrubeck@limpet.net>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/ordered-float/5.3.0",
+      "files": [
+        {
+          "file": "licenses/ordered-float-5.3.0/LICENSE-MIT",
+          "sha256": "f7715d38a3fa1b4ac97c5729740752505a39cb92ee83ab5b102aeb5eaa7cdea4",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/ordered-float/5.3.0"
+          }
+        }
+      ],
+      "upstream_commit": "6cca9b87766aa086e4dde8e646f66aa975bdf757"
+    },
+    {
+      "name": "oslog",
+      "version": "0.2.0",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Steven Joruk <steven@joruk.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/oslog/0.2.0",
+      "files": [
+        {
+          "file": "licenses/oslog-0.2.0/LICENSE",
+          "sha256": "6eb79e1b9bd46471b91ced7818c61970a9d848120d5973b53e496b7a48ff2fe2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/oslog/0.2.0"
+          }
+        }
+      ],
+      "upstream_commit": "3a36d5cef0b6edff25b758638d52d120e4605ab5"
+    },
+    {
+      "name": "parking_lot",
+      "version": "0.12.5",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/parking_lot/0.12.5",
+      "files": [
+        {
+          "file": "licenses/parking_lot-0.12.5/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/parking_lot/0.12.5"
+          }
+        },
+        {
+          "file": "licenses/parking_lot-0.12.5/LICENSE-MIT",
+          "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/parking_lot/0.12.5"
+          }
+        }
+      ],
+      "upstream_commit": "d7828fff7b5d6327ae608e82db45f888b344449a"
+    },
+    {
+      "name": "parking_lot_core",
+      "version": "0.9.12",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/parking_lot_core/0.9.12",
+      "files": [
+        {
+          "file": "licenses/parking_lot_core-0.9.12/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/parking_lot_core/0.9.12"
+          }
+        },
+        {
+          "file": "licenses/parking_lot_core-0.9.12/LICENSE-MIT",
+          "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/parking_lot_core/0.9.12"
+          }
+        }
+      ],
+      "upstream_commit": "d7828fff7b5d6327ae608e82db45f888b344449a"
+    },
+    {
+      "name": "paste",
+      "version": "1.0.15",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/paste/1.0.15",
+      "files": [
+        {
+          "file": "licenses/paste-1.0.15/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/paste/1.0.15"
+          }
+        },
+        {
+          "file": "licenses/paste-1.0.15/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/paste/1.0.15"
+          }
+        }
+      ],
+      "upstream_commit": "a2c7e27875277450ed28147623ba5218dd23e732"
+    },
+    {
+      "name": "petgraph",
+      "version": "0.8.3",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "bluss",
+        "mitchmindtree"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/petgraph/0.8.3",
+      "files": [
+        {
+          "file": "licenses/petgraph-0.8.3/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/petgraph/0.8.3"
+          }
+        },
+        {
+          "file": "licenses/petgraph-0.8.3/LICENSE-MIT",
+          "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/petgraph/0.8.3"
+          }
+        },
+        {
+          "file": "licenses/petgraph-0.8.3/assets/images/LICENSE.md",
+          "sha256": "608fdcbb7daea2541c57228f21fc97deec310b19dafde70b2f4b84a96bf779f8",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "assets/images/LICENSE.md",
+            "crate_url": "https://crates.io/crates/petgraph/0.8.3"
+          }
+        }
+      ],
+      "upstream_commit": "162903562ce5b00cdba390a0d9c1bb80f1c75bf5"
+    },
+    {
+      "name": "pipl",
+      "version": "0.1.1",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Adrian <adrian.eddy@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "build"
+      ],
+      "crate_url": "https://crates.io/crates/pipl/0.1.1",
+      "files": [
+        {
+          "file": "licenses/pipl-0.1.1/supplemental/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt",
+            "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+          }
+        }
+      ],
+      "upstream_commit": "60b41a2ac3442f93815bda27cbf0fd57aefd48ce",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "selected_license": "Apache-2.0"
+    },
+    {
+      "name": "pkg-config",
+      "version": "0.3.33",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "dependency_kinds": [
+        "build"
+      ],
+      "crate_url": "https://crates.io/crates/pkg-config/0.3.33",
+      "files": [
+        {
+          "file": "licenses/pkg-config-0.3.33/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/pkg-config/0.3.33"
+          }
+        },
+        {
+          "file": "licenses/pkg-config-0.3.33/LICENSE-MIT",
+          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/pkg-config/0.3.33"
+          }
+        }
+      ],
+      "upstream_commit": "f4ac872e02f9e2c111c55f3ed0eee6284d41d50f"
+    },
+    {
+      "name": "pollster",
+      "version": "1.0.1",
+      "license_expression": "Apache-2.0/MIT",
+      "authors_from_manifest": [
+        "Joshua Barretto <joshua@jsbarretto.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/pollster/1.0.1",
+      "files": [
+        {
+          "file": "licenses/pollster-1.0.1/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/pollster/1.0.1"
+          }
+        },
+        {
+          "file": "licenses/pollster-1.0.1/LICENSE-MIT",
+          "sha256": "cc02a53316678ca2575cc69d12daa7b1833935d4b7742c31fbab7bd74a481077",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/pollster/1.0.1"
+          }
+        }
+      ],
+      "upstream_commit": "6a1a148208326e9c5b231b16f199f5227c550774"
+    },
+    {
+      "name": "pp-rs",
+      "version": "0.2.1",
+      "license_expression": "BSD-3-Clause",
+      "authors_from_manifest": [
+        "pp-rs Developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/pp-rs/0.2.1",
+      "files": [
+        {
+          "file": "licenses/pp-rs-0.2.1/LICENSE",
+          "sha256": "f1f86507901c4e35cdf3454a62ef96bc998f9ae9602e47975268655f3510fe29",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/pp-rs/0.2.1"
+          }
+        }
+      ],
+      "upstream_commit": "83bc81236b388db7ceb5c039e32fec06709a8488"
+    },
+    {
+      "name": "presser",
+      "version": "0.3.1",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Embark <opensource@embark-studios.com>",
+        "Gray Olson <gray@grayolson.com"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/presser/0.3.1",
+      "files": [
+        {
+          "file": "licenses/presser-0.3.1/LICENSE-APACHE",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/presser/0.3.1"
+          }
+        },
+        {
+          "file": "licenses/presser-0.3.1/LICENSE-MIT",
+          "sha256": "090a294a492ab2f41388252312a65cf2f0e423330b721a68c6665ac64766753b",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/presser/0.3.1"
+          }
+        }
+      ],
+      "upstream_commit": "eea263995892b761aae6307b0c2952cc7170a6bb"
+    },
+    {
+      "name": "pretty-hex",
+      "version": "0.4.2",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Andrei Volnin <wolandr@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/pretty-hex/0.4.2",
+      "files": [
+        {
+          "file": "licenses/pretty-hex-0.4.2/LICENSE",
+          "sha256": "5dca5931a0e582903a538dc7161fddc0dfc5336521fee4f309e2af842c4b8c1f",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/pretty-hex/0.4.2"
+          }
+        }
+      ],
+      "upstream_commit": "541bfc49e3a02dad7f19dd878819825003f5f9d7"
+    },
+    {
+      "name": "prettyplease",
+      "version": "0.2.37",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/prettyplease/0.2.37",
+      "files": [
+        {
+          "file": "licenses/prettyplease-0.2.37/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/prettyplease/0.2.37"
+          }
+        },
+        {
+          "file": "licenses/prettyplease-0.2.37/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/prettyplease/0.2.37"
+          }
+        }
+      ],
+      "upstream_commit": "c971184fa8c5ef5a2828196e35bd99469455b46b"
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "David Tolnay <dtolnay@gmail.com>",
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/proc-macro2/1.0.107",
+      "files": [
+        {
+          "file": "licenses/proc-macro2-1.0.107/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/proc-macro2/1.0.107"
+          }
+        },
+        {
+          "file": "licenses/proc-macro2-1.0.107/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/proc-macro2/1.0.107"
+          }
+        }
+      ],
+      "upstream_commit": "ed8a5497669cd63db33bf24646f261b012bbbc4a"
+    },
+    {
+      "name": "profiling",
+      "version": "1.0.18",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Philip Degarmo <aclysma@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/profiling/1.0.18",
+      "files": [
+        {
+          "file": "licenses/profiling-1.0.18/supplemental/LICENSE-APACHE",
+          "sha256": "10d30a673cd5e9349bdc02aeb48f14b3386d27d0da32df8f0a555d4aa16aa551",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/aclysma/profiling/8271551172eb6fa4cba47369aedd93790c623df9/LICENSE-APACHE",
+            "sha256": "10d30a673cd5e9349bdc02aeb48f14b3386d27d0da32df8f0a555d4aa16aa551"
+          }
+        },
+        {
+          "file": "licenses/profiling-1.0.18/supplemental/LICENSE-MIT",
+          "sha256": "c8167fdeeed46d3f244d3f85c5bf998ce889343691c32be2c61a8bc4b5c08333",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/aclysma/profiling/8271551172eb6fa4cba47369aedd93790c623df9/LICENSE-MIT",
+            "sha256": "c8167fdeeed46d3f244d3f85c5bf998ce889343691c32be2c61a8bc4b5c08333"
+          }
+        }
+      ],
+      "upstream_commit": "8271551172eb6fa4cba47369aedd93790c623df9",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared MIT license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "selected_license": "MIT"
+    },
+    {
+      "name": "quote",
+      "version": "1.0.47",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/quote/1.0.47",
+      "files": [
+        {
+          "file": "licenses/quote-1.0.47/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/quote/1.0.47"
+          }
+        },
+        {
+          "file": "licenses/quote-1.0.47/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/quote/1.0.47"
+          }
+        }
+      ],
+      "upstream_commit": "723dcb47d3f0ddc896e17287c8a8d3f2ea2317d5"
+    },
+    {
+      "name": "raw-window-handle",
+      "version": "0.6.2",
+      "license_expression": "MIT OR Apache-2.0 OR Zlib",
+      "authors_from_manifest": [
+        "Osspial <osspial@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/raw-window-handle/0.6.2",
+      "files": [
+        {
+          "file": "licenses/raw-window-handle-0.6.2/LICENSE-APACHE.md",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE.md",
+            "crate_url": "https://crates.io/crates/raw-window-handle/0.6.2"
+          }
+        },
+        {
+          "file": "licenses/raw-window-handle-0.6.2/LICENSE-MIT.md",
+          "sha256": "9c5a80639a57c1c945570e7ebbca0706305849ce3c098021325cca9db2f7acc4",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT.md",
+            "crate_url": "https://crates.io/crates/raw-window-handle/0.6.2"
+          }
+        },
+        {
+          "file": "licenses/raw-window-handle-0.6.2/LICENSE-ZLIB.md",
+          "sha256": "ae895c8576e682f310fb70d93d9f99b1dd82872094c54a8f6cdfe2ca5c2d6ecb",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-ZLIB.md",
+            "crate_url": "https://crates.io/crates/raw-window-handle/0.6.2"
+          }
+        }
+      ],
+      "upstream_commit": "5fda8e8420b069368e9450e70c2869e32dcdffc1"
+    },
+    {
+      "name": "raw-window-metal",
+      "version": "1.1.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/raw-window-metal/1.1.0",
+      "files": [
+        {
+          "file": "licenses/raw-window-metal-1.1.0/LICENSE-APACHE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/raw-window-metal/1.1.0"
+          }
+        },
+        {
+          "file": "licenses/raw-window-metal-1.1.0/LICENSE-MIT",
+          "sha256": "f9c4c77baa3828004ee54b8a4f2db2e88ed44a6237a493965bf551fac0fcb62d",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/raw-window-metal/1.1.0"
+          }
+        }
+      ],
+      "upstream_commit": "1b92ba84006b2d924e066d42ed77aaa58c0b4c62"
+    },
+    {
+      "name": "regex",
+      "version": "1.13.1",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "The Rust Project Developers",
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/regex/1.13.1",
+      "files": [
+        {
+          "file": "licenses/regex-1.13.1/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/regex/1.13.1"
+          }
+        },
+        {
+          "file": "licenses/regex-1.13.1/LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/regex/1.13.1"
+          }
+        }
+      ],
+      "upstream_commit": "2b527599eb9eea0dcc288c704584f242f26a5c61"
+    },
+    {
+      "name": "regex-automata",
+      "version": "0.4.18",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "The Rust Project Developers",
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/regex-automata/0.4.18",
+      "files": [
+        {
+          "file": "licenses/regex-automata-0.4.18/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/regex-automata/0.4.18"
+          }
+        },
+        {
+          "file": "licenses/regex-automata-0.4.18/LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/regex-automata/0.4.18"
+          }
+        }
+      ],
+      "upstream_commit": "e6ad938198e68339a593f85d228f2d44cb54718f"
+    },
+    {
+      "name": "regex-syntax",
+      "version": "0.8.11",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "The Rust Project Developers",
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/regex-syntax/0.8.11",
+      "files": [
+        {
+          "file": "licenses/regex-syntax-0.8.11/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/regex-syntax/0.8.11"
+          }
+        },
+        {
+          "file": "licenses/regex-syntax-0.8.11/LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/regex-syntax/0.8.11"
+          }
+        },
+        {
+          "file": "licenses/regex-syntax-0.8.11/src/unicode_tables/LICENSE-UNICODE",
+          "sha256": "74db5baf44a41b1000312c673544b3374e4198af5605c7f9080a402cec42cfa3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "src/unicode_tables/LICENSE-UNICODE",
+            "crate_url": "https://crates.io/crates/regex-syntax/0.8.11"
+          }
+        }
+      ],
+      "upstream_commit": "140167995737fa11dfe11b8af8b9aa143b790b4e"
+    },
+    {
+      "name": "renderdoc-sys",
+      "version": "1.1.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Eyal Kalderon <ebkalderon@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/renderdoc-sys/1.1.0",
+      "files": [
+        {
+          "file": "licenses/renderdoc-sys-1.1.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/renderdoc-sys/1.1.0"
+          }
+        },
+        {
+          "file": "licenses/renderdoc-sys-1.1.0/LICENSE-MIT",
+          "sha256": "24b2f2eff5a7622e87162823e260f00c6dfbce0e26d585d3d28c785f1edc80ed",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/renderdoc-sys/1.1.0"
+          }
+        }
+      ],
+      "upstream_commit": "0276afc3686dd3ee9475798ed8ab89026d74143d"
+    },
+    {
+      "name": "rustc-hash",
+      "version": "1.1.0",
+      "license_expression": "Apache-2.0/MIT",
+      "authors_from_manifest": [
+        "The Rust Project Developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/rustc-hash/1.1.0",
+      "files": [
+        {
+          "file": "licenses/rustc-hash-1.1.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/rustc-hash/1.1.0"
+          }
+        },
+        {
+          "file": "licenses/rustc-hash-1.1.0/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/rustc-hash/1.1.0"
+          }
+        }
+      ],
+      "upstream_commit": "6fc9a706a9312ee801c7e77ca06c0782fa9eadef"
+    },
+    {
+      "name": "rustc-hash",
+      "version": "2.1.3",
+      "license_expression": "Apache-2.0 OR MIT",
+      "authors_from_manifest": [
+        "The Rust Project Developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/rustc-hash/2.1.3",
+      "files": [
+        {
+          "file": "licenses/rustc-hash-2.1.3/LICENSE-APACHE",
+          "sha256": "95bd3988beee069fa2848f648dab43cc6e0b2add2ad6bcb17360caf749802bcc",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/rustc-hash/2.1.3"
+          }
+        },
+        {
+          "file": "licenses/rustc-hash-2.1.3/LICENSE-MIT",
+          "sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/rustc-hash/2.1.3"
+          }
+        }
+      ],
+      "upstream_commit": "c13e7ccca705e6255387a2ebc6dca142d6881621"
+    },
+    {
+      "name": "scopeguard",
+      "version": "1.2.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "bluss"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/scopeguard/1.2.0",
+      "files": [
+        {
+          "file": "licenses/scopeguard-1.2.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/scopeguard/1.2.0"
+          }
+        },
+        {
+          "file": "licenses/scopeguard-1.2.0/LICENSE-MIT",
+          "sha256": "fb77f0a9c53e473abe5103c8632ef9f0f2874d4fb3f17cb2d8c661aab9cee9d7",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/scopeguard/1.2.0"
+          }
+        }
+      ],
+      "upstream_commit": "bb988222848d39b0b9037b29da3a3a1eb05ebf4b"
+    },
+    {
+      "name": "serde",
+      "version": "1.0.229",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/serde/1.0.229",
+      "files": [
+        {
+          "file": "licenses/serde-1.0.229/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/serde/1.0.229"
+          }
+        },
+        {
+          "file": "licenses/serde-1.0.229/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/serde/1.0.229"
+          }
+        }
+      ],
+      "upstream_commit": "7fc3b4c30c94f73a96ebd1553f2b090d928fc3a8"
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.229",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/serde_core/1.0.229",
+      "files": [
+        {
+          "file": "licenses/serde_core-1.0.229/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/serde_core/1.0.229"
+          }
+        },
+        {
+          "file": "licenses/serde_core-1.0.229/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/serde_core/1.0.229"
+          }
+        }
+      ],
+      "upstream_commit": "7fc3b4c30c94f73a96ebd1553f2b090d928fc3a8"
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.229",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/serde_derive/1.0.229",
+      "files": [
+        {
+          "file": "licenses/serde_derive-1.0.229/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/serde_derive/1.0.229"
+          }
+        },
+        {
+          "file": "licenses/serde_derive-1.0.229/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/serde_derive/1.0.229"
+          }
+        }
+      ],
+      "upstream_commit": "7fc3b4c30c94f73a96ebd1553f2b090d928fc3a8"
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.151",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/serde_json/1.0.151",
+      "files": [
+        {
+          "file": "licenses/serde_json-1.0.151/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/serde_json/1.0.151"
+          }
+        },
+        {
+          "file": "licenses/serde_json-1.0.151/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/serde_json/1.0.151"
+          }
+        }
+      ],
+      "upstream_commit": "de8500740cdcabffb9734f503e4889def823cf10"
+    },
+    {
+      "name": "shlex",
+      "version": "1.3.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "comex <comexk@gmail.com>",
+        "Fenhl <fenhl@fenhl.net>",
+        "Adrian Taylor <adetaylor@chromium.org>",
+        "Alex Touchet <alextouchet@outlook.com>",
+        "Daniel Parks <dp+git@oxidized.org>",
+        "Garrett Berg <googberg@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/shlex/1.3.0",
+      "files": [
+        {
+          "file": "licenses/shlex-1.3.0/LICENSE-APACHE",
+          "sha256": "553fffcd9b1cb158bc3e9edc35da85ca5c3b3d7d2e61c883ebcfa8a65814b583",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/shlex/1.3.0"
+          }
+        },
+        {
+          "file": "licenses/shlex-1.3.0/LICENSE-MIT",
+          "sha256": "4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/shlex/1.3.0"
+          }
+        }
+      ],
+      "upstream_commit": "4a0724b0b62ef715467875b040a890ce75a8a829"
+    },
+    {
+      "name": "shlex",
+      "version": "2.0.1",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "comex <comexk@gmail.com>",
+        "Fenhl <fenhl@fenhl.net>",
+        "Adrian Taylor <adetaylor@chromium.org>",
+        "Alex Touchet <alextouchet@outlook.com>",
+        "Daniel Parks <dp+git@oxidized.org>",
+        "Garrett Berg <googberg@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/shlex/2.0.1",
+      "files": [
+        {
+          "file": "licenses/shlex-2.0.1/LICENSE-APACHE",
+          "sha256": "553fffcd9b1cb158bc3e9edc35da85ca5c3b3d7d2e61c883ebcfa8a65814b583",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/shlex/2.0.1"
+          }
+        },
+        {
+          "file": "licenses/shlex-2.0.1/LICENSE-MIT",
+          "sha256": "4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/shlex/2.0.1"
+          }
+        }
+      ],
+      "upstream_commit": "e82b1411beb7c92871c2c078c9ab415bbcf207ef"
+    },
+    {
+      "name": "smallvec",
+      "version": "1.15.2",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "The Servo Project Developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/smallvec/1.15.2",
+      "files": [
+        {
+          "file": "licenses/smallvec-1.15.2/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/smallvec/1.15.2"
+          }
+        },
+        {
+          "file": "licenses/smallvec-1.15.2/LICENSE-MIT",
+          "sha256": "0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/smallvec/1.15.2"
+          }
+        }
+      ],
+      "upstream_commit": "c469051a1ba05ef1a03dd69e14b4a5aa329e6f10"
+    },
+    {
+      "name": "spirv",
+      "version": "0.4.0+sdk-1.4.341.0",
+      "license_expression": "Apache-2.0",
+      "authors_from_manifest": [
+        "Lei Zhang <antiagainst@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/spirv/0.4.0+sdk-1.4.341.0",
+      "files": [
+        {
+          "file": "licenses/spirv-0.4.0+sdk-1.4.341.0/supplemental/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "source": {
+            "kind": "supplemental",
+            "url": "https://raw.githubusercontent.com/gfx-rs/rspirv/8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4/LICENSE",
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+          }
+        }
+      ],
+      "upstream_commit": "8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4",
+      "supplement_note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "selected_license": "Apache-2.0"
+    },
+    {
+      "name": "static_assertions",
+      "version": "1.1.0",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Nikolai Vazquez"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/static_assertions/1.1.0",
+      "files": [
+        {
+          "file": "licenses/static_assertions-1.1.0/LICENSE-APACHE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/static_assertions/1.1.0"
+          }
+        },
+        {
+          "file": "licenses/static_assertions-1.1.0/LICENSE-MIT",
+          "sha256": "ea084a2373ebc1f0902c09266e7bf25a05ab3814c1805bb017ffa7308f90c061",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/static_assertions/1.1.0"
+          }
+        }
+      ],
+      "upstream_commit": "18bc65a094d890fe1faa5d3ccb70f12b89eabf56"
+    },
+    {
+      "name": "syn",
+      "version": "2.0.119",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/syn/2.0.119",
+      "files": [
+        {
+          "file": "licenses/syn-2.0.119/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/syn/2.0.119"
+          }
+        },
+        {
+          "file": "licenses/syn-2.0.119/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/syn/2.0.119"
+          }
+        }
+      ],
+      "upstream_commit": "3295f9e9841785ac88a5e558c884854d5fb7d67f"
+    },
+    {
+      "name": "syn",
+      "version": "3.0.3",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/syn/3.0.3",
+      "files": [
+        {
+          "file": "licenses/syn-3.0.3/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/syn/3.0.3"
+          }
+        },
+        {
+          "file": "licenses/syn-3.0.3/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/syn/3.0.3"
+          }
+        }
+      ],
+      "upstream_commit": "23dbaab4b0c43f56cd803894054cf366661e53b0"
+    },
+    {
+      "name": "termcolor",
+      "version": "1.4.1",
+      "license_expression": "Unlicense OR MIT",
+      "authors_from_manifest": [
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/termcolor/1.4.1",
+      "files": [
+        {
+          "file": "licenses/termcolor-1.4.1/COPYING",
+          "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "COPYING",
+            "crate_url": "https://crates.io/crates/termcolor/1.4.1"
+          }
+        },
+        {
+          "file": "licenses/termcolor-1.4.1/LICENSE-MIT",
+          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/termcolor/1.4.1"
+          }
+        },
+        {
+          "file": "licenses/termcolor-1.4.1/UNLICENSE",
+          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "UNLICENSE",
+            "crate_url": "https://crates.io/crates/termcolor/1.4.1"
+          }
+        }
+      ],
+      "upstream_commit": "71f0921f1eeceda85487098588a1602979d52493"
+    },
+    {
+      "name": "thiserror",
+      "version": "2.0.19",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/thiserror/2.0.19",
+      "files": [
+        {
+          "file": "licenses/thiserror-2.0.19/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/thiserror/2.0.19"
+          }
+        },
+        {
+          "file": "licenses/thiserror-2.0.19/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/thiserror/2.0.19"
+          }
+        }
+      ],
+      "upstream_commit": "e13a7854338e446f184725fc8b9c9e86a0a537d2"
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "2.0.19",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/thiserror-impl/2.0.19",
+      "files": [
+        {
+          "file": "licenses/thiserror-impl-2.0.19/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/thiserror-impl/2.0.19"
+          }
+        },
+        {
+          "file": "licenses/thiserror-impl-2.0.19/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/thiserror-impl/2.0.19"
+          }
+        }
+      ],
+      "upstream_commit": "e13a7854338e446f184725fc8b9c9e86a0a537d2"
+    },
+    {
+      "name": "toml",
+      "version": "0.5.11",
+      "license_expression": "MIT/Apache-2.0",
+      "authors_from_manifest": [
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/toml/0.5.11",
+      "files": [
+        {
+          "file": "licenses/toml-0.5.11/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/toml/0.5.11"
+          }
+        },
+        {
+          "file": "licenses/toml-0.5.11/LICENSE-MIT",
+          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/toml/0.5.11"
+          }
+        }
+      ],
+      "upstream_commit": "0c2004aaa5d273075809428d8d7e3fc595141ef5"
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "license_expression": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "authors_from_manifest": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/unicode-ident/1.0.24",
+      "files": [
+        {
+          "file": "licenses/unicode-ident-1.0.24/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/unicode-ident/1.0.24"
+          }
+        },
+        {
+          "file": "licenses/unicode-ident-1.0.24/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/unicode-ident/1.0.24"
+          }
+        },
+        {
+          "file": "licenses/unicode-ident-1.0.24/LICENSE-UNICODE",
+          "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-UNICODE",
+            "crate_url": "https://crates.io/crates/unicode-ident/1.0.24"
+          }
+        }
+      ],
+      "upstream_commit": "5b54a632702b5744a1c40ea01c127c0ac0498172"
+    },
+    {
+      "name": "unicode-width",
+      "version": "0.2.2",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "kwantam <kwantam@gmail.com>",
+        "Manish Goregaokar <manishsmail@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/unicode-width/0.2.2",
+      "files": [
+        {
+          "file": "licenses/unicode-width-0.2.2/COPYRIGHT",
+          "sha256": "23860c2a7b5d96b21569afedf033469bab9fe14a1b24a35068b8641c578ce24d",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "COPYRIGHT",
+            "crate_url": "https://crates.io/crates/unicode-width/0.2.2"
+          }
+        },
+        {
+          "file": "licenses/unicode-width-0.2.2/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/unicode-width/0.2.2"
+          }
+        },
+        {
+          "file": "licenses/unicode-width-0.2.2/LICENSE-MIT",
+          "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/unicode-width/0.2.2"
+          }
+        }
+      ],
+      "upstream_commit": "9d98411769fe13c7c18cab0b3fbbab29ba8350ea"
+    },
+    {
+      "name": "unicode-xid",
+      "version": "0.2.6",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "erick.tryzelaar <erick.tryzelaar@gmail.com>",
+        "kwantam <kwantam@gmail.com>",
+        "Manish Goregaokar <manishsmail@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/unicode-xid/0.2.6",
+      "files": [
+        {
+          "file": "licenses/unicode-xid-0.2.6/COPYRIGHT",
+          "sha256": "23860c2a7b5d96b21569afedf033469bab9fe14a1b24a35068b8641c578ce24d",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "COPYRIGHT",
+            "crate_url": "https://crates.io/crates/unicode-xid/0.2.6"
+          }
+        },
+        {
+          "file": "licenses/unicode-xid-0.2.6/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/unicode-xid/0.2.6"
+          }
+        },
+        {
+          "file": "licenses/unicode-xid-0.2.6/LICENSE-MIT",
+          "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/unicode-xid/0.2.6"
+          }
+        }
+      ],
+      "upstream_commit": "5d50587f19713cd35f1f48e5d4d011aa9c54dbff"
+    },
+    {
+      "name": "unty",
+      "version": "0.0.4",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "Victor Koenders <bincode@trang.ar>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/unty/0.0.4",
+      "files": [
+        {
+          "file": "licenses/unty-0.0.4/LICENSE-APACHE",
+          "sha256": "fa84f04c495f2533ba036606acc8644b50077752f17bc2e943235459dda1c12c",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/unty/0.0.4"
+          }
+        },
+        {
+          "file": "licenses/unty-0.0.4/LICENSE-MIT",
+          "sha256": "ac1e6e437cd571f6b450abd33dc055cf26dfb0fe2a72952c3ef6ae3844549c12",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/unty/0.0.4"
+          }
+        }
+      ],
+      "upstream_commit": "5455639ae05f42202a270f16bb4d79f6791d9b70"
+    },
+    {
+      "name": "virtue",
+      "version": "0.0.18",
+      "license_expression": "MIT",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/virtue/0.0.18",
+      "files": [
+        {
+          "file": "licenses/virtue-0.0.18/LICENSE.md",
+          "sha256": "ddcbb6914b62d5bebc3cb58ebe8d2738ffa9a48555469bbcbe65159979b878cf",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.md",
+            "crate_url": "https://crates.io/crates/virtue/0.0.18"
+          }
+        }
+      ],
+      "upstream_commit": "1ecc01325a038c4f28aa8de25caae7c6eb91c66f"
+    },
+    {
+      "name": "wayland-sys",
+      "version": "0.31.11",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Elinor Berger <elinor@safaradeg.net>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/wayland-sys/0.31.11",
+      "files": [
+        {
+          "file": "licenses/wayland-sys-0.31.11/LICENSE.txt",
+          "sha256": "1cb6f4dee8c649f175736380495f0af0c753c87f22d50931692968bb24bf2161",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.txt",
+            "crate_url": "https://crates.io/crates/wayland-sys/0.31.11"
+          }
+        }
+      ],
+      "upstream_commit": "a3d7927d87799b2955bf491b51c7c2a3a82da661"
+    },
+    {
+      "name": "wgpu",
+      "version": "29.0.4",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "gfx-rs developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/wgpu/29.0.4",
+      "files": [
+        {
+          "file": "licenses/wgpu-29.0.4/LICENSE.APACHE",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.APACHE",
+            "crate_url": "https://crates.io/crates/wgpu/29.0.4"
+          }
+        },
+        {
+          "file": "licenses/wgpu-29.0.4/LICENSE.MIT",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.MIT",
+            "crate_url": "https://crates.io/crates/wgpu/29.0.4"
+          }
+        }
+      ],
+      "upstream_commit": "e99f5305ded96ff7006f0714d043a7f735bd45c2"
+    },
+    {
+      "name": "wgpu-core",
+      "version": "29.0.4",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "gfx-rs developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/wgpu-core/29.0.4",
+      "files": [
+        {
+          "file": "licenses/wgpu-core-29.0.4/LICENSE.APACHE",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.APACHE",
+            "crate_url": "https://crates.io/crates/wgpu-core/29.0.4"
+          }
+        },
+        {
+          "file": "licenses/wgpu-core-29.0.4/LICENSE.MIT",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.MIT",
+            "crate_url": "https://crates.io/crates/wgpu-core/29.0.4"
+          }
+        }
+      ],
+      "upstream_commit": "e99f5305ded96ff7006f0714d043a7f735bd45c2"
+    },
+    {
+      "name": "wgpu-core-deps-apple",
+      "version": "29.0.4",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "gfx-rs developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/wgpu-core-deps-apple/29.0.4",
+      "files": [
+        {
+          "file": "licenses/wgpu-core-deps-apple-29.0.4/LICENSE.APACHE",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.APACHE",
+            "crate_url": "https://crates.io/crates/wgpu-core-deps-apple/29.0.4"
+          }
+        },
+        {
+          "file": "licenses/wgpu-core-deps-apple-29.0.4/LICENSE.MIT",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.MIT",
+            "crate_url": "https://crates.io/crates/wgpu-core-deps-apple/29.0.4"
+          }
+        }
+      ],
+      "upstream_commit": "e99f5305ded96ff7006f0714d043a7f735bd45c2"
+    },
+    {
+      "name": "wgpu-hal",
+      "version": "29.0.4",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "gfx-rs developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/wgpu-hal/29.0.4",
+      "files": [
+        {
+          "file": "licenses/wgpu-hal-29.0.4/LICENSE.APACHE",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.APACHE",
+            "crate_url": "https://crates.io/crates/wgpu-hal/29.0.4"
+          }
+        },
+        {
+          "file": "licenses/wgpu-hal-29.0.4/LICENSE.MIT",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.MIT",
+            "crate_url": "https://crates.io/crates/wgpu-hal/29.0.4"
+          }
+        }
+      ],
+      "upstream_commit": "e99f5305ded96ff7006f0714d043a7f735bd45c2"
+    },
+    {
+      "name": "wgpu-naga-bridge",
+      "version": "29.0.4",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "gfx-rs developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/wgpu-naga-bridge/29.0.4",
+      "files": [
+        {
+          "file": "licenses/wgpu-naga-bridge-29.0.4/LICENSE.APACHE",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.APACHE",
+            "crate_url": "https://crates.io/crates/wgpu-naga-bridge/29.0.4"
+          }
+        },
+        {
+          "file": "licenses/wgpu-naga-bridge-29.0.4/LICENSE.MIT",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.MIT",
+            "crate_url": "https://crates.io/crates/wgpu-naga-bridge/29.0.4"
+          }
+        }
+      ],
+      "upstream_commit": "e99f5305ded96ff7006f0714d043a7f735bd45c2"
+    },
+    {
+      "name": "wgpu-types",
+      "version": "29.0.4",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [
+        "gfx-rs developers"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/wgpu-types/29.0.4",
+      "files": [
+        {
+          "file": "licenses/wgpu-types-29.0.4/LICENSE.APACHE",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.APACHE",
+            "crate_url": "https://crates.io/crates/wgpu-types/29.0.4"
+          }
+        },
+        {
+          "file": "licenses/wgpu-types-29.0.4/LICENSE.MIT",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE.MIT",
+            "crate_url": "https://crates.io/crates/wgpu-types/29.0.4"
+          }
+        }
+      ],
+      "upstream_commit": "e99f5305ded96ff7006f0714d043a7f735bd45c2"
+    },
+    {
+      "name": "widestring",
+      "version": "1.2.1",
+      "license_expression": "MIT OR Apache-2.0",
+      "authors_from_manifest": [],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/widestring/1.2.1",
+      "files": [
+        {
+          "file": "licenses/widestring-1.2.1/LICENSE-APACHE",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/widestring/1.2.1"
+          }
+        },
+        {
+          "file": "licenses/widestring-1.2.1/LICENSE-MIT",
+          "sha256": "508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/widestring/1.2.1"
+          }
+        }
+      ],
+      "upstream_commit": "66dcd7c05ed7de790a1ab0d340b7f4b8b550aed7"
+    },
+    {
+      "name": "winres",
+      "version": "0.1.12",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "Max Resch <resch.max@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "build",
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/winres/0.1.12",
+      "files": [
+        {
+          "file": "licenses/winres-0.1.12/LICENSE",
+          "sha256": "3564da09711c475669c15346bb25a1530a7de683c13f4a51489c15a6d74438fa",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE",
+            "crate_url": "https://crates.io/crates/winres/0.1.12"
+          }
+        }
+      ],
+      "upstream_commit": "2819c50fc9a035ea99679a2b3eef4e53fb4f3269"
+    },
+    {
+      "name": "zerocopy",
+      "version": "0.8.55",
+      "license_expression": "BSD-2-Clause OR Apache-2.0 OR MIT",
+      "authors_from_manifest": [
+        "Joshua Liebow-Feeser <joshlf@google.com>",
+        "Jack Wrenn <jswrenn@amazon.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/zerocopy/0.8.55",
+      "files": [
+        {
+          "file": "licenses/zerocopy-0.8.55/LICENSE-APACHE",
+          "sha256": "9d185ac6703c4b0453974c0d85e9eee43e6941009296bb1f5eb0b54e2329e9f3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/zerocopy/0.8.55"
+          }
+        },
+        {
+          "file": "licenses/zerocopy-0.8.55/LICENSE-BSD",
+          "sha256": "83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-BSD",
+            "crate_url": "https://crates.io/crates/zerocopy/0.8.55"
+          }
+        },
+        {
+          "file": "licenses/zerocopy-0.8.55/LICENSE-MIT",
+          "sha256": "1a2f5c12ddc934d58956aa5dbdd3255fe55fd957633ab7d0d39e4f0daa73f7df",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/zerocopy/0.8.55"
+          }
+        }
+      ],
+      "upstream_commit": "93ea10b10f5756bd94a8206acf326f491ed3e42a"
+    },
+    {
+      "name": "zerocopy-derive",
+      "version": "0.8.55",
+      "license_expression": "BSD-2-Clause OR Apache-2.0 OR MIT",
+      "authors_from_manifest": [
+        "Joshua Liebow-Feeser <joshlf@google.com>",
+        "Jack Wrenn <jswrenn@amazon.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/zerocopy-derive/0.8.55",
+      "files": [
+        {
+          "file": "licenses/zerocopy-derive-0.8.55/LICENSE-APACHE",
+          "sha256": "9d185ac6703c4b0453974c0d85e9eee43e6941009296bb1f5eb0b54e2329e9f3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-APACHE",
+            "crate_url": "https://crates.io/crates/zerocopy-derive/0.8.55"
+          }
+        },
+        {
+          "file": "licenses/zerocopy-derive-0.8.55/LICENSE-BSD",
+          "sha256": "83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-BSD",
+            "crate_url": "https://crates.io/crates/zerocopy-derive/0.8.55"
+          }
+        },
+        {
+          "file": "licenses/zerocopy-derive-0.8.55/LICENSE-MIT",
+          "sha256": "1a2f5c12ddc934d58956aa5dbdd3255fe55fd957633ab7d0d39e4f0daa73f7df",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/zerocopy-derive/0.8.55"
+          }
+        }
+      ],
+      "upstream_commit": "93ea10b10f5756bd94a8206acf326f491ed3e42a"
+    },
+    {
+      "name": "zmij",
+      "version": "1.0.23",
+      "license_expression": "MIT",
+      "authors_from_manifest": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "dependency_kinds": [
+        "normal"
+      ],
+      "crate_url": "https://crates.io/crates/zmij/1.0.23",
+      "files": [
+        {
+          "file": "licenses/zmij-1.0.23/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": {
+            "kind": "registry-package",
+            "crate_file": "LICENSE-MIT",
+            "crate_url": "https://crates.io/crates/zmij/1.0.23"
+          }
+        }
+      ],
+      "upstream_commit": "7b7cc48b58028e8af7be87e94c0c1c8936f1a57c"
+    }
+  ],
+  "rust_standard_library": {
+    "file": "licenses/rust/COPYRIGHT-library.html",
+    "sha256": "0a65bb747c49c7bb816cbc7188319bd6e4e8d08091c1190b8a3c0971c47968ed",
+    "source": {
+      "kind": "installed-rust-standard-library-notices",
+      "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: aarch64-apple-darwin\nrelease: 1.97.1\nLLVM version: 22.1.6"
+    }
+  }
+}

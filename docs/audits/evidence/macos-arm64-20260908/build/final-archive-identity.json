@@ -1,0 +1,9 @@
+{
+  "archive": "scripts/out/macos/DynamicFX-0.0.6-macos-arm64-local.zip",
+  "archive_sha256": "2722356b917de6474a81fd32cce709f00a87f5bf4141a7e942dbe4413c65fe9a",
+  "archive_bytes": 2690538,
+  "binary_sha256": "e239ae457ab33e1bc9466d5ab0bff8b81c08861d072eb5e667b5cd8bc6ae8b0b",
+  "archive_extract_signature_verified": true,
+  "executable_permissions_retained": true,
+  "note": "Byte archive only: no rebuild, no signing, no repackage of the bundle; final AE installation/acceptance is recorded separately."
+}

@@ -1,0 +1,18 @@
+{
+  "archive": "scripts/out/010/candidate-with-notices/DynamicFX-0.1.0-macos-arm64.zip",
+  "archive_sha256": "10822b29ba432f5b01bd11eb8e6ccf3454615bd52f2c5cc0519c330e54203c54",
+  "archive_bytes": 3559448,
+  "bundle": {
+    "bundle": "/Users/junk_doge/Documents/DynamicFX/target/macos-arm64/DynamicFx.plugin",
+    "version": "0.1.0",
+    "architectures": [
+      "arm64"
+    ],
+    "binary_sha256": "91c8afdcdc6186ca2efa24ca1c06cbcbb619a659b62e77fbe69fe988f9323a22",
+    "resource_sha256": "2004d2cca58db01ec3f0cac82a86ac9308a071f470aa417648ddb74eab85dcb2",
+    "binary_bytes": 7598656,
+    "pipl_outflags": "0x06000644",
+    "pipl_outflags2": "0x08801400",
+    "signature": "Executable=/Users/junk_doge/Documents/DynamicFX/target/macos-arm64/DynamicFx.plugin/Contents/MacOS/DynamicFx\nIdentifier=com.dynamicfx.plugin\nFormat=bundle with Mach-O thin (arm64)\nCodeDirectory v=20500 size=14997 flags=0x10002(adhoc,runtime) hashes=462+3 location=embedded\nSignature=adhoc\nInfo.plist entries=10\nTeamIdentifier=not set\nRuntime Version=26.5.0\nSealed Resources version=2 rules=13 files=2\nInternal requirements count=0 size=12"
+  }
+}

@@ -6,16 +6,16 @@ This folder is an AI-agent skill that teaches AI coding assistants (Claude Code,
 
 **English:**
 
-> Download SKILL.md, porting.md and reference.md from https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/ and save all three into .claude/skills/dynamicfx-shaders/ in this project, then confirm the skill is installed.
+> Download SKILL.md, porting.md, reference.md, quality.md and wgsl.md from https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/ and save all five into .claude/skills/dynamicfx-shaders/ in this project, then confirm the skill is installed.
 
 **中文：**
 
-> 请下载 https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/ 目录下的 SKILL.md、porting.md、reference.md 三个文件，保存到本项目 .claude/skills/dynamicfx-shaders/ 目录，完成后确认 skill 已安装。
+> 请下载 https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/ 目录下的 SKILL.md、porting.md、reference.md、quality.md、wgsl.md 五个文件，保存到本项目 .claude/skills/dynamicfx-shaders/ 目录，完成后确认 skill 已安装。
 
 ## One-line install (shell)
 
 ```bash
-mkdir -p .claude/skills/dynamicfx-shaders && for f in SKILL.md porting.md reference.md; do curl -fsSL "https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/$f" -o ".claude/skills/dynamicfx-shaders/$f"; done
+mkdir -p .claude/skills/dynamicfx-shaders && for f in SKILL.md porting.md reference.md quality.md wgsl.md; do curl -fsSL "https://raw.githubusercontent.com/JUNKDOGE-JOE/dynamicfx/main/skills/dynamicfx-shaders/$f" -o ".claude/skills/dynamicfx-shaders/$f"; done
 ```
 
 Install to `~/.claude/skills/dynamicfx-shaders/` instead for user-wide availability across all projects.

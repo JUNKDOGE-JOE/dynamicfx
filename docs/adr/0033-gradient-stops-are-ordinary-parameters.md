@@ -11,18 +11,11 @@
 
 [ADR-0031](0031-gradient-parameters.md) §3 made a gradient one **arbitrary-data** parameter: a `Vec` of stops, serialized through the flatten/unflatten callbacks, with a hand-written keyframe `interpolate`, and a custom-UI editor as the only way to change it. That was implemented and it **crashes After Effects the moment the row is expanded** (reported from interactive use, 2026-08-15). Two host cycles of bisection narrowed it no further than "before the draw path's first log line", and a third showed the custom-UI event never arriving at all.
 
-The decisive evidence came from a shipping third-party gradient effect the user supplied for comparison (`bfxMapRamp` 1.1.0.1). Decoding its PiPL ruled out the global out-flags — its `out_flags2` is identical to ours and both set `CustomUI` — and its binary shows the same suites this implementation uses (`PF Effect Custom UI Suite`, `AEFX_AcquireDrawbotSuites`, the three Drawbot suites). So neither the flags nor the API choice explained anything.
-
-Dumping its **parameter structure** from ExtendScript did:
-
-```
-[13] Ramp Preview                                   <- custom-UI canvas, one parameter
-[14] Position  [15] Color  [16] Alpha  [17] Blending  <- stop 1
-[18] Position  [19] Color  [20] Alpha  [21] Blending  <- stop 2
-...                                                   32 stop groups, 128 parameters
-```
-
-It stores the gradient as **ordinary After Effects parameters** — four per stop, in a fixed pool — and uses custom UI only to draw a preview and to edit those parameters. There is no arbitrary data anywhere in it.
+[Publication redaction — 2026-09-08, ADR-0036 §4: third-party product identity,
+version, decoded binary details and reproduced parameter layout removed.]
+The historical comparison suggested using ordinary AE properties for stop
+values. It also produced an overbroad supporting claim about the absence of
+arbitrary data; that claim was incorrect, as the erratum below records.
 
 That is the same shape ADR-0013 already chose for shader parameters: a fixed pool with stable identity. This project applied that model one level up and then abandoned it inside the gradient, for no reason recorded at the time.
 
@@ -49,7 +42,7 @@ ADR-0031 §1 (pool kind), §2 as corrected by [ADR-0032](0032-gradients-are-grap
 - **Keep arbitrary data and fix the crash.** Rejected. The crash is not yet understood after three host cycles, and even fully fixed the design keeps a hand-rolled format, hand-rolled keyframe interpolation, and a single point of failure whose loss makes the parameter uneditable. The evidence that a simpler shape ships and works is stronger than the sunk implementation.
 - **Arbitrary data with a POD (`[Stop; 8]` + count) value.** Rejected as a half-measure: it removes the `Vec` but keeps the callbacks, the format, the custom interpolation, and the editor-or-nothing dependency.
 - **One gradient slot instead of two.** Rejected: a heat ramp plus a tint ramp is an ordinary request, and 26 parameters is affordable.
-- **32 stops, matching the reference.** Rejected: 32 × 3 × 2 gradients is 192 parameters for a generic shader runtime that also carries 118 of its own. Eight stops covers the ramps this project's own examples need, and the pool can grow by append.
+- **32 stops.** [Publication redaction — reference comparison removed.] Rejected: 32 × 3 × 2 gradients is 192 parameters for a generic shader runtime that also carries 118 of its own. Eight stops covers the ramps this project's own examples need, and the pool can grow by append.
 
 ## Consequences
 
@@ -80,7 +73,11 @@ ADR-0031 §1 (pool kind), §2 as corrected by [ADR-0032](0032-gradients-are-grap
 
 ## Erratum — 2026-08-15
 
-The Context section above says of the reference effect: *"There is no arbitrary data anywhere in it."* **That is false, and the disassembly it cites proves the opposite.** `bfxMapRamp 1.1.0.1`'s PARAMS_SETUP declares its ramp canvas as `param_type = 11` — `PF_Param_ARBITRARY_DATA` — with `ui_flags = 0x82` (`CONTROL | DONT_ERASE_CONTROL`) over a 200x80 control area. The reference stores its *stops* in ordinary parameters and uses one arbitrary parameter as the editor's canvas.
+[Publication redaction — 2026-09-08, ADR-0036 §4: third-party identity,
+decoded parameter constants and control geometry removed.]
+The earlier supporting claim that the reference used no arbitrary data was
+false. The corrected project-level conclusion distinguishes storage of stop
+values from the editor canvas's parameter representation.
 
 The Decision is unaffected: stops-as-ordinary-parameters is the part that was read correctly, and it is the part this ADR turns into a rule. Only the supporting claim was wrong, and it is corrected here rather than edited above, so the reasoning as it was actually made stays legible.
 

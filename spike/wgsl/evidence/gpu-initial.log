@@ -1,0 +1,8 @@
+   Compiling dynamicfx-wgsl-spike v0.1.0 (/Users/junk_doge/Documents/DynamicFX/spike/wgsl)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.42s
+     Running `spike/wgsl/target/debug/dynamicfx-wgsl-spike spike/wgsl/out`
+CONTRACT uniform_layout=UniformBlockLayout { block_size: 48, entries: [UniformEntry { offset: 16, words: 1, int: false }, UniformEntry { offset: 32, words: 3, int: false }, UniformEntry { offset: 44, words: 1, int: true }] } params=[ParamDeclaration { id: ParamId("gain"), ty: Float, aliases: [], ui: ParamUiMeta { label: Some("Gain"), min: Some(0.0), max: Some(2.0), default: Some([0.72]) }, canvas: false, bank: None }, ParamDeclaration { id: ParamId("tint"), ty: Vec3Color, aliases: [], ui: ParamUiMeta { label: None, min: None, max: None, default: Some([0.25, 0.7, 1.0]) }, canvas: false, bank: None }, ParamDeclaration { id: ParamId("enabled"), ty: Bool, aliases: [], ui: ParamUiMeta { label: None, min: None, max: None, default: Some([1.0]) }, canvas: false, bank: None }]
+MSL name=field bytes=2207 RESULT=PASS
+MSL name=mix bytes=1069 RESULT=PASS
+gpu unavailable: adapter: No suitable graphics adapter found; noop not requested, vulkan not requested, metal found no adapters, dx12 not requested, gl not requested, webgpu not requested
+Error: "no GPU adapter; run on a host with Metal/DX12 or explicit diagnostic backend"

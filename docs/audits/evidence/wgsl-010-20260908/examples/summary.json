@@ -1,0 +1,1377 @@
+{
+  "timestamp_utc": "2026-09-07T21:40:31.581977+00:00",
+  "command": "scripts/quality/run_wgsl_examples.py",
+  "binary_sha256": "23a89b43398d39478c186a18ffbdc2947471d4e3777f10ec9633bd53f7685a0b",
+  "source_sha256": {
+    "examples/wgsl-field.wgsl": "69d302fb3087cab7308c2e87f0dcc659b019f66a9c39cb9d6e7265afc54f12ca",
+    "examples/wgsl-multipass.wgsl": "a8fc11645e236650f23f3f11dec078fd73ced3ced7051283f531c531571cc4c5"
+  },
+  "frontend": "production frontend_for(LanguageId::WGSL)",
+  "evidence_scope": "headless GPU; not AE host acceptance, U15 boundary, Windows, or an exhaustive AA metric",
+  "logical_size": [
+    1280,
+    720
+  ],
+  "render_count": 40,
+  "checks": [
+    {
+      "name": "wgsl-field-s1-d8-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d8-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d8-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d8-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d16-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d16-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d16-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d16-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d32-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d32-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d32-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d32-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field scale 1: f32 working-depth identity",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field scale 1: 8-bpc mean error",
+      "passed": true,
+      "mean_abs_error": 0.000734697503503412,
+      "max_abs_error": 0.0037082433700561523
+    },
+    {
+      "name": "wgsl-field-s2-d8-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s2-d8-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s2-d8-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s2-d8-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s2-d16-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s2-d16-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s2-d16-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s2-d16-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s2-d32-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s2-d32-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s2-d32-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s2-d32-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field scale 2: f32 working-depth identity",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field scale 2: 8-bpc mean error",
+      "passed": true,
+      "mean_abs_error": 0.0007339805597439408,
+      "max_abs_error": 0.0036256611347198486
+    },
+    {
+      "name": "wgsl-field-s4-d8-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s4-d8-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s4-d8-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s4-d8-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s4-d16-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s4-d16-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s4-d16-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s4-d16-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s4-d32-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s4-d32-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s4-d32-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s4-d32-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field scale 4: f32 working-depth identity",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field scale 4: 8-bpc mean error",
+      "passed": true,
+      "mean_abs_error": 0.0007301828591153026,
+      "max_abs_error": 0.003623664379119873
+    },
+    {
+      "name": "wgsl-field-s1-d32-t1.25-repeat: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d32-t1.25-repeat: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field: repeated requested time is identical",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field: time changes the field",
+      "passed": true,
+      "mean_abs_change": 0.010758046992123127
+    },
+    {
+      "name": "wgsl-field-s1-d32-t1.25-black: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-field-s1-d32-t1.25-black: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d8-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d8-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d8-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d8-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d16-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d16-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d16-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d16-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d32-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d32-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d32-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d32-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass scale 1: f32 working-depth identity",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass scale 1: 8-bpc mean error",
+      "passed": true,
+      "mean_abs_error": 0.0008710686233825982,
+      "max_abs_error": 0.02838224172592163
+    },
+    {
+      "name": "wgsl-multipass-s2-d8-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s2-d8-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s2-d8-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s2-d8-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s2-d16-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s2-d16-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s2-d16-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s2-d16-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s2-d32-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s2-d32-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s2-d32-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s2-d32-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass scale 2: f32 working-depth identity",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass scale 2: 8-bpc mean error",
+      "passed": true,
+      "mean_abs_error": 0.0008737475145608187,
+      "max_abs_error": 0.027536451816558838
+    },
+    {
+      "name": "wgsl-multipass-s4-d8-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s4-d8-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s4-d8-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s4-d8-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s4-d16-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s4-d16-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s4-d16-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s4-d16-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s4-d32-t1.25: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s4-d32-t1.25: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s4-d32-t0: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s4-d32-t0: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass scale 4: f32 working-depth identity",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass scale 4: 8-bpc mean error",
+      "passed": true,
+      "mean_abs_error": 0.0008690007380209863,
+      "max_abs_error": 0.021712660789489746
+    },
+    {
+      "name": "wgsl-multipass-s1-d32-t1.25-repeat: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d32-t1.25-repeat: opaque input/output",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass: repeated requested time is identical",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass: time changes the field",
+      "passed": true,
+      "mean_abs_change": 0.007125880103558302
+    },
+    {
+      "name": "wgsl-multipass-s1-d32-t1.25-black: finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-multipass-s1-d32-t1.25-black: opaque input/output",
+      "passed": true
+    }
+  ],
+  "scale_measurements": [
+    {
+      "source": "wgsl-field.wgsl",
+      "scale": 1,
+      "mean_abs_vs_full_box": 0.0,
+      "max_abs_vs_full_box": 0.0
+    },
+    {
+      "source": "wgsl-field.wgsl",
+      "scale": 2,
+      "mean_abs_vs_full_box": 0.00023005182447377592,
+      "max_abs_vs_full_box": 0.0778772234916687
+    },
+    {
+      "source": "wgsl-field.wgsl",
+      "scale": 4,
+      "mean_abs_vs_full_box": 0.0006141901831142604,
+      "max_abs_vs_full_box": 0.1041034460067749
+    },
+    {
+      "source": "wgsl-multipass.wgsl",
+      "scale": 1,
+      "mean_abs_vs_full_box": 0.0,
+      "max_abs_vs_full_box": 0.0
+    },
+    {
+      "source": "wgsl-multipass.wgsl",
+      "scale": 2,
+      "mean_abs_vs_full_box": 0.0001496614422649145,
+      "max_abs_vs_full_box": 0.032107412815093994
+    },
+    {
+      "source": "wgsl-multipass.wgsl",
+      "scale": 4,
+      "mean_abs_vs_full_box": 0.0003985585644841194,
+      "max_abs_vs_full_box": 0.015778303146362305
+    }
+  ],
+  "renders": [
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s1-d8-t1.25.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 1.25,
+      "width": 1280,
+      "working_depth": "8",
+      "output_sha256": "82e3e62a971a541a0289070b43ec8dc3aaed933136ef52ffb494965b0d144860",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.3010946214199066
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s1-d8-t0.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 0.0,
+      "width": 1280,
+      "working_depth": "8",
+      "output_sha256": "ad97fe00534f121ff184cb393e9bace1cb04aeba10f54ade81ca0c5a2fabd4ba",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.3007960021495819
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s1-d16-t1.25.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 1.25,
+      "width": 1280,
+      "working_depth": "16",
+      "output_sha256": "ab98250354d06e5ff9c31cf32e1af0e5cc3e610dde7eed868391c91ee34f6bf4",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.2404714822769165,
+      "rgb_std": 0.3011552095413208
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s1-d16-t0.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 0.0,
+      "width": 1280,
+      "working_depth": "16",
+      "output_sha256": "4c0edf366250b3c4e80955444fa289a0233562db05673d2019f25b5a8e077bf1",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.2833553552627563,
+      "rgb_std": 0.30085620284080505
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t1.25.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 1.25,
+      "width": 1280,
+      "working_depth": "32",
+      "output_sha256": "ab98250354d06e5ff9c31cf32e1af0e5cc3e610dde7eed868391c91ee34f6bf4",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.2404714822769165,
+      "rgb_std": 0.3011552095413208
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t0.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 0.0,
+      "width": 1280,
+      "working_depth": "32",
+      "output_sha256": "4c0edf366250b3c4e80955444fa289a0233562db05673d2019f25b5a8e077bf1",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.2833553552627563,
+      "rgb_std": 0.30085620284080505
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s2-d8-t1.25.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 1.25,
+      "width": 640,
+      "working_depth": "8",
+      "output_sha256": "18f6a0713ab34ea39157426929f5ffb66de041358452456c027beef23362b899",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.30123111605644226
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s2-d8-t0.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 0.0,
+      "width": 640,
+      "working_depth": "8",
+      "output_sha256": "01c649ca7e4954ca06f388d2dacd66f6c48b8fb2c6979e8d6dd99add7ef382f1",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.30093786120414734
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s2-d16-t1.25.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 1.25,
+      "width": 640,
+      "working_depth": "16",
+      "output_sha256": "ba0d508f6d991fe361b892524b3b61797ce829fe25486a275b73fa1c26363051",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0952444076538086,
+      "rgb_std": 0.3012648820877075
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s2-d16-t0.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 0.0,
+      "width": 640,
+      "working_depth": "16",
+      "output_sha256": "0aaf24f3ca87fa20a469f66adad7491af6ef5fc0f8cd057fa8b7727c0c3e6ca4",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.1230788230895996,
+      "rgb_std": 0.30097198486328125
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s2-d32-t1.25.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 1.25,
+      "width": 640,
+      "working_depth": "32",
+      "output_sha256": "ba0d508f6d991fe361b892524b3b61797ce829fe25486a275b73fa1c26363051",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0952444076538086,
+      "rgb_std": 0.3012648820877075
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s2-d32-t0.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 0.0,
+      "width": 640,
+      "working_depth": "32",
+      "output_sha256": "0aaf24f3ca87fa20a469f66adad7491af6ef5fc0f8cd057fa8b7727c0c3e6ca4",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.1230788230895996,
+      "rgb_std": 0.30097198486328125
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s4-d8-t1.25.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 1.25,
+      "width": 320,
+      "working_depth": "8",
+      "output_sha256": "8b65b6fc3456a0be6094f5ff79965b0133964c57e7b37ee691f71ac2c687d02b",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.3014599084854126
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s4-d8-t0.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 0.0,
+      "width": 320,
+      "working_depth": "8",
+      "output_sha256": "de1e4afc225d8879a308cd30f4818a3c3e247ed292b3c21183716e3ac9c0fbc9",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.3011804521083832
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s4-d16-t1.25.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 1.25,
+      "width": 320,
+      "working_depth": "16",
+      "output_sha256": "e065541a2b5b5d922063c074751b57655dd413e4112c964784199835dbb32880",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0345590114593506,
+      "rgb_std": 0.30156466364860535
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s4-d16-t0.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 0.0,
+      "width": 320,
+      "working_depth": "16",
+      "output_sha256": "d5284f0124c8fa488fafc7ab886b17904551e8c09d78d3c89aafd98211421329",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0511685609817505,
+      "rgb_std": 0.3012860119342804
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s4-d32-t1.25.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 1.25,
+      "width": 320,
+      "working_depth": "32",
+      "output_sha256": "e065541a2b5b5d922063c074751b57655dd413e4112c964784199835dbb32880",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0345590114593506,
+      "rgb_std": 0.30156466364860535
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s4-d32-t0.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 0.0,
+      "width": 320,
+      "working_depth": "32",
+      "output_sha256": "d5284f0124c8fa488fafc7ab886b17904551e8c09d78d3c89aafd98211421329",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0511685609817505,
+      "rgb_std": 0.3012860119342804
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t1.25-repeat.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 1.25,
+      "width": 1280,
+      "working_depth": "32",
+      "output_sha256": "ab98250354d06e5ff9c31cf32e1af0e5cc3e610dde7eed868391c91ee34f6bf4",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.2404714822769165,
+      "rgb_std": 0.3011552095413208
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-field-s1-d32-t1.25-black.f32",
+      "passes": 1,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-field.wgsl",
+      "source_blake3": "1b13a984226a5f8b2ddaf3ec1b2b562d81ae007e264373aad573c8c93e51f781",
+      "time": 1.25,
+      "width": 1280,
+      "working_depth": "32",
+      "output_sha256": "da4754252012c4a93ff8ac50a27100247e9469da687ec30f5e7147b3ed779814",
+      "input_pattern": "black",
+      "rgb_min": 0.0,
+      "rgb_max": 1.204443335533142,
+      "rgb_std": 0.16807454824447632
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s1-d8-t1.25.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 1.25,
+      "width": 1280,
+      "working_depth": "8",
+      "output_sha256": "7ff0b953b0a90fac1577fd7b14000d55115ace05092f92c43377351ac8eacff8",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.263494610786438
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s1-d8-t0.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 0.0,
+      "width": 1280,
+      "working_depth": "8",
+      "output_sha256": "200939ef96cd7b488f57a8dfc91b7cf2833e092590a5b20938eb8991013fe6b2",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.2651576101779938
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s1-d16-t1.25.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 1.25,
+      "width": 1280,
+      "working_depth": "16",
+      "output_sha256": "cc6a9fd6fea1313f009ed6bb17773fc1d2b081fe277cc9757cb6a0f977e0b064",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3052929639816284,
+      "rgb_std": 0.26965799927711487
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s1-d16-t0.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 0.0,
+      "width": 1280,
+      "working_depth": "16",
+      "output_sha256": "e23499e4f0e7c6510ce0a8dabe37897de64dbf52358077323e71355f8ee6208d",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3254680633544922,
+      "rgb_std": 0.2725413739681244
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t1.25.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 1.25,
+      "width": 1280,
+      "working_depth": "32",
+      "output_sha256": "cc6a9fd6fea1313f009ed6bb17773fc1d2b081fe277cc9757cb6a0f977e0b064",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3052929639816284,
+      "rgb_std": 0.26965799927711487
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t0.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 0.0,
+      "width": 1280,
+      "working_depth": "32",
+      "output_sha256": "e23499e4f0e7c6510ce0a8dabe37897de64dbf52358077323e71355f8ee6208d",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3254680633544922,
+      "rgb_std": 0.2725413739681244
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s2-d8-t1.25.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 1.25,
+      "width": 640,
+      "working_depth": "8",
+      "output_sha256": "1244c1042886cfbb65783b24ea95ea93c2dc32eed10a7fffe58eb65c05a64905",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.2636393904685974
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s2-d8-t0.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 0.0,
+      "width": 640,
+      "working_depth": "8",
+      "output_sha256": "dbe1ed2d84484d09eb577eb78f64d8a501eb078835605d72636a711980b251f6",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.2653031349182129
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s2-d16-t1.25.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 1.25,
+      "width": 640,
+      "working_depth": "16",
+      "output_sha256": "e3a4d47c33485e5654cdc3e89669e045f901dae34d2ad3d9c01ff6b57e87ffe3",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3047081232070923,
+      "rgb_std": 0.26979130506515503
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s2-d16-t0.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 0.0,
+      "width": 640,
+      "working_depth": "16",
+      "output_sha256": "4a2a8f3868ab78be6dd1e838704b6de6a46a1817aadbffb915ea15f46ce86931",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3248203992843628,
+      "rgb_std": 0.2726745903491974
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s2-d32-t1.25.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 1.25,
+      "width": 640,
+      "working_depth": "32",
+      "output_sha256": "e3a4d47c33485e5654cdc3e89669e045f901dae34d2ad3d9c01ff6b57e87ffe3",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3047081232070923,
+      "rgb_std": 0.26979130506515503
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 360,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s2-d32-t0.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 0.0,
+      "width": 640,
+      "working_depth": "32",
+      "output_sha256": "4a2a8f3868ab78be6dd1e838704b6de6a46a1817aadbffb915ea15f46ce86931",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3248203992843628,
+      "rgb_std": 0.2726745903491974
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s4-d8-t1.25.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 1.25,
+      "width": 320,
+      "working_depth": "8",
+      "output_sha256": "5a1a06defe287d57713febbb7f499c0fff819a0d277aa06333faecdc3649ebfe",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.2638362944126129
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s4-d8-t0.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 0.0,
+      "width": 320,
+      "working_depth": "8",
+      "output_sha256": "7fdedbf8ab927b8edce9fa7ff9218224e1644625d79e2437c3691f445edb8e3a",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.0,
+      "rgb_std": 0.26549822092056274
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s4-d16-t1.25.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 1.25,
+      "width": 320,
+      "working_depth": "16",
+      "output_sha256": "55c7428d8dfbeb7efc06737c175403a9e0b272b1c94e64734e6001d31f05b535",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3040217161178589,
+      "rgb_std": 0.2700329124927521
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s4-d16-t0.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 0.0,
+      "width": 320,
+      "working_depth": "16",
+      "output_sha256": "fa627ebff983ccbdbf6ae5a46a1bad4de3cf91f2206d281ad9da311c60f61845",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3243311643600464,
+      "rgb_std": 0.2729162573814392
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s4-d32-t1.25.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 1.25,
+      "width": 320,
+      "working_depth": "32",
+      "output_sha256": "55c7428d8dfbeb7efc06737c175403a9e0b272b1c94e64734e6001d31f05b535",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3040217161178589,
+      "rgb_std": 0.2700329124927521
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 180,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s4-d32-t0.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 0.0,
+      "width": 320,
+      "working_depth": "32",
+      "output_sha256": "fa627ebff983ccbdbf6ae5a46a1bad4de3cf91f2206d281ad9da311c60f61845",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3243311643600464,
+      "rgb_std": 0.2729162573814392
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t1.25-repeat.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 1.25,
+      "width": 1280,
+      "working_depth": "32",
+      "output_sha256": "cc6a9fd6fea1313f009ed6bb17773fc1d2b081fe277cc9757cb6a0f977e0b064",
+      "input_pattern": "ramp",
+      "rgb_min": 0.0,
+      "rgb_max": 1.3052929639816284,
+      "rgb_std": 0.26965799927711487
+    },
+    {
+      "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+      "finite": true,
+      "height": 720,
+      "language_id": 2,
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "output": "/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-examples/wgsl-multipass-s1-d32-t1.25-black.f32",
+      "passes": 2,
+      "renderer_blake3": "66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4",
+      "source": "/Users/junk_doge/Documents/DynamicFX/examples/wgsl-multipass.wgsl",
+      "source_blake3": "2be5c41b78cb9bdc526b9dd4780f9c68367d2eb789f30f114cc13f274dbe4fa8",
+      "time": 1.25,
+      "width": 1280,
+      "working_depth": "32",
+      "output_sha256": "045dd41626485029521730688df9b87e80ab0aca40dd3815a179543fc22d2484",
+      "input_pattern": "black",
+      "rgb_min": 0.0,
+      "rgb_max": 0.7496324777603149,
+      "rgb_std": 0.12542012333869934
+    }
+  ],
+  "passed": true
+}

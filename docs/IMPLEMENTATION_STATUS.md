@@ -3,6 +3,89 @@
 > **This file is the only authority for what is true now.**  
 > Architecture intent belongs in [ARCHITECTURE.md](ARCHITECTURE.md); future sequencing belongs in [ROADMAP.md](ROADMAP.md); verification truth belongs in [TEST_MATRIX.md](TEST_MATRIX.md).
 
+## Active work — 2026-09-08
+
+The user requested remote synchronization, native Apple Silicon AE operation,
+shader quality improvements using a complex Siri-inspired example, and WGSL
+feasibility research. Native installation and temporary-project tests are
+explicitly authorized. Base: fetched `origin/main` at `d4477ab`; branch
+`codex/macos-shader-quality`; the prior local WIP branch remains preserved.
+
+M7 COMPLETE remains historical. The current post-M7 batch follows
+[ADR-0043](adr/0043-apple-silicon-host-protocol.md). The old snapshot below is
+retained as the preceding Windows development record; its long next-action
+field does not supersede this active section.
+
+- macOS: implement Metal default and ARM bundle packaging; verify AE 2026.
+- Quality: restore the ADR-0011 linear sampler contract, measure before/after,
+  improve shader authoring guidance and ship a tested complex example.
+- WGSL: demonstrate the shared IR/GPU route and record remaining frontend work;
+  no production language-selection or persistent format change is implied.
+- Tracking: local taskboard service at its configured loopback endpoint is
+  unavailable; this repository remains the durable record.
+
+The native Apple Silicon batch is **complete for AE 2026 26.3x87** under
+[TR-MAC-001](TEST_MATRIX.md#tr-mac-001--native-apple-silicon-ae-2026).
+The first native binary exposed a released 0.0.6 Half-preview canvas regression.
+Corrected binary `e239ae45…` is installed and hash verified; Full/Half/Quarter
+real viewports now retain the complete frame. Default/editor each pass 184
+tests. Final-artifact 8/16/32-bpc/HDR, one/three-pass, temporal, invalid source,
+keyframes and save/reopen checks pass; fresh independent aerender produced
+12 PSD frames and passed 39 export checks, including odd-sized reduced renders.
+The native Details dialog also passed. The clean 32-bpc Full-preview demo is
+`scripts/out/macos/ae2026/Siri-Glow-macOS.aep`. Failures and both artifact
+identities remain in the [native record](audits/evidence/macos-arm64-20260908/README.md).
+
+Shader quality work is complete: linear sampling, packed-field decoding,
+Siri-inspired example, authoring guidance and 45 real Metal renders with
+numeric comparisons ([report](shader-quality.md)). WGSL feasibility is
+complete: 89 spike tests, six Metal GLSL/WGSL pixel-equal pairs and MSL
+emission; the production Language menu remains GLSL-only
+([assessment](wgsl-feasibility.md)). No commits, push or release were made.
+The verified subset does not grant other AE years, Windows acceptance of this
+diff, Intel/Rosetta or notarized distribution.
+
+The follow-up iOS 27 Siri study is also complete: official preview media was
+visually inspected at recorded time points, distinct from the old glowing-edge
+example. The [research report](research/ios27-siri-shader-study.md) separates
+observed bubble/refraction/light-band behavior from our proposed shader design.
+It delivers a decomposition and implementation/validation plan, not an already
+implemented faithful iOS 27 clone.
+
+## Active follow-up — WGSL / 0.1.0 / Siri
+
+The user now authorizes production WGSL, commit/push and publishing **0.1.0**,
+with Windows artifacts allowed later. After publication, implement the actual
+iOS 27 Siri bubble studied above in local AE. This supersedes the preceding
+no-publication/no-prototype scope. [ADR-0044](adr/0044-wgsl-and-010-release.md)
+fixes the frontend surface, release subset and signing posture before edits.
+Only the local Mac is connected; no Windows Codex task can currently be sent
+work. The [Windows backfill procedure](windows-010-backfill.md) is prepared
+for the same release tag and exact dependency lock. Taskboard was retried and
+remains unavailable; this record tracks work.
+
+Production WGSL is implemented in source commit `73d8b51`: direct Naga parsing,
+strict native ABI, language-aware diagnostics, parameter reflection and the
+existing graph/persistence pipeline. Default and editor each pass 205 tests;
+18 production Metal GLSL/WGSL pairs are byte-equal. Two authored WGSL examples
+pass 40 renders / 96 checks. The [current audit](audits/08-wgsl-010.md) links
+the retained evidence and the first failed comparison-instrument attempt.
+
+The built 0.1.0 candidate has executable SHA-256
+`91c8afdcdc6186ca2efa24ca1c06cbcbb619a659b62e77fbe69fe988f9323a22`.
+Administrator installation into the AE 2026 Plug-ins directory is waiting
+for the user to unlock the Mac and authorize the macOS system dialog.
+CUA confirmed the Mac is locked and automatic unlock cannot unlock it. The
+unanswered terminal password prompt was cancelled before opening that dialog.
+This is an OS credential boundary; installation and temporary-project tests
+are already authorized. Current-artifact AE acceptance and release publication
+remain **NOT_RUN**. Nothing has been pushed or tagged.
+
+**Exact next action:** finish that installation, verify the installed identity,
+and run the 0.1.0 AE 2026 acceptance before freezing and publishing the archive.
+Siri implementation starts after release publication. Prior 0.0.6 binaries and
+their evidence remain preserved as historical acceptance.
+
 ## Snapshot
 
 | Field | Value |

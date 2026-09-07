@@ -1,0 +1,385 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "final_ramp_full_00000.psd format",
+      "passed": true,
+      "size": [
+        321,
+        239
+      ],
+      "expected": [
+        321,
+        239
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_ramp_full_00000.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "final_ramp_full_00000.psd analytic UV",
+      "passed": true,
+      "max_error": 0.001960784313725511,
+      "mean_error": 0.001143825114565076,
+      "tolerance": 0.0039225686274509805
+    },
+    {
+      "name": "final_ramp_full_00001.psd format",
+      "passed": true,
+      "size": [
+        321,
+        239
+      ],
+      "expected": [
+        321,
+        239
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_ramp_full_00001.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "final_ramp_full_00001.psd analytic UV",
+      "passed": true,
+      "max_error": 0.001960784313725511,
+      "mean_error": 0.001143825114565076,
+      "tolerance": 0.0039225686274509805
+    },
+    {
+      "name": "final_ramp_half_00000.psd format",
+      "passed": true,
+      "size": [
+        161,
+        120
+      ],
+      "expected": [
+        161,
+        120
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_ramp_half_00000.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "final_ramp_half_00000.psd analytic UV",
+      "passed": true,
+      "max_error": 0.0019607843137254832,
+      "mean_error": 0.0011438034571106305,
+      "tolerance": 0.0039225686274509805
+    },
+    {
+      "name": "final_ramp_half_00001.psd format",
+      "passed": true,
+      "size": [
+        161,
+        120
+      ],
+      "expected": [
+        161,
+        120
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_ramp_half_00001.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "final_ramp_half_00001.psd analytic UV",
+      "passed": true,
+      "max_error": 0.0019607843137254832,
+      "mean_error": 0.0011438034571106305,
+      "tolerance": 0.0039225686274509805
+    },
+    {
+      "name": "final_ramp_quarter_00000.psd format",
+      "passed": true,
+      "size": [
+        81,
+        60
+      ],
+      "expected": [
+        81,
+        60
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_ramp_quarter_00000.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "final_ramp_quarter_00000.psd analytic UV",
+      "passed": true,
+      "max_error": 0.0019607843137254832,
+      "mean_error": 0.0011442391314093053,
+      "tolerance": 0.0039225686274509805
+    },
+    {
+      "name": "final_ramp_quarter_00001.psd format",
+      "passed": true,
+      "size": [
+        81,
+        60
+      ],
+      "expected": [
+        81,
+        60
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_ramp_quarter_00001.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "final_ramp_quarter_00001.psd analytic UV",
+      "passed": true,
+      "max_error": 0.0019607843137254832,
+      "mean_error": 0.0011442391314093053,
+      "tolerance": 0.0039225686274509805
+    },
+    {
+      "name": "final_siri_full_00025.psd format",
+      "passed": true,
+      "size": [
+        1280,
+        720
+      ],
+      "expected": [
+        1280,
+        720
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_siri_full_00025.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "final_siri_full_00025.psd four edges",
+      "passed": true,
+      "peaks": [
+        0.9372549019607843,
+        0.9098039215686274,
+        0.9294117647058824,
+        0.9176470588235294
+      ],
+      "minimum": 0.15
+    },
+    {
+      "name": "final_siri_full_00025.psd center",
+      "passed": true
+    },
+    {
+      "name": "final_siri_full_00026.psd format",
+      "passed": true,
+      "size": [
+        1280,
+        720
+      ],
+      "expected": [
+        1280,
+        720
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_siri_full_00026.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "final_siri_half_00025.psd format",
+      "passed": true,
+      "size": [
+        640,
+        360
+      ],
+      "expected": [
+        640,
+        360
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_siri_half_00025.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "final_siri_half_00025.psd four edges",
+      "passed": true,
+      "peaks": [
+        0.9372549019607843,
+        0.8941176470588236,
+        0.9294117647058824,
+        0.9098039215686274
+      ],
+      "minimum": 0.15
+    },
+    {
+      "name": "final_siri_half_00025.psd center",
+      "passed": true
+    },
+    {
+      "name": "final_siri_half_00026.psd format",
+      "passed": true,
+      "size": [
+        640,
+        360
+      ],
+      "expected": [
+        640,
+        360
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_siri_half_00026.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "final_siri_quarter_00025.psd format",
+      "passed": true,
+      "size": [
+        320,
+        180
+      ],
+      "expected": [
+        320,
+        180
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_siri_quarter_00025.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "final_siri_quarter_00025.psd four edges",
+      "passed": true,
+      "peaks": [
+        0.8901960784313725,
+        0.8588235294117647,
+        0.8823529411764706,
+        0.8705882352941177
+      ],
+      "minimum": 0.15
+    },
+    {
+      "name": "final_siri_quarter_00025.psd center",
+      "passed": true
+    },
+    {
+      "name": "final_siri_quarter_00026.psd format",
+      "passed": true,
+      "size": [
+        320,
+        180
+      ],
+      "expected": [
+        320,
+        180
+      ],
+      "depth": 8,
+      "channels": 4
+    },
+    {
+      "name": "final_siri_quarter_00026.psd opaque",
+      "passed": true
+    },
+    {
+      "name": "Full native versus same-time production GPU float",
+      "passed": true,
+      "max_error": 0.0019607830865710496,
+      "mean_error": 0.000511788726115247,
+      "tolerance": 0.0039225686274509805
+    },
+    {
+      "name": "Siri 1/2 versus box-reduced Full",
+      "passed": true,
+      "mean_error": 0.0007054440699891074,
+      "p99_error": 0.004901960784313764,
+      "mean_limit": 0.003,
+      "p99_limit": 0.03
+    },
+    {
+      "name": "Siri 1/4 versus box-reduced Full",
+      "passed": true,
+      "mean_error": 0.0009089208310639071,
+      "p99_error": 0.01593137254901933,
+      "mean_limit": 0.003,
+      "p99_limit": 0.03
+    }
+  ],
+  "outputs": [
+    {
+      "file": "final_ramp_full_00000.psd",
+      "sha256": "f67e6d7665ff9dac6d3ebe824947aa05a3b8069a78692cf395ad42ebc32efc7e"
+    },
+    {
+      "file": "final_ramp_full_00001.psd",
+      "sha256": "523ae9aed1c8564a8bba7dfc26d68f2d47307499ac06eea477d109e13124045d"
+    },
+    {
+      "file": "final_ramp_half_00000.psd",
+      "sha256": "4ec19a9c2816562cf98c1cf6a3d0c7d0fe0437bb58d541f7823c9ce54b8c54b8"
+    },
+    {
+      "file": "final_ramp_half_00001.psd",
+      "sha256": "d0aa06f508a4ce1882e850571215f60944c60157d078aa0bb996ac63bb8d629d"
+    },
+    {
+      "file": "final_ramp_quarter_00000.psd",
+      "sha256": "f7f0aebca7d7860aad5959536d9b1f3a030f536651e3085c00ce60760e2a6bb5"
+    },
+    {
+      "file": "final_ramp_quarter_00001.psd",
+      "sha256": "19864de3056b9a017127e2fef333ac186e1b16a6d7aa8c1f7b49d3348b76f74e"
+    },
+    {
+      "file": "final_siri_full_00025.psd",
+      "sha256": "cd8967036b7bf5820da427b58f7ce1d395475f18e07b016aaa08c40e94aa75d3"
+    },
+    {
+      "file": "final_siri_full_00026.psd",
+      "sha256": "fe57c27eb1dfcf222446e0bc46fb0419cd5dbc80c4117534958aa805cf52c59f"
+    },
+    {
+      "file": "final_siri_half_00025.psd",
+      "sha256": "4f5459f009edabf78d9ef5988d53c3d73b99a85075dce0576e647df0a764cdaa"
+    },
+    {
+      "file": "final_siri_half_00026.psd",
+      "sha256": "dc305803d9d9c13aa2e79c2d7f4855e6afdbd1a9fa7bcc7f8bfe7c4cea52e54b"
+    },
+    {
+      "file": "final_siri_quarter_00025.psd",
+      "sha256": "b4280b56fea6843518e2ef3c0b5ca8629b5d8aa17152cfc7ef5e32f602e829c8"
+    },
+    {
+      "file": "final_siri_quarter_00026.psd",
+      "sha256": "7ea2b56da8e6be6578fee8caeab646892e4e06b0ebda9eef778c5c8bd4cc133e"
+    }
+  ],
+  "reference": {
+    "path": "scripts/out/quality/siri-t1.f32",
+    "sha256": "cde43c02cbcbaa116b2b44edef44795b21d3c8eb5748513dc4391489062d377b"
+  }
+}

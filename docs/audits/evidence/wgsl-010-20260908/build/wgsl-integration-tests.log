@@ -1,0 +1,15 @@
+   Compiling dynamicfx v0.1.0 (/Users/junk_doge/Documents/DynamicFX)
+    Finished `test` profile [optimized + debuginfo] target(s) in 3.75s
+     Running unittests src/lib.rs (target/aarch64-apple-darwin/debug/deps/dynamicfx-601385fc88b864ae)
+
+running 7 tests
+test wgsl_tests::unknown_language_snapshot_is_preserved_and_fails_closed ... ok
+test wgsl_tests::wgsl_failure_reports_language_pass_and_envelope_origin ... ok
+test wgsl_tests::wgsl_temporal_window_and_external_restriction_are_unchanged ... ok
+test wgsl_tests::language_switch_and_alias_preserve_existing_parameter_slots ... ok
+test wgsl_tests::wgsl_graph_uses_original_modules_and_neutral_grouping ... ok
+test wgsl_tests::wgsl_external_resources_and_canvas_reach_existing_host_mappings ... ok
+test wgsl_tests::wgsl_snapshot_flattens_and_rebuilds_original_language_and_plan ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 184 filtered out; finished in 0.00s
+

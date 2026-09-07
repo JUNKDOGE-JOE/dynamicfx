@@ -69,6 +69,18 @@ A record that cannot be written is not a record.
    | [ARCHITECTURE.md](../ARCHITECTURE.md) | link to the withheld file | the statement that the boundaries live in the architecture and ADRs |
    | [IMPLEMENTATION_STATUS.md](../IMPLEMENTATION_STATUS.md) | link to the withheld file | same |
 
+   Publication correction added 2026-09-08 (the original six rows above
+   remain historical):
+
+   | Document | What was removed | What remains |
+   |---|---|---|
+   | [ADR-0033 Context, Alternatives and Erratum](0033-gradient-stops-are-ordinary-parameters.md) | third-party identity/version, decoded binary details and reproduced parameter layout/control geometry | visible redaction markers, the ordinary-stop decision, and the correction of the overbroad supporting claim |
+
+   The old optional comparison harness no longer embeds a third-party
+   effect identifier; an operator may explicitly provide a reference name.
+   These corrections remove the details from the new source tree; previously
+   published commits and outside copies cannot be recalled.
+
    ADR-0014 §"alternatives" and ADR-0025 §Context already said "the reference
    competitor" without naming anyone and are published unchanged.
 

@@ -12,6 +12,16 @@
 - Every milestone has one canonical audit document.
 - A milestone that first implements or persists a staged contract may not begin until its entry ADRs are Accepted ([ADR-0009](adr/0009-staged-format-adr-acceptance.md)).
 
+## Active post-M7 follow-up — 0.1.0 then Siri
+
+User-authorized on 2026-09-08; [ADR-0044](adr/0044-wgsl-and-010-release.md).
+Order: production WGSL integration → current-artifact AE 2026 macOS tests →
+0.1.0 publication and asset re-download verification → local iOS 27 Siri
+shader and real AE visual acceptance. Windows 0.1.0 build/host verification
+and artifact upload may follow later; they do not block the Mac release.
+The shader follow-up must deliver the observed bubble/refraction/light-band
+look, source, an AE project and inspected native renders, not only research.
+
 ## M0 — Architecture Contract
 
 **State:** COMPLETE — exited 2026-08-12 (ADRs 0010-0014 Accepted; transport spike TR-M0-002..007 PASS on AE 2025; AE 2026 re-verify tracked as non-blocking follow-up)
@@ -286,3 +296,17 @@ Items 2-5 were pulled forward into the 0.0.3 batch at the user's direction: writ
 **Host matrix:** AE 2024 provisioning is deliberately deferred; releases stay pre-releases under [ADR-0027](adr/0027-0.0.1-prerelease-scope.md). [ADR-0014](adr/0014-windows-host-protocol.md) §7's four-year matrix is **not** superseded and remains the 1.0 gate.
 
 **Next exact action:** See [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md). It is intentionally not duplicated here.
+
+## 2026-09-08 user-directed batch
+
+After the completed Windows 0.0.6/editor work, activate Apple Silicon macOS
+AE 2026 verification, image-quality correction and authoring fixtures, and
+WGSL feasibility research in parallel. [ADR-0043](adr/0043-apple-silicon-host-protocol.md)
+implements the already-planned macOS phase. Exit requires recorded ARM bundle
+and native host evidence, numeric quality comparisons and a running WGSL
+IR/GPU proof with a scoped production-adaptation assessment. The Windows
+four-year release gate and shelved gradient editor remain as recorded.
+
+This batch completed its recorded AE 2026 subset in [TR-MAC-001](TEST_MATRIX.md#tr-mac-001--native-apple-silicon-ae-2026), image-quality fixtures in TR-QUALITY-001, and WGSL research in TR-WGSL-001. The user then requested an independent, reference-backed iOS 27 Siri motion/shader study; it does not imply production WGSL integration or a new release.
+
+The follow-up [iOS 27 Siri study](research/ios27-siri-shader-study.md) is complete as research: observed official preview states, proposed material decomposition and a one-pass starting design. A faithful implemented clone remains a separate implementation task.

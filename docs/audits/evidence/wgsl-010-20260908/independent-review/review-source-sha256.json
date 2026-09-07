@@ -1,0 +1,10 @@
+{
+  "src/frontend/wgsl.rs": "a4a7951435ff23d5333144b4caeb65ba54ea6caba821350dd47da2d2d4eae565",
+  "src/frontend/shared.rs": "4709f5d661b394c11f40c382d917e8b8cd1189bbde4979dd52e5e3edc2733fd1",
+  "src/frontend/glsl.rs": "ebe7eafb237dd63cb13d18d47d8fdb527f4b21b24f0cd3e9999d43ba08d729ab",
+  "src/frontend/mod.rs": "ab672a6f0f275cc34c9bee79273b934ccefaae957d22010b761ac4c948421164",
+  "src/frontend/grammar.rs": "3e950d6e928be867f0be18a4389fcc9e1473aa2c95173f9d09c4767e2c7b4b9f",
+  "src/wgsl_tests.rs": "086e86e39ec9fe247645dc23fa877152ce8f87a40d3a9b62726994c945c76823",
+  "src/lib.rs": "8f7b37da718a749d0f428f20c847e55a5e1d168530c1fbb9750562732af2e188",
+  "src/render.rs": "228a14cdf5070e8d021ec9199b541f3b787c5dd29d53f58264f34cc247fa0e16"
+}

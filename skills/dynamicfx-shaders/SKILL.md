@@ -1,13 +1,15 @@
 ---
 name: dynamicfx-shaders
-description: Use when writing, converting, or debugging shaders for the DynamicFX After Effects plugin — porting Shadertoy/GLSL code to it, authoring @dynamicfx envelope shaders from scratch, declaring AE parameter controls (@param), organizing parameters into per-pass panel groups or declaring the canvas boundary (hint:canvas, 0.0.6+), when a Source expression fails to compile or is rejected by AE (E6/E7/E18/E19/E32/E53/E55/E56/E57), when output (glow, halo, shadow, displacement) is cut off at the layer's edges, or when scripting DynamicFx parameters from ExtendScript.
+description: Use when writing, converting, or debugging GLSL or WGSL shaders for the DynamicFX After Effects plugin — porting Shadertoy/GLSL code to it, authoring @dynamicfx envelope shaders from scratch, declaring AE parameter controls (@param), fixing blocky noise, jagged edges, banding or preview-resolution changes, organizing parameters into per-pass panel groups or declaring the canvas boundary (hint:canvas, 0.0.6+), when a Source expression fails to compile or is rejected by AE (E6/E7/E18/E19/E21/E32/E53/E55/E56/E57), when output (glow, halo, shadow, displacement) is cut off at the layer's edges, or when scripting DynamicFx parameters from ExtendScript.
 ---
 
 # DynamicFX Shaders
 
 ## Overview
 
-DynamicFX turns a GLSL shader into a real GPU-accelerated After Effects effect by embedding it as text inside an expression on the effect's numeric `Source` parameter. There is no shader editor UI, no text field, no code panel — the **committed expression string is the single source of truth**.
+DynamicFX turns a GLSL or WGSL shader into a real GPU-accelerated After Effects effect by embedding it as text inside an expression on the effect's numeric `Source` parameter. There is no shader editor UI, no text field, no code panel — the **selected Language and committed expression string are the source authority**.
+
+GLSL remains the default. **For WGSL (0.1.0+), read [wgsl.md](wgsl.md) before authoring** and select `Language → WGSL`. One source uses one language across all passes; the filename does not select it. The GLSL template below remains valid for GLSL. WGSL has its own fragment signature and requires `@@` for line-leading attributes inside an envelope.
 
 Core mental model: the final deliverable is always one expression of the shape
 
@@ -25,17 +27,18 @@ An AI without this skill reliably invents the following. None of them are real. 
 
 | Invented / assumed | Reality |
 |---|---|
-| `mainImage(out vec4 fragColor, in vec2 fragCoord)` Shadertoy entry point, "compatibility mode" | Every pass is plain GLSL 450: `void main()` writing to `outColor` (see ABI header below). There is no Shadertoy compatibility layer. |
+| `mainImage(out vec4 fragColor, in vec2 fragCoord)` Shadertoy entry point, "compatibility mode" | GLSL uses `void main()` writing to location-0 `outColor`; WGSL uses `@fragment fn main` returning location-0 `vec4<f32>` (see wgsl.md). There is no Shadertoy compatibility layer. |
 | `iTime`, `iResolution`, `iChannel0`, `iMouse`, `iFrame` as built-ins | None of these exist. Map them: `iTime`→`u_time`, `iResolution.xy`→`u_resolution`, `iChannel0` sampling →`texture(sampler2D(u_in, u_s), uv)`, `iMouse`→a `@param` vec2 point control, `iFrame`→`int(u_frame)`. |
 | `// @slider min max default` or similar shorthand annotation | The real syntax is `// @param <id> label:"..." min:0 max:10 default:2` (see @param table below). Misspelled entries reject the whole definition — there is no lenient shorthand. |
 | Standalone `uniform float speed;` declarations | User parameters MUST be fields inside the single `FxUniforms` uniform block, after the three reserved fields `u_resolution`, `u_time`, `u_frame`. A parameter declared outside the block is not a parameter. |
 | A "Shader Code" text parameter, an "Edit Code" button, a code panel in the Effect Controls UI | Does not exist. The only place shader text lives is inside the `Source` expression string, wrapped `` `...`;0 ``. |
-| An "Uniform Bindings" panel, or binding parameters via Slider Control layers/expressions | Does not exist. All parameter binding is declared in-shader via `// @param` comments; AE builds the UI controls from those comments automatically. |
-| Omitting `#version 450` | Every `@pass` body must start with `#version 450`. Without it the pass will not compile. |
+| An "Uniform Bindings" panel or requiring a separate Slider Control layer for every uniform | There is no binding panel. `// @param` comments declare the controls and AE builds them automatically; those resulting AE properties can use ordinary keyframes and expressions. |
+| Omitting `#version 450` from a GLSL pass, or adding it to WGSL | GLSL pass bodies use `#version 450`; WGSL has no `#version` directive. |
+| Pasting ordinary line-leading `@group` / `@fragment` into an envelope pass | Envelope v1 requires `@@group` / `@@fragment` to pass literal attributes through. Only the first `@` on a line is doubled; see wgsl.md. |
 
-## Canonical template
+## Canonical GLSL template
 
-This is the upstream Quick Start example, verbatim. Use it as the starting skeleton for any from-scratch shader.
+This is the upstream GLSL Quick Start example. Use it as the GLSL starting skeleton; the [WGSL guide](wgsl.md#minimal-complete-source-expression) has the equivalent WGSL skeleton.
 
 ```glsl
 `@dynamicfx 1
@@ -85,10 +88,10 @@ Line-by-line, what's fixed vs. what you edit:
 1. **Envelope**: write `@dynamicfx 1` as line 1, then `@graph` ... `pass main: input -> output` ... `@end`. Add more `pass` lines if using multiple passes, `prev`, or extra inputs.
 2. **Graph**: for each pass, declare `pass NAME: IN1[, IN2...] -> OUT`. Exactly one pass across the whole graph must write `output`. Do not use `input`, `output`, or `prev` as a pass name.
 3. **`@pass` blocks**: one `@pass NAME` / `@endpass` pair per graph entry, same names, same order not required but names must match exactly.
-4. **ABI header**: in every pass body, `#version 450` first, then the fixed `v_uv` in/`outColor` out layout lines, then `u_in`/`u_s` at binding 0/1, then `FxUniforms` at binding 2 with `u_resolution, u_time, u_frame` first and in that order.
+4. **Language and ABI**: select the matching Language before committing. For GLSL, use `#version 450`, `v_uv` in/`outColor` out layout lines, `u_in`/`u_s` at binding 0/1, and `FxUniforms` at binding 2. For WGSL, use the attributes and fragment signature in [wgsl.md](wgsl.md), with the same binding numbers. Both begin the uniform structure with `u_resolution, u_time, u_frame` in that order.
 5. **`@param` for every user-facing value**: one `// @param` comment per uniform field you add to `FxUniforms`, placed near its declaration. Never leave a magic number un-parameterized if the user should be able to animate/tweak it.
 6. **Extra inputs**: any additional pass input beyond the first binds sequentially at binding 3, 4, 5 (manifest order). `hint:layer`/`hint:gradient`/`hint:path` parameters are separate from this — see reference.md.
-7. **Body**: write the GLSL logic, sampling with `texture(sampler2D(u_in, u_s), uv)`.
+7. **Body**: GLSL samples with `texture(sampler2D(u_in, u_s), uv)`; WGSL samples with `textureSample(u_in, u_s, uv)` and reads uniform members through the block variable, e.g. `fx.u_time`.
 8. **Wrap**: enclose the whole thing in backticks and append `;0`. Paste into the `Source` expression.
 
 ## Parameter groups (0.0.6+): the panel follows your uniform blocks
@@ -168,6 +171,8 @@ A parameter that already owns a slot **keeps it across source edits** — keyfra
 
 **Reserved uniforms (fixed order, always present):**
 
+The spelling below is GLSL; [wgsl.md](wgsl.md#fragment-abi) maps it to WGSL types and attributes. Variable names such as `u_in`/`u_s` are presentation; bindings route inputs.
+
 | Name | Type | Meaning |
 |---|---|---|
 | `v_uv` | `vec2` (in) | 0..1 UV covering the CANVAS — the layer's own frame unless expanded (see "Canvas expansion"); nothing exists outside it |
@@ -194,6 +199,7 @@ A parameter that already owns a slot **keeps it across source edits** — keyfra
 | E7 | `prev` feedback combined with a `layer`/`path` input in the same graph |
 | E18 | A texture binding declared in a pass that the `@graph` manifest doesn't feed |
 | E19 | An `@param` line is malformed — or the same parameter name is annotated in more than one pass (annotations are source-wide unique; repeat the MEMBER, never the annotation) |
+| E21 | WGSL parse or language-validation failure; inspect the pass/location in the full diagnostic |
 | E32 | A parameter pool exceeded its slot ceiling |
 | E53 | PublicationPending — compiled but not yet published; not renderable yet |
 | E55 | Two `hint:canvas` declarations in one source (exactly one allowed) |
@@ -227,6 +233,17 @@ on screen?). A declared `hint:canvas` reach raises every pass's price —
 default it to what the look needs. Per-pass downsampled intermediates do not
 exist in v1; a lower-resolution pyramid must be faked with fewer octaves.
 
+## Image quality: build the sampling policy with the look
+
+**REQUIRED for noise, thin contours, glows, gradients, displacement, or reports of blockiness: read [quality.md](quality.md).** A compiling shader is not a visual acceptance result. Start with [the Siri-inspired rim example](../../examples/siri-glow.glsl) for a smooth procedural look; it combines pixel coverage, interpolated integer noise, filtered octaves, and final dither in one pass.
+
+- `u_resolution` is the **logical canvas size**. It keeps geometry and blur radius consistent. `fwidth(distance)` measures the **actual rendered pixel footprint** for edge coverage, including Half/Quarter previews. For source texture texels use `textureSize(sampler2D(u_in,u_s),0)`.
+- A runtime sampler can interpolate a texture; it cannot antialias `step()`, a procedural `floor()` grid, or unresolved fBm octaves. Give contours coverage and attenuate noise that does not fit the pixel footprint.
+- Use integer hashing at lattice corners plus interpolation for smooth fields. Hashing `floor(pixel/8)` directly makes 8-pixel blocks by construction. Hashing each physical pixel is appropriate for subtle final grain, not a fluid coordinate field.
+- Keep tiny-valued intermediate fields in 16/32-bpc projects. An 8-bpc graph quantizes after **every pass**; adding noise at the end cannot recover values already lost.
+- Packed data is not ordinary color. Use `texelFetch` for exact data, or decode each texel **before** manual interpolation; never linearly mix a `fract()`-encoded low channel and decode afterward.
+- Verify Full/Half/Quarter and a 200–400% corner crop. Record the actual adapter, source identity and output; do not call a generated look a faithful reproduction of a specific UI version without a verified reference.
+
 ## Validation checklist
 
 Run this before delivering any DynamicFX shader (new or ported):
@@ -234,7 +251,7 @@ Run this before delivering any DynamicFX shader (new or ported):
 - [ ] First line is exactly `@dynamicfx 1`
 - [ ] Exactly one pass across the whole graph writes `output`
 - [ ] Every `@pass NAME` has a matching `pass NAME: ...` line in `@graph`, and vice versa
-- [ ] Every pass body starts with `#version 450`
+- [ ] Language matches every pass: GLSL bodies use `#version 450`; WGSL bodies use the [WGSL fragment ABI](wgsl.md#fragment-abi) and escape line-leading attributes with `@@`
 - [ ] ABI header present in every pass, with `u_resolution`, `u_time`, `u_frame` first and in that order inside `FxUniforms`
 - [ ] Every user-tunable value is a field inside `FxUniforms` (never a standalone `uniform`) and has a matching `// @param` comment
 - [ ] Extra pass inputs bind sequentially at binding 3, 4, 5 in the same order they appear in the `@graph` manifest line
@@ -244,17 +261,23 @@ Run this before delivering any DynamicFX shader (new or ported):
 - [ ] If the shader paints beyond the source pixels (glow/halo/shadow/displacement), it declares `hint:canvas` on its reach parameter (0.0.6+), or the delivery states the padded-precomp margin for older installs
 - [ ] Multi-pass: each pass's `FxUniforms` holds only the heads + members that pass reads (grouping follows block membership); every `@param` name is annotated exactly once across the whole source
 - [ ] Pass names are human-readable (they are the panel group headers) and the pass count is the algorithm's minimum (see Pass economy)
+- [ ] Curves and thin lines use coverage based on the actual pixel footprint; derivatives are evaluated outside divergent control flow
+- [ ] Noise has a declared scale, interpolation and octave cutoff; subtle grain is separate from the low-frequency flow field
+- [ ] Fractional texture sampling, packed-data decoding and 8/16/32-bpc precision have been considered separately
+- [ ] Actual rendered Full/Half/Quarter output and enlarged edge/noise crops were checked; compilation alone is never called visual verification
 
 ## Common mistakes
 
 | Symptom | Cause | Fix |
 |---|---|---|
 | AE rejects the expression outright | Missing trailing `;0`, or unmatched backtick | End with `` `;0 `` exactly; verify only one opening and one closing backtick around the whole source |
-| Compile error citing `mainImage` or "no main function" | Kept a Shadertoy `mainImage` signature | Rewrite as `void main()` writing `outColor`, per the ABI header |
+| Compile error citing `mainImage` or "no main function" | Kept a Shadertoy `mainImage` signature | Use GLSL `void main()` writing `outColor`, or the WGSL fragment signature in wgsl.md, matching Language |
 | Undeclared identifier `iTime`/`iResolution`/`iChannel0` | Left Shadertoy built-ins in place | Map to `u_time` / `u_resolution` / `texture(sampler2D(u_in, u_s), uv)` — see porting.md |
 | `@param` line silently has no effect / whole shader rejected | Typo'd entry key (`mim:`, `lable:`) | Fix the entry key; parsing is fail-closed, re-check spelling against reference.md's entry table |
 | Parameter doesn't appear in Effect Controls | Declared a standalone `uniform`, not a field inside `FxUniforms` | Move the field inside `FxUniforms`, keep the `// @param` comment near it |
 | `E6` on submit | Envelope malformed: pass name mismatch, missing `@end`/`@endpass`, no pass writing `output`, or reserved name misused | Re-check `@graph` vs. `@pass` names line by line; confirm exactly one `-> output` |
+| `E6` names `@group` or `@fragment` | An envelope-body attribute was not escaped | Write `@@group` / `@@fragment` at the start of that line; leave inline attributes unchanged |
+| `E21` on WGSL submit | Invalid WGSL syntax or language validation | Read the pass/location diagnostic; remove GLSL syntax, use `i32` for uniform checkboxes, and keep derivative operations in uniform control flow |
 | `E7` on submit | `prev` used together with a `layer` or `path` input in the same graph | Remove one of the two, or split into a graph that doesn't mix them |
 | `E18` on submit | A `layout(... binding = N) uniform texture2D` declared for an input the `@graph` line doesn't list | Add the missing input to the pass's manifest line, matching binding order |
 | `E32` on submit | Too many parameters of one type (see reference.md pool table) | Merge or drop parameters of that type; pools are per-type, not shared |
@@ -265,8 +288,14 @@ Run this before delivering any DynamicFX shader (new or ported):
 | Nine passes but only a few groups in the panel | Groups follow parameter EXCLUSIVITY, not pass existence — passes with no exclusive params have empty (auto-hidden) groups; shared params live in Main | Working as designed; to populate a pass's group, declare its params only in that pass's block |
 | Panel shows fewer grouped rows than expected after editing a live instance | Bound parameters keep their slots across source edits (keyframes outrank regrouping) | Re-add the effect fresh and restore values by label — recipe in reference.md |
 | ExtendScript that worked pre-0.0.6 now throws / reads wrong rows | Numeric property indexes shifted once in 0.0.6 (group rows occupy positions) | Address parameters BY NAME (names/matchNames are stable); never hardcode indexes — see reference.md scripting section |
+| Staircase on a displaced texture or gradient LUT | Nearest sampling in older builds, or lost source resolution | Verify the linear-sampler fix (2026-09-08); inspect source texels and `textureSize` — see quality.md |
+| Jagged procedural contours even with a filtered sampler | `step`, too-narrow smoothing, or logical pixel size used as the preview footprint | Use signed-distance coverage with `fwidth`, tested at Half/Quarter |
+| Square cells, coarse noise or shimmering | Raw lattice hash, poor interpolation, or unfiltered high-frequency octaves | Separate hash from interpolation and filter octaves against derivatives — see quality.md |
+| Bands appear after thresholding a smooth multi-pass field | The field was quantized into 8-bpc intermediates, or packed data was filtered before decoding | Use 16/32-bpc, or a validated encoding with decode-before-filter |
 
 ## Further reading
+
+**Writing WGSL? REQUIRED: read [wgsl.md](wgsl.md)** — Language selection, `@@` envelope escaping, fragment bindings, reflected uniform layout, GLSL/WGSL differences, and the two production examples.
 
 **Converting existing shaders? REQUIRED: read porting.md** — symbol mapping table, structural decisions (single vs. multi-pass, feedback loops), parameterization conventions, a full worked Shadertoy→DynamicFX example, and the batch-conversion workflow.
 

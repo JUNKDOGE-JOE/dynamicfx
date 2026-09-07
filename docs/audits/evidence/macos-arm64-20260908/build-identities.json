@@ -1,0 +1,55 @@
+{
+  "baseline_commit": "d4477ab6256d5fa712993f378b85c21fbe94bdf9",
+  "baseline_note": "Working-tree changes; first artifact includes native macOS fixes and linear sampling, final additionally repairs the ADR-0039 downsampled frame-size regression. Packaging context alone is not build provenance. Read build logs and preserve the binary hashes.",
+  "host": {
+    "version": "26.3x87",
+    "build": 87,
+    "os": "Macintosh OS 26.5.2/64"
+  },
+  "first_artifact": {
+    "version": "0.0.6",
+    "binary_sha256": "b3bd67cf021b453a8616a8e5e3c89a444da7822d80276b4c55629afdafd3c480",
+    "resource_sha256": "a42ceeda2455c4775ce88fcc9269341daa731c1e2bb754debe4ebcd7099898bb",
+    "binary_bytes": 7535968,
+    "architectures": [
+      "arm64"
+    ],
+    "pipl_outflags": "0x06000644",
+    "pipl_outflags2": "0x08801400"
+  },
+  "final_artifact": {
+    "version": "0.0.6",
+    "binary_sha256": "e239ae457ab33e1bc9466d5ab0bff8b81c08861d072eb5e667b5cd8bc6ae8b0b",
+    "resource_sha256": "a42ceeda2455c4775ce88fcc9269341daa731c1e2bb754debe4ebcd7099898bb",
+    "binary_bytes": 7536144,
+    "architectures": [
+      "arm64"
+    ],
+    "pipl_outflags": "0x06000644",
+    "pipl_outflags2": "0x08801400"
+  },
+  "first_build_log": "build/build-arm64-pass.log",
+  "final_build_log": "build/build-arm64-geometry.log",
+  "first_install_record": "build/install-ae2026.json",
+  "final_install_record": "final-run/install-ae2026-geometry.json",
+  "dependency_lock": {
+    "file": "build/Cargo.lock.txt",
+    "sha256": "483aa5ad54679d0291453f31464d07c191f8967af6a7e11b9e4f7aeda3cab7fe"
+  },
+  "retained_first_archive": {
+    "workspace_relative_path": "scripts/out/macos/first-artifact/DynamicFx-first-arm64.plugin.zip",
+    "sha256": "975c16ea9315455f4c2553bbf79c7239c37b1c200debd8c06a1c4e351f599e3b",
+    "binary_sha256": "b3bd67cf021b453a8616a8e5e3c89a444da7822d80276b4c55629afdafd3c480",
+    "archive_extract_signature_verified": true,
+    "retention_note": "Plugin binaries and AEP projects are retained locally, not copied into the public evidence directory. The ordinary archive preserves the signed bytes without FileProvider FinderInfo detritus."
+  },
+  "retained_final_archive": {
+    "archive": "scripts/out/macos/DynamicFX-0.0.6-macos-arm64-local.zip",
+    "archive_sha256": "2722356b917de6474a81fd32cce709f00a87f5bf4141a7e942dbe4413c65fe9a",
+    "archive_bytes": 2690538,
+    "binary_sha256": "e239ae457ab33e1bc9466d5ab0bff8b81c08861d072eb5e667b5cd8bc6ae8b0b",
+    "archive_extract_signature_verified": true,
+    "executable_permissions_retained": true,
+    "note": "Byte archive only: no rebuild, no signing, no repackage of the bundle; final AE installation/acceptance is recorded separately."
+  }
+}

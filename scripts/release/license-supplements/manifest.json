@@ -1,0 +1,235 @@
+{
+  "packages": {
+    "after-effects@0.4.0": {
+      "selected_license": "Apache-2.0",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "files": [
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt"
+        }
+      ]
+    },
+    "after-effects-sys@0.4.0": {
+      "selected_license": "Apache-2.0",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "files": [
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt"
+        }
+      ]
+    },
+    "block2@0.6.2": {
+      "selected_license": "MIT",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared MIT license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "files": [
+        {
+          "path": "upstream/madsmtm_objc2/b4167b582b2f75f9a1be75495c41b765344fd03c/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "url": "https://raw.githubusercontent.com/madsmtm/objc2/b4167b582b2f75f9a1be75495c41b765344fd03c/LICENSE.md"
+        },
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/MIT.txt",
+          "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/MIT.txt"
+        }
+      ]
+    },
+    "dispatch2@0.3.1": {
+      "selected_license": "Apache-2.0",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "files": [
+        {
+          "path": "upstream/madsmtm_objc2/8852b424193ca41602281b3d7540d7c8ed51e49a/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "url": "https://raw.githubusercontent.com/madsmtm/objc2/8852b424193ca41602281b3d7540d7c8ed51e49a/LICENSE.md"
+        },
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt"
+        }
+      ]
+    },
+    "gpu-descriptor@0.3.2": {
+      "selected_license": "Apache-2.0",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "files": [
+        {
+          "path": "upstream/zakarumych_gpu-descriptor/bb28b4e55b742e0ea3e7a0968e7ee6287ba0e06a/COPYING",
+          "sha256": "f72143f7e9d9fb8bd336b139fa22f825a299591c29f2f7338c5566347b137613",
+          "url": "https://raw.githubusercontent.com/zakarumych/gpu-descriptor/bb28b4e55b742e0ea3e7a0968e7ee6287ba0e06a/COPYING"
+        },
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt"
+        }
+      ]
+    },
+    "gpu-descriptor-types@0.2.0": {
+      "selected_license": "Apache-2.0",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "files": [
+        {
+          "path": "upstream/zakarumych_gpu-descriptor/9f2fb9546591322e7b77ee1e79385e01effd85e4/COPYING",
+          "sha256": "f72143f7e9d9fb8bd336b139fa22f825a299591c29f2f7338c5566347b137613",
+          "url": "https://raw.githubusercontent.com/zakarumych/gpu-descriptor/9f2fb9546591322e7b77ee1e79385e01effd85e4/COPYING"
+        },
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt"
+        }
+      ]
+    },
+    "hexf-parse@0.2.1": {
+      "selected_license": "CC0-1.0",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared CC0-1.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "files": [
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/CC0-1.0.txt"
+        }
+      ]
+    },
+    "objc2@0.6.4": {
+      "selected_license": "MIT",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared MIT license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "files": [
+        {
+          "path": "upstream/madsmtm_objc2/8852b424193ca41602281b3d7540d7c8ed51e49a/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "url": "https://raw.githubusercontent.com/madsmtm/objc2/8852b424193ca41602281b3d7540d7c8ed51e49a/LICENSE.md"
+        },
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/MIT.txt",
+          "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/MIT.txt"
+        }
+      ]
+    },
+    "objc2-core-foundation@0.3.2": {
+      "selected_license": "Apache-2.0",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "files": [
+        {
+          "path": "upstream/madsmtm_objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "url": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        },
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt"
+        }
+      ]
+    },
+    "objc2-encode@4.1.0": {
+      "selected_license": "MIT",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared MIT license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "files": [
+        {
+          "path": "upstream/madsmtm_objc2/8d214f5477365ffcbcbb7de058c86ed9a518efb7/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "url": "https://raw.githubusercontent.com/madsmtm/objc2/8d214f5477365ffcbcbb7de058c86ed9a518efb7/LICENSE.md"
+        },
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/MIT.txt",
+          "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/MIT.txt"
+        }
+      ]
+    },
+    "objc2-foundation@0.3.2": {
+      "selected_license": "MIT",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared MIT license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "files": [
+        {
+          "path": "upstream/madsmtm_objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "url": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        },
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/MIT.txt",
+          "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/MIT.txt"
+        }
+      ]
+    },
+    "objc2-metal@0.3.2": {
+      "selected_license": "Apache-2.0",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "files": [
+        {
+          "path": "upstream/madsmtm_objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "url": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        },
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt"
+        }
+      ]
+    },
+    "objc2-quartz-core@0.3.2": {
+      "selected_license": "Apache-2.0",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented. The unmodified upstream LICENSE.md includes its Apple SDK explanation.",
+      "files": [
+        {
+          "path": "upstream/madsmtm_objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "url": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        },
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt"
+        }
+      ]
+    },
+    "pipl@0.1.1": {
+      "selected_license": "Apache-2.0",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "files": [
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt"
+        }
+      ]
+    },
+    "profiling@1.0.18": {
+      "selected_license": "MIT",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared MIT license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "files": [
+        {
+          "path": "upstream/aclysma_profiling/8271551172eb6fa4cba47369aedd93790c623df9/LICENSE-APACHE",
+          "sha256": "10d30a673cd5e9349bdc02aeb48f14b3386d27d0da32df8f0a555d4aa16aa551",
+          "url": "https://raw.githubusercontent.com/aclysma/profiling/8271551172eb6fa4cba47369aedd93790c623df9/LICENSE-APACHE"
+        },
+        {
+          "path": "upstream/aclysma_profiling/8271551172eb6fa4cba47369aedd93790c623df9/LICENSE-MIT",
+          "sha256": "c8167fdeeed46d3f244d3f85c5bf998ce889343691c32be2c61a8bc4b5c08333",
+          "url": "https://raw.githubusercontent.com/aclysma/profiling/8271551172eb6fa4cba47369aedd93790c623df9/LICENSE-MIT"
+        }
+      ]
+    },
+    "spirv@0.4.0+sdk-1.4.341.0": {
+      "selected_license": "Apache-2.0",
+      "note": "Registry package omits license text; supplied upstream notices (where available) and/or the declared Apache-2.0 license text. Standard templates come from the pinned SPDX license list; template placeholders are not asserted copyright holders. No package-specific copyright statement is invented.",
+      "files": [
+        {
+          "path": "upstream/gfx-rs_rspirv/8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "url": "https://raw.githubusercontent.com/gfx-rs/rspirv/8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4/LICENSE"
+        }
+      ]
+    }
+  }
+}

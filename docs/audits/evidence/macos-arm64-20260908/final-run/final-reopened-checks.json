@@ -1,0 +1,252 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "name": "capture completed",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "six shader fixtures",
+      "pass": true,
+      "observed": 6
+    },
+    {
+      "name": "DFX_gradient publication",
+      "pass": true,
+      "observed": {
+        "name": "DFX_gradient",
+        "token": 4035137096389509,
+        "status": "Status: idle",
+        "source": 341
+      }
+    },
+    {
+      "name": "DFX_hdr publication",
+      "pass": true,
+      "observed": {
+        "name": "DFX_hdr",
+        "token": 4486241191979997,
+        "status": "Status: idle",
+        "source": 340
+      }
+    },
+    {
+      "name": "DFX_invalid publication",
+      "pass": true,
+      "observed": {
+        "name": "DFX_invalid",
+        "token": 70,
+        "status": "Status: idle",
+        "source": 60
+      }
+    },
+    {
+      "name": "DFX_multi publication",
+      "pass": true,
+      "observed": {
+        "name": "DFX_multi",
+        "token": 2048773465720457,
+        "status": "Status: idle",
+        "source": 1243
+      }
+    },
+    {
+      "name": "DFX_param publication",
+      "pass": true,
+      "observed": {
+        "name": "DFX_param",
+        "token": 5937454655800817,
+        "status": "Status: idle",
+        "source": 398
+      }
+    },
+    {
+      "name": "DFX_temporal publication",
+      "pass": true,
+      "observed": {
+        "name": "DFX_temporal",
+        "token": 7638930386352653,
+        "status": "Status: idle",
+        "source": 460
+      }
+    },
+    {
+      "name": "all depths measured",
+      "pass": true,
+      "observed": [
+        {
+          "depth": 8,
+          "gradient": [
+            0.50196081399918,
+            0.50196081399918,
+            0.25098040699959
+          ],
+          "multi": [
+            0.50196081399918,
+            0.50196081399918,
+            0.25098040699959
+          ],
+          "hdr": [
+            1,
+            0,
+            0.12156863510609
+          ]
+        },
+        {
+          "depth": 16,
+          "gradient": [
+            0.50155639648438,
+            0.5020751953125,
+            0.25
+          ],
+          "multi": [
+            0.50155639648438,
+            0.5020751953125,
+            0.25
+          ],
+          "hdr": [
+            1,
+            0,
+            0.12344360351562
+          ]
+        },
+        {
+          "depth": 32,
+          "gradient": [
+            0.50156247615814,
+            0.50208330154419,
+            0.25
+          ],
+          "multi": [
+            0.50156247615814,
+            0.50208330154419,
+            0.25
+          ],
+          "hdr": [
+            2,
+            -0.5,
+            0.12345600128174
+          ]
+        }
+      ]
+    },
+    {
+      "name": "8bpc UV",
+      "pass": true,
+      "observed": [
+        0.50196081399918,
+        0.50196081399918,
+        0.25098040699959
+      ]
+    },
+    {
+      "name": "8bpc multipass parity",
+      "pass": true,
+      "observed": [
+        0.50196081399918,
+        0.50196081399918,
+        0.25098040699959
+      ]
+    },
+    {
+      "name": "8bpc HDR",
+      "pass": true,
+      "observed": [
+        1,
+        0,
+        0.12156863510609
+      ]
+    },
+    {
+      "name": "16bpc UV",
+      "pass": true,
+      "observed": [
+        0.50155639648438,
+        0.5020751953125,
+        0.25
+      ]
+    },
+    {
+      "name": "16bpc multipass parity",
+      "pass": true,
+      "observed": [
+        0.50155639648438,
+        0.5020751953125,
+        0.25
+      ]
+    },
+    {
+      "name": "16bpc HDR",
+      "pass": true,
+      "observed": [
+        1,
+        0,
+        0.12344360351562
+      ]
+    },
+    {
+      "name": "32bpc UV",
+      "pass": true,
+      "observed": [
+        0.50156247615814,
+        0.50208330154419,
+        0.25
+      ]
+    },
+    {
+      "name": "32bpc multipass parity",
+      "pass": true,
+      "observed": [
+        0.50156247615814,
+        0.50208330154419,
+        0.25
+      ]
+    },
+    {
+      "name": "32bpc HDR",
+      "pass": true,
+      "observed": [
+        2,
+        -0.5,
+        0.12345600128174
+      ]
+    },
+    {
+      "name": "temporal random order",
+      "pass": true,
+      "observed": [
+        0.10000000149012,
+        0.40000000596046,
+        0.20000000298023,
+        0.40000000596046
+      ]
+    },
+    {
+      "name": "invalid source passthrough",
+      "pass": true,
+      "observed": [
+        0.05000000074506,
+        0.40000000596046,
+        0.10000000149012
+      ]
+    },
+    {
+      "name": "keyframed parameter",
+      "pass": true,
+      "observed": [
+        0.25,
+        0.75
+      ]
+    },
+    {
+      "name": "two actual keys",
+      "pass": true,
+      "observed": {
+        "t0": 0.25,
+        "t1": 0.75,
+        "keys": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "started_utc": "2026-09-07T20:38:21.908733+00:00",
+  "baseline_commit": "d4477ab6256d5fa712993f378b85c21fbe94bdf9",
+  "branch": "codex/macos-shader-quality",
+  "os": "macOS-26.5.2-arm64-arm-64bit",
+  "architecture": "arm64",
+  "rust": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+  "naga": "29.0.4",
+  "wgpu": "29.0.4",
+  "ae_run": false,
+  "backend_override": null,
+  "source_sha256": {
+    "src/render.rs": "228a14cdf5070e8d021ec9199b541f3b787c5dd29d53f58264f34cc247fa0e16",
+    "src/plan.rs": "ed55f99f0776799c4cafed91c63af28aaa719f4ce77edf3b873de2228c2292be",
+    "src/binding.rs": "a2e55f5e55622fef64ae8ea4cde8d249959f9dd94194d399306f647beb43f657",
+    "src/definition/effect.rs": "a89576c54ecacbea631f635d49cdabaa2c93aefc62e55dff3dcde9ec3b833048",
+    "src/definition/param.rs": "9cf7f19a0bbb24da1b6f53f80010b0a15beab1fbb4b5a9dab59749768667faff",
+    "src/frontend/mod.rs": "56ed1b0f1a353c6a98f73c258aaedb82e13c999d447069b436f91af707073470",
+    "src/frontend/annotation.rs": "b504e5a07b15c2b085c4c37ba20a465defaca3499c6c332dc437956857647c73",
+    "src/frontend/envelope.rs": "70332e2fb6e51ece670fc6939698fbf843c6a40874621b9dc50b37faed963c0b",
+    "src/frontend/glsl.rs": "7bc72ff80b8b8f249890607aa4b0d283d083d41a900f00688c762a6cce10d249",
+    "src/frontend/grammar.rs": "a32f347debe1de36fc2a61d87afffb05bb55c3571aee2683c5ab0f219964b59f",
+    "spike/wgsl/src/main.rs": "f5fd0282eec76a3c6aa050054deb86152a32ba1bcacf696fc9784f4b8ea4ce14",
+    "spike/wgsl/Cargo.toml": "6f8e747fed54c942460e489080c3d386d5e9e016fa96d0d39d73c6402df9a7c6",
+    "spike/wgsl/Cargo.lock": "e69a0f23fc77f9519d393ab4622f3543b9ace828852bb3927bf475ffa11d2f72",
+    "spike/wgsl/run.py": "a96d56f9d8ca220097f34195e2291468f1c43bdbcac352cf192035ace9fb360f",
+    "spike/wgsl/fixtures/field.glsl": "d1daa4fb5d4897796bb561ad4b2f76e7789d39636db1fca82ab2e28ced7d99a6",
+    "spike/wgsl/fixtures/field.wgsl": "ed8aa3b61a08aa203583183e1b5779b4431d54e8787c35db1fa9721c853a7d25",
+    "spike/wgsl/fixtures/mix.glsl": "0d2cc2b824f824b88cbb6cc8a42b78f29744cda23d74a2aabd822cb343d92a78",
+    "spike/wgsl/fixtures/mix.wgsl": "17fea13a0d0bcecab006e12f31dfffc5970ce12a3e13bc2f4988911896606a1f"
+  },
+  "artifacts": {
+    "F32-1pass.rgba": {
+      "raw_bytes": 524288,
+      "sha256": "804622ee2996dea581907d17bfcfc18b16939452eab815dd36bc4f9334b7f4f6"
+    },
+    "F32-2pass.rgba": {
+      "raw_bytes": 524288,
+      "sha256": "8ff453945955323fd6c00aaa5ed371d14f76bca0823871f0ceb21ea1966c725b"
+    },
+    "U15-1pass.rgba": {
+      "raw_bytes": 524288,
+      "sha256": "804622ee2996dea581907d17bfcfc18b16939452eab815dd36bc4f9334b7f4f6"
+    },
+    "U15-2pass.rgba": {
+      "raw_bytes": 524288,
+      "sha256": "8ff453945955323fd6c00aaa5ed371d14f76bca0823871f0ceb21ea1966c725b"
+    },
+    "U8-1pass.rgba": {
+      "raw_bytes": 131072,
+      "sha256": "ba09869c4d2d690983d81d99999d896c4805adddc5346c7268f7dcda13165e8f"
+    },
+    "U8-2pass.rgba": {
+      "raw_bytes": 131072,
+      "sha256": "dad51e0d2e62014c99f0da424739d3745e67d1c8e4605fac8b1ae8be2e705518"
+    }
+  },
+  "finished_utc": "2026-09-07T20:38:25.773520+00:00",
+  "result": "PASS"
+}

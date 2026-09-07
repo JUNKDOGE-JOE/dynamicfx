@@ -1,0 +1,1 @@
+if(app.project && app.project.dirty)throw Error("Unexpected dirty project");app.open(new File('/Users/junk_doge/Documents/DynamicFX/scripts/out/macos/ae2026/native-smoke.aep'));return {version:app.version,build:app.buildNumber,states:states()};

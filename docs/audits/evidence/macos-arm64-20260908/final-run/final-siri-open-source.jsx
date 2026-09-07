@@ -1,0 +1,1 @@
+app.project.save();app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);app.open(new File("/Users/junk_doge/Documents/DynamicFX/scripts/out/macos/ae2026/siri-demo-with-tests.aep"));app.project.bitsPerChannel=32;var c=comp("DFX_siri");c.time=1;c.resolutionFactor=[1,1];c.openInViewer();app.purge(PurgeTarget.ALL_CACHES);return {state:state(c),resolution:c.resolutionFactor};

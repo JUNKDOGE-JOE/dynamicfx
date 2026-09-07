@@ -1,0 +1,314 @@
+[
+  {
+    "file": "fixtures.json",
+    "source": "scripts/out/macos/ae2026/fixtures.json",
+    "bytes": 3046,
+    "sha256": "7e526db541322689cc0a8366fa2a84b3c1c14f1410abb8ce33256146ad71c9d7"
+  },
+  {
+    "file": "setup.applescript-unverified.jsx",
+    "source": "scripts/out/macos/ae2026/setup.applescript-unverified.jsx",
+    "bytes": 5228,
+    "sha256": "c87e8a8ce82129a05b557d2b71517926819b1fc4b21b408fef5c19cf2dca8aa1"
+  },
+  {
+    "file": "setup.apple.txt",
+    "source": "scripts/out/macos/ae2026/setup.apple.txt",
+    "bytes": 24,
+    "sha256": "3a18cefe6610a849e000489438bc9aff6bf311c2878770380e67c135346d5027"
+  },
+  {
+    "file": "setup.jsx",
+    "source": "scripts/out/macos/ae2026/setup.jsx",
+    "bytes": 5786,
+    "sha256": "9558d8e9c47b57932a3254e32f3b8b4d9d5436d4b639f6d21607435acc35ad41"
+  },
+  {
+    "file": "setup.json",
+    "source": "scripts/out/macos/ae2026/setup.json",
+    "bytes": 506,
+    "sha256": "adc0eb7f3bc179cf38ea9395b2859c30ce6b9101e186039a3fc65ffc12bc4a5f"
+  },
+  {
+    "file": "ready.jsx",
+    "source": "scripts/out/macos/ae2026/ready.jsx",
+    "bytes": 2031,
+    "sha256": "9b8a70d6f022098d3f2ca57bc068e2e1f2daeb264d88391356f7429eeca77b3a"
+  },
+  {
+    "file": "ready.json",
+    "source": "scripts/out/macos/ae2026/ready.json",
+    "bytes": 510,
+    "sha256": "85f0848f56dd3ab938c64c4e7da74a4381107c87ae7f63f9241fa3be8b1ea7c7"
+  },
+  {
+    "file": "capture.jsx",
+    "source": "scripts/out/macos/ae2026/capture.jsx",
+    "bytes": 3169,
+    "sha256": "13dfa8b798336fee0bb5cfbd5141906bcc4783879b36d0a9ce5d87433edf6523"
+  },
+  {
+    "file": "capture.json",
+    "source": "scripts/out/macos/ae2026/capture.json",
+    "bytes": 1185,
+    "sha256": "35a322ed4792b14e875d853bbb74305d475088781dde77fb82c1903ae0f355e8"
+  },
+  {
+    "file": "checks.json",
+    "source": "scripts/out/macos/ae2026/checks.json",
+    "bytes": 4777,
+    "sha256": "f72ccd012aace76ff1f580acdf68cf6fa76846bfa4f67377b60b5a16d503ce02"
+  },
+  {
+    "file": "capture_gradient.png",
+    "source": "scripts/out/macos/ae2026/capture_gradient.png",
+    "bytes": 1350,
+    "sha256": "143c8c629d206c70f25aa5e3a7f7256a2a574042fb72d6fa9b9ca61e3f5f2e87"
+  },
+  {
+    "file": "capture_multi.png",
+    "source": "scripts/out/macos/ae2026/capture_multi.png",
+    "bytes": 1350,
+    "sha256": "143c8c629d206c70f25aa5e3a7f7256a2a574042fb72d6fa9b9ca61e3f5f2e87"
+  },
+  {
+    "file": "keyframes.jsx",
+    "source": "scripts/out/macos/ae2026/keyframes.jsx",
+    "bytes": 2346,
+    "sha256": "a363991b542cc7698ba2a5d591a9faf889bd924271db7f9dfd62c9069ddc9ef3"
+  },
+  {
+    "file": "keyframes.json",
+    "source": "scripts/out/macos/ae2026/keyframes.json",
+    "bytes": 49,
+    "sha256": "b09a3abcc6baf17cf053f734ef6d77599e7cc8ee4133c4b11ef5868b58fbee2a"
+  },
+  {
+    "file": "reopen.jsx",
+    "source": "scripts/out/macos/ae2026/reopen.jsx",
+    "bytes": 2185,
+    "sha256": "fb6eac71d26ce0865165311aa4b9f637742611f0eb989e390819a6e861e2313f"
+  },
+  {
+    "file": "reopen.json",
+    "source": "scripts/out/macos/ae2026/reopen.json",
+    "bytes": 510,
+    "sha256": "85f0848f56dd3ab938c64c4e7da74a4381107c87ae7f63f9241fa3be8b1ea7c7"
+  },
+  {
+    "file": "reopened-capture.jsx",
+    "source": "scripts/out/macos/ae2026/reopened-capture.jsx",
+    "bytes": 3196,
+    "sha256": "a083fc01833ec81e8dacabdaa5bbdd368f35156bd08341f08dfb57823985500e"
+  },
+  {
+    "file": "reopened-capture.json",
+    "source": "scripts/out/macos/ae2026/reopened-capture.json",
+    "bytes": 1185,
+    "sha256": "35a322ed4792b14e875d853bbb74305d475088781dde77fb82c1903ae0f355e8"
+  },
+  {
+    "file": "reopened-checks.json",
+    "source": "scripts/out/macos/ae2026/reopened-checks.json",
+    "bytes": 4777,
+    "sha256": "f72ccd012aace76ff1f580acdf68cf6fa76846bfa4f67377b60b5a16d503ce02"
+  },
+  {
+    "file": "reopened-capture_gradient.png",
+    "source": "scripts/out/macos/ae2026/reopened-capture_gradient.png",
+    "bytes": 1350,
+    "sha256": "143c8c629d206c70f25aa5e3a7f7256a2a574042fb72d6fa9b9ca61e3f5f2e87"
+  },
+  {
+    "file": "reopened-capture_multi.png",
+    "source": "scripts/out/macos/ae2026/reopened-capture_multi.png",
+    "bytes": 1350,
+    "sha256": "143c8c629d206c70f25aa5e3a7f7256a2a574042fb72d6fa9b9ca61e3f5f2e87"
+  },
+  {
+    "file": "reopened-keys.jsx",
+    "source": "scripts/out/macos/ae2026/reopened-keys.jsx",
+    "bytes": 2146,
+    "sha256": "dd2e6672ea1ebe877b415070fc4a6277e1b57153799ab592dc4b9c066bf15068"
+  },
+  {
+    "file": "reopened-keys.json",
+    "source": "scripts/out/macos/ae2026/reopened-keys.json",
+    "bytes": 73,
+    "sha256": "519209a6d807f0e33c0663bb5e11996a07afb38a83ea5ddff54751b4c0299863"
+  },
+  {
+    "file": "queue.jsx",
+    "source": "scripts/out/macos/ae2026/queue.jsx",
+    "bytes": 2509,
+    "sha256": "fd831140f583e83079a6ff2faaeb8fb0ffdce3415dd86d46a09cd7e2b5905b51"
+  },
+  {
+    "file": "queue.json",
+    "source": "scripts/out/macos/ae2026/queue.json",
+    "bytes": 553,
+    "sha256": "c790a5a7f23d2dfb7a807520fb8d476bccc1561fd043cf94079c4a118567145c"
+  },
+  {
+    "file": "aerender.log",
+    "source": "scripts/out/macos/ae2026/aerender.log",
+    "bytes": 1902,
+    "sha256": "d0de1dfbcbeb0375c533dc7a45bda29cb73d8d30e663e13a7e5e44855fa4bce9"
+  },
+  {
+    "file": "aerender.psd00000",
+    "source": "scripts/out/macos/ae2026/aerender.psd00000",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "aerender-fixed.log",
+    "source": "scripts/out/macos/ae2026/aerender-fixed.log",
+    "bytes": 1661,
+    "sha256": "d18779425e542c0a830b327238e67b52007aa917a8ddf159dc2c919392b16620"
+  },
+  {
+    "file": "aerender_fixed_00000.psd",
+    "source": "scripts/out/macos/ae2026/aerender_fixed_00000.psd",
+    "bytes": 102804,
+    "sha256": "14b1469f201e4823c43aa39477ddd9f0237278064f762f6dda2d9b4fa8cee596"
+  },
+  {
+    "file": "aerender_fixed_00001.psd",
+    "source": "scripts/out/macos/ae2026/aerender_fixed_00001.psd",
+    "bytes": 102804,
+    "sha256": "e755cec495de90e9f46d26366730813b5e1336d69f1f8fa88c95baee9178ff09"
+  },
+  {
+    "file": "fresh-setup.jsx",
+    "source": "scripts/out/macos/ae2026/fresh-setup.jsx",
+    "bytes": 3526,
+    "sha256": "a2ed87ce8c0314747565ff3ed953ecde9c478cc890282db6c6cde916a5e8741c"
+  },
+  {
+    "file": "fresh-setup.json",
+    "source": "scripts/out/macos/ae2026/fresh-setup.json",
+    "bytes": 96,
+    "sha256": "74bd63a887ea2ccc6f27949cf1e9335613c7764b29784dbb5549db5f9f033593"
+  },
+  {
+    "file": "fresh-queue.jsx",
+    "source": "scripts/out/macos/ae2026/fresh-queue.jsx",
+    "bytes": 2608,
+    "sha256": "6ef2b5d2dc9eb3932c672b3a5a3af43abe8bc5b194d657f55206a28fb070bf39"
+  },
+  {
+    "file": "fresh-queue.json",
+    "source": "scripts/out/macos/ae2026/fresh-queue.json",
+    "bytes": 111,
+    "sha256": "0f500078ce1012a342b445d9f28890f348e33b02ca6fb41687fb8ccc71dd1b15"
+  },
+  {
+    "file": "fresh-aerender-source.jsx",
+    "source": "scripts/out/macos/ae2026/fresh-aerender-source.jsx",
+    "bytes": 1505,
+    "sha256": "a76aa870f6159cc08504557291333a0bdf64c72703197f31424dea7e624337f0"
+  },
+  {
+    "file": "queue-fresh-source.jsx",
+    "source": "scripts/out/macos/ae2026/queue-fresh-source.jsx",
+    "bytes": 587,
+    "sha256": "46340f8724259a936087820fffe426b1ee632dba1618d32e5387f633e2dcbb1d"
+  },
+  {
+    "file": "aerender-fresh.log",
+    "source": "scripts/out/macos/ae2026/aerender-fresh.log",
+    "bytes": 1670,
+    "sha256": "b7ef1bb9adab2aeace0fc79e0716a2363c73dfa692c07a7b70f5ec80d8ae026e"
+  },
+  {
+    "file": "aerender-fresh-checks.json",
+    "source": "scripts/out/macos/ae2026/aerender-fresh-checks.json",
+    "bytes": 2524,
+    "sha256": "b7492100e2cec09c440ee50e2817b25f470fb9b8e1c4d8d4cd40479e727363c6"
+  },
+  {
+    "file": "fresh_00000.psd",
+    "source": "scripts/out/macos/ae2026/fresh_00000.psd",
+    "bytes": 102716,
+    "sha256": "e4c8b86ba5cd9ae9ef375c5c6c2866237484dd32aa72ac0c91e19028df44ea3d"
+  },
+  {
+    "file": "fresh_00001.psd",
+    "source": "scripts/out/macos/ae2026/fresh_00001.psd",
+    "bytes": 102716,
+    "sha256": "1de0a0cc15d0fe42f440fd2d4884979b844b52e660b03282e6526513672031e6"
+  },
+  {
+    "file": "siri-setup.jsx",
+    "source": "scripts/out/macos/ae2026/siri-setup.jsx",
+    "bytes": 7912,
+    "sha256": "ef3304389ee535e6e55f451d0e0dac6d2f6febe4d542d837386635be6bbfc09d"
+  },
+  {
+    "file": "siri-setup.json",
+    "source": "scripts/out/macos/ae2026/siri-setup.json",
+    "bytes": 86,
+    "sha256": "3dc9d0fb44a6bf770e4454f89bb255f48541fd9d5c33aff8454dbf7bbef50679"
+  },
+  {
+    "file": "siri-capture.jsx",
+    "source": "scripts/out/macos/ae2026/siri-capture.jsx",
+    "bytes": 2714,
+    "sha256": "8ca15bf332e38ba7fc27f86c8220e6ea80d47fbda7871ea10162b7c645f1125a"
+  },
+  {
+    "file": "siri-capture.json",
+    "source": "scripts/out/macos/ae2026/siri-capture.json",
+    "bytes": 128,
+    "sha256": "cac4df6cbc47accf2e9921c7ff957b500ae078556c1c2381d75b4b3499c0a323"
+  },
+  {
+    "file": "siri-probe.jsx",
+    "source": "scripts/out/macos/ae2026/siri-probe.jsx",
+    "bytes": 2857,
+    "sha256": "9c7864682052dc387121994510bab74c76d3d1f9f3111fe7b652b6b48db818b2"
+  },
+  {
+    "file": "siri-probe.json",
+    "source": "scripts/out/macos/ae2026/siri-probe.json",
+    "bytes": 338,
+    "sha256": "d3a1868a952eda0b9711bf7e6d3e85844355bb6025f19e0b90558f4a48382f61"
+  },
+  {
+    "file": "siri_t0.png",
+    "source": "scripts/out/macos/ae2026/siri_t0.png",
+    "bytes": 711456,
+    "sha256": "d747d1b5ff5dc783630d87a530bc21a0c83e3fc8feb20f4fe5a594237234d982"
+  },
+  {
+    "file": "siri_t1.png",
+    "source": "scripts/out/macos/ae2026/siri_t1.png",
+    "bytes": 720823,
+    "sha256": "f189dba8d02dc6a0ed0ceccdf6451992f56c44897ba22ce0c672c28eb93982c1"
+  },
+  {
+    "file": "siri_t2.png",
+    "source": "scripts/out/macos/ae2026/siri_t2.png",
+    "bytes": 710774,
+    "sha256": "2ec55f0a415bd71db8c7de2321bbbd0f584e392598504b12c523d0df57b024aa"
+  },
+  {
+    "file": "siri_8bpc.png",
+    "source": "scripts/out/macos/ae2026/siri_8bpc.png",
+    "bytes": 186078,
+    "sha256": "4ad9bbd65718ae11114b55856b36aac0ec79873efef4ebf73c768560a06b5b28"
+  },
+  {
+    "file": "siri_full_purged.png",
+    "source": "scripts/out/macos/ae2026/siri_full_purged.png",
+    "bytes": 720823,
+    "sha256": "f189dba8d02dc6a0ed0ceccdf6451992f56c44897ba22ce0c672c28eb93982c1"
+  },
+  {
+    "file": "siri_half.png",
+    "source": "scripts/out/macos/ae2026/siri_half.png",
+    "bytes": 111492,
+    "sha256": "b6ec1701d6922e12df28e65064a624645a83894b3b34e3fb86a453dd94238613"
+  }
+]

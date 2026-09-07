@@ -1,0 +1,118 @@
+{
+  "recorded_utc": "2026-09-07T20:57:34.263855+00:00",
+  "baseline": "d4477ab6256d5fa712993f378b85c21fbe94bdf9",
+  "files": [
+    {
+      "path": "src/binding.rs",
+      "sha256": "a2e55f5e55622fef64ae8ea4cde8d249959f9dd94194d399306f647beb43f657"
+    },
+    {
+      "path": "src/canvas.rs",
+      "sha256": "6d31b6ccb94c98a89112ef547916c0dab9276e397f3968243e18973e4a980dc4"
+    },
+    {
+      "path": "src/definition/effect.rs",
+      "sha256": "a89576c54ecacbea631f635d49cdabaa2c93aefc62e55dff3dcde9ec3b833048"
+    },
+    {
+      "path": "src/definition/mod.rs",
+      "sha256": "d1bc2234fe0f960aab517de8c29650207b927a3152a972b516c98b3273109964"
+    },
+    {
+      "path": "src/definition/param.rs",
+      "sha256": "9cf7f19a0bbb24da1b6f53f80010b0a15beab1fbb4b5a9dab59749768667faff"
+    },
+    {
+      "path": "src/diag.rs",
+      "sha256": "7c7badae7c48f719204c888c1f403171a31b7396d9e5210700d085212469e156"
+    },
+    {
+      "path": "src/diagnostics.rs",
+      "sha256": "d4bf1d6524945742e2f4d630fce4140b744f523ba9c261f2e6c6afb267e7d391"
+    },
+    {
+      "path": "src/frontend/annotation.rs",
+      "sha256": "b504e5a07b15c2b085c4c37ba20a465defaca3499c6c332dc437956857647c73"
+    },
+    {
+      "path": "src/frontend/envelope.rs",
+      "sha256": "70332e2fb6e51ece670fc6939698fbf843c6a40874621b9dc50b37faed963c0b"
+    },
+    {
+      "path": "src/frontend/glsl.rs",
+      "sha256": "7bc72ff80b8b8f249890607aa4b0d283d083d41a900f00688c762a6cce10d249"
+    },
+    {
+      "path": "src/frontend/grammar.rs",
+      "sha256": "a32f347debe1de36fc2a61d87afffb05bb55c3571aee2683c5ab0f219964b59f"
+    },
+    {
+      "path": "src/frontend/mod.rs",
+      "sha256": "56ed1b0f1a353c6a98f73c258aaedb82e13c999d447069b436f91af707073470"
+    },
+    {
+      "path": "src/gradient.rs",
+      "sha256": "5ca22a5b239e70ab582fcf319905d024d171b322f9a46c7419979e2824c5aba4"
+    },
+    {
+      "path": "src/host/idle.rs",
+      "sha256": "f9c2b183f683cb95af2739703697b85e15d1b8e4c26e2289833eb2f0758a3df8"
+    },
+    {
+      "path": "src/host/mod.rs",
+      "sha256": "80ea1cab6a55cbfa11c2b815319ca5d28c5ba89b1e481e41f88d28a227f6860c"
+    },
+    {
+      "path": "src/host/params.rs",
+      "sha256": "a791f7c9bd2ff4a8f872742ba342231bbc49dba5834d32c2cb039e9d97e37be2"
+    },
+    {
+      "path": "src/identity.rs",
+      "sha256": "6ad05ae6873d79670362d15a04dc180faa72a892104be47a5dd66af51003b5e4"
+    },
+    {
+      "path": "src/lib.rs",
+      "sha256": "7b551489f4662bb1089c5d6bdc75d8876e9f88f1b877e2e04861e8f27b16e82b"
+    },
+    {
+      "path": "src/path.rs",
+      "sha256": "c3f845b8b4ef083ec1e2cc1cc9c8e87599ca61d954a25c789bc5d326ef49ac59"
+    },
+    {
+      "path": "src/persistence.rs",
+      "sha256": "c74dcb6108ed99cd47df08891e5bb3b418ab4f279a0858546614ebe6cc9c93cc"
+    },
+    {
+      "path": "src/plan.rs",
+      "sha256": "ed55f99f0776799c4cafed91c63af28aaa719f4ce77edf3b873de2228c2292be"
+    },
+    {
+      "path": "src/render.rs",
+      "sha256": "228a14cdf5070e8d021ec9199b541f3b787c5dd29d53f58264f34cc247fa0e16"
+    },
+    {
+      "path": "src/source.rs",
+      "sha256": "67fbcf9a7e8b54a2d1d6d10f664848659275ad89c4af06f606b3758617e6e031"
+    },
+    {
+      "path": "build.rs",
+      "sha256": "04e250690b61a150b6e6340adc71a054bb1eb625ae2c89a0eddacf8e54ec8e03"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "964d28ed6ab0688540ed0536be597bc1f1f037127f3fb10f537fcd8f68c6a26e"
+    },
+    {
+      "path": "rust-toolchain.toml",
+      "sha256": "19518129aa007d86f4c98633c4cda6b02b6001c07ecade38f599a5a4e3fb7a66"
+    },
+    {
+      "path": "examples/siri-glow.glsl",
+      "sha256": "4fe06faa3f4f0f8127e80d77511df3c87e448cd0f86f5c09a28cf06806d62d9f"
+    },
+    {
+      "path": "examples/apple-thermal.glsl",
+      "sha256": "b0411e4870e05f69064b1448138ff4474523e8dcfeac13e0db12bd70621665a2"
+    }
+  ]
+}

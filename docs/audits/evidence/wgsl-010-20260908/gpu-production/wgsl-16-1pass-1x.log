@@ -1,0 +1,3 @@
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":239,"language_id":2,"logical":[321.0,239.0],"output":"/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/wgsl-16-1pass-1x.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"/Users/junk_doge/Documents/DynamicFX/scripts/out/010/wgsl-gpu-final/1pass.wgsl","source_blake3":"de2e6d6b55f1ff192247d7ae398ecaf2ee8229093450065562b2a10c0453ae64","time":1.25,"width":321,"working_depth":"16"}
+
+gpu ready: adapter="Apple M5" backend=Metal driver=" "

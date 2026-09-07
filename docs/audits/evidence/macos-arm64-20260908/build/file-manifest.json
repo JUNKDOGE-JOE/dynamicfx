@@ -1,0 +1,104 @@
+[
+  {
+    "file": "Cargo.lock.txt",
+    "source": "scripts/out/macos/Cargo.lock",
+    "bytes": 43092,
+    "sha256": "483aa5ad54679d0291453f31464d07c191f8967af6a7e11b9e4f7aeda3cab7fe"
+  },
+  {
+    "file": "build-arm64-failed-1.log",
+    "source": "scripts/out/macos/build-arm64-failed-1.log",
+    "bytes": 5610,
+    "sha256": "c5d652fa97fa3a448e137003cc651b94bb00b0e21d779e40ed07390bf346578b"
+  },
+  {
+    "file": "build-arm64-failed-2.log",
+    "source": "scripts/out/macos/build-arm64-failed-2.log",
+    "bytes": 4191,
+    "sha256": "980f98f3c6bc3a95fd66c22776ba322f0f7b7fb7c77022cf57e57ec3e6300b9b"
+  },
+  {
+    "file": "build-arm64-pass.log",
+    "source": "scripts/out/macos/build-arm64-pass.log",
+    "bytes": 1499,
+    "sha256": "bc5f1136229416cfe210764d032c0360aa1f2f2cae1fbb2dd855d7e034bd8a8b"
+  },
+  {
+    "file": "build-arm64-geometry.log",
+    "source": "scripts/out/macos/build-arm64-geometry.log",
+    "bytes": 1511,
+    "sha256": "c6bb8b537000b4ce9a88b927b46e18747870787853d12c35dfe57c2885c31039"
+  },
+  {
+    "file": "test-default.log",
+    "source": "scripts/out/macos/test-default.log",
+    "bytes": 16892,
+    "sha256": "2c2266fa1ba8e06ac87a7c43287001bf34eeefa08d1459f32f741fdd177ec8d9"
+  },
+  {
+    "file": "test-editor.log",
+    "source": "scripts/out/macos/test-editor.log",
+    "bytes": 13238,
+    "sha256": "9cb654b891c639f5c868ab141c99dacb0b8081beeac0d94bca00228af771a36c"
+  },
+  {
+    "file": "test-default-geometry.log",
+    "source": "scripts/out/macos/test-default-geometry.log",
+    "bytes": 13457,
+    "sha256": "2a43854e6252eca726300d2e45c0483a35ceaf09dbbac8afc7f02ec591a4d0e0"
+  },
+  {
+    "file": "test-editor-geometry.log",
+    "source": "scripts/out/macos/test-editor-geometry.log",
+    "bytes": 13457,
+    "sha256": "75525bad0e31b0ebebf74507a6acf25ff91f5a45b588040088b2483f6b7975fb"
+  },
+  {
+    "file": "test-siri-example.log",
+    "source": "scripts/out/macos/test-siri-example.log",
+    "bytes": 4043,
+    "sha256": "43c2d151a96fdec4b976a54b8b73141a8c30b142bede59058264f8cad3ed8fc8"
+  },
+  {
+    "file": "bundle-verification.json",
+    "source": "scripts/out/macos/bundle-verification.json",
+    "bytes": 1368,
+    "sha256": "71918a7d7c0e82e8082c0e5eef6a6df746fbdc928dc9156dfa8a36f351d9149a"
+  },
+  {
+    "file": "bundle-geometry-verification.json",
+    "source": "scripts/out/macos/bundle-geometry-verification.json",
+    "bytes": 1380,
+    "sha256": "6f8872cf89d3967a1be82fbd572eaaeb75ca5b8e4ebec5ba65d789dadd93106d"
+  },
+  {
+    "file": "bundle-final-recheck.json",
+    "source": "scripts/out/macos/bundle-final-recheck.json",
+    "bytes": 887,
+    "sha256": "6949324bc2bf2a8e6419d10d2efa35c5f55fa715ae1884d40fb3d0b52177a13a"
+  },
+  {
+    "file": "dlopen.log",
+    "source": "scripts/out/macos/dlopen.log",
+    "bytes": 83,
+    "sha256": "f63b4aa21b9945fd14cc2136303c53b20a3c4c0062e8fbb5ba71e36cd0448d52"
+  },
+  {
+    "file": "install-ae2026.json",
+    "source": "scripts/out/macos/install-ae2026.json",
+    "bytes": 962,
+    "sha256": "a11b49bfe9b351ffb8b37f89dc37ef600e49481b92916a4f824c274e53f1c1a2"
+  },
+  {
+    "file": "final-archive-identity.json",
+    "source": "scripts/out/macos/final-archive-identity.json",
+    "bytes": 508,
+    "sha256": "8137d5b3dd97fe7448db6bb2f868d43958f721c91582ec4107778752d82ac5ee"
+  },
+  {
+    "file": "final-archive-verification.json",
+    "source": "scripts/out/macos/final-archive-verification.json",
+    "bytes": 865,
+    "sha256": "a1ece78df1a95620ef7a16a6630edb0109780abe69c40577aae0de4d4d8054c8"
+  }
+]

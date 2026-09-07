@@ -6,9 +6,11 @@ shader *source*; After Effects needs it wrapped as an expression.
 ## How to use one
 
 1. Apply **DynamicFx** to a layer.
-2. Alt-click (Option-click) the stopwatch on the `Source` parameter to open
+2. Select the matching **Language**: GLSL for `.glsl`, WGSL for `.wgsl`
+   (WGSL requires 0.1.0+). GLSL is the default; filenames do not set it.
+3. Alt-click (Option-click) the stopwatch on the `Source` parameter to open
    the expression field.
-3. Type a backtick `` ` ``, paste the whole file, then type `` ` `` and `;0`.
+4. Type a backtick `` ` ``, paste the whole file, then type `` ` `` and `;0`.
 
 The result looks like this — the backticks carry the source text verbatim,
 and the `;0` makes the expression evaluate to a number, which is what the
@@ -29,12 +31,42 @@ result; `Show Full Status` prints the untruncated text with its `E<code>`
 diagnostic if something is wrong. The declared `@param` controls appear
 underneath as ordinary, keyframeable AE properties.
 
+WGSL examples intentionally contain `@@group` and `@@fragment`: the envelope
+removes one leading `@` before compiling each pass. Keep them doubled when
+pasting the whole example. Inline attributes such as `@binding` stay single.
+See the [WGSL authoring guide](../skills/dynamicfx-shaders/wgsl.md) for the
+complete interface, parameter types and raw-source distinction.
+
 If you are applying effects from a script rather than by hand, read
 [Scripting: wait for readiness before you render](../README.md#scripting-wait-for-readiness-before-you-render)
 first — writing an expression does not compile it, and a script that holds
 the main thread prevents the compile from ever happening.
 
 ## The examples
+
+### [`wgsl-field.wgsl`](wgsl-field.wgsl) — single-pass analytic light field
+
+A flowing cyan/violet disc with a narrow highlighted rim. It samples the
+source, exposes speed/radius/rim/colors/amount plus an `i32` checkbox, and
+preserves input alpha. Apply it to a comp-sized solid or footage. Continuous
+trigonometric fields avoid random cell boundaries; `fwidth` coverage follows
+the rendered pixel footprint while the logical shape remains fixed at reduced
+preview resolutions. This is a compact WGSL authoring example, not the iOS 27
+Siri study.
+
+### [`wgsl-multipass.wgsl`](wgsl-multipass.wgsl) — field plus sampled glow
+
+The **field** pass samples the source and writes an animated light field with
+antialiased coverage to `light`. The **glow** pass reads a nine-tap neighborhood
+from `light` at binding 0 and the original layer at binding 3. The intermediate
+contains coverage-weighted RGB and alpha; the final output is explicitly
+opaque, so use footage or a comp-sized solid.
+
+Controls appear in their owning pass groups because each uniform block only
+declares the members that pass uses. **Glow Radius (px)** uses logical canvas
+pixels; it is a compact binomial kernel for a small soft edge, not a wide
+Gaussian blur. Use 16/32-bpc for smooth intermediates, and 32-bpc when preserving
+additive light above white matters. Both passes use the production WGSL ABI.
 
 ### [`thermal.glsl`](thermal.glsl) — six-pass heat signature
 
@@ -121,14 +153,45 @@ the frame with alpha 1, so the carrier solid must be black. Pixel controls
 are tuned for 1080p titles; scale Bleed Amount / Glow Radius / Turbulence
 Scale with your frame.
 
+### [`siri-glow.glsl`](siri-glow.glsl) — smooth aurora screen rim
+
+A single-pass, Siri-inspired perimeter glow with a rounded inner frame,
+animated cyan/violet/coral color flow, soft halo, and subtle final dither.
+It is an authored visual study of the glowing-edge motif, not a claimed
+reproduction of a particular iOS version. Apply it to a comp-sized black solid
+or footage. The rim sits inside the canvas, so no expansion is needed.
+
+The shader demonstrates logical-pixel geometry with derivative-based edge
+coverage, quintic integer-lattice noise, and pixel-footprint filtering of fBm
+octaves. It is designed to stay smooth at Full, Half and Quarter preview;
+16/32-bpc is preferable for the soft glow. Set **Dither (1/255)** to 0 when
+comparing raw color values. **Flow Detail (px)** controls the size of the fluid
+field; **Rim Width (px)** and **Glow Width (px)** control separate structures.
+
+Headless GPU verification and known limits, including the corrected packed
+temperature sampling in `apple-thermal.glsl`, are recorded in
+[Shader quality](../docs/shader-quality.md). Compilation and headless rendering
+do not imply an After Effects host acceptance result.
+
 ## Verification status
 
-All four files are compiled through the real frontend by
-`cargo test example_tests` on every build, so a grammar, ABI, or annotation
-change cannot silently break them. That test proves they **compile**; the
+The GLSL examples are compiled through the real frontend by
+`cargo test example_tests`; the WGSL pair uses
+`cargo test shipped_wgsl_examples_compile`. Both read the exact shipped files,
+so a grammar, ABI, or annotation change cannot silently break them.
+Those tests prove they **compile**; the
 palettes and default values are authored choices and are checked visually at
 release time, not by the test. `apple-thermal.glsl` was rendered on
 After Effects 2025 with the 0.0.4 build when it was added (evidence under
 `docs/audits/evidence/examples/`). `ink-bleed.glsl` was authored and
 visually checked on After Effects 2026 with the 0.0.4 build; its check used
 licensed footage, so no evidence bundle is committed for it.
+
+The WGSL examples also have a reproducible production-renderer check in
+[`scripts/quality/run_wgsl_examples.py`](../scripts/quality/run_wgsl_examples.py).
+It records actual adapter/source identities, original float buffers,
+8/16/32 working-depth comparisons, Full/Half/Quarter images and deterministic
+repeat requests. The reduced-size comparisons are descriptive measurements,
+not proof of perfect antialiasing. Its 16-bpc run checks the f32 working
+buffer; it does not test AE's U15 boundary. The 0.1.0 real-AE and platform
+results are tracked separately in [TEST_MATRIX](../docs/TEST_MATRIX.md).

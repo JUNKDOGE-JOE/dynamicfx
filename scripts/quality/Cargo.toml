@@ -1,0 +1,17 @@
+[package]
+name = "dynamicfx-quality"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Headless evidence runner: directly compiles the production modules, without
+# linking the AE plug-in or requiring the AE SDK. Not a second renderer.
+[dependencies]
+naga = { version = "29", default-features = false, features = ["glsl-in", "wgsl-in", "spv-out"] }
+wgpu = { version = "29", features = ["spirv"] }
+pollster = "1"
+blake3 = "1"
+serde_json = "1"
+
+[profile.dev]
+opt-level = 2

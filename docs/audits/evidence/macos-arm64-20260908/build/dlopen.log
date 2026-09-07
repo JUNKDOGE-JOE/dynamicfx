@@ -1,0 +1,1 @@
+PASS: native arm64 dlopen and EffectMain symbol lookup; no AE host call performed.

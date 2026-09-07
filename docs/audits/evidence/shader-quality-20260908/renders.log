@@ -1,0 +1,449 @@
+apple_thermal_256x256_d32_t2.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/examples/apple-thermal.glsl", "${REPO}/scripts/out/quality/run5/apple_thermal_256x256_d32_t2.f32", "256", "256", "256", "256", "2", "32", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":256,"logical":[256.0,256.0],"output":"${REPO}/scripts/out/quality/run5/apple_thermal_256x256_d32_t2.f32","passes":10,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/examples/apple-thermal.glsl","source_blake3":"31637deac72c8d1bb680cde460730efacd6b58738fd8850c78ea43c27e2e21ae","time":2.0,"width":256,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+bilinear2x2_2x2_d16_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/bilinear2x2.glsl", "${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d16_t0.f32", "2", "2", "2", "2", "0", "16", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":2,"logical":[2.0,2.0],"output":"${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d16_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/bilinear2x2.glsl","source_blake3":"55fed22b6cd886c59d09c71192ff53966934588c301b2fc504a62e134db169ef","time":0.0,"width":2,"working_depth":"16"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+bilinear2x2_2x2_d16_t0_baseline.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-before", "${REPO}/scripts/out/quality/run5/bilinear2x2.glsl", "${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d16_t0_baseline.f32", "2", "2", "2", "2", "0", "16", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":2,"logical":[2.0,2.0],"output":"${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d16_t0_baseline.f32","passes":1,"renderer_blake3":"92996c255870342497a212799005d61c394d3f5f8d8572e70085cd310a03eb30","source":"${REPO}/scripts/out/quality/run5/bilinear2x2.glsl","source_blake3":"55fed22b6cd886c59d09c71192ff53966934588c301b2fc504a62e134db169ef","time":0.0,"width":2,"working_depth":"16"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+bilinear2x2_2x2_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/bilinear2x2.glsl", "${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d32_t0.f32", "2", "2", "2", "2", "0", "32", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":2,"logical":[2.0,2.0],"output":"${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/bilinear2x2.glsl","source_blake3":"55fed22b6cd886c59d09c71192ff53966934588c301b2fc504a62e134db169ef","time":0.0,"width":2,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+bilinear2x2_2x2_d32_t0_baseline.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-before", "${REPO}/scripts/out/quality/run5/bilinear2x2.glsl", "${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d32_t0_baseline.f32", "2", "2", "2", "2", "0", "32", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":2,"logical":[2.0,2.0],"output":"${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d32_t0_baseline.f32","passes":1,"renderer_blake3":"92996c255870342497a212799005d61c394d3f5f8d8572e70085cd310a03eb30","source":"${REPO}/scripts/out/quality/run5/bilinear2x2.glsl","source_blake3":"55fed22b6cd886c59d09c71192ff53966934588c301b2fc504a62e134db169ef","time":0.0,"width":2,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+bilinear2x2_2x2_d8_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/bilinear2x2.glsl", "${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d8_t0.f32", "2", "2", "2", "2", "0", "8", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":2,"logical":[2.0,2.0],"output":"${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d8_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/bilinear2x2.glsl","source_blake3":"55fed22b6cd886c59d09c71192ff53966934588c301b2fc504a62e134db169ef","time":0.0,"width":2,"working_depth":"8"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+bilinear2x2_2x2_d8_t0_baseline.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-before", "${REPO}/scripts/out/quality/run5/bilinear2x2.glsl", "${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d8_t0_baseline.f32", "2", "2", "2", "2", "0", "8", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":2,"logical":[2.0,2.0],"output":"${REPO}/scripts/out/quality/run5/bilinear2x2_2x2_d8_t0_baseline.f32","passes":1,"renderer_blake3":"92996c255870342497a212799005d61c394d3f5f8d8572e70085cd310a03eb30","source":"${REPO}/scripts/out/quality/run5/bilinear2x2.glsl","source_blake3":"55fed22b6cd886c59d09c71192ff53966934588c301b2fc504a62e134db169ef","time":0.0,"width":2,"working_depth":"8"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+cells_raw_512x384_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/cells_raw.glsl", "${REPO}/scripts/out/quality/run5/cells_raw_512x384_d32_t0.f32", "512", "384", "512", "384", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":384,"logical":[512.0,384.0],"output":"${REPO}/scripts/out/quality/run5/cells_raw_512x384_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/cells_raw.glsl","source_blake3":"3b5800287d077073e5fb582acfcb7e5535c7597a97153bd1a04d939a5c56a165","time":0.0,"width":512,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+cells_smooth_512x384_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/cells_smooth.glsl", "${REPO}/scripts/out/quality/run5/cells_smooth_512x384_d32_t0.f32", "512", "384", "512", "384", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":384,"logical":[512.0,384.0],"output":"${REPO}/scripts/out/quality/run5/cells_smooth_512x384_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/cells_smooth.glsl","source_blake3":"7499aa92a60dd2b4082195a26c06c185de08becd5e2412342ef3db25ef5aec99","time":0.0,"width":512,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+edge_aa_160x90_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/edge_aa.glsl", "${REPO}/scripts/out/quality/run5/edge_aa_160x90_d32_t0.f32", "160", "90", "320", "180", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":90,"logical":[320.0,180.0],"output":"${REPO}/scripts/out/quality/run5/edge_aa_160x90_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/edge_aa.glsl","source_blake3":"c81328668f6ea6c168b6243e8e44403ea3245ba6d42ef6634474dac543f5a0bc","time":0.0,"width":160,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+edge_aa_320x180_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/edge_aa.glsl", "${REPO}/scripts/out/quality/run5/edge_aa_320x180_d32_t0.f32", "320", "180", "320", "180", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":180,"logical":[320.0,180.0],"output":"${REPO}/scripts/out/quality/run5/edge_aa_320x180_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/edge_aa.glsl","source_blake3":"c81328668f6ea6c168b6243e8e44403ea3245ba6d42ef6634474dac543f5a0bc","time":0.0,"width":320,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+edge_aa_80x45_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/edge_aa.glsl", "${REPO}/scripts/out/quality/run5/edge_aa_80x45_d32_t0.f32", "80", "45", "320", "180", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":45,"logical":[320.0,180.0],"output":"${REPO}/scripts/out/quality/run5/edge_aa_80x45_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/edge_aa.glsl","source_blake3":"c81328668f6ea6c168b6243e8e44403ea3245ba6d42ef6634474dac543f5a0bc","time":0.0,"width":80,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+edge_hard_1280x720_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/edge_hard.glsl", "${REPO}/scripts/out/quality/run5/edge_hard_1280x720_d32_t0.f32", "1280", "720", "320", "180", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":720,"logical":[320.0,180.0],"output":"${REPO}/scripts/out/quality/run5/edge_hard_1280x720_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/edge_hard.glsl","source_blake3":"8373e78889c92eaa6c71e6bc88afca8ad3f27956477af82b483e9caff06a10df","time":0.0,"width":1280,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+edge_hard_160x90_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/edge_hard.glsl", "${REPO}/scripts/out/quality/run5/edge_hard_160x90_d32_t0.f32", "160", "90", "320", "180", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":90,"logical":[320.0,180.0],"output":"${REPO}/scripts/out/quality/run5/edge_hard_160x90_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/edge_hard.glsl","source_blake3":"8373e78889c92eaa6c71e6bc88afca8ad3f27956477af82b483e9caff06a10df","time":0.0,"width":160,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+edge_hard_2560x1440_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/edge_hard.glsl", "${REPO}/scripts/out/quality/run5/edge_hard_2560x1440_d32_t0.f32", "2560", "1440", "320", "180", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":1440,"logical":[320.0,180.0],"output":"${REPO}/scripts/out/quality/run5/edge_hard_2560x1440_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/edge_hard.glsl","source_blake3":"8373e78889c92eaa6c71e6bc88afca8ad3f27956477af82b483e9caff06a10df","time":0.0,"width":2560,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+edge_hard_320x180_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/edge_hard.glsl", "${REPO}/scripts/out/quality/run5/edge_hard_320x180_d32_t0.f32", "320", "180", "320", "180", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":180,"logical":[320.0,180.0],"output":"${REPO}/scripts/out/quality/run5/edge_hard_320x180_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/edge_hard.glsl","source_blake3":"8373e78889c92eaa6c71e6bc88afca8ad3f27956477af82b483e9caff06a10df","time":0.0,"width":320,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+edge_hard_640x360_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/edge_hard.glsl", "${REPO}/scripts/out/quality/run5/edge_hard_640x360_d32_t0.f32", "640", "360", "320", "180", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":360,"logical":[320.0,180.0],"output":"${REPO}/scripts/out/quality/run5/edge_hard_640x360_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/edge_hard.glsl","source_blake3":"8373e78889c92eaa6c71e6bc88afca8ad3f27956477af82b483e9caff06a10df","time":0.0,"width":640,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+edge_hard_80x45_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/edge_hard.glsl", "${REPO}/scripts/out/quality/run5/edge_hard_80x45_d32_t0.f32", "80", "45", "320", "180", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":45,"logical":[320.0,180.0],"output":"${REPO}/scripts/out/quality/run5/edge_hard_80x45_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/edge_hard.glsl","source_blake3":"8373e78889c92eaa6c71e6bc88afca8ad3f27956477af82b483e9caff06a10df","time":0.0,"width":80,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+lut_1024x4_d16_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/lut.glsl", "${REPO}/scripts/out/quality/run5/lut_1024x4_d16_t0.f32", "1024", "4", "1024", "4", "0", "16", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[1024.0,4.0],"output":"${REPO}/scripts/out/quality/run5/lut_1024x4_d16_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/lut.glsl","source_blake3":"b742e734f346721ac6961f97442046c003ecb5f96ec3c403a273a2c2d52bc445","time":0.0,"width":1024,"working_depth":"16"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+lut_1024x4_d16_t0_baseline.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-before", "${REPO}/scripts/out/quality/run5/lut.glsl", "${REPO}/scripts/out/quality/run5/lut_1024x4_d16_t0_baseline.f32", "1024", "4", "1024", "4", "0", "16", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[1024.0,4.0],"output":"${REPO}/scripts/out/quality/run5/lut_1024x4_d16_t0_baseline.f32","passes":1,"renderer_blake3":"92996c255870342497a212799005d61c394d3f5f8d8572e70085cd310a03eb30","source":"${REPO}/scripts/out/quality/run5/lut.glsl","source_blake3":"b742e734f346721ac6961f97442046c003ecb5f96ec3c403a273a2c2d52bc445","time":0.0,"width":1024,"working_depth":"16"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+lut_1024x4_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/lut.glsl", "${REPO}/scripts/out/quality/run5/lut_1024x4_d32_t0.f32", "1024", "4", "1024", "4", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[1024.0,4.0],"output":"${REPO}/scripts/out/quality/run5/lut_1024x4_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/lut.glsl","source_blake3":"b742e734f346721ac6961f97442046c003ecb5f96ec3c403a273a2c2d52bc445","time":0.0,"width":1024,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+lut_1024x4_d32_t0_baseline.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-before", "${REPO}/scripts/out/quality/run5/lut.glsl", "${REPO}/scripts/out/quality/run5/lut_1024x4_d32_t0_baseline.f32", "1024", "4", "1024", "4", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[1024.0,4.0],"output":"${REPO}/scripts/out/quality/run5/lut_1024x4_d32_t0_baseline.f32","passes":1,"renderer_blake3":"92996c255870342497a212799005d61c394d3f5f8d8572e70085cd310a03eb30","source":"${REPO}/scripts/out/quality/run5/lut.glsl","source_blake3":"b742e734f346721ac6961f97442046c003ecb5f96ec3c403a273a2c2d52bc445","time":0.0,"width":1024,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+lut_1024x4_d8_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/lut.glsl", "${REPO}/scripts/out/quality/run5/lut_1024x4_d8_t0.f32", "1024", "4", "1024", "4", "0", "8", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[1024.0,4.0],"output":"${REPO}/scripts/out/quality/run5/lut_1024x4_d8_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/lut.glsl","source_blake3":"b742e734f346721ac6961f97442046c003ecb5f96ec3c403a273a2c2d52bc445","time":0.0,"width":1024,"working_depth":"8"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+lut_1024x4_d8_t0_baseline.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-before", "${REPO}/scripts/out/quality/run5/lut.glsl", "${REPO}/scripts/out/quality/run5/lut_1024x4_d8_t0_baseline.f32", "1024", "4", "1024", "4", "0", "8", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[1024.0,4.0],"output":"${REPO}/scripts/out/quality/run5/lut_1024x4_d8_t0_baseline.f32","passes":1,"renderer_blake3":"92996c255870342497a212799005d61c394d3f5f8d8572e70085cd310a03eb30","source":"${REPO}/scripts/out/quality/run5/lut.glsl","source_blake3":"b742e734f346721ac6961f97442046c003ecb5f96ec3c403a273a2c2d52bc445","time":0.0,"width":1024,"working_depth":"8"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+noise_filtered_128x96_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/noise_filtered.glsl", "${REPO}/scripts/out/quality/run5/noise_filtered_128x96_d32_t0.f32", "128", "96", "128", "96", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":96,"logical":[128.0,96.0],"output":"${REPO}/scripts/out/quality/run5/noise_filtered_128x96_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/noise_filtered.glsl","source_blake3":"138eaa3b4cfb47e6b3ca230e4087a9438df8085c8403d29f3877ecee918c2184","time":0.0,"width":128,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+noise_raw_1024x768_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/noise_raw.glsl", "${REPO}/scripts/out/quality/run5/noise_raw_1024x768_d32_t0.f32", "1024", "768", "1024", "768", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":768,"logical":[1024.0,768.0],"output":"${REPO}/scripts/out/quality/run5/noise_raw_1024x768_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/noise_raw.glsl","source_blake3":"93c19621c50e1b825f028e7975649bf8980df7183ed0b575a87a5b26a1a237a4","time":0.0,"width":1024,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+noise_raw_128x96_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/noise_raw.glsl", "${REPO}/scripts/out/quality/run5/noise_raw_128x96_d32_t0.f32", "128", "96", "128", "96", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":96,"logical":[128.0,96.0],"output":"${REPO}/scripts/out/quality/run5/noise_raw_128x96_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/noise_raw.glsl","source_blake3":"93c19621c50e1b825f028e7975649bf8980df7183ed0b575a87a5b26a1a237a4","time":0.0,"width":128,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+packed_bad_128x4_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/packed_bad.glsl", "${REPO}/scripts/out/quality/run5/packed_bad_128x4_d32_t0.f32", "128", "4", "128", "4", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[128.0,4.0],"output":"${REPO}/scripts/out/quality/run5/packed_bad_128x4_d32_t0.f32","passes":2,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/packed_bad.glsl","source_blake3":"39af87b65233f837b1fd04e430941926577b2ae29648bd6eb600c93c8b329f7f","time":0.0,"width":128,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+packed_decoded_128x4_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/packed_decoded.glsl", "${REPO}/scripts/out/quality/run5/packed_decoded_128x4_d32_t0.f32", "128", "4", "128", "4", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[128.0,4.0],"output":"${REPO}/scripts/out/quality/run5/packed_decoded_128x4_d32_t0.f32","passes":2,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/packed_decoded.glsl","source_blake3":"57d84cb3cf852dbb0ca00eb3633fe18c28dde86f619efd61fb63803998c38557","time":0.0,"width":128,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+precision_1024x8_d16_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/precision.glsl", "${REPO}/scripts/out/quality/run5/precision_1024x8_d16_t0.f32", "1024", "8", "1024", "8", "0", "16", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":8,"logical":[1024.0,8.0],"output":"${REPO}/scripts/out/quality/run5/precision_1024x8_d16_t0.f32","passes":2,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/precision.glsl","source_blake3":"36b82cadd646001ccd8282fedc82c805c37f03ef6948945ba7da40db5f9b32c0","time":0.0,"width":1024,"working_depth":"16"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+precision_1024x8_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/precision.glsl", "${REPO}/scripts/out/quality/run5/precision_1024x8_d32_t0.f32", "1024", "8", "1024", "8", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":8,"logical":[1024.0,8.0],"output":"${REPO}/scripts/out/quality/run5/precision_1024x8_d32_t0.f32","passes":2,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/precision.glsl","source_blake3":"36b82cadd646001ccd8282fedc82c805c37f03ef6948945ba7da40db5f9b32c0","time":0.0,"width":1024,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+precision_1024x8_d8_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/precision.glsl", "${REPO}/scripts/out/quality/run5/precision_1024x8_d8_t0.f32", "1024", "8", "1024", "8", "0", "8", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":8,"logical":[1024.0,8.0],"output":"${REPO}/scripts/out/quality/run5/precision_1024x8_d8_t0.f32","passes":2,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/precision.glsl","source_blake3":"36b82cadd646001ccd8282fedc82c805c37f03ef6948945ba7da40db5f9b32c0","time":0.0,"width":1024,"working_depth":"8"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+quarter_texel_128x4_d16_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/quarter_texel.glsl", "${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d16_t0.f32", "128", "4", "128", "4", "0", "16", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[128.0,4.0],"output":"${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d16_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/quarter_texel.glsl","source_blake3":"19e10052ca5e9eacb896d2d5e9f254eeb2148932780313b3111aad2522a0371b","time":0.0,"width":128,"working_depth":"16"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+quarter_texel_128x4_d16_t0_baseline.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-before", "${REPO}/scripts/out/quality/run5/quarter_texel.glsl", "${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d16_t0_baseline.f32", "128", "4", "128", "4", "0", "16", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[128.0,4.0],"output":"${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d16_t0_baseline.f32","passes":1,"renderer_blake3":"92996c255870342497a212799005d61c394d3f5f8d8572e70085cd310a03eb30","source":"${REPO}/scripts/out/quality/run5/quarter_texel.glsl","source_blake3":"19e10052ca5e9eacb896d2d5e9f254eeb2148932780313b3111aad2522a0371b","time":0.0,"width":128,"working_depth":"16"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+quarter_texel_128x4_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/quarter_texel.glsl", "${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d32_t0.f32", "128", "4", "128", "4", "0", "32", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[128.0,4.0],"output":"${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/quarter_texel.glsl","source_blake3":"19e10052ca5e9eacb896d2d5e9f254eeb2148932780313b3111aad2522a0371b","time":0.0,"width":128,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+quarter_texel_128x4_d32_t0_baseline.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-before", "${REPO}/scripts/out/quality/run5/quarter_texel.glsl", "${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d32_t0_baseline.f32", "128", "4", "128", "4", "0", "32", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[128.0,4.0],"output":"${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d32_t0_baseline.f32","passes":1,"renderer_blake3":"92996c255870342497a212799005d61c394d3f5f8d8572e70085cd310a03eb30","source":"${REPO}/scripts/out/quality/run5/quarter_texel.glsl","source_blake3":"19e10052ca5e9eacb896d2d5e9f254eeb2148932780313b3111aad2522a0371b","time":0.0,"width":128,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+quarter_texel_128x4_d8_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/scripts/out/quality/run5/quarter_texel.glsl", "${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d8_t0.f32", "128", "4", "128", "4", "0", "8", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[128.0,4.0],"output":"${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d8_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/scripts/out/quality/run5/quarter_texel.glsl","source_blake3":"19e10052ca5e9eacb896d2d5e9f254eeb2148932780313b3111aad2522a0371b","time":0.0,"width":128,"working_depth":"8"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+quarter_texel_128x4_d8_t0_baseline.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-before", "${REPO}/scripts/out/quality/run5/quarter_texel.glsl", "${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d8_t0_baseline.f32", "128", "4", "128", "4", "0", "8", "checker"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":4,"logical":[128.0,4.0],"output":"${REPO}/scripts/out/quality/run5/quarter_texel_128x4_d8_t0_baseline.f32","passes":1,"renderer_blake3":"92996c255870342497a212799005d61c394d3f5f8d8572e70085cd310a03eb30","source":"${REPO}/scripts/out/quality/run5/quarter_texel.glsl","source_blake3":"19e10052ca5e9eacb896d2d5e9f254eeb2148932780313b3111aad2522a0371b","time":0.0,"width":128,"working_depth":"8"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+siri_1280x720_d16_t2.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/examples/siri-glow.glsl", "${REPO}/scripts/out/quality/run5/siri_1280x720_d16_t2.f32", "1280", "720", "1280", "720", "2", "16", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":720,"logical":[1280.0,720.0],"output":"${REPO}/scripts/out/quality/run5/siri_1280x720_d16_t2.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/examples/siri-glow.glsl","source_blake3":"4d0eabd106730da333922dffff8dcd0e917211f7bcd4b67ed3aaf236172b7610","time":2.0,"width":1280,"working_depth":"16"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+siri_1280x720_d32_t0.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/examples/siri-glow.glsl", "${REPO}/scripts/out/quality/run5/siri_1280x720_d32_t0.f32", "1280", "720", "1280", "720", "0", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":720,"logical":[1280.0,720.0],"output":"${REPO}/scripts/out/quality/run5/siri_1280x720_d32_t0.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/examples/siri-glow.glsl","source_blake3":"4d0eabd106730da333922dffff8dcd0e917211f7bcd4b67ed3aaf236172b7610","time":0.0,"width":1280,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+siri_1280x720_d32_t2.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/examples/siri-glow.glsl", "${REPO}/scripts/out/quality/run5/siri_1280x720_d32_t2.f32", "1280", "720", "1280", "720", "2", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":720,"logical":[1280.0,720.0],"output":"${REPO}/scripts/out/quality/run5/siri_1280x720_d32_t2.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/examples/siri-glow.glsl","source_blake3":"4d0eabd106730da333922dffff8dcd0e917211f7bcd4b67ed3aaf236172b7610","time":2.0,"width":1280,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+siri_1280x720_d32_t4.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/examples/siri-glow.glsl", "${REPO}/scripts/out/quality/run5/siri_1280x720_d32_t4.f32", "1280", "720", "1280", "720", "4", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":720,"logical":[1280.0,720.0],"output":"${REPO}/scripts/out/quality/run5/siri_1280x720_d32_t4.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/examples/siri-glow.glsl","source_blake3":"4d0eabd106730da333922dffff8dcd0e917211f7bcd4b67ed3aaf236172b7610","time":4.0,"width":1280,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+siri_1280x720_d8_t2.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/examples/siri-glow.glsl", "${REPO}/scripts/out/quality/run5/siri_1280x720_d8_t2.f32", "1280", "720", "1280", "720", "2", "8", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":720,"logical":[1280.0,720.0],"output":"${REPO}/scripts/out/quality/run5/siri_1280x720_d8_t2.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/examples/siri-glow.glsl","source_blake3":"4d0eabd106730da333922dffff8dcd0e917211f7bcd4b67ed3aaf236172b7610","time":2.0,"width":1280,"working_depth":"8"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+siri_320x180_d32_t2.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/examples/siri-glow.glsl", "${REPO}/scripts/out/quality/run5/siri_320x180_d32_t2.f32", "320", "180", "1280", "720", "2", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":180,"logical":[1280.0,720.0],"output":"${REPO}/scripts/out/quality/run5/siri_320x180_d32_t2.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/examples/siri-glow.glsl","source_blake3":"4d0eabd106730da333922dffff8dcd0e917211f7bcd4b67ed3aaf236172b7610","time":2.0,"width":320,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0
+
+siri_640x360_d32_t2.log
+COMMAND: ["${REPO}/scripts/out/quality/dynamicfx-quality-current", "${REPO}/examples/siri-glow.glsl", "${REPO}/scripts/out/quality/run5/siri_640x360_d32_t2.f32", "640", "360", "1280", "720", "2", "32", "black"]
+STDOUT:
+{"adapter":"adapter=\"Apple M5\" backend=Metal driver=\" \"","finite":true,"height":360,"logical":[1280.0,720.0],"output":"${REPO}/scripts/out/quality/run5/siri_640x360_d32_t2.f32","passes":1,"renderer_blake3":"66c7d834cce288fde7a56eb4248275f991bd79c45c583ea50ab3f0edafedddb4","source":"${REPO}/examples/siri-glow.glsl","source_blake3":"4d0eabd106730da333922dffff8dcd0e917211f7bcd4b67ed3aaf236172b7610","time":2.0,"width":640,"working_depth":"32"}
+
+STDERR:
+gpu ready: adapter="Apple M5" backend=Metal driver=" "
+
+EXIT: 0

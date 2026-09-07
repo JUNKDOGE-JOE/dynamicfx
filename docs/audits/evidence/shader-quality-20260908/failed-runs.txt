@@ -1,0 +1,18 @@
+Preserved failure record, 2026-09-08
+
+1. Initial GPU execution inside sandbox: exit 1.
+gpu unavailable: adapter: No suitable graphics adapter found; noop not requested, vulkan not requested, metal found no adapters, dx12 not requested, gl not requested, webgpu not requested
+GPU unavailable
+Same executable with local GPU access: Apple M5, Metal, exit 0.
+
+2. run1 LUT fixture: exit 1.
+GrammarError { line: 3, message: "input `quality_lut` has no writer" }
+Cause: generated fixture lacked the required hint:gradient annotation. Corrected in runner. Raw log scripts/out/quality/current/lut_1024x4_d8_t0.log.
+
+3. run2 noise cutoff: assertion failed, filtered RMSE exceeded raw.
+RGB RMSE raw 0.02698049, initial cutoff (0.18,0.55) filtered approximately 0.09093.
+Subsequent three cutoff measurements retained in scripts/out/quality/run2/tune_{a,b,c}.f32.
+Final cutoff (0.75,2.0) RGB RMSE 0.02040683: lower by 24.36%.
+Original run2 shader, raw output and logs remain in scripts/out/quality/run2/.
+
+4. Python system py_compile attempted to create its bytecode cache outside the workspace and hit PermissionError. Not a script syntax failure: full runner executed successfully with the bundled Python runtime.

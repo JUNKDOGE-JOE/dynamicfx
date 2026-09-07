@@ -1,0 +1,57 @@
+{
+  "source": "/var/folders/nl/cfg99hqj27b5hnrv8pgjfnhw0000gn/T/dynamicfx.log",
+  "source_start_line": 115,
+  "source_end_line": 5308,
+  "first_epoch_second": 1788815341,
+  "last_line": "[1788815822] idle slot ui applied: 15 bound, 0 defaults written",
+  "boundary_basis": "First global setup after the successful install file mtime 1788815230.5260596. The final-open JSX/result mtimes are 1788815341.0466392 and 1788815341.2774386; registration, snapshot rebuild and Metal initialization occur at epoch 1788815341. All subsequent lines in the captured source snapshot are retained.",
+  "pid_limit": "The plugin logger contains seconds but no PID. A second registration/snapshot/Metal block at 1788815533 is time-correlated with the separately observed aerender invocation and its log; this log alone does not identify a process.",
+  "odd_size_limit": "No logical=321x239 verbose geometry lines are present. The final aerender log, its 321x239 pipeline initialization line, and the actual 321x239/161x120/81x60 PSD outputs support the odd-size result.",
+  "selected_lines": [
+    {
+      "excerpt_line": 18,
+      "text": "[1788815341] definition rebuilt from snapshot"
+    },
+    {
+      "excerpt_line": 19,
+      "text": "[1788815341] gpu ready: adapter=\"Apple M5\" backend=Metal driver=\" \""
+    },
+    {
+      "excerpt_line": 1332,
+      "text": "[1788815408] definition rebuilt from snapshot"
+    },
+    {
+      "excerpt_line": 1335,
+      "text": "[1788815408] smart geometry: logical=1280x720 downsample=1/1x1/1 request=PF_LRect { left: -128, top: -72, right: 1408, bottom: 792 } upstream=Rect { left: 0, top: 0, right: 1280, bottom: 720 } frame=Rect { left: 0, top: 0, right: 1280, bottom: 720 } canvas=Rect { left: 0, top: 0, right: 1280, bottom: 720 }"
+    },
+    {
+      "excerpt_line": 2101,
+      "text": "[1788815459] smart geometry: logical=1280x720 downsample=1/2x1/2 request=PF_LRect { left: -64, top: -36, right: 704, bottom: 396 } upstream=Rect { left: 0, top: 0, right: 640, bottom: 360 } frame=Rect { left: 0, top: 0, right: 640, bottom: 360 } canvas=Rect { left: 0, top: 0, right: 640, bottom: 360 }"
+    },
+    {
+      "excerpt_line": 2106,
+      "text": "[1788815466] smart geometry: logical=1280x720 downsample=1/4x1/4 request=PF_LRect { left: -32, top: -18, right: 352, bottom: 198 } upstream=Rect { left: 0, top: 0, right: 320, bottom: 180 } frame=Rect { left: 0, top: 0, right: 320, bottom: 180 } canvas=Rect { left: 0, top: 0, right: 320, bottom: 180 }"
+    },
+    {
+      "excerpt_line": 3621,
+      "text": "[1788815533] definition rebuilt from snapshot"
+    },
+    {
+      "excerpt_line": 3622,
+      "text": "[1788815533] gpu ready: adapter=\"Apple M5\" backend=Metal driver=\" \""
+    },
+    {
+      "excerpt_line": 3624,
+      "text": "[1788815534] definition rebuilt from snapshot"
+    },
+    {
+      "excerpt_line": 5190,
+      "text": "[1788815822] definition rebuilt from snapshot"
+    },
+    {
+      "excerpt_line": 5191,
+      "text": "[1788815822] gpu ready: adapter=\"Apple M5\" backend=Metal driver=\" \""
+    }
+  ],
+  "cold_open_note": "The captured suffix also retains setup/snapshot/Metal initialization at 1788815822 after the root agent quit AE and launched the clean demo normally without --env. The final-cold-open result separately records the resulting active state. No PID is inferred from the plugin log alone."
+}

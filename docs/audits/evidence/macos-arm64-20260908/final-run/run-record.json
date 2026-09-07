@@ -1,0 +1,32 @@
+{
+  "artifact_binary_sha256": "e239ae457ab33e1bc9466d5ab0bff8b81c08861d072eb5e667b5cd8bc6ae8b0b",
+  "host": "AE 2026 26.3x87, native Apple Silicon macOS",
+  "transport": "JSX via the available local ae-mcp transport. No bridge envelopes are copied; the executed JSX and its file result are preserved. DynamicFX itself does not depend on the transport.",
+  "aerender": {
+    "exec_command_cmd": "'/Applications/Adobe After Effects 2026/aerender' -project '/Users/junk_doge/Documents/DynamicFX/scripts/out/macos/ae2026/final-aerender.aep' > scripts/out/macos/ae2026/final-aerender.log 2>&1",
+    "session_id": 37817,
+    "completion_tool": "write_stdin",
+    "completion_chunk_id": "84fa54",
+    "exit_code": 0,
+    "completion_output": "",
+    "exit_code_provenance": "Observed by the root agent in the tool completion and reported to the evidence curator; the raw aerender log does not print this exit code.",
+    "log": "final-aerender.log"
+  },
+  "export_checker": {
+    "script": "scripts/macos/check_exports.py",
+    "directory": "scripts/out/macos/ae2026",
+    "reference": "scripts/out/quality/siri-t1.f32",
+    "result": "final-export-checks.json",
+    "result_passed": true,
+    "check_count": 39,
+    "psd_count": 12,
+    "png_note": "final_siri_{full,half,quarter}.png are conversions of the PSD exports by the checker; they are not screenshots of the Composition viewer."
+  },
+  "manual_observation_record": "manual-observations.md",
+  "recorded_utc": "2026-09-07T21:16:21.180641+00:00",
+  "cold_open": {
+    "result": "final-cold-open.json",
+    "launch_environment": "Root agent reports normal open -a launch of the saved demo, without --env or the opt-in verbose logging setting.",
+    "verified_readback": "AE 26.3x87; Siri-Glow-macOS.aep; State Token 5587567895018473 is Active; 32-bpc, Full resolution, 1280x720."
+  }
+}

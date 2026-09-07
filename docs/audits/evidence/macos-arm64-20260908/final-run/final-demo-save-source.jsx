@@ -1,0 +1,1 @@
+var c=comp("Siri Glow");var s=state(c);if(s.token%4!==1)throw Error("Demo source not published");app.project.save(new File("/Users/junk_doge/Documents/DynamicFX/scripts/out/macos/ae2026/Siri-Glow-macOS.aep"));return {state:s,project:app.project.file.fsName,depth:app.project.bitsPerChannel,resolution:c.resolutionFactor,items:app.project.numItems};

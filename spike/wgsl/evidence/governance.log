@@ -1,0 +1,13 @@
+DynamicFX governance check
+markdown_files=80
+local_links=902
+mermaid_blocks=16
+accepted_adrs=38
+errors=6
+ERROR: docs/TEST_MATRIX.md: missing link ../scripts/out/cui/cui_setup_elevated.ps1
+ERROR: docs/TEST_MATRIX.md: missing link ../scripts/out/cui/
+ERROR: docs/TEST_MATRIX.md: missing link ../scripts/out/cui/faultdump/
+ERROR: docs/TEST_MATRIX.md: missing link ../scripts/out/cui/hang/
+ERROR: docs/TEST_MATRIX.md: missing link ../scripts/out/cui/
+ERROR: docs/TEST_MATRIX.md: missing link ../scripts/out/cui/faultdump/
+RESULT=FAIL

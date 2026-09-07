@@ -17,20 +17,27 @@ Parsing is fail-closed: any unrecognized or misspelled entry key rejects the ent
 
 ### Type → control mapping and pool capacities
 
-| GLSL type | `hint` | AE control | Pool capacity |
-|---|---|---|---|
-| `float` | (none) | Slider | 48 |
-| `float` | `angle` | Angle dial | 8 |
-| `float` | `canvas` | Slider **and** the canvas boundary (logical px per side, keyframeable) | uses a float slot |
-| `int` | (none) | Integer slider | 8 |
-| `int` | `bool` | Checkbox | 16 |
-| `vec2` | (none) | Normalized 0..1 point | 12 |
-| `vec3` | (none) | Color | 12 |
-| `vec3` | `point3d` | 3D point (x, y normalized; z in pixels) | 8 |
-| `vec4` | (none) | Color + opacity | Consumes 1 color slot + 1 float slot |
-| — | `layer` | Layer chooser | 4 |
-| — | `gradient` | Gradient (256x1 LUT) | 2 |
-| — | `path` | Mask chooser | 2 |
+| GLSL type | WGSL type (0.1.0+) | `hint` | AE control | Pool capacity |
+|---|---|---|---|---|
+| `float` | `f32` | (none) | Slider | 48 |
+| `float` | `f32` | `angle` | Angle dial | 8 |
+| `float` | `f32` | `canvas` | Slider **and** the canvas boundary (logical px per side, keyframeable) | uses a float slot |
+| `int` | `i32` | (none) | Integer slider | 8 |
+| `int` | `i32` | `bool` | Checkbox | 16 |
+| `vec2` | `vec2<f32>` | (none) | Normalized 0..1 point | 12 |
+| `vec3` | `vec3<f32>` | (none) | Color | 12 |
+| `vec3` | `vec3<f32>` | `point3d` | 3D point (x, y normalized; z in pixels) | 8 |
+| `vec4` | `vec4<f32>` | (none) | Color + opacity | Consumes 1 color slot + 1 float slot |
+| — | — | `layer` | Layer chooser | 4 |
+| — | — | `gradient` | Gradient (256x1 LUT) | 2 |
+| — | — | `path` | Mask chooser | 2 |
+
+WGSL uses the same annotations and pools. A checkbox member is `i32`, never
+uniform `bool`; test it with `!= 0`. For either language, use four-component
+colors with hex defaults, or three numeric components for a three-component
+color (`default:0.2,0.6,1`). Point/point3d default annotations are unsupported;
+their shader values use the canvas-normalized coordinates above. See
+[wgsl.md](wgsl.md) for the fragment ABI and envelope attribute escaping.
 
 Exceeding any single pool's ceiling rejects the whole shader with `E32` — pools are independent per type/hint, not shared.
 
@@ -41,6 +48,12 @@ Exceeding any single pool's ceiling rejects the whole shader with `E32` — pool
 - `hint:layer`: not a `FxUniforms` field. It appears as a pass **input** in the `@graph` manifest and gets a `texture2D` binding at 3/4/5 (in manifest order), like any other extra pass input.
 - `hint:gradient`: backed by a 256x1 LUT texture. Sample with `texture(sampler2D(u_ramp, u_s), vec2(t, 0.5))`. Up to 8 color stops per gradient.
 - `hint:path`: backed by an Nx2 `Rgba32Float` vertex texture. Read with `texelFetch` by vertex index; `textureSize(...).x` gives the vertex count. Closed paths repeat the first vertex at the end (a rectangle mask = 5 vertices). When no path is assigned, the texture defaults to 1x2, all zero. Requires GPU support for `FLOAT32_FILTERABLE`.
+
+In WGSL these are `texture_2d<f32>` resources in the same manifest positions.
+Use `textureSample(u_ramp, u_s, vec2<f32>(t, 0.5))` for a gradient,
+`textureLoad(u_path, vec2<i32>(index, row), 0)` for a path, and
+`textureDimensions(u_path).x` for its vertex count. Resource hints never add
+a field to the uniform structure.
 
 ### Host UI limitations (known, not bugs)
 
@@ -88,6 +101,7 @@ Canvas expansion shipped in 0.0.6 (ADR-0039, `hint:canvas`); the precomp remains
 | E18 | A `texture2D` binding declared in a pass body that the `@graph` manifest doesn't list as an input | Add the missing input to the pass's manifest line, matching binding order |
 | E32 | A parameter type/hint pool exceeded its capacity ceiling | Merge, reduce, or remove parameters of that type — see pool table above |
 | E19 | `@param` line malformed (bad entry key), or the same name annotated in more than one pass | Fix the entry key, or keep exactly one `@param` line per name across the whole source (repeat only the uniform member) |
+| E21 | WGSL parse or language-validation error | Inspect the pass and source location; use the WGSL fragment ABI and types in wgsl.md. Line-leading attributes inside an envelope must use `@@`, or the envelope reports E6 first |
 | E53 | PublicationPending — shader compiled successfully but has not yet been published to the render pipeline; not renderable yet | Wait a few seconds; for scripts, poll readiness instead of assuming immediate availability (see below) |
 | E54 | A gradient's stop values read back malformed | Fix the stop rows (positions monotone 0..1); the resource binds transparent black until then |
 | E55 | More than one `hint:canvas` declaration in the source | Keep exactly one canvas authority |
@@ -117,6 +131,10 @@ function dfxProp(fx, name) {
 ```
 
 Reserved rows by name: `"Source (use expression)"`, `"Compile"`, `"State Token (internal)"`, `"Plan Token (internal)"`, `"Details"`; the Status row's NAME is the status text (starts `"Status: "` — find it by prefix). Bound shader parameters carry their `label:` text; unbound slots carry pool defaults (`"Float 01"`…). Two scripting gotchas measured on the host: `setValue` on a HIDDEN row (any unbound slot) throws "property or parent is hidden" — a script that lands there has a stale index or wrong name; and opening a project saved by an older AE year pops a version-conversion modal that blocks all scripting until dismissed.
+
+On 0.1.0+, the `Language` popup is **1 = GLSL, 2 = WGSL**. Set the intended
+language before submitting source. All passes use it; changing the popup
+does not translate the text. Existing GLSL projects retain their language.
 
 ### Readiness polling
 
@@ -166,6 +184,14 @@ Old instances may also carry rows under PREVIOUS releases' default names (e.g. `
 
 ## Plugin install (quick reference)
 
+- The 0.1.0 release plan ships a macOS Apple Silicon bundle first; Windows
+  artifacts are pending independent verification. Current-artifact macOS
+  acceptance is still in progress; see [TEST_MATRIX](../../docs/TEST_MATRIX.md).
+- macOS build/install instructions are in [macos-arm64.md](../../docs/macos-arm64.md).
+  Install only in the target AE year's Plug-ins folder. The development
+  bundle is ad-hoc signed, not Developer ID signed or notarized; follow the
+  package's scoped installation instructions.
+
 - Download `DynamicFX-<version>-win-x64.zip` from GitHub Releases (contains `DynamicFx.aex`, `INSTALL.txt`, `SHA256SUMS.txt`), or build from source with `cargo build --release`.
 - Install by copying `DynamicFx.aex` into the **version-specific** plug-ins folder, e.g. `C:\Program Files\Adobe\Adobe After Effects 2025\Support Files\Plug-ins\DynamicFx\DynamicFx.aex`, then restart AE. The effect appears under Effect > DynamicFx > DynamicFx.
 - **Never install into the shared `Common\Plug-ins\7.0\MediaCore` folder** — Premiere Pro scans that folder too.
@@ -175,9 +201,9 @@ Old instances may also carry rows under PREVIOUS releases' default names (e.g. `
 
 | Platform / host | Status |
 |---|---|
-| Windows | Supported |
-| macOS | Planned, not yet available |
-| After Effects 2025 | Verified |
-| After Effects 2026 | Verified |
-| After Effects 2024 | Unverified |
-| After Effects 2023 | Blocked (not supported) |
+| macOS Apple Silicon / AE 2026 / 0.1.0 | Current-artifact verification in progress; not yet a PASS claim |
+| Windows / 0.1.0 | Artifact pending; current-diff real-AE acceptance NOT_RUN |
+| Windows / AE 2025 and 2026 / preceding releases | Historical verification; does not verify 0.1.0 |
+| macOS Intel / Rosetta | NOT_RUN |
+| After Effects 2024 | NOT_RUN |
+| After Effects 2023 | Blocked (not supported by the current plugin protocol) |

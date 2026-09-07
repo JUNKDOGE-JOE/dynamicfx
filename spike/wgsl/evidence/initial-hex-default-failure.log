@@ -1,0 +1,125 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running unittests src/main.rs (spike/wgsl/target/debug/deps/dynamicfx_wgsl_spike-b18516ffcc47a4ba)
+
+running 87 tests
+test binding::tests::pool_table_matches_the_adr_totals ... ok
+test binding::tests::namespace_conflicts_reject_before_allocation ... ok
+test binding::tests::kind_change_reallocates ... ok
+test binding::tests::alias_inherits_and_plain_rename_does_not ... ok
+test binding::tests::new_declarations_fill_around_inherited_holes ... ok
+test binding::tests::same_ids_keep_slots_across_reorder ... ok
+test binding::tests::kinds_allocate_independently_in_declaration_order ... ok
+test binding::tests::vec4_pairing_inherits_atomically ... ok
+test definition::effect::tests::cross_pass_parameters_merge_by_name ... ok
+test definition::effect::tests::canvas_authority_is_resolved_after_cross_pass_merge ... ok
+test definition::effect::tests::exact_id_inheritance_keeps_main_when_assignment_moves_to_a_bank ... ok
+test definition::effect::tests::bank_overflow_spills_the_parameter_to_main_and_counts_it ... ok
+test definition::effect::tests::pass_beyond_the_declared_banks_allocates_in_main ... ok
+test definition::effect::tests::raw_source_lowers_to_a_one_pass_graph ... ok
+test definition::effect::tests::two_pass_parameters_allocate_to_their_pass_banks ... ok
+test definition::param::tests::grammar_accepts_identifier_forms ... ok
+test definition::param::tests::grammar_rejects_bad_forms ... ok
+test definition::param::tests::id_and_alias_namespace_is_shared ... ok
+test definition::param::tests::reserved_names_and_prefix_are_rejected ... ok
+test frontend::annotation::tests::color_hex_defaults ... ok
+test frontend::annotation::tests::full_entry_set_parses ... ok
+test frontend::annotation::tests::non_param_comments_and_code_are_ignored ... ok
+test frontend::annotation::tests::malformed_entries_are_errors_with_line_numbers ... ok
+test frontend::annotation::tests::unquoted_label_and_multi_component_default ... ok
+test frontend::annotation::tests::window_annotation ... ok
+test definition::effect::tests::pool_overflow_rejects_the_whole_definition ... ok
+test frontend::envelope::tests::comment_before_marker_keeps_it_raw ... ok
+test frontend::envelope::tests::crlf_marker_line_is_tolerated ... ok
+test binding::tests::vec4_pairs_color_and_float_atomically ... ok
+test frontend::envelope::tests::marker_after_bom_and_whitespace_is_envelope ... ok
+test binding::tests::full_float_pool_binds_and_one_more_rejects ... ok
+test frontend::envelope::tests::matched_prefix_never_falls_back_to_raw ... ok
+test frontend::envelope::tests::plain_glsl_is_raw ... ok
+test frontend::envelope::tests::prefix_match_is_case_sensitive_and_token_exact ... ok
+test frontend::envelope::tests::snapshot_budget_exceeds_source_cap ... ok
+test binding::tests::reuse_overflow_rejects_atomically ... ok
+test frontend::envelope::tests::unknown_versions_classify_for_diagnostics ... ok
+test binding::tests::total_float_capacity_includes_every_bank ... ok
+test frontend::glsl::tests::bad_glsl_is_a_parse_error ... ok
+test frontend::glsl::tests::missing_fx_uniforms_block_is_an_abi_error ... ok
+test frontend::glsl::tests::annotations_merge_into_declarations ... ok
+test frontend::glsl::tests::head_missing_u_frame_is_an_abi_error ... ok
+test frontend::glsl::tests::head_out_of_order_is_an_abi_error ... ok
+test frontend::glsl::tests::matrix_member_is_outside_the_v1_type_set ... ok
+test frontend::glsl::tests::canvas_hint_marks_a_scalar_float_without_retyping_it ... ok
+test frontend::glsl::tests::point3d_defaults_are_refused ... ok
+test frontend::glsl::tests::reserved_param_id_is_a_param_error ... ok
+test frontend::glsl::tests::reserved_binding_is_an_abi_error ... ok
+test frontend::glsl::tests::multi_kind_fixture_shader_compiles ... ok
+test frontend::glsl::tests::annotation_inconsistencies_fail_closed ... ok
+test frontend::grammar::tests::golden_two_pass_parse ... ok
+test frontend::grammar::tests::escape_rule_round_trips ... ok
+test frontend::glsl::tests::valid_module_reflects_declarations_in_order ... ok
+test frontend::grammar::tests::limits_are_enforced_at_the_boundary ... ok
+test frontend::grammar::tests::prev_misuse_is_rejected ... ok
+test frontend::grammar::tests::prev_input_marks_temporal ... ok
+test frontend::grammar::tests::sections_may_come_in_any_order_and_comments_are_ignored ... ok
+test frontend::tests::position_and_id_map_both_ways ... ok
+test frontend::tests::registry_is_append_only_shaped ... ok
+test frontend::grammar::tests::topological_order_is_declaration_stable ... ok
+test frontend::tests::unknown_positions_and_ids_are_rejected_not_clamped ... ok
+test frontend::tests::v1_menu_is_exactly_glsl ... ok
+test frontend::grammar::tests::rule_violations_are_line_numbered_e6_material ... ok
+test plan::tests::adjacent_step_reuse_and_same_step_exclusion ... ok
+test plan::tests::chain_uses_two_physical_intermediates ... ok
+test plan::tests::diamond_keeps_both_branches_live ... ok
+test frontend::envelope::tests::oversize_boundary_is_exact_and_checked_first ... ok
+test plan::tests::single_pass_plan_has_no_intermediates ... ok
+test plan::tests::prev_maps_to_history_outside_aliasing ... ok
+test render::budget_tests::budget_thresholds ... ok
+test render::budget_tests::cache_bytes_shape_math ... ok
+test render::depth_tests::depth_format_selection ... ok
+test plan::tests::plans_are_deterministic ... ok
+test render::depth_tests::f32_reorder_bit_exact ... ok
+test render::depth_tests::u15_f32_goldens ... ok
+test frontend::glsl::tests::sampling_pass_fixture_compiles ... ok
+test render::depth_tests::u15_pixel_round_trip_with_strides ... ok
+test render::logical_size_tests::downsample_ratios ... ok
+test frontend::glsl::tests::extra_input_bindings_follow_the_manifest_budget ... ok
+test frontend::glsl::tests::point3d_needs_the_hint_and_a_vec3 ... ok
+test render::depth_tests::u15_f32_exhaustive_round_trip ... ok
+test tests::wgsl_language_switch_and_alias_keep_param_slots ... FAILED
+test tests::wgsl_envelope_reuses_explicit_at_escape ... FAILED
+test tests::wgsl_all_supported_members_have_glsl_offsets_and_annotations ... FAILED
+test tests::wgsl_multi_pass_lowers_through_existing_definition ... FAILED
+test tests::wgsl_resource_reflection_is_bound_to_manifest ... ok
+test tests::wgsl_bool_storage_and_unsupported_abi_fail ... ok
+
+failures:
+
+---- tests::wgsl_language_switch_and_alias_keep_param_slots stdout ----
+
+thread 'tests::wgsl_language_switch_and_alias_keep_param_slots' (30047735) panicked at src/main.rs:312:85:
+called `Result::unwrap()` on an `Err` value: Param("`tint`: default needs 3 component(s), got 4")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::wgsl_envelope_reuses_explicit_at_escape stdout ----
+
+thread 'tests::wgsl_envelope_reuses_explicit_at_escape' (30047734) panicked at src/main.rs:288:31:
+called `Result::unwrap()` on an `Err` value: "shared parameter contract: Param(\"`tint`: default needs 3 component(s), got 4\")"
+
+---- tests::wgsl_all_supported_members_have_glsl_offsets_and_annotations stdout ----
+
+thread 'tests::wgsl_all_supported_members_have_glsl_offsets_and_annotations' (30047732) panicked at src/main.rs:277:33:
+called `Result::unwrap()` on an `Err` value: "shared parameter contract: Param(\"`tint`: default needs 3 component(s), got 4\")"
+
+---- tests::wgsl_multi_pass_lowers_through_existing_definition stdout ----
+
+thread 'tests::wgsl_multi_pass_lowers_through_existing_definition' (30047736) panicked at src/main.rs:325:36:
+called `Result::unwrap()` on an `Err` value: "shared parameter contract: Param(\"`tint`: default needs 3 component(s), got 4\")"
+
+
+failures:
+    tests::wgsl_all_supported_members_have_glsl_offsets_and_annotations
+    tests::wgsl_envelope_reuses_explicit_at_escape
+    tests::wgsl_language_switch_and_alias_keep_param_slots
+    tests::wgsl_multi_pass_lowers_through_existing_definition
+
+test result: FAILED. 83 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `--bin dynamicfx-wgsl-spike`

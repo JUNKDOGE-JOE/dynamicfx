@@ -1,0 +1,159 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "file": "fresh_00000.psd",
+      "width": 321,
+      "height": 239,
+      "depth": 8,
+      "points": [
+        {
+          "xy": [
+            0,
+            0
+          ],
+          "actual": [
+            0,
+            1,
+            96
+          ],
+          "expected": [
+            0,
+            1,
+            96
+          ],
+          "pass": true
+        },
+        {
+          "xy": [
+            160,
+            119
+          ],
+          "actual": [
+            128,
+            128,
+            96
+          ],
+          "expected": [
+            128,
+            128,
+            96
+          ],
+          "pass": true
+        },
+        {
+          "xy": [
+            320,
+            238
+          ],
+          "actual": [
+            255,
+            254,
+            96
+          ],
+          "expected": [
+            255,
+            254,
+            96
+          ],
+          "pass": true
+        },
+        {
+          "xy": [
+            7,
+            210
+          ],
+          "actual": [
+            6,
+            225,
+            96
+          ],
+          "expected": [
+            6,
+            225,
+            96
+          ],
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "file": "fresh_00001.psd",
+      "width": 321,
+      "height": 239,
+      "depth": 8,
+      "points": [
+        {
+          "xy": [
+            0,
+            0
+          ],
+          "actual": [
+            0,
+            1,
+            96
+          ],
+          "expected": [
+            0,
+            1,
+            96
+          ],
+          "pass": true
+        },
+        {
+          "xy": [
+            160,
+            119
+          ],
+          "actual": [
+            128,
+            128,
+            96
+          ],
+          "expected": [
+            128,
+            128,
+            96
+          ],
+          "pass": true
+        },
+        {
+          "xy": [
+            320,
+            238
+          ],
+          "actual": [
+            255,
+            254,
+            96
+          ],
+          "expected": [
+            255,
+            254,
+            96
+          ],
+          "pass": true
+        },
+        {
+          "xy": [
+            7,
+            210
+          ],
+          "actual": [
+            6,
+            225,
+            96
+          ],
+          "expected": [
+            6,
+            225,
+            96
+          ],
+          "pass": true
+        }
+      ],
+      "pass": true
+    }
+  ]
+}
