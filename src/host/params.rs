@@ -422,12 +422,14 @@ fn declare_one(params: &mut ae::Parameters<ParamKey>, key: ParamKey) -> Result<(
                         p.set_options(&menu);
                         p.set_default(1);
                     }),
-                    ae::ParamFlag::CANNOT_TIME_VARY,
+                    // Supervised edits publish both internal transport words
+                    // inside this user transaction, before the idle observer.
+                    ae::ParamFlag::CANNOT_TIME_VARY | ae::ParamFlag::SUPERVISE,
                     ae::ParamUIFlags::empty(),
                 )?;
             }
             ParamKey::Source => {
-                params.add(
+                params.add_with_flags(
                     key,
                     "Source (use expression)",
                     ae::FloatSliderDef::setup(|f| {
@@ -437,6 +439,8 @@ fn declare_one(params: &mut ae::Parameters<ParamKey>, key: ParamKey) -> Result<(
                         f.set_valid_max(1.0);
                         f.set_default(0.0);
                     }),
+                    ae::ParamFlag::SUPERVISE,
+                    ae::ParamUIFlags::empty(),
                 )?;
             }
             ParamKey::Compile => {

@@ -2717,8 +2717,8 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
                         names_ok &= p.set_name(&label).is_ok();
                         // Range/default metadata for bound scalar slots
                         // (annotation-driven; display metadata only — the
-                        // default VALUE is written by the idle observer to
-                        // fresh bindings via AEGP).
+                        // default VALUE is published separately before the
+                        // token words, in UCP or the scripted idle path).
                         //
                         // ADR-0037 §2: `@param min:/max:` is the SLIDER range.
                         // The SDK header on `PF_UpdateParamUI` lists
@@ -3066,6 +3066,173 @@ fn set_status(plugin: &mut PluginState, local: &mut Local, status: String) {
     };
     if updated {
         local.status = status;
+    }
+}
+
+/// Fresh defaults must land before the transport words say streams are ready.
+/// Only UserChangedParam calls this: PF scalar writes belong to that user
+/// transaction. Color/angle keep the existing full-precision AEGP writer;
+/// its Undo grouping with the PF writes still requires host verification.
+fn publish_fresh_defaults(plugin: &mut PluginState, local: &Local) -> Result<(), Error> {
+    let Some(compiled) = &local.compiled else { return Ok(()) };
+    let desired = desired_token_state(local.token, local.status_code);
+    if !fresh_publication_needed(
+        (read_word_param(plugin, ParamKey::StateToken), read_word_param(plugin, ParamKey::PlanToken)),
+        desired,
+        plan_word(local),
+    ) {
+        return Ok(());
+    }
+
+    let mut written = 0usize;
+    for (slot, config) in slot_configs(&compiled.definition) {
+        let Some(default) = fresh_slot_default(slot.kind, &config) else { continue };
+        let key = host::params::key_for_slot(slot.kind, slot.index);
+        let mut param = plugin.params.get_mut(key)?;
+        // A fresh allocation can land on an orphaned slot with old keys.
+        // Initializing its current value must not replace a user's keyframe.
+        if !can_initialize_constant(param.keyframe_count()?) {
+            continue;
+        }
+        match default {
+            FreshDefault::Float(_) | FreshDefault::Integer(_) | FreshDefault::Bool(_) => {
+                write_pf_scalar_default(&mut param, default)?;
+            }
+            FreshDefault::Color(_) | FreshDefault::Angle(_) => {
+                drop(param);
+                let plugin_id = plugin.global.plugin_id()?;
+                let pica_basic = plugin.in_data.pica_basic_suite_ptr();
+                let index = plugin.params.index(key).ok_or(Error::InvalidIndex)? as i32;
+                with_current_effect_ref(plugin, |effect_ref| {
+                    let streams = Stream::new()?;
+                    let stream = streams.new_effect_stream_by_index(effect_ref, plugin_id, index)?;
+                    host::idle::write_precise_default(pica_basic, plugin_id, &stream, default)
+                })?;
+            }
+        }
+        written += 1;
+    }
+    diag::log(&format!("ui fresh defaults published: {written}"));
+    Ok(())
+}
+
+fn can_initialize_constant(keyframes: i32) -> bool {
+    // PF_GetKeyframeCount explicitly returns NONE for a constant stream.
+    keyframes == ae::sys::PF_KeyIndex_NONE as i32 || keyframes == 0
+}
+
+fn fresh_publication_needed(current: (u64, u64), desired: TokenState, plan: u64) -> bool {
+    matches!(desired, TokenState::Active(_))
+        && current != (encode_token_state(desired) as u64, plan)
+}
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub(crate) enum FreshDefault {
+    Float(f64),
+    Integer(i32),
+    Bool(bool),
+    Angle(f64),
+    Color([f64; 3]),
+}
+
+fn fresh_slot_default(kind: PoolKind, config: &SlotConfig) -> Option<FreshDefault> {
+    if !config.fresh {
+        return None;
+    }
+    match kind {
+        PoolKind::Float => config.default.map(|v| FreshDefault::Float(v as f64)),
+        PoolKind::Integer => config.default.map(|v| FreshDefault::Integer(v as i32)),
+        PoolKind::Bool => config.default.map(|v| FreshDefault::Bool(v != 0.0)),
+        PoolKind::Angle => config.default.map(|v| FreshDefault::Angle(v as f64)),
+        PoolKind::Color => config.color_default.map(|[r, g, b, _]| {
+            FreshDefault::Color([r as f64, g as f64, b as f64])
+        }),
+        // Point/resource defaults retain their existing semantics.
+        _ => None,
+    }
+}
+
+fn write_pf_scalar_default(param: &mut ae::ParamDef<'_>, default: FreshDefault) -> Result<(), Error> {
+    match (param.as_param_mut()?, default) {
+        (ae::Param::FloatSlider(mut value), FreshDefault::Float(default)) => { value.set_value(default); }
+        (ae::Param::Slider(mut value), FreshDefault::Integer(default)) => { value.set_value(default); }
+        (ae::Param::CheckBox(mut value), FreshDefault::Bool(default)) => { value.set_value(default); }
+        _ => return Err(Error::InvalidParms),
+    }
+    param.set_value_changed();
+    Ok(())
+}
+
+#[cfg(test)]
+mod fresh_default_tests {
+    use super::*;
+
+    fn config() -> SlotConfig {
+        SlotConfig { label: "test".into(), min: None, max: None, default: Some(0.25),
+            color_default: Some([0.25, 0.6, 1.5, 0.4]), fresh: true }
+    }
+
+    #[test]
+    fn constant_sentinel_initializes_but_keyframed_streams_do_not() {
+        assert!(can_initialize_constant(ae::sys::PF_KeyIndex_NONE as i32));
+        assert!(can_initialize_constant(0));
+        assert!(!can_initialize_constant(1));
+        assert!(!can_initialize_constant(2));
+    }
+
+    #[test]
+    fn published_words_prevent_recompile_reset_and_inactive_states_never_initialize() {
+        let active = TokenState::Active(42);
+        let words = (encode_token_state(active) as u64, 19);
+        assert!(!fresh_publication_needed(words, active, 19));
+        assert!(fresh_publication_needed((0, 0), active, 19));
+        assert!(fresh_publication_needed((words.0, 18), active, 19));
+        assert!(fresh_publication_needed((0, words.1), active, 19));
+        assert!(!fresh_publication_needed((0, 0), TokenState::Invalid(21), 0));
+        assert!(!fresh_publication_needed((0, 0), TokenState::Uninitialized, 0));
+    }
+
+    #[test]
+    fn defaults_exclude_inherited_bindings_and_unimplemented_point_semantics() {
+        let mut config = config();
+        assert_eq!(fresh_slot_default(PoolKind::Float, &config), Some(FreshDefault::Float(0.25)));
+        assert_eq!(fresh_slot_default(PoolKind::Point2D, &config), None);
+        assert_eq!(fresh_slot_default(PoolKind::Point3D, &config), None);
+        config.fresh = false;
+        for kind in [PoolKind::Float, PoolKind::Integer, PoolKind::Bool, PoolKind::Angle, PoolKind::Color] {
+            assert_eq!(fresh_slot_default(kind, &config), None);
+        }
+    }
+
+    #[test]
+    fn color_and_angle_defaults_keep_full_precision_and_range() {
+        let mut config = config();
+        assert_eq!(fresh_slot_default(PoolKind::Color, &config),
+            Some(FreshDefault::Color([0.25, 0.6f32 as f64, 1.5])));
+        config.default = Some(40000.125);
+        assert_eq!(fresh_slot_default(PoolKind::Angle, &config), Some(FreshDefault::Angle(40000.125)));
+    }
+
+    #[test]
+    fn pf_scalar_default_changes_value_and_sets_commit_flag_without_host_calls() {
+        for (kind, value) in [
+            (ae::sys::PF_Param_FLOAT_SLIDER, FreshDefault::Float(0.25)),
+            (ae::sys::PF_Param_SLIDER, FreshDefault::Integer(-7)),
+            (ae::sys::PF_Param_CHECKBOX, FreshDefault::Bool(true)),
+        ] {
+            let mut raw: ae::sys::PF_ParamDef = unsafe { std::mem::zeroed() };
+            raw.param_type = kind;
+            let in_data: ae::sys::PF_InData = unsafe { std::mem::zeroed() };
+            let mut param = ae::ParamDef::from_raw(ae::InData::from_raw(&in_data), &mut raw, None);
+            write_pf_scalar_default(&mut param, value).unwrap();
+            assert!(param.change_flags().contains(ae::ChangeFlag::CHANGED_VALUE));
+            match value {
+                FreshDefault::Float(v) => assert_eq!(param.as_float_slider().unwrap().value(), v),
+                FreshDefault::Integer(v) => assert_eq!(param.as_slider().unwrap().value(), v),
+                FreshDefault::Bool(v) => assert_eq!(param.as_checkbox().unwrap().value(), v),
+                _ => unreachable!(),
+            }
+        }
     }
 }
 
@@ -4104,7 +4271,15 @@ impl AdobePluginInstance for LocalMutex {
                 configure_slots(plugin, &mut local);
                 // Commit context: mirror the token word into the stream so
                 // render clones can resolve it.
+                publish_fresh_defaults(plugin, &local)?;
                 publish_token_param(plugin, &local);
+                diag::log(&format!(
+                    "ui publication: param={param_index}, language={:?}, token={}, plan={}, code=E{}",
+                    selected_language(plugin),
+                    encode_token_state(desired_token_state(local.token, local.status_code)),
+                    plan_word(&local),
+                    local.status_code.code(),
+                ));
                 drop(local);
                 plugin.out_data.set_force_rerender();
             }

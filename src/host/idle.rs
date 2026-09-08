@@ -35,7 +35,9 @@ pub struct IdleState {
     alive: Arc<AtomicBool>,
     dynamicfx_key: Option<ae::aegp::InstalledEffectKey>,
     last_scan: Option<Instant>,
-    group_ui_tokens: HashMap<InstanceKey, u64>,
+    // Presentation belongs to the instance's source AND binding plan. Two
+    // instances of the same source can own different inherited pool slots.
+    group_ui_tokens: HashMap<InstanceKey, (u64, u64)>,
     group_visibility_failures: HashSet<InstanceKey>,
 }
 
@@ -421,24 +423,6 @@ fn sync_state_token(
         _ => return Ok(()),
     };
 
-    if state.group_ui_tokens.get(&instance_key).copied() != Some(desired) {
-        match apply_group_ui(state, streams, effect_ref, own_compiled.as_deref()) {
-            Ok(group_visibility_failed) => {
-                if group_visibility_failed
-                    && state.group_visibility_failures.insert(instance_key)
-                {
-                    crate::diag::log(
-                        "idle group hidden flags unsupported for this instance; keeping groups visible",
-                    );
-                }
-            }
-            Err(err) => crate::diag::log(&format!("idle group ui failed: {err:?}")),
-        }
-        // Presentation failures deliberately settle on the static/visible
-        // fallback instead of probing the same instance every idle tick.
-        state.group_ui_tokens.insert(instance_key, desired);
-    }
-
     // A pending mark fills an empty stream only. It must never clobber a
     // reopened project's saved Active word (still the recovery authority
     // when the registry is cold) nor a more specific diagnostic already
@@ -472,48 +456,106 @@ fn sync_state_token(
         StreamValue::OneD(value) => value,
         _ => return Ok(()),
     };
-    if !pending && current_plan != desired_plan as f64 {
-        raw_streams.set_one_d(state.plugin_id, &plan_stream, desired_plan as f64)?;
-        crate::diag::log(&format!("idle plan token updated: {desired_plan:#x}"));
-    }
-
     let desired_f64 = crate::encode_token_state(desired_state);
-    // Exact comparison avoids dirtying the project on every scan (the word
-    // is ≤ 2^53 and exactly representable).
-    if current == desired_f64 {
-        // Token already right — but a reopened project restores the token
-        // WITHOUT the slot UI (stream renames do not persist; measured in
-        // TR-M3-001's first run). Spot-check one slot's name and republish
-        // the UI when it disagrees.
-        if matches!(desired_state, crate::TokenState::Active(_)) {
-            if let Some(compiled) = own_compiled.as_ref() {
-                if slot_ui_out_of_date(state, streams, effect_ref, compiled)? {
-                    if let Err(err) =
-                        apply_slot_ui(state, streams, raw_streams, effect_ref, compiled)
-                    {
-                        crate::diag::log(&format!("idle slot ui refresh failed: {err:?}"));
-                    }
+    let presentation_key = (desired, desired_plan);
+    let update_visibility =
+        state.group_ui_tokens.get(&instance_key).copied() != Some(presentation_key);
+    let initialize_defaults = should_initialize_defaults(
+        pending,
+        own_compiled.is_some(),
+        (current, current_plan),
+        (desired_f64, desired_plan as f64),
+    );
+
+    if update_visibility {
+        match apply_group_ui(state, streams, effect_ref, own_compiled.as_deref()) {
+            Ok(group_visibility_failed) => {
+                if group_visibility_failed
+                    && state.group_visibility_failures.insert(instance_key)
+                {
+                    crate::diag::log(
+                        "idle group hidden flags unsupported for this instance; keeping groups visible",
+                    );
                 }
             }
+            Err(err) => crate::diag::log(&format!("idle group ui failed: {err:?}")),
         }
-        return Ok(());
     }
 
-    // Scripted writes get no UI callback, so the idle observer completes the
-    // publication itself: slot names, visibility, and fresh-binding defaults
-    // via AEGP, then the token. Failures log and skip — the token still
-    // publishes so rendering works.
-    if desired != 0 {
+    // Visibility is cosmetic and non-undoable. Default values are a separate
+    // publication step: once both words match (including a PF user-change
+    // transaction), an idle refresh must never write defaults again.
+    if update_visibility || initialize_defaults {
         if let Some(compiled) = own_compiled.as_ref() {
-            if let Err(err) = apply_slot_ui(state, streams, raw_streams, effect_ref, compiled) {
+            if let Err(err) = apply_slot_ui(
+                state,
+                streams,
+                raw_streams,
+                effect_ref,
+                compiled,
+                SlotUiUpdate { visibility: update_visibility, initialize_defaults },
+            ) {
                 crate::diag::log(&format!("idle slot ui failed: {err:?}"));
             }
         }
     }
+    // Presentation failures settle on the existing visible/static fallback,
+    // rather than retrying the same instance every idle tick.
+    state.group_ui_tokens.insert(instance_key, presentation_key);
 
-    raw_streams.set_one_d(state.plugin_id, &token_stream, desired_f64)?;
-    crate::diag::log(&format!("idle state token updated: {desired_state:?}"));
+    // Scripted source edits still need publication through AEGP. Keep each
+    // write conditional so a settled PF transaction adds no idle undo item.
+    if !pending && current_plan != desired_plan as f64 {
+        raw_streams.set_one_d(state.plugin_id, &plan_stream, desired_plan as f64)?;
+        crate::diag::log(&format!("idle plan token updated: {desired_plan:#x}"));
+    }
+    if current != desired_f64 {
+        raw_streams.set_one_d(state.plugin_id, &token_stream, desired_f64)?;
+        crate::diag::log(&format!("idle state token updated: {desired_state:?}"));
+    }
     Ok(())
+}
+
+/// A missing presentation-cache entry or a static display name is never a
+/// reason to rewrite parameter values. Both words are exact integers <=2^53.
+fn should_initialize_defaults(
+    pending: bool,
+    has_active_artifact: bool,
+    current_words: (f64, f64),
+    desired_words: (f64, f64),
+) -> bool {
+    !pending && has_active_artifact && current_words != desired_words
+}
+
+#[cfg(test)]
+mod default_initialization_tests {
+    use super::should_initialize_defaults;
+
+    const DESIRED: (f64, f64) = (49381.0, 67890.0);
+
+    #[test]
+    fn published_pf_transaction_never_reinitializes_defaults() {
+        // Also covers the first idle observation after project reopen: the
+        // visibility cache may be empty, but saved/keyframed values are owned
+        // by AE once both publication words already match.
+        assert!(!should_initialize_defaults(false, true, DESIRED, DESIRED));
+    }
+
+    #[test]
+    fn scripted_publication_initializes_when_either_word_is_unpublished() {
+        assert!(should_initialize_defaults(false, true, (0.0, 0.0), DESIRED));
+        assert!(should_initialize_defaults(false, true, (0.0, DESIRED.1), DESIRED));
+        // Same source with a different inherited binding plan must not be
+        // mistaken for a fully published instance.
+        assert!(should_initialize_defaults(false, true, (DESIRED.0, 123.0), DESIRED));
+    }
+
+    #[test]
+    fn pending_or_unavailable_artifact_never_initializes_defaults() {
+        assert!(!should_initialize_defaults(true, true, (0.0, 0.0), DESIRED));
+        assert!(!should_initialize_defaults(false, false, (0.0, 0.0), DESIRED));
+        assert!(!should_initialize_defaults(true, false, (0.0, 0.0), DESIRED));
+    }
 }
 
 fn apply_group_ui(
@@ -522,23 +564,11 @@ fn apply_group_ui(
     effect_ref: &ae::aegp::EffectRefHandle,
     compiled: Option<&crate::CompiledEffect>,
 ) -> Result<bool, ae::Error> {
-    use crate::host::params::{group_hidden, pass_group_name, stream_index_of, ParamKey};
+    use crate::host::params::{group_hidden, stream_index_of, ParamKey};
 
     let dyn_suite = ae::aegp::suites::DynamicStream::new()?;
     let definition = compiled.map(crate::CompiledEffect::definition);
     let plan = definition.map(|definition| &definition.binding);
-
-    for group in 0..crate::binding::BANK_GROUPS {
-        let live_name = definition
-            .and_then(|definition| definition.graph.passes.get(group))
-            .map(|pass| pass.name.as_str());
-        let label = pass_group_name(group, live_name);
-        let Some(index) = stream_index_of(ParamKey::PassGroupStart(group)) else { continue };
-        let stream = streams.new_effect_stream_by_index(effect_ref, state.plugin_id, index)?;
-        if let Err(err) = dyn_suite.set_stream_name(&stream, &label) {
-            crate::diag::log(&format!("idle pass group name failed ({group}): {err:?}"));
-        }
-    }
 
     let keys = (0..crate::binding::BANK_GROUPS)
         .flat_map(|group| {
@@ -669,49 +699,25 @@ mod token_decision_tests {
     }
 }
 
-/// One-read staleness probe: compare the first pool slot's current stream
-/// name against what the plan wants (bound label or default name). Reopened
-/// projects restore parameter values but not stream renames, so a mismatch
-/// here means the whole slot UI needs republishing.
-fn slot_ui_out_of_date(
-    state: &IdleState,
-    streams: &ae::aegp::suites::Stream,
-    effect_ref: &ae::aegp::EffectRefHandle,
-    compiled: &crate::CompiledEffect,
-) -> Result<bool, ae::Error> {
-    use crate::binding::{PoolKind, SlotRef};
-    use crate::host::params::{default_slot_name, stream_index_of};
-
-    let probe = SlotRef { kind: PoolKind::Float, index: 0 };
-    let Some(stream_index) = stream_index_of(crate::host::params::key_for_slot(
-        probe.kind,
-        probe.index,
-    )) else {
-        return Ok(false);
-    };
-    let configs = crate::slot_configs(compiled.definition());
-    let expected = configs
-        .get(&probe)
-        .map(|c| c.label.clone())
-        .unwrap_or_else(|| default_slot_name(probe.kind, probe.index));
-    let stream = streams.new_effect_stream_by_index(effect_ref, state.plugin_id, stream_index)?;
-    let actual = streams.stream_name(&stream, state.plugin_id, false)?;
-    Ok(actual != expected)
+struct SlotUiUpdate {
+    visibility: bool,
+    initialize_defaults: bool,
 }
 
-/// Apply slot labels, Hidden flags, and fresh-binding scalar defaults for
-/// every pool slot via AEGP (legal on the main-thread idle path; ParamDef
-/// writes are not honored here). Defaults never touch inherited bindings,
-/// so user values and keyframes survive re-binds.
+/// Apply non-undoable Hidden flags and, only for an unpublished artifact,
+/// fresh-binding defaults. Display names belong to PF_UpdateParamUI;
+/// AEGP_SetStreamName is undoable and forbidden by ADR-0041. Defaults never
+/// touch inherited bindings or a fully published PF user-change transaction.
 fn apply_slot_ui(
     state: &IdleState,
     streams: &ae::aegp::suites::Stream,
     raw_streams: &RawStreamSuite6,
     effect_ref: &ae::aegp::EffectRefHandle,
     compiled: &crate::CompiledEffect,
+    update: SlotUiUpdate,
 ) -> Result<(), ae::Error> {
     use crate::binding::{all_pools, PoolKind, SlotRef};
-    use crate::host::params::{default_slot_name, key_for_slot, stream_index_of};
+    use crate::host::params::{key_for_slot, stream_index_of};
 
     let dyn_suite = ae::aegp::suites::DynamicStream::new()?;
     let configs = crate::slot_configs(compiled.definition());
@@ -724,34 +730,31 @@ fn apply_slot_ui(
             let stream =
                 streams.new_effect_stream_by_index(effect_ref, state.plugin_id, stream_index)?;
             let config = configs.get(&slot);
-            let (label, hidden) = match config {
-                Some(config) => {
-                    bound += 1;
-                    (config.label.clone(), false)
-                }
-                None => (default_slot_name(kind, i), true),
-            };
-            dyn_suite.set_stream_name(&stream, &label)?;
-            dyn_suite.set_dynamic_stream_flag(
-                &stream,
-                ae::aegp::DynamicStreamFlags::Hidden,
-                false,
-                hidden,
-            )?;
+            if config.is_some() {
+                bound += 1;
+            }
+            if update.visibility {
+                dyn_suite.set_dynamic_stream_flag(
+                    &stream,
+                    ae::aegp::DynamicStreamFlags::Hidden,
+                    false,
+                    config.is_none(),
+                )?;
+            }
             // Fresh-binding defaults: scalar (OneD) kinds, and Color
             // streams via the four-component color value (ADR-0026).
-            if let Some(config) = config {
+            if let Some(config) = config.filter(|config| update.initialize_defaults && config.fresh) {
                 let scalar = matches!(
                     kind,
                     PoolKind::Float | PoolKind::Integer | PoolKind::Bool | PoolKind::Angle
                 );
-                if config.fresh && scalar {
+                if scalar {
                     if let Some(default) = config.default {
                         raw_streams.set_one_d(state.plugin_id, &stream, default as f64)?;
                         defaults_written += 1;
                     }
                 }
-                if config.fresh && kind == PoolKind::Color {
+                if kind == PoolKind::Color {
                     if let Some([r, g, b, _a]) = config.color_default {
                         // Alpha rides the companion Float slot; the color
                         // stream itself is written opaque.
@@ -772,6 +775,23 @@ fn apply_slot_ui(
         "idle slot ui applied: {bound} bound, {defaults_written} defaults written"
     ));
     Ok(())
+}
+
+/// Preserve floating-point color and angle defaults from the supervised
+/// user callback without quantizing through PF_Pixel8 or PF_Fixed. This
+/// does not assert that AE groups the AEGP write with PF parameter writes.
+pub(crate) fn write_precise_default(
+    pica_basic: *const ae::sys::SPBasicSuite,
+    plugin_id: ae::aegp::PluginId,
+    stream: &StreamReferenceHandle,
+    default: crate::FreshDefault,
+) -> Result<(), ae::Error> {
+    let suite = RawStreamSuite6::acquire(pica_basic)?;
+    match default {
+        crate::FreshDefault::Color([r, g, b]) => suite.set_color(plugin_id, stream, r, g, b),
+        crate::FreshDefault::Angle(value) => suite.set_one_d(plugin_id, stream, value),
+        _ => Err(ae::Error::InvalidParms),
+    }
 }
 
 /// Minimal raw wrapper for the one StreamSuite6 operation that
