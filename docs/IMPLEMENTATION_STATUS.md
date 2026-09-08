@@ -94,9 +94,22 @@ words. Color/angle keep their floating-point writers; their GUI Undo grouping
 still needs host verification. Default/editor each pass **213 tests**.
 The new executable is `661e89af6aa6c9cb595732146b01a42a4dad99fd1d6a19929723622a8f2a7371`;
 [build evidence](audits/evidence/wgsl-010-20260908/build-661e/README.md) is retained.
-Installation is waiting for macOS administrator authentication; AE is closed.
-**Exact next action:** finish this already-started installation, verify identity,
-and pass actual GUI Undo/Redo and the remaining 0.1.0 host checks. Curate the
+That installation completed. Real Language Undo/Redo and keyframes passed,
+but manual expression editing exposed bare-CR annotation loss and stale
+suffixes in short parameter names. The
+[661e host evidence](audits/evidence/wgsl-010-20260908/host-661e-authoring-failure/README.md)
+retains these failures. Source-expression single Undo also failed; the user
+explicitly accepts this known 0.1.0 limitation under
+[ADR-0045](adr/0045-010-source-undo-release-boundary.md), with a separate future fix.
+
+The CR/parser and name-termination repair is frozen at `8b0fe81`; default/editor
+each pass **220 tests**. New executable SHA-256:
+`bdfc9f1d978cf052e01db97d69b1d61c1ad9cc073b7691a82e2cb2d90baaa141`.
+[Build evidence](audits/evidence/wgsl-010-20260908/build-bdfc/README.md) is retained.
+Its already-started installation is waiting for system authentication; AE is closed.
+**Exact next action:** inspect that installation outcome, verify identity,
+and pass Language Undo/Redo, actual CR paste/defaults/names and the remaining
+0.1.0 host checks under ADR-0045. Curate the
 successful and failed evidence before freezing and publishing the archive.
 Siri implementation starts after release publication. Prior 0.0.6 binaries
 and their evidence remain preserved as historical acceptance.

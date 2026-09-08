@@ -1,0 +1,43 @@
+{
+  "curated_utc": "2026-09-08T05:45:24.923537+00:00",
+  "scope": "build and CPU evidence only; system installation authorization pending at curation, current-artifact host NOT_RUN",
+  "source_commit": "8b0fe81f5f6869d1ced67fc3cd1dbf6d366dae36",
+  "packaged_executable_sha256": "bdfc9f1d978cf052e01db97d69b1d61c1ad9cc073b7691a82e2cb2d90baaa141",
+  "entries": [
+    {
+      "original": "scripts/out/010/authoring-fix/build-record.json",
+      "retained": "build-record.json",
+      "bytes": 4336,
+      "sha256": "7a4072fe36585de3a17678c4541a94f85a8070d5af25a53902aae71eba47b616",
+      "transformation": "none"
+    },
+    {
+      "original": "scripts/out/010/authoring-fix/build-macos.log",
+      "retained": "build-macos.log",
+      "bytes": 1512,
+      "sha256": "3c67bda947944ac504afcfbe55292bd68b740ef20d5d7bb9ed1fe579aef2198a",
+      "transformation": "none"
+    },
+    {
+      "original": "scripts/out/010/authoring-fix/tests-default.log",
+      "retained": "tests-default.log",
+      "bytes": 16843,
+      "sha256": "06e516d0dfe302c09b7b3154da7d5847865c6207f7965424b1bbec361d7c10f3",
+      "transformation": "none"
+    },
+    {
+      "original": "scripts/out/010/authoring-fix/tests-editor.log",
+      "retained": "tests-editor.log",
+      "bytes": 16912,
+      "sha256": "33b00ef5815187e9c3bf74d391932da3dc19388fee03cb17686337148bb6dd80",
+      "transformation": "none"
+    },
+    {
+      "original": "/private/tmp/dynamicfx-source-line-ending-tests.log",
+      "retained": "source-line-ending-tests.log",
+      "bytes": 956,
+      "sha256": "97750b25914b0527335e25daeb1ffba2f045ec5ccbb9a5974a94f30f4ef2d9d9",
+      "transformation": "none"
+    }
+  ]
+}

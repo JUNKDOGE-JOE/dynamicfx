@@ -21,6 +21,14 @@ Core mental model: the final deliverable is always one expression of the shape
 
 Applying it: Effect > DynamicFx > DynamicFx, then Alt-click the `Source` stopwatch and paste the wrapped string into the expression editor.
 
+**0.1.0 Source Undo limitation:** background state publication after an
+expression edit can occupy AE's Undo history; one Undo may not restore the
+previous source, and Redo may become unavailable. Keep shader revisions in
+external files and restore previous text explicitly. Do not use a single
+Undo as the recovery strategy for Source edits. Verified Language-switch
+Undo/Redo does not establish Source-expression Undo support. This is tracked
+separately in [ADR-0045](../../docs/adr/0045-010-source-undo-release-boundary.md).
+
 ## These do NOT exist in DynamicFX
 
 An AI without this skill reliably invents the following. None of them are real. Do not use them.

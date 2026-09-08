@@ -1,0 +1,25 @@
+   Compiling dynamicfx v0.1.0 (/Users/junk_doge/Documents/DynamicFX)
+    Finished `release` profile [optimized] target(s) in 2.61s
+{
+  "bundle": "/Users/junk_doge/Documents/DynamicFX/target/macos-arm64/DynamicFx.plugin",
+  "version": "0.1.0",
+  "architectures": [
+    "arm64"
+  ],
+  "binary_sha256": "bdfc9f1d978cf052e01db97d69b1d61c1ad9cc073b7691a82e2cb2d90baaa141",
+  "resource_sha256": "fe5f2d0ba4386a9cbb4b2695da5f0086f0d5d1f8a1a90ba3370085b91e07de04",
+  "binary_bytes": 7600208,
+  "pipl_outflags": "0x06000644",
+  "pipl_outflags2": "0x08801400",
+  "signature": "Executable=/Users/junk_doge/Documents/DynamicFX/target/macos-arm64/DynamicFx.plugin/Contents/MacOS/DynamicFx\nIdentifier=com.dynamicfx.plugin\nFormat=bundle with Mach-O thin (arm64)\nCodeDirectory v=20500 size=14997 flags=0x10002(adhoc,runtime) hashes=462+3 location=embedded\nSignature=adhoc\nInfo.plist entries=10\nTeamIdentifier=not set\nRuntime Version=26.5.0\nSealed Resources version=2 rules=13 files=2\nInternal requirements count=0 size=12",
+  "packaging_context": {
+    "commit": "8b0fe81f5f6869d1ced67fc3cd1dbf6d366dae36",
+    "dirty": false,
+    "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+    "cargo": "cargo 1.97.1 (c980f4866 2026-06-30)",
+    "target": "aarch64-apple-darwin",
+    "source_binary_sha256": "4ac92477fec1f698ed20d994365090ba3e1e4764bfeec76029bd6691495e7e5f",
+    "cargo_lock_sha256": "4af148e8cb350674e90236096b536405bb74b54d5f9565f57573a43abfa2e306",
+    "packaged_utc": "2026-09-08T05:41:49.419320+00:00"
+  }
+}

@@ -3,7 +3,13 @@
 This is evidence for the production frontend, separate from the older
 feasibility spike. The first installed candidate failed real GUI Undo. Its
 repair is built; installation/host verification of the replacement and
-publication remain pending.
+publication remain pending. The latest replacement is `bdfc9f1d`, after the
+intermediate `661e` exposed additional native authoring defects.
+
+- [host-661e-authoring-failure](host-661e-authoring-failure/README.md): Language
+  Undo/Redo passed; bare CR annotations and short-name termination failed.
+- [build-bdfc](build-bdfc/README.md): repair at `8b0fe81`, default/editor
+  220 tests each; installation/host acceptance still pending at curation.
 
 - [host-91c8-undo-failure](host-91c8-undo-failure/README.md): retired candidate,
   217 numerical assertions passed but one real Language Undo failed.

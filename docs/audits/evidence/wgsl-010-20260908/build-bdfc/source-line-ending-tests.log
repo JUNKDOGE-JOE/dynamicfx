@@ -1,0 +1,14 @@
+   Compiling dynamicfx v0.1.0 (/Users/junk_doge/Documents/DynamicFX)
+    Finished `test` profile [optimized + debuginfo] target(s) in 4.53s
+     Running unittests src/lib.rs (target/debug/deps/dynamicfx-84211f197557ac3c)
+
+running 6 tests
+test source_line_ending_tests::lf_source_is_borrowed_and_envelope_classification_matches_idle_path ... ok
+test source_line_ending_tests::actual_ae_editor_cr_sample_keeps_gain_annotation_and_original_identity ... ok
+test source_line_ending_tests::envelope_temporal_window_uses_the_same_normalized_parsing_copy ... ok
+test source_line_ending_tests::raw_glsl_and_wgsl_parse_all_line_endings_without_changing_source_bytes ... ok
+test source_line_ending_tests::envelope_resource_annotations_and_hints_survive_cr_and_crlf ... ok
+test source_line_ending_tests::source_cap_counts_original_crlf_bytes_before_normalization ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 214 filtered out; finished in 0.03s
+

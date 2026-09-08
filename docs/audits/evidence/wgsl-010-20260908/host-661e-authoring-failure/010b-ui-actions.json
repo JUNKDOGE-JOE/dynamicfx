@@ -1,0 +1,25 @@
+{
+  "recorded_utc": "2026-09-08T05:38:06.133654+00:00",
+  "candidate": "661e89af6aa6c9cb595732146b01a42a4dad99fd1d6a19929723622a8f2a7371",
+  "record_type": "operator transcription of CUA actions and AX observations, not screenshot capture",
+  "language": [
+    "Opened Setup and actual Language popup; selected GLSL",
+    "Read 010b-ui-language-glsl: E17, same source and 2 keys",
+    "One super+z; screenshot WGSL/red; read 010b-ui-language-undo",
+    "One super+shift+z; read 010b-ui-language-redo E17/green input",
+    "One super+z restored WGSL"
+  ],
+  "source": [
+    "Opened timeline Setup/Source expression and pasted 010b-ui-source-green via actual editor",
+    "Read 010b-ui-source-inspect: CR line endings and malformed gaint 01 label",
+    "Read by observed stable matchName DynamicFx-447494404: green and 2 keys intact",
+    "One super+z; read 010b-ui-source-undo-id unchanged source/green",
+    "Edit menu AX: Undo Change Value, Redo disabled; history top Change Value then Edit Expression"
+  ],
+  "verdict": {
+    "language_undo_redo": "PASS",
+    "source_single_undo": "FAIL",
+    "mac_cr_annotations": "FAIL",
+    "short_name_termination": "FAIL"
+  }
+}

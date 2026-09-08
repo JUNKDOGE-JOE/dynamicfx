@@ -27,6 +27,12 @@ See [macOS setup](docs/macos-arm64.md) and the [test matrix](docs/TEST_MATRIX.md
 for the exact artifact and host scope. The optional gradient editor remains
 shelved and disabled in the default release.
 
+**Known 0.1.0 limitation:** after editing the `Source` expression, background
+state publication can occupy Undo history. A single Undo may leave the source
+unchanged and make Redo unavailable. Keep earlier shader text in a file and
+restore that text explicitly. Source-expression Undo is not covered by the
+verified Language-switch Undo/Redo result. See [ADR-0045](docs/adr/0045-010-source-undo-release-boundary.md).
+
 ## Install
 
 For Apple Silicon macOS, use the macOS ARM archive from the

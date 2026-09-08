@@ -1,0 +1,219 @@
+{
+  "schema": 1,
+  "curated_utc": "2026-09-08T05:43:36.127418+00:00",
+  "source_directory": "scripts/out/010/ae2026",
+  "source_commit": "f4ba578552e02c2a82170d2d116cf0400d8319a6",
+  "candidate_binary_sha256": "661e89af6aa6c9cb595732146b01a42a4dad99fd1d6a19929723622a8f2a7371",
+  "scope": "historical 661e authoring failures and passing Language/keyframe subset; no new AE run",
+  "policy": "Only the checkout absolute path is replaced with <REPO>; original and curated hashes are recorded. Original source line endings, shader contents, parameter values, diagnostics and operator observations are preserved. Bridge responses, request envelopes, AEP files and redundant ready/archive JSX wrappers are excluded. UI action JSON is an operator transcription, not a screenshot.",
+  "files": [
+    {
+      "file": "010b-archive-failed-661e.json",
+      "original_sha256": "759d0687a0f5f919b6b6ef95f1c6fbe5a3865b3505996c3f7e8a9b09db9eee2f",
+      "curated_sha256": "8cd8233fc3af38e2c6d0c445d66bf95940380d7cd38028f9c35d850969c8f227",
+      "original_bytes": 340,
+      "bytes": 310,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-keyframes.json",
+      "original_sha256": "81a649a010de832b62e227b63dae0f25bf752f6155a7c5c9e7399abdd9f6953e",
+      "curated_sha256": "b53391c48ef0dc6d0bcd90ddde4908a58783b1d77ccec957bfbaba9b192085ff",
+      "original_bytes": 320,
+      "bytes": 290,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-keyframes.jsx",
+      "original_sha256": "2841e4cb141fe11b5b87ff394e81daed03c8948d1dff8b3b274a2d589ebadb22",
+      "curated_sha256": "b7a00bf77c4edd9fc7229213510daf3c196be4f3958ded76c18abc5a1e4d8d83",
+      "original_bytes": 17057,
+      "bytes": 16937,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-ready.json",
+      "original_sha256": "ec069e86f80a45e462318c76edbb9c69e50073f6b1aadb792b9a5e1a3767a353",
+      "curated_sha256": "1b3c1dc722df456a245966deb853abbb4eff2eb1a955fdb13cfdd5dcc267dfca",
+      "original_bytes": 3011,
+      "bytes": 2981,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-setup.fixtures.json",
+      "original_sha256": "5a99b728338d1b36d740f81827d4c785421f49c107f51dc956712ec0d2c9d582",
+      "curated_sha256": "5a99b728338d1b36d740f81827d4c785421f49c107f51dc956712ec0d2c9d582",
+      "original_bytes": 12322,
+      "bytes": 12322,
+      "redaction": "none"
+    },
+    {
+      "file": "010b-setup.json",
+      "original_sha256": "d669df76bcdc65a9e20bffc91ba1f95a948623dd18b163976f4c60318f0e27dd",
+      "curated_sha256": "d5078ef89f06cd8d026250ff420327cf3e148d0680b6aa67ca4a0ccc6158b99f",
+      "original_bytes": 3525,
+      "bytes": 3495,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-setup.jsx",
+      "original_sha256": "2f26d3975d6852879b4aa5cd52843e304397a5946fe9f5a65942696357f21113",
+      "curated_sha256": "a60cac09536879ccd04ad19bd5072b31dc728f8e86aa863b016d74a434ef70f0",
+      "original_bytes": 17982,
+      "bytes": 17862,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-ui-actions.json",
+      "original_sha256": "d880a57e7250849475b977db4b19c69a569ce4315faf9d087e3884de2ae81c02",
+      "curated_sha256": "d880a57e7250849475b977db4b19c69a569ce4315faf9d087e3884de2ae81c02",
+      "original_bytes": 1169,
+      "bytes": 1169,
+      "redaction": "none"
+    },
+    {
+      "file": "010b-ui-gain-open.json",
+      "original_sha256": "b15f9b3ed247675dbaff7fda972d8b9b334e9579db6c485fcf9e991ad392e225",
+      "curated_sha256": "b15f9b3ed247675dbaff7fda972d8b9b334e9579db6c485fcf9e991ad392e225",
+      "original_bytes": 227,
+      "bytes": 227,
+      "redaction": "none"
+    },
+    {
+      "file": "010b-ui-gain-open.jsx",
+      "original_sha256": "06e2dd13cb8e1aba50856caaa237765c3c238d38091b6990c9eb170bfb01ea3c",
+      "curated_sha256": "11e03331db3dc045f1fad4cdf81e3a26c35a315daf17dcf90f37f5811f44bd8c",
+      "original_bytes": 16846,
+      "bytes": 16726,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-ui-language-glsl.json",
+      "original_sha256": "e701760d0a645d6f695ac957928ef180d715a73b8698bec6c8e57207988fad01",
+      "curated_sha256": "e701760d0a645d6f695ac957928ef180d715a73b8698bec6c8e57207988fad01",
+      "original_bytes": 858,
+      "bytes": 858,
+      "redaction": "none"
+    },
+    {
+      "file": "010b-ui-language-glsl.jsx",
+      "original_sha256": "b15584b6e4f9c2287c850b4e196ede2417b22285fcadd2b074dda92d324d8137",
+      "curated_sha256": "4297217fe2dd65a1e32d759fbe95df8526049544e3ba1b5af1fb7d39bcc3f387",
+      "original_bytes": 17001,
+      "bytes": 16881,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-ui-language-redo.json",
+      "original_sha256": "e701760d0a645d6f695ac957928ef180d715a73b8698bec6c8e57207988fad01",
+      "curated_sha256": "e701760d0a645d6f695ac957928ef180d715a73b8698bec6c8e57207988fad01",
+      "original_bytes": 858,
+      "bytes": 858,
+      "redaction": "none"
+    },
+    {
+      "file": "010b-ui-language-redo.jsx",
+      "original_sha256": "ffe0827376daf789af4c0e4ac60e17248bf89bc2e9280125784d92453df892b4",
+      "curated_sha256": "b87c2f736312060faebde0f8b2bee95353d15486015deedeb323de3545210a32",
+      "original_bytes": 17001,
+      "bytes": 16881,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-ui-language-undo.json",
+      "original_sha256": "4cda8718d9fb01057d30704b197c6c065ecccf50cf36f633907f93159866b966",
+      "curated_sha256": "4cda8718d9fb01057d30704b197c6c065ecccf50cf36f633907f93159866b966",
+      "original_bytes": 829,
+      "bytes": 829,
+      "redaction": "none"
+    },
+    {
+      "file": "010b-ui-language-undo.jsx",
+      "original_sha256": "516c7287bd2a2e094014fba90f0c17bd9568c0cf95b1da11d05b30caf775b5c0",
+      "curated_sha256": "02044bc4441dec17672993e55fc85c623194ca711ffc75e0ad4431a50349dbb3",
+      "original_bytes": 17001,
+      "bytes": 16881,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-ui-readback-prepare.json",
+      "original_sha256": "6666386e63062113fb24c8c16659de79e3aa11b14757e73a82c2d0bbfe1d25c9",
+      "curated_sha256": "f53fea90279f2c042e4dee9ad896fccd960c2e8ca60f737a746556a7357460bf",
+      "original_bytes": 152,
+      "bytes": 122,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-ui-readback-prepare.jsx",
+      "original_sha256": "eb508bb4617f5a6dbe25ed3ad88d08f3ed9d4cc6108fb8a9e84a0168b6c0a5ad",
+      "curated_sha256": "1569485ab8a55120e2a20e1c391310c61b9cc68efbc8dfa3f6bbd21f619c9e19",
+      "original_bytes": 17081,
+      "bytes": 16961,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-ui-source-green-id.json",
+      "original_sha256": "7ffdffd8e2cb9ea7252802ef0f79c77ea7a1414af0bf3f4161c6ef0cb457afb3",
+      "curated_sha256": "7ffdffd8e2cb9ea7252802ef0f79c77ea7a1414af0bf3f4161c6ef0cb457afb3",
+      "original_bytes": 725,
+      "bytes": 725,
+      "redaction": "none"
+    },
+    {
+      "file": "010b-ui-source-green-id.jsx",
+      "original_sha256": "c62613fbbcbbfae0b900e963a34c44dcc1954449b754ea7bb3f4fa929b26b125",
+      "curated_sha256": "337976332fb8ef929b55307aba9c5c607b2ae576285d564bdf05fa800e187e1c",
+      "original_bytes": 17092,
+      "bytes": 16972,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-ui-source-green.json",
+      "original_sha256": "cd3806db72321a3dbfa77cc7a489cf10720bff479a0e88ad067f68a3432a8531",
+      "curated_sha256": "cd3806db72321a3dbfa77cc7a489cf10720bff479a0e88ad067f68a3432a8531",
+      "original_bytes": 70,
+      "bytes": 70,
+      "redaction": "none"
+    },
+    {
+      "file": "010b-ui-source-green.jsx",
+      "original_sha256": "62819cad32b51414e29aef670960ffc660d0013cda65baa622a0c96dc0d33429",
+      "curated_sha256": "4a54a3c78ee56aa5867809a42d2ead7a0afe20068b85b5801f6387c9c4fb01d4",
+      "original_bytes": 16999,
+      "bytes": 16879,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-ui-source-inspect.json",
+      "original_sha256": "fbcec28d0ad0cbfb377b39a4048fa2ffd7ba8814a6008f7feda32acc70f6e0fa",
+      "curated_sha256": "fbcec28d0ad0cbfb377b39a4048fa2ffd7ba8814a6008f7feda32acc70f6e0fa",
+      "original_bytes": 2771,
+      "bytes": 2771,
+      "redaction": "none"
+    },
+    {
+      "file": "010b-ui-source-inspect.jsx",
+      "original_sha256": "9d886602257ee29681eb722214817986b090ec67397f7f9a6ead35a26318d0b7",
+      "curated_sha256": "642695373203a82a3b835298137b9e1b6815e6df505381d5336800f9f9d07cb5",
+      "original_bytes": 16863,
+      "bytes": 16743,
+      "redaction": "repository absolute path replaced with <REPO>"
+    },
+    {
+      "file": "010b-ui-source-undo-id.json",
+      "original_sha256": "7ffdffd8e2cb9ea7252802ef0f79c77ea7a1414af0bf3f4161c6ef0cb457afb3",
+      "curated_sha256": "7ffdffd8e2cb9ea7252802ef0f79c77ea7a1414af0bf3f4161c6ef0cb457afb3",
+      "original_bytes": 725,
+      "bytes": 725,
+      "redaction": "none"
+    },
+    {
+      "file": "010b-ui-source-undo-id.jsx",
+      "original_sha256": "e2421f0a1a0cbba23773a6f307e9c0a131426e9ecd4b7d9980bc7154b84ebdf6",
+      "curated_sha256": "971058db745f6d883c8c7571c4ec31a2003f97334204ed1d9f3f9c6512a9dd42",
+      "original_bytes": 17090,
+      "bytes": 16970,
+      "redaction": "repository absolute path replaced with <REPO>"
+    }
+  ]
+}

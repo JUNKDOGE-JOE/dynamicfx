@@ -1054,10 +1054,11 @@ When a matrix cell changes, add a result record below or in the related audit an
 
 ### TR-WGSL-002 — Production WGSL and host integration (0.1.0)
 
-- Status: **FAIL** for the `91c8afd` candidate host gate: the initial rendering
-  and parameter subset passed 217 assertions, but actual GUI Language Undo
-  failed. This candidate is not releasable. CPU and production Metal checks
-  passed. [ADR-0044](adr/0044-wgsl-and-010-release.md).
+- Status: **NOT_RUN** for current candidate `bdfc9f1d` host acceptance;
+  installation is awaiting system authentication. Earlier candidates failed
+  as retained below. CPU and production Metal checks passed.
+  [ADR-0044](adr/0044-wgsl-and-010-release.md) and the user-approved
+  [Source Undo exception](adr/0045-010-source-undo-release-boundary.md).
 - Working-tree baseline: origin/main `d4477ab` plus this 0.1.0 change; source
   hashes accompany the final evidence. Rust 1.97.1, Naga/wgpu 29.0.4,
   macOS 26.5.2 arm64 Apple M5.
@@ -1100,10 +1101,10 @@ When a matrix cell changes, add a result record below or in the related audit an
 
 ### TR-REL-010 — 0.1.0 publication
 
-- Status: **BLOCKED** by the failed TR-WGSL-002 GUI Language Undo gate on
-  installed candidate `91c8afd`; no tag/release is published. User release
-  authorization is already granted. Repair, fresh artifact validation and
-  evidence curation must complete before publication.
+- Status: **BLOCKED** pending installation and current-artifact acceptance
+  of `bdfc9f1d`; no tag/release is published. User release authorization and
+  the explicit Source-expression Undo limitation are granted (ADR-0045).
+  The remaining host gates and evidence curation must complete before publication.
 - Planned asset: `DynamicFX-0.1.0-macos-arm64.zip`, ad-hoc signed, no
   notarization claim. Windows asset follows later under the same tag.
 - Requires current-artifact TR-WGSL-002, source publication scan, source

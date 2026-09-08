@@ -1,26 +1,20 @@
 # WGSL 适配可行性与生产接入结果
 
-**WGSL 生产前端已实现，CPU 与 Apple Silicon / Metal 验证通过；0.1.0
-候选已安装，真实 Undo 验收失败，修复前不可发布。** 当前代码已将 WGSL 加入
-Language 菜单，GLSL 保持默认值。这个结论来自生产前端的直接反射与
-渲染，不再仅依赖早期 spike 的临时接口适配器。
+**WGSL 生产前端已实现，CPU 与 Apple Silicon / Metal 验证通过；最新
+0.1.0 候选仍待安装和真实 AE 验收，尚未发布。** WGSL 已加入 Language
+菜单，GLSL 保持默认值；生产前端直接反射原始 WGSL，不依赖 spike 适配器。
 
-用户后续授权正式接入与 0.1.0 发布，[ADR-0044](adr/0044-wgsl-and-010-release.md)
-已接受。冻结编译源码为 `73d8b516163b36f539a2b30a8e163d07d576b9c5`；
-ARM 候选可执行文件 SHA-256 为
-`91c8afdcdc6186ca2efa24ca1c06cbcbb619a659b62e77fbe69fe988f9323a22`。
-身份与签名见[构建记录](audits/evidence/wgsl-010-20260908/build/build-record.json)。
-候选已通过临时目录暂存和管理员认证安装到 AE 26.3x87。217 项渲染、
-资源与关键帧断言通过，但一次真实 Language Undo 未恢复语言，撤销记录
-被后台名称/值写入污染。该候选判定失败，修复和重新验收正在进行；
-发布与真实 iOS 27 Siri 实现均未开始。
-[审计 08](audits/08-wgsl-010.md) 与
+最新编写修复已冻结于 `8b0fe81`，默认版和 editor 版各 220 项测试通过。
+新候选 `bdfc9f1d` 的安装正在等待系统认证，见
+[构建证据](audits/evidence/wgsl-010-20260908/build-bdfc/README.md)。
+中间候选 661e 的 Language 撤销/重做通过，但真实 CR 换行注释和短名称
+终止符验收失败，见[宿主记录](audits/evidence/wgsl-010-20260908/host-661e-authoring-failure/README.md)。
+
+Source 表达式的单次撤销仍失败；用户已依据
+[ADR-0045](adr/0045-010-source-undo-release-boundary.md) 明确接受作为
+0.1.0 已知限制披露，后续单独修复。[审计 08](audits/08-wgsl-010.md) 与
 [TR-WGSL-002](TEST_MATRIX.md#tr-wgsl-002--production-wgsl-and-host-integration-010)
-记录生产验收边界。
-
-Undo 修复已冻结于 `f4ba578`，默认版和 editor 版各 213 项测试通过。
-新候选 `661e89af…` 的[构建记录](audits/evidence/wgsl-010-20260908/build-661e/README.md)
-已归档；管理员安装仍在等待系统认证，尚无该字节的真实宿主 PASS。
+记录当前验收边界，真实 iOS 27 Siri 编写仍按约定在发布后开始。
 
 ## 当前生产验证
 
