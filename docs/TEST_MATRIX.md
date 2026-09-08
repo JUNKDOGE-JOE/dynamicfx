@@ -1194,5 +1194,5 @@ build and static artifact checks. PASS AE 2026 Sample relocation, embedded
 source identity, original checkpoint preservation and 300 unique 60 fps native
 frames. NOT_RUN exact-new-byte host installation, other AE years and Mac 0.1.1;
 native failure injection BLOCKED. Source Undo remains a known FAIL.
-Publication verification pending. Exact environment, commands, source/artifact
+PASS: regular v0.1.1 published, three downloaded assets equal their frozen hashes; contained AEX, lock, source identity and Sample files match. Exact environment, commands, source/artifact
 identities and evidence: [release audit](audits/09-windows-011.md).

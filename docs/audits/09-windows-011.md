@@ -1,6 +1,6 @@
 # 0.1.1 Windows patch and IOS27Siri sample
 
-Local release checks pass; publication awaits the uploaded-asset verification.
+PASS: v0.1.1 is published as a regular release; all three downloaded assets match the frozen packages.
 Baseline is v0.1.0 (`f0cd526`) plus the two runtime repairs and 0.1.1 metadata.
 
 The renderer captures Validation, Internal and OutOfMemory pipeline errors as
@@ -58,4 +58,10 @@ records the original and published hashes. No original evidence is deleted.
 Historical visual perfection remains unaccepted; the sample is an approximation.
 
 [Release boundary](../adr/0046-011-windows-patch-release.md).
-Next action: publish and verify downloaded package identities.
+Next action: a separately authorized Source Undo repair or additional platform acceptance; no further publication work remains.
+
+## Published identity
+
+[Release](https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.1.1), source commit `2428cfd94b4556cc3bc5ed63f7950ceca42a6b92`. [Downloaded-asset verification](evidence/release-011-20260909/published-verification.json), [checksums](evidence/release-011-20260909/SHA256SUMS.txt), [public payload manifest](evidence/release-011-20260909/publication-manifest.json). The historical raw-archive commit was not pushed.
+
+Temporary render sequences, relocated test project, export comparisons and staging copies were removed after validation; [cleanup record](evidence/release-011-20260909/temporary-cleanup.json). Final release archives and the verified Sample remain.

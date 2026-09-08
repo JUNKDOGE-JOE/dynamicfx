@@ -14,9 +14,9 @@
 
 ## Active follow-up - 0.1.1 Windows patch and current Sample
 
-User-authorized 2026-09-09: publish the runtime repairs and portable IOS27Siri
-Sample, verify uploaded hashes, and retain the disclosed Source Undo and host
-coverage limitations. [ADR-0046](adr/0046-011-windows-patch-release.md).
+User-authorized 2026-09-09 publication is complete: runtime repairs, portable
+IOS27Siri Sample and downloaded hashes verified. Source Undo and host coverage
+limitations remain disclosed. [ADR-0046](adr/0046-011-windows-patch-release.md).
 Further visual refinement and Undo redesign remain separate work.
 
 ## Historical post-M7 follow-up — 0.1.0 then Siri

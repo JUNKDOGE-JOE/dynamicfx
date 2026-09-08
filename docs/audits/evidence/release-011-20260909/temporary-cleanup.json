@@ -1,0 +1,27 @@
+[
+  {
+    "relative": "frames",
+    "files": 139,
+    "bytes": 132739062.0
+  },
+  {
+    "relative": "frames-v2",
+    "files": 300,
+    "bytes": 287045087.0
+  },
+  {
+    "relative": "relocated",
+    "files": 3,
+    "bytes": 2387540.0
+  },
+  {
+    "relative": "publish-tree",
+    "files": 1601,
+    "bytes": 149625534.0
+  },
+  {
+    "relative": "license-supplements",
+    "files": 13,
+    "bytes": 63943.0
+  }
+]

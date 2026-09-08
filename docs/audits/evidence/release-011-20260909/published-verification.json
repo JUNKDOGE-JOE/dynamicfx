@@ -1,0 +1,30 @@
+{
+  "release_url": "https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.1.1",
+  "tag": "v0.1.1",
+  "published_at": "2026-09-08T22:04:43Z",
+  "regular_release": true,
+  "source_commit": "2428cfd94b4556cc3bc5ed63f7950ceca42a6b92",
+  "assets": [
+    {
+      "name": "DynamicFX-0.1.1-windows-x64.zip",
+      "bytes": 3785041,
+      "sha256": "26b385b9bb3a84b0bf2991249d7950bccfc29ce71a953481e1189dadae4d1e6b",
+      "download_matches_frozen": true
+    },
+    {
+      "name": "IOS27Siri-0.1.1.zip",
+      "bytes": 3359286,
+      "sha256": "a40f788d08b630a91dbd5188ac13c9fd632308dda72a7daf954cbab30bdaeace",
+      "download_matches_frozen": true
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 267,
+      "sha256": "583edbbad0b678b6f5b6c0f12ed5b9802ae7db85f0a3b93328e6be6bffa062aa",
+      "download_matches_frozen": true
+    }
+  ],
+  "aex_sha256": "b10632fa77bee85443813758958f506033fe59d8e3bf00528f4bafd89e685e1d",
+  "package_identity_verified": true,
+  "sample_package_matches_native_verified_files": true
+}
