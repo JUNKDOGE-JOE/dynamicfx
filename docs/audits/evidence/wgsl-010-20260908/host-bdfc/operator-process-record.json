@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "record_type": "operator transcription of terminal tool results, not text extracted from aerender log",
+  "command_redacted": "'/Applications/Adobe After Effects 2026/aerender' -project '<REPO>/scripts/out/010/ae2026/native-wgsl-010-aerender.aep' > scripts/out/010/ae2026/010c-aerender.log 2>&1",
+  "path_placeholder": "<REPO> is the local repository root, redacted consistently with source records",
+  "exec_command_result": {
+    "session_id": 20792,
+    "chunk_id": "1f9aaf"
+  },
+  "write_stdin_request": {
+    "session_id": 20792,
+    "chars": "",
+    "yield_time_ms": 1000
+  },
+  "write_stdin_result": {
+    "chunk_id": "21f92b",
+    "exit_code": 0,
+    "output": ""
+  },
+  "source": "Root operator relayed the actual tool request/result during this task; curation did not run aerender.",
+  "identity_before": "010c-aerender-identity-before.json",
+  "identity_after": "010c-aerender-identity-after.json",
+  "log": "010c-aerender.log",
+  "candidate_binary_sha256": "bdfc9f1d978cf052e01db97d69b1d61c1ad9cc073b7691a82e2cb2d90baaa141"
+}

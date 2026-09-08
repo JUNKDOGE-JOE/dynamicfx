@@ -1,11 +1,18 @@
 # Production WGSL 0.1.0 evidence
 
 This is evidence for the production frontend, separate from the older
-feasibility spike. The first installed candidate failed real GUI Undo. Its
-repair is built; installation/host verification of the replacement and
-publication remain pending. The latest replacement is `bdfc9f1d`, after the
-intermediate `661e` exposed additional native authoring defects.
+feasibility spike. The final `bdfc9f1d` replacement passed the tested native
+macOS AE 26.3x87 host subset, with the Source expression single-Undo failure
+explicitly retained as an accepted 0.1.0 limitation under
+[ADR-0045](../../../adr/0045-010-source-undo-release-boundary.md).
+Host acceptance and package verification do not establish publication.
 
+- [host-bdfc](host-bdfc/README.md): final installed candidate, 558/558 render,
+  resource, keyframe, reopen and export checks; actual Language Undo/Redo,
+  CR source and fresh defaults verified. The first gradient initialization
+  failure and its UI precondition remain visible.
+- [package-bdfc](package-bdfc/README.md): frozen final macOS package,
+  unchanged signed bundle and extraction checks; upload is tracked separately.
 - [host-661e-authoring-failure](host-661e-authoring-failure/README.md): Language
   Undo/Redo passed; bare CR annotations and short-name termination failed.
 - [build-bdfc](build-bdfc/README.md): repair at `8b0fe81`, default/editor
@@ -14,7 +21,7 @@ intermediate `661e` exposed additional native authoring defects.
 - [host-91c8-undo-failure](host-91c8-undo-failure/README.md): retired candidate,
   217 numerical assertions passed but one real Language Undo failed.
 - [build-661e](build-661e/README.md): repair at `f4ba578`, default/editor
-  213 tests each; new executable identity, not yet a host PASS.
+  213 tests each; build evidence precedes the subsequent host failure above.
 
 - `build/`: default/editor 205 tests each, integration tests, locked build,
   source identity and unsigned-input/signed-bundle identities.
@@ -42,6 +49,8 @@ local run paths for provenance; public relative files are mapped by that
 manifest. No binary is rebuilt or signed by evidence curation.
 
 The original manifest covers the original build/GPU/example/package groups.
-The appended `host-91c8-undo-failure` and `build-661e` directories have their
-own manifests and checksums. Host curation explicitly records path redaction
-and both the original and distributed hashes.
+The appended host, replacement-build and final-package directories have
+their own manifests and checksums. Host curation explicitly records path
+redaction and both the original and distributed hashes. Earlier failures
+and pending-at-build statements remain historical evidence, not the final
+acceptance state.

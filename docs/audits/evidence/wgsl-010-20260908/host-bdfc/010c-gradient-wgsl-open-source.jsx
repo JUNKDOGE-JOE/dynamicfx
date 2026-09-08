@@ -1,0 +1,1 @@
+ownProject();var c=c010("wgsl","gradient");c.openInViewer();for(var i=1;i<=c.numLayers;i++)c.layer(i).selected=false;c.layer("input").selected=true;return {mode:"gradient-open",state:s010(c)};

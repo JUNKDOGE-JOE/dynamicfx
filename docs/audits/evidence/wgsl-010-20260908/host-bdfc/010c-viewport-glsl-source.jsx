@@ -1,0 +1,1 @@
+ownProject();var c=c010('glsl',"multi");c.time=0;c.resolutionFactor=[1,1];c.openInViewer();return {mode:"viewport-open",state:s010(c)};

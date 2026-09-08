@@ -1054,17 +1054,79 @@ When a matrix cell changes, add a result record below or in the related audit an
 
 ### TR-WGSL-002 — Production WGSL and host integration (0.1.0)
 
-- Status: **NOT_RUN** for current candidate `bdfc9f1d` host acceptance;
-  installation is awaiting system authentication. Earlier candidates failed
-  as retained below. CPU and production Metal checks passed.
-  [ADR-0044](adr/0044-wgsl-and-010-release.md) and the user-approved
-  [Source Undo exception](adr/0045-010-source-undo-release-boundary.md).
-- Working-tree baseline: origin/main `d4477ab` plus this 0.1.0 change; source
-  hashes accompany the final evidence. Rust 1.97.1, Naga/wgpu 29.0.4,
-  macOS 26.5.2 arm64 Apple M5.
-- `cargo +stable test --target aarch64-apple-darwin`, default and `--features
-  editor`: **205 passed each**. Raw working logs: `scripts/out/010/tests-default.log`
-  and `tests-editor.log`, preserved in the [curated evidence](audits/evidence/wgsl-010-20260908/README.md).
+- Status: **PASS for the recorded bdfc native AE 2026 acceptance subset**
+  under [ADR-0044](adr/0044-wgsl-and-010-release.md), qualified by
+  [ADR-0045](adr/0045-010-source-undo-release-boundary.md). Source-expression
+  single Undo remains a known **FAIL**, explicitly accepted for 0.1.0;
+  this result does not claim that all Undo/Redo paths pass. The first scripted
+  Gradient assignment failed on hidden controls and passed only after the
+  UI initialization described below. Earlier candidate failures are retained.
+- Final native source: `8b0fe81f5f6869d1ced67fc3cd1dbf6d366dae36`, tree
+  `45fd2c3c62a008022d675bdc0376996894800d51`, based on origin/main `d4477ab`.
+  Date: 2026-09-08. Host: native arm64 AE 2026 **26.3x87**, Apple M5,
+  macOS **26.5.2 / 25F84**; Rust/Cargo 1.97.1, Naga/wgpu 29.0.4, Metal.
+- Final default bundle: executable SHA-256
+  `bdfc9f1d978cf052e01db97d69b1d61c1ad9cc073b7691a82e2cb2d90baaa141`
+  (7,600,208 bytes), PiPL SHA-256
+  `fe5f2d0ba4386a9cbb4b2695da5f0086f0d5d1f8a1a90ba3370085b91e07de04`.
+  Administrator-authorized installation succeeded at
+  `/Applications/Adobe After Effects 2026/Plug-ins/DynamicFx/DynamicFx.plugin`.
+  Installed and frozen bundle identities match; before/after aerender checks
+  retain the same executable hash. [Build](audits/evidence/wgsl-010-20260908/build-bdfc/README.md),
+  [final host evidence](audits/evidence/wgsl-010-20260908/host-bdfc/README.md).
+- Final CPU suites: `cargo +stable test --locked --offline` and the same
+  with `--features editor`, **220 passed each**; six line-ending regressions
+  are included, not additional. Exact commands/logs and retained Cargo.lock
+  are in the build evidence. The original 205-test production WGSL suite
+  remains in the [earlier default-suite log](audits/evidence/wgsl-010-20260908/build/tests-default.log).
+- Final host procedure: serial `ae_acceptance.py` setup/capture/resources,
+  keyframes, save/reopen/readback and queue modes; actual CUA Language and
+  Source edits; actual Full/Half/Quarter menu changes; close AE and render
+  the saved queue with the installed host's independent `aerender`.
+  `check_acceptance.py` over the completed JSON records and PSD exports
+  passed **558/558 checks**. This total includes export checks; it is not
+  558 separate GUI tests. Original [checker result](audits/evidence/wgsl-010-20260908/host-bdfc/010c-check.json)
+  and [operator record](audits/evidence/wgsl-010-20260908/host-bdfc/010c-ui-actions.json)
+  accompany the exact commands and individual readbacks in the host evidence.
+- Final scripted checks cover GLSL/WGSL 8/16/32-bpc, single/multiple passes,
+  HDR, temporal requests, expected invalid-input diagnostics, Layer/Gradient/Path
+  None/assigned resources, keyframes and save/reopen. Independent aerender
+  exited **0** and produced **24 PSD frames**: 12 queue items × two frames,
+  GLSL/WGSL × UV/multipass × Full/Half/Quarter, **8-bpc**. Physical sizes are
+  321×239, 161×120 and 81×60. These exports do not grant 16/32-bpc aerender
+  coverage; the interactive depth checks and export scope stay separate.
+- Actual GUI first publication: a fresh WGSL source under GLSL first reports
+  E17; selecting WGSL initializes gain 0.25, color approximately
+  `[0.25, 0.60000002384186, 1, 1]`, alpha `0.40000000596046`, and angle
+  `12.3456697463989`. One Cmd+Z restores GLSL and pristine values; one Redo
+  restores WGSL/defaults. Existing gain keys 0.25 at 0 s and 0.75 at 1 s
+  remain unchanged through a separate Language Undo/Redo sequence, with
+  unchanged source bytes and the expected render/diagnostic after each step.
+- Actual macOS Source paste stores bare CR line endings. An annotated raw
+  WGSL source compiles with the expected gain and green pixel `[0, 0.25, 0, 1]`;
+  a two-pass envelope with escaped WGSL attributes compiles and renders
+  `[0.25, 0.4, 0.6, 1]`. Annotations/defaults and complete short labels pass
+  on the final artifact. This does not change the accepted Source Undo FAIL.
+- Actual CUA viewport inspection passes for both languages at Full, Half and
+  Quarter: all six views retain the complete canvas; Quarter is visibly
+  coarser as expected. Resolution readbacks accompany these observations.
+  The operator JSON transcribes CUA image/AX observations; it is not a set of
+  captured screenshots. The separate PSD checks provide numeric physical-size
+  evidence; `sampleImage` alone does not establish viewport downsampling.
+- Gradient prerequisite: the first script assignment failed because the
+  parent/child controls were hidden, after partially assigning GLSL Layer/Path.
+  Readback preserved that state. Opening each language's Effect Controls and
+  expanding Main/Gradient 01 exposed the two active color rows; a newly tagged
+  assignment then passed the original value/pixel assertions. Retain the
+  initial failure and recovery. Fully headless first-time Gradient assignment
+  is not certified by this passing, UI-initialized run.
+- Source-expression single Undo remains **FAIL / accepted limitation** under
+  ADR-0045, recorded on 661e and not relabeled as a bdfc PASS. Keep previous
+  source in a file and restore the exact text explicitly. Windows/DX12 remains
+  **NOT_RUN**; no other AE years, Intel/Rosetta or cross-GPU bit identity are granted.
+
+Earlier production GPU and retired-candidate results remain historical:
+
 - `scripts/wgsl/compare_gpu.py`: **18 pairs byte-equal**, 8/16/32 working
   formats × Full/Half/Quarter × one/two passes, odd logical size 321×239,
   production frontend and renderer. Source unchanged during run. First
@@ -1072,41 +1134,54 @@ When a matrix cell changes, add a result record below or in the related audit an
   separately, fixed by supplying identical annotations to both frontends.
 - Two authored examples: 40 Metal renders, 96 checks passed. These are
   working-buffer checks, not AE 16-bpc boundary or full-AA proofs.
-- On 2026-09-08, administrator-authorized installation from `/private/tmp`
+- On the retired 91c8 candidate, administrator-authorized installation from `/private/tmp`
   succeeded; installed executable SHA-256 matched
   `91c8afdcdc6186ca2efa24ca1c06cbcbb619a659b62e77fbe69fe988f9323a22`.
   The earlier administrator shell attempt to execute the installer in
   Documents failed with `Operation not permitted (126)` and left the old
   installation intact; temporary staging resolved that installation step.
-- Native arm64 AE **26.3x87** completed **217 assertions, all passed**:
+- That 91c8 run on native arm64 AE **26.3x87** completed **217 assertions, all passed**:
   GLSL/WGSL rendering at 8/16/32 bpc, multiple passes, HDR, temporal requests,
   expected invalid-input diagnostics, Layer/Gradient/Path bindings (None and
   assigned), and keyframes. The capture used `sampleImage` at requested
   resolution `[1, 1]`; it does not prove physical viewport downsampling.
-- Actual GUI Language WGSL → GLSL correctly produced E17 and input
+- On 91c8, actual GUI Language WGSL → GLSL correctly produced E17 and input
   passthrough. One actual Cmd+Z left GLSL/E17 in place; Redo was disabled,
   with two Change Value and twelve Pass Change Name entries observed in
   history. Intervening pixel probes were read-only. This is a host failure,
   not a completed Undo/Redo acceptance.
-- The repair is built at `f4ba578`, executable `661e89af...`: supervised
+- The retired repair was built at `f4ba578`, executable `661e89af...`: supervised
   Source/Language, no idle name writes, fresh defaults before transport words.
   Default/editor each pass 213 tests; [build evidence](audits/evidence/wgsl-010-20260908/build-661e/README.md).
-  Installation is waiting for system authentication. This new artifact has
-  not yet passed the host gate. UI Undo/Redo, save/reopen,
-  physical reduced renders and aerender remain outstanding. Windows/DX12
-  remains **NOT_RUN** by scope.
+  Installation completed; actual Language Undo/Redo and preserved keyframes
+  passed, but manual Source editing exposed CR annotation loss and short-label
+  suffix corruption. Source single Undo failed separately. The
+  [661e host record](audits/evidence/wgsl-010-20260908/host-661e-authoring-failure/README.md)
+  preserves all three findings; only the Source Undo defect is exempted by ADR-0045.
 - [Initial host evidence](audits/evidence/wgsl-010-20260908/host-91c8-undo-failure/README.md)
   retains 217 checks, instrument failures/recovery and the GUI Undo failure.
   The passing subset does not change the retired candidate's overall **FAIL**.
 
 ### TR-REL-010 — 0.1.0 publication
 
-- Status: **BLOCKED** pending installation and current-artifact acceptance
-  of `bdfc9f1d`; no tag/release is published. User release authorization and
-  the explicit Source-expression Undo limitation are granted (ADR-0045).
-  The remaining host gates and evidence curation must complete before publication.
+- Status: **NOT_RUN** for publication; final package verification **PASS**. Current-artifact host
+  acceptance is complete under TR-WGSL-002 and ADR-0045; the Source-expression
+  Undo failure remains disclosed and accepted, not repaired. No final release
+  publication has occurred: no push, tag or release is published.
 - Planned asset: `DynamicFX-0.1.0-macos-arm64.zip`, ad-hoc signed, no
   notarization claim. Windows asset follows later under the same tag.
-- Requires current-artifact TR-WGSL-002, source publication scan, source
-  version/tag identity, preserved build lock, installed/packaged/downloaded
-  hash and signature checks. [Audit](audits/08-wgsl-010.md).
+- The final-candidate ZIP has now been assembled at
+  `scripts/out/010/release-bdfc-final/DynamicFX-0.1.0-macos-arm64.zip`,
+  **3,563,347 bytes**, SHA-256
+  `f2fffc1808727231db8a713cddf024cbcf0e55a7f1064beff6d8897a129dcc3d`.
+  Packaging preserves the accepted bdfc executable, PiPL and signature;
+  extraction verified **287 internal-manifest files**, executable permissions,
+  a valid arm64 signature and unchanged executable/PiPL hashes. See
+  [package evidence](audits/evidence/wgsl-010-20260908/package-bdfc/README.md).
+  Source/archive privacy and governance scans passed: 1,326 files, zero matched credential/restricted findings; 15 archive checks; 108 Markdown files, 1,279 links and 45 ADRs without errors. The package record retains this precommit scan snapshot.
+- Remaining: finalize host evidence and author-facing disclosures; verify the
+  final source/tag identity without rebuilding/re-signing; run the
+  final source/archive publication scan; record tag-to-`8b0fe81` build-input
+  equivalence and exact Cargo.lock; publish regular v0.1.0, then re-download
+  and verify archive, executable/PiPL hashes and signature. Old 91c8 ZIP checks
+  do not verify the final release package. [Audit](audits/08-wgsl-010.md).

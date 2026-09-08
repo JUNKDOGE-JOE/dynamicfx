@@ -1,0 +1,1 @@
+f2fffc1808727231db8a713cddf024cbcf0e55a7f1064beff6d8897a129dcc3d  DynamicFX-0.1.0-macos-arm64.zip

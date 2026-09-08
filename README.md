@@ -12,13 +12,13 @@ single authority for what renders.
 
 ## Status
 
-`0.1.0` is being prepared: production WGSL, native Apple Silicon support,
-and shader sampling/preview corrections. The public release remains 0.0.6
-until the new artifact completes validation and publication.
+`0.1.0` adds production WGSL, native Apple Silicon support,
+and shader sampling/preview corrections. macOS acceptance covers the exact
+release candidate on After Effects 2026 (26.3x87), Apple M5, macOS 26.5.2.
 
 | Release / host | Status |
 |---|---|
-| 0.1.0 / macOS Apple Silicon / AE 2026 | Final artifact validation in progress |
+| 0.1.0 / macOS Apple Silicon / AE 2026 | Native host and independent aerender verified; known Source Undo limitation below |
 | 0.1.0 / Windows | Build, host verification and artifact pending |
 | 0.0.6 / Windows / AE 2025 and 2026 | Historical released-artifact verification |
 | macOS Intel / Rosetta | Not supported by the ARM package |

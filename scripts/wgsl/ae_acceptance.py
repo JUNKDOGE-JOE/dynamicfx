@@ -9,6 +9,21 @@ Workflow (explicit --name labels are optional; defaults are unique): setup,
 state after returning to AE idle, capture, resources --phase none, resources
 --phase assign, return to idle, resources --phase assigned, keyframes, save,
 reopen, state after idle, capture, keys-read, resources --phase assigned, queue.
+Before the first scripted gradient write, open each GLSL/WGSL gradient comp,
+select its input layer, and open Effect Controls (F3). Expand Main / Gradient
+01 and confirm Stops=2 and both live stop Color rows are visible. This lets AE
+initialize the dynamic child rows before resources --phase assign; reading
+or rendering the default gradient does not establish script writability.
+This is an explicit operator precondition, not an automatic UI action here.
+
+On the bdfc macOS AE 26.3x87 run, 010c-resources-assign failed with a hidden
+property/parent error; 010c-resources-assign-after-ui passed after opening both
+Effect Controls panels. Keep the initial FAIL as evidence of this setup
+constraint. Assignment can partially change Layer/Path selectors before a
+color write fails: inspect and explicitly restore None before repeating the
+None/assign sequence with new tags and unchanged assertions. Do not hide the
+error or treat a rerun as the first attempt.
+
 The root operator runs aerender separately on QUEUE_PROJECT, then checks its
 output with check_acceptance.py --queue <queue.json> --exports <OUT>.
 JSON capture files can be supplied directly to check_acceptance.py.

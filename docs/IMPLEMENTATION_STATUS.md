@@ -64,14 +64,14 @@ work. The [Windows backfill procedure](windows-010-backfill.md) is prepared
 for the same release tag and exact dependency lock. Taskboard was retried and
 remains unavailable; this record tracks work.
 
-Production WGSL is implemented in source commit `73d8b51`: direct Naga parsing,
+Production WGSL was first implemented in source commit `73d8b51`: direct Naga parsing,
 strict native ABI, language-aware diagnostics, parameter reflection and the
 existing graph/persistence pipeline. Default and editor each pass 205 tests;
 18 production Metal GLSL/WGSL pairs are byte-equal. Two authored WGSL examples
 pass 40 renders / 96 checks. The [current audit](audits/08-wgsl-010.md) links
 the retained evidence and the first failed comparison-instrument attempt.
 
-The 0.1.0 candidate has executable SHA-256
+The first, now retired 0.1.0 candidate has executable SHA-256
 `91c8afdcdc6186ca2efa24ca1c06cbcbb619a659b62e77fbe69fe988f9323a22`.
 Administrator-authorized installation from `/private/tmp` succeeded and the
 installed hash matches. The earlier administrator shell attempt to execute
@@ -106,13 +106,45 @@ The CR/parser and name-termination repair is frozen at `8b0fe81`; default/editor
 each pass **220 tests**. New executable SHA-256:
 `bdfc9f1d978cf052e01db97d69b1d61c1ad9cc073b7691a82e2cb2d90baaa141`.
 [Build evidence](audits/evidence/wgsl-010-20260908/build-bdfc/README.md) is retained.
-Its already-started installation is waiting for system authentication; AE is closed.
-**Exact next action:** inspect that installation outcome, verify identity,
-and pass Language Undo/Redo, actual CR paste/defaults/names and the remaining
-0.1.0 host checks under ADR-0045. Curate the
-successful and failed evidence before freezing and publishing the archive.
-Siri implementation starts after release publication. Prior 0.0.6 binaries
-and their evidence remain preserved as historical acceptance.
+Administrator-authorized installation completed, and the installed executable
+and PiPL match the frozen bundle. On native Apple M5/macOS **26.5.2**, AE 2026
+**26.3x87** passes the recorded final subset in
+[TR-WGSL-002](TEST_MATRIX.md#tr-wgsl-002--production-wgsl-and-host-integration-010):
+**558/558** combined record/export checks; save/reopen with resources and keys
+preserved; independent aerender **exit 0**, **24 8-bpc PSD frames** from 12 queue
+items × two frames, and unchanged bdfc identity before/after rendering.
+Real GUI first-publication color/alpha and angle defaults survive one Language
+Undo/Redo; a separate keyed instance retains 0.25 at 0 s and 0.75 at 1 s.
+Manual bare-CR raw WGSL and two-pass envelope authoring, annotations and short
+labels pass. Both languages' actual CUA Full/Half/Quarter viewports retain
+the complete canvas. The
+[final host evidence](audits/evidence/wgsl-010-20260908/host-bdfc/README.md)
+distinguishes operator-transcribed GUI observations, scripted readbacks and
+physical PSD checks; the 558 total is not a GUI-test count.
+
+Two limits remain explicit. Source-expression single Undo is still the known
+**FAIL**, accepted for 0.1.0 under ADR-0045 and scheduled for a separate
+architecture repair. The first scripted Gradient assignment failed on hidden
+controls and passed its original assertions only after opening both languages'
+Effect Controls and expanding the active color rows. This UI initialization
+prerequisite and initial failure are retained; fully headless first-time
+Gradient assignment is not claimed. Windows 0.1.0 remains **NOT_RUN**.
+
+The final-candidate ZIP is assembled without rebuilding or re-signing:
+`DynamicFX-0.1.0-macos-arm64.zip`, **3,563,347 bytes**, SHA-256
+`f2fffc1808727231db8a713cddf024cbcf0e55a7f1064beff6d8897a129dcc3d`.
+[Package evidence](audits/evidence/wgsl-010-20260908/package-bdfc/README.md)
+records successful extraction checks for all **287 internal-manifest files**,
+arm64 signature, executable mode and unchanged executable/PiPL hashes.
+Final source/archive privacy and governance scans passed. No push,
+tag or release is published, and no uploaded-asset verification is claimed.
+
+**Exact next action:** finish the outgoing evidence and disclosures, run final
+privacy/governance checks, verify tag-to-`8b0fe81` native-input equivalence,
+then publish regular v0.1.0 with the accepted ZIP and verify a fresh download.
+Keep the Source Undo warning and Windows-pending scope. Actual iOS 27 Siri
+implementation starts after publication. Prior 0.0.6 binaries and the failed
+0.1.0 candidates remain preserved as historical evidence.
 
 
 ## Snapshot

@@ -1,0 +1,1 @@
+var c=app.project.activeItem;return {mode:"viewport-read",readOnly:true,state:s010(c)};

@@ -22,6 +22,12 @@ and artifact upload may follow later; they do not block the Mac release.
 The shader follow-up must deliver the observed bubble/refraction/light-band
 look, source, an AE project and inspected native renders, not only research.
 
+Production WGSL and the frozen macOS candidate have completed AE 2026 host
+acceptance, including independent Full/Half/Quarter renders. Publication is
+the next boundary. Source-expression single Undo remains a disclosed failure
+explicitly accepted for 0.1.0 under [ADR-0045](adr/0045-010-source-undo-release-boundary.md);
+its state-publication repair is separate follow-up work.
+
 ## M0 — Architecture Contract
 
 **State:** COMPLETE — exited 2026-08-12 (ADRs 0010-0014 Accepted; transport spike TR-M0-002..007 PASS on AE 2025; AE 2026 re-verify tracked as non-blocking follow-up)

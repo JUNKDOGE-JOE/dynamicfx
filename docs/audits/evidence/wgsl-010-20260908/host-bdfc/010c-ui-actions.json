@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "recordType": "Operator transcription of CUA actions and screenshots/AX, not captured image files",
+  "candidateBinarySha256": "bdfc9f1d978cf052e01db97d69b1d61c1ad9cc073b7691a82e2cb2d90baaa141",
+  "host": "AE 2026 26.3x87 macOS 26.5.2 Apple M5 arm64",
+  "sourceUndo": "Known FAIL, user accepted disclosure and later fix under ADR0045; not recertified as PASS",
+  "actions": [
+    {
+      "test": "Fresh parameter publication",
+      "sequence": [
+        "Prepare WGSL source under GLSL (E17)",
+        "Actual ECW Language menu WGSL",
+        "Cmd+Z once",
+        "Cmd+Shift+Z once"
+      ],
+      "records": [
+        "010c-ui-fresh-before.json",
+        "010c-ui-fresh-wgsl.json",
+        "010c-ui-fresh-undo.json",
+        "010c-ui-fresh-redo.json"
+      ],
+      "observed": "WGSL first publication initializes gain .25, color [.25,.60000002384186,1,1], alpha .40000000596046, angle 12.3456697463989; single Undo restores GLSL and all pristine values; Redo restores defaults."
+    },
+    {
+      "test": "Actual Mac Source paste",
+      "sequence": [
+        "Click Source expression text, Cmd+A, paste annotated green WGSL",
+        "CUA clipboard wait timed out; screenshot showed new source present, so did not retry paste",
+        "Click composition to commit",
+        "Paste two-pass @dynamicfx envelope with @@ escaped WGSL attributes and commit"
+      ],
+      "records": [
+        "010c-ui-source-green.json",
+        "010c-ui-source-envelope.json"
+      ],
+      "observed": "Stored expression contains CR only, no LF. Successful annotations and Gain value .25; green pixel [0,.25,0,1]. Envelope status compiled 2 passes, expected [.25,.4,.6,1]."
+    },
+    {
+      "test": "Gradient scripted initialization",
+      "sequence": [
+        "Initial resources-assign failed at GLSL first color because child/parent hidden",
+        "Read-only inspect showed GLSL layer=3,path=1, WGSL selectors=0 and untouched gradient colors",
+        "Open GLSL gradient input ECW via F3, expand Main/Gradient 01, inspect two Ramp color rows",
+        "Repeat open and expand for WGSL gradient",
+        "Run a uniquely tagged assignment with original value/pixel assertions"
+      ],
+      "records": [
+        "010c-resources-assign.json",
+        "010c-gradient-inspect.json",
+        "010c-resources-assign-after-ui.json",
+        "010c-resources-assigned.json"
+      ],
+      "observed": "Two active color rows visible and usable in each language. Script assignment and output pass after actual UI initialization. Initial failure retained."
+    },
+    {
+      "test": "Language Undo/Redo with keys",
+      "sequence": [
+        "Open WGSL gain with .25 at 0s and .75 at 1s",
+        "Actual menu GLSL -> E17",
+        "Cmd+Z once -> WGSL",
+        "Cmd+Shift+Z once -> GLSL",
+        "Cmd+Z restore WGSL"
+      ],
+      "records": [
+        "010c-ui-language-glsl.json",
+        "010c-ui-language-undo.json",
+        "010c-ui-language-redo.json",
+        "010c-save.json"
+      ],
+      "observed": "Two original keyframes remain .25/.75 throughout; source bytes unchanged; correct diagnostic/render after each action."
+    },
+    {
+      "test": "Physical AE viewport",
+      "sequence": [
+        "Open WGSL multipass 321x239 at Full, visually inspect",
+        "Actual resolution menu Down Return selects Half",
+        "Actual menu Down Down Return selects Quarter",
+        "Repeat Full/Half/Quarter for GLSL multipass"
+      ],
+      "records": [
+        "010c-viewport-wgsl-open.json",
+        "010c-viewport-wgsl-half.json",
+        "010c-viewport-wgsl-quarter.json",
+        "010c-viewport-glsl-open.json",
+        "010c-viewport-glsl-half.json",
+        "010c-viewport-glsl-quarter.json"
+      ],
+      "observed": "All six previews show continuous full-canvas UV color ramp at identical canvas extent; quarter preview visibly coarser as expected. Resolutions read back [1,1],[2,2],[4,4]. Screenshots rendered in CUA only; physical numerical pixel verification deferred to exported PSD checker. Menu AX click failed offscreen; unsupported ArrowDown rejected; supported Down/Return completed choice."
+    }
+  ]
+}

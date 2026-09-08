@@ -184,11 +184,13 @@ Old instances may also carry rows under PREVIOUS releases' default names (e.g. `
 
 ## Plugin install (quick reference)
 
-- The 0.1.0 release plan ships a macOS Apple Silicon bundle first; Windows
-  artifacts are pending independent verification. Current-artifact macOS
-  acceptance is still in progress; see [TEST_MATRIX](../../docs/TEST_MATRIX.md).
+- The 0.1.0 release ships a macOS Apple Silicon bundle first; Windows
+  artifacts are pending independent verification. The exact macOS candidate
+  passed native AE 2026 (26.3x87) and independent aerender acceptance on
+  Apple M5/macOS 26.5.2. Source-expression single Undo remains the disclosed
+  limitation in [SKILL.md](SKILL.md); see [TEST_MATRIX](../../docs/TEST_MATRIX.md).
 - macOS build/install instructions are in [macos-arm64.md](../../docs/macos-arm64.md).
-  Install only in the target AE year's Plug-ins folder. The development
+  Install only in the target AE year's Plug-ins folder. The release
   bundle is ad-hoc signed, not Developer ID signed or notarized; follow the
   package's scoped installation instructions.
 
@@ -201,7 +203,7 @@ Old instances may also carry rows under PREVIOUS releases' default names (e.g. `
 
 | Platform / host | Status |
 |---|---|
-| macOS Apple Silicon / AE 2026 / 0.1.0 | Current-artifact verification in progress; not yet a PASS claim |
+| macOS Apple Silicon / AE 2026 / 0.1.0 | Native host and aerender verified on 26.3x87; Source single Undo remains a disclosed limitation |
 | Windows / 0.1.0 | Artifact pending; current-diff real-AE acceptance NOT_RUN |
 | Windows / AE 2025 and 2026 / preceding releases | Historical verification; does not verify 0.1.0 |
 | macOS Intel / Rosetta | NOT_RUN |

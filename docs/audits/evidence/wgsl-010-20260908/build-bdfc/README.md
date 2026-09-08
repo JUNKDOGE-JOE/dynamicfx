@@ -47,9 +47,12 @@ while normalizing only a parsing copy. They are included within each full
 include the short-name termination regression. These CPU checks do not prove
 that the repaired authoring paths behave correctly in installed AE.
 
-The recorded build command and targeted command were:
+The full CPU commands ran on the native arm64 host without an explicit
+`--target` option. The recorded commands were:
 
 ```sh
+cargo +stable test --locked --offline > scripts/out/010/authoring-fix/tests-default.log 2>&1
+cargo +stable test --locked --offline --features editor > scripts/out/010/authoring-fix/tests-editor.log 2>&1
 RUSTUP_TOOLCHAIN=stable bash scripts/build-macos.sh --locked --offline > scripts/out/010/authoring-fix/build-macos.log 2>&1
 cargo +stable test --locked --offline source_line_ending_tests > /private/tmp/dynamicfx-source-line-ending-tests.log 2>&1
 ```

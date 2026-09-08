@@ -54,4 +54,4 @@ Every audit uses these sections:
 
 An audit is complete only when its milestone exit criteria have matching Test Matrix evidence. Otherwise its state remains in progress or blocked.
 
-| Post-M7 | [08 WGSL and 0.1.0](08-wgsl-010.md) | In progress |
+| Post-M7 | [08 WGSL and 0.1.0](08-wgsl-010.md) | Native macOS acceptance complete with ADR-0045 Source Undo exception; publication pending |

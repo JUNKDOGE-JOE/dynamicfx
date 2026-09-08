@@ -1,0 +1,915 @@
+{
+  "passed": true,
+  "scope": "Offline assertions over retained UI readbacks; no AE actions executed",
+  "limits": [
+    "Single keystrokes and physical visual observations come from 010c-ui-actions.json operator transcription.",
+    "Source single-Undo remains FAIL under ADR0045 and is not recertified here.",
+    "Source green/envelope helper accepts Gain or Float 01; those records do not independently prove exact Gain display text.",
+    "Fresh-default records do expose exact authored labels; viewport numerical pixels are checked separately in the 24 PSDs."
+  ],
+  "files": [
+    {
+      "file": "010c-aerender-identity-after.json",
+      "sha256": "69b2da39b1cf17b919f87927154ac9a419a4882b35738c160ec95828e0465693"
+    },
+    {
+      "file": "010c-aerender-identity-before.json",
+      "sha256": "dec5b891467481a8dad9db6eeef4a151c7f2a26c9bf48087efc4f5ca7d1661aa"
+    },
+    {
+      "file": "010c-gradient-inspect.json",
+      "sha256": "8aaa51cde5677ad40a869cdf7fb9e7cde68a258341f7a69f2a652e5266294381"
+    },
+    {
+      "file": "010c-resources-assign-after-ui.json",
+      "sha256": "41d5f0b8e9b56ff57e8214803dfbaf094393cb9da1101b3cb398b1e61a75e922"
+    },
+    {
+      "file": "010c-resources-assign.json",
+      "sha256": "2d84f5191b03989eeb71e8fd7cc5cd0e69c5e404ebe1ece87c9b470b5539084c"
+    },
+    {
+      "file": "010c-setup.json",
+      "sha256": "378e497050ed448288b3a723fa8946b9a070494c5adc35fcb487bfd3af82f564"
+    },
+    {
+      "file": "010c-ui-actions.json",
+      "sha256": "41b86c3140c7c203010394db43a410151108fefafc548bf536a6c62ed39cc146"
+    },
+    {
+      "file": "010c-ui-fresh-before.json",
+      "sha256": "11d9bfdc580943c8bd053cc52be763d124f88b34c31e4f3e124ffa887f4ccd2f"
+    },
+    {
+      "file": "010c-ui-fresh-redo.json",
+      "sha256": "17802badbf19e1049975c28be161b26836b5a431dd1f1562eb8d8f84f401b477"
+    },
+    {
+      "file": "010c-ui-fresh-undo.json",
+      "sha256": "9855cdb4a5457686f8f861ea80b577cbbf28fffe46ba67a0a2f40961e6d440be"
+    },
+    {
+      "file": "010c-ui-fresh-wgsl.json",
+      "sha256": "17802badbf19e1049975c28be161b26836b5a431dd1f1562eb8d8f84f401b477"
+    },
+    {
+      "file": "010c-ui-language-glsl.json",
+      "sha256": "83c697e356af1142cd73b0d74fa7ff10b823917c52e32a7118b947f448de0554"
+    },
+    {
+      "file": "010c-ui-language-redo.json",
+      "sha256": "83c697e356af1142cd73b0d74fa7ff10b823917c52e32a7118b947f448de0554"
+    },
+    {
+      "file": "010c-ui-language-undo.json",
+      "sha256": "9ca93838a085075492ab59caab622c92de1fa6b545c9d53ab5eb41976042e9f5"
+    },
+    {
+      "file": "010c-ui-source-envelope.json",
+      "sha256": "43f0b9b370a63618da7a80eb0cbf29ab2298703e67dd04c82f44a5727b0d087a"
+    },
+    {
+      "file": "010c-ui-source-green.json",
+      "sha256": "0a90396d8013b7ffdc1d1dbed1c919378ddc5ab0e5a45ff881479b8ac7d71251"
+    },
+    {
+      "file": "010c-viewport-glsl-half.json",
+      "sha256": "243219198dc33f9ffcba69646933074d4ba7b3a7b5f14fed0fc7e3f6ee9ce170"
+    },
+    {
+      "file": "010c-viewport-glsl-open.json",
+      "sha256": "346ba11760e418ce247da1646b2de1f919d0481564e544d8497d046768221955"
+    },
+    {
+      "file": "010c-viewport-glsl-quarter.json",
+      "sha256": "9a360932c5cda4ba56141f96554fafa6d3b05edf26caf64a964aa6a8c49cf11d"
+    },
+    {
+      "file": "010c-viewport-wgsl-half.json",
+      "sha256": "6f1e0ef6164efcf1a03e92ed6ed984d8118354bb3011a774e0769ba6bc406dd3"
+    },
+    {
+      "file": "010c-viewport-wgsl-open.json",
+      "sha256": "6a4fc161fd6762fd3cfd185c58737460bf4ad258625be79439a9f945975081b5"
+    },
+    {
+      "file": "010c-viewport-wgsl-quarter.json",
+      "sha256": "0c116e6dc6cf85ff46253e2fb8ff05ab63a04d388e1bdc561cbcb740a866f6b5"
+    },
+    {
+      "file": "install-ae2026.json",
+      "sha256": "980d980346bf1f755a266ee358645ca2f4bd4ba8437011efc253dab54d2f46a4"
+    }
+  ],
+  "checks": [
+    {
+      "name": "install-ae2026.json exact executable identity",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-aerender-identity-before.json exact executable identity",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-aerender-identity-after.json exact executable identity",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-setup.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "exact AE version",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "18 fresh fixture instances default to GLSL",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "operator record identifies candidate",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "UI record explicitly a transcription, not captured images",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "Source Undo FAIL remains disclosed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-ui-fresh-before.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-ui-fresh-wgsl.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-ui-fresh-undo.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-ui-fresh-redo.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "fresh Language gestures preserve exact source bytes",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "before language",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "before active/E17 state",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "before plan is published/cleared",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "before fresh streams remain constant",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "before gain default/restoration",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0
+        ],
+        "expected": [
+          0
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "before color default/restoration at float precision",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "expected": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "before alpha default/restoration",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0
+        ],
+        "expected": [
+          0
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "before angle default/restoration at float precision",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0
+        ],
+        "expected": [
+          0
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "before rendered output",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "expected": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "wgsl language",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl active/E17 state",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl plan is published/cleared",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl fresh streams remain constant",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl gain default/restoration",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25
+        ],
+        "expected": [
+          0.25
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "wgsl color default/restoration at float precision",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25,
+          0.60000002384186,
+          1,
+          1
+        ],
+        "expected": [
+          0.25,
+          0.6,
+          1,
+          1
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "wgsl alpha default/restoration",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.40000000596046
+        ],
+        "expected": [
+          0.4
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "wgsl angle default/restoration at float precision",
+      "passed": true,
+      "observed": {
+        "actual": [
+          12.3456697463989
+        ],
+        "expected": [
+          12.34567
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "wgsl rendered output",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.0627451017499,
+          0.15000000596046,
+          0.25,
+          0.40000000596046
+        ],
+        "expected": [
+          0.0625,
+          0.15,
+          0.25,
+          0.4
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "wgsl exact authored labels",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "undo language",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "undo active/E17 state",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "undo plan is published/cleared",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "undo fresh streams remain constant",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "undo gain default/restoration",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0
+        ],
+        "expected": [
+          0
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "undo color default/restoration at float precision",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "expected": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "undo alpha default/restoration",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0
+        ],
+        "expected": [
+          0
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "undo angle default/restoration at float precision",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0
+        ],
+        "expected": [
+          0
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "undo rendered output",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "expected": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "redo language",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "redo active/E17 state",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "redo plan is published/cleared",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "redo fresh streams remain constant",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "redo gain default/restoration",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25
+        ],
+        "expected": [
+          0.25
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "redo color default/restoration at float precision",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25,
+          0.60000002384186,
+          1,
+          1
+        ],
+        "expected": [
+          0.25,
+          0.6,
+          1,
+          1
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "redo alpha default/restoration",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.40000000596046
+        ],
+        "expected": [
+          0.4
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "redo angle default/restoration at float precision",
+      "passed": true,
+      "observed": {
+        "actual": [
+          12.3456697463989
+        ],
+        "expected": [
+          12.34567
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "redo rendered output",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.0627451017499,
+          0.15000000596046,
+          0.25,
+          0.40000000596046
+        ],
+        "expected": [
+          0.0625,
+          0.15,
+          0.25,
+          0.4
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "redo exact authored labels",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "fresh Undo restores values and words",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "fresh Redo restores values and words",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-ui-source-green.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "green source uses only CR line breaks",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "green annotation text retained",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "green WGSL Active state",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "green readback did not write AE properties",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "green gain value",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25
+        ],
+        "expected": [
+          0.25
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "green rendered color",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0,
+          0.25,
+          0,
+          1
+        ],
+        "expected": [
+          0,
+          0.25,
+          0,
+          1
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "010c-ui-source-envelope.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "envelope source uses only CR line breaks",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "envelope annotation text retained",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "envelope WGSL Active state",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "envelope readback did not write AE properties",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "envelope gain value",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25
+        ],
+        "expected": [
+          0.25
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "envelope rendered color",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25,
+          0.40000000596046,
+          0.60000002384186,
+          1
+        ],
+        "expected": [
+          0.25,
+          0.4,
+          0.6,
+          1
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "CR envelope two-pass status and escaping",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-ui-language-glsl.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-ui-language-undo.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-ui-language-redo.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "keyframed Language gestures preserve exact source",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl keyframed language/state",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl both original keys retained",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl keyframed readback read-only",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl keyframed rendering",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.05000000074506,
+          0.40000000596046,
+          0.10000000149012,
+          1
+        ],
+        "expected": [
+          0.05,
+          0.4,
+          0.1,
+          1
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "undo keyframed language/state",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "undo both original keys retained",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "undo keyframed readback read-only",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "undo keyframed rendering",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25,
+          0,
+          0,
+          1
+        ],
+        "expected": [
+          0.25,
+          0,
+          0,
+          1
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "redo keyframed language/state",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "redo both original keys retained",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "redo keyframed readback read-only",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "redo keyframed rendering",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.05000000074506,
+          0.40000000596046,
+          0.10000000149012,
+          1
+        ],
+        "expected": [
+          0.05,
+          0.4,
+          0.1,
+          1
+        ],
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "name": "initial hidden gradient write remains a failure",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-gradient-inspect.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "failed assign retains partial selector changes",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "first failed assignment left GLSL gradient colors untouched",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-resources-assign-after-ui.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "both assignments complete after actual ECW initialization",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-viewport-glsl-open.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl viewport open requested resolution/extent",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-viewport-glsl-half.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl viewport half requested resolution/extent",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-viewport-glsl-quarter.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl viewport quarter requested resolution/extent",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-viewport-wgsl-open.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl viewport open requested resolution/extent",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-viewport-wgsl-half.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl viewport half requested resolution/extent",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "010c-viewport-wgsl-quarter.json completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl viewport quarter requested resolution/extent",
+      "passed": true,
+      "observed": null
+    }
+  ]
+}

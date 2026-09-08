@@ -1,0 +1,62 @@
+{
+  "replacements": {
+    "repository_path": "<repo>",
+    "temporary_extraction_path": "<extracted>"
+  },
+  "files": [
+    {
+      "source": "scripts/out/010/authoring-fix/package-bdfc.json",
+      "file": "package-bdfc.json",
+      "original_sha256": "63854e8db0c5606bb01a300588ad52e301820b832b7e8115aa6d35b1fa06b531",
+      "curated_sha256": "a2b41521ba49c8d25019696cc3a39e4aa9b4bbc9fec2d548757ff22986d6883c"
+    },
+    {
+      "source": "scripts/out/010/release-bdfc/extracted-verify.json",
+      "file": "extracted-verify.json",
+      "original_sha256": "6bdaca68697d94aa110213b65704cf13202770ffe501b4e98ffc2fb31c6706e8",
+      "curated_sha256": "5bf4d600f9697be4eaa0ccc346d2a5cf33572a6a95cb155bb7c83220fec6f536"
+    },
+    {
+      "source": "scripts/out/010/release-bdfc/archive-validation.json",
+      "file": "archive-validation.json",
+      "original_sha256": "fb65ad98c38e67164243d2ed24d912df893c44c006abb5b135c9299194678fd1",
+      "curated_sha256": "fb65ad98c38e67164243d2ed24d912df893c44c006abb5b135c9299194678fd1"
+    },
+    {
+      "source": "scripts/out/010/release-bdfc/SHA256SUMS.txt",
+      "file": "SHA256SUMS.txt",
+      "original_sha256": "5aa225f86f110593ffc217076877e618decf7cb7d7c6c601bd1bbbdf0a40d64a",
+      "curated_sha256": "5aa225f86f110593ffc217076877e618decf7cb7d7c6c601bd1bbbdf0a40d64a"
+    },
+    {
+      "source": "scripts/out/010/release-bdfc/release-notes.md",
+      "file": "release-notes.md",
+      "original_sha256": "7129db8995f89f4839a6024f8f5016e7d594b1b42cf5987ceedb2ad04eb96616",
+      "curated_sha256": "7129db8995f89f4839a6024f8f5016e7d594b1b42cf5987ceedb2ad04eb96616"
+    },
+    {
+      "source": "scripts/out/010/authoring-fix/package-bdfc-final.json",
+      "file": "package-bdfc-final.json",
+      "original_sha256": "5f88c582ee8b159d27027428e17b34fbd3ec39ce013ddfd6ea9accc7f885fce4",
+      "curated_sha256": "3a2a42564cdcd10eb2558dabca4ce9601583d823a50f5f848bce2d81d5c6a3f0"
+    },
+    {
+      "source": "scripts/out/010/release-bdfc-final/extracted-verify.json",
+      "file": "final-extracted-verify.json",
+      "original_sha256": "38f3f214a236c2a7dd71286e127a5eea47659d4f9feeeb416e2afde0c2664e38",
+      "curated_sha256": "5bf4d600f9697be4eaa0ccc346d2a5cf33572a6a95cb155bb7c83220fec6f536"
+    },
+    {
+      "source": "scripts/out/010/release-bdfc-final/archive-validation.json",
+      "file": "final-archive-validation.json",
+      "original_sha256": "e49148a1388131313afce8a1736a0854e3d3be3747e64f296efaf0cb0cb04012",
+      "curated_sha256": "e49148a1388131313afce8a1736a0854e3d3be3747e64f296efaf0cb0cb04012"
+    },
+    {
+      "source": "scripts/out/010/release-bdfc-final/SHA256SUMS.txt",
+      "file": "final-SHA256SUMS.txt",
+      "original_sha256": "299aa824e48bb68782ee5e7416ff9facefe7594baedb791ca7410643eadc0c88",
+      "curated_sha256": "299aa824e48bb68782ee5e7416ff9facefe7594baedb791ca7410643eadc0c88"
+    }
+  ]
+}

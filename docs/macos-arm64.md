@@ -44,16 +44,43 @@ They do not establish which source revision, lockfile or toolchain built a
 previously existing binary; preserve the actual build log and its artifact
 hash separately to establish that provenance.
 
-To package a previously verified build without rebuilding it:
+Before host acceptance, assemble a new bundle from compiled files without
+rerunning Cargo with:
 
 ```sh
 python3 scripts/macos.py package target/aarch64-apple-darwin/release
 ```
 
-Do not rebuild between host acceptance and distribution. Retain the lockfile,
-working-tree baseline and raw logs with the accepted binary: `Cargo.lock` is
-currently ignored by the repository, so its evidence hash alone does not make
-a future dependency resolution reproducible.
+This command rewrites the packaging context and applies a new ad-hoc signature.
+`build-macos.sh` also performs this bundle-packaging step after compiling.
+Both produce a candidate that needs its own artifact verification and host
+acceptance; neither preserves an already accepted signed bundle.
+
+After host acceptance, freeze the complete `.plugin` bundle and create the
+distribution ZIP with [the release archiver](../scripts/release/package_macos.py):
+
+```sh
+python3 scripts/release/package_macos.py \
+  --bundle target/macos-arm64/DynamicFx.plugin \
+  --build-record /path/to/accepted-build-record.json \
+  --third-party /path/to/verified-third-party-notices \
+  --out dist/DynamicFX-0.1.0-macos-arm64.zip
+```
+
+Replace the two example input paths with the accepted candidate's build record
+and the verified output of [dependency_notices.py](../scripts/release/dependency_notices.py).
+The archiver checks the recorded build inputs and dependency notices, copies
+the signed bundle unchanged, and adds instructions, licenses and checksums
+outside it. It does not rebuild or re-sign. Use a fresh output path, then
+extract the ZIP and verify its signature and executable/PiPL hashes against
+the host-tested bundle before distribution.
+
+Do not rebuild, run `macos.py package`, re-sign, or edit bundle contents between
+host acceptance and distribution. Retain the exact lockfile, working-tree
+baseline and raw logs with the accepted binary: `Cargo.lock` is currently
+ignored by the repository, so its evidence hash alone does not make a future
+dependency resolution reproducible. The release archiver includes its exact
+bytes as `build/Cargo.lock`.
 
 ## Install for one AE year
 
