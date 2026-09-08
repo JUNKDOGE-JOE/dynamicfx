@@ -1,0 +1,1 @@
+{"ok":true,"data":{"mode":"resources-assign","values":[{"language":"glsl","layer":3,"path":1,"stops":2},{"language":"wgsl","layer":3,"path":1,"stops":2}],"project":"<REPO>/scripts/out/010/ae2026/native-wgsl-010.aep","next":"Return to AE idle, then run resources --phase assigned with a new tag"}}

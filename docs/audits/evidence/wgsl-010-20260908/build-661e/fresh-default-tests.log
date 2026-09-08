@@ -1,0 +1,13 @@
+   Compiling dynamicfx v0.1.0 (/Users/junk_doge/Documents/DynamicFX)
+    Finished `test` profile [optimized + debuginfo] target(s) in 2.49s
+     Running unittests src/lib.rs (target/debug/deps/dynamicfx-84211f197557ac3c)
+
+running 5 tests
+test fresh_default_tests::constant_sentinel_initializes_but_keyframed_streams_do_not ... ok
+test fresh_default_tests::color_and_angle_defaults_keep_full_precision_and_range ... ok
+test fresh_default_tests::defaults_exclude_inherited_bindings_and_unimplemented_point_semantics ... ok
+test fresh_default_tests::published_words_prevent_recompile_reset_and_inactive_states_never_initialize ... ok
+test fresh_default_tests::pf_scalar_default_changes_value_and_sets_commit_flag_without_host_calls ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 208 filtered out; finished in 0.00s
+

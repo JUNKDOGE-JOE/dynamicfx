@@ -1,0 +1,16 @@
+{
+  "recorded_utc": "2026-09-08T05:11:04.966046+00:00",
+  "kind": "CUA action and accessibility observation transcription",
+  "artifact": "91c8afdcdc6186ca2efa24ca1c06cbcbb619a659b62e77fbe69fe988f9323a22",
+  "ae": "26.3x87",
+  "steps": [
+    "Selected DFX_010_wgsl_gain input; opened Effect Controls with F3 and Setup disclosure",
+    "Actual Language menu contained GLSL and WGSL; selected GLSL",
+    "Observed E17 and green input passthrough; read-only fixed pixel probes confirm in 010-ui-language-glsl.json",
+    "Pressed super+z exactly once",
+    "Observed GLSL, E17 and green passthrough remain; read-only 010-ui-undo-failure.json confirms",
+    "Opened Edit menu: Redo disabled; History starts with two Change Value entries and twelve Pass 12 through Pass 1 Change Name entries"
+  ],
+  "result": "FAIL",
+  "instrument_notes": "Fixed four pixel-probe expressions were authored before UI switch; between switch and Undo the readback changed no AE property. AX evidence is transcribed from tool results, not presented as a saved raw screenshot."
+}

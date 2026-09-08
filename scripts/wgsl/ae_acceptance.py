@@ -96,9 +96,19 @@ def fixtures(nonce="fixture"):
 
 
 EXTRA = r'''
-function named(f,n){var found=null;for(var i=1;i<=f.numProperties;i++){var p=f.property(i);
-if(p.name===n){if(found)throw Error("Ambiguous property "+n);found=p;}}
+// These single-parameter fixtures can expose either their authored label or
+// the legal static pool label. Resolve the exact union once; never prefer a
+// label silently if both rows exist, and never guess an index or prefix.
+function named(f,n){var aliases={"Gain":"Float 01","Side Layer":"Layer 01","Outline":"Mask 01"};
+var alternate=aliases.hasOwnProperty(n)?aliases[n]:null,found=null;for(var i=1;i<=f.numProperties;i++){var p=f.property(i);
+if(p.name===n||(alternate!==null&&p.name===alternate)){if(found)throw Error("Ambiguous property "+n);found=p;}}
 if(!found)throw Error("Named property not ready: "+n);return found;}
+// Gradient child rows keep their setup names until AE opens their effect UI.
+// Both names identify this fixture's one gradient; never guess a row index.
+function gradientNamed(f,role){var names=role==="Stops"?["Ramp Stops","Gradient 01 Stops"]:["Ramp "+role,"G01 Stop "+role];
+var found=null;for(var i=1;i<=f.numProperties;i++){var p=f.property(i);if(p.name===names[0]||p.name===names[1]){
+if(found)throw Error("Ambiguous gradient property "+role);found=p;}}
+if(!found)throw Error("Gradient property missing: "+role);return found;}
 function source(f,s){var q=s.replace(/\\/g,"\\\\").replace(/`/g,"\\`").replace(/\$\{/g,"\\${");prop(f,"Source").expression="`"+q+"`;0";}
 function c010(lang,kind){return comp("DFX_010_"+lang+"_"+kind);}
 function s010(c){var s=state(c);s.language=named(fx(c),"Language").value;s.width=c.width;s.height=c.height;s.resolution=c.resolutionFactor;s.code=s.token%4===2?Math.floor(s.token/4):0;return s;}
@@ -145,11 +155,14 @@ r.project=save010();return r;
     if mode == "resources":
         if phase == "assign":
             return r'''
-ready010();var values=[];for(var i=0;i<2;i++){var lang=["glsl","wgsl"][i],c=c010(lang,"layer");named(fx(c),"Side Layer").setValue(c.layer("sourceLayer").index);
-named(fx(c010(lang,"path")),"Outline").setValue(1);var g=fx(c010(lang,"gradient"));
-if(named(g,"Ramp Stops").value!==2)throw Error("Unexpected gradient stop count");
-named(g,"Ramp 01 Color").setValue([1,0,0,1]);named(g,"Ramp 02 Color").setValue([0,0,1,1]);
-values.push({language:lang,layer:named(fx(c),"Side Layer").value,path:named(fx(c010(lang,"path")),"Outline").value,stops:named(g,"Ramp Stops").value});}
+ready010();var values=[],targets=[];for(var i=0;i<2;i++){var lang=["glsl","wgsl"][i],c=c010(lang,"layer"),g=fx(c010(lang,"gradient"));
+var target={lang:lang,layer:named(fx(c),"Side Layer"),index:c.layer("sourceLayer").index,path:named(fx(c010(lang,"path")),"Outline"),
+stops:gradientNamed(g,"Stops"),first:gradientNamed(g,"01 Color"),second:gradientNamed(g,"02 Color")};
+if(target.stops.value!==2)throw Error("Unexpected gradient stop count");targets.push(target);}
+// Resolve both languages before mutating any selector or color.
+for(var i=0;i<targets.length;i++){var v=targets[i];v.layer.setValue(v.index);v.path.setValue(1);
+v.first.setValue([1,0,0,1]);v.second.setValue([0,0,1,1]);
+values.push({language:v.lang,layer:v.layer.value,path:v.path.value,stops:v.stops.value});}
 return {mode:"resources-assign",values:values,project:save010(),next:"Return to AE idle, then run resources --phase assigned with a new tag"};
 '''
         return r'''
@@ -159,7 +172,7 @@ var layerSel=named(fx(lc),"Side Layer").value,pathSel=named(fx(pc),"Outline").va
 if(PHASE==="none"&&(layerSel!==0||pathSel!==0))throw Error("None phase must precede assignments");
 if(PHASE==="assigned"&&(layerSel!==lc.layer("sourceLayer").index||pathSel!==1))throw Error("Assigned selectors were not retained");
 var samples=[];for(var p=0;p<r.gradientPoints.length;p++)samples.push(rgba(gc,r.gradientPoints[p][0],r.gradientPoints[p][1],0));
-r.pairs[lang]={layer:rgba(lc,80.5,60.5,0),path:rgba(pc,80.5,60.5,0),gradient:samples,layerSelector:layerSel,pathSelector:pathSel,gradientStops:named(fx(gc),"Ramp Stops").value};}
+r.pairs[lang]={layer:rgba(lc,80.5,60.5,0),path:rgba(pc,80.5,60.5,0),gradient:samples,layerSelector:layerSel,pathSelector:pathSel,gradientStops:gradientNamed(fx(gc),"Stops").value};}
 r.project=save010();return r;
 '''.replace("PHASE", json.dumps(phase))
     if mode in ("keyframes", "keys-read"):

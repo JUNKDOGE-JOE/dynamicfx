@@ -1,0 +1,50 @@
+{
+  "curated_utc": "2026-09-08T05:26:02.105395+00:00",
+  "scope": "build and CPU evidence only; installation awaiting system result at curation, current-artifact host NOT_RUN",
+  "source_commit": "f4ba578552e02c2a82170d2d116cf0400d8319a6",
+  "packaged_executable_sha256": "661e89af6aa6c9cb595732146b01a42a4dad99fd1d6a19929723622a8f2a7371",
+  "entries": [
+    {
+      "original": "scripts/out/010/undo-fix/build-record.json",
+      "retained": "build-record.json",
+      "bytes": 4336,
+      "sha256": "76274dbbea5134f0fca26a74696ae7ec7348194b8b0338d537589ab368190b4b",
+      "transformation": "none"
+    },
+    {
+      "original": "scripts/out/010/undo-fix/build-macos.log",
+      "retained": "build-macos.log",
+      "bytes": 1511,
+      "sha256": "693f0147d1eb3c3bcac27ee3adf23f10459287d4d885cebea73138be684ed975",
+      "transformation": "none"
+    },
+    {
+      "original": "scripts/out/010/undo-fix/tests-default-final.log",
+      "retained": "tests-default-final.log",
+      "bytes": 16108,
+      "sha256": "8503969d2adabc6cf7700dd656c25134ea16b0ba8649c8b73769f936d08080da",
+      "transformation": "none"
+    },
+    {
+      "original": "scripts/out/010/undo-fix/tests-editor-final.log",
+      "retained": "tests-editor-final.log",
+      "bytes": 16177,
+      "sha256": "175a7a18ff304c9cd160020f3f36e71449746e841aef52a4e62794ff135bf0d8",
+      "transformation": "none"
+    },
+    {
+      "original": "/private/tmp/dynamicfx-ucp-fresh-default-first-test-failure.log",
+      "retained": "fresh-default-first-test-failure.log",
+      "bytes": 1374,
+      "sha256": "c1cb07ccf1ed0c06e10b0b8a9c782200d7955efb3cd715b210df78155a10e37a",
+      "transformation": "none"
+    },
+    {
+      "original": "/private/tmp/dynamicfx-ucp-fresh-default-tests.log",
+      "retained": "fresh-default-tests.log",
+      "bytes": 834,
+      "sha256": "8e1109d2139d09433439157179efee121766ad44bfd98e39b207b0b0afe57037",
+      "transformation": "none"
+    }
+  ]
+}

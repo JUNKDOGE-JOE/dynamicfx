@@ -1,7 +1,7 @@
 # WGSL 适配可行性与生产接入结果
 
 **WGSL 生产前端已实现，CPU 与 Apple Silicon / Metal 验证通过；0.1.0
-候选插件仍待安装和 AE 验收，尚未发布。** 当前代码已将 WGSL 加入
+候选已安装，真实 Undo 验收失败，修复前不可发布。** 当前代码已将 WGSL 加入
 Language 菜单，GLSL 保持默认值。这个结论来自生产前端的直接反射与
 渲染，不再仅依赖早期 spike 的临时接口适配器。
 
@@ -10,11 +10,17 @@ Language 菜单，GLSL 保持默认值。这个结论来自生产前端的直接
 ARM 候选可执行文件 SHA-256 为
 `91c8afdcdc6186ca2efa24ca1c06cbcbb619a659b62e77fbe69fe988f9323a22`。
 身份与签名见[构建记录](audits/evidence/wgsl-010-20260908/build/build-record.json)。
-当前 Mac 已锁屏，等待用户解锁并完成管理员安装认证，不能把 headless
-检查写成该候选的 AE PASS。发布与真实 iOS 27 Siri 实现均未开始。
+候选已通过临时目录暂存和管理员认证安装到 AE 26.3x87。217 项渲染、
+资源与关键帧断言通过，但一次真实 Language Undo 未恢复语言，撤销记录
+被后台名称/值写入污染。该候选判定失败，修复和重新验收正在进行；
+发布与真实 iOS 27 Siri 实现均未开始。
 [审计 08](audits/08-wgsl-010.md) 与
 [TR-WGSL-002](TEST_MATRIX.md#tr-wgsl-002--production-wgsl-and-host-integration-010)
 记录生产验收边界。
+
+Undo 修复已冻结于 `f4ba578`，默认版和 editor 版各 213 项测试通过。
+新候选 `661e89af…` 的[构建记录](audits/evidence/wgsl-010-20260908/build-661e/README.md)
+已归档；管理员安装仍在等待系统认证，尚无该字节的真实宿主 PASS。
 
 ## 当前生产验证
 
@@ -159,6 +165,6 @@ Windows 0.1.0 构建与 Windows/DX12、其他 AE 年份、Intel/Rosetta 仍 NOT_
 Windows 资产按授权稍后独立补齐。
 [TR-REL-010](TEST_MATRIX.md#tr-rel-010--010-publication) 仍记录发布待验。
 
-**下一步：**等待用户解锁 Mac 并完成候选 `91c8afd…` 的管理员安装，再
-验收 AE 2026；随后才冻结验收字节用于 0.1.0 发布。真实 iOS 27 Siri
+**下一步：**修复用户操作的状态发布与后台可撤销写入，构建新候选并
+重新验收 AE 2026；随后才冻结验收字节用于 0.1.0 发布。真实 iOS 27 Siri
 编写在发布后开始。

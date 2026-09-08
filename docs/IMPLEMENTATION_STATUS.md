@@ -71,20 +71,36 @@ existing graph/persistence pipeline. Default and editor each pass 205 tests;
 pass 40 renders / 96 checks. The [current audit](audits/08-wgsl-010.md) links
 the retained evidence and the first failed comparison-instrument attempt.
 
-The built 0.1.0 candidate has executable SHA-256
+The 0.1.0 candidate has executable SHA-256
 `91c8afdcdc6186ca2efa24ca1c06cbcbb619a659b62e77fbe69fe988f9323a22`.
-Administrator installation into the AE 2026 Plug-ins directory is waiting
-for the user to unlock the Mac and authorize the macOS system dialog.
-CUA confirmed the Mac is locked and automatic unlock cannot unlock it. The
-unanswered terminal password prompt was cancelled before opening that dialog.
-This is an OS credential boundary; installation and temporary-project tests
-are already authorized. Current-artifact AE acceptance and release publication
-remain **NOT_RUN**. Nothing has been pushed or tagged.
+Administrator-authorized installation from `/private/tmp` succeeded and the
+installed hash matches. The earlier administrator shell attempt to execute
+the installer in Documents failed with `Operation not permitted (126)`;
+temporary staging resolved that installation step.
 
-**Exact next action:** finish that installation, verify the installed identity,
-and run the 0.1.0 AE 2026 acceptance before freezing and publishing the archive.
-Siri implementation starts after release publication. Prior 0.0.6 binaries and
-their evidence remain preserved as historical acceptance.
+On 2026-09-08, native arm64 AE **26.3x87** passed **217 initial assertions**:
+GLSL/WGSL rendering at 8/16/32 bpc, multiple passes, HDR, temporal requests,
+invalid-input diagnostics, resource bindings and keyframes. The subsequent
+real GUI Language Undo test **failed**: switching WGSL to GLSL correctly
+showed E17/input passthrough, but one Cmd+Z left GLSL/E17 in place and Redo
+was disabled. The candidate is **not releasable**. The
+[curated failure evidence](audits/evidence/wgsl-010-20260908/host-91c8-undo-failure/README.md)
+preserves the numerical subset and the GUI failure. This is a passing subset,
+not final host acceptance. Nothing has been pushed or tagged.
+
+The repair is frozen at `f4ba578`: Source/Language supervision, removal of
+idle undoable name writes, and fresh-default publication before transport
+words. Color/angle keep their floating-point writers; their GUI Undo grouping
+still needs host verification. Default/editor each pass **213 tests**.
+The new executable is `661e89af6aa6c9cb595732146b01a42a4dad99fd1d6a19929723622a8f2a7371`;
+[build evidence](audits/evidence/wgsl-010-20260908/build-661e/README.md) is retained.
+Installation is waiting for macOS administrator authentication; AE is closed.
+**Exact next action:** finish this already-started installation, verify identity,
+and pass actual GUI Undo/Redo and the remaining 0.1.0 host checks. Curate the
+successful and failed evidence before freezing and publishing the archive.
+Siri implementation starts after release publication. Prior 0.0.6 binaries
+and their evidence remain preserved as historical acceptance.
+
 
 ## Snapshot
 

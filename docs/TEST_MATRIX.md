@@ -1054,8 +1054,10 @@ When a matrix cell changes, add a result record below or in the related audit an
 
 ### TR-WGSL-002 — Production WGSL and host integration (0.1.0)
 
-- Status: **NOT_RUN** for full host acceptance. CPU and production Metal checks passed; installed
-  0.1.0 AE acceptance is not yet run. [ADR-0044](adr/0044-wgsl-and-010-release.md).
+- Status: **FAIL** for the `91c8afd` candidate host gate: the initial rendering
+  and parameter subset passed 217 assertions, but actual GUI Language Undo
+  failed. This candidate is not releasable. CPU and production Metal checks
+  passed. [ADR-0044](adr/0044-wgsl-and-010-release.md).
 - Working-tree baseline: origin/main `d4477ab` plus this 0.1.0 change; source
   hashes accompany the final evidence. Rust 1.97.1, Naga/wgpu 29.0.4,
   macOS 26.5.2 arm64 Apple M5.
@@ -1069,14 +1071,39 @@ When a matrix cell changes, add a result record below or in the related audit an
   separately, fixed by supplying identical annotations to both frontends.
 - Two authored examples: 40 Metal renders, 96 checks passed. These are
   working-buffer checks, not AE 16-bpc boundary or full-AA proofs.
-- Host requirements remain **NOT_RUN** until current-artifact installation:
-  language menu/default, publish, invalid E21, keyframes, UI Undo/Redo,
-  language switch, save/reopen, external resources, temporal requests,
-  reduced renders and aerender. Windows/DX12 remains **NOT_RUN** by scope.
+- On 2026-09-08, administrator-authorized installation from `/private/tmp`
+  succeeded; installed executable SHA-256 matched
+  `91c8afdcdc6186ca2efa24ca1c06cbcbb619a659b62e77fbe69fe988f9323a22`.
+  The earlier administrator shell attempt to execute the installer in
+  Documents failed with `Operation not permitted (126)` and left the old
+  installation intact; temporary staging resolved that installation step.
+- Native arm64 AE **26.3x87** completed **217 assertions, all passed**:
+  GLSL/WGSL rendering at 8/16/32 bpc, multiple passes, HDR, temporal requests,
+  expected invalid-input diagnostics, Layer/Gradient/Path bindings (None and
+  assigned), and keyframes. The capture used `sampleImage` at requested
+  resolution `[1, 1]`; it does not prove physical viewport downsampling.
+- Actual GUI Language WGSL → GLSL correctly produced E17 and input
+  passthrough. One actual Cmd+Z left GLSL/E17 in place; Redo was disabled,
+  with two Change Value and twelve Pass Change Name entries observed in
+  history. Intervening pixel probes were read-only. This is a host failure,
+  not a completed Undo/Redo acceptance.
+- The repair is built at `f4ba578`, executable `661e89af...`: supervised
+  Source/Language, no idle name writes, fresh defaults before transport words.
+  Default/editor each pass 213 tests; [build evidence](audits/evidence/wgsl-010-20260908/build-661e/README.md).
+  Installation is waiting for system authentication. This new artifact has
+  not yet passed the host gate. UI Undo/Redo, save/reopen,
+  physical reduced renders and aerender remain outstanding. Windows/DX12
+  remains **NOT_RUN** by scope.
+- [Initial host evidence](audits/evidence/wgsl-010-20260908/host-91c8-undo-failure/README.md)
+  retains 217 checks, instrument failures/recovery and the GUI Undo failure.
+  The passing subset does not change the retired candidate's overall **FAIL**.
 
 ### TR-REL-010 — 0.1.0 publication
 
-- Status: **NOT_RUN** (candidate under validation; no tag/release published).
+- Status: **BLOCKED** by the failed TR-WGSL-002 GUI Language Undo gate on
+  installed candidate `91c8afd`; no tag/release is published. User release
+  authorization is already granted. Repair, fresh artifact validation and
+  evidence curation must complete before publication.
 - Planned asset: `DynamicFX-0.1.0-macos-arm64.zip`, ad-hoc signed, no
   notarization claim. Windows asset follows later under the same tag.
 - Requires current-artifact TR-WGSL-002, source publication scan, source

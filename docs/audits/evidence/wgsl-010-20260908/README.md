@@ -1,8 +1,14 @@
 # Production WGSL 0.1.0 evidence
 
 This is evidence for the production frontend, separate from the older
-feasibility spike. AE installation/host verification and publication are
-still pending; this directory does not grant them.
+feasibility spike. The first installed candidate failed real GUI Undo. Its
+repair is built; installation/host verification of the replacement and
+publication remain pending.
+
+- [host-91c8-undo-failure](host-91c8-undo-failure/README.md): retired candidate,
+  217 numerical assertions passed but one real Language Undo failed.
+- [build-661e](build-661e/README.md): repair at `f4ba578`, default/editor
+  213 tests each; new executable identity, not yet a host PASS.
 
 - `build/`: default/editor 205 tests each, integration tests, locked build,
   source identity and unsigned-input/signed-bundle identities.
@@ -19,8 +25,8 @@ still pending; this directory does not grant them.
   96-byte padded and 64KiB-tail uniform layouts; all maximum errors zero.
 - `package/`: candidate ZIP checks, unchanged signature verification after
   extraction and the dependency-notice manifest. These establish packaging
-  preparation only; the Mac is locked and installation awaits the user's
-  system authorization. No host or release PASS is implied.
+  preparation only, for the retired 91c8 candidate. No host or release PASS
+  is implied.
 
 Every original `.f32` dump is stored losslessly as `.f32.zlib`. Recover using
 Python `zlib.decompress(path.read_bytes())`, then read tight little-endian
@@ -28,3 +34,8 @@ RGBA float32 at the dimensions in the corresponding log/summary. Original
 and stored SHA-256 identities are in `manifest.json`. JSON metadata retains
 local run paths for provenance; public relative files are mapped by that
 manifest. No binary is rebuilt or signed by evidence curation.
+
+The original manifest covers the original build/GPU/example/package groups.
+The appended `host-91c8-undo-failure` and `build-661e` directories have their
+own manifests and checksums. Host curation explicitly records path redaction
+and both the original and distributed hashes.

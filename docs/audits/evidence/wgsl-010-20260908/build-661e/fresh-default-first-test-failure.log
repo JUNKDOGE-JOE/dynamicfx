@@ -1,0 +1,25 @@
+   Compiling dynamicfx v0.1.0 (/Users/junk_doge/Documents/DynamicFX)
+    Finished `test` profile [optimized + debuginfo] target(s) in 4.11s
+     Running unittests src/lib.rs (target/debug/deps/dynamicfx-84211f197557ac3c)
+
+running 4 tests
+test fresh_default_tests::published_words_prevent_recompile_reset_and_inactive_states_never_initialize ... ok
+test fresh_default_tests::defaults_exclude_inherited_bindings_and_unimplemented_point_semantics ... ok
+test fresh_default_tests::color_and_angle_defaults_keep_full_precision_and_range ... ok
+test fresh_default_tests::pf_scalar_default_changes_value_and_sets_commit_flag_without_host_calls ... FAILED
+
+failures:
+
+---- fresh_default_tests::pf_scalar_default_changes_value_and_sets_commit_flag_without_host_calls stdout ----
+
+thread 'fresh_default_tests::pf_scalar_default_changes_value_and_sets_commit_flag_without_host_calls' (30465035) panicked at /Users/junk_doge/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/after-effects-0.4.0/src/pf/in_data.rs:29:9:
+assertion failed: !ptr.is_null()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    fresh_default_tests::pf_scalar_default_changes_value_and_sets_commit_flag_without_host_calls
+
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 208 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--lib`

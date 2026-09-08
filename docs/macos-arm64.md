@@ -77,6 +77,38 @@ sudo bash scripts/install.sh 2026
 An administrator password is entered into the system's prompt. The script
 still checks the invoking user's shared plug-in folder when run through `sudo`.
 
+If an authorized installer launched from Documents fails before starting with
+`/bin/bash: .../scripts/install.sh: Operation not permitted (126)`, extract the
+verified release ZIP into a fresh temporary directory and run its installer
+there. macOS protects Documents, Desktop and Downloads through
+[Files and Folders permissions](https://support.apple.com/guide/security/controlling-app-access-to-files-secddd1d86a6/web);
+[these protections also apply to root processes](https://developer.apple.com/forums/thread/678819).
+That failure is consistent with a privacy access restriction, but the error
+alone does not establish which macOS protection denied access. In a Terminal
+that can read the downloaded ZIP, replace the first path below with that ZIP's
+absolute path after comparing its checksum with the release's `SHA256SUMS.txt`.
+Keep AE and aerender closed. Extract and verify as your normal user; elevate
+only the final installer command:
+
+```sh
+(
+set -eu
+dynamicfx_archive="/absolute/path/to/verified-release.zip"
+dynamicfx_stage="$(mktemp -d /private/tmp/dynamicfx-install.XXXXXX)"
+/usr/bin/ditto -x -k "$dynamicfx_archive" "$dynamicfx_stage"
+cd "$dynamicfx_stage"
+/usr/bin/shasum -a 256 -c SHA256SUMS
+python3 scripts/macos.py verify "$dynamicfx_stage/DynamicFx.plugin"
+sudo /bin/bash scripts/install.sh 2026 --bundle "$dynamicfx_stage/DynamicFx.plugin"
+)
+```
+
+Continue to installation only if both verification commands pass. This uses
+the release's existing signature and requires no rebuild, re-signing, Full
+Disk Access grant or system-wide privacy change. Keep the installer JSON and
+its backup path; retain the downloaded archive because temporary files may be
+removed by macOS.
+
 The destination is
 `/Applications/Adobe After Effects 2026/Plug-ins/DynamicFx/DynamicFx.plugin`.
 The installer verifies the source, refuses a running host or a duplicate
