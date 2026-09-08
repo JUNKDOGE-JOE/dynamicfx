@@ -65,6 +65,8 @@ pub enum Diag {
     /// fell back to the layer frame and the frame rendered under the released
     /// contract. Degradation, never a crash. ADR-0039 §6.
     CanvasTooLarge = 57,
+    /// The GPU backend rejected a pipeline after frontend validation succeeded.
+    PipelineRejected = 58,
 }
 
 /// The registry rows, in ascending code order. Append-only forever.
@@ -95,6 +97,7 @@ pub const REGISTRY: &[Diag] = &[
     Diag::CanvasDuplicate,
     Diag::CanvasWrongKind,
     Diag::CanvasTooLarge,
+    Diag::PipelineRejected,
 ];
 
 impl Diag {
@@ -165,6 +168,7 @@ mod tests {
                         | Diag::CanvasDuplicate
                         | Diag::CanvasWrongKind
                         | Diag::CanvasTooLarge
+                        | Diag::PipelineRejected
                 ),
                 _ => false,
             };

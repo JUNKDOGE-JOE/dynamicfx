@@ -1,0 +1,14 @@
+{
+  "artifact": "target\\release\\dynamicfx.dll",
+  "sha256": "b10632fa77bee85443813758958f506033fe59d8e3bf00528f4bafd89e685e1d",
+  "bytes": 8697856,
+  "amd64": true,
+  "pe32plus": true,
+  "dll": true,
+  "exports_effectmain": true,
+  "pipl_bytes": 342,
+  "pipl_matches_release_build": true,
+  "version": "0.1.1",
+  "dll_equal": true,
+  "installed": false
+}

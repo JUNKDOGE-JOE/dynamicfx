@@ -107,7 +107,7 @@ fn pipl_properties(editor: bool) -> Vec<Property> {
             // cache generations beyond the previous default=5/editor=6.
             version: 1,
             subversion: if editor { 12 } else { 11 },
-            bugversion: 0,
+            bugversion: 1,
             stage: Stage::Develop,
             build: 0,
         },

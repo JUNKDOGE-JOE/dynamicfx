@@ -55,3 +55,5 @@ Every audit uses these sections:
 An audit is complete only when its milestone exit criteria have matching Test Matrix evidence. Otherwise its state remains in progress or blocked.
 
 | Post-M7 | [08 WGSL and 0.1.0](08-wgsl-010.md) | Native macOS acceptance complete with ADR-0045 Source Undo exception; publication pending |
+
+| Post-M7 | [09 Windows 0.1.1](09-windows-011.md) | Local build, recovery and portable Sample pass; publication pending |

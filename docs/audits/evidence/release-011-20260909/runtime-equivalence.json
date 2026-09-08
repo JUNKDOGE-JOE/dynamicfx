@@ -1,0 +1,56 @@
+{
+  "runtime_equivalent_candidate_sha256": "68171a984aceb8b4110d25cd4b8912565fb6c5b6d3131757dbfde35aeaf247f0",
+  "identical_modules": [
+    "src\\binding.rs",
+    "src\\canvas.rs",
+    "src\\diag.rs",
+    "src\\diagnostics.rs",
+    "src\\gradient.rs",
+    "src\\identity.rs",
+    "src\\path.rs",
+    "src\\persistence.rs",
+    "src\\plan.rs",
+    "src\\render.rs",
+    "src\\source.rs",
+    "src\\wgsl_tests.rs",
+    "src\\definition\\effect.rs",
+    "src\\definition\\mod.rs",
+    "src\\definition\\param.rs",
+    "src\\frontend\\annotation.rs",
+    "src\\frontend\\envelope.rs",
+    "src\\frontend\\glsl.rs",
+    "src\\frontend\\grammar.rs",
+    "src\\frontend\\mod.rs",
+    "src\\frontend\\shared.rs",
+    "src\\frontend\\wgsl.rs",
+    "src\\host\\idle.rs",
+    "src\\host\\mod.rs",
+    "src\\host\\params.rs"
+  ],
+  "differences": {
+    "src\\lib.rs": [
+      "--- \n",
+      "+++ \n",
+      "@@ -1357,4 +1357,14 @@\n",
+      "     fn siri_glow_example_compiles() {",
+      "         compiles(\"siri-glow.glsl\", include_str!(\"../examples/siri-glow.glsl\"));",
+      "+    }",
+      "+",
+      "+    #[test]",
+      "+    fn siri_reference_example_compiles() {",
+      "+        compiles(\"siri-reference.glsl\", include_str!(\"../examples/siri-reference.glsl\"));",
+      "+    }",
+      "+",
+      "+    #[test]",
+      "+    fn siri_ribbons_example_compiles() {",
+      "+        compiles(\"siri-ribbons.glsl\", include_str!(\"../examples/siri-ribbons.glsl\"));",
+      "     }",
+      " "
+    ]
+  },
+  "release_metadata_changes": [
+    "Cargo version 0.1.0 to 0.1.1",
+    "PiPL bugversion 0 to 1"
+  ],
+  "scope": "lib.rs only adds two cfg(test) shader compilation tests; no production code differs."
+}

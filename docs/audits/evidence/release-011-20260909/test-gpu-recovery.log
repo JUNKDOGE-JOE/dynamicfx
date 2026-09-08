@@ -1,0 +1,17 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.11s
+     Running unittests src\main.rs (scripts\quality\target\debug\deps\dynamicfx_quality-ba12b9e21e202483.exe)
+
+running 1 test
+gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.15.9621 "
+host unwind=false, instance lock poisoned=false
+captured compiler diagnostic: E58 wgpu pipeline: Validation Error
+
+Caused by:
+  In Device::create_render_pipeline, label = 'dynamicfx-pipeline'
+    Internal error in ShaderStages(FRAGMENT) shader: FXC D3DCompile error (未指定的错误 (0x80004005)): internal error: compilation aborted unexpectedly
+
+
+test tests::backend_compile_error_returns_and_next_pipeline_succeeds ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 98 filtered out; finished in 1.29s
+

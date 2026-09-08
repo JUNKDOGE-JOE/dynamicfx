@@ -12,14 +12,16 @@ single authority for what renders.
 
 ## Status
 
-`0.1.0` adds production WGSL, native Apple Silicon support,
-and shader sampling/preview corrections. macOS acceptance covers the exact
-release candidate on After Effects 2026 (26.3x87), Apple M5, macOS 26.5.2.
+`0.1.1` fixes Windows GPU compiler failure handling and ships the editable
+[IOS27Siri sample](examples/IOS27Siri/): continuous ribbons, soft glass breathing,
+refraction and reflected color. Backend pipeline rejection now returns `E58`
+instead of escaping into a panic; a rejected replacement cannot reuse stale
+pipelines. The sample is an independent visual study, not Apple's shader.
 
 | Release / host | Status |
 |---|---|
-| 0.1.0 / macOS Apple Silicon / AE 2026 | Native host and independent aerender verified; known Source Undo limitation below |
-| 0.1.0 / Windows | Build, host verification and artifact pending |
+| 0.1.1 / Windows x64 / DX12 | Release build and real-GPU recovery regression verified; AE 2026 valid rendering verified on the same runtime code, before the version metadata bump |
+| 0.1.0 / macOS Apple Silicon / AE 2026 | Previous native host and independent aerender verified release; no 0.1.1 Mac binary is included |
 | 0.0.6 / Windows / AE 2025 and 2026 | Historical released-artifact verification |
 | macOS Intel / Rosetta | Not supported by the ARM package |
 
@@ -27,13 +29,21 @@ See [macOS setup](docs/macos-arm64.md) and the [test matrix](docs/TEST_MATRIX.md
 for the exact artifact and host scope. The optional gradient editor remains
 shelved and disabled in the default release.
 
-**Known 0.1.0 limitation:** after editing the `Source` expression, background
+**Known limitation, retained in 0.1.1:** after editing the `Source` expression, background
 state publication can occupy Undo history. A single Undo may leave the source
 unchanged and make Redo unavailable. Keep earlier shader text in a file and
 restore that text explicitly. Source-expression Undo is not covered by the
-verified Language-switch Undo/Redo result. See [ADR-0045](docs/adr/0045-010-source-undo-release-boundary.md).
+verified Language-switch Undo/Redo result. See [ADR-0045](docs/adr/0045-010-source-undo-release-boundary.md)
+and the [0.1.1 release boundary](docs/adr/0046-011-windows-patch-release.md).
 
 ## Install
+
+For Windows x64, download `DynamicFX-0.1.1-windows-x64.zip` from
+[v0.1.1](https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.1.1).
+Close After Effects, extract the archive, then follow `INSTALL.txt` to copy
+`DynamicFx.aex` into the plug-ins folder for your AE version. SHA-256 checksums
+are included on the release page. The currently verified native host is AE 2026;
+this patch does not add acceptance for AE 2023–2025.
 
 For Apple Silicon macOS, use the macOS ARM archive from the
 [Releases page](https://github.com/JUNKDOGE-JOE/dynamicfx/releases) and follow
@@ -133,6 +143,11 @@ order, and aerender all agree exactly).
 ## Examples
 
 [`examples/`](examples/) has complete, working shaders to paste in:
+
+- [**IOS27Siri**](examples/IOS27Siri/) — an AE 2026 project, included background
+  assets, GLSL source and a 60 fps preview. Four analytic colored sheets retain
+  changing phase offsets; glass breathing and transmission/sheen are editable.
+  No frame-by-frame motion data or external service is needed.
 
 - [`thermal.glsl`](examples/thermal.glsl) — a six-pass heat signature: warped
   fBm field, two separable blur chains, palette compositing. Shows multi-pass

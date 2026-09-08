@@ -12,7 +12,14 @@
 - Every milestone has one canonical audit document.
 - A milestone that first implements or persists a staged contract may not begin until its entry ADRs are Accepted ([ADR-0009](adr/0009-staged-format-adr-acceptance.md)).
 
-## Active post-M7 follow-up — 0.1.0 then Siri
+## Active follow-up - 0.1.1 Windows patch and current Sample
+
+User-authorized 2026-09-09: publish the runtime repairs and portable IOS27Siri
+Sample, verify uploaded hashes, and retain the disclosed Source Undo and host
+coverage limitations. [ADR-0046](adr/0046-011-windows-patch-release.md).
+Further visual refinement and Undo redesign remain separate work.
+
+## Historical post-M7 follow-up — 0.1.0 then Siri
 
 User-authorized on 2026-09-08; [ADR-0044](adr/0044-wgsl-and-010-release.md).
 Order: production WGSL integration → current-artifact AE 2026 macOS tests →

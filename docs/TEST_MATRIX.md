@@ -1185,3 +1185,14 @@ Earlier production GPU and retired-candidate results remain historical:
   equivalence and exact Cargo.lock; publish regular v0.1.0, then re-download
   and verify archive, executable/PiPL hashes and signature. Old 91c8 ZIP checks
   do not verify the final release package. [Audit](audits/08-wgsl-010.md).
+
+## TR-REL-011 - Windows patch and IOS27Siri sample
+
+2026-09-09: PASS default/editor CPU suites (222 each), quality suite (98),
+explicit real-DX12 compiler rejection/recovery, versioned Windows Release
+build and static artifact checks. PASS AE 2026 Sample relocation, embedded
+source identity, original checkpoint preservation and 300 unique 60 fps native
+frames. NOT_RUN exact-new-byte host installation, other AE years and Mac 0.1.1;
+native failure injection BLOCKED. Source Undo remains a known FAIL.
+Publication verification pending. Exact environment, commands, source/artifact
+identities and evidence: [release audit](audits/09-windows-011.md).

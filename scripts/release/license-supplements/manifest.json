@@ -230,6 +230,39 @@
           "url": "https://raw.githubusercontent.com/gfx-rs/rspirv/8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4/LICENSE"
         }
       ]
+    },
+    "gl_generator@0.14.0": {
+      "selected_license": "Apache-2.0",
+      "note": "License from the exact upstream commit recorded in the registry package VCS metadata.",
+      "files": [
+        {
+          "path": "upstream/rust-windowing_gl-rs/ea503e8d5fb6d73c6030e6191ce738cd3bf3433e/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "url": "https://raw.githubusercontent.com/rust-windowing/gl-rs/ea503e8d5fb6d73c6030e6191ce738cd3bf3433e/LICENSE"
+        }
+      ]
+    },
+    "khronos_api@3.1.0": {
+      "selected_license": "Apache-2.0",
+      "note": "License from the exact upstream commit recorded in the registry package VCS metadata.",
+      "files": [
+        {
+          "path": "upstream/rust-windowing_gl-rs/f150967b1c44ae888e6676f93f639ebc82771bdc/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "url": "https://raw.githubusercontent.com/rust-windowing/gl-rs/f150967b1c44ae888e6676f93f639ebc82771bdc/LICENSE"
+        }
+      ]
+    },
+    "win_dbg_logger@0.1.0": {
+      "selected_license": "Apache-2.0",
+      "note": "Registry package and its recorded upstream commit omit license text; declared MIT OR Apache-2.0. Supply the pinned standard Apache-2.0 template, without asserting its placeholders as package copyright holders.",
+      "files": [
+        {
+          "path": "standard/3ac5a9c241d97f95b22a5e366c9c841404a35639/Apache-2.0.txt",
+          "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/3ac5a9c241d97f95b22a5e366c9c841404a35639/text/Apache-2.0.txt"
+        }
+      ]
     }
   }
 }

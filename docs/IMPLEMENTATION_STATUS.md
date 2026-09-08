@@ -3,6 +3,20 @@
 > **This file is the only authority for what is true now.**  
 > Architecture intent belongs in [ARCHITECTURE.md](ARCHITECTURE.md); future sequencing belongs in [ROADMAP.md](ROADMAP.md); verification truth belongs in [TEST_MATRIX.md](TEST_MATRIX.md).
 
+
+## Active release - 0.1.1 Windows patch and IOS27Siri sample
+
+The user authorized publishing the completed runtime fixes, current Sample and
+README. Local build, CPU/GPU checks and Sample portability pass; the release
+is awaiting upload verification. [Release audit](audits/09-windows-011.md).
+Source-expression Undo remains a disclosed limitation. Exact new-byte native
+installation and macOS 0.1.1 remain NOT_RUN; AE 2026 valid rendering is covered
+by the documented runtime-code equivalence.
+
+**Exact next action:** publish v0.1.1 and verify downloaded asset hashes.
+
+## Historical 0.1.0 record
+
 ## Active work — 2026-09-08
 
 The user requested remote synchronization, native Apple Silicon AE operation,

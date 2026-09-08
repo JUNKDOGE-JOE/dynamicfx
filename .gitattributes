@@ -1,2 +1,8 @@
 # Losslessly compressed pixel evidence must never be diffed or line-normalized.
 *.zlib binary
+scripts/release/license-supplements/** text eol=lf
+*.aep binary
+*.zip binary
+*.png binary
+*.mp4 binary
+docs/audits/evidence/release-011-20260909/** -text -whitespace

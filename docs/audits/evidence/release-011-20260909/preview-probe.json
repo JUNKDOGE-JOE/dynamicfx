@@ -1,0 +1,16 @@
+{
+    "programs": [
+
+    ],
+    "stream_groups": [
+
+    ],
+    "streams": [
+        {
+            "width": 560,
+            "height": 420,
+            "r_frame_rate": "60/1",
+            "nb_read_frames": "300"
+        }
+    ]
+}

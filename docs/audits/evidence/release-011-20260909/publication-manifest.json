@@ -1,0 +1,230 @@
+{
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 268,
+      "sha256": "18cdcd44b6273e4593555bb5de491d33e4c9872f485dfe7f5cb8ab1dd819a1d3"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 950,
+      "sha256": "fe70d1e3eadc88eb72c33de7358f793b31efa39b0116dd761b155c458ebcd019"
+    },
+    {
+      "path": "README.md",
+      "bytes": 26029,
+      "sha256": "88112a026e29a09aabcb8e2ee2a55d3e8f18ec48ff2aac2f20957ebc86068d89"
+    },
+    {
+      "path": "build.rs",
+      "bytes": 6633,
+      "sha256": "a855b442b8eef91b7fd3712a504d81b3215bb80ac435b5730e585ea48921381c"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "bytes": 82327,
+      "sha256": "73a60770c8fc0125cf776cb20994bcbd057659db431a81358306fad432e90509"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "bytes": 24181,
+      "sha256": "7a15eb7917776e4632013e891cf7b57a2a156ac69b16e652776dcb02b3e07658"
+    },
+    {
+      "path": "docs/TEST_MATRIX.md",
+      "bytes": 224865,
+      "sha256": "f764ed36c43867aeeb3157e5f6a2ffadc839eac5d28554dbe8529298d68c8303"
+    },
+    {
+      "path": "docs/adr/0046-011-windows-patch-release.md",
+      "bytes": 3325,
+      "sha256": "93a9f2b8857bd24384ed6118f175e8120a8baf12dab7a4f584dee0182f023fa8"
+    },
+    {
+      "path": "docs/adr/README.md",
+      "bytes": 15604,
+      "sha256": "fd4dc765ef8eaaa85277290af258dea89d217b78cfdb3fa09e473fafdc8ac58b"
+    },
+    {
+      "path": "docs/audits/09-windows-011.md",
+      "bytes": 4140,
+      "sha256": "2ff4aa5c336f183cc8f5a183b953bcc63f6fbcd8e067517892468c5a63501a8c"
+    },
+    {
+      "path": "docs/audits/README.md",
+      "bytes": 2662,
+      "sha256": "fd4c9121cf08779830962ad0de2d6ecdcdc3f44651577f98073c2388bc5f0ff9"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/Cargo.lock.txt",
+      "bytes": 43297,
+      "sha256": "125d8418a9eb26068503cd15717ae7f04a2d23e680162285730c273a49d1f8bc"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/artifact.json",
+      "bytes": 369,
+      "sha256": "a03fb6fcd85036bc882567c08aa5d95e37c761bdaa587d1683b87183d293bcfa"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/build-release.log",
+      "bytes": 109,
+      "sha256": "b23daec233f7eec7d4e20a8af0478829582919550ff7fdd2677ccd154cbe0a4b"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/evidence-redactions.json",
+      "bytes": 1753,
+      "sha256": "da2ab0f9df864961f549f9f778ab6744726a11b0a5fe48c3398822077d954f2d"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/preview-probe.json",
+      "bytes": 245,
+      "sha256": "4650e5c22b1be57cb8914327825d7b110b615634dc00aef5c72de672b7367cba"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/release-notes.md",
+      "bytes": 2455,
+      "sha256": "657032eea42781671d94d262de0bbde3f1b941bab03711e3cc7e038aeda7dca3"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/runtime-equivalence.json",
+      "bytes": 1765,
+      "sha256": "ffeaf1b463d5ac077f5d3f7426f079dd73e71bb8d3a611c67801664f0f3a4162"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/sample-validation.json",
+      "bytes": 26197,
+      "sha256": "b7c865959ba1c2ba868b63ff4b687cf172266201edc9bca846c8799cef936e19"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/test-gpu-recovery.log",
+      "bytes": 837,
+      "sha256": "c2c9bc0bbcf4e2acb7459a58486134a0b80e7a85657ade6a5f015f508682fc4f"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/tests-default.log",
+      "bytes": 17466,
+      "sha256": "bc0a11d3efe396ffaf1ea0a0c28803cee53863764c640eded96456c7bdb7b529"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/tests-editor.log",
+      "bytes": 17466,
+      "sha256": "98e181ef84da86f7e2f1af91d7878abebef3e9980755176f2f32ef4a2691ac87"
+    },
+    {
+      "path": "docs/audits/evidence/release-011-20260909/tests-quality.log",
+      "bytes": 7842,
+      "sha256": "ca94ce4280ef740b7a78b76e1211e2e775099b3685fec3abea2e48b8acca3412"
+    },
+    {
+      "path": "examples/IOS27Siri/IOS27Siri.aep",
+      "bytes": 889893,
+      "sha256": "6c8a52412ab975202f39c514c7bf15e78d09850a0b02a2742efc6fbb8e346ab3"
+    },
+    {
+      "path": "examples/IOS27Siri/README.md",
+      "bytes": 2670,
+      "sha256": "3960182ce08c51efa58b462a6488d9e447995d2ec6de4e8069a2f4a5940ff203"
+    },
+    {
+      "path": "examples/IOS27Siri/assets/background.png",
+      "bytes": 455050,
+      "sha256": "253fc329753f443b7f290dd8eb4a90d2cc8ea6eb690bb217a2999974294a5492"
+    },
+    {
+      "path": "examples/IOS27Siri/assets/wallpaper.png",
+      "bytes": 1042737,
+      "sha256": "e34a66d2ab2e44e9917cbaa2505be76515ddfe911ff14832d326a75ae14eb254"
+    },
+    {
+      "path": "examples/IOS27Siri/preview.mp4",
+      "bytes": 487344,
+      "sha256": "75d2e2d634c8f8d20d4b33d7763994a114b2dfb9ea5dac2c5befb64e66568e02"
+    },
+    {
+      "path": "examples/IOS27Siri/preview.png",
+      "bytes": 1310112,
+      "sha256": "b09df1fe197cdffd2e0b4fa8c59c53191b3d1c40efed17a1531b2a6900ce8ba6"
+    },
+    {
+      "path": "examples/README.md",
+      "bytes": 11190,
+      "sha256": "899ad8a210ee77eaf494f30c93d62a153292c0c695c8af83b33a103a4c23b0dc"
+    },
+    {
+      "path": "examples/siri-reference.glsl",
+      "bytes": 32285,
+      "sha256": "07306ad372c3ae41b493e9e10b2b559e8be2460ba27f3b56f6fbc672f3f7dbfc"
+    },
+    {
+      "path": "examples/siri-reference.md",
+      "bytes": 2975,
+      "sha256": "ba714df69cfb5c889c60a5a51d9a0c90cf0eb7de6d5469619cc0748df77bf3c1"
+    },
+    {
+      "path": "examples/siri-ribbons.glsl",
+      "bytes": 26264,
+      "sha256": "5c59dfbf532749dd0519598f0c98b82e452c4ab8d9dbb31e806018cbac2b6303"
+    },
+    {
+      "path": "scripts/quality/check_siri_continuous.py",
+      "bytes": 4040,
+      "sha256": "85a1f93bdfcc43de4788738c3ad6b50aa06f29fbbd24ff5a2b881ef2b2890f1a"
+    },
+    {
+      "path": "scripts/quality/src/main.rs",
+      "bytes": 10477,
+      "sha256": "0b3bf4587130311203d3ad34bb74980fe3d5156d050839260596728e97c74673"
+    },
+    {
+      "path": "scripts/release/license-supplements/manifest.json",
+      "bytes": 17701,
+      "sha256": "2a2ca2d45fcc907ffa58a170b64752ea32d550fc53905daa382fd3df723a039f"
+    },
+    {
+      "path": "scripts/release/license-supplements/upstream/rust-windowing_gl-rs/ea503e8d5fb6d73c6030e6191ce738cd3bf3433e/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "scripts/release/license-supplements/upstream/rust-windowing_gl-rs/f150967b1c44ae888e6676f93f639ebc82771bdc/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "scripts/release/package_windows.py",
+      "bytes": 5718,
+      "sha256": "b65bf0ca027e2f0836b33beae3ab2582fedad3617ef26c9fdda460a5f368a1ae"
+    },
+    {
+      "path": "src/diagnostics.rs",
+      "bytes": 7173,
+      "sha256": "64d4c04e9b00e728b8a57c3dcbbdf379bf71302ca408dbe02f752ce95c820585"
+    },
+    {
+      "path": "src/lib.rs",
+      "bytes": 223339,
+      "sha256": "c0528bb631b002c824b7c02988b503aa0b4a0cc07361aba2393332fab211e21d"
+    },
+    {
+      "path": "src/render.rs",
+      "bytes": 51397,
+      "sha256": "b2380264759aa99e9b749d321dfa9140bd234ee4b54ba3954466620726c79c93"
+    }
+  ],
+  "total_bytes": 5113866,
+  "excluded": [
+    "unpublished local development commit ac543b7",
+    "historical raw audits",
+    "archived previews",
+    "motion fitting data",
+    "unrelated local projects"
+  ],
+  "preexisting_findings": [
+    {
+      "path": "docs/TEST_MATRIX.md",
+      "kind": "machine_path"
+    }
+  ],
+  "added_text_findings": [],
+  "note": "The path match is confined to already-public historical Test Matrix lines. Added text has no machine-local user, repository or Eagle paths. Native AEP asset paths are required by the host format; project relocation was verified."
+}

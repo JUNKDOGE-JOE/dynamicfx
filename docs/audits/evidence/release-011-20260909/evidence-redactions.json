@@ -1,0 +1,47 @@
+[
+  {
+    "file": "tests-default.log",
+    "original_sha256": "5bdf5d2c01c1a88beb7d218cc1cccf63f9d8f2739a4af856bba001c28ac99b2e",
+    "published_sha256": "bc0a11d3efe396ffaf1ea0a0c28803cee53863764c640eded96456c7bdb7b529",
+    "substitutions": [
+      "checkout path replaced by [checkout]",
+      "terminal NUL removed if present"
+    ]
+  },
+  {
+    "file": "tests-editor.log",
+    "original_sha256": "c14902471a10717bc3c6a2d44e8e45606906e760fb615c7e81168a391010cd51",
+    "published_sha256": "98e181ef84da86f7e2f1af91d7878abebef3e9980755176f2f32ef4a2691ac87",
+    "substitutions": [
+      "checkout path replaced by [checkout]",
+      "terminal NUL removed if present"
+    ]
+  },
+  {
+    "file": "tests-quality.log",
+    "original_sha256": "8f91dc187c9c22b120c67a550aec381aa877da5f6aabcc6d5d1326b2450d0c16",
+    "published_sha256": "ca94ce4280ef740b7a78b76e1211e2e775099b3685fec3abea2e48b8acca3412",
+    "substitutions": [
+      "checkout path replaced by [checkout]",
+      "terminal NUL removed if present"
+    ]
+  },
+  {
+    "file": "test-gpu-recovery.log",
+    "original_sha256": "a906f600bf662997db971528e911ab42a6ad526447fba14c7a6c4b3877f3be33",
+    "published_sha256": "c2c9bc0bbcf4e2acb7459a58486134a0b80e7a85657ade6a5f015f508682fc4f",
+    "substitutions": [
+      "checkout path replaced by [checkout]",
+      "terminal NUL removed if present"
+    ]
+  },
+  {
+    "file": "build-release.log",
+    "original_sha256": "9c2a26294e6ca48717885207504c49959d00638c07c567eab1d1dcb5e4e0844f",
+    "published_sha256": "b23daec233f7eec7d4e20a8af0478829582919550ff7fdd2677ccd154cbe0a4b",
+    "substitutions": [
+      "checkout path replaced by [checkout]",
+      "terminal NUL removed if present"
+    ]
+  }
+]

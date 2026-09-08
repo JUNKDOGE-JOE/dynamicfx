@@ -187,10 +187,10 @@ pub fn build_pipeline(
 ) -> Result<FxPipeline, String> {
     let device = &gpu.device;
     let block_size = layout.block_size.max(16);
-    // wgpu validation failures panic through the uncaptured-error handler by
-    // default; inside AE that means a modal error dialog that also poisons
-    // scripted harness runs. Scope them into an Err -> diagnostic log +
-    // pass-through instead (measured live with ADR-0021's Rgba16Unorm).
+    // Backend compiler failures are Internal errors, even when their text
+    // says "Validation Error". Capture every class before it reaches AE.
+    let memory_scope = device.push_error_scope(wgpu::ErrorFilter::OutOfMemory);
+    let internal_scope = device.push_error_scope(wgpu::ErrorFilter::Internal);
     let error_scope = device.push_error_scope(wgpu::ErrorFilter::Validation);
 
     let vs = device.create_shader_module(wgpu::ShaderModuleDescriptor {
@@ -278,8 +278,17 @@ pub fn build_pipeline(
         cache: None,
     });
 
-    if let Some(e) = pollster::block_on(error_scope.pop()) {
-        return Err(format!("wgpu validation: {e}"));
+    let errors = [
+        pollster::block_on(error_scope.pop()),
+        pollster::block_on(internal_scope.pop()),
+        pollster::block_on(memory_scope.pop()),
+    ];
+    let messages: Vec<_> = errors.into_iter().flatten().map(|error| error.to_string()).collect();
+    if !messages.is_empty() {
+        return Err(crate::diagnostics::status_text(
+            crate::diagnostics::Diag::PipelineRejected,
+            &format!("wgpu pipeline: {}", messages.join("\n")),
+        ));
     }
 
     Ok(FxPipeline {
