@@ -106,7 +106,7 @@ fn pipl_properties(editor: bool) -> Vec<Property> {
             // 0.1.0 appends WGSL to the Language popup. Advance both flavor
             // cache generations beyond the previous default=5/editor=6.
             version: 1,
-            subversion: if editor { 10 } else { 9 },
+            subversion: if editor { 12 } else { 11 },
             bugversion: 0,
             stage: Stage::Develop,
             build: 0,

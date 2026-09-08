@@ -12,6 +12,39 @@ use crate::binding::{
 use crate::frontend;
 use after_effects as ae;
 
+/// after-effects 0.4's macOS name encoder copies bytes without a trailing
+/// NUL for short names. Clear the destination first so PF_UpdateParamUI
+/// cannot expose a previous label's suffix. Keep the wrapper's system
+/// encoding and length handling; this changes presentation only.
+pub fn set_display_name(param: &mut ae::ParamDef<'_>, name: &str) -> Result<(), ae::Error> {
+    param.as_mut().name_do_not_use_directly.fill(0);
+    param.set_name(name)
+}
+
+#[cfg(test)]
+mod display_name_tests {
+    use super::*;
+
+    #[test]
+    fn shorter_empty_and_clipped_names_are_terminated_without_value_changes() {
+        let mut input: ae::sys::PF_InData = unsafe { std::mem::zeroed() };
+        let mut raw: ae::sys::PF_ParamDef = unsafe { std::mem::zeroed() };
+        raw.param_type = ae::sys::PF_Param_FLOAT_SLIDER;
+        let mut param = ae::ParamDef::from_raw(ae::InData::from_raw(&mut input), &mut raw, None);
+        for (name, expected) in [("Float 01", "Float 01"), ("Gain", "Gain"), ("", "")] {
+            set_display_name(&mut param, name).unwrap();
+            let bytes = &param.as_ref().name_do_not_use_directly;
+            let actual: Vec<u8> = bytes.iter().take_while(|v| **v != 0).map(|v| *v as u8).collect();
+            assert_eq!(actual, expected.as_bytes());
+            assert!(bytes[expected.len()..].iter().all(|v| *v == 0));
+            assert!(!param.change_flags().contains(ae::ChangeFlag::CHANGED_VALUE));
+        }
+        set_display_name(&mut param, &"x".repeat(80)).unwrap();
+        let bytes = &param.as_ref().name_do_not_use_directly;
+        assert_eq!(bytes[bytes.len() - 1], 0);
+    }
+}
+
 /// Parameter identity for the AE dispatch macro. `Pool(kind, i)` is the
 /// kind-local slot `i` of one pool.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

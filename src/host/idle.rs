@@ -7,7 +7,7 @@
 //! StateToken stream via AEGP (ParamDef writes are only honored in
 //! UserChangedParam contexts).
 
-use crate::frontend::envelope::{self, SourceClass};
+use crate::frontend::envelope::SourceClass;
 use crate::host::params::{LANGUAGE_STREAM_INDEX, SOURCE_STREAM_INDEX, STATE_TOKEN_STREAM_INDEX};
 use after_effects as ae;
 use ae::aegp::{ItemType, StreamReferenceHandle, StreamValue};
@@ -342,7 +342,7 @@ fn sync_state_token(
                 let expression = streams.expression_string(&source_stream, state.plugin_id)?;
                 match crate::source::extract_source(&expression) {
                     None => TokenState::Invalid(Diag::NotSourceBlock.code()),
-                    Some(source) => match envelope::classify(&source) {
+                    Some(source) => match crate::classify_parse_source(&source).map(|(_, class)| class) {
                         Err(crate::frontend::envelope::SourceClassError::Oversize { .. }) => {
                             TokenState::Invalid(Diag::SourceOversize.code())
                         }

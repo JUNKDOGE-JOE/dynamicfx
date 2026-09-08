@@ -2287,6 +2287,26 @@ fn observe_core(plugin: &mut PluginState, local: &mut Local, force: bool) -> Res
     Ok(true)
 }
 
+/// AE's expression editor can store line breaks as bare CR. Normalize only
+/// the parser's copy, after enforcing the original UTF-8 byte limit. Source
+/// authority, token fingerprints and persisted text still use the original.
+/// The idle observer uses the same classification so it cannot replace a
+/// successfully compiled CR envelope with an envelope-malformed token.
+pub(crate) fn classify_parse_source(
+    committed: &str,
+) -> Result<(std::borrow::Cow<'_, str>, SourceClass), SourceClassError> {
+    if committed.len() > envelope::MAX_COMMITTED_SOURCE_BYTES {
+        return Err(SourceClassError::Oversize { bytes: committed.len() });
+    }
+    let parsed = if committed.contains('\r') {
+        std::borrow::Cow::Owned(committed.replace("\r\n", "\n").replace('\r', "\n"))
+    } else {
+        std::borrow::Cow::Borrowed(committed)
+    };
+    let class = envelope::classify(&parsed)?;
+    Ok((parsed, class))
+}
+
 /// Classify committed source (ADR-0012), parse the envelope grammar when
 /// present (ADR-0018), run the selected frontend per pass, and lower into a
 /// unified graph — raw single-pass input is an implicit one-pass manifest
@@ -2296,7 +2316,7 @@ fn evaluate_committed_source(
     committed: &str,
     previous: Option<&binding::BindingPlan>,
 ) -> (Diag, String, Option<(u64, Arc<CompiledEffect>)>) {
-    let (manifest, bodies, body_start_lines) = match envelope::classify(committed) {
+    let (parse_source, source_class) = match classify_parse_source(committed) {
         Err(SourceClassError::Oversize { bytes }) => {
             return (
                 Diag::SourceOversize,
@@ -2311,8 +2331,12 @@ fn evaluate_committed_source(
                 None,
             )
         }
-        Ok(SourceClass::Envelope { version: 1 }) => {
-            match frontend::grammar::parse_envelope(committed) {
+        Ok(parsed) => parsed,
+    };
+    let parse_source = parse_source.as_ref();
+    let (manifest, bodies, body_start_lines) = match source_class {
+        SourceClass::Envelope { version: 1 } => {
+            match frontend::grammar::parse_envelope(parse_source) {
                 Ok(env) => (env.passes, env.bodies, env.body_start_lines),
                 Err(e) => {
                     return (
@@ -2323,21 +2347,21 @@ fn evaluate_committed_source(
                 }
             }
         }
-        Ok(SourceClass::Envelope { version }) => {
+        SourceClass::Envelope { version } => {
             return (
                 Diag::EnvelopeUnsupported,
                 format!("envelope v{version} is not supported (this build implements v1)"),
                 None,
             )
         }
-        Ok(SourceClass::Raw) => {
-            (definition::effect::single_pass_manifest(), vec![committed.to_string()], vec![1])
+        SourceClass::Raw => {
+            (definition::effect::single_pass_manifest(), vec![parse_source.to_string()], vec![1])
         }
     };
 
-    let layer_names = frontend::annotation::layer_param_names(committed);
-    let gradient_names = frontend::annotation::gradient_param_names(committed);
-    let path_names = frontend::annotation::path_param_names(committed);
+    let layer_names = frontend::annotation::layer_param_names(parse_source);
+    let gradient_names = frontend::annotation::gradient_param_names(parse_source);
+    let path_names = frontend::annotation::path_param_names(parse_source);
     let uses_prev = manifest
         .iter()
         .any(|p| p.inputs.iter().any(|i| i == frontend::grammar::RES_PREV));
@@ -2377,8 +2401,8 @@ fn evaluate_committed_source(
             None,
         );
     };
-    // Annotations parse once over the whole committed text (ADR-0018 §6).
-    let annotations = match frontend::annotation::parse_annotations(committed) {
+    // Annotations parse once over the whole parsing copy (ADR-0018 §6).
+    let annotations = match frontend::annotation::parse_annotations(parse_source) {
         Ok(annotations) => annotations,
         Err(e) => {
             return (
@@ -2512,7 +2536,7 @@ fn evaluate_committed_source(
         .iter()
         .any(|s| s.inputs.iter().any(|i| *i == plan::TexSlot::History));
     let window = if uses_prev {
-        match frontend::annotation::parse_window(committed) {
+        match frontend::annotation::parse_window(parse_source) {
             Ok(declared) => Some(declared.unwrap_or(frontend::annotation::WINDOW_DEFAULT)),
             Err(e) => {
                 return (
@@ -2566,6 +2590,176 @@ fn evaluate_committed_source(
         externals,
     });
     (Diag::Ok, status, Some((token, compiled)))
+}
+
+#[cfg(test)]
+mod source_line_ending_tests {
+    use super::*;
+
+    fn compile(language: LanguageId, original: &str) -> Arc<CompiledEffect> {
+        let (code, status, result) = evaluate_committed_source(language, original, None);
+        assert_eq!(code, Diag::Ok, "{status}");
+        let (token, effect) = result.unwrap();
+        assert_eq!(token, session_token(language, original));
+        assert_eq!(effect.source, original);
+        effect
+    }
+
+    fn shader(language: LanguageId, annotation: &str, external: bool) -> String {
+        let metadata = "// @param gain label:\"Gain\" min:0 max:2 default:0.25\n\
+            // @param spin label:\"Spin\" hint:angle default:12.34567\n\
+            // @param extent label:\"Extent\" hint:canvas default:16";
+        let (header, body, resource) = if language == LanguageId::WGSL {
+            ("// WGSL line-ending fixture", r#"
+struct FxUniforms {
+ u_resolution:vec2<f32>, u_time:f32, u_frame:f32,
+ gain:f32, spin:f32, extent:f32,
+};
+@group(0) @binding(2) var<uniform> fx:FxUniforms;
+@fragment fn main()->@location(0) vec4<f32>{ return vec4<f32>(fx.gain,0.0,0.0,1.0); }
+"#, "@group(0) @binding(3) var side_image:texture_2d<f32>;")
+        } else {
+            ("#version 450", r#"
+layout(location=0) out vec4 outColor;
+layout(set=0,binding=2) uniform FxUniforms {
+ vec2 u_resolution; float u_time; float u_frame;
+ float gain; float spin; float extent;
+};
+void main(){ outColor=vec4(gain,0.0,0.0,1.0); }
+"#, "layout(set=0,binding=3) uniform texture2D side_image;")
+        };
+        format!("{header}\n{metadata}\n{annotation}\n{}\n{body}", if external { resource } else { "" })
+    }
+
+    fn envelope(body: &str, inputs: &str) -> String {
+        let mut result = format!("@dynamicfx 1\n@graph\npass paint: {inputs} -> output\n@end\n@pass paint\n");
+        for line in body.lines() {
+            if line.trim_start().starts_with('@') {
+                let trimmed = line.trim_start();
+                result.push_str(&line[..line.len() - trimmed.len()]);
+                result.push('@');
+                result.push_str(trimmed);
+            } else {
+                result.push_str(line);
+            }
+            result.push('\n');
+        }
+        result.push_str("@endpass\n");
+        result
+    }
+
+    fn assert_metadata(effect: &CompiledEffect) {
+        let param = |id: &str| effect.definition.params.iter().find(|p| p.id.as_str() == id).unwrap();
+        assert_eq!(param("gain").ui.label.as_deref(), Some("Gain"));
+        assert_eq!(param("gain").ui.min, Some(0.0));
+        assert_eq!(param("gain").ui.max, Some(2.0));
+        assert_eq!(param("gain").ui.default.as_deref(), Some([0.25f32].as_slice()));
+        assert_eq!(param("spin").ty, ShaderParamType::AngleFloat);
+        assert_eq!(param("spin").ui.default.as_deref(), Some([12.34567f32].as_slice()));
+        assert_eq!(effect.definition.canvas_param.as_ref().unwrap().as_str(), "extent");
+        assert_eq!(param("extent").ui.default.as_deref(), Some([16.0f32].as_slice()));
+    }
+
+    #[test]
+    fn actual_ae_editor_cr_sample_keeps_gain_annotation_and_original_identity() {
+        // Exact Source.expression readback from the 010b native AE UI leg;
+        // embedded here so the regression does not depend on ignored output.
+        let expression = "`// acceptance 010b-ui-source-green\r// @param gain label:\"Gain\" min:0 max:2 default:0.25\rstruct FxUniforms {u_resolution:vec2<f32>,u_time:f32,u_frame:f32,gain:f32,}\r@group(0) @binding(2) var<uniform> fx:FxUniforms;\r@fragment fn main()->@location(0) vec4<f32>{return vec4<f32>(0.0,fx.gain,0.0,1.0);}\r`;0";
+        let original = source::extract_source(expression).unwrap();
+        assert!(original.contains('\r') && !original.contains('\n'));
+        let effect = compile(LanguageId::WGSL, &original);
+        let gain = &effect.definition.params[0];
+        assert_eq!(gain.id.as_str(), "gain");
+        assert_eq!(gain.ui.label.as_deref(), Some("Gain"));
+        assert_eq!(gain.ui.min, Some(0.0));
+        assert_eq!(gain.ui.max, Some(2.0));
+        assert_eq!(gain.ui.default.as_deref(), Some([0.25f32].as_slice()));
+        assert_eq!(encode_token_state(TokenState::Active(session_token(LanguageId::WGSL, &original))), 5671141488700293.0);
+        assert_ne!(session_token(LanguageId::WGSL, &original), session_token(LanguageId::WGSL, &original.replace('\r', "\n")));
+    }
+
+    #[test]
+    fn raw_glsl_and_wgsl_parse_all_line_endings_without_changing_source_bytes() {
+        for language in [LanguageId::GLSL, LanguageId::WGSL] {
+            let lf = shader(language, "", false);
+            let baseline = compile(language, &lf);
+            for ending in ["\n", "\r", "\r\n"] {
+                let original = lf.replace('\n', ending);
+                let effect = compile(language, &original);
+                assert_metadata(&effect);
+                assert_eq!(effect.passes[0].spirv, baseline.passes[0].spirv);
+                if ending != "\n" {
+                    assert_ne!(session_token(language, &original), session_token(language, &lf));
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn envelope_resource_annotations_and_hints_survive_cr_and_crlf() {
+        for language in [LanguageId::GLSL, LanguageId::WGSL] {
+            for hint in ["layer", "gradient", "path"] {
+                let body = shader(language, &format!("// @param side label:\"Side\" hint:{hint}"), true);
+                let lf = envelope(&body, "input, side");
+                let baseline = compile(language, &lf);
+                for ending in ["\r", "\r\n"] {
+                    let original = lf.replace('\n', ending);
+                    let effect = compile(language, &original);
+                    assert_metadata(&effect);
+                    assert_eq!(effect.externals.len(), 1);
+                    assert_eq!(effect.definition.params.iter().find(|p| p.id.as_str() == "side").unwrap().ui.label.as_deref(), Some("Side"));
+                    assert!(matches!((&effect.externals[0], hint),
+                        (ExternalSource::Layer { .. }, "layer") |
+                        (ExternalSource::Gradient { .. }, "gradient") |
+                        (ExternalSource::Path { .. }, "path")));
+                    assert_eq!(effect.passes[0].spirv, baseline.passes[0].spirv);
+                    assert_ne!(session_token(language, &original), session_token(language, &lf));
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn envelope_temporal_window_uses_the_same_normalized_parsing_copy() {
+        for language in [LanguageId::GLSL, LanguageId::WGSL] {
+            let lf = envelope(&shader(language, "// @window 4", false), "prev");
+            for ending in ["\n", "\r", "\r\n"] {
+                let original = lf.replace('\n', ending);
+                let effect = compile(language, &original);
+                assert_metadata(&effect);
+                assert_eq!(effect.window, Some(4));
+                assert!(effect.plan.steps[0].inputs.contains(&plan::TexSlot::History));
+            }
+        }
+    }
+
+    #[test]
+    fn source_cap_counts_original_crlf_bytes_before_normalization() {
+        let original = "\r\n".repeat(envelope::MAX_COMMITTED_SOURCE_BYTES / 2 + 1);
+        assert!(original.replace("\r\n", "\n").len() < envelope::MAX_COMMITTED_SOURCE_BYTES);
+        assert_eq!(classify_parse_source(&original).unwrap_err(), SourceClassError::Oversize { bytes: original.len() });
+        let (code, text, result) = evaluate_committed_source(LanguageId::WGSL, &original, None);
+        assert_eq!(code, Diag::SourceOversize);
+        assert!(text.contains(&original.len().to_string()));
+        assert!(result.is_none());
+        let at_cap = &original[..envelope::MAX_COMMITTED_SOURCE_BYTES];
+        assert_eq!(classify_parse_source(at_cap).unwrap().1, SourceClass::Raw);
+    }
+
+    #[test]
+    fn lf_source_is_borrowed_and_envelope_classification_matches_idle_path() {
+        let lf = "@dynamicfx 1\n@graph\npass paint: input -> output\n@end\n";
+        let (parsed, class) = classify_parse_source(lf).unwrap();
+        assert!(matches!(parsed, std::borrow::Cow::Borrowed(_)));
+        assert_eq!(parsed, lf);
+        assert_eq!(class, SourceClass::Envelope { version: 1 });
+        for ending in ["\r", "\r\n"] {
+            let original = lf.replace('\n', ending);
+            let (parsed, class) = classify_parse_source(&original).unwrap();
+            assert_eq!(parsed, lf);
+            assert_eq!(class, SourceClass::Envelope { version: 1 });
+        }
+    }
 }
 
 fn compiled_status(pass_count: usize, param_count: usize, bank_spills: usize) -> String {
@@ -2714,7 +2908,7 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
                     .unwrap_or_else(|| host::params::default_slot_name(kind, i));
                 match plugin.params.get_mut(host::params::key_for_slot(kind, i)) {
                     Ok(mut p) => {
-                        names_ok &= p.set_name(&label).is_ok();
+                        names_ok &= host::params::set_display_name(&mut p, &label).is_ok();
                         // Range/default metadata for bound scalar slots
                         // (annotation-driven; display metadata only — the
                         // default VALUE is published separately before the
@@ -2809,7 +3003,7 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
                 .map(|c| clip(&c.label, 20))
                 .unwrap_or_else(|| format!("G{:02}", g + 1));
             if let Ok(mut p) = plugin.params.get_mut(ParamKey::GradientCount(g)) {
-                names_ok &= p.set_name(&format!("{label} Stops")).is_ok();
+                names_ok &= host::params::set_display_name(&mut p, &format!("{label} Stops")).is_ok();
                 names_ok &= p.update_param_ui().is_ok();
             }
             for stop in 0..host::params::STOPS_PER_GRADIENT {
@@ -2821,7 +3015,7 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
                     let key = ParamKey::GradientStop(g, stop, field);
                     if let Ok(mut p) = plugin.params.get_mut(key) {
                         let name = format!("{label} {:02} {suffix}", stop + 1);
-                        names_ok &= p.set_name(&name).is_ok();
+                        names_ok &= host::params::set_display_name(&mut p, &name).is_ok();
                         names_ok &= p.update_param_ui().is_ok();
                     }
                 }
@@ -2861,7 +3055,7 @@ fn apply_pass_group_names(plugin: &mut PluginState, definition: Option<&EffectDe
         let label = host::params::pass_group_name(group, live_name);
         match plugin.params.get_mut(ParamKey::PassGroupStart(group)) {
             Ok(mut param) => {
-                names_ok &= param.set_name(&label).is_ok();
+                names_ok &= host::params::set_display_name(&mut param, &label).is_ok();
                 names_ok &= param.update_param_ui().is_ok();
             }
             Err(err) => {
@@ -3055,7 +3249,7 @@ fn set_status(plugin: &mut PluginState, local: &mut Local, status: String) {
     let updated = match plugin.params.get_mut(ParamKey::Status) {
         Ok(mut param) => {
             let label = format!("Status: {status}");
-            let name_ok = param.set_name(&label).is_ok();
+            let name_ok = host::params::set_display_name(&mut param, &label).is_ok();
             let ui_ok = param.update_param_ui().is_ok();
             name_ok && ui_ok
         }
