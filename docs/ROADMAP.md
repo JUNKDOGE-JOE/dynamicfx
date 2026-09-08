@@ -12,7 +12,19 @@
 - Every milestone has one canonical audit document.
 - A milestone that first implements or persists a staged contract may not begin until its entry ADRs are Accepted ([ADR-0009](adr/0009-staged-format-adr-acceptance.md)).
 
-## Active follow-up - 0.1.1 Windows patch and current Sample
+## Active follow-up - 0.1.1 macOS ARM backfill
+
+The user separately authorized adding an Apple Silicon archive built from
+the unchanged v0.1.1 tag and published dependency lock. Order: exact-source
+build and CPU/Metal/static checks → preserve the signed bundle while packaging
+→ upload to the existing release → fresh-download verification and disclosure
+updates. Windows/Sample archives and the tag remain unchanged.
+[ADR-0047](adr/0047-011-macos-backfill.md) records this narrow scope. New-byte
+AE execution and Mac Sample acceptance remain NOT_RUN; native host testing
+and Source Undo repair are separate work. The former local Siri follow-up is
+stopped and its working files remain preserved.
+
+## Released - 0.1.1 Windows patch and current Sample
 
 User-authorized 2026-09-09 publication is complete: runtime repairs, portable
 IOS27Siri Sample and downloaded hashes verified. Source Undo and host coverage

@@ -21,7 +21,8 @@ pipelines. The sample is an independent visual study, not Apple's shader.
 | Release / host | Status |
 |---|---|
 | 0.1.1 / Windows x64 / DX12 | Release build and real-GPU recovery regression verified; AE 2026 valid rendering verified on the same runtime code, before the version metadata bump |
-| 0.1.0 / macOS Apple Silicon / AE 2026 | Previous native host and independent aerender verified release; no 0.1.1 Mac binary is included |
+| 0.1.1 / macOS Apple Silicon / Metal | Native ARM build, CPU suites, real-Metal smoke tests and static bundle checks verified; new-byte AE execution and Sample acceptance NOT_RUN |
+| 0.1.0 / macOS Apple Silicon / AE 2026 | Previous native host and independent aerender verified release; this host result does not certify 0.1.1 |
 | 0.0.6 / Windows / AE 2025 and 2026 | Historical released-artifact verification |
 | macOS Intel / Rosetta | Not supported by the ARM package |
 
@@ -35,6 +36,8 @@ unchanged and make Redo unavailable. Keep earlier shader text in a file and
 restore that text explicitly. Source-expression Undo is not covered by the
 verified Language-switch Undo/Redo result. See [ADR-0045](docs/adr/0045-010-source-undo-release-boundary.md)
 and the [0.1.1 release boundary](docs/adr/0046-011-windows-patch-release.md).
+The [Mac backfill boundary](docs/adr/0047-011-macos-backfill.md) preserves the
+same limitation and explicitly separates Metal tests from native AE acceptance.
 
 ## Install
 
@@ -45,9 +48,15 @@ Close After Effects, extract the archive, then follow `INSTALL.txt` to copy
 are included on the release page. The currently verified native host is AE 2026;
 this patch does not add acceptance for AE 2023–2025.
 
-For Apple Silicon macOS, use the macOS ARM archive from the
-[Releases page](https://github.com/JUNKDOGE-JOE/dynamicfx/releases) and follow
-its `INSTALL.txt`. Close AE before installing. The archive is ad-hoc signed,
+For Apple Silicon macOS, download `DynamicFX-0.1.1-macos-arm64.zip` from
+[v0.1.1](https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.1.1), verify
+it against the release's `SHA256SUMS.txt`, and follow its `INSTALL.txt`.
+This is a native build from the same v0.1.1 source and exact dependency lock
+as the Windows release. These Mac bytes and the included Sample have not
+been run in AE; see the [backfill audit](docs/audits/09-windows-011.md).
+The earlier host-verified Mac archive remains available under
+[v0.1.0](https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.1.0).
+Close AE before installing. The archive is ad-hoc signed,
 not notarized; its instructions include checksum verification and a quarantine
 step scoped to the downloaded bundle. Source builders can use
 `bash scripts/build-macos.sh`, then `bash scripts/install.sh 2026` (or `sudo`

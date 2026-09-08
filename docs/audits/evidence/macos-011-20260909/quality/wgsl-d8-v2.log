@@ -1,0 +1,18 @@
+# Local checkout/runtime paths normalized; original hashes in ../evidence-redactions.json.
+{
+  "command": [
+    "$BUILD_ROOT/scripts/quality/target/aarch64-apple-darwin/debug/dynamicfx-quality",
+    "$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.wgsl",
+    "$BUILD_ROOT/scripts/out/011/quality/wgsl-d8-v2.f32",
+    "321",
+    "239",
+    "321",
+    "239",
+    "1.0",
+    "8",
+    "ramp"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"adapter\":\"adapter=\\\"Apple M5\\\" backend=Metal driver=\\\" \\\"\",\"finite\":true,\"height\":239,\"language_id\":2,\"logical\":[321.0,239.0],\"output\":\"$BUILD_ROOT/scripts/out/011/quality/wgsl-d8-v2.f32\",\"passes\":1,\"renderer_blake3\":\"9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd\",\"source\":\"$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.wgsl\",\"source_blake3\":\"173dfb8b354618bc9b1f072cf553460a513a64feaf24781c57c842ee89d5401e\",\"steady_frame_ms\":[],\"time\":1.0,\"width\":321,\"working_depth\":\"8\"}\n",
+  "stderr": "gpu ready: adapter=\"Apple M5\" backend=Metal driver=\" \"\n"
+}

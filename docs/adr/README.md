@@ -72,6 +72,8 @@ Use [TEMPLATE.md](TEMPLATE.md). Ordinary implementation details and bug fixes do
 | [0043](0043-apple-silicon-host-protocol.md) | Apple Silicon macOS host protocol | Accepted |
 | [0044](0044-wgsl-and-010-release.md) | Production WGSL frontend and 0.1.0 release scope | Accepted (0.1.0 source-expression Undo acceptance qualified by 0045) |
 | [0045](0045-010-source-undo-release-boundary.md) | 0.1.0 source-expression single-Undo limitation disclosed at release; separate publication repair, remaining macOS authoring fixes still required | Accepted |
+| [0046](0046-011-windows-patch-release.md) | 0.1.1 Windows repair and Sample publication; new-byte host limits and Source Undo retained | Accepted |
+| [0047](0047-011-macos-backfill.md) | Same-tag 0.1.1 macOS ARM asset backfill; build/CPU/Metal/static verification, native AE NOT_RUN | Accepted |
 
 ## Under review (Proposed)
 
@@ -133,3 +135,4 @@ Post-M7 (follow-up features):
 - [0042 gradient editor presentation contract](0042-gradient-editor-presentation-contract.md) — Accepted 2026-08-28 (the custom-controls track unfroze after TR-CUI-001 Rounds 2–4 pinned the 2026-08-15 crash to declaring `PF_PUI_CONTROL` without calling `register_ui` — a WER-invisible host kill, `C000041D`, reproduced 3/3 on a byte-identical binary ± one call; the editor returns as pure presentation over the ADR-0033 value rows, which stand unchanged: per-gradient inert canvas parameters, one build-time custom-UI atom with a boundary unit test, `current_frame`-only geometry, edits only via ordinary parameter commits staged by probe evidence, AE 2026 host legs mandatory before release).
 
 - [0046 Windows 0.1.1 patch release](0046-011-windows-patch-release.md) — Accepted 2026-09-09.
+- [0047 0.1.1 macOS ARM asset backfill](0047-011-macos-backfill.md) — Accepted 2026-09-09; qualifies the earlier Windows-only delivery scope without granting new-byte AE acceptance.

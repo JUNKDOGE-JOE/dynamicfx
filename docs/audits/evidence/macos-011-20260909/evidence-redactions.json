@@ -1,0 +1,198 @@
+[
+  {
+    "source": "scripts/out/011/build-macos.log",
+    "original_sha256": "be59173913a37dc78475008430696bbedb8207b441fa998b2b2322a545a942a9",
+    "published_file": "build-macos.log",
+    "published_sha256": "eb12603eeddbd4acd46709455d952b1f55cdfa5893388a2cce26de90f0fe6b9d",
+    "transformation": "Replace exact temporary build checkout path with $BUILD_ROOT; log header labels transformation."
+  },
+  {
+    "source": "scripts/out/011/fetch-locked.log",
+    "original_sha256": "0fcb72814f0046f6eb4ff7ed44833db4726180c23a4f40588336f890b6d40fcf",
+    "published_file": "fetch-locked.log",
+    "published_sha256": "c73362a5ef0dc3bb23dd3d5beb2238b59c7cc765f43fa1317ed463879ce13161",
+    "transformation": "Replace exact temporary build checkout path with $BUILD_ROOT; log header labels transformation."
+  },
+  {
+    "source": "scripts/out/011/build-macos-locked.log",
+    "original_sha256": "b7ccaf73468d5ad8be8f68077fc55deb1e41f0289e3165c5277114edde66c898",
+    "published_file": "build-macos-locked.log",
+    "published_sha256": "c22983151426f809408e1471289d98fdc8c87eeba2cc138ebc8585d1c00bd937",
+    "transformation": "Replace exact temporary build checkout path with $BUILD_ROOT; log header labels transformation."
+  },
+  {
+    "source": "scripts/out/011/build-record.json",
+    "original_sha256": "59c01a9ba923e04dbecad5e0bf77c57a78881fa5a83f4823308efab5bc34bd90",
+    "published_file": "build-record.json",
+    "published_sha256": "a868f625ec18186c810d102f525feec254c619d8cf012910fd352c762cd7aa04",
+    "transformation": "Replace exact temporary build checkout path with $BUILD_ROOT; log header labels transformation."
+  },
+  {
+    "source": "scripts/out/011/dependency-notices.json",
+    "original_sha256": "0ed332727430ebf4814e147b2fce4be3a6e92466ab513e6538fca03d9bd6e506",
+    "published_file": "dependency-notices.json",
+    "published_sha256": "446fc1cdda9cb9d20a4b3e4b0faddb968dc852c027eae74d5ce2cc1d1d4bdc48",
+    "transformation": "Replace exact temporary build checkout path with $BUILD_ROOT; log header labels transformation."
+  },
+  {
+    "source": "scripts/out/011/tests-default.log",
+    "original_sha256": "4f4fca38dbb028f1df21d7e12794bf17cb8ed749457325f046bc4ed6daac58e8",
+    "published_file": "tests-default.log",
+    "published_sha256": "ee3516acd9d53137b4dd696f301e895d6fb2b6074c18ce0266f911d10f7a8911",
+    "transformation": "Replace exact temporary build checkout path with $BUILD_ROOT; log header labels transformation."
+  },
+  {
+    "source": "scripts/out/011/tests-editor.log",
+    "original_sha256": "ed9ddf93a52e55fbe32d9fce1515c42bde0365732e814d2df8219af9b7ab75ef",
+    "published_file": "tests-editor.log",
+    "published_sha256": "57c937782583d419e3d93ab2e22ea5f17ad7de17b3d51ae3804f855c2f2a29ba",
+    "transformation": "Replace exact temporary build checkout path with $BUILD_ROOT; log header labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/README.md",
+    "original_sha256": "4d58772dd666e2076f73a3066a7fc3e0f61f18b8f6791ac4c0b7f643df499b9f",
+    "published_file": "quality/README.md",
+    "published_sha256": "b0374ba5ddac209b466525f581055a7eab768ad5db5af6ec9d56d2d6d21920da",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/test-execution.json",
+    "original_sha256": "06f508f459c206d05a24e249f83dd492304d9c8b6b2fef3ac34baf6e03b719fb",
+    "published_file": "quality/test-execution.json",
+    "published_sha256": "06f508f459c206d05a24e249f83dd492304d9c8b6b2fef3ac34baf6e03b719fb",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/tests-quality.log",
+    "original_sha256": "a2579fa8275416cb334ca79e91411481a70fe33d851021309f1dbf6ebe7d639d",
+    "published_file": "quality/tests-quality.log",
+    "published_sha256": "32e6e7dd354c400e6ead09b94f1deec37cb95508a4e2d061861643bec4e1717b",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/build-quality.log",
+    "original_sha256": "95d07af5997d9f60851abd7dafeb748c1f9381ed74efce8fc75f09e0514cbd27",
+    "published_file": "quality/build-quality.log",
+    "published_sha256": "312fa99bcdc19e3432be2e195b8643e9a1207dbaa8fdb5d70f12028ab37f4dcb",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/dependency-parity.json",
+    "original_sha256": "6575243fcf09c871af671f5692187f41dd05e2336862b15c09e7ba31192006c5",
+    "published_file": "quality/dependency-parity.json",
+    "published_sha256": "6575243fcf09c871af671f5692187f41dd05e2336862b15c09e7ba31192006c5",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/Cargo.lock.quality",
+    "original_sha256": "dca0c73347f2b059557cbd00fd07c00721fbef5a1990ecef2a44dd416741c05c",
+    "published_file": "quality/Cargo.lock.quality",
+    "published_sha256": "dca0c73347f2b059557cbd00fd07c00721fbef5a1990ecef2a44dd416741c05c",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/run_smoke.py",
+    "original_sha256": "23c4560ea0a3c1f345a6b6058d3fc73c71b50d733b81e15f1b5554ffd3967be9",
+    "published_file": "quality/run_smoke.py",
+    "published_sha256": "23c4560ea0a3c1f345a6b6058d3fc73c71b50d733b81e15f1b5554ffd3967be9",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/smoke-summary-v2.json",
+    "original_sha256": "029c0bfe62eb02664e9eede33c978527208f84258c928c1dc34e9e8a42c72a62",
+    "published_file": "quality/smoke-summary-v2.json",
+    "published_sha256": "809dbb745a7df1c4d94fc67e6909ae4dca4b62b7a50e1778f765899ba1f151b5",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/siri-reference-d32-v2.log",
+    "original_sha256": "ff9622e04b8aab18c7932557cb79d9e23dc9aa2d71bae7623cb84a0745346327",
+    "published_file": "quality/siri-reference-d32-v2.log",
+    "published_sha256": "1e8f56c331f7154a79c45fb61216a6fe31f556d982eefbac567e2ac104f91a58",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/glsl-d32-v2.log",
+    "original_sha256": "2c5f882ab23c4f50a52bb0ce1faa4d097aad1e66c1116a15de94f21f417256a9",
+    "published_file": "quality/glsl-d32-v2.log",
+    "published_sha256": "b8ba4ec3c50e01098ff28e219ab329c56f18e217eab11acd9a7887bb3721e87b",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/glsl-d8-v2.log",
+    "original_sha256": "ec7148ae6470ef7f9c255315bb565933976841eca142e1fc975f68e60473389e",
+    "published_file": "quality/glsl-d8-v2.log",
+    "published_sha256": "811da29ffa100dd1303e1b692df77f22623c314643a3f527ab176c418360612f",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/wgsl-d32-v2.log",
+    "original_sha256": "c999e74db6c5fd89254e3fe85d601f5951b1ef1cb07bb3bb344a1bbcc3dfb506",
+    "published_file": "quality/wgsl-d32-v2.log",
+    "published_sha256": "7ef349b5dc1b7fcea9b9d123e20a088a65399d7402cd61a3404dee8bc1d4eeae",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/wgsl-d8-v2.log",
+    "original_sha256": "ab3e324976a0aa9254063e0ea01aa3ec879b2c5b19e81f67af30db73e61b1980",
+    "published_file": "quality/wgsl-d8-v2.log",
+    "published_sha256": "85ec705eb83b4ed599b27a18c357b83dd203647253a31f1966b7f228c93a9ab0",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/fixtures/smoke-v2.wgsl",
+    "original_sha256": "68d842de5b520762d24179d2a260c4f92671014b3772624e77359113f498e929",
+    "published_file": "quality/fixtures/smoke-v2.wgsl",
+    "published_sha256": "68d842de5b520762d24179d2a260c4f92671014b3772624e77359113f498e929",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/fixtures/smoke-v2.glsl",
+    "original_sha256": "b5b912c7d46573c8ac6817cc43cd38e7ee48fe1f08f6b86bf2f74c04c1a40490",
+    "published_file": "quality/fixtures/smoke-v2.glsl",
+    "published_sha256": "b5b912c7d46573c8ac6817cc43cd38e7ee48fe1f08f6b86bf2f74c04c1a40490",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/attempt-01-missing-envelope/run_smoke.py",
+    "original_sha256": "484669f26a5a1df3549c918b6ec70bd9e74b915cb79c04fe2440a3bf8355ae44",
+    "published_file": "quality/attempt-01-missing-envelope/run_smoke.py",
+    "published_sha256": "484669f26a5a1df3549c918b6ec70bd9e74b915cb79c04fe2440a3bf8355ae44",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/attempt-01-missing-envelope/sha256.json",
+    "original_sha256": "1af0f470a1c801019133bba1e936d3bcd02416563a6603d060393e44626bdbef",
+    "published_file": "quality/attempt-01-missing-envelope/sha256.json",
+    "published_sha256": "1af0f470a1c801019133bba1e936d3bcd02416563a6603d060393e44626bdbef",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/attempt-01-missing-envelope/smoke-executions.json",
+    "original_sha256": "c30015e2cf1881325dfc42323f5fd7b4c4df11fea0227100f6112415aa7702bc",
+    "published_file": "quality/attempt-01-missing-envelope/smoke-executions.json",
+    "published_sha256": "01604e915710ec48239f25356963fa629a31c117f31322e571c06fe06cfb25f5",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/attempt-01-missing-envelope/smoke.wgsl",
+    "original_sha256": "c5dadc36eefebd34aea04d8b5fa4b2ac813177047bf9314c354c3c3005c748c8",
+    "published_file": "quality/attempt-01-missing-envelope/smoke.wgsl",
+    "published_sha256": "c5dadc36eefebd34aea04d8b5fa4b2ac813177047bf9314c354c3c3005c748c8",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/attempt-01-missing-envelope/glsl-d8.log",
+    "original_sha256": "91b8b5b2373eb89750338fb39511449c289e5b82223fca735423ebe95fc165b0",
+    "published_file": "quality/attempt-01-missing-envelope/glsl-d8.log",
+    "published_sha256": "502785a9a766fc6914d1bf06db9e07d7b8f82542b7fb293e2b5633ea0525e932",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/quality/attempt-01-missing-envelope/smoke.glsl",
+    "original_sha256": "cc422944e288083226d35abfb888c8b7d7a08199adf8032e1b1d96a060074f5b",
+    "published_file": "quality/attempt-01-missing-envelope/smoke.glsl",
+    "published_sha256": "cc422944e288083226d35abfb888c8b7d7a08199adf8032e1b1d96a060074f5b",
+    "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  }
+]

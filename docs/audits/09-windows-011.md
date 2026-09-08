@@ -1,6 +1,63 @@
-# 0.1.1 Windows patch and IOS27Siri sample
+# 0.1.1 Windows patch, IOS27Siri sample and macOS ARM backfill
 
-PASS: v0.1.1 is published as a regular release; all three downloaded assets match the frozen packages.
+## Active macOS ARM backfill
+
+The user now separately authorizes an ARM archive from the unchanged v0.1.1
+source `2428cfd94b4556cc3bc5ed63f7950ceca42a6b92` and its published exact
+dependency lock. Add it to the existing regular release, preserving the tag
+and Windows/Sample archive bytes. [ADR-0047](../adr/0047-011-macos-backfill.md)
+qualifies the earlier Windows-only delivery scope; no native code change or
+old local Siri work is included.
+
+Native ARM build and static bundle verification **PASS**. The signed
+executable is 7,602,160 bytes, SHA-256
+`3d2fc6e88415f512988b02036779a48dcbae7b1f4e4d1b525020e71450c8133f`;
+PiPL SHA-256 is
+`b64852ea2a0bb7cc2548398843bf2bdf8d8613b6e7f60b884707a696ed8af8a0`.
+The published lock SHA-256 is
+`125d8418a9eb26068503cd15717ae7f04a2d23e680162285730c273a49d1f8bc`.
+Environment: Apple M5, macOS 26.5.2 (25F84), Rust 1.97.1. Command:
+`RUSTUP_TOOLCHAIN=stable bash scripts/build-macos.sh --locked --offline`.
+The first offline build lacked four cached dependencies; a locked dependency
+fetch completed, then the locked offline build passed. The source checkout
+was clean and its 30 recorded build-input hashes include the exact lock.
+See the [build identity](evidence/macos-011-20260909/build-record.json),
+[passing build log](evidence/macos-011-20260909/build-macos-locked.log),
+[initial offline-cache failure](evidence/macos-011-20260909/build-macos.log)
+and [locked fetch](evidence/macos-011-20260909/fetch-locked.log).
+The [redaction manifest](evidence/macos-011-20260909/evidence-redactions.json)
+preserves original/published hashes and identifies checkout-path substitutions.
+
+Default and editor CPU suites **PASS**, 222 tests each:
+[default log](evidence/macos-011-20260909/tests-default.log),
+[editor log](evidence/macos-011-20260909/tests-editor.log).
+
+The quality suite **PASS** contains 98 tests. Five actual Metal renders on
+Apple M5 pass **23 assertions**: equivalent GLSL/WGSL inputs have equal
+pixels at 8- and 32-bit working depth, and the tag's eight-pass
+`examples/siri-reference.glsl` produces finite pixels with alpha 1. The
+first smoke fixture omitted its required envelope and failed before shader
+compilation; a corrected fixture and fresh result are retained separately.
+The successful summary is `scripts/out/011/quality/smoke-summary-v2.json`
+in the tagged-source checkout; the
+[public evidence index](evidence/macos-011-20260909/README.md) records its
+curation. This runner uses zero-valued Point defaults: it establishes valid
+Metal execution, not calibrated Siri appearance, native AE output or Windows
+FXC failure recovery.
+
+Package and new-asset download verification are in progress and
+remain **NOT_RUN** until evidence is recorded. New-byte native
+AE execution and Mac Sample acceptance are **NOT_RUN** and outside this
+request. Source-expression Undo remains a known failure. The prior 0.1.0 Mac
+host pass does not certify the new binary.
+
+Next action: verify the exact-source ARM build and signed package, append it
+and its checksum to the existing release, then verify a fresh download and
+the unchanged Windows/Sample hashes.
+
+## Original Windows and Sample publication
+
+PASS: v0.1.1 is published as a regular release; the original three downloaded assets match the frozen packages.
 Baseline is v0.1.0 (`f0cd526`) plus the two runtime repairs and 0.1.1 metadata.
 
 The renderer captures Validation, Internal and OutOfMemory pipeline errors as
@@ -58,7 +115,9 @@ records the original and published hashes. No original evidence is deleted.
 Historical visual perfection remains unaccepted; the sample is an approximation.
 
 [Release boundary](../adr/0046-011-windows-patch-release.md).
-Next action: a separately authorized Source Undo repair or additional platform acceptance; no further publication work remains.
+The original publication is complete. The separately authorized Mac backfill
+above is the current action; Source Undo repair and native host acceptance
+remain separate work.
 
 ## Published identity
 

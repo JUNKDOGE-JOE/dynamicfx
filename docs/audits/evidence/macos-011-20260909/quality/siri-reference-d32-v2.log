@@ -1,0 +1,18 @@
+# Local checkout/runtime paths normalized; original hashes in ../evidence-redactions.json.
+{
+  "command": [
+    "$BUILD_ROOT/scripts/quality/target/aarch64-apple-darwin/debug/dynamicfx-quality",
+    "$BUILD_ROOT/examples/siri-reference.glsl",
+    "$BUILD_ROOT/scripts/out/011/quality/siri-reference-d32-v2.f32",
+    "585",
+    "1266",
+    "1170",
+    "2532",
+    "1.0",
+    "32",
+    "ramp"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"adapter\":\"adapter=\\\"Apple M5\\\" backend=Metal driver=\\\" \\\"\",\"finite\":true,\"height\":1266,\"language_id\":1,\"logical\":[1170.0,2532.0],\"output\":\"$BUILD_ROOT/scripts/out/011/quality/siri-reference-d32-v2.f32\",\"passes\":8,\"renderer_blake3\":\"9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd\",\"source\":\"$BUILD_ROOT/examples/siri-reference.glsl\",\"source_blake3\":\"12b98da690f3a17d556ffd0eeb573ebf08120e8c939d09d191835c8f1385fa57\",\"steady_frame_ms\":[],\"time\":1.0,\"width\":585,\"working_depth\":\"32\"}\n",
+  "stderr": "gpu ready: adapter=\"Apple M5\" backend=Metal driver=\" \"\n"
+}

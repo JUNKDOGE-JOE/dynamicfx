@@ -1,0 +1,19 @@
+[
+  {
+    "command": [
+      "$BUILD_ROOT/scripts/quality/target/aarch64-apple-darwin/debug/dynamicfx-quality",
+      "$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke.glsl",
+      "$BUILD_ROOT/scripts/out/011/quality/glsl-d8.f32",
+      "321",
+      "239",
+      "321",
+      "239",
+      "1.0",
+      "8",
+      "ramp"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "GrammarError { line: 1, message: \"expected the `@dynamicfx 1` marker line\" }\n"
+  }
+]

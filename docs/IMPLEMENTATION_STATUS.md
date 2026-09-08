@@ -4,6 +4,29 @@
 > Architecture intent belongs in [ARCHITECTURE.md](ARCHITECTURE.md); future sequencing belongs in [ROADMAP.md](ROADMAP.md); verification truth belongs in [TEST_MATRIX.md](TEST_MATRIX.md).
 
 
+## Active - 0.1.1 macOS ARM backfill
+
+The user now authorizes building Apple Silicon macOS from the existing
+`v0.1.1` source commit `2428cfd94b4556cc3bc5ed63f7950ceca42a6b92`
+and its published exact dependency lock, adding that platform archive to the
+same regular release, and updating README/release notes. Existing Windows
+and IOS27Siri archives and the tag remain unchanged. Work is isolated from the
+preserved local Siri development branch. [ADR-0047](adr/0047-011-macos-backfill.md)
+records this additional delivery scope without changing ADR-0046's history.
+
+The native ARM release build, static bundle checks, default/editor CPU
+suites (222 tests each), quality suite (98), and five real-Metal smoke renders
+with 23 assertions pass. Package and download checks are in progress.
+No uploaded Mac artifact is claimed yet. New-byte AE
+installation, native AE rendering and macOS Sample acceptance remain
+**NOT_RUN** and are outside this backfill request. Source-expression Undo
+remains the known failure. The previous 0.1.0 Mac host result does not certify
+these new bytes.
+
+**Exact next action:** finish exact-source build and checks, package and verify
+the ARM bundle, then append the asset and its checksum to v0.1.1 and verify a
+fresh download. Record the outcome in [the release audit](audits/09-windows-011.md).
+
 ## Released - 0.1.1 Windows patch and IOS27Siri sample
 
 The user authorized publishing the completed runtime fixes, current Sample and
@@ -13,7 +36,9 @@ Source-expression Undo remains a disclosed limitation. Exact new-byte native
 installation and macOS 0.1.1 remain NOT_RUN; AE 2026 valid rendering is covered
 by the documented runtime-code equivalence.
 
-**Exact next action:** await separate scope for Source Undo repair or additional platform acceptance. The requested release and Sample publication are complete.
+This initial Windows/Sample publication is complete. The authorized Mac
+backfill above supersedes its former next-action boundary; Source Undo repair
+and additional native host acceptance remain separate work.
 
 ## Historical 0.1.0 record
 

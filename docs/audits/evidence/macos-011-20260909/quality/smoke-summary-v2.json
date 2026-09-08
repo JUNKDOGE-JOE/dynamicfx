@@ -1,0 +1,308 @@
+{
+  "timestamp_utc": "2026-09-08T22:19:27.295246+00:00",
+  "source_commit": "2428cfd94b4556cc3bc5ed63f7950ceca42a6b92",
+  "root_lock_sha256": "125d8418a9eb26068503cd15717ae7f04a2d23e680162285730c273a49d1f8bc",
+  "quality_lock_sha256": "dca0c73347f2b059557cbd00fd07c00721fbef5a1990ecef2a44dd416741c05c",
+  "binary_sha256": "75e35cd873fb5d7d939d2c6a34af28568d39625ba98278cc760d3252054ccb0d",
+  "source_files": {
+    "src/render.rs": "28cf550dad017e30ccca5209b7035408ab828cd6124b8c58e8a69d4c8541c1b3",
+    "src/frontend/glsl.rs": "ebe7eafb237dd63cb13d18d47d8fdb527f4b21b24f0cd3e9999d43ba08d729ab",
+    "src/frontend/wgsl.rs": "a4a7951435ff23d5333144b4caeb65ba54ea6caba821350dd47da2d2d4eae565",
+    "scripts/quality/src/main.rs": "de38aaca996a782901e600ca6f74592d50b375b4803c325356a9d3c3514f11c3",
+    "examples/siri-reference.glsl": "534af3183f8d377c18ecd37a2e3ee359032f07fd7ab8dd9d63c86f49b3e8313e"
+  },
+  "scope": "Metal valid-shader smoke only; no AE, no Windows FXC error recovery, no calibrated Siri visual acceptance. Exact Siri source uses zero-valued point defaults in this runner.",
+  "renders": 5,
+  "checks": [
+    {
+      "name": "glsl-d8-v2 actual Metal",
+      "passed": true
+    },
+    {
+      "name": "glsl-d8-v2 finite",
+      "passed": true
+    },
+    {
+      "name": "glsl-d8-v2 alpha",
+      "passed": true
+    },
+    {
+      "name": "glsl-d8-v2 numeric oracle",
+      "passed": true,
+      "max_abs": 0.0019608139991760254
+    },
+    {
+      "name": "wgsl-d8-v2 actual Metal",
+      "passed": true
+    },
+    {
+      "name": "wgsl-d8-v2 finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-d8-v2 alpha",
+      "passed": true
+    },
+    {
+      "name": "wgsl-d8-v2 numeric oracle",
+      "passed": true,
+      "max_abs": 0.0019608139991760254
+    },
+    {
+      "name": "glsl-d32-v2 actual Metal",
+      "passed": true
+    },
+    {
+      "name": "glsl-d32-v2 finite",
+      "passed": true
+    },
+    {
+      "name": "glsl-d32-v2 alpha",
+      "passed": true
+    },
+    {
+      "name": "glsl-d32-v2 numeric oracle",
+      "passed": true,
+      "max_abs": 5.960464477539063e-08
+    },
+    {
+      "name": "wgsl-d32-v2 actual Metal",
+      "passed": true
+    },
+    {
+      "name": "wgsl-d32-v2 finite",
+      "passed": true
+    },
+    {
+      "name": "wgsl-d32-v2 alpha",
+      "passed": true
+    },
+    {
+      "name": "wgsl-d32-v2 numeric oracle",
+      "passed": true,
+      "max_abs": 5.960464477539063e-08
+    },
+    {
+      "name": "siri-reference-d32-v2 actual Metal",
+      "passed": true
+    },
+    {
+      "name": "siri-reference-d32-v2 finite",
+      "passed": true
+    },
+    {
+      "name": "siri-reference-d32-v2 alpha",
+      "passed": true
+    },
+    {
+      "name": "siri-reference-d32-v2 eight passes",
+      "passed": true
+    },
+    {
+      "name": "siri-reference-d32-v2 modifies input",
+      "passed": true,
+      "max_abs": 0.45019394159317017
+    },
+    {
+      "name": "GLSL WGSL d8 exact pixels",
+      "passed": true
+    },
+    {
+      "name": "GLSL WGSL d32 exact pixels",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "runs": [
+    {
+      "command": [
+        "$BUILD_ROOT/scripts/quality/target/aarch64-apple-darwin/debug/dynamicfx-quality",
+        "$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.glsl",
+        "$BUILD_ROOT/scripts/out/011/quality/glsl-d8-v2.f32",
+        "321",
+        "239",
+        "321",
+        "239",
+        "1.0",
+        "8",
+        "ramp"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"adapter\":\"adapter=\\\"Apple M5\\\" backend=Metal driver=\\\" \\\"\",\"finite\":true,\"height\":239,\"language_id\":1,\"logical\":[321.0,239.0],\"output\":\"$BUILD_ROOT/scripts/out/011/quality/glsl-d8-v2.f32\",\"passes\":1,\"renderer_blake3\":\"9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd\",\"source\":\"$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.glsl\",\"source_blake3\":\"7d57b8484ae905fda9772a798749e76463227467ac136e101caf68998c675512\",\"steady_frame_ms\":[],\"time\":1.0,\"width\":321,\"working_depth\":\"8\"}\n",
+      "stderr": "gpu ready: adapter=\"Apple M5\" backend=Metal driver=\" \"\n",
+      "metadata": {
+        "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+        "finite": true,
+        "height": 239,
+        "language_id": 1,
+        "logical": [
+          321.0,
+          239.0
+        ],
+        "output": "$BUILD_ROOT/scripts/out/011/quality/glsl-d8-v2.f32",
+        "passes": 1,
+        "renderer_blake3": "9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd",
+        "source": "$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.glsl",
+        "source_blake3": "7d57b8484ae905fda9772a798749e76463227467ac136e101caf68998c675512",
+        "steady_frame_ms": [],
+        "time": 1.0,
+        "width": 321,
+        "working_depth": "8"
+      },
+      "source_sha256": "b5b912c7d46573c8ac6817cc43cd38e7ee48fe1f08f6b86bf2f74c04c1a40490",
+      "output_sha256": "c148f91b9623deba09cc2c6d0d603e4a4dd447484d8c73b42a45a3388e5da82b"
+    },
+    {
+      "command": [
+        "$BUILD_ROOT/scripts/quality/target/aarch64-apple-darwin/debug/dynamicfx-quality",
+        "$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.wgsl",
+        "$BUILD_ROOT/scripts/out/011/quality/wgsl-d8-v2.f32",
+        "321",
+        "239",
+        "321",
+        "239",
+        "1.0",
+        "8",
+        "ramp"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"adapter\":\"adapter=\\\"Apple M5\\\" backend=Metal driver=\\\" \\\"\",\"finite\":true,\"height\":239,\"language_id\":2,\"logical\":[321.0,239.0],\"output\":\"$BUILD_ROOT/scripts/out/011/quality/wgsl-d8-v2.f32\",\"passes\":1,\"renderer_blake3\":\"9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd\",\"source\":\"$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.wgsl\",\"source_blake3\":\"173dfb8b354618bc9b1f072cf553460a513a64feaf24781c57c842ee89d5401e\",\"steady_frame_ms\":[],\"time\":1.0,\"width\":321,\"working_depth\":\"8\"}\n",
+      "stderr": "gpu ready: adapter=\"Apple M5\" backend=Metal driver=\" \"\n",
+      "metadata": {
+        "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+        "finite": true,
+        "height": 239,
+        "language_id": 2,
+        "logical": [
+          321.0,
+          239.0
+        ],
+        "output": "$BUILD_ROOT/scripts/out/011/quality/wgsl-d8-v2.f32",
+        "passes": 1,
+        "renderer_blake3": "9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd",
+        "source": "$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.wgsl",
+        "source_blake3": "173dfb8b354618bc9b1f072cf553460a513a64feaf24781c57c842ee89d5401e",
+        "steady_frame_ms": [],
+        "time": 1.0,
+        "width": 321,
+        "working_depth": "8"
+      },
+      "source_sha256": "68d842de5b520762d24179d2a260c4f92671014b3772624e77359113f498e929",
+      "output_sha256": "c148f91b9623deba09cc2c6d0d603e4a4dd447484d8c73b42a45a3388e5da82b"
+    },
+    {
+      "command": [
+        "$BUILD_ROOT/scripts/quality/target/aarch64-apple-darwin/debug/dynamicfx-quality",
+        "$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.glsl",
+        "$BUILD_ROOT/scripts/out/011/quality/glsl-d32-v2.f32",
+        "321",
+        "239",
+        "321",
+        "239",
+        "1.0",
+        "32",
+        "ramp"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"adapter\":\"adapter=\\\"Apple M5\\\" backend=Metal driver=\\\" \\\"\",\"finite\":true,\"height\":239,\"language_id\":1,\"logical\":[321.0,239.0],\"output\":\"$BUILD_ROOT/scripts/out/011/quality/glsl-d32-v2.f32\",\"passes\":1,\"renderer_blake3\":\"9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd\",\"source\":\"$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.glsl\",\"source_blake3\":\"7d57b8484ae905fda9772a798749e76463227467ac136e101caf68998c675512\",\"steady_frame_ms\":[],\"time\":1.0,\"width\":321,\"working_depth\":\"32\"}\n",
+      "stderr": "gpu ready: adapter=\"Apple M5\" backend=Metal driver=\" \"\n",
+      "metadata": {
+        "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+        "finite": true,
+        "height": 239,
+        "language_id": 1,
+        "logical": [
+          321.0,
+          239.0
+        ],
+        "output": "$BUILD_ROOT/scripts/out/011/quality/glsl-d32-v2.f32",
+        "passes": 1,
+        "renderer_blake3": "9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd",
+        "source": "$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.glsl",
+        "source_blake3": "7d57b8484ae905fda9772a798749e76463227467ac136e101caf68998c675512",
+        "steady_frame_ms": [],
+        "time": 1.0,
+        "width": 321,
+        "working_depth": "32"
+      },
+      "source_sha256": "b5b912c7d46573c8ac6817cc43cd38e7ee48fe1f08f6b86bf2f74c04c1a40490",
+      "output_sha256": "4441d1bc03e5817f5af638d73f94e61da8d54614cf9a8b3a94a3faf68175c2e9"
+    },
+    {
+      "command": [
+        "$BUILD_ROOT/scripts/quality/target/aarch64-apple-darwin/debug/dynamicfx-quality",
+        "$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.wgsl",
+        "$BUILD_ROOT/scripts/out/011/quality/wgsl-d32-v2.f32",
+        "321",
+        "239",
+        "321",
+        "239",
+        "1.0",
+        "32",
+        "ramp"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"adapter\":\"adapter=\\\"Apple M5\\\" backend=Metal driver=\\\" \\\"\",\"finite\":true,\"height\":239,\"language_id\":2,\"logical\":[321.0,239.0],\"output\":\"$BUILD_ROOT/scripts/out/011/quality/wgsl-d32-v2.f32\",\"passes\":1,\"renderer_blake3\":\"9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd\",\"source\":\"$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.wgsl\",\"source_blake3\":\"173dfb8b354618bc9b1f072cf553460a513a64feaf24781c57c842ee89d5401e\",\"steady_frame_ms\":[],\"time\":1.0,\"width\":321,\"working_depth\":\"32\"}\n",
+      "stderr": "gpu ready: adapter=\"Apple M5\" backend=Metal driver=\" \"\n",
+      "metadata": {
+        "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+        "finite": true,
+        "height": 239,
+        "language_id": 2,
+        "logical": [
+          321.0,
+          239.0
+        ],
+        "output": "$BUILD_ROOT/scripts/out/011/quality/wgsl-d32-v2.f32",
+        "passes": 1,
+        "renderer_blake3": "9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd",
+        "source": "$BUILD_ROOT/scripts/out/011/quality/fixtures/smoke-v2.wgsl",
+        "source_blake3": "173dfb8b354618bc9b1f072cf553460a513a64feaf24781c57c842ee89d5401e",
+        "steady_frame_ms": [],
+        "time": 1.0,
+        "width": 321,
+        "working_depth": "32"
+      },
+      "source_sha256": "68d842de5b520762d24179d2a260c4f92671014b3772624e77359113f498e929",
+      "output_sha256": "4441d1bc03e5817f5af638d73f94e61da8d54614cf9a8b3a94a3faf68175c2e9"
+    },
+    {
+      "command": [
+        "$BUILD_ROOT/scripts/quality/target/aarch64-apple-darwin/debug/dynamicfx-quality",
+        "$BUILD_ROOT/examples/siri-reference.glsl",
+        "$BUILD_ROOT/scripts/out/011/quality/siri-reference-d32-v2.f32",
+        "585",
+        "1266",
+        "1170",
+        "2532",
+        "1.0",
+        "32",
+        "ramp"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"adapter\":\"adapter=\\\"Apple M5\\\" backend=Metal driver=\\\" \\\"\",\"finite\":true,\"height\":1266,\"language_id\":1,\"logical\":[1170.0,2532.0],\"output\":\"$BUILD_ROOT/scripts/out/011/quality/siri-reference-d32-v2.f32\",\"passes\":8,\"renderer_blake3\":\"9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd\",\"source\":\"$BUILD_ROOT/examples/siri-reference.glsl\",\"source_blake3\":\"12b98da690f3a17d556ffd0eeb573ebf08120e8c939d09d191835c8f1385fa57\",\"steady_frame_ms\":[],\"time\":1.0,\"width\":585,\"working_depth\":\"32\"}\n",
+      "stderr": "gpu ready: adapter=\"Apple M5\" backend=Metal driver=\" \"\n",
+      "metadata": {
+        "adapter": "adapter=\"Apple M5\" backend=Metal driver=\" \"",
+        "finite": true,
+        "height": 1266,
+        "language_id": 1,
+        "logical": [
+          1170.0,
+          2532.0
+        ],
+        "output": "$BUILD_ROOT/scripts/out/011/quality/siri-reference-d32-v2.f32",
+        "passes": 8,
+        "renderer_blake3": "9cb6472f76f172b408b55c6de18174997bbfadb897c04337677eb31fdda4a2bd",
+        "source": "$BUILD_ROOT/examples/siri-reference.glsl",
+        "source_blake3": "12b98da690f3a17d556ffd0eeb573ebf08120e8c939d09d191835c8f1385fa57",
+        "steady_frame_ms": [],
+        "time": 1.0,
+        "width": 585,
+        "working_depth": "32"
+      },
+      "source_sha256": "534af3183f8d377c18ecd37a2e3ee359032f07fd7ab8dd9d63c86f49b3e8313e",
+      "output_sha256": "39420c4d31214e9a27d299f8de490b86aafa907f19e09e27fcfaa4b91abf6de8"
+    }
+  ]
+}

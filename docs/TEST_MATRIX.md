@@ -1196,3 +1196,28 @@ frames. NOT_RUN exact-new-byte host installation, other AE years and Mac 0.1.1;
 native failure injection BLOCKED. Source Undo remains a known FAIL.
 PASS: regular v0.1.1 published, three downloaded assets equal their frozen hashes; contained AEX, lock, source identity and Sample files match. Exact environment, commands, source/artifact
 identities and evidence: [release audit](audits/09-windows-011.md).
+
+## TR-REL-011-MAC - Same-tag macOS ARM asset backfill
+
+2026-09-09: **PASS** native ARM release build, static bundle verification,
+default/editor CPU suites (222 each), quality suite (98), and five real-Metal
+smoke renders / 23 assertions. **NOT_RUN / active verification** for package
+verification and fresh-download identity. Source is the unchanged v0.1.1 commit
+`2428cfd94b4556cc3bc5ed63f7950ceca42a6b92`, with the exact lock published in
+the Windows archive. Signed binary SHA-256:
+`3d2fc6e88415f512988b02036779a48dcbae7b1f4e4d1b525020e71450c8133f`
+(7,602,160 bytes). Build ran on Apple M5/macOS 26.5.2 (25F84), Rust 1.97.1;
+the [release audit](audits/09-windows-011.md) records command, PiPL and lock
+identity and links to logs. Metal GLSL/WGSL pairs have equal pixels at 8- and
+32-bit working depth; an eight-pass tagged Siri source returns finite pixels
+and alpha 1. This runner uses zero-valued Point defaults, so it is not a
+calibrated visual or native Sample acceptance. The first malformed smoke
+fixture failed before shader compilation; its corrected run is recorded
+separately. Archive results will follow their completed commands.
+
+New-byte macOS AE installation, rendering, Undo/Redo, save/reopen, aerender
+and IOS27Siri Sample acceptance are **NOT_RUN**, outside this user's backfill
+scope. Prior 0.1.0 host results do not cover 0.1.1 bytes; Source single Undo
+remains **FAIL / disclosed limitation**. Existing Windows/Sample results
+above retain their original scope. [ADR-0047](adr/0047-011-macos-backfill.md),
+[release audit](audits/09-windows-011.md).

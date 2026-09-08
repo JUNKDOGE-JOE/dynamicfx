@@ -1,0 +1,71 @@
+{
+  "root_sha256": "125d8418a9eb26068503cd15717ae7f04a2d23e680162285730c273a49d1f8bc",
+  "quality_sha256": "dca0c73347f2b059557cbd00fd07c00721fbef5a1990ecef2a44dd416741c05c",
+  "production_versions": {
+    "wgpu": [
+      "29.0.4"
+    ],
+    "wgpu-core": [
+      "29.0.4"
+    ],
+    "wgpu-hal": [
+      "29.0.4"
+    ],
+    "wgpu-types": [
+      "29.0.4"
+    ],
+    "naga": [
+      "29.0.4"
+    ],
+    "blake3": [
+      "1.8.6"
+    ],
+    "arrayref": [
+      "0.3.9"
+    ],
+    "pollster": [
+      "1.0.1"
+    ],
+    "serde_json": [
+      "1.0.151"
+    ]
+  },
+  "quality_versions": {
+    "wgpu": [
+      "29.0.4"
+    ],
+    "wgpu-core": [
+      "29.0.4"
+    ],
+    "wgpu-hal": [
+      "29.0.4"
+    ],
+    "wgpu-types": [
+      "29.0.4"
+    ],
+    "naga": [
+      "29.0.4"
+    ],
+    "blake3": [
+      "1.8.6"
+    ],
+    "arrayref": [
+      "0.3.9"
+    ],
+    "pollster": [
+      "1.0.1"
+    ],
+    "serde_json": [
+      "1.0.151"
+    ]
+  },
+  "quality_not_exact_in_root": [
+    [
+      "dynamicfx-quality",
+      "0.1.0",
+      null,
+      null
+    ]
+  ],
+  "quality_dependency_match": true
+}

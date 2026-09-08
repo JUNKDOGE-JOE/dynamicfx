@@ -1,0 +1,6 @@
+# Local checkout/runtime paths normalized; original hashes in ../evidence-redactions.json.
+{"command": ["cargo", "+stable", "build", "--locked", "--offline", "--manifest-path", "scripts/quality/Cargo.toml", "--target", "aarch64-apple-darwin"]}
+   Compiling dynamicfx-quality v0.1.0 ($BUILD_ROOT/scripts/quality)
+    Finished `dev` profile [optimized + debuginfo] target(s) in 2.14s
+
+{"exit_code": 0, "elapsed_seconds": 2.1618881225585938}

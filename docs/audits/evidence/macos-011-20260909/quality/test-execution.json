@@ -1,0 +1,14 @@
+{
+  "command": [
+    "cargo",
+    "+stable",
+    "test",
+    "--offline",
+    "--manifest-path",
+    "scripts/quality/Cargo.toml",
+    "--target",
+    "aarch64-apple-darwin"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 61.456308126449585
+}

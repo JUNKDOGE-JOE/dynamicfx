@@ -1,0 +1,9 @@
+{
+  "version": "0.1.1",
+  "target": "aarch64-apple-darwin",
+  "packages": 133,
+  "license_files": 254,
+  "cargo_lock_sha256": "125d8418a9eb26068503cd15717ae7f04a2d23e680162285730c273a49d1f8bc",
+  "manifest_sha256": "2aca3fe3bec959465d65e7363ed31927ce3dec53745e54976aa60f33100e29ef",
+  "output": "$BUILD_ROOT/scripts/out/011/third-party"
+}

@@ -1,0 +1,7 @@
+# Checkout paths replaced with $BUILD_ROOT; original SHA-256 recorded in evidence-redactions.json.
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded arrayref v0.3.9
+  Downloaded blake3 v1.8.6
+  Downloaded regex-automata v0.4.16
+  Downloaded aho-corasick v1.1.4
