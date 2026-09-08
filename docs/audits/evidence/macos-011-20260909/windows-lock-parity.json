@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "windows_archive_sha256": "26b385b9bb3a84b0bf2991249d7950bccfc29ce71a953481e1189dadae4d1e6b",
+  "windows_archive_bytes": 3785041,
+  "lock_member": "build/Cargo.lock",
+  "windows_lock_sha256": "125d8418a9eb26068503cd15717ae7f04a2d23e680162285730c273a49d1f8bc",
+  "equal_to_mac_build_and_tag_lock": true
+}

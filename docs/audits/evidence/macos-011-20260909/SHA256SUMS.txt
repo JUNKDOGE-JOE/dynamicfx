@@ -1,0 +1,6 @@
+26b385b9bb3a84b0bf2991249d7950bccfc29ce71a953481e1189dadae4d1e6b  DynamicFX-0.1.1-windows-x64.zip
+a40f788d08b630a91dbd5188ac13c9fd632308dda72a7daf954cbab30bdaeace  IOS27Siri-0.1.1.zip
+b10632fa77bee85443813758958f506033fe59d8e3bf00528f4bafd89e685e1d  DynamicFx.aex
+e8b4b01dab9df5567a93b27ee3f30ec174bb48098319826f57a22703bb2c3cc7  DynamicFX-0.1.1-macos-arm64.zip
+3d2fc6e88415f512988b02036779a48dcbae7b1f4e4d1b525020e71450c8133f  DynamicFx.plugin/Contents/MacOS/DynamicFx
+b64852ea2a0bb7cc2548398843bf2bdf8d8613b6e7f60b884707a696ed8af8a0  DynamicFx.plugin/Contents/Resources/DynamicFx.rsrc

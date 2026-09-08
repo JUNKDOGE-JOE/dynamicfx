@@ -5,7 +5,7 @@ CPU suites: **222 passed each**. Exact-new-byte AE execution: **NOT_RUN**.
 This is a build/distribution backfill, not another AE installation or sample
 visual-refinement task. Metal valid-shader smoke: **5 renders / 23 checks PASS** on Apple M5.
 [Quality evidence](quality/README.md) retains the 98-test suite, dependency
-parity and first malformed-fixture failure. Publication remains pending.
+parity and first malformed-fixture failure. Publication and fresh-download verification: **PASS**.
 Windows-only FXC failure injection is not a Metal test.
 
 ## Frozen native inputs
@@ -53,3 +53,38 @@ inputs and copies the already signed bundle without rebuilding or re-signing.
 
 Source-expression single Undo/Redo remains a known failure. The independent
 Windows sample's host evidence does not establish macOS sample acceptance.
+
+## Published asset
+
+[Regular v0.1.1](https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.1.1)
+now includes `DynamicFX-0.1.1-macos-arm64.zip`, **6,934,170 bytes**, SHA-256
+`e8b4b01dab9df5567a93b27ee3f30ec174bb48098319826f57a22703bb2c3cc7`.
+[Package result](package-result.json), [independent candidate checks](verify-candidate.json)
+and [actual re-download checks](verify-downloaded.json) all match. Both the
+candidate and a fresh downloaded extraction pass all **297 internal file
+hashes**, ARM/PiPL/entry-point/signature/executable-mode checks, exact lock and
+native source identity. The 315 download assertions are byte/distribution
+checks, not AE host tests. The six IOS27Siri files equal the existing tag.
+
+Packaging instructions/README come from
+`4bb7196d9c72a23700e44b67c6e68eb78f7c7ab5`, separately recorded as
+`packaging_docs_commit`; native source remains `2428cfd`. Neither the source
+tag nor signed bundle was changed. Package-only links use the frozen document
+commit so newly added documents do not resolve against the older source tag.
+
+[Published metadata](published-release.json), [updated description](release-notes.md)
+and [combined checksums](SHA256SUMS.txt) retain the existing Windows/Sample
+archive identities. Their asset IDs, sizes, digests and update timestamps
+are unchanged. The previous checksum asset's 267 bytes remain an exact prefix;
+three ARM archive/executable/PiPL lines were appended. The checksum asset was
+replaced, as authorized, and the download matches those new bytes exactly.
+[Previous metadata](release-before-backfill.json) retains the original state.
+
+[Publication-input scan](preflight-package-summary.json) covers the specified
+prepared snapshot with zero matched credentials/restricted findings and
+15 archive checks passing. Final document checks are recorded separately.
+The native 0.1.1 Mac AE and Mac Sample checks remain **NOT_RUN**.
+
+The [downloaded Windows lock comparison](windows-lock-parity.json) additionally
+verifies the original Windows ZIP digest and its actual `build/Cargo.lock`
+bytes against both the Mac build and the source tag.

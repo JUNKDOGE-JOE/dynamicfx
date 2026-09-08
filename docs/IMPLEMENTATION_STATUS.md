@@ -4,36 +4,44 @@
 > Architecture intent belongs in [ARCHITECTURE.md](ARCHITECTURE.md); future sequencing belongs in [ROADMAP.md](ROADMAP.md); verification truth belongs in [TEST_MATRIX.md](TEST_MATRIX.md).
 
 
-## Active - 0.1.1 macOS ARM backfill
+## Released - 0.1.1 macOS ARM backfill
 
-The user now authorizes building Apple Silicon macOS from the existing
+The authorized Apple Silicon macOS backfill is complete, built from the existing
 `v0.1.1` source commit `2428cfd94b4556cc3bc5ed63f7950ceca42a6b92`
-and its published exact dependency lock, adding that platform archive to the
-same regular release, and updating README/release notes. Existing Windows
+and its published exact dependency lock. The platform archive was added to the
+same regular release, with updated README/release notes. Existing Windows
 and IOS27Siri archives and the tag remain unchanged. Work is isolated from the
 preserved local Siri development branch. [ADR-0047](adr/0047-011-macos-backfill.md)
 records this additional delivery scope without changing ADR-0046's history.
 
 The native ARM release build, static bundle checks, default/editor CPU
 suites (222 tests each), quality suite (98), and five real-Metal smoke renders
-with 23 assertions pass. Package and download checks are in progress.
-No uploaded Mac artifact is claimed yet. New-byte AE
+with 23 assertions pass. Package and fresh-download verification pass:
+**315 assertions**, including 297 internal-file hashes, native signature and
+exact source/lock/docs mapping. Published ZIP: 6,934,170 bytes, SHA-256
+`e8b4b01dab9df5567a93b27ee3f30ec174bb48098319826f57a22703bb2c3cc7`.
+The unchanged native source is distinct from packaging/docs commit
+`4bb7196d9c72a23700e44b67c6e68eb78f7c7ab5`. Windows/Sample archive identities
+are unchanged; the extended checksums preserve their original lines.
+New-byte AE
 installation, native AE rendering and macOS Sample acceptance remain
 **NOT_RUN** and are outside this backfill request. Source-expression Undo
 remains the known failure. The previous 0.1.0 Mac host result does not certify
 these new bytes.
 
-**Exact next action:** finish exact-source build and checks, package and verify
-the ARM bundle, then append the asset and its checksum to v0.1.1 and verify a
-fresh download. Record the outcome in [the release audit](audits/09-windows-011.md).
+**Exact next action:** none within this completed backfill. Optional native
+AE acceptance or Source Undo repair requires separate scope.
+[Release audit](audits/09-windows-011.md),
+[public evidence](audits/evidence/macos-011-20260909/README.md).
 
 ## Released - 0.1.1 Windows patch and IOS27Siri sample
 
 The user authorized publishing the completed runtime fixes, current Sample and
 README. Local build, CPU/GPU checks and Sample portability pass; the release
-is published; all three downloaded assets match their frozen hashes. [Release audit](audits/09-windows-011.md).
+is published; all three assets downloaded at the initial publication matched
+their frozen hashes. [Release audit](audits/09-windows-011.md).
 Source-expression Undo remains a disclosed limitation. Exact new-byte native
-installation and macOS 0.1.1 remain NOT_RUN; AE 2026 valid rendering is covered
+installation and macOS 0.1.1 AE execution remain NOT_RUN; AE 2026 valid rendering is covered
 by the documented runtime-code equivalence.
 
 This initial Windows/Sample publication is complete. The authorized Mac

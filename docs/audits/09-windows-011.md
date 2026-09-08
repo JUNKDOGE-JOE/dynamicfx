@@ -1,11 +1,11 @@
 # 0.1.1 Windows patch, IOS27Siri sample and macOS ARM backfill
 
-## Active macOS ARM backfill
+## Completed macOS ARM backfill
 
-The user now separately authorizes an ARM archive from the unchanged v0.1.1
+The user separately authorized an ARM archive from the unchanged v0.1.1
 source `2428cfd94b4556cc3bc5ed63f7950ceca42a6b92` and its published exact
-dependency lock. Add it to the existing regular release, preserving the tag
-and Windows/Sample archive bytes. [ADR-0047](../adr/0047-011-macos-backfill.md)
+dependency lock. It is now added to the existing regular release, preserving
+the tag and Windows/Sample archive bytes. [ADR-0047](../adr/0047-011-macos-backfill.md)
 qualifies the earlier Windows-only delivery scope; no native code change or
 old local Siri work is included.
 
@@ -45,15 +45,33 @@ curation. This runner uses zero-valued Point defaults: it establishes valid
 Metal execution, not calibrated Siri appearance, native AE output or Windows
 FXC failure recovery.
 
-Package and new-asset download verification are in progress and
-remain **NOT_RUN** until evidence is recorded. New-byte native
+Package, publication and fresh-download verification **PASS**. The added
+`DynamicFX-0.1.1-macos-arm64.zip` is **6,934,170 bytes**, SHA-256
+`e8b4b01dab9df5567a93b27ee3f30ec174bb48098319826f57a22703bb2c3cc7`.
+Packaging/docs commit `4bb7196d9c72a23700e44b67c6e68eb78f7c7ab5` is recorded
+separately from the unchanged native source/tag. The bundle was packaged
+without rebuilding or re-signing. Preflight passed 15 archive checks and a
+1,390-file / 55,458,705-byte publication-input scan with zero matched findings.
+
+Upload, checksum replacement and release-description update completed with
+exit code 0. A fresh GitHub download, `ditto` extraction and bundle verification
+passed **315 assertions**, including **297 internal-manifest files**, native
+arm64 code signature, executable/PiPL hashes and source/lock/docs identities.
+The downloaded checksum asset is 593 bytes, SHA-256
+`be7ecca75ba991520f0f0faad70287aefda7b168fb9f87b3472f8648b9d5c3dd`;
+it retains the original 267 bytes verbatim and appends the ARM ZIP,
+executable and PiPL entries. The Windows and Sample asset IDs, sizes, digests
+and update times are unchanged. The
+[public evidence index](evidence/macos-011-20260909/README.md) links package,
+release and fresh-download records. These assertions do not test AE.
+
+New-byte native
 AE execution and Mac Sample acceptance are **NOT_RUN** and outside this
 request. Source-expression Undo remains a known failure. The prior 0.1.0 Mac
 host pass does not certify the new binary.
 
-Next action: verify the exact-source ARM build and signed package, append it
-and its checksum to the existing release, then verify a fresh download and
-the unchanged Windows/Sample hashes.
+This backfill is complete. Native AE acceptance or Source Undo repair may be
+requested separately; neither is an unfinished step in this authorized scope.
 
 ## Original Windows and Sample publication
 
@@ -87,7 +105,7 @@ replacement and save/reopen. [Runtime-code equivalence](evidence/release-011-202
 is narrowly checked: 25 modules unchanged, lib.rs adds only two compile tests;
 Cargo/PE and PiPL version metadata change. Newly versioned bytes were not
 installed during packaging. Exact-new-byte AE execution, other AE years and
-macOS 0.1.1 remain NOT_RUN. Native bad-shader injection was BLOCKED by automatic
+macOS 0.1.1 AE execution remain NOT_RUN. Native bad-shader injection was BLOCKED by automatic
 review; only the isolated real-GPU test establishes failure-path recovery.
 Source single-Undo/Redo remains the known failure from ADR-0045, not a fixed bug.
 
@@ -115,9 +133,8 @@ records the original and published hashes. No original evidence is deleted.
 Historical visual perfection remains unaccepted; the sample is an approximation.
 
 [Release boundary](../adr/0046-011-windows-patch-release.md).
-The original publication is complete. The separately authorized Mac backfill
-above is the current action; Source Undo repair and native host acceptance
-remain separate work.
+The original publication and separately authorized Mac backfill are complete.
+Source Undo repair and native host acceptance remain separate work.
 
 ## Published identity
 

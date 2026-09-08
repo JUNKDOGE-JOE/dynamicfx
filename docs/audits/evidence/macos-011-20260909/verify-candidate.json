@@ -1,0 +1,3515 @@
+{
+  "schema": 1,
+  "utc": "2026-09-08T22:22:50.107043+00:00",
+  "scope": "Independent final archive and extraction checks only; no rebuild, resign, upload, AE operation, CPU tests or Metal tests",
+  "archive": "$PACKAGING_ROOT/scripts/out/011/release/DynamicFX-0.1.1-macos-arm64.zip",
+  "archive_sha256": "e8b4b01dab9df5567a93b27ee3f30ec174bb48098319826f57a22703bb2c3cc7",
+  "archive_bytes": 6934170,
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/ditto",
+        "-x",
+        "-k",
+        "$PACKAGING_ROOT/scripts/out/011/release/DynamicFX-0.1.1-macos-arm64.zip",
+        "$EXTRACTED_BUNDLE_ROOT"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/macos.py",
+        "verify",
+        "$EXTRACTED_BUNDLE_ROOT/DynamicFx.plugin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"bundle\": \"$EXTRACTED_BUNDLE_ROOT/DynamicFx.plugin\",\n  \"version\": \"0.1.1\",\n  \"architectures\": [\n    \"arm64\"\n  ],\n  \"binary_sha256\": \"3d2fc6e88415f512988b02036779a48dcbae7b1f4e4d1b525020e71450c8133f\",\n  \"resource_sha256\": \"b64852ea2a0bb7cc2548398843bf2bdf8d8613b6e7f60b884707a696ed8af8a0\",\n  \"binary_bytes\": 7602160,\n  \"pipl_outflags\": \"0x06000644\",\n  \"pipl_outflags2\": \"0x08801400\",\n  \"signature\": \"Executable=$EXTRACTED_BUNDLE_ROOT/DynamicFx.plugin/Contents/MacOS/DynamicFx\\nIdentifier=com.dynamicfx.plugin\\nFormat=bundle with Mach-O thin (arm64)\\nCodeDirectory v=20500 size=14997 flags=0x10002(adhoc,runtime) hashes=462+3 location=embedded\\nSignature=adhoc\\nInfo.plist entries=10\\nTeamIdentifier=not set\\nRuntime Version=26.5.0\\nSealed Resources version=2 rules=13 files=2\\nInternal requirements count=0 size=12\"\n}\n",
+      "stderr": ""
+    }
+  ],
+  "checks": [
+    {
+      "check": "archive identity equals package result",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique ZIP members",
+      "passed": true,
+      "observed": 298
+    },
+    {
+      "check": "relative ZIP paths with no symlinks",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "ZIP CRC integrity",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry DynamicFx.plugin/Contents/Info.plist",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry DynamicFx.plugin/Contents/MacOS/DynamicFx",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry DynamicFx.plugin/Contents/PkgInfo",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry DynamicFx.plugin/Contents/Resources/DynamicFx.rsrc",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry DynamicFx.plugin/Contents/Resources/packaging-context.json",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry DynamicFx.plugin/Contents/_CodeSignature/CodeResources",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry INSTALL.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry README.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry build/Cargo.lock",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry build/source-identity.json",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry docs/audits/evidence/shader-quality-20260908/preview-corners.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry docs/audits/evidence/shader-quality-20260908/siri-t2.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry docs/macos-arm64.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry docs/shader-quality.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/IOS27Siri/IOS27Siri.aep",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/IOS27Siri/README.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/IOS27Siri/assets/background.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/IOS27Siri/assets/wallpaper.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/IOS27Siri/preview.mp4",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/IOS27Siri/preview.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/README.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/apple-thermal.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/ink-bleed.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/orb.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/reach-ring.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/siri-glow.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/siri-reference.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/siri-reference.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/siri-ribbons.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/thermal.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/wgsl-field.wgsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry examples/wgsl-multipass.wgsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry scripts/install.sh",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry scripts/macos.py",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry skills/dynamicfx-shaders/INSTALL.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry skills/dynamicfx-shaders/SKILL.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry skills/dynamicfx-shaders/porting.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry skills/dynamicfx-shaders/quality.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry skills/dynamicfx-shaders/reference.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry skills/dynamicfx-shaders/wgsl.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/THIRD_PARTY_NOTICES.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/after-effects-0.4.0/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/after-effects-sys-0.4.0/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/aho-corasick-1.1.4/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/aho-corasick-1.1.4/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/aho-corasick-1.1.4/UNLICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/allocator-api2-0.2.21/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/allocator-api2-0.2.21/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/arrayref-0.3.9/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/arrayvec-0.7.8/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/arrayvec-0.7.8/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/ash-0.38.0+1.3.281/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/ash-0.38.0+1.3.281/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/autocfg-1.5.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/autocfg-1.5.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bincode-2.0.1/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bincode_derive-2.0.1/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bindgen-0.72.1/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bit-set-0.9.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bit-set-0.9.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bit-vec-0.9.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bit-vec-0.9.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bitflags-2.13.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bitflags-2.13.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/blake3-1.8.6/LICENSE_A2",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/blake3-1.8.6/LICENSE_A2LLVM",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/blake3-1.8.6/LICENSE_CC0",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/block2-0.6.2/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/block2-0.6.2/supplemental/MIT.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bytemuck-1.25.2/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bytemuck-1.25.2/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bytemuck-1.25.2/LICENSE-ZLIB",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bytemuck_derive-1.11.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bytemuck_derive-1.11.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/bytemuck_derive-1.11.0/LICENSE-ZLIB",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/byteorder-1.5.0/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/byteorder-1.5.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/byteorder-1.5.0/UNLICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/cc-1.4.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/cc-1.4.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/cexpr-0.6.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/cexpr-0.6.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/cfg-if-1.0.4/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/cfg-if-1.0.4/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/cfg_aliases-0.2.2/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/cfg_aliases-0.2.2/NOTICES.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/clang-sys-1.9.1/LICENSE.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/codespan-reporting-0.13.1/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/const_format-0.2.36/LICENSE-ZLIB.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/const_format_proc_macros-0.2.34/LICENSE-ZLIB.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/constant_time_eq-0.4.2/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/constant_time_eq-0.4.2/LICENSE-CC0",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/constant_time_eq-0.4.2/LICENSE-MIT0",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/cstr-literal-0.1.0/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/dashmap-5.5.3/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/dispatch2-0.3.1/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/dispatch2-0.3.1/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/dlib-0.5.3/LICENSE.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/document-features-0.2.12/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/document-features-0.2.12/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/either-1.17.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/either-1.17.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/equivalent-1.0.2/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/equivalent-1.0.2/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/fastrand-2.5.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/fastrand-2.5.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/find-msvc-tools-0.1.9/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/find-msvc-tools-0.1.9/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/fixedbitset-0.5.7/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/fixedbitset-0.5.7/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/foldhash-0.1.5/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/foldhash-0.2.0/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/glob-0.3.4/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/glob-0.3.4/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/glow-0.17.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/glow-0.17.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/glow-0.17.0/LICENSE-ZLIB",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/gpu-allocator-0.28.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/gpu-allocator-0.28.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/gpu-descriptor-0.3.2/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/gpu-descriptor-0.3.2/supplemental/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/gpu-descriptor-types-0.2.0/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/gpu-descriptor-types-0.2.0/supplemental/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/half-2.7.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/half-2.7.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/hash32-1.0.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/hash32-1.0.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/hashbrown-0.14.5/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/hashbrown-0.14.5/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/hashbrown-0.15.5/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/hashbrown-0.15.5/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/hashbrown-0.16.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/hashbrown-0.16.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/hashbrown-0.17.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/hashbrown-0.17.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/hexf-parse-0.2.1/supplemental/CC0-1.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/indexmap-2.14.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/indexmap-2.14.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/itertools-0.13.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/itertools-0.13.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/itoa-1.0.18/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/itoa-1.0.18/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/khronos-egl-6.0.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/khronos-egl-6.0.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/konst-0.2.20/LICENSE-ZLIB.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/konst_macro_rules-0.2.19/LICENSE-ZLIB.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/libc-0.2.189/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/libc-0.2.189/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/libloading-0.8.9/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/libm-0.2.16/LICENSE.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/litrs-1.0.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/litrs-1.0.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/lock_api-0.4.14/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/lock_api-0.4.14/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/log-0.4.33/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/log-0.4.33/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/memchr-2.8.3/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/memchr-2.8.3/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/memchr-2.8.3/UNLICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/minimal-lexical-0.2.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/minimal-lexical-0.2.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/minimal-lexical-0.2.1/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/naga-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/naga-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/nom-7.1.3/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/num-traits-0.2.19/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/num-traits-0.2.19/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-0.6.4/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-0.6.4/supplemental/MIT.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-core-foundation-0.3.2/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-core-foundation-0.3.2/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-encode-4.1.0/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-encode-4.1.0/supplemental/MIT.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-foundation-0.3.2/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-foundation-0.3.2/supplemental/MIT.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-metal-0.3.2/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-metal-0.3.2/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-quartz-core-0.3.2/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/objc2-quartz-core-0.3.2/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/once_cell-1.21.4/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/once_cell-1.21.4/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/ordered-float-5.3.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/oslog-0.2.0/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/parking_lot-0.12.5/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/parking_lot-0.12.5/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/parking_lot_core-0.9.12/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/parking_lot_core-0.9.12/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/paste-1.0.15/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/paste-1.0.15/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/petgraph-0.8.3/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/petgraph-0.8.3/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/petgraph-0.8.3/assets/images/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/pipl-0.1.1/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/pkg-config-0.3.33/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/pkg-config-0.3.33/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/pollster-1.0.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/pollster-1.0.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/pp-rs-0.2.1/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/presser-0.3.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/presser-0.3.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/pretty-hex-0.4.2/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/prettyplease-0.2.37/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/prettyplease-0.2.37/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/proc-macro2-1.0.107/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/proc-macro2-1.0.107/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/profiling-1.0.18/supplemental/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/profiling-1.0.18/supplemental/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/quote-1.0.47/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/quote-1.0.47/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/raw-window-handle-0.6.2/LICENSE-APACHE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/raw-window-handle-0.6.2/LICENSE-MIT.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/raw-window-handle-0.6.2/LICENSE-ZLIB.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/raw-window-metal-1.1.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/raw-window-metal-1.1.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/regex-1.13.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/regex-1.13.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/regex-automata-0.4.16/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/regex-automata-0.4.16/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/regex-syntax-0.8.11/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/regex-syntax-0.8.11/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/regex-syntax-0.8.11/src/unicode_tables/LICENSE-UNICODE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/renderdoc-sys-1.1.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/renderdoc-sys-1.1.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/rust/COPYRIGHT-library.html",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/rustc-hash-1.1.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/rustc-hash-1.1.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/rustc-hash-2.1.3/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/rustc-hash-2.1.3/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/scopeguard-1.2.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/scopeguard-1.2.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/serde-1.0.229/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/serde-1.0.229/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/serde_core-1.0.229/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/serde_core-1.0.229/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/serde_derive-1.0.229/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/serde_derive-1.0.229/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/serde_json-1.0.151/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/serde_json-1.0.151/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/shlex-1.3.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/shlex-1.3.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/shlex-2.0.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/shlex-2.0.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/smallvec-1.15.2/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/smallvec-1.15.2/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/spirv-0.4.0+sdk-1.4.341.0/supplemental/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/static_assertions-1.1.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/static_assertions-1.1.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/syn-2.0.119/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/syn-2.0.119/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/syn-3.0.3/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/syn-3.0.3/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/termcolor-1.4.1/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/termcolor-1.4.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/termcolor-1.4.1/UNLICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/thiserror-2.0.19/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/thiserror-2.0.19/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/thiserror-impl-2.0.19/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/thiserror-impl-2.0.19/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/toml-0.5.11/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/toml-0.5.11/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/unicode-ident-1.0.24/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/unicode-ident-1.0.24/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/unicode-ident-1.0.24/LICENSE-UNICODE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/unicode-width-0.2.2/COPYRIGHT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/unicode-width-0.2.2/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/unicode-width-0.2.2/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/unicode-xid-0.2.6/COPYRIGHT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/unicode-xid-0.2.6/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/unicode-xid-0.2.6/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/unty-0.0.4/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/unty-0.0.4/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/virtue-0.0.18/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wayland-sys-0.31.11/LICENSE.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-core-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-core-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-core-deps-apple-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-core-deps-apple-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-hal-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-hal-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-naga-bridge-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-naga-bridge-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-types-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/wgpu-types-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/widestring-1.2.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/widestring-1.2.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/winres-0.1.12/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/zerocopy-0.8.55/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/zerocopy-0.8.55/LICENSE-BSD",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/zerocopy-0.8.55/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/zerocopy-derive-0.8.55/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/zerocopy-derive-0.8.55/LICENSE-BSD",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/zerocopy-derive-0.8.55/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/licenses/zmij-1.0.23/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "unique checksum entry third-party/manifest.json",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "checksum covers all members except itself",
+      "passed": true,
+      "observed": 297
+    },
+    {
+      "check": "archive and extracted SHA DynamicFx.plugin/Contents/Info.plist",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA DynamicFx.plugin/Contents/MacOS/DynamicFx",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA DynamicFx.plugin/Contents/PkgInfo",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA DynamicFx.plugin/Contents/Resources/DynamicFx.rsrc",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA DynamicFx.plugin/Contents/Resources/packaging-context.json",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA DynamicFx.plugin/Contents/_CodeSignature/CodeResources",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA INSTALL.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA README.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA build/Cargo.lock",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA build/source-identity.json",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA docs/audits/evidence/shader-quality-20260908/preview-corners.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA docs/audits/evidence/shader-quality-20260908/siri-t2.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA docs/macos-arm64.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA docs/shader-quality.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/IOS27Siri/IOS27Siri.aep",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/IOS27Siri/README.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/IOS27Siri/assets/background.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/IOS27Siri/assets/wallpaper.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/IOS27Siri/preview.mp4",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/IOS27Siri/preview.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/README.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/apple-thermal.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/ink-bleed.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/orb.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/reach-ring.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/siri-glow.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/siri-reference.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/siri-reference.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/siri-ribbons.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/thermal.glsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/wgsl-field.wgsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA examples/wgsl-multipass.wgsl",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA scripts/install.sh",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA scripts/macos.py",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA skills/dynamicfx-shaders/INSTALL.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA skills/dynamicfx-shaders/SKILL.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA skills/dynamicfx-shaders/porting.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA skills/dynamicfx-shaders/quality.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA skills/dynamicfx-shaders/reference.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA skills/dynamicfx-shaders/wgsl.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/THIRD_PARTY_NOTICES.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/after-effects-0.4.0/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/after-effects-sys-0.4.0/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/aho-corasick-1.1.4/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/aho-corasick-1.1.4/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/aho-corasick-1.1.4/UNLICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/allocator-api2-0.2.21/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/allocator-api2-0.2.21/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/arrayref-0.3.9/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/arrayvec-0.7.8/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/arrayvec-0.7.8/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/ash-0.38.0+1.3.281/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/ash-0.38.0+1.3.281/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/autocfg-1.5.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/autocfg-1.5.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bincode-2.0.1/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bincode_derive-2.0.1/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bindgen-0.72.1/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bit-set-0.9.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bit-set-0.9.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bit-vec-0.9.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bit-vec-0.9.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bitflags-2.13.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bitflags-2.13.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/blake3-1.8.6/LICENSE_A2",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/blake3-1.8.6/LICENSE_A2LLVM",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/blake3-1.8.6/LICENSE_CC0",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/block2-0.6.2/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/block2-0.6.2/supplemental/MIT.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bytemuck-1.25.2/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bytemuck-1.25.2/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bytemuck-1.25.2/LICENSE-ZLIB",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bytemuck_derive-1.11.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bytemuck_derive-1.11.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/bytemuck_derive-1.11.0/LICENSE-ZLIB",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/byteorder-1.5.0/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/byteorder-1.5.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/byteorder-1.5.0/UNLICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/cc-1.4.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/cc-1.4.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/cexpr-0.6.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/cexpr-0.6.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/cfg-if-1.0.4/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/cfg-if-1.0.4/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/cfg_aliases-0.2.2/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/cfg_aliases-0.2.2/NOTICES.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/clang-sys-1.9.1/LICENSE.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/codespan-reporting-0.13.1/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/const_format-0.2.36/LICENSE-ZLIB.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/const_format_proc_macros-0.2.34/LICENSE-ZLIB.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/constant_time_eq-0.4.2/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/constant_time_eq-0.4.2/LICENSE-CC0",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/constant_time_eq-0.4.2/LICENSE-MIT0",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/cstr-literal-0.1.0/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/dashmap-5.5.3/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/dispatch2-0.3.1/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/dispatch2-0.3.1/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/dlib-0.5.3/LICENSE.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/document-features-0.2.12/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/document-features-0.2.12/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/either-1.17.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/either-1.17.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/equivalent-1.0.2/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/equivalent-1.0.2/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/fastrand-2.5.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/fastrand-2.5.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/find-msvc-tools-0.1.9/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/find-msvc-tools-0.1.9/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/fixedbitset-0.5.7/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/fixedbitset-0.5.7/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/foldhash-0.1.5/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/foldhash-0.2.0/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/glob-0.3.4/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/glob-0.3.4/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/glow-0.17.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/glow-0.17.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/glow-0.17.0/LICENSE-ZLIB",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/gpu-allocator-0.28.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/gpu-allocator-0.28.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/gpu-descriptor-0.3.2/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/gpu-descriptor-0.3.2/supplemental/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/gpu-descriptor-types-0.2.0/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/gpu-descriptor-types-0.2.0/supplemental/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/half-2.7.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/half-2.7.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/hash32-1.0.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/hash32-1.0.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/hashbrown-0.14.5/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/hashbrown-0.14.5/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/hashbrown-0.15.5/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/hashbrown-0.15.5/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/hashbrown-0.16.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/hashbrown-0.16.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/hashbrown-0.17.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/hashbrown-0.17.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/hexf-parse-0.2.1/supplemental/CC0-1.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/indexmap-2.14.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/indexmap-2.14.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/itertools-0.13.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/itertools-0.13.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/itoa-1.0.18/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/itoa-1.0.18/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/khronos-egl-6.0.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/khronos-egl-6.0.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/konst-0.2.20/LICENSE-ZLIB.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/konst_macro_rules-0.2.19/LICENSE-ZLIB.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/libc-0.2.189/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/libc-0.2.189/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/libloading-0.8.9/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/libm-0.2.16/LICENSE.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/litrs-1.0.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/litrs-1.0.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/lock_api-0.4.14/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/lock_api-0.4.14/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/log-0.4.33/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/log-0.4.33/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/memchr-2.8.3/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/memchr-2.8.3/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/memchr-2.8.3/UNLICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/minimal-lexical-0.2.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/minimal-lexical-0.2.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/minimal-lexical-0.2.1/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/naga-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/naga-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/nom-7.1.3/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/num-traits-0.2.19/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/num-traits-0.2.19/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-0.6.4/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-0.6.4/supplemental/MIT.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-core-foundation-0.3.2/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-core-foundation-0.3.2/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-encode-4.1.0/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-encode-4.1.0/supplemental/MIT.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-foundation-0.3.2/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-foundation-0.3.2/supplemental/MIT.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-metal-0.3.2/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-metal-0.3.2/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-quartz-core-0.3.2/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/objc2-quartz-core-0.3.2/supplemental/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/once_cell-1.21.4/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/once_cell-1.21.4/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/ordered-float-5.3.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/oslog-0.2.0/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/parking_lot-0.12.5/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/parking_lot-0.12.5/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/parking_lot_core-0.9.12/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/parking_lot_core-0.9.12/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/paste-1.0.15/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/paste-1.0.15/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/petgraph-0.8.3/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/petgraph-0.8.3/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/petgraph-0.8.3/assets/images/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/pipl-0.1.1/supplemental/Apache-2.0.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/pkg-config-0.3.33/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/pkg-config-0.3.33/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/pollster-1.0.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/pollster-1.0.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/pp-rs-0.2.1/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/presser-0.3.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/presser-0.3.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/pretty-hex-0.4.2/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/prettyplease-0.2.37/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/prettyplease-0.2.37/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/proc-macro2-1.0.107/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/proc-macro2-1.0.107/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/profiling-1.0.18/supplemental/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/profiling-1.0.18/supplemental/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/quote-1.0.47/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/quote-1.0.47/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/raw-window-handle-0.6.2/LICENSE-APACHE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/raw-window-handle-0.6.2/LICENSE-MIT.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/raw-window-handle-0.6.2/LICENSE-ZLIB.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/raw-window-metal-1.1.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/raw-window-metal-1.1.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/regex-1.13.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/regex-1.13.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/regex-automata-0.4.16/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/regex-automata-0.4.16/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/regex-syntax-0.8.11/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/regex-syntax-0.8.11/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/regex-syntax-0.8.11/src/unicode_tables/LICENSE-UNICODE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/renderdoc-sys-1.1.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/renderdoc-sys-1.1.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/rust/COPYRIGHT-library.html",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/rustc-hash-1.1.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/rustc-hash-1.1.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/rustc-hash-2.1.3/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/rustc-hash-2.1.3/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/scopeguard-1.2.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/scopeguard-1.2.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/serde-1.0.229/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/serde-1.0.229/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/serde_core-1.0.229/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/serde_core-1.0.229/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/serde_derive-1.0.229/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/serde_derive-1.0.229/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/serde_json-1.0.151/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/serde_json-1.0.151/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/shlex-1.3.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/shlex-1.3.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/shlex-2.0.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/shlex-2.0.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/smallvec-1.15.2/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/smallvec-1.15.2/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/spirv-0.4.0+sdk-1.4.341.0/supplemental/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/static_assertions-1.1.0/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/static_assertions-1.1.0/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/syn-2.0.119/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/syn-2.0.119/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/syn-3.0.3/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/syn-3.0.3/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/termcolor-1.4.1/COPYING",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/termcolor-1.4.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/termcolor-1.4.1/UNLICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/thiserror-2.0.19/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/thiserror-2.0.19/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/thiserror-impl-2.0.19/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/thiserror-impl-2.0.19/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/toml-0.5.11/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/toml-0.5.11/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/unicode-ident-1.0.24/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/unicode-ident-1.0.24/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/unicode-ident-1.0.24/LICENSE-UNICODE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/unicode-width-0.2.2/COPYRIGHT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/unicode-width-0.2.2/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/unicode-width-0.2.2/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/unicode-xid-0.2.6/COPYRIGHT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/unicode-xid-0.2.6/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/unicode-xid-0.2.6/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/unty-0.0.4/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/unty-0.0.4/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/virtue-0.0.18/LICENSE.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wayland-sys-0.31.11/LICENSE.txt",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-core-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-core-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-core-deps-apple-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-core-deps-apple-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-hal-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-hal-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-naga-bridge-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-naga-bridge-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-types-29.0.4/LICENSE.APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/wgpu-types-29.0.4/LICENSE.MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/widestring-1.2.1/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/widestring-1.2.1/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/winres-0.1.12/LICENSE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/zerocopy-0.8.55/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/zerocopy-0.8.55/LICENSE-BSD",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/zerocopy-0.8.55/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/zerocopy-derive-0.8.55/LICENSE-APACHE",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/zerocopy-derive-0.8.55/LICENSE-BSD",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/zerocopy-derive-0.8.55/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/licenses/zmij-1.0.23/LICENSE-MIT",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "archive and extracted SHA third-party/manifest.json",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "ZIP executable bit",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "extracted executable bit",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "arm64-only artifact",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "bundle matches exact build version",
+      "passed": true,
+      "observed": "0.1.1"
+    },
+    {
+      "check": "bundle matches exact build binary_sha256",
+      "passed": true,
+      "observed": "3d2fc6e88415f512988b02036779a48dcbae7b1f4e4d1b525020e71450c8133f"
+    },
+    {
+      "check": "bundle matches exact build resource_sha256",
+      "passed": true,
+      "observed": "b64852ea2a0bb7cc2548398843bf2bdf8d8613b6e7f60b884707a696ed8af8a0"
+    },
+    {
+      "check": "bundle matches exact build binary_bytes",
+      "passed": true,
+      "observed": 7602160
+    },
+    {
+      "check": "bundle matches exact build pipl_outflags",
+      "passed": true,
+      "observed": "0x06000644"
+    },
+    {
+      "check": "bundle matches exact build pipl_outflags2",
+      "passed": true,
+      "observed": "0x08801400"
+    },
+    {
+      "check": "ad-hoc signature remains explicit",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "both plist versions are 0.1.1",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native commit remains v0.1.1 source",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs commit is separate and immutable",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native source file manifest is retained",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/binding.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/canvas.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/definition/effect.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/definition/mod.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/definition/param.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/diag.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/diagnostics.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/frontend/annotation.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/frontend/envelope.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/frontend/glsl.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/frontend/grammar.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/frontend/mod.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/frontend/shared.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/frontend/wgsl.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/gradient.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/host/idle.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/host/mod.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/host/params.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/identity.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/lib.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/path.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/persistence.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/plan.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/render.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/source.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input src/wgsl_tests.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input Cargo.toml",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input Cargo.lock",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input build.rs",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "native build input rust-toolchain.toml",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "exact tagged/native/archived lockfile",
+      "passed": true,
+      "observed": "125d8418a9eb26068503cd15717ae7f04a2d23e680162285730c273a49d1f8bc"
+    },
+    {
+      "check": "INSTALL points to v0.1.1 and records NOT_RUN",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "README records 0.1.1 arm64 and no native acceptance claim",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "no obsolete Windows 0.1.0 pending language",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "INSTALL has no old release tag",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "signing and Source Undo limits retained",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "complete Sample exactly once",
+      "passed": true,
+      "observed": [
+        "examples/IOS27Siri/IOS27Siri.aep",
+        "examples/IOS27Siri/README.md",
+        "examples/IOS27Siri/assets/background.png",
+        "examples/IOS27Siri/assets/wallpaper.png",
+        "examples/IOS27Siri/preview.mp4",
+        "examples/IOS27Siri/preview.png"
+      ]
+    },
+    {
+      "check": "Sample equals exact tag examples/IOS27Siri/IOS27Siri.aep",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "Sample equals exact tag examples/IOS27Siri/README.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "Sample equals exact tag examples/IOS27Siri/assets/background.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "Sample equals exact tag examples/IOS27Siri/assets/wallpaper.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "Sample equals exact tag examples/IOS27Siri/preview.mp4",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "Sample equals exact tag examples/IOS27Siri/preview.png",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "new ADR47 fallback uses docs commit",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit docs/TEST_MATRIX.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit docs/adr/0011-shader-abi-v1-core.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit docs/adr/0037-pool-valid-range-and-slider-range.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit docs/adr/0043-apple-silicon-host-protocol.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit docs/adr/0044-wgsl-and-010-release.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit docs/adr/0045-010-source-undo-release-boundary.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit docs/adr/0046-011-windows-patch-release.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit docs/adr/0047-011-macos-backfill.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit docs/audits/09-windows-011.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit docs/audits/evidence/macos-arm64-20260908/README.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit docs/audits/evidence/shader-quality-20260908/README.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit scripts/quality",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit scripts/quality/README.md",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit scripts/quality/run_wgsl_examples.py",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit scripts/release/dependency_notices.py",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "docs fallback exists in selected local commit scripts/release/package_macos.py",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "complete signed bundle unchanged through extraction",
+      "passed": true,
+      "observed": 6
+    },
+    {
+      "check": "candidate archive unchanged during verification",
+      "passed": true,
+      "observed": null
+    }
+  ],
+  "host_validation": "NOT_RUN for these exact macOS 0.1.1 bytes",
+  "source_records": {
+    "build_record_sha256": "59c01a9ba923e04dbecad5e0bf77c57a78881fa5a83f4823308efab5bc34bd90",
+    "package_result_sha256": "e2da35f7950b63e897ffbd0eebb16ebdc8753f7e4c68e40b871da0176a862c5d"
+  },
+  "extracted_directory": "$EXTRACTED_BUNDLE_ROOT",
+  "internal_files_verified": 297,
+  "bundle_verification": {
+    "bundle": "$EXTRACTED_BUNDLE_ROOT/DynamicFx.plugin",
+    "version": "0.1.1",
+    "architectures": [
+      "arm64"
+    ],
+    "binary_sha256": "3d2fc6e88415f512988b02036779a48dcbae7b1f4e4d1b525020e71450c8133f",
+    "resource_sha256": "b64852ea2a0bb7cc2548398843bf2bdf8d8613b6e7f60b884707a696ed8af8a0",
+    "binary_bytes": 7602160,
+    "pipl_outflags": "0x06000644",
+    "pipl_outflags2": "0x08801400",
+    "signature": "Executable=$EXTRACTED_BUNDLE_ROOT/DynamicFx.plugin/Contents/MacOS/DynamicFx\nIdentifier=com.dynamicfx.plugin\nFormat=bundle with Mach-O thin (arm64)\nCodeDirectory v=20500 size=14997 flags=0x10002(adhoc,runtime) hashes=462+3 location=embedded\nSignature=adhoc\nInfo.plist entries=10\nTeamIdentifier=not set\nRuntime Version=26.5.0\nSealed Resources version=2 rules=13 files=2\nInternal requirements count=0 size=12"
+  },
+  "source_identity": {
+    "version": "0.1.1",
+    "source_commit": "2428cfd94b4556cc3bc5ed63f7950ceca42a6b92",
+    "packaging_docs_commit": "4bb7196d9c72a23700e44b67c6e68eb78f7c7ab5",
+    "packaging_docs_ref": "4bb7196d9c72a23700e44b67c6e68eb78f7c7ab5",
+    "source_tree": "760d95c9572c59d267454becf08b03a2da9a4724",
+    "source_files": {
+      "src/binding.rs": "a2e55f5e55622fef64ae8ea4cde8d249959f9dd94194d399306f647beb43f657",
+      "src/canvas.rs": "6d31b6ccb94c98a89112ef547916c0dab9276e397f3968243e18973e4a980dc4",
+      "src/definition/effect.rs": "a89576c54ecacbea631f635d49cdabaa2c93aefc62e55dff3dcde9ec3b833048",
+      "src/definition/mod.rs": "d1bc2234fe0f960aab517de8c29650207b927a3152a972b516c98b3273109964",
+      "src/definition/param.rs": "9cf7f19a0bbb24da1b6f53f80010b0a15beab1fbb4b5a9dab59749768667faff",
+      "src/diag.rs": "7c7badae7c48f719204c888c1f403171a31b7396d9e5210700d085212469e156",
+      "src/diagnostics.rs": "1e145b2d33bb6ed6ea90d4baa880ff315b2f16c10033da191cb36d9b00a22284",
+      "src/frontend/annotation.rs": "b504e5a07b15c2b085c4c37ba20a465defaca3499c6c332dc437956857647c73",
+      "src/frontend/envelope.rs": "70332e2fb6e51ece670fc6939698fbf843c6a40874621b9dc50b37faed963c0b",
+      "src/frontend/glsl.rs": "ebe7eafb237dd63cb13d18d47d8fdb527f4b21b24f0cd3e9999d43ba08d729ab",
+      "src/frontend/grammar.rs": "3e950d6e928be867f0be18a4389fcc9e1473aa2c95173f9d09c4767e2c7b4b9f",
+      "src/frontend/mod.rs": "ab672a6f0f275cc34c9bee79273b934ccefaae957d22010b761ac4c948421164",
+      "src/frontend/shared.rs": "4709f5d661b394c11f40c382d917e8b8cd1189bbde4979dd52e5e3edc2733fd1",
+      "src/frontend/wgsl.rs": "a4a7951435ff23d5333144b4caeb65ba54ea6caba821350dd47da2d2d4eae565",
+      "src/gradient.rs": "5ca22a5b239e70ab582fcf319905d024d171b322f9a46c7419979e2824c5aba4",
+      "src/host/idle.rs": "835e7c73501ebd7ee1bd8a9b3dec76cb481c54ea7e4d8981bf081eff4d26d5e1",
+      "src/host/mod.rs": "80ea1cab6a55cbfa11c2b815319ca5d28c5ba89b1e481e41f88d28a227f6860c",
+      "src/host/params.rs": "c70bd80c4027dcfa9ae1555cd6e8646b50537d5bef5db495dd2eb8dd67a7afdb",
+      "src/identity.rs": "6ad05ae6873d79670362d15a04dc180faa72a892104be47a5dd66af51003b5e4",
+      "src/lib.rs": "233fc94edc9c03fd528331b090f04ebb96c7537554c54522af59491a82d229d4",
+      "src/path.rs": "c3f845b8b4ef083ec1e2cc1cc9c8e87599ca61d954a25c789bc5d326ef49ac59",
+      "src/persistence.rs": "c74dcb6108ed99cd47df08891e5bb3b418ab4f279a0858546614ebe6cc9c93cc",
+      "src/plan.rs": "ed55f99f0776799c4cafed91c63af28aaa719f4ce77edf3b873de2228c2292be",
+      "src/render.rs": "28cf550dad017e30ccca5209b7035408ab828cd6124b8c58e8a69d4c8541c1b3",
+      "src/source.rs": "67fbcf9a7e8b54a2d1d6d10f664848659275ad89c4af06f606b3758617e6e031",
+      "src/wgsl_tests.rs": "b676c9d19f2d136cce1df87d1bec1faf44534ded0083c759a4b53ec419c474d3",
+      "Cargo.toml": "d10dd606501e37e73099827b9b2b48479eb5f645df33dfc729f68c4da2703bde",
+      "Cargo.lock": "125d8418a9eb26068503cd15717ae7f04a2d23e680162285730c273a49d1f8bc",
+      "build.rs": "aea17adaedbb9f386c9869d085f0b31f671e7d71821ae5dddb31f46070c498ed",
+      "rust-toolchain.toml": "19518129aa007d86f4c98633c4cda6b02b6001c07ecade38f599a5a4e3fb7a66"
+    },
+    "binary_sha256": "3d2fc6e88415f512988b02036779a48dcbae7b1f4e4d1b525020e71450c8133f",
+    "resource_sha256": "b64852ea2a0bb7cc2548398843bf2bdf8d8613b6e7f60b884707a696ed8af8a0",
+    "build_command": "RUSTUP_TOOLCHAIN=stable bash scripts/build-macos.sh --locked --offline",
+    "signature": "ad-hoc; not notarized"
+  },
+  "cargo_lock_sha256": "125d8418a9eb26068503cd15717ae7f04a2d23e680162285730c273a49d1f8bc",
+  "sample_files": [
+    {
+      "file": "examples/IOS27Siri/IOS27Siri.aep",
+      "bytes": 889893,
+      "sha256": "6c8a52412ab975202f39c514c7bf15e78d09850a0b02a2742efc6fbb8e346ab3"
+    },
+    {
+      "file": "examples/IOS27Siri/README.md",
+      "bytes": 2670,
+      "sha256": "3960182ce08c51efa58b462a6488d9e447995d2ec6de4e8069a2f4a5940ff203"
+    },
+    {
+      "file": "examples/IOS27Siri/assets/background.png",
+      "bytes": 455050,
+      "sha256": "253fc329753f443b7f290dd8eb4a90d2cc8ea6eb690bb217a2999974294a5492"
+    },
+    {
+      "file": "examples/IOS27Siri/assets/wallpaper.png",
+      "bytes": 1042737,
+      "sha256": "e34a66d2ab2e44e9917cbaa2505be76515ddfe911ff14832d326a75ae14eb254"
+    },
+    {
+      "file": "examples/IOS27Siri/preview.mp4",
+      "bytes": 487344,
+      "sha256": "75d2e2d634c8f8d20d4b33d7763994a114b2dfb9ea5dac2c5befb64e66568e02"
+    },
+    {
+      "file": "examples/IOS27Siri/preview.png",
+      "bytes": 1310112,
+      "sha256": "b09df1fe197cdffd2e0b4fa8c59c53191b3d1c40efed17a1531b2a6900ce8ba6"
+    }
+  ],
+  "docs_commit_link_count": 16,
+  "passed": true
+}

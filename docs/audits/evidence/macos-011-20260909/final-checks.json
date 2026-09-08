@@ -1,0 +1,11 @@
+{
+  "scope": "Final working-tree scan after publication receipts, before adding this scan summary itself",
+  "passed": true,
+  "raw_report_sha256": "9f5a2f52bc9ecf785ea8db2201a271131f45006c55fb689c9aa63bc6e7545780",
+  "files_scanned": 1399,
+  "bytes_scanned": 55630995,
+  "candidate_tree_fingerprint": "e60e155f947d1634bcb2abaaf8bd80a1c25ea1e8c49228f34995c5fc4d7e7261",
+  "credential_or_restricted_findings": [],
+  "archive_checks": 15,
+  "governance": "DynamicFX governance check\nmarkdown_files=117\nlocal_links=1365\nmermaid_blocks=16\naccepted_adrs=47\nerrors=0\nRESULT=PASS\n"
+}

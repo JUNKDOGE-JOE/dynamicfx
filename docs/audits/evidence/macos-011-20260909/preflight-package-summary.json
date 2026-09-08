@@ -1,0 +1,85 @@
+{
+  "scope": "Pre-publication snapshot at packaging commit 4bb7196, before adding these publication receipts",
+  "raw_report_sha256": "26dd021697de3d7871730b66ffde0e9a7d0c97b03367db9e76d790795b722229",
+  "automated_checks_passed": true,
+  "baseline_commit": "4bb7196d9c72a23700e44b67c6e68eb78f7c7ab5",
+  "files_scanned": 1390,
+  "bytes_scanned": 55458705,
+  "candidate_tree_fingerprint": "8b7a97a9ac0f4726e1b2f7e4842b9404a6c0fcfdcdd1425dee2bf8abd59b54d6",
+  "credential_or_restricted_findings": [],
+  "archive": {
+    "archive": "DynamicFX-0.1.1-macos-arm64.zip",
+    "archive_sha256": "e8b4b01dab9df5567a93b27ee3f30ec174bb48098319826f57a22703bb2c3cc7",
+    "archive_bytes": 6934170,
+    "checks": [
+      {
+        "check": "no recognized credentials in archive",
+        "passed": true
+      },
+      {
+        "check": "unique member paths",
+        "passed": true
+      },
+      {
+        "check": "relative nontraversing member paths",
+        "passed": true
+      },
+      {
+        "check": "no symlink members",
+        "passed": true
+      },
+      {
+        "check": "no Finder or AppleDouble metadata",
+        "passed": true
+      },
+      {
+        "check": "exactly one plugin bundle",
+        "passed": true
+      },
+      {
+        "check": "both plist versions match release",
+        "passed": true
+      },
+      {
+        "check": "complete bundle including signature and context",
+        "passed": true
+      },
+      {
+        "check": "Mach-O arm64 header",
+        "passed": true
+      },
+      {
+        "check": "executable permission preserved",
+        "passed": true
+      },
+      {
+        "check": "installation instructions outside bundle",
+        "passed": true
+      },
+      {
+        "check": "MIT license outside bundle",
+        "passed": true
+      },
+      {
+        "check": "one SHA256SUMS file",
+        "passed": true
+      },
+      {
+        "check": "SHA256SUMS entries match archived bytes",
+        "passed": true
+      },
+      {
+        "check": "checksum covers executable and PiPL",
+        "passed": true
+      }
+    ],
+    "identity": {
+      "binary_sha256": "3d2fc6e88415f512988b02036779a48dcbae7b1f4e4d1b525020e71450c8133f",
+      "binary_bytes": 7602160,
+      "version": "0.1.1"
+    },
+    "credential_members": [],
+    "passed": true,
+    "not_checked": "This byte check does not validate codesign, notarization, Gatekeeper, host behavior or correspondence to a source commit. Extract to a private temporary directory, verify with scripts/macos.py, then compare to the host-tested identity."
+  }
+}

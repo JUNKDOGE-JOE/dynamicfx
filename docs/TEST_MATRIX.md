@@ -1192,17 +1192,17 @@ Earlier production GPU and retired-candidate results remain historical:
 explicit real-DX12 compiler rejection/recovery, versioned Windows Release
 build and static artifact checks. PASS AE 2026 Sample relocation, embedded
 source identity, original checkpoint preservation and 300 unique 60 fps native
-frames. NOT_RUN exact-new-byte host installation, other AE years and Mac 0.1.1;
+frames. NOT_RUN exact-new-byte host installation, other AE years and Mac 0.1.1 AE execution;
 native failure injection BLOCKED. Source Undo remains a known FAIL.
-PASS: regular v0.1.1 published, three downloaded assets equal their frozen hashes; contained AEX, lock, source identity and Sample files match. Exact environment, commands, source/artifact
+PASS: initial regular v0.1.1 publication, three downloaded assets equal their frozen hashes; contained AEX, lock, source identity and Sample files match. Exact environment, commands, source/artifact
 identities and evidence: [release audit](audits/09-windows-011.md).
 
 ## TR-REL-011-MAC - Same-tag macOS ARM asset backfill
 
 2026-09-09: **PASS** native ARM release build, static bundle verification,
 default/editor CPU suites (222 each), quality suite (98), and five real-Metal
-smoke renders / 23 assertions. **NOT_RUN / active verification** for package
-verification and fresh-download identity. Source is the unchanged v0.1.1 commit
+smoke renders / 23 assertions. **PASS** package verification, same-release
+asset publication and fresh-download identity. Source is the unchanged v0.1.1 commit
 `2428cfd94b4556cc3bc5ed63f7950ceca42a6b92`, with the exact lock published in
 the Windows archive. Signed binary SHA-256:
 `3d2fc6e88415f512988b02036779a48dcbae7b1f4e4d1b525020e71450c8133f`
@@ -1213,7 +1213,20 @@ identity and links to logs. Metal GLSL/WGSL pairs have equal pixels at 8- and
 and alpha 1. This runner uses zero-valued Point defaults, so it is not a
 calibrated visual or native Sample acceptance. The first malformed smoke
 fixture failed before shader compilation; its corrected run is recorded
-separately. Archive results will follow their completed commands.
+separately.
+
+Published `DynamicFX-0.1.1-macos-arm64.zip`: **6,934,170 bytes**, SHA-256
+`e8b4b01dab9df5567a93b27ee3f30ec174bb48098319826f57a22703bb2c3cc7`.
+The fresh download passed **315 assertions**, including **297 internal-file
+hashes**, native arm64 signature, executable/PiPL identity and exact
+source/lock mapping. Packaging/docs are independently pinned to
+`4bb7196d9c72a23700e44b67c6e68eb78f7c7ab5`; the runtime tag stays unchanged.
+Publication preflight passed 15 archive checks and the 1,390-file /
+55,458,705-byte input scan with zero matched findings. Windows/Sample asset
+IDs, sizes, digests and update times are unchanged; the extended checksum
+file preserves the original 267 bytes as its prefix. These are package and
+publication assertions, not additional AE tests.
+[Public evidence](audits/evidence/macos-011-20260909/README.md).
 
 New-byte macOS AE installation, rendering, Undo/Redo, save/reopen, aerender
 and IOS27Siri Sample acceptance are **NOT_RUN**, outside this user's backfill

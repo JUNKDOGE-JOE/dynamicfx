@@ -194,5 +194,54 @@
     "published_file": "quality/attempt-01-missing-envelope/smoke.glsl",
     "published_sha256": "cc422944e288083226d35abfb888c8b7d7a08199adf8032e1b1d96a060074f5b",
     "transformation": "Normalize local checkout/runtime paths; log header or public-copy README note labels transformation."
+  },
+  {
+    "source": "scripts/out/011/package-result.json",
+    "original_sha256": "e2da35f7950b63e897ffbd0eebb16ebdc8753f7e4c68e40b871da0176a862c5d",
+    "published_file": "package-result.json",
+    "published_sha256": "dbba4afcb6b868174ddc125e51c76c6cb8e858c7ee8ac42a5f1fafb2d4a96c7f",
+    "transformation": "Normalize temporary checkout/extraction roots only; checksum and public Release body bytes retained."
+  },
+  {
+    "source": "scripts/out/011/verify-candidate.json",
+    "original_sha256": "03a73c633923c86c22a299975c730bc2161fbb907a6233c285f0513f61664d90",
+    "published_file": "verify-candidate.json",
+    "published_sha256": "997f41ef055610fff1a25603eb3f26ecf0f5c1c72de235dbc3413d81518d13d0",
+    "transformation": "Normalize temporary checkout/extraction roots only; checksum and public Release body bytes retained."
+  },
+  {
+    "source": "scripts/out/011/verify-downloaded.json",
+    "original_sha256": "c850f90e9997444731b1624b3edc81c6832681737e6ee840e02876ae866a3498",
+    "published_file": "verify-downloaded.json",
+    "published_sha256": "bf67ea3efe6dcabfdf90921cd15c55c5cc4a4eca9eefb1c03731c7b6a941b2c1",
+    "transformation": "Normalize temporary checkout/extraction roots only; checksum and public Release body bytes retained."
+  },
+  {
+    "source": "scripts/out/011/release-after.json",
+    "original_sha256": "8702afb93c8bde06f18a635f037159dbf4ac8d94a1b2cf5cbda0c24461e391c7",
+    "published_file": "published-release.json",
+    "published_sha256": "8702afb93c8bde06f18a635f037159dbf4ac8d94a1b2cf5cbda0c24461e391c7",
+    "transformation": "Normalize temporary checkout/extraction roots only; checksum and public Release body bytes retained."
+  },
+  {
+    "source": "scripts/out/011/release-notes.md",
+    "original_sha256": "180856f45898d4a0ec38488e95e51038cb3b6d7d6b912a1c1e8e135f0b16eb92",
+    "published_file": "release-notes.md",
+    "published_sha256": "180856f45898d4a0ec38488e95e51038cb3b6d7d6b912a1c1e8e135f0b16eb92",
+    "transformation": "Normalize temporary checkout/extraction roots only; checksum and public Release body bytes retained."
+  },
+  {
+    "source": "scripts/out/011/downloaded/SHA256SUMS.txt",
+    "original_sha256": "be7ecca75ba991520f0f0faad70287aefda7b168fb9f87b3472f8648b9d5c3dd",
+    "published_file": "SHA256SUMS.txt",
+    "published_sha256": "be7ecca75ba991520f0f0faad70287aefda7b168fb9f87b3472f8648b9d5c3dd",
+    "transformation": "Normalize temporary checkout/extraction roots only; checksum and public Release body bytes retained."
+  },
+  {
+    "source": "build-checkout/scripts/out/011/release-before.json",
+    "original_sha256": "322a7f9b6873a3773faa7de1351436de40e3c6d2c427d2d449ce379ead5940d7",
+    "published_file": "release-before-backfill.json",
+    "published_sha256": "322a7f9b6873a3773faa7de1351436de40e3c6d2c427d2d449ce379ead5940d7",
+    "transformation": "Normalize temporary checkout/extraction roots only; checksum and public Release body bytes retained."
   }
 ]
