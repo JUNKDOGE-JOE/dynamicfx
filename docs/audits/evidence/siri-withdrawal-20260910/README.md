@@ -49,5 +49,17 @@ previous validation scope without adding a new host claim.
 
 ## Publication
 
-Pending remote update and fresh-download verification. Re-publication of the
-animation awaits the user's request after refinement.
+Main received withdrawal commit `82c302c`. Release cleanup was performed after
+the user separately confirmed that the existing Release should also be cleaned.
+[Fresh-download verification](published-verification.json) passes: only the two
+plugin ZIPs and checksum asset remain, the Mac ZIP and checksums exactly match
+the candidates, all 289 internal hashes pass and the signed bundle is unchanged.
+Windows asset ID, size, digest and update time remain identical. The source tag
+object remains `c5e73d1731c3424ea2e09d66b9968d8e307a2b2c`.
+Re-publication of the animation awaits the user's request after refinement.
+
+Publication preflight scanned 1,390 files with zero credential-pattern findings;
+all 15 Mac archive checks passed. Its historical machine-path/media review
+flags refer only to unchanged files. No new binary/media content is published
+in the repository by this withdrawal; existing audit records retain their
+original scope.

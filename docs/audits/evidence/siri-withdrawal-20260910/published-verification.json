@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-10",
+  "release": "https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.1.1",
+  "withdrawal_commit": "82c302cc1ba22f30995dc4b6fd35d41ab8b525ad",
+  "source_tag_object": "c5e73d1731c3424ea2e09d66b9968d8e307a2b2c",
+  "asset_names": [
+    "DynamicFX-0.1.1-macos-arm64.zip",
+    "DynamicFX-0.1.1-windows-x64.zip",
+    "SHA256SUMS.txt"
+  ],
+  "mac_download_sha256": "8a536d03aa5960bda701dacc92e862bb26b66ec585de73dffb2b15e24ef00b12",
+  "checksums_download_sha256": "da0091681e7cdd22522c9dbe7a4387b54322fd409c97498516147027596f8ea4",
+  "checks": {
+    "separate_sample_absent": true,
+    "bundled_sample_absent": true,
+    "fresh_downloads_equal_verified_candidates": true,
+    "release_notes_equal_prepared_notes": true,
+    "windows_asset_identity_unchanged": true,
+    "source_tag_unchanged": true,
+    "archive_crc_valid": true,
+    "internal_checksum_entries": 289,
+    "signed_bundle_bytes_and_permissions_unchanged": true
+  },
+  "native_AE": "NOT_RUN; plugin bytes unchanged"
+}

@@ -1193,8 +1193,11 @@ Earlier production GPU and retired-candidate results remain historical:
 and `git diff --check`. **PASS** Mac sample removal, archive CRC, 289 internal
 hashes, and unchanged bytes/metadata for 285 retained entries including the
 signed bundle. Thirteen repository files were backed up and hash-verified;
-the original authoring checkout remains preserved. Remote update and download
-verification are pending. No runtime changes or new AE acceptance are claimed.
+the original authoring checkout remains preserved. **PASS** main-branch
+withdrawal, release cleanup and fresh-download verification: separate/bundled
+sample absent, updated Mac ZIP and checksum download match the verified
+candidates, Windows asset identity and source tag unchanged. No runtime
+changes or new AE acceptance are claimed.
 [Evidence and initial fixture failures](audits/evidence/siri-withdrawal-20260910/README.md).
 
 ## TR-REL-011 - Windows patch and IOS27Siri sample (historical)

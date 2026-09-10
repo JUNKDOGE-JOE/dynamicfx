@@ -12,12 +12,12 @@
 - Every milestone has one canonical audit document.
 - A milestone that first implements or persists a staged contract may not begin until its entry ADRs are Accepted ([ADR-0009](adr/0009-staged-format-adr-acceptance.md)).
 
-## Current - IOS27Siri refinement hold
+## Current - IOS27Siri withdrawn for refinement
 
-The user requested withdrawing the animation before further refinement.
-Remove its current repository and release distribution, preserve local
-authoring files and plugin binaries, then leave re-publication pending the
-user's request. [ADR-0048](adr/0048-ios27siri-withdrawal.md).
+Repository and maintained release distribution have been withdrawn and checked.
+Local authoring files and plugin binaries remain preserved. Re-publication is
+pending the user's request after refinement.
+[ADR-0048](adr/0048-ios27siri-withdrawal.md).
 
 ## Historical completion - 0.1.1 macOS ARM backfill
 

@@ -4,17 +4,20 @@
 > Architecture intent belongs in [ARCHITECTURE.md](ARCHITECTURE.md); future sequencing belongs in [ROADMAP.md](ROADMAP.md); verification truth belongs in [TEST_MATRIX.md](TEST_MATRIX.md).
 
 
-## Active - IOS27Siri withdrawal
+## Completed - IOS27Siri withdrawal
 
-The user requested temporarily withdrawing the IOS27Siri animation for further
-refinement. Work starts from `effc75b` in an isolated checkout. Remove its
-project, shaders, preview and download entries, and stop packaging the sample.
-Preserve local authoring files, historical release evidence, the source tag,
-and all plugin binaries. The Mac archive also contains the sample and needs
-a packaging-only refresh with unchanged signed bundle bytes.
+The IOS27Siri animation is withdrawn from main and the maintained v0.1.1
+downloads, as requested by the user. Its project, shaders, media, research and
+dedicated runner were removed in `82c302c`; packaging no longer ships it.
+Local authoring files, historical release evidence, the source tag and all
+plugin binaries remain preserved. The Mac ZIP was refreshed to remove its
+bundled sample; all 285 retained entries keep their exact bytes/metadata,
+including the signed bundle. The Windows archive is unchanged. Fresh downloads
+match the verified candidates; all 289 internal Mac checksum entries pass.
+[Verification](audits/evidence/siri-withdrawal-20260910/README.md).
 
-**Exact next action:** verify the withdrawal, update the existing release and
-confirm its downloaded contents before marking this work complete.
+**Exact next action:** await the user's request after refinement before
+publishing the animation again. No additional release or AE work is in scope.
 
 ## Historical publication - 0.1.1 macOS ARM backfill
 

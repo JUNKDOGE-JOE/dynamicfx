@@ -8,7 +8,9 @@ decisions. The publication and visual checks below are historical evidence;
 they do not indicate that the sample remains available in current downloads.
 Local authoring files and pre-withdrawal release assets are preserved.
 [Withdrawal checks](evidence/siri-withdrawal-20260910/README.md) pass for the
-remaining examples and package contents. Remote update is pending.
+remaining examples and package contents. Main and the existing release are
+updated; [fresh downloads](evidence/siri-withdrawal-20260910/published-verification.json)
+match the verified candidates, with the Windows asset and source tag unchanged.
 
 ## Historical macOS ARM backfill
 
