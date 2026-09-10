@@ -65,9 +65,8 @@ projects; keep the source and reinstall this version to render them.
 Known limitation: Source edits may not restore with one Undo; Redo may be
 unavailable. Keep prior shader text and explicitly restore it when needed.
 
-The complete examples directory is included, including the editable
-examples/IOS27Siri sample and its media. Its recorded Windows validation is
-not macOS acceptance; see the sample instructions for its original host scope.
+The examples directory includes GLSL and WGSL shader sources with usage
+instructions. See examples/README.md for the available effects.
 
 The archive includes source identity, the exact build/Cargo.lock used, and
 third-party/THIRD_PARTY_NOTICES.txt with dependency license texts. Keep the

@@ -74,6 +74,7 @@ Use [TEMPLATE.md](TEMPLATE.md). Ordinary implementation details and bug fixes do
 | [0045](0045-010-source-undo-release-boundary.md) | 0.1.0 source-expression single-Undo limitation disclosed at release; separate publication repair, remaining macOS authoring fixes still required | Accepted |
 | [0046](0046-011-windows-patch-release.md) | 0.1.1 Windows repair and Sample publication; new-byte host limits and Source Undo retained | Accepted |
 | [0047](0047-011-macos-backfill.md) | Same-tag 0.1.1 macOS ARM asset backfill; build/CPU/Metal/static verification, native AE NOT_RUN | Accepted |
+| [0048](0048-ios27siri-withdrawal.md) | Withdraw IOS27Siri from the current tree and downloads; preserve local work, plugin bytes and release history | Accepted (supersedes sample shipping in 0046/0047 only) |
 
 ## Under review (Proposed)
 

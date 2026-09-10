@@ -12,7 +12,14 @@
 - Every milestone has one canonical audit document.
 - A milestone that first implements or persists a staged contract may not begin until its entry ADRs are Accepted ([ADR-0009](adr/0009-staged-format-adr-acceptance.md)).
 
-## Completed - 0.1.1 macOS ARM backfill
+## Current - IOS27Siri refinement hold
+
+The user requested withdrawing the animation before further refinement.
+Remove its current repository and release distribution, preserve local
+authoring files and plugin binaries, then leave re-publication pending the
+user's request. [ADR-0048](adr/0048-ios27siri-withdrawal.md).
+
+## Historical completion - 0.1.1 macOS ARM backfill
 
 The user separately authorized adding an Apple Silicon archive built from
 the unchanged v0.1.1 tag and published dependency lock. Completed: exact-source
@@ -336,4 +343,4 @@ four-year release gate and shelved gradient editor remain as recorded.
 
 This batch completed its recorded AE 2026 subset in [TR-MAC-001](TEST_MATRIX.md#tr-mac-001--native-apple-silicon-ae-2026), image-quality fixtures in TR-QUALITY-001, and WGSL research in TR-WGSL-001. The user then requested an independent, reference-backed iOS 27 Siri motion/shader study; it does not imply production WGSL integration or a new release.
 
-The follow-up [iOS 27 Siri study](research/ios27-siri-shader-study.md) is complete as research: observed official preview states, proposed material decomposition and a one-pass starting design. A faithful implemented clone remains a separate implementation task.
+The follow-up iOS 27 Siri study was completed as research: observed official preview states, proposed material decomposition and a one-pass starting design. Its files are withdrawn under [ADR-0048](adr/0048-ios27siri-withdrawal.md); further refinement remains separate work.

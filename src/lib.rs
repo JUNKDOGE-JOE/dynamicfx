@@ -1358,16 +1358,6 @@ mod example_tests {
         compiles("siri-glow.glsl", include_str!("../examples/siri-glow.glsl"));
     }
 
-    #[test]
-    fn siri_reference_example_compiles() {
-        compiles("siri-reference.glsl", include_str!("../examples/siri-reference.glsl"));
-    }
-
-    #[test]
-    fn siri_ribbons_example_compiles() {
-        compiles("siri-ribbons.glsl", include_str!("../examples/siri-ribbons.glsl"));
-    }
-
     /// ADR-0039: the shipped canvas-expansion demo. Also pins that its
     /// `hint:canvas` declaration reaches the definition, and that stripping
     /// the annotation still compiles — the host legs render exactly that

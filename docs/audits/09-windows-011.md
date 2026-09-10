@@ -1,6 +1,16 @@
 # 0.1.1 Windows patch, IOS27Siri sample and macOS ARM backfill
 
-## Completed macOS ARM backfill
+## IOS27Siri withdrawal - 2026-09-10
+
+The user requested temporarily withdrawing the animation for refinement.
+[ADR-0048](../adr/0048-ios27siri-withdrawal.md) supersedes its distribution
+decisions. The publication and visual checks below are historical evidence;
+they do not indicate that the sample remains available in current downloads.
+Local authoring files and pre-withdrawal release assets are preserved.
+[Withdrawal checks](evidence/siri-withdrawal-20260910/README.md) pass for the
+remaining examples and package contents. Remote update is pending.
+
+## Historical macOS ARM backfill
 
 The user separately authorized an ARM archive from the unchanged v0.1.1
 source `2428cfd94b4556cc3bc5ed63f7950ceca42a6b92` and its published exact
@@ -90,7 +100,7 @@ pool, persistence format or texture filtering behavior changes.
 | Release compilation | PASS: [log](evidence/release-011-20260909/build-release.log), [exact lock](evidence/release-011-20260909/Cargo.lock.txt) |
 | Windows artifact | PASS, AMD64/PE32+/DLL/EffectMain, version 0.1.1 and 342-byte PiPL: [identity](evidence/release-011-20260909/artifact.json) |
 | Sample relocation / source / original project preservation | PASS: [validation](evidence/release-011-20260909/sample-validation.json) |
-| Native preview | PASS, 300 unique PNG frames, 560 × 420, 60 fps and full decode: [probe](evidence/release-011-20260909/preview-probe.json), [sample](../../examples/IOS27Siri/) |
+| Native preview | Historical PASS, 300 unique PNG frames, 560 × 420, 60 fps and full decode: [probe](evidence/release-011-20260909/preview-probe.json); sample withdrawn under ADR-0048 |
 
 AEX SHA-256: `b10632fa77bee85443813758958f506033fe59d8e3bf00528f4bafd89e685e1d`.
 Environment: Windows 11, RTX 5080 DX12, Rust 1.97.1 MSVC; native Sample checks

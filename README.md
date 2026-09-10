@@ -12,11 +12,11 @@ single authority for what renders.
 
 ## Status
 
-`0.1.1` fixes Windows GPU compiler failure handling and ships the editable
-[IOS27Siri sample](examples/IOS27Siri/): continuous ribbons, soft glass breathing,
-refraction and reflected color. Backend pipeline rejection now returns `E58`
-instead of escaping into a panic; a rejected replacement cannot reuse stale
-pipelines. The sample is an independent visual study, not Apple's shader.
+`0.1.1` fixes Windows GPU compiler failure handling. Backend pipeline rejection
+now returns `E58` instead of escaping into a panic; a rejected replacement
+cannot reuse stale pipelines.
+
+The IOS27Siri animation sample is temporarily withdrawn for further refinement.
 
 | Release / host | Status |
 |---|---|
@@ -152,11 +152,6 @@ order, and aerender all agree exactly).
 ## Examples
 
 [`examples/`](examples/) has complete, working shaders to paste in:
-
-- [**IOS27Siri**](examples/IOS27Siri/) — an AE 2026 project, included background
-  assets, GLSL source and a 60 fps preview. Four analytic colored sheets retain
-  changing phase offsets; glass breathing and transmission/sheen are editable.
-  No frame-by-frame motion data or external service is needed.
 
 - [`thermal.glsl`](examples/thermal.glsl) — a six-pass heat signature: warped
   fBm field, two separable blur chains, palette compositing. Shows multi-pass

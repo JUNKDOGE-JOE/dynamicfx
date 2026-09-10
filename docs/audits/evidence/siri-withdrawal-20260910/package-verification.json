@@ -1,0 +1,60 @@
+{
+  "baseline_commit": "effc75becb4829f2675086be6fdf11b009f95a57",
+  "removed_repository_files": {
+    "examples/IOS27Siri/IOS27Siri.aep": "6c8a52412ab975202f39c514c7bf15e78d09850a0b02a2742efc6fbb8e346ab3",
+    "examples/IOS27Siri/README.md": "d34a99744ee0360bd3541c2875b41dc7dfc78c3ad0a7f105d3d70b327af0fe70",
+    "examples/IOS27Siri/assets/background.png": "253fc329753f443b7f290dd8eb4a90d2cc8ea6eb690bb217a2999974294a5492",
+    "examples/IOS27Siri/assets/wallpaper.png": "e34a66d2ab2e44e9917cbaa2505be76515ddfe911ff14832d326a75ae14eb254",
+    "examples/IOS27Siri/preview.mp4": "75d2e2d634c8f8d20d4b33d7763994a114b2dfb9ea5dac2c5befb64e66568e02",
+    "examples/IOS27Siri/preview.png": "b09df1fe197cdffd2e0b4fa8c59c53191b3d1c40efed17a1531b2a6900ce8ba6",
+    "examples/siri-reference.glsl": "4b5f7fe9efa395fedd7b018fe604bda492abd6aa08872870f7fa6d78854b01e4",
+    "examples/siri-reference.md": "ba714df69cfb5c889c60a5a51d9a0c90cf0eb7de6d5469619cc0748df77bf3c1",
+    "examples/siri-ribbons.glsl": "4949b464100adc9cefce0036d9e0c237cf34cb1cc5d5d38f9e3fce70c913cb7d",
+    "scripts/quality/check_siri_continuous.py": "8b32827d03ff2225986bb084eb0e6d9ddff3343cb76946a9e7a114e3151513ff",
+    "docs/research/ios27-siri-shader-study.md": "93d69d1546cbaef95d86ea44bfda16ea51eaff4a397efe5c8e0ea824c43d8895",
+    "docs/research/siri27-layers.svg": "266041e7231c9c043636042485d6400223d1cb78ec740daedeeeab8b386d65e7",
+    "docs/research/siri27-observations.json": "a01eb1a37b95d2562d1d14530e6e62711f639713dc0ef9dc473b01a1b5c3d3f4"
+  },
+  "backup_assets_sha256": {
+    "DynamicFX-0.1.1-macos-arm64.zip": "e8b4b01dab9df5567a93b27ee3f30ec174bb48098319826f57a22703bb2c3cc7",
+    "DynamicFX-0.1.1-windows-x64.zip": "96ec69db520d687e8a266c688995dfb6c4a98b061c66b4b227283a56cb783d65",
+    "IOS27Siri-0.1.1.zip": "a40f788d08b630a91dbd5188ac13c9fd632308dda72a7daf954cbab30bdaeace",
+    "SHA256SUMS.txt": "609cb388d1fed478281e7b81b56274d08675134b753286ce0b1a08c027fa3285"
+  },
+  "mac_archive": {
+    "name": "DynamicFX-0.1.1-macos-arm64.zip",
+    "sha256": "8a536d03aa5960bda701dacc92e862bb26b66ec585de73dffb2b15e24ef00b12",
+    "size": 3581945,
+    "removed_files": [
+      "examples/IOS27Siri/IOS27Siri.aep",
+      "examples/IOS27Siri/README.md",
+      "examples/IOS27Siri/assets/background.png",
+      "examples/IOS27Siri/assets/wallpaper.png",
+      "examples/IOS27Siri/preview.mp4",
+      "examples/IOS27Siri/preview.png",
+      "examples/siri-reference.glsl",
+      "examples/siri-reference.md",
+      "examples/siri-ribbons.glsl"
+    ],
+    "changed_documents": [
+      "README.md",
+      "examples/README.md",
+      "INSTALL.txt"
+    ],
+    "unchanged_entries": 285,
+    "bundle_entries": [
+      "DynamicFx.plugin/Contents/Info.plist",
+      "DynamicFx.plugin/Contents/MacOS/DynamicFx",
+      "DynamicFx.plugin/Contents/PkgInfo",
+      "DynamicFx.plugin/Contents/Resources/DynamicFx.rsrc",
+      "DynamicFx.plugin/Contents/Resources/packaging-context.json",
+      "DynamicFx.plugin/Contents/_CodeSignature/CodeResources"
+    ],
+    "manifest_entries": 289,
+    "crc": "PASS",
+    "retained_bytes_and_metadata": "PASS"
+  },
+  "windows_archive": "unchanged",
+  "source_tag": "unchanged",
+  "native_AE": "NOT_RUN; no plugin bytes changed"
+}

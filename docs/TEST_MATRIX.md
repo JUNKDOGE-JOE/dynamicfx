@@ -1186,7 +1186,18 @@ Earlier production GPU and retired-candidate results remain historical:
   and verify archive, executable/PiPL hashes and signature. Old 91c8 ZIP checks
   do not verify the final release package. [Audit](audits/08-wgsl-010.md).
 
-## TR-REL-011 - Windows patch and IOS27Siri sample
+## TR-SIRI-WITHDRAWAL - Current distribution withdrawal
+
+2026-09-10, baseline `effc75b`, Windows: **PASS** remaining example compilation
+(6 tests), isolated Windows packaging fixture, Python syntax, document links
+and `git diff --check`. **PASS** Mac sample removal, archive CRC, 289 internal
+hashes, and unchanged bytes/metadata for 285 retained entries including the
+signed bundle. Thirteen repository files were backed up and hash-verified;
+the original authoring checkout remains preserved. Remote update and download
+verification are pending. No runtime changes or new AE acceptance are claimed.
+[Evidence and initial fixture failures](audits/evidence/siri-withdrawal-20260910/README.md).
+
+## TR-REL-011 - Windows patch and IOS27Siri sample (historical)
 
 2026-09-09: PASS default/editor CPU suites (222 each), quality suite (98),
 explicit real-DX12 compiler rejection/recovery, versioned Windows Release

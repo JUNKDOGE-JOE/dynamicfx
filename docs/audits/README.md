@@ -56,4 +56,4 @@ An audit is complete only when its milestone exit criteria have matching Test Ma
 
 | Post-M7 | [08 WGSL and 0.1.0](08-wgsl-010.md) | Native macOS acceptance complete with ADR-0045 Source Undo exception; publication pending |
 
-| Post-M7 | [09 Windows 0.1.1](09-windows-011.md) | Published; downloaded hashes and portable Sample verified |
+| Post-M7 | [09 Windows 0.1.1](09-windows-011.md) | Published plugin; IOS27Siri withdrawal supersedes historical Sample distribution |

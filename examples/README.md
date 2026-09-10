@@ -44,15 +44,6 @@ the main thread prevents the compile from ever happening.
 
 ## The examples
 
-### [IOS27Siri](IOS27Siri/) — editable AE project and continuous glass/ribbons
-
-Open `IOS27Siri/IOS27Siri.aep` in AE 2026 with DynamicFX installed. The sample
-contains its background assets, a 1170 × 2532 master, a detail view and a
-five-second, 60 fps preview. Its [eight-pass GLSL source](siri-reference.glsl)
-evaluates four colored sheets directly from time, with persistent phase gaps,
-soft glass breathing, refraction and colored reflections. See the
-[sample instructions](IOS27Siri/README.md) and [shader controls](siri-reference.md).
-
 ### [`wgsl-field.wgsl`](wgsl-field.wgsl) — single-pass analytic light field
 
 A flowing cyan/violet disc with a narrow highlighted rim. It samples the
@@ -60,8 +51,7 @@ source, exposes speed/radius/rim/colors/amount plus an `i32` checkbox, and
 preserves input alpha. Apply it to a comp-sized solid or footage. Continuous
 trigonometric fields avoid random cell boundaries; `fwidth` coverage follows
 the rendered pixel footprint while the logical shape remains fixed at reduced
-preview resolutions. This is a compact WGSL authoring example, not the iOS 27
-Siri study.
+preview resolutions.
 
 ### [`wgsl-multipass.wgsl`](wgsl-multipass.wgsl) — field plus sampled glow
 

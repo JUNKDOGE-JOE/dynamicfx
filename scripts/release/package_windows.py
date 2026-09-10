@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Package a verified Windows AEX and the portable IOS27Siri sample."""
+"""Package a verified Windows AEX with its dependencies and instructions."""
 import argparse
 import hashlib
 import json
@@ -64,16 +64,13 @@ Known limitation: Source edits may not restore with one Undo; Redo may be
 unavailable. Keep prior shader text and explicitly restore it when needed.
 The optional gradient editor is disabled. No accounts or services are required.
 
-Source, full instructions and sample:
+Source and full instructions:
 https://github.com/JUNKDOGE-JOE/dynamicfx/tree/v{version}
-The separate IOS27Siri sample ZIP includes the editable AE 2026 project.
 '''
     args.out.mkdir(parents=True, exist_ok=True)
     plugin_zip = args.out / f'DynamicFX-{version}-windows-x64.zip'
-    sample_zip = args.out / f'IOS27Siri-{version}.zip'
-    for p in [plugin_zip, sample_zip]:
-        if p.exists():
-            raise ValueError('Refusing to replace a frozen package: ' + str(p))
+    if plugin_zip.exists():
+        raise ValueError('Refusing to replace a frozen package: ' + str(plugin_zip))
     with zipfile.ZipFile(plugin_zip, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         z.writestr('DynamicFx.aex', artifact)
         z.writestr('INSTALL.txt', install)
@@ -83,18 +80,8 @@ The separate IOS27Siri sample ZIP includes the editable AE 2026 project.
         for p in sorted(args.third_party.rglob('*')):
             if p.is_file():
                 z.write(p, 'THIRD_PARTY/' + p.relative_to(args.third_party).as_posix())
-    sample = ROOT / 'examples/IOS27Siri'
-    with zipfile.ZipFile(sample_zip, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:
-        for name in ['IOS27Siri.aep', 'preview.mp4', 'preview.png', 'assets/wallpaper.png', 'assets/background.png']:
-            z.write(sample / name, 'IOS27Siri/' + name)
-        readme = (sample / 'README.md').read_text().replace('../siri-reference.glsl', 'siri-reference.glsl').replace('../siri-reference.md', 'siri-reference.md')
-        z.writestr('IOS27Siri/README.md', readme)
-        z.write(ROOT / 'examples/siri-reference.glsl', 'IOS27Siri/siri-reference.glsl')
-        guide = (ROOT / 'examples/siri-reference.md').read_text().replace('../docs/TEST_MATRIX.md', f'https://github.com/JUNKDOGE-JOE/dynamicfx/blob/v{version}/docs/TEST_MATRIX.md')
-        z.writestr('IOS27Siri/siri-reference.md', guide)
-        z.write(ROOT / 'LICENSE', 'IOS27Siri/LICENSE')
     sums = []
-    for p in [plugin_zip, sample_zip]:
+    for p in [plugin_zip]:
         with zipfile.ZipFile(p) as z:
             assert z.testzip() is None
         sums.append(f'{sha(p.read_bytes())}  {p.name}')

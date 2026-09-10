@@ -4,7 +4,19 @@
 > Architecture intent belongs in [ARCHITECTURE.md](ARCHITECTURE.md); future sequencing belongs in [ROADMAP.md](ROADMAP.md); verification truth belongs in [TEST_MATRIX.md](TEST_MATRIX.md).
 
 
-## Released - 0.1.1 macOS ARM backfill
+## Active - IOS27Siri withdrawal
+
+The user requested temporarily withdrawing the IOS27Siri animation for further
+refinement. Work starts from `effc75b` in an isolated checkout. Remove its
+project, shaders, preview and download entries, and stop packaging the sample.
+Preserve local authoring files, historical release evidence, the source tag,
+and all plugin binaries. The Mac archive also contains the sample and needs
+a packaging-only refresh with unchanged signed bundle bytes.
+
+**Exact next action:** verify the withdrawal, update the existing release and
+confirm its downloaded contents before marking this work complete.
+
+## Historical publication - 0.1.1 macOS ARM backfill
 
 The authorized Apple Silicon macOS backfill is complete, built from the existing
 `v0.1.1` source commit `2428cfd94b4556cc3bc5ed63f7950ceca42a6b92`
@@ -94,7 +106,7 @@ diff, Intel/Rosetta or notarized distribution.
 
 The follow-up iOS 27 Siri study is also complete: official preview media was
 visually inspected at recorded time points, distinct from the old glowing-edge
-example. The [research report](research/ios27-siri-shader-study.md) separates
+example. The research report (withdrawn under [ADR-0048](adr/0048-ios27siri-withdrawal.md)) separates
 observed bubble/refraction/light-band behavior from our proposed shader design.
 It delivers a decomposition and implementation/validation plan, not an already
 implemented faithful iOS 27 clone.
