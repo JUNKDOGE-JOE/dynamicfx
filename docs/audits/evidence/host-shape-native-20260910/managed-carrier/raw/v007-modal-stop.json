@@ -1,0 +1,6 @@
+{
+  "Id": 23740,
+  "StartTime": "2026-09-11T00:11:02.9576064+08:00",
+  "StopTime": "2026-09-11T00:15:23.1187011+08:00",
+  "Reason": "User reports recurring tracked memory ID errors 23::33 from diagnostic callback; disposable fixture has saved checkpoint"
+}

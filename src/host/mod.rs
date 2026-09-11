@@ -2,6 +2,8 @@
 //! `lib.rs`; the `definition`/`frontend`/`binding` domain layers stay
 //! host-agnostic by policy (CLAUDE.md).
 
+pub(crate) mod callback;
+pub(crate) mod entry;
 pub mod idle;
 pub mod params;
 

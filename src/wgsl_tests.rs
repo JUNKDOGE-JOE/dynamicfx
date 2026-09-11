@@ -44,7 +44,7 @@ fn compile(language: LanguageId, text: &str, previous: Option<&binding::BindingP
 fn wgsl_snapshot_flattens_and_rebuilds_original_language_and_plan() {
     let text = wgsl("gain: f32,", "// @param gain default:0.25", "return vec4<f32>(fx.gain, uv, 1.0);");
     let (fp, effect) = compile(LanguageId::WGSL, &text, None);
-    let local = Mutex::new(Local { compiled: Some(Arc::clone(&effect)), token: fp, ..Local::default() });
+    let local = LocalMutex::new(Local { compiled: Some(Arc::clone(&effect)), token: fp, ..Local::default() });
     let (version, bytes) = <LocalMutex as AdobePluginInstance>::flatten(&local).unwrap();
     let restored = <LocalMutex as AdobePluginInstance>::unflatten(version, &bytes).unwrap();
     let mut restored = restored.lock().unwrap();

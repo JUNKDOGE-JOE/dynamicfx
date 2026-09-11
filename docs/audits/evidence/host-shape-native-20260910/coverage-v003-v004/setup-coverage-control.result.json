@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":90,\\\"name\\\":\\\"HS_coverage_control\\\",\\\"adjustment\\\":false,\\\"effectCount\\\":1,\\\"probe\\\":\\\"DynamicFx Host Shape Probe\\\"}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":90,\"name\":\"HS_coverage_control\",\"adjustment\":false,\"effectCount\":1,\"probe\":\"DynamicFx Host Shape Probe\"}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

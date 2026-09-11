@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"file\\\":\\\"host-shape-native.aep\\\",\\\"comp\\\":1,\\\"effect\\\":\\\"DynamicFx Host Shape Probe\\\",\\\"count\\\":6,\\\"params\\\":[{\\\"index\\\":1,\\\"name\\\":\\\"Layer time (s)\\\",\\\"type\\\":\\\"6417\\\",\\\"value\\\":0},{\\\"index\\\":2,\\\"name\\\":\\\"Read mode\\\",\\\"type\\\":\\\"6417\\\",\\\"value\\\":1},{\\\"index\\\":3,\\\"name\\\":\\\"Read host\\\",\\\"type\\\":\\\"6412\\\",\\\"value\\\":null},{\\\"index\\\":4,\\\"name\\\":\\\"Log PF paths during render\\\",\\\"type\\\":\\\"6417\\\",\\\"value\\\":1},{\\\"index\\\":5,\\\"name\\\":\\\"Background request serial\\\",\\\"type\\\":\\\"6417\\\",\\\"value\\\":0},{\\\"index\\\":6,\\\"name\\\":\\\"合成选项\\\",\\\"type\\\":\\\"undefined\\\"}]}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"file\":\"host-shape-native.aep\",\"comp\":1,\"effect\":\"DynamicFx Host Shape Probe\",\"count\":6,\"params\":[{\"index\":1,\"name\":\"Layer time (s)\",\"type\":\"6417\",\"value\":0},{\"index\":2,\"name\":\"Read mode\",\"type\":\"6417\",\"value\":1},{\"index\":3,\"name\":\"Read host\",\"type\":\"6412\",\"value\":null},{\"index\":4,\"name\":\"Log PF paths during render\",\"type\":\"6417\",\"value\":1},{\"index\":5,\"name\":\"Background request serial\",\"type\":\"6417\",\"value\":0},{\"index\":6,\"name\":\"合成选项\",\"type\":\"undefined\"}]}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

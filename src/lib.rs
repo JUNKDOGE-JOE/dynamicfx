@@ -23,6 +23,8 @@ mod render;
 mod source;
 #[cfg(test)]
 mod wgsl_tests;
+#[cfg(test)]
+mod reentry_tests;
 
 // M3 persistence layers (ADRs 0015-0017).
 pub mod diagnostics;
@@ -1642,7 +1644,7 @@ void main() {{
     }
 
     fn flatten_of(local: Local) -> Vec<u8> {
-        let (version, bytes) = <LocalMutex as AdobePluginInstance>::flatten(&Mutex::new(local))
+        let (version, bytes) = <LocalMutex as AdobePluginInstance>::flatten(&LocalMutex::new(local))
             .expect("flatten never fails");
         assert_eq!(version, 1);
         bytes
@@ -1760,7 +1762,64 @@ impl Global {
 
 ae::define_effect!(Global, LocalMutex, ParamKey);
 
-type LocalMutex = Mutex<Local>;
+type LocalMutex = host::entry::LiveInstance<Local>;
+
+struct UiPublication {
+    status: String,
+    status_text: String,
+    status_code: Diag,
+    last_attempt: Option<u64>,
+    token: u64,
+    compiled: Option<Arc<CompiledEffect>>,
+    configured_token: Option<u64>,
+    visibility_token: Option<u64>,
+    group_visibility_disabled: bool,
+}
+
+impl UiPublication {
+    fn read(local: &Local) -> Self {
+        Self {
+            status: local.status.clone(),
+            status_text: local.status_text.clone(),
+            status_code: local.status_code,
+            last_attempt: local.last_attempt,
+            token: local.token,
+            compiled: local.compiled.clone(),
+            configured_token: local.configured_token,
+            visibility_token: local.visibility_token,
+            group_visibility_disabled: local.group_visibility_disabled,
+        }
+    }
+
+    fn finish(self, local: &mut Local) {
+        let same_definition = match (&self.compiled, &local.compiled) {
+            (Some(a), Some(b)) => Arc::ptr_eq(a, b),
+            (None, None) => true,
+            _ => false,
+        };
+        if same_definition && self.token == local.token
+            && self.last_attempt == local.last_attempt && self.status_code == local.status_code
+        {
+            local.status = self.status;
+            local.configured_token = self.configured_token;
+            local.visibility_token = self.visibility_token;
+            local.group_visibility_disabled = self.group_visibility_disabled;
+        }
+    }
+}
+
+fn with_ui_publication(
+    instance: &LocalMutex,
+    publish: impl FnOnce(&mut UiPublication) -> Result<(), Error>,
+) -> Result<(), Error> {
+    let Some(_scope) = host::callback::HostCallScope::enter(instance) else { return Ok(()) };
+    let mut publication = UiPublication::read(&*instance.lock().map_err(|_| Error::Generic)?);
+    // AEGP and PF UI calls can synchronously request this instance's flattened
+    // sequence. Keep the authoritative state available throughout publication.
+    let result = publish(&mut publication);
+    publication.finish(&mut *instance.lock().map_err(|_| Error::Generic)?);
+    result
+}
 
 struct Local {
     /// Status text last written into the Status parameter name.
@@ -2184,12 +2243,44 @@ fn selected_language(plugin: &mut PluginState) -> Option<LanguageId> {
     frontend::language_from_popup_position(u32::try_from(position).ok()?)
 }
 
-/// Observation core: read language + expression, classify, compile, publish
-/// into the process registry, and update `local` (including the desired
-/// status text). Touches NO parameters, so it is legal from UI callbacks,
-/// CompletelyGeneral, and main-thread render. Returns whether the attempt
-/// changed anything.
-fn observe_core(plugin: &mut PluginState, local: &mut Local, force: bool) -> Result<bool, Error> {
+fn observe_core(
+    plugin: &mut PluginState,
+    instance: &LocalMutex,
+    force: bool,
+) -> Result<Option<bool>, Error> {
+    observe_with(instance, force, || {
+        let language = selected_language(plugin);
+        let observation = if language.is_some() {
+            observe_source(plugin)?
+        } else {
+            Observation::NoExpression
+        };
+        Ok((language, observation))
+    })
+}
+
+fn observe_with(
+    instance: &LocalMutex,
+    force: bool,
+    read: impl FnOnce() -> Result<(Option<LanguageId>, Observation), Error>,
+) -> Result<Option<bool>, Error> {
+    let Some(_scope) = host::callback::HostCallScope::enter(instance) else { return Ok(None) };
+    if instance.lock().map_err(|_| Error::Generic)?.block_rebind && !force {
+        return Ok(Some(false));
+    }
+    // Converting PF handles to AEGP effects can reenter flatten during project
+    // loading. Read the host first; only pure observation application holds Local.
+    let (language, observation) = read()?;
+    let mut local = instance.lock().map_err(|_| Error::Generic)?;
+    apply_observation(&mut local, force, language, observation).map(Some)
+}
+
+fn apply_observation(
+    local: &mut Local,
+    force: bool,
+    language: Option<LanguageId>,
+    observation: Observation,
+) -> Result<bool, Error> {
     // SnapshotSchemaUnknown refuses implicit re-binding: fresh allocation
     // could silently misalign keyframes (ADR-0016 §1). Explicit Compile
     // (force) is the user's consent to re-bind.
@@ -2200,13 +2291,12 @@ fn observe_core(plugin: &mut PluginState, local: &mut Local, force: bool) -> Res
         local.block_rebind = false;
     }
 
-    let Some(language) = selected_language(plugin) else {
+    let Some(language) = language else {
         local.status_code = Diag::LanguageUnknown;
         local.status_text = "language selection unknown".to_string();
         return Ok(true);
     };
 
-    let observation = observe_source(plugin)?;
     local.source_absent = !matches!(&observation, Observation::Committed(_));
     let (attempt, code, status, compiled) = match observation {
         Observation::NoExpression => (
@@ -2859,7 +2949,7 @@ fn set_slot_hidden(
 /// DynamicStream visibility while AE is still constructing the property tree
 /// during addProperty() breaks the scripting API's child lookup (prototype
 /// lesson, kept as a hard rule).
-fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
+fn configure_slots(plugin: &mut PluginState, local: &mut UiPublication) {
     // No definition (fresh instance, cleared source): hide the ENTIRE pool
     // once — an uncompiled effect exposing hundreds of unbound controls
     // floods the Effect Controls panel and measurably drags it (user report).
@@ -3238,7 +3328,7 @@ fn apply_visibility(
 }
 
 /// Mirror the status text into the Status parameter's name. UI contexts only.
-fn set_status(plugin: &mut PluginState, local: &mut Local, status: String) {
+fn set_status(plugin: &mut PluginState, local: &mut UiPublication, status: String) {
     // Failures carry their stable code up front; the 31-char PF name limit
     // truncates text, never the code (ADR-0015 §4).
     let status = diagnostics::status_text(local.status_code, &status);
@@ -3267,7 +3357,7 @@ fn set_status(plugin: &mut PluginState, local: &mut Local, status: String) {
 /// Only UserChangedParam calls this: PF scalar writes belong to that user
 /// transaction. Color/angle keep the existing full-precision AEGP writer;
 /// its Undo grouping with the PF writes still requires host verification.
-fn publish_fresh_defaults(plugin: &mut PluginState, local: &Local) -> Result<(), Error> {
+fn publish_fresh_defaults(plugin: &mut PluginState, local: &UiPublication) -> Result<(), Error> {
     let Some(compiled) = &local.compiled else { return Ok(()) };
     let desired = desired_token_state(local.token, local.status_code);
     if !fresh_publication_needed(
@@ -3433,7 +3523,7 @@ mod fresh_default_tests {
 /// Publish the ADR-0015 token word into the StateToken parameter stream.
 /// Legal only in a UserChangedParam context (ParamDef writes elsewhere are
 /// ignored by AE); the idle observer mirrors it via AEGP for scripted paths.
-fn publish_token_param(plugin: &mut PluginState, local: &Local) {
+fn publish_token_param(plugin: &mut PluginState, local: &UiPublication) {
     let desired = encode_token_state(desired_token_state(local.token, local.status_code));
     write_word_param(plugin, ParamKey::StateToken, desired);
     write_word_param(plugin, ParamKey::PlanToken, plan_word(local) as f64);
@@ -3441,7 +3531,7 @@ fn publish_token_param(plugin: &mut PluginState, local: &Local) {
 
 /// The plan word an instance publishes beside its token (ADR-0038 §7): the
 /// identity of the published artifact's plan, 0 when nothing is published.
-fn plan_word(local: &Local) -> u64 {
+fn plan_word(local: &UiPublication) -> u64 {
     match (&local.compiled, local.token) {
         (Some(compiled), token) if token != 0 => {
             identity::plan_identity(&compiled.definition.binding)
@@ -3894,7 +3984,7 @@ impl AdobePluginInstance for LocalMutex {
         // ADR-0016 validation; prototype bytes fail its magic check and are
         // discarded (ADR-0004: no compatibility promise).
         if serialized.is_empty() {
-            return Ok(Mutex::new(Local::default()));
+            return Ok(Self::default());
         }
         let local = match persistence::decode(serialized) {
             Ok(snapshot) => Local { snapshot: Some(snapshot), ..Local::default() },
@@ -3918,7 +4008,7 @@ impl AdobePluginInstance for LocalMutex {
                 }
             }
         };
-        Ok(Mutex::new(local))
+        Ok(Self::new(local))
     }
 
     fn render(
@@ -3939,7 +4029,6 @@ impl AdobePluginInstance for LocalMutex {
             }
         };
         let on_main_thread = std::thread::current().id() == plugin.global.main_thread;
-        let mut local = self.lock().map_err(|_| Error::Generic)?;
         // ROI window stashed by the SmartRender arm on this thread; legacy
         // renders get the whole frame at origin zero.
         let window = SMART_WINDOW.with(|w| w.take()).unwrap_or((0, 0));
@@ -3953,12 +4042,14 @@ impl AdobePluginInstance for LocalMutex {
         // the next UI callback; render must not touch parameters.
         let mut observed_now = false;
         if on_main_thread {
-            match observe_core(plugin, &mut local, false) {
-                Ok(_) => observed_now = true,
+            match observe_core(plugin, self, false) {
+                Ok(Some(_)) => observed_now = true,
+                Ok(None) => {}
                 Err(e) => diag::verbose(&format!("main-thread observe failed: {e:?}")),
             }
         }
 
+        let mut local = self.lock().map_err(|_| Error::Generic)?;
         if !observed_now {
             resolve_transported_definition(plugin, &mut local);
         }
@@ -4456,35 +4547,37 @@ impl AdobePluginInstance for LocalMutex {
                     host::show_info_dialog(plugin.global.plugin_id()?, &text)?;
                     return Ok(());
                 }
-                let mut local = self.lock().map_err(|_| Error::Generic)?;
-                observe_core(plugin, &mut local, force)?;
+                let Some(_) = observe_core(plugin, self, force)? else { return Ok(()) };
                 // UI callbacks always try to land the desired status text —
                 // observation may have happened earlier in a context that
                 // could not touch parameters (idle bridge, render).
-                let text = local.status_text.clone();
-                set_status(plugin, &mut local, text);
-                configure_slots(plugin, &mut local);
-                // Commit context: mirror the token word into the stream so
-                // render clones can resolve it.
-                publish_fresh_defaults(plugin, &local)?;
-                publish_token_param(plugin, &local);
-                diag::log(&format!(
-                    "ui publication: param={param_index}, language={:?}, token={}, plan={}, code=E{}",
-                    selected_language(plugin),
-                    encode_token_state(desired_token_state(local.token, local.status_code)),
-                    plan_word(&local),
-                    local.status_code.code(),
-                ));
-                drop(local);
+                with_ui_publication(self, |local| {
+                    let text = local.status_text.clone();
+                    set_status(plugin, local, text);
+                    configure_slots(plugin, local);
+                    // Commit context: mirror the token word into the stream so
+                    // render clones can resolve it.
+                    publish_fresh_defaults(plugin, local)?;
+                    publish_token_param(plugin, local);
+                    diag::log(&format!(
+                        "ui publication: param={param_index}, language={:?}, token={}, plan={}, code=E{}",
+                        selected_language(plugin),
+                        encode_token_state(desired_token_state(local.token, local.status_code)),
+                        plan_word(local),
+                        local.status_code.code(),
+                    ));
+                    Ok(())
+                })?;
                 plugin.out_data.set_force_rerender();
             }
             Command::UpdateParamsUi => {
-                let mut local = self.lock().map_err(|_| Error::Generic)?;
-                let changed = observe_core(plugin, &mut local, false)?;
-                let text = local.status_text.clone();
-                set_status(plugin, &mut local, text);
-                configure_slots(plugin, &mut local);
-                drop(local);
+                let Some(changed) = observe_core(plugin, self, false)? else { return Ok(()) };
+                with_ui_publication(self, |local| {
+                    let text = local.status_text.clone();
+                    set_status(plugin, local, text);
+                    configure_slots(plugin, local);
+                    Ok(())
+                })?;
                 if changed {
                     plugin.out_data.set_force_rerender();
                 }
@@ -4494,8 +4587,8 @@ impl AdobePluginInstance for LocalMutex {
             // hook mirrors the token via AEGP afterwards; the status text
             // lands on the next UI callback).
             Command::CompletelyGeneral => {
-                let mut local = self.lock().map_err(|_| Error::Generic)?;
-                let changed = observe_core(plugin, &mut local, false)?;
+                let Some(changed) = observe_core(plugin, self, false)? else { return Ok(()) };
+                let local = self.lock().map_err(|_| Error::Generic)?;
                 // Reported every tick, not only on change: the observer
                 // needs this instance's own artifact for the slot UI and its
                 // own diagnostic for the token (ADR-0038 §5).

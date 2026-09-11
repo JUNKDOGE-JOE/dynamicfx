@@ -1,0 +1,41 @@
+{
+  "comparison": "PF-read coverage blocks vs native reference alpha; 8-bit PNG comparison from 16-bpc",
+  "rows": [
+    {
+      "label": "v005-coverage-blocks",
+      "vertices": 3648,
+      "pixels": 480000,
+      "different": 49,
+      "max_error_8bit": 1,
+      "mae_8bit": 0.00010208333333333334,
+      "within_one_8bit_level": true
+    },
+    {
+      "label": "coverage-animated-t1",
+      "vertices": 4086,
+      "pixels": 480000,
+      "different": 31,
+      "max_error_8bit": 1,
+      "mae_8bit": 6.458333333333334e-05,
+      "within_one_8bit_level": true
+    },
+    {
+      "label": "coverage-animated-t0",
+      "vertices": 5022,
+      "pixels": 480000,
+      "different": 22,
+      "max_error_8bit": 1,
+      "mae_8bit": 4.5833333333333334e-05,
+      "within_one_8bit_level": true
+    },
+    {
+      "label": "coverage-animated-t05",
+      "vertices": 4622,
+      "pixels": 480000,
+      "different": 16,
+      "max_error_8bit": 1,
+      "mae_8bit": 3.3333333333333335e-05,
+      "within_one_8bit_level": true
+    }
+  ]
+}

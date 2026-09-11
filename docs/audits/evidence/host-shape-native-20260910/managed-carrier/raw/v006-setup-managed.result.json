@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":174,\\\"name\\\":\\\"HS_auto_base\\\",\\\"layer\\\":177,\\\"masksBeforeIdle\\\":1,\\\"parameters\\\":8,\\\"userMask\\\":[[40,40],[80,40],[80,80],[40,80]],\\\"optedIn\\\":1}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":174,\"name\":\"HS_auto_base\",\"layer\":177,\"masksBeforeIdle\":1,\"parameters\":8,\"userMask\":[[40,40],[80,40],[80,80],[40,80]],\"optedIn\":1}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

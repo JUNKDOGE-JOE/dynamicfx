@@ -1,0 +1,4 @@
+{
+  "code": "(function(){var c=app.project.itemByID(103);if(!c||c.name!=='HS_builtin_source')throw Error('Fixture missing');var fx=c.layer(1).property('ADBE Effect Parade');var r=[];for(var k=1;k<=fx.numProperties;k++){var m=fx.property(k);var a=[];for(var j=1;j<=m.numProperties;j++){var p=m.property(j);var leaf=p.propertyType===PropertyType.PROPERTY;a.push({i:j,name:p.name,matchName:p.matchName,type:String(p.propertyValueType),value:leaf?p.value:null});}r.push({i:k,matchName:m.matchName,properties:a});}return JSON.stringify({comp:c.id,effects:r});})()",
+  "timeout_sec": 15
+}

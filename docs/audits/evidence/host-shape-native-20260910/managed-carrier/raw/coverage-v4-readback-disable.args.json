@@ -1,0 +1,5 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");var c=app.project.itemByID(160);var p=c.layer(1).property(\"ADBE Mask Parade\").property(\"HS Coverage Data Probe\").property(\"ADBE Mask Shape\");var r={enabled:p.expressionEnabled,error:p.expressionError,expressionLength:p.expression.length};p.expressionEnabled=false;c.layer(1).property(\"ADBE Effect Parade\").property(1).property(4).setValue(false);return JSON.stringify(r);})()",
+  "timeout_sec": 15,
+  "undo_group_name": "Disable expensive diagnostic expression after timeout"
+}

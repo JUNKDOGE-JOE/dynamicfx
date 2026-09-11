@@ -1,0 +1,5 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var reset=[];for(var i=1;i<=app.project.numItems;i++){var c=app.project.item(i);if(!(c instanceof CompItem)||c.name.indexOf('HS_')!==0)continue;var fx=c.layer(1).property('ADBE Effect Parade');if(fx.numProperties&&fx.property(1).matchName==='DynamicFx Host Shape Probe'){fx.property(1).property(4).setValue(0);fx.property(1).property(5).setValue(0);fx.property(1).property(2).setValue(2);reset.push(c.id);}}var partial=app.project.itemByID(160);partial.layer(1).property('ADBE Mask Parade').property('HS Coverage Data Probe').property('ADBE Mask Shape').expressionEnabled=false;app.project.save();return JSON.stringify({version:app.version,file:app.project.file.fsName,dirty:app.project.dirty,items:app.project.numItems,reset:reset,partialExpressionDisabled:true});})()",
+  "timeout_sec": 20,
+  "undo_group_name": "Save coverage feasibility fixtures in standby"
+}

@@ -1,0 +1,4 @@
+[time=1789057646331 pid=5336 thread=ThreadId(1)]
+CARRIER comp=174 layer=177 created mask_id=3
+[time=1789057647360 pid=5336 thread=ThreadId(1)]
+CARRIER comp=174 layer=177 reused mask_id=3

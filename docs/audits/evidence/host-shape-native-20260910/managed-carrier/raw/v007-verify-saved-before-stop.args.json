@@ -1,0 +1,4 @@
+{
+  "code": "(function(){var p=app.project;return JSON.stringify({file:p.file?p.file.fsName:null,dirty:p.dirty,items:p.numItems,carrier:p.itemByID(174).layer(1).property(\"ADBE Effect Parade\").property(1).property(7).value,check:\"saved-before-owned-process-exit\"});})()",
+  "timeout_sec": 15
+}

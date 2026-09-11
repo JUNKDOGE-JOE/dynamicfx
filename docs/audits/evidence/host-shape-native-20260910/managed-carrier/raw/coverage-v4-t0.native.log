@@ -1,0 +1,10 @@
+[time=1789051896269 pid=56396 thread=ThreadId(1)]
+BACKGROUND_BEGIN comp=1 layer=16 effect=1 serial=3 mode=4 layer_seconds=0
+[time=1789051896271 pid=56396 thread=ThreadId(1)]
+world=800x600 rowbytes=6400 type=2 region=A_LRect { left: 0, top: 0, right: 800, bottom: 600 }
+coordinates=world-local; compare only identity baseline until origin mapping is proven
+alpha[210,490]=1
+alpha[400,300]=1
+alpha[50,50]=1
+
+BACKGROUND_COMPLETE comp=1 serial=3

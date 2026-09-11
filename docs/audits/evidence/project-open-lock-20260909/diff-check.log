@@ -1,0 +1,9 @@
+warning: in the working copy of 'build.rs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/IMPLEMENTATION_STATUS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/TEST_MATRIX.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/audits/README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'scripts/macos.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/host/idle.rs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/host/mod.rs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib.rs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/wgsl_tests.rs', LF will be replaced by CRLF the next time Git touches it

@@ -1,0 +1,51 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":false,\"error\":\"ExtendScript error: Error: 表达式被禁用\\n合成“HS_vector_animated”中图层 1（“host”）的属性“路径”中，第 1 行出现错误。\\r\\nTypeError: value.points is not a function\\n\\n\\t\\n▶\\tvar pts=value.points();for(var i=0;i<pts.length;i++){pts[i]=pts[i]+[ti ...\\n\\t (line 1)\\n[hint] that API does not exist on this object - verify with a read tool first instead of guessing method names\",\"disposition\":\"failed\",\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":null,\"pendingCalls\":0,\"sentinelInFlight\":false},\"errorLine\":1,\"touched\":{\"level\":\"item_diff\",\"method\":\"snapshot-diff\",\"comp\":null,\"activeCompChanged\":null,\"layersAdded\":[],\"layersRemoved\":[],\"layersChanged\":[],\"itemsAdded\":[{\"id\":76,\"name\":\"HS_vector_animated\",\"type\":\"å�ˆæˆ�\"}],\"itemsRemoved\":[],\"truncated\":false,\"notes\":[]},\"revision\":{\"before\":345,\"after\":368},\"projectPath\":\"E:\\\\Code\\\\AePlugin_Dynamicfx\\\\scripts\\\\out\\\\host-shape-native-20260910\\\\host-shape-native.aep\",\"errorSource\":\"(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');for(var i=1;i<=app.project.numItems;i++)if(app.project.item(i).name==='HS_vector_animated\",\"recoveryId\":\"nhsjf4\",\"scriptPath\":\"C:\\\\Users\\\\REDACTED_USER\\\\.ae-mcp\\\\checkpoints\\\\host-shape-native_a86229a859ff\\\\recovery\\\\nhsjf4.jsx\",\"checkpointId\":null,\"attempt\":1}"
+    }
+  ],
+  "structuredContent": {
+    "ok": false,
+    "error": "ExtendScript error: Error: 表达式被禁用\n合成“HS_vector_animated”中图层 1（“host”）的属性“路径”中，第 1 行出现错误。\r\nTypeError: value.points is not a function\n\n\t\n▶\tvar pts=value.points();for(var i=0;i<pts.length;i++){pts[i]=pts[i]+[ti ...\n\t (line 1)\n[hint] that API does not exist on this object - verify with a read tool first instead of guessing method names",
+    "disposition": "failed",
+    "jsxBridge": {
+      "state": "ok",
+      "degradedSinceMs": null,
+      "lastTimeoutAt": null,
+      "pendingCalls": 0,
+      "sentinelInFlight": false
+    },
+    "errorLine": 1,
+    "touched": {
+      "level": "item_diff",
+      "method": "snapshot-diff",
+      "comp": null,
+      "activeCompChanged": null,
+      "layersAdded": [],
+      "layersRemoved": [],
+      "layersChanged": [],
+      "itemsAdded": [
+        {
+          "id": 76,
+          "name": "HS_vector_animated",
+          "type": "å�ˆæˆ�"
+        }
+      ],
+      "itemsRemoved": [],
+      "truncated": false,
+      "notes": []
+    },
+    "revision": {
+      "before": 345,
+      "after": 368
+    },
+    "projectPath": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\host-shape-native-20260910\\host-shape-native.aep",
+    "errorSource": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');for(var i=1;i<=app.project.numItems;i++)if(app.project.item(i).name==='HS_vector_animated",
+    "recoveryId": "nhsjf4",
+    "scriptPath": "C:\\Users\\REDACTED_USER\\.ae-mcp\\checkpoints\\host-shape-native_a86229a859ff\\recovery\\nhsjf4.jsx",
+    "checkpointId": null,
+    "attempt": 1
+  },
+  "isError": true
+}

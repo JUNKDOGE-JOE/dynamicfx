@@ -33,6 +33,7 @@ They do not replace:
 | M5 | [05 Pixel Formats](05-pixel-formats.md) | Complete (exited 2026-08-13) |
 | M6 | [06 Temporal Feedback](06-temporal-feedback.md) | Complete (exited 2026-08-13) |
 | M7 | [07 Performance and MFR](07-performance-mfr.md) | Not started (created at M6 exit) |
+| Post-M7 host repair | [10 Project-open callback repair](10-project-open-lock.md) | AE 2026 local repair verified; project expression follow-up paused |
 
 ## Required sections
 

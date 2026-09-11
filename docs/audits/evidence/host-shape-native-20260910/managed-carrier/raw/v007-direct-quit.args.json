@@ -1,0 +1,4 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.fsName.replace(/\\\\/g,\"/\")!==\"E:/Code/AePlugin_Dynamicfx/scripts/out/host-shape-native-20260910/host-shape-native.aep\")throw Error(\"Wrong project\");var c=app.project.itemByID(174);if(c.name!==\"HS_auto_base\")throw Error(\"Wrong fixture\");app.cancelTask(1);c.layer(1).property(\"ADBE Effect Parade\").property(1).property(7).setValue(false);app.project.save();app.quit();return \"Quit called directly\";})()",
+  "timeout_sec": 15
+}

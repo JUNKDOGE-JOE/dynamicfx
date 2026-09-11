@@ -1,0 +1,57 @@
+"""Render a known disposable fixture through MCP without opening a viewer."""
+import json
+import os
+from pathlib import Path
+import sys
+import time
+from mcp_client import Client
+
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / 'scripts/out/host-shape-native-20260910'
+name, comp_id, seconds = sys.argv[1:4]
+image = OUT / (name + '.png')
+result_path = OUT / (name + '.result.json')
+if image.exists() or result_path.exists():
+    raise RuntimeError('Choose an unused evidence name')
+log_path = Path(os.environ['TEMP']) / 'dynamicfx-host-shape-probe.log'
+offset = log_path.stat().st_size if log_path.exists() else 0
+code = '''(function(){
+if(!app.project.file || app.project.file.name!=="host-shape-native.aep")throw Error("Wrong project");
+var c=app.project.itemByID(COMP_ID);
+if(!c || !(c instanceof CompItem) || c.name.indexOf("HS_")!==0)throw Error("Wrong fixture");
+c.resolutionFactor=[1,1];
+var status=[];
+var fx=c.layer(1).property("ADBE Effect Parade");
+for(var i=1;i<=fx.numProperties;i++) {
+ var f=fx.property(i);if(f.matchName!=="DynamicFx")continue;
+ for(var k=1;k<=f.numProperties;k++) {
+  var p=f.property(k);if(p.name.indexOf("Status")===0 || p.name.indexOf("State Token")===0)status.push({name:p.name,value:p.value});
+ }
+}
+c.saveFrameToPng(SECONDS,new File(OUTPUT));
+return JSON.stringify({comp:c.name,id:c.id,requestedTime:SECONDS,cti:c.time,resolution:c.resolutionFactor,bpc:app.project.bitsPerChannel,status:status});
+})()'''.replace('COMP_ID', str(int(comp_id))).replace('SECONDS', str(float(seconds))).replace('OUTPUT', json.dumps(image.as_posix()))
+args = {'code': code, 'timeout_sec': 40}
+(OUT / (name + '.args.json')).write_text(json.dumps(args, indent=2), encoding='utf-8')
+started = time.monotonic()
+result = Client().call('ae_exec', args, timeout=50)
+result_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
+data = Client.data(result)
+if data.get('ok'):
+    deadline = time.monotonic() + 10
+    previous_size = 0
+    while time.monotonic() < deadline:
+        size = image.stat().st_size if image.exists() else 0
+        if size and size == previous_size:
+            break
+        previous_size = size
+        time.sleep(0.15)
+    else:
+        raise RuntimeError('MCP returned but the PNG did not finish; inspect before retrying')
+if log_path.exists():
+    with log_path.open('rb') as file:
+        file.seek(offset)
+        (OUT / (name + '.native.log')).write_bytes(file.read())
+print(json.dumps({'seconds':time.monotonic()-started,'mcp':data,'imageExists':image.exists()},ensure_ascii=False))
+if not data.get('ok'):
+    raise SystemExit(1)

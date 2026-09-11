@@ -1,0 +1,11 @@
+   Compiling dynamicfx-host-shape-probe v0.0.8 (E:\Code\AePlugin_Dynamicfx\spike\host-outline\native)
+warning: unused import: `AsPtr`
+ --> src\carrier.rs:1:33
+  |
+1 | use after_effects::{self as ae, AsPtr};
+  |                                 ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `dynamicfx-host-shape-probe` (lib) generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.04s

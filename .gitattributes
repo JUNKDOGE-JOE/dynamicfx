@@ -6,3 +6,12 @@ scripts/release/license-supplements/** text eol=lf
 *.png binary
 *.mp4 binary
 docs/audits/evidence/release-011-20260909/** -text -whitespace
+
+docs/audits/evidence/host-coverage-scope-20260910/** -text -whitespace
+docs/audits/evidence/host-outline-prep-20260910/** -text -whitespace
+docs/audits/evidence/host-shape-native-20260910/** -text -whitespace
+docs/audits/evidence/host-shape-probe-20260910/** -text -whitespace
+docs/audits/evidence/project-open-commit-20260910/** -text -whitespace
+docs/audits/evidence/project-open-lock-20260909/** -text -whitespace
+docs/audits/evidence/public-transfer-20260911/** -text -whitespace
+docs/audits/evidence/release-011-refresh-20260909/** -text -whitespace

@@ -1,0 +1,9 @@
+DynamicFX governance check
+markdown_files=129
+local_links=1458
+mermaid_blocks=16
+accepted_adrs=48
+errors=2
+ERROR: docs\audits\evidence\public-transfer-20260911\README.md: missing link governance.log
+ERROR: ADR 0047: expected one file, found 2
+RESULT=FAIL

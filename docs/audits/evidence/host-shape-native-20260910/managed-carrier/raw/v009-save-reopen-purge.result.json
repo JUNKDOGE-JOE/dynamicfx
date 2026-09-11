@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"file\\\":\\\"E:\\\\\\\\Code\\\\\\\\AePlugin_Dynamicfx\\\\\\\\scripts\\\\\\\\out\\\\\\\\host-shape-native-20260910\\\\\\\\host-shape-native.aep\\\",\\\"oldItems\\\":20,\\\"items\\\":20,\\\"dirty\\\":false,\\\"reopened\\\":true,\\\"purged\\\":true}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"file\":\"E:\\\\Code\\\\AePlugin_Dynamicfx\\\\scripts\\\\out\\\\host-shape-native-20260910\\\\host-shape-native.aep\",\"oldItems\":20,\"items\":20,\"dirty\":false,\"reopened\":true,\"purged\":true}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

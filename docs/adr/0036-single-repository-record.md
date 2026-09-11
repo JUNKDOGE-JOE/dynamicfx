@@ -149,3 +149,15 @@ A record that cannot be written is not a record.
   with every link resolving after the withheld file's removal.
 - A leak scan over the tree for the withheld vendor's name and for token or
   credential patterns returns nothing, recorded before the publishing commit.
+
+### 2026-09-11 diagnostic evidence publication
+
+The public transfer of project-open and host-coverage diagnostics replaces local
+user directory components and MCP artifact identifiers in evidence copies.
+[Redaction ledger](../audits/evidence/public-transfer-20260911/redactions.json)
+records original and public SHA-256 values. Existing frozen manifests describe
+the originals; the ledger explains changed public bytes. No observed result or
+failure was removed, and no earlier Accepted decision was changed.
+
+The same ledger records evidence Markdown link updates for the Proposed
+coverage ADR renumbering from local 0047 to public 0049.

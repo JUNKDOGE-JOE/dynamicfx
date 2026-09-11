@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":76,\\\"name\\\":\\\"HS_vector_animated\\\",\\\"cti\\\":0,\\\"samples\\\":[{\\\"time\\\":0,\\\"vertices\\\":[[200,150],[600,150],[400,500]],\\\"inTangents\\\":[[0,0],[0,0],[0,0]],\\\"outTangents\\\":[[0,0],[0,0],[0,0]],\\\"position\\\":[70,45]},{\\\"time\\\":1,\\\"vertices\\\":[[160,105],[660,185],[400,525]],\\\"inTangents\\\":[[-30,40],[-60,-20],[70,0]],\\\"outTangents\\\":[[80,-30],[10,60],[-60,0]],\\\"position\\\":[120,85]},{\\\"time\\\":0.5,\\\"vertices\\\":[[180,127.5],[630,167.5],[400,512.5]],\\\"inTangents\\\":[[-15,20],[-30,-10],[35,0]],\\\"outTangents\\\":[[40,-15],[5,30],[-30,0]],\\\"position\\\":[94.9996113230922,64.9996890584738]}]}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":76,\"name\":\"HS_vector_animated\",\"cti\":0,\"samples\":[{\"time\":0,\"vertices\":[[200,150],[600,150],[400,500]],\"inTangents\":[[0,0],[0,0],[0,0]],\"outTangents\":[[0,0],[0,0],[0,0]],\"position\":[70,45]},{\"time\":1,\"vertices\":[[160,105],[660,185],[400,525]],\"inTangents\":[[-30,40],[-60,-20],[70,0]],\"outTangents\":[[80,-30],[10,60],[-60,0]],\"position\":[120,85]},{\"time\":0.5,\"vertices\":[[180,127.5],[630,167.5],[400,512.5]],\"inTangents\":[[-15,20],[-30,-10],[35,0]],\"outTangents\":[[40,-15],[5,30],[-30,0]],\"position\":[94.9996113230922,64.9996890584738]}]}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"rows\\\":[{\\\"id\\\":174,\\\"name\\\":\\\"HS_auto_base\\\",\\\"layer\\\":177,\\\"owners\\\":[0,1],\\\"masks\\\":[{\\\"name\\\":\\\"User mask control\\\",\\\"mode\\\":6812,\\\"owned\\\":false,\\\"enabled\\\":false,\\\"error\\\":\\\"\\\",\\\"head\\\":[[40,40],[80,40],[80,80],[40,80]],\\\"count\\\":4},{\\\"name\\\":\\\"Renamed internal raster\\\",\\\"mode\\\":6812,\\\"owned\\\":true,\\\"enabled\\\":true,\\\"error\\\":\\\"\\\",\\\"head\\\":[[-1234,-5678],[800,600],[200,150],[1.192138671875,1]],\\\"count\\\":3648}]},{\\\"id\\\":188,\\\"name\\\":\\\"HS_auto_duplicate\\\",\\\"layer\\\":191,\\\"owners\\\":[1,1],\\\"masks\\\":[{\\\"name\\\":\\\"User mask control\\\",\\\"mode\\\":6812,\\\"owned\\\":false,\\\"enabled\\\":false,\\\"error\\\":\\\"\\\",\\\"head\\\":[[40,40],[80,40],[80,80],[40,80]],\\\"count\\\":4},{\\\"name\\\":\\\"Renamed internal raster\\\",\\\"mode\\\":6812,\\\"owned\\\":true,\\\"enabled\\\":true,\\\"error\\\":\\\"\\\",\\\"head\\\":[[-1234,-5678],[800,600],[200,150],[1.192138671875,1]],\\\"count\\\":3648}]}]}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"rows\":[{\"id\":174,\"name\":\"HS_auto_base\",\"layer\":177,\"owners\":[0,1],\"masks\":[{\"name\":\"User mask control\",\"mode\":6812,\"owned\":false,\"enabled\":false,\"error\":\"\",\"head\":[[40,40],[80,40],[80,80],[40,80]],\"count\":4},{\"name\":\"Renamed internal raster\",\"mode\":6812,\"owned\":true,\"enabled\":true,\"error\":\"\",\"head\":[[-1234,-5678],[800,600],[200,150],[1.192138671875,1]],\"count\":3648}]},{\"id\":188,\"name\":\"HS_auto_duplicate\",\"layer\":191,\"owners\":[1,1],\"masks\":[{\"name\":\"User mask control\",\"mode\":6812,\"owned\":false,\"enabled\":false,\"error\":\"\",\"head\":[[40,40],[80,40],[80,80],[40,80]],\"count\":4},{\"name\":\"Renamed internal raster\",\"mode\":6812,\"owned\":true,\"enabled\":true,\"error\":\"\",\"head\":[[-1234,-5678],[800,600],[200,150],[1.192138671875,1]],\"count\":3648}]}]}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

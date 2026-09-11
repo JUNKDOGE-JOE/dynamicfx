@@ -4,6 +4,183 @@
 > Architecture intent belongs in [ARCHITECTURE.md](ARCHITECTURE.md); future sequencing belongs in [ROADMAP.md](ROADMAP.md); verification truth belongs in [TEST_MATRIX.md](TEST_MATRIX.md).
 
 
+
+## Public source transfer — 2026-09-11
+
+The user authorized pushing the project-open repair and coverage preparation.
+This branch starts at public main `18501ac`; it transfers only the repair diff
+from local checkpoint `ff89564` and the diagnostic work, without importing
+archive ancestry or restoring the withdrawn Siri samples. Earlier local-only
+publication statements below are historical. No merge or release is requested.
+[Transfer record](audits/evidence/public-transfer-20260911/README.md).
+
+## Active probe — automatic host coverage only, issue #9
+
+The user requested issue filing and repair preparation on 2026-09-10.
+[Issue #9](https://github.com/JUNKDOGE-JOE/dynamicfx/issues/9) is open with the
+supplied reproduction. This is a post-M7 feature preparation batch;
+[ADR-0049](adr/0049-automatic-host-shape-input.md) is Proposed, with an
+[shader fixture and independent diagnostic build](../spike/host-outline/README.md).
+The user's latest 2026-09-10 direction withdraws the additional automatic
+contour input. Deliver only an opt-in resource for the original host layer's
+visible coverage/alpha, including transparent regions and partially covered
+edges. Keep background `input` and the existing `hint:path` mask input.
+Ownership is automatic, without geometry controls or FFX rebinding. A path
+list or bounding box does not satisfy visible coverage. Product scope is
+approved; transport and resource ABI remain unverified and no production
+integration is implemented. Earlier two-resource records below are historical.
+[Scope revision](audits/evidence/host-coverage-scope-20260910/README.md).
+
+Source inspection confirms the current Path input is a selected PF path.
+AEGP vector traversal and layer-frame checkout do not by themselves prove
+safe animated SmartRender/MFR transport. The new
+[test record](TEST_MATRIX.md#tr-host-shape-001---automatic-host-shape-input-preparation)
+keeps the submitted observation distinct from native verification.
+The existing project-open repair is preserved at `ff89564`. Work on the
+independent diagnostic build stays under `spike/host-outline`; production
+runtime and user assets remain intact. The Windows diagnostic compiles and
+passes five local tests; see [build evidence](audits/evidence/host-shape-probe-20260910/README.md).
+The user authorized diagnostic installation and AE startup, then required
+MCP-only execution without foreground activation. The first AE 2026 26.3x87
+run reproduces ordinary alpha `[1,1,1]` versus reference coverage `[0,1,0]`.
+PF enumeration returns no shape path, while animated masks read at requested
+times with CTI elsewhere. Native MCP traverses the shape tree but does not
+export mask vertices. [Native evidence](audits/evidence/host-shape-native-20260910/README.md).
+
+Diagnostic 0.0.2 adds a main-thread idle request serial so MCP can trigger
+coverage/vector reads in the background. It builds and passes seven local
+tests. After the user closed AE, it replaced only diagnostic 0.0.1 at
+22:47:51 +08:00; hash readback passed and the production AEX remained intact.
+[Installation record](audits/evidence/host-shape-native-20260910/install-v002.json).
+The 0.0.2 MCP-only run now passes raw animated contour acquisition: requested
+times `1`, `0`, `0.5` match post-expression JSX vertices, relative tangent
+offsets and group transform streams with CTI at `0`. Both upstream coverage
+routes return background alpha `[1,1,1]`; the legacy plain=true route triggers
+modal 5027 and returns AE error 3 after user dismissal. Its timeout and full
+recovery chain are retained in [background evidence](audits/evidence/host-shape-native-20260910/background-v002/README.md).
+The fixture is saved with requests reset to zero. No production resource exists.
+
+The user then authorized autonomous AE close/start without mouse control.
+Diagnostic 0.0.3's RenderSuite5 layer/downstream trials both return background
+alpha on the adjustment fixture; an ordinary shape control returns `[0,1,0]`.
+Diagnostic 0.0.4 was installed at `9c61010d...` and passes eight local tests.
+Its render-side auxiliary query reports zero channels / Coverage absent for
+shape, mask, combined and ordinary shape fixtures. Production source/AEX
+remain intact; ordinary shader and ordinary shape PNGs match their respective
+references byte-for-byte. [Current native evidence](audits/evidence/host-shape-native-20260910/coverage-v003-v004/README.md).
+
+AE closure used MCP save/scheduled quit; startup used Hidden window style.
+No mouse/keyboard or explicit activation call was used. The test AEP is saved,
+probe serials/logging are reset, and AE remains open. The tested direct sources
+do not supply adjustment coverage; this is not a claim that every source is
+impossible. No automatic shader resource is implemented.
+
+The resumed investigation verifies that `sampleImage(..., false)` reads original
+shape alpha `[0,1,0]`; it excludes masks. Diagnostic 0.0.5 `5da92f37...` was
+installed and passes nine tests. Legacy input-0/self-layer checkouts still return
+background alpha on adjustment layers; native Set Matte does not isolate it.
+No production parameter or ABI is changed.
+
+A disposable mode-None data mask transports adaptively sampled raster blocks
+through PF PathQuery during render. Triangle and animated/transformed curve
+samples at shuffled times `1/0/0.5` agree with reference PNG alpha to one 8-bit
+level. An original-path edit changes the data. One first-sampler edge error
+of 31/255 was reproduced and fixed by smaller-block sampling; the same case
+then passes at <=1/255. A 50% fill still exceeds the query budget, and original
+masks are excluded. This is not complete visible coverage or production-ready
+automatic transport. [Current evidence](audits/evidence/host-shape-native-20260910/original-source-v005/README.md).
+
+The user accepted a plugin-managed mode-None data mask in the host layer's
+mask list. The current installed diagnostic is 0.0.9 `f0bd26c4...`, with 13 local
+tests passing. Native regression now passes automatic creation, shared ownership,
+duplicate isolation, last-owner cleanup, actual Undo/Redo, saved project reload
+and a cache-purged frame. Two raster comparisons have maximum error 1/255 over
+480000 pixels. The cold PNG arrives after the driver's first wait deadline;
+its failed wait and later result are both retained. This is not a latency claim.
+
+The first manager versions caused recurring tracked-memory-ID dialogs `23::33`
+on an absent expression allocation. The diagnostic repair skips memory access
+for a null allocation and quarantines failed operations. The user-assisted
+modal/recovery sequence and both exact owned-process stops are preserved.
+Native mask renaming separately returns `Parameter`; 0.0.9 keeps AE's default
+name and proves ownership still works after user renaming. Production source
+and AEX remain unchanged. [Current evidence](audits/evidence/host-shape-native-20260910/managed-carrier/README.md).
+
+The 20-item disposable project is saved and remains open. All 12 diagnostic
+logging/serial controls are reset; the expensive opacity expression is disabled.
+FFX recreation, aerender/MFR, original-mask coverage and partial-alpha cost
+remain unresolved. The issue-body follow-up was blocked by automatic approval
+review over internal diagnostic content; the user's carrier approval is recorded
+locally without an alternate publication attempt.
+
+**Exact next action:** resolve bounded partial-alpha acquisition and original-mask
+coverage, then validate FFX recreation and the full cold-render lifecycle before
+production ABI changes. The isolated spike remains the active baseline.
+
+## Local source checkpoint — project-open callback repair
+
+The user authorized committing the remaining repair on 2026-09-10. This
+checkpoint records the guarded live-instance entry, reentrant host reads/UI
+publication, regression tests and their existing acceptance/release records.
+All 33 frozen source inputs match the verified repair; the frozen AEX still
+matches `c91db8c0...`. Fresh default/editor tests each pass 230 cases after
+discarding an initial stale-cache result as current-source evidence.
+[Commit verification](audits/evidence/project-open-commit-20260910/README.md).
+
+This is a local source checkpoint on `codex/fix-project-open-lock`, not a
+push, tag change, rebuild/replacement of the installed plugin or new native
+acceptance. The archival/public branch distinction below remains binding.
+
+**Exact next action:** no further repair changes are needed for this
+checkpoint; source publication requires a separately scoped public-history
+transfer. The two production-project expression references remain deferred.
+
+## Published - Windows 0.1.1 archive refreshed
+
+The user separately authorized a same-version replacement of the GitHub
+v0.1.1 Windows AEX package on 2026-09-09. The final installed/host-verified
+project-open repair c91db8c0 is now published. New Windows ZIP and checksums
+were downloaded and verified; Mac and Sample assets, release identity and
+the source tag are unchanged. Build metadata distinguishes the repaired
+working-tree binary from the unchanged tag. No source commit or push occurred.
+[Verification](audits/evidence/release-011-refresh-20260909/README.md).
+
+**Exact next action:** no further work in this release-asset scope. The initial
+repair acceptance boundary below is historical; its no-publication restriction
+was superseded only for this explicitly authorized Windows asset refresh.
+
+## Installed and verified — project-open callback repair
+
+User-authorized on 2026-09-09 after an AE 2026 project-open hang. The installed
+`68171a98…` runtime blocks in DynamicFX / WaitOnAddress during BEE_LoadProject;
+a byte-identical project copy opens in 10.079 s with only DynamicFX isolated.
+Baseline: `17e12a7`, branch `codex/fix-project-open-lock`. Existing untracked
+user assets remain untouched.
+
+The first lock-only repair passed CPU tests but still hung: idle called
+CompletelyGeneral before SequenceResetup, and the upstream dispatcher treated
+serialized snapshot bytes as a live mutex. The final guarded entry validates
+an in-memory tag before that dispatch. Host source reads and UI publication
+also run outside the instance mutex. Persistent bytes and parameter bindings
+are unchanged. Source Undo remains separate.
+
+Final AEX `c91db8c0...` is installed in the AE 2026-specific plugin folder.
+230 default and 230 editor tests pass; recovery-copy open takes 10.604 s,
+original repeat-open 4.420 s. All 426 effect properties and recorded Main/05
+structure match baseline; DX12 rendering completes. The original AEP remains
+byte-identical and unsaved. First candidate timeout and a transient original
+open error are retained in [TR-OPEN-001](TEST_MATRIX.md#tr-open-001---project-open-idle-callback-and-sequence-lifetime)
+and the [repair audit](audits/10-project-open-lock.md).
+
+The user stopped Computer Use before repairing two separate `Refraction px`
+display-name expression references. No AE input followed and those expressions
+are unmodified. Other AE years and macOS remain NOT_RUN for this candidate.
+
+**Exact next action:** await the user's continuation for the two water-expression
+references; the reported opening hang repair is installed and verified.
+At the original acceptance, no commit or publication was authorized. The
+later asset refresh and local source checkpoint above record their own scope.
+
 ## Completed - IOS27Siri withdrawal
 
 The IOS27Siri animation is withdrawn from main and the maintained v0.1.1
@@ -26,7 +203,7 @@ The authorized Apple Silicon macOS backfill is complete, built from the existing
 and its published exact dependency lock. The platform archive was added to the
 same regular release, with updated README/release notes. Existing Windows
 and IOS27Siri archives and the tag remain unchanged. Work is isolated from the
-preserved local Siri development branch. [ADR-0047](adr/0047-011-macos-backfill.md)
+preserved local Siri development branch. [ADR-0049](adr/0047-011-macos-backfill.md)
 records this additional delivery scope without changing ADR-0046's history.
 
 The native ARM release build, static bundle checks, default/editor CPU

@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"[{\\\"name\\\":\\\"Undo\\\",\\\"id\\\":0},{\\\"name\\\":\\\"Redo\\\",\\\"id\\\":0},{\\\"name\\\":\\\"重做\\\",\\\"id\\\":0},{\\\"name\\\":\\\"撤销\\\",\\\"id\\\":0},{\\\"name\\\":\\\"重做 Manage DynamicFX coverage data\\\",\\\"id\\\":0},{\\\"name\\\":\\\"重做: Manage DynamicFX coverage data\\\",\\\"id\\\":0}]\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "[{\"name\":\"Undo\",\"id\":0},{\"name\":\"Redo\",\"id\":0},{\"name\":\"重做\",\"id\":0},{\"name\":\"撤销\",\"id\":0},{\"name\":\"重做 Manage DynamicFX coverage data\",\"id\":0},{\"name\":\"重做: Manage DynamicFX coverage data\",\"id\":0}]",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

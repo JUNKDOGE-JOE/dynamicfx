@@ -252,7 +252,9 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                                 &ae::Command::CompletelyGeneral,
                                 None::<&()>,
                             )?;
-                            let general_reply = crate::take_general_reply();
+                            let Some(general_reply) = crate::take_general_reply() else {
+                                return Ok(());
+                            };
 
                             // CompletelyGeneral published into the process
                             // registry; mirror the token into the primitive
@@ -263,7 +265,7 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                                 &raw_streams,
                                 &effect_ref,
                                 layer_time,
-                                general_reply,
+                                Some(general_reply),
                                 instance_key,
                             )?;
                         }

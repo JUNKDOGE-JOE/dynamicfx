@@ -1,0 +1,21 @@
+   Compiling dynamicfx-host-shape-probe v0.0.8 (E:\Code\AePlugin_Dynamicfx\spike\host-outline\native)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.76s
+     Running unittests src\lib.rs (scripts/out/host-shape-probe-20260910/target\debug\deps\dynamicfx_host_shape_probe-f5fce8632b44df0b.exe)
+
+running 13 tests
+test carrier::tests::creation_is_not_replayed_after_undo ... ok
+test carrier::tests::removal_requires_no_remaining_owner_and_valid_data ... ok
+test read::absent_expression_never_enters_memory_operations ... ok
+test read::tests::source_sample_offsets_respect_each_depth ... ok
+test idle::tests::request_serial_rejects_fractional_nonfinite_and_out_of_range_values ... ok
+test read::tests::cleanup_runs_on_early_error ... ok
+test carrier::tests::multiple_effects_share_one_valid_carrier ... ok
+test read::tests::invalid_time_never_saturates_into_a_valid_sample ... ok
+test read::tests::sample_bounds_include_stride_padding_and_exclude_overflow ... ok
+test idle::tests::persisted_requests_do_not_replay_and_each_change_runs_once ... ok
+test read::tests::traversal_limits_reject_deep_and_large_geometry ... ok
+test tests::nested_read_does_not_clear_the_outer_guard ... ok
+test read::tests::retired_plain_mode_never_enters_host_suites ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

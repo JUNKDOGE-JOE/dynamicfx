@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":\\\"HS_ordinary_input\\\",\\\"id\\\":48,\\\"requestedTime\\\":0,\\\"cti\\\":0,\\\"resolution\\\":[1,1],\\\"bpc\\\":16,\\\"status\\\":[{\\\"name\\\":\\\"Status: idle\\\",\\\"value\\\":0},{\\\"name\\\":\\\"State Token (internal)\\\",\\\"value\\\":7670119864957725}]}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":\"HS_ordinary_input\",\"id\":48,\"requestedTime\":0,\"cti\":0,\"resolution\":[1,1],\"bpc\":16,\"status\":[{\"name\":\"Status: idle\",\"value\":0},{\"name\":\"State Token (internal)\",\"value\":7670119864957725}]}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

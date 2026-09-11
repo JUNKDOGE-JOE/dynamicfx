@@ -1,0 +1,23 @@
+{
+  "files": 511,
+  "bytes": 17884283,
+  "credential_or_vendor_hits": [],
+  "repair_changed_lines_match_checkpoint": true,
+  "diff_check_exit": 0,
+  "base": "18501acd1f8897b3c0c2511867be8416ae6456cc",
+  "followup_review": {
+    "date": "2026-09-11",
+    "authorized_destination": "JUNKDOGE-JOE/dynamicfx refs/heads/codex/host-coverage-probe",
+    "main_update_authorized": false,
+    "credential_values": 0,
+    "uuid_values": 0,
+    "private_links": 0,
+    "real_private_ip_values": 0,
+    "images_reviewed": 37,
+    "image_metadata_present": false,
+    "auth_keyword_findings": "authorization prose and dynamic MCP header handling only; no session value",
+    "ip_pattern_findings": "Windows SDK version numbers, not addresses",
+    "retained_paths": "repository fixture paths and standard Adobe installation locations; user component redacted",
+    "result": "PASS"
+  }
+}

@@ -28,7 +28,7 @@ build and CPU/Metal/static checks → preserve the signed bundle while packaging
 updates. The download passed 315 assertions, including 297 internal-file
 hashes and signature/source/lock identities. Windows/Sample archives and the
 tag remain unchanged.
-[ADR-0047](adr/0047-011-macos-backfill.md) records this narrow scope. New-byte
+[ADR-0049](adr/0047-011-macos-backfill.md) records this narrow scope. New-byte
 AE execution and Mac Sample acceptance remain NOT_RUN; native host testing
 and Source Undo repair are separate work. The former local Siri follow-up is
 stopped and its working files remain preserved.
@@ -344,3 +344,44 @@ four-year release gate and shelved gradient editor remain as recorded.
 This batch completed its recorded AE 2026 subset in [TR-MAC-001](TEST_MATRIX.md#tr-mac-001--native-apple-silicon-ae-2026), image-quality fixtures in TR-QUALITY-001, and WGSL research in TR-WGSL-001. The user then requested an independent, reference-backed iOS 27 Siri motion/shader study; it does not imply production WGSL integration or a new release.
 
 The follow-up iOS 27 Siri study was completed as research: observed official preview states, proposed material decomposition and a one-pass starting design. Its files are withdrawn under [ADR-0048](adr/0048-ios27siri-withdrawal.md); further refinement remains separate work.
+
+
+## 2026-09-10 user-directed host-shape preparation
+
+[Issue #9](https://github.com/JUNKDOGE-JOE/dynamicfx/issues/9) enters post-M7
+preparation at the user's request. Retain ordinary background `input` and
+prepare automatic host coverage for portable adjustment-layer FFX.
+The user's latest 2026-09-10 direction withdraws the previously requested
+additional contour resource. Only the original host layer's visible
+coverage/alpha is required; existing `hint:path` remains unchanged.
+[ADR-0049](adr/0049-automatic-host-shape-input.md) keeps transport/ABI Proposed.
+
+Order: prove frame-exact host acquisition and invalidation, decide the
+resource ABI, integrate, then execute HS-01..HS-12 and HS-16 from the
+[fixture matrix](../spike/host-outline/cases.json). Exiting preparation means
+the issue, source/SDK findings and reproducible acceptance specification are
+recorded. Exiting implementation requires native evidence for the required
+shapes, animation, transforms, canvas, portability and compatibility; unsupported
+modifiers are explicit. HS-16 checks coverage opt-in and alpha fidelity;
+the former contour-specific HS-13..HS-15 definitions are retained as withdrawn
+history in the fixture file. The current project-open repair remains preserved.
+This batch adds no release, installation or production-project scope.
+
+Subsequent user authorization covers independent diagnostic installation and
+background AE lifecycle for feasibility testing. The tested upstream/layer/
+downstream receipts do not isolate adjustment coverage, and auxiliary Coverage
+is absent in the current fixtures. Raw animated contours are readable only in
+the tested main-thread context. The acquisition/transport gate therefore remains
+open; production integration must not advance from these observations alone.
+[Native evidence](audits/evidence/host-shape-native-20260910/coverage-v003-v004/README.md).
+
+The follow-up original-source experiment finds pre-effect expression alpha and
+a fixture-managed mode-None mask carrier for sampled raster blocks. Direct PF
+checkout still supplies the adjustment background. The carrier passes a small
+opaque/animated subset, but fails the partial-opacity budget and excludes
+original masks. The user now accepts an automatically managed mode-None entry
+in the mask list. The isolated 0.0.9 probe now validates basic ownership, duplication, cleanup,
+Undo/Redo and saved/cache-purged data retrieval. FFX recreation, original masks,
+partial-alpha cost and production integration remain unresolved; the acquisition
+and transport gate is still open.
+[Current evidence](audits/evidence/host-shape-native-20260910/original-source-v005/README.md).

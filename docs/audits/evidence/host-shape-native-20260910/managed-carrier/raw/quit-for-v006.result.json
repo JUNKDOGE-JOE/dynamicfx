@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"saved\\\":true,\\\"file\\\":\\\"host-shape-native.aep\\\",\\\"quitScheduled\\\":true,\\\"task\\\":1}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"saved\":true,\"file\":\"host-shape-native.aep\",\"quitScheduled\":true,\"task\":1}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

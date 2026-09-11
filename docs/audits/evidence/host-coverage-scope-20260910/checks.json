@@ -1,0 +1,64 @@
+{
+  "scope": "coverage-only",
+  "production_feature": "NOT_RUN",
+  "issue_readback": {
+    "status": "PASS",
+    "url": "https://github.com/JUNKDOGE-JOE/dynamicfx/issues/9",
+    "title": "Feature request: automatic host-layer coverage input for adjustment-layer shaders and portable FFX presets",
+    "updated_at": "2026-09-10T15:21:33Z",
+    "body_matches_prepared_text": true
+  },
+  "native_renders_this_revision": 0,
+  "planning_check_first_attempt": {
+    "status": "FAIL",
+    "error": "KeyError: cases; fixture uses scenarios; stopped before writing fixture",
+    "recovery": "Read actual schema and applied the revision to scenarios; preserved withdrawn definitions"
+  },
+  "governance": {
+    "status": "PASS",
+    "command": "python scripts/check_governance.py",
+    "markdown_files": 132,
+    "local_links": 1677,
+    "mermaid_blocks": 16,
+    "accepted_adrs": 45,
+    "errors": 0
+  },
+  "diff_check": {
+    "status": "PASS",
+    "command": "git diff --check"
+  },
+  "production_source": {
+    "status": "PASS",
+    "unchanged_from": "ff895649bf99ce52055e066dd986f49e7bf6956e",
+    "command": "git diff --quiet HEAD -- src Cargo.toml Cargo.lock build.rs scripts/macos.py"
+  },
+  "fixture_integrity": {
+    "status": "PASS",
+    "active": [
+      "HS-01",
+      "HS-02",
+      "HS-03",
+      "HS-04",
+      "HS-05",
+      "HS-06",
+      "HS-07",
+      "HS-08",
+      "HS-09",
+      "HS-10",
+      "HS-11",
+      "HS-12",
+      "HS-16"
+    ],
+    "withdrawn": [
+      "HS-13",
+      "HS-14",
+      "HS-15"
+    ],
+    "feature_status": "NOT_RUN"
+  },
+  "file_sha256": {
+    "spike/host-outline/cases.json": "5ced9ba3fad338aae4778d6c74c378d7dfe449e64507f0d838c93c17808c61c6",
+    "docs/adr/0047-automatic-host-shape-input.md": "8ed87f8c38c7e39fa264ce7a2e94a3293e56dfee7cbc4e7673d56a988b74a1ff",
+    "scripts/out/host-shape-native-20260910/coverage-only-issue.md": "1bdadb8f85ab084ea769f73f4e5778b570f1aa092b2f58e15d24d05958bd71d8"
+  }
+}

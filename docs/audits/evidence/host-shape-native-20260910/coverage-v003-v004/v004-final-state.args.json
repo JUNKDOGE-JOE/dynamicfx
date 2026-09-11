@@ -1,0 +1,4 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var dirty=app.project.dirty;if(dirty)app.project.save();return JSON.stringify({file:app.project.file.name,wasDirty:dirty,dirty:app.project.dirty,numItems:app.project.numItems});})()",
+  "timeout_sec": 15
+}

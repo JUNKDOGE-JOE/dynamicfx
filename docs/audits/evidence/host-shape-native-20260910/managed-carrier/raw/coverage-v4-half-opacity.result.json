@@ -1,0 +1,25 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":false,\"error\":\"JSX timeout after 30000ms\",\"disposition\":\"uncertain\",\"jsxBridge\":{\"state\":\"degraded\",\"degradedSinceMs\":1789055817723,\"lastTimeoutAt\":1789055817723,\"pendingCalls\":0,\"sentinelInFlight\":true},\"recoveryId\":\"rx105y\",\"scriptPath\":\"C:\\\\Users\\\\REDACTED_USER\\\\.ae-mcp\\\\checkpoints\\\\host-shape-native_a86229a859ff\\\\recovery\\\\rx105y.jsx\",\"checkpointId\":null,\"attempt\":1}"
+    }
+  ],
+  "structuredContent": {
+    "ok": false,
+    "error": "JSX timeout after 30000ms",
+    "disposition": "uncertain",
+    "jsxBridge": {
+      "state": "degraded",
+      "degradedSinceMs": 1789055817723,
+      "lastTimeoutAt": 1789055817723,
+      "pendingCalls": 0,
+      "sentinelInFlight": true
+    },
+    "recoveryId": "rx105y",
+    "scriptPath": "C:\\Users\\REDACTED_USER\\.ae-mcp\\checkpoints\\host-shape-native_a86229a859ff\\recovery\\rx105y.jsx",
+    "checkpointId": null,
+    "attempt": 1
+  },
+  "isError": true
+}

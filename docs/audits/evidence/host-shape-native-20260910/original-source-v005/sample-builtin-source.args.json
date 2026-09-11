@@ -1,0 +1,5 @@
+{
+  "timeout_sec": 20,
+  "code": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var c=app.project.itemByID(103);if(!c||c.name!=='HS_builtin_source'||c.numLayers!==2)throw Error('Wrong fixture');var text=c.layers.addText('');text.name='HS temporary sampler';text.enabled=false;try{var prop=text.property('ADBE Text Properties').property('ADBE Text Document');prop.expression='var l=thisComp.layer(2);var p=[[210,490],[400,300],[50,50]];var a=[];for(var i=0;i<3;i++)a.push(l.sampleImage(p[i],[0.5,0.5],true,time)[3]);JSON.stringify(a)';var value=prop.valueAtTime(0,false);return JSON.stringify({comp:c.id,alphaText:value.text,error:prop.expressionError,matteSource:c.layer(2).effect(1)(1).value});}finally{text.remove();}})()",
+  "undo_group_name": "Sample native matte candidate"
+}

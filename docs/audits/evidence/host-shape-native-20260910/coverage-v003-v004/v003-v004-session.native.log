@@ -1,0 +1,114 @@
+[time=1789052459310 pid=62008 thread=ThreadId(1)]
+probe=0.0.3 initialized; layer-option coverage is unverified
+[time=1789052459530 pid=62008 thread=ThreadId(1)]
+BACKGROUND_READY comp=17 layer=32 effect=1 serial=0
+[time=1789052459531 pid=62008 thread=ThreadId(1)]
+BACKGROUND_READY comp=33 layer=47 effect=1 serial=0
+[time=1789052459531 pid=62008 thread=ThreadId(1)]
+BACKGROUND_READY comp=1 layer=16 effect=1 serial=0
+[time=1789052459531 pid=62008 thread=ThreadId(1)]
+BACKGROUND_READY comp=76 layer=79 effect=1 serial=0
+[time=1789052466717 pid=62008 thread=ThreadId(1)]
+BACKGROUND_BEGIN comp=1 layer=16 effect=1 serial=1 mode=6 layer_seconds=0
+[time=1789052466717 pid=62008 thread=ThreadId(1)]
+COVERAGE_CHECKOUT_BEGIN mode=6 options=layer (all effects)
+[time=1789052466720 pid=62008 thread=ThreadId(2)]
+PF_RENDER
+pf_path_count=0
+
+[time=1789052466722 pid=62008 thread=ThreadId(1)]
+world=800x600 rowbytes=6400 type=2 region=A_LRect { left: 0, top: 0, right: 800, bottom: 600 }
+coordinates=world-local; compare only identity baseline until origin mapping is proven
+alpha[210,490]=1
+alpha[400,300]=1
+alpha[50,50]=1
+
+BACKGROUND_COMPLETE comp=1 serial=1
+[time=1789052472908 pid=62008 thread=ThreadId(1)]
+BACKGROUND_BEGIN comp=1 layer=16 effect=1 serial=2 mode=7 layer_seconds=0
+[time=1789052472909 pid=62008 thread=ThreadId(1)]
+COVERAGE_CHECKOUT_BEGIN mode=7 options=downstream of diagnostic
+[time=1789052472910 pid=62008 thread=ThreadId(2)]
+PF_RENDER
+pf_path_count=0
+
+[time=1789052472911 pid=62008 thread=ThreadId(1)]
+world=800x600 rowbytes=6400 type=2 region=A_LRect { left: 0, top: 0, right: 800, bottom: 600 }
+coordinates=world-local; compare only identity baseline until origin mapping is proven
+alpha[210,490]=1
+alpha[400,300]=1
+alpha[50,50]=1
+
+BACKGROUND_COMPLETE comp=1 serial=2
+[time=1789052498684 pid=62008 thread=ThreadId(1)]
+BACKGROUND_READY comp=90 layer=92 effect=1 serial=0
+[time=1789052507979 pid=62008 thread=ThreadId(1)]
+BACKGROUND_BEGIN comp=90 layer=92 effect=1 serial=1 mode=6 layer_seconds=0
+[time=1789052507980 pid=62008 thread=ThreadId(1)]
+COVERAGE_CHECKOUT_BEGIN mode=6 options=layer (all effects)
+[time=1789052507984 pid=62008 thread=ThreadId(1)]
+world=800x600 rowbytes=6400 type=2 region=A_LRect { left: 0, top: 0, right: 800, bottom: 600 }
+coordinates=world-local; compare only identity baseline until origin mapping is proven
+alpha[210,490]=0
+alpha[400,300]=1
+alpha[50,50]=0
+
+BACKGROUND_COMPLETE comp=90 serial=1
+[time=1789052684331 pid=58660 thread=ThreadId(1)]
+probe=0.0.4 initialized; auxiliary coverage availability is unverified
+[time=1789052684557 pid=58660 thread=ThreadId(1)]
+BACKGROUND_READY comp=90 layer=92 effect=1 serial=0
+[time=1789052684557 pid=58660 thread=ThreadId(1)]
+BACKGROUND_READY comp=17 layer=32 effect=1 serial=0
+[time=1789052684557 pid=58660 thread=ThreadId(1)]
+BACKGROUND_READY comp=33 layer=47 effect=1 serial=0
+[time=1789052684557 pid=58660 thread=ThreadId(1)]
+BACKGROUND_READY comp=1 layer=16 effect=1 serial=0
+[time=1789052684557 pid=58660 thread=ThreadId(1)]
+BACKGROUND_READY comp=76 layer=79 effect=1 serial=0
+[time=1789052700547 pid=58660 thread=ThreadId(2)]
+PF_RENDER
+pf_path_count=0
+
+[time=1789052700547 pid=58660 thread=ThreadId(2)]
+PF_AUXILIARY
+auxiliary_channel_count=0
+auxiliary_coverage_found=false
+
+[time=1789052709409 pid=58660 thread=ThreadId(2)]
+PF_RENDER
+pf_path_count=1
+path[0] segments=3 open=false
+vertex[0]=PF_PathVertex { x: 200.0, y: 150.0, tan_in_x: 200.0, tan_in_y: 150.0, tan_out_x: 200.0, tan_out_y: 150.0 }
+vertex[1]=PF_PathVertex { x: 600.0, y: 150.0, tan_in_x: 600.0, tan_in_y: 150.0, tan_out_x: 600.0, tan_out_y: 150.0 }
+vertex[2]=PF_PathVertex { x: 400.0, y: 500.0, tan_in_x: 400.0, tan_in_y: 500.0, tan_out_x: 400.0, tan_out_y: 500.0 }
+vertex[3]=PF_PathVertex { x: 200.0, y: 150.0, tan_in_x: 200.0, tan_in_y: 150.0, tan_out_x: 200.0, tan_out_y: 150.0 }
+
+[time=1789052709409 pid=58660 thread=ThreadId(2)]
+PF_AUXILIARY
+auxiliary_channel_count=0
+auxiliary_coverage_found=false
+
+[time=1789052711403 pid=58660 thread=ThreadId(2)]
+PF_RENDER
+pf_path_count=1
+path[0] segments=3 open=false
+vertex[0]=PF_PathVertex { x: 200.0, y: 150.0, tan_in_x: 200.0, tan_in_y: 150.0, tan_out_x: 200.0, tan_out_y: 150.0 }
+vertex[1]=PF_PathVertex { x: 600.0, y: 150.0, tan_in_x: 600.0, tan_in_y: 150.0, tan_out_x: 600.0, tan_out_y: 150.0 }
+vertex[2]=PF_PathVertex { x: 400.0, y: 500.0, tan_in_x: 400.0, tan_in_y: 500.0, tan_out_x: 400.0, tan_out_y: 500.0 }
+vertex[3]=PF_PathVertex { x: 200.0, y: 150.0, tan_in_x: 200.0, tan_in_y: 150.0, tan_out_x: 200.0, tan_out_y: 150.0 }
+
+[time=1789052711403 pid=58660 thread=ThreadId(2)]
+PF_AUXILIARY
+auxiliary_channel_count=0
+auxiliary_coverage_found=false
+
+[time=1789052713362 pid=58660 thread=ThreadId(2)]
+PF_RENDER
+pf_path_count=0
+
+[time=1789052713363 pid=58660 thread=ThreadId(2)]
+PF_AUXILIARY
+auxiliary_channel_count=0
+auxiliary_coverage_found=false
+

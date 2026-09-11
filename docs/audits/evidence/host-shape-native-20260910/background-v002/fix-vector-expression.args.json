@@ -1,0 +1,5 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var c=app.project.itemByID(76);if(!c||c.name!=='HS_vector_animated')throw Error('Wrong fixture');var group=c.layer(1).property('ADBE Root Vectors Group').property(1),path=group.property('ADBE Vectors Group').property('ADBE Vector Shape - Group').property('ADBE Vector Shape');path.expression='var pts=thisProperty.points();for(var i=0;i<pts.length;i++){pts[i]=pts[i]+[time*10,time*5];}createPath(pts,thisProperty.inTangents(),thisProperty.outTangents(),true);';var tr=group.property('ADBE Vector Transform Group'),times=[0,1,0.5],samples=[];for(var k=0;k<times.length;k++){var t=times[k],v=path.valueAtTime(t,false);samples.push({time:t,vertices:v.vertices,inTangents:v.inTangents,outTangents:v.outTangents,position:tr.property('ADBE Vector Position').valueAtTime(t,false)});}if(path.expressionError)throw Error(path.expressionError);app.project.save();return JSON.stringify({comp:c.id,name:c.name,cti:c.time,samples:samples});})()",
+  "undo_group_name": "Correct animated contour fixture expression",
+  "timeout_sec": 20
+}

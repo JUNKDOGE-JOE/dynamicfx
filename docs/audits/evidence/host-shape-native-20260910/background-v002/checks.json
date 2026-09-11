@@ -1,0 +1,449 @@
+{
+  "host": "After Effects 2026 26.3x87",
+  "hostPid": 56396,
+  "transport": "MCP loopback HTTP only",
+  "foregroundActions": [],
+  "installedProbe": {
+    "version": "0.0.2",
+    "sha256": "8d896b6857385dcef0854ecba84995ee102e729ebd860588cc53f6bfd33cac25"
+  },
+  "production": {
+    "commit": "ff895649bf99ce52055e066dd986f49e7bf6956e",
+    "aexSha256": "c91db8c0435ccf90e0fac33f5473825c29bbd959cfeef8cc5fcebe80092b0d0a",
+    "sourceDiff": "empty"
+  },
+  "coverage": [
+    {
+      "mode": 3,
+      "alpha": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "expectedShapeCoverage": [
+        0,
+        1,
+        0
+      ],
+      "checkout": "PASS",
+      "shapeCoverage": "FAIL"
+    },
+    {
+      "mode": 4,
+      "alpha": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "expectedShapeCoverage": [
+        0,
+        1,
+        0
+      ],
+      "checkout": "PASS",
+      "shapeCoverage": "FAIL"
+    }
+  ],
+  "animatedContourAcquisition": [
+    {
+      "time": 1,
+      "cti": 0,
+      "sample": {
+        "time": 1,
+        "vertices": [
+          [
+            160,
+            105
+          ],
+          [
+            660,
+            185
+          ],
+          [
+            400,
+            525
+          ]
+        ],
+        "inTangents": [
+          [
+            -30,
+            40
+          ],
+          [
+            -60,
+            -20
+          ],
+          [
+            70,
+            0
+          ]
+        ],
+        "outTangents": [
+          [
+            80,
+            -30
+          ],
+          [
+            10,
+            60
+          ],
+          [
+            -60,
+            0
+          ]
+        ],
+        "position": [
+          120,
+          85
+        ]
+      },
+      "nativeMatchesJsx": true,
+      "tangents": "relative offsets",
+      "result": "PASS raw acquisition only"
+    },
+    {
+      "time": 0,
+      "cti": 0,
+      "sample": {
+        "time": 0,
+        "vertices": [
+          [
+            200,
+            150
+          ],
+          [
+            600,
+            150
+          ],
+          [
+            400,
+            500
+          ]
+        ],
+        "inTangents": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "outTangents": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "position": [
+          70,
+          45
+        ]
+      },
+      "nativeMatchesJsx": true,
+      "tangents": "relative offsets",
+      "result": "PASS raw acquisition only"
+    },
+    {
+      "time": 0.5,
+      "cti": 0,
+      "sample": {
+        "time": 0.5,
+        "vertices": [
+          [
+            180,
+            127.5
+          ],
+          [
+            630,
+            167.5
+          ],
+          [
+            400,
+            512.5
+          ]
+        ],
+        "inTangents": [
+          [
+            -15,
+            20
+          ],
+          [
+            -30,
+            -10
+          ],
+          [
+            35,
+            0
+          ]
+        ],
+        "outTangents": [
+          [
+            40,
+            -15
+          ],
+          [
+            5,
+            30
+          ],
+          [
+            -30,
+            0
+          ]
+        ],
+        "position": [
+          94.9996113230922,
+          64.9996890584738
+        ]
+      },
+      "nativeMatchesJsx": true,
+      "tangents": "relative offsets",
+      "result": "PASS raw acquisition only"
+    }
+  ],
+  "plainFlag": {
+    "mode": 5,
+    "sdkError": 3,
+    "dialog": "5027: AEGP_RenderAndCheckoutLayerFrame: Plain flag mismatch. Upgrade to RenderSuite5 call",
+    "driverTimeoutSeconds": 30,
+    "terminalObservedLater": true,
+    "result": "FAIL rejected options combination; not evidence that all coverage APIs are unavailable"
+  },
+  "fixture": {
+    "path": "scripts/out/host-shape-native-20260910/host-shape-native-v002-frozen.aep",
+    "sha256": "a10d7fd306c27ed0c62ca6c2a89c4d45a13e40130513d80f0bf4be66a1868887",
+    "requestsResetToZero": true
+  },
+  "candidate": {
+    "version": "0.0.3",
+    "path": "scripts/out/host-shape-native-20260910/DynamicFxHostShapeProbe-v003.aex",
+    "sha256": "2a79f154ded226d3c84ab0bac087a0929d1daad43d1d5e4cec5a896b32582e9b",
+    "bytes": 711168,
+    "windowsX64Pe": true,
+    "effectMainMarker": true,
+    "embeddedPipl": true,
+    "testsPassed": 8,
+    "installed": false,
+    "newModes": [
+      "6: RenderSuite5 NewFromLayer",
+      "7: RenderSuite5 NewFromDownstreamOfEffect"
+    ],
+    "retiredMode5": "returns before acquiring host suites"
+  },
+  "nativeSource": [
+    {
+      "path": "spike/host-outline/native/.gitignore",
+      "sha256": "f557d882fbeb3841d743d4c9b23c2c097e50f9b3740fbdae97c9dcd8d57e025e"
+    },
+    {
+      "path": "spike/host-outline/native/build.rs",
+      "sha256": "2ac9450ff6c48946f9b98a5fb32eb7fba451ab476fce52f7e19036b6bd8aadd7"
+    },
+    {
+      "path": "spike/host-outline/native/Cargo.lock",
+      "sha256": "c25edac7d59dbaacde10b0cfc32e2f9aa3f625736d7eca9289696b9a22c98029"
+    },
+    {
+      "path": "spike/host-outline/native/Cargo.toml",
+      "sha256": "73f2f7f15dd1750b44f07fe9bd4dc55eefc748a0ddc908fa4191cfd4aa898920"
+    },
+    {
+      "path": "spike/host-outline/native/src/idle.rs",
+      "sha256": "8895bc7c24ab49500ed0091734f283797133d20b107d5b240ef713fd3f441da7"
+    },
+    {
+      "path": "spike/host-outline/native/src/lib.rs",
+      "sha256": "a8fb60106e4c14d121d9235fad1ce371210fad327d48af4c3915fc689744a78c"
+    },
+    {
+      "path": "spike/host-outline/native/src/read.rs",
+      "sha256": "74cf95ef2103b8df128ab5853f11026e17397caa9fe999742ff7090a8f00f97c"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "after-plain-status.args.json",
+      "sha256": "e2043284e0035b127aa880b84f2cc7dbe3d36f2d8d6fd8287d7bdcdff4ca2de0"
+    },
+    {
+      "path": "after-plain-status.result.json",
+      "sha256": "ea6f5141e1ef19e2000a7b84fda7d62e61bf211f3f6d75673a0e7ee654f2c34a"
+    },
+    {
+      "path": "coverage-v4-plain-t0.args.json",
+      "sha256": "fd913feb546df7ea93e2dc24773eaaffebb347d42ff6ff0f18feba6314b65068"
+    },
+    {
+      "path": "coverage-v4-plain-t0.native.log",
+      "sha256": "70aa4af5aa8b1e4c30114f374d084d7ca0bd8b800801822bdcdd281f6d747bb4"
+    },
+    {
+      "path": "coverage-v4-plain-t0.result.json",
+      "sha256": "d5bb4d267c085ee8687074febd56eddde7e47ca34b76f41fe6ceaf13869b59a6"
+    },
+    {
+      "path": "coverage-v4-t0.args.json",
+      "sha256": "8028bf129a7f68aa07d5067acfa0de2d48ec7ac2f80f1e2de560c5e125eba712"
+    },
+    {
+      "path": "coverage-v4-t0.native.log",
+      "sha256": "5da204e617c3d3a42ab241bda292821e0c7b17a0794984412c9acdc033cbf46b"
+    },
+    {
+      "path": "coverage-v4-t0.result.json",
+      "sha256": "b76138c31a5d55b69bb01f6d2a619568a40db62e9dc239f96e23b08561e7b314"
+    },
+    {
+      "path": "coverage-v5-t0.args.json",
+      "sha256": "aa1cbd69cfc4598290a9f09628826620dfe613500927e0c3cfc868c6c18e6e0d"
+    },
+    {
+      "path": "coverage-v5-t0.native.log",
+      "sha256": "ed0e978060507124d3f71efc8b3b199bd48561a4d305e4efe74c6047a39bc91a"
+    },
+    {
+      "path": "coverage-v5-t0.result.json",
+      "sha256": "09a684cd999368f9232d8b8f02e2c737d33f4ac30cefb0e0789287bdf3249b69"
+    },
+    {
+      "path": "fix-vector-expression.args.json",
+      "sha256": "503d6f2e2f40d4d395a3196d6ba9ea0555186eedcab65cdd2e12f7b21d6dacca"
+    },
+    {
+      "path": "fix-vector-expression.result.json",
+      "sha256": "ee9ba0458d9e01d69bf3b38e8bc5f6f066b247f7ca82db851d290ab7e4958de4"
+    },
+    {
+      "path": "plain-flag-error.png",
+      "sha256": "fad913ee88401434a65c3247ed867d4b8cc3ea9b346f1ee85c11bbbc0d0d7531"
+    },
+    {
+      "path": "reopen-v002-fixture.args.json",
+      "sha256": "3e8e9cfee86be4029f896a3be3c0f8e997f445dcd14d79513134ea83bb3b8b46"
+    },
+    {
+      "path": "reopen-v002-fixture.result.json",
+      "sha256": "9a45139fc442a4bcb9c4b96da803d4456ab98861e66d803300aaebf2b0f81050"
+    },
+    {
+      "path": "reopen-v002-state.args.json",
+      "sha256": "63b562858038449aab5c5d691044c82353603a17fc998cba69fadaf55c254ca9"
+    },
+    {
+      "path": "reopen-v002-state.result.json",
+      "sha256": "306387d3cd6412d9fe70c225a23a48e616c5ecda4b305c1d249ab7cf2cfe1f89"
+    },
+    {
+      "path": "setup-vector-animated.args.json",
+      "sha256": "47f63eb6caef572881ca2fe5f9d79308732b82698f540b4d49344dffcf666619"
+    },
+    {
+      "path": "setup-vector-animated.result.json",
+      "sha256": "9b2cceccc1b2ad5f0258b2801a3fb4a21ceaee9015cadb49d13907c65bf1cf31"
+    },
+    {
+      "path": "v002-params.args.json",
+      "sha256": "d353f24f6abf37f56cd8d1af67052da430be9c591b1895a980a476c6d0d3ad36"
+    },
+    {
+      "path": "v002-params.result.json",
+      "sha256": "7c60a6bd2ae9c61a3e2d9531cf9a6cf37dd36bee787fb0a253e98a2d40c763fc"
+    },
+    {
+      "path": "v002-session.native.log",
+      "sha256": "478e65f90def12e89f878e2467e0455367f4782c2297006b63f926be74d2ba99"
+    },
+    {
+      "path": "v002-standby.args.json",
+      "sha256": "04ed5d86bdb4d9bf14a6efe4dd94274b8d254324791bd908800de1f08544e61d"
+    },
+    {
+      "path": "v002-standby.result.json",
+      "sha256": "755becf7b9d282a7a1dce327e4b71af9d4e6228fccc04b6efa4c4251ec7b71ca"
+    },
+    {
+      "path": "v003-build.log",
+      "sha256": "93438b9815ec74116d98fcc0a87700390c664d12cb05acbed0675c4a555a7e74"
+    },
+    {
+      "path": "v003-test.log",
+      "sha256": "4ff4940268bc4a97dd826507ed2f09774a7fdf3dd38a39174851cf159ea10f90"
+    },
+    {
+      "path": "vector-animated-t0.args.json",
+      "sha256": "f23ed7642edfd778278714521f118bdba97657b8dd7ec196ecf3acdaaebae0b4"
+    },
+    {
+      "path": "vector-animated-t0.native.log",
+      "sha256": "deda62e720b153cc1d30383f9ffc5a4aa934d98d39c85a58176012f4865bff7a"
+    },
+    {
+      "path": "vector-animated-t0.result.json",
+      "sha256": "648c6b276d7e56b91639457ff4b6de03f5f34e9f3fafc6bdae1a3c83fc84a0e6"
+    },
+    {
+      "path": "vector-animated-t05.args.json",
+      "sha256": "8dd8695b33b4c977693418202cdc4726d9b68a54b3536b52dc91245caaf15350"
+    },
+    {
+      "path": "vector-animated-t05.native.log",
+      "sha256": "8e0820f31ca6fb1480325f1191c12caa49494df5f06d51f4719239627310ea00"
+    },
+    {
+      "path": "vector-animated-t05.result.json",
+      "sha256": "a319e1d4cd5e6c90c9f288f3b1886ae3f05a4b36e204771c687e17e34e3870b6"
+    },
+    {
+      "path": "vector-animated-t1.args.json",
+      "sha256": "9e5be360f3498785eab8cbbb02c2fbe1b5640575a44314aa56462e1205ed7da3"
+    },
+    {
+      "path": "vector-animated-t1.native.log",
+      "sha256": "54ba517c62526722b241e7bb1f5546aa441ecea14905bda690cc10a9fc440681"
+    },
+    {
+      "path": "vector-animated-t1.result.json",
+      "sha256": "db159d3d1ac5436b56d85b82d7e27a2a7f9b9d696517cdcd1632a2442e8a18d1"
+    },
+    {
+      "path": "vector-v002-t0-checked.args.json",
+      "sha256": "4c3d037d6114a12e1dbe31997624e6fc1adba06e38469895fd8854a1c497dc31"
+    },
+    {
+      "path": "vector-v002-t0-checked.native.log",
+      "sha256": "4f5686af1bd954865173e1cc4fb35b24048e14b59db8a1099f0f548ddd1de36a"
+    },
+    {
+      "path": "vector-v002-t0-checked.result.json",
+      "sha256": "8a72403126362970660764f0e4604c4d372aeae0d2195c3dc775fe9f47679911"
+    },
+    {
+      "path": "vector-v002-t0.args.json",
+      "sha256": "419258e2937cef8a107a48b413726f4ae649780a61382a7a8e455205f80fee04"
+    },
+    {
+      "path": "vector-v002-t0.result.json",
+      "sha256": "e0004d302396c635c79898ab9a45f630f346532d67904a1060b8ed80cba973a5"
+    }
+  ],
+  "limitations": [
+    "Main-thread raw contour reads only; no frame-owned renderer transport or transformed geometry.",
+    "Coverage is not obtained. New v5 layer/downstream options are built but not host-tested.",
+    "First driver exact parameter count was wrong because AE appends Compositing Options; no write occurred.",
+    "Initial expression called points on value; corrected to thisProperty. Original failure retained.",
+    "Initial failure printing hit GBK UnicodeEncodeError after result was saved; stdout now UTF-8."
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "date": "2026-09-10",
+  "baseline": "17e12a7 plus pre-existing project-open repair",
+  "branch": "codex/fix-project-open-lock",
+  "issue": {
+    "url": "https://github.com/JUNKDOGE-JOE/dynamicfx/issues/9",
+    "fetched_body_equal": true,
+    "normalization": "CRLF to LF"
+  },
+  "environment_note": "The system Python launcher reported no installed Pythons; checks used the bundled Codex Python runtime without installation.",
+  "governance": {
+    "command": "python scripts/check_governance.py",
+    "runtime": "Codex bundled Python",
+    "exit_code": 0,
+    "output": "DynamicFX governance check\r\nmarkdown_files=126\r\nlocal_links=1630\r\nmermaid_blocks=16\r\naccepted_adrs=45\r\nerrors=0\r\nRESULT=PASS"
+  },
+  "fixture": {
+    "procedure": "Parse cases.json; independently classify triangle probes by oriented edge signs; require 12 unique scenario IDs and matching shader probe coordinates.",
+    "exit_code": 0,
+    "output": "{\"fixture_check\": \"PASS\", \"triangle_coverage\": [0, 1, 0], \"unique_scenarios\": 12, \"shader_compilation\": \"NOT_RUN\", \"host_render\": \"NOT_RUN\"}"
+  },
+  "comment_scan": {
+    "command": "rg -n '(GPT|Codex|Claude|Gemini|review|round [0-9]+|Phase [0-9A-G]|TODO|FIXME|HACK|XXX)' spike/host-outline -g '*.glsl'",
+    "exit_code": 1,
+    "result": "No matches"
+  },
+  "runtime_preservation": {
+    "status": "PASS",
+    "files": [
+      {
+        "path": "build.rs",
+        "sha256": "89a5a4525ee44c626140443f7e5e22c46cc08919b47d6426e573420e3eb3ecc1"
+      },
+      {
+        "path": "scripts/macos.py",
+        "sha256": "803857393d4519736b48c4a07edc6eb1811224b075cafd71ef4305d2e2a4a379"
+      },
+      {
+        "path": "src/binding.rs",
+        "sha256": "194d24f3c188031b5664eac130c734698cde12e0c9513681b5bf7071b6cd1666"
+      },
+      {
+        "path": "src/canvas.rs",
+        "sha256": "9a0c7f2f4efd22b74e1e6fef8cee5d4a68419ee4602ef4c8b80638576244b117"
+      },
+      {
+        "path": "src/diag.rs",
+        "sha256": "5d14f33e5ffef0ea020bf5e401314c0f96b0583b589026d2c5be51c58479d5c2"
+      },
+      {
+        "path": "src/diagnostics.rs",
+        "sha256": "64d4c04e9b00e728b8a57c3dcbbdf379bf71302ca408dbe02f752ce95c820585"
+      },
+      {
+        "path": "src/gradient.rs",
+        "sha256": "e1d2da1cc96134441fc5589810e61a4e65dd99fea9eb816748b2d45e20e59030"
+      },
+      {
+        "path": "src/identity.rs",
+        "sha256": "a21dffb50932d21d3ae1569294c75abc3cb28733940a0b611a561a8903840b92"
+      },
+      {
+        "path": "src/lib.rs",
+        "sha256": "9494b2381789387459e919dfe7563d1dab142f3cd1a670b7e582d2c170185ecf"
+      },
+      {
+        "path": "src/path.rs",
+        "sha256": "aec80ce7ba105f6976a66204485d1df14f9d51e6d4062967c4dedc0efaa31ba2"
+      },
+      {
+        "path": "src/persistence.rs",
+        "sha256": "a3f356cbefc16044979454d173a6187dc6fcd26bae5741acb8f49a43da200194"
+      },
+      {
+        "path": "src/plan.rs",
+        "sha256": "8dbad3cdd6df8fcd7f034cde844f2165d141d8b15f7b5c6ebda7a17c31d18c82"
+      },
+      {
+        "path": "src/reentry_tests.rs",
+        "sha256": "3e05d4050dcb9001cb36bef186fa1e2900e840a41518011ef194866a664e3a25"
+      },
+      {
+        "path": "src/render.rs",
+        "sha256": "b2380264759aa99e9b749d321dfa9140bd234ee4b54ba3954466620726c79c93"
+      },
+      {
+        "path": "src/source.rs",
+        "sha256": "39efb5990aa7d848a422b0d2e93eab655b4dbeef0ccd9766438b09b1adeca8ed"
+      },
+      {
+        "path": "src/wgsl_tests.rs",
+        "sha256": "3cd93b7b705964377df44d4e9a6beca79fcd6c430609dca5d58b7ff1b7b0af0e"
+      },
+      {
+        "path": "src/definition/effect.rs",
+        "sha256": "ea43bae18b5719e876c239e096edd68e6f25af4174bbd47265b7b62319ea475e"
+      },
+      {
+        "path": "src/definition/mod.rs",
+        "sha256": "9cd9704a88790c9d26dace0117f2b7075bb704b83f2367de3af6fd6407aa44df"
+      },
+      {
+        "path": "src/definition/param.rs",
+        "sha256": "3d369e2df8273c44316a3e432a7aea26726090965f3ed036ed8382b22e02b203"
+      },
+      {
+        "path": "src/frontend/annotation.rs",
+        "sha256": "ae3946d8904743daef1a1b38817ddb88c7829da5229225c661cf71ff75cedef0"
+      },
+      {
+        "path": "src/frontend/envelope.rs",
+        "sha256": "965ebeae5f0a6effd625c05ea4321cad58a0a350c4c8fdbb19e5043120293c51"
+      },
+      {
+        "path": "src/frontend/glsl.rs",
+        "sha256": "e6ce758a3fdafff6cdcf85494815dbdf8047f584382b96e30af37355188d7977"
+      },
+      {
+        "path": "src/frontend/grammar.rs",
+        "sha256": "90d4384e0c2a0d9621ccfd50b03feb3152d0cd330b68e710b14aa24e9ab968a9"
+      },
+      {
+        "path": "src/frontend/mod.rs",
+        "sha256": "c5b00e188da84cfd7f032e17b9ddaf1ac2f94bf8d0a7dd57d1009fd5882cd439"
+      },
+      {
+        "path": "src/frontend/shared.rs",
+        "sha256": "f1efbf28f2d227450ddba6a1d94899c82c73599c29836e3962696bb60b229135"
+      },
+      {
+        "path": "src/frontend/wgsl.rs",
+        "sha256": "6a60485db5441129877957c65d198342bdb6b823d6166a6c9010bcc13a4209d7"
+      },
+      {
+        "path": "src/host/callback.rs",
+        "sha256": "fab9c9a64c29a4798fb02f7ad92c0f12a5fa8887368fa26ea766a21e77fa6072"
+      },
+      {
+        "path": "src/host/entry.rs",
+        "sha256": "c22f4753f789d15fa2884f888dc179e0c9c2d31514dddb70b06c8054c2313fdf"
+      },
+      {
+        "path": "src/host/idle.rs",
+        "sha256": "a71cc81238b0e40cbd3bef01ed4225ab56bfcef6d6b5a1f3ed6c0ce105a3c379"
+      },
+      {
+        "path": "src/host/mod.rs",
+        "sha256": "662d6556a67e113b11920c0749039ea08268aaada2f78f6c6d4d751e640e6801"
+      },
+      {
+        "path": "src/host/params.rs",
+        "sha256": "841cc7a56e6915cd37573d4f03e573fdd60582f69fcb46775709a11233fba34c"
+      }
+    ]
+  },
+  "shader_compilation": "NOT_RUN",
+  "native_probes": "NOT_RUN",
+  "feature_acceptance": "NOT_RUN",
+  "installation": "NOT_RUN"
+}

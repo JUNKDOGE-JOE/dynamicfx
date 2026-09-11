@@ -1,0 +1,4 @@
+{
+  "code": "(function(){return JSON.stringify({version:app.version,file:app.project.file?app.project.file.name:null,numItems:app.project.numItems});})()",
+  "timeout_sec": 5
+}

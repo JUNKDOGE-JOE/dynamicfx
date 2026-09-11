@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":103,\\\"effects\\\":[{\\\"i\\\":1,\\\"matchName\\\":\\\"ADBE Set Matte3\\\",\\\"properties\\\":[{\\\"i\\\":1,\\\"name\\\":\\\"从图层获取遮罩\\\",\\\"matchName\\\":\\\"ADBE Set Matte3-0001\\\",\\\"type\\\":\\\"6421\\\",\\\"value\\\":1},{\\\"i\\\":2,\\\"name\\\":\\\"用于遮罩\\\",\\\"matchName\\\":\\\"ADBE Set Matte3-0002\\\",\\\"type\\\":\\\"6417\\\",\\\"value\\\":4},{\\\"i\\\":3,\\\"name\\\":\\\"反转遮罩\\\",\\\"matchName\\\":\\\"ADBE Set Matte3-0003\\\",\\\"type\\\":\\\"6417\\\",\\\"value\\\":0},{\\\"i\\\":4,\\\"name\\\":\\\"如果图层大小不同\\\",\\\"matchName\\\":\\\"ADBE Set Matte3-0004\\\",\\\"type\\\":\\\"6417\\\",\\\"value\\\":1},{\\\"i\\\":5,\\\"name\\\":\\\"将遮罩与原始图像合成\\\",\\\"matchName\\\":\\\"ADBE Set Matte3-0005\\\",\\\"type\\\":\\\"6417\\\",\\\"value\\\":1},{\\\"i\\\":6,\\\"name\\\":\\\"预乘遮罩图层\\\",\\\"matchName\\\":\\\"ADBE Set Matte3-0006\\\",\\\"type\\\":\\\"6417\\\",\\\"value\\\":1},{\\\"i\\\":7,\\\"name\\\":\\\"合成选项\\\",\\\"matchName\\\":\\\"ADBE Effect Built In Params\\\",\\\"type\\\":\\\"undefined\\\",\\\"value\\\":null}]}]}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":103,\"effects\":[{\"i\":1,\"matchName\":\"ADBE Set Matte3\",\"properties\":[{\"i\":1,\"name\":\"从图层获取遮罩\",\"matchName\":\"ADBE Set Matte3-0001\",\"type\":\"6421\",\"value\":1},{\"i\":2,\"name\":\"用于遮罩\",\"matchName\":\"ADBE Set Matte3-0002\",\"type\":\"6417\",\"value\":4},{\"i\":3,\"name\":\"反转遮罩\",\"matchName\":\"ADBE Set Matte3-0003\",\"type\":\"6417\",\"value\":0},{\"i\":4,\"name\":\"如果图层大小不同\",\"matchName\":\"ADBE Set Matte3-0004\",\"type\":\"6417\",\"value\":1},{\"i\":5,\"name\":\"将遮罩与原始图像合成\",\"matchName\":\"ADBE Set Matte3-0005\",\"type\":\"6417\",\"value\":1},{\"i\":6,\"name\":\"预乘遮罩图层\",\"matchName\":\"ADBE Set Matte3-0006\",\"type\":\"6417\",\"value\":1},{\"i\":7,\"name\":\"合成选项\",\"matchName\":\"ADBE Effect Built In Params\",\"type\":\"undefined\",\"value\":null}]}]}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

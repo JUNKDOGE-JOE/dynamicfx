@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"name\\\":\\\"HS_auto_base\\\",\\\"fx\\\":[{\\\"i\\\":1,\\\"name\\\":\\\"Layer time (s)\\\",\\\"value\\\":0},{\\\"i\\\":2,\\\"name\\\":\\\"Read mode\\\",\\\"value\\\":2},{\\\"i\\\":3,\\\"name\\\":\\\"Read host\\\",\\\"value\\\":null},{\\\"i\\\":4,\\\"name\\\":\\\"Log PF paths and channels\\\",\\\"value\\\":1},{\\\"i\\\":5,\\\"name\\\":\\\"Background request serial\\\",\\\"value\\\":0},{\\\"i\\\":6,\\\"name\\\":\\\"Original self source\\\",\\\"value\\\":1},{\\\"i\\\":7,\\\"name\\\":\\\"Manage coverage carrier\\\",\\\"value\\\":1},{\\\"i\\\":8,\\\"name\\\":\\\"合成选项\\\",\\\"value\\\":null}]}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"name\":\"HS_auto_base\",\"fx\":[{\"i\":1,\"name\":\"Layer time (s)\",\"value\":0},{\"i\":2,\"name\":\"Read mode\",\"value\":2},{\"i\":3,\"name\":\"Read host\",\"value\":null},{\"i\":4,\"name\":\"Log PF paths and channels\",\"value\":1},{\"i\":5,\"name\":\"Background request serial\",\"value\":0},{\"i\":6,\"name\":\"Original self source\",\"value\":1},{\"i\":7,\"name\":\"Manage coverage carrier\",\"value\":1},{\"i\":8,\"name\":\"合成选项\",\"value\":null}]}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

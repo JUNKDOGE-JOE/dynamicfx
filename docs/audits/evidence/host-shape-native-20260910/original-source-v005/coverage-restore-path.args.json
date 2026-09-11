@@ -1,0 +1,5 @@
+{
+  "undo_group_name": "Restore coverage comparison shapes",
+  "timeout_sec": 15,
+  "code": "(function(){function find(c){var out=[];function walk(p){for(var i=1;i<=p.numProperties;i++){var q=p.property(i);if(q.matchName==='ADBE Vector Shape')out.push(q);else if(q.propertyType!==PropertyType.PROPERTY)walk(q);}}walk(c.layer(1).property('ADBE Root Vectors Group'));if(out.length!==1)throw Error('Unexpected shape count');return out[0];}var original=find(app.project.itemByID(76)).keyValue(1);var ids=[132,146];for(var i=0;i<ids.length;i++){var p=find(app.project.itemByID(ids[i]));var v=p.keyValue(1).vertices;if(v[0][0]!==original.vertices[0][0]+60||v[0][1]!==original.vertices[0][1]+30)throw Error('Edited shape changed again');p.setValueAtKey(1,original);}return JSON.stringify({restored:ids,first:original.vertices[0]});})()"
+}

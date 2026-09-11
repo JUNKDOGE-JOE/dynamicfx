@@ -1,0 +1,55 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"pluginVersion\":\"0.10.7\",\"port\":11488,\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":1789055817723,\"pendingCalls\":0,\"sentinelInFlight\":false},\"paused\":false,\"clients\":[{\"name\":\"Codex DynamicFX regression\",\"blocked\":false}],\"nativeExecutionPlane\":{\"available\":false,\"adapter\":null,\"engine\":null},\"server\":\"cep-host\",\"python\":null,\"mcp\":{\"sessions\":42,\"protocolVersion\":\"2025-06-18\"},\"host\":{\"reachable\":true,\"pluginVersion\":\"0.10.7\",\"port\":11488,\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":1789055817723,\"pendingCalls\":0,\"sentinelInFlight\":false}},\"ae\":{\"responsive\":true,\"aeVersion\":\"26.3x87\",\"projectFile\":\"host-shape-native.aep\"}}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "pluginVersion": "0.10.7",
+    "port": 11488,
+    "jsxBridge": {
+      "state": "ok",
+      "degradedSinceMs": null,
+      "lastTimeoutAt": 1789055817723,
+      "pendingCalls": 0,
+      "sentinelInFlight": false
+    },
+    "paused": false,
+    "clients": [
+      {
+        "name": "Codex DynamicFX regression",
+        "blocked": false
+      }
+    ],
+    "nativeExecutionPlane": {
+      "available": false,
+      "adapter": null,
+      "engine": null
+    },
+    "server": "cep-host",
+    "python": null,
+    "mcp": {
+      "sessions": 42,
+      "protocolVersion": "2025-06-18"
+    },
+    "host": {
+      "reachable": true,
+      "pluginVersion": "0.10.7",
+      "port": 11488,
+      "jsxBridge": {
+        "state": "ok",
+        "degradedSinceMs": null,
+        "lastTimeoutAt": 1789055817723,
+        "pendingCalls": 0,
+        "sentinelInFlight": false
+      }
+    },
+    "ae": {
+      "responsive": true,
+      "aeVersion": "26.3x87",
+      "projectFile": "host-shape-native.aep"
+    }
+  }
+}

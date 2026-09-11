@@ -94,11 +94,11 @@ fn pipl_properties(editor: bool) -> Vec<Property> {
         Property::Category("DynamicFx"),
 
         #[cfg(target_os = "windows")]
-        Property::CodeWin64X86("EffectMain"),
+        Property::CodeWin64X86("DynamicFxMain"),
         #[cfg(all(target_os = "macos", target_arch = "x86_64"))]
-        Property::CodeMacIntel64("EffectMain"),
+        Property::CodeMacIntel64("DynamicFxMain"),
         #[cfg(all(target_os = "macos", target_arch = "aarch64"))]
-        Property::CodeMacARM64("EffectMain"),
+        Property::CodeMacARM64("DynamicFxMain"),
 
         Property::AE_PiPL_Version { major: 2, minor: 0 },
         Property::AE_Effect_Spec_Version { major: PF_PLUG_IN_VERSION, minor: PF_PLUG_IN_SUBVERS },
@@ -109,7 +109,7 @@ fn pipl_properties(editor: bool) -> Vec<Property> {
             subversion: if editor { 12 } else { 11 },
             bugversion: 1,
             stage: Stage::Develop,
-            build: 0,
+            build: 1,
         },
         Property::AE_Effect_Info_Flags(0),
         Property::AE_Effect_Global_OutFlags(out_flags),

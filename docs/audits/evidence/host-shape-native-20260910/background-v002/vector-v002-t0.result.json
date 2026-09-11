@@ -1,0 +1,45 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":false,\"error\":\"ExtendScript error: Error: Background probe is not loaded (line 6)\",\"disposition\":\"failed\",\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":null,\"pendingCalls\":0,\"sentinelInFlight\":false},\"errorLine\":6,\"touched\":{\"level\":\"none\",\"method\":\"snapshot-diff\",\"comp\":null,\"activeCompChanged\":null,\"layersAdded\":[],\"layersRemoved\":[],\"layersChanged\":[],\"itemsAdded\":[],\"itemsRemoved\":[],\"truncated\":false,\"notes\":[]},\"revision\":{\"before\":333,\"after\":333},\"projectPath\":\"E:\\\\Code\\\\AePlugin_Dynamicfx\\\\scripts\\\\out\\\\host-shape-native-20260910\\\\host-shape-native.aep\",\"errorSource\":\"if(p.matchName!==\\\"DynamicFx Host Shape Probe\\\"||p.numProperties!==5)throw Error(\\\"Background probe is not loaded\\\");\",\"recoveryId\":\"y1zdob\",\"scriptPath\":\"C:\\\\Users\\\\REDACTED_USER\\\\.ae-mcp\\\\checkpoints\\\\host-shape-native_a86229a859ff\\\\recovery\\\\y1zdob.jsx\",\"checkpointId\":null,\"attempt\":1}"
+    }
+  ],
+  "structuredContent": {
+    "ok": false,
+    "error": "ExtendScript error: Error: Background probe is not loaded (line 6)",
+    "disposition": "failed",
+    "jsxBridge": {
+      "state": "ok",
+      "degradedSinceMs": null,
+      "lastTimeoutAt": null,
+      "pendingCalls": 0,
+      "sentinelInFlight": false
+    },
+    "errorLine": 6,
+    "touched": {
+      "level": "none",
+      "method": "snapshot-diff",
+      "comp": null,
+      "activeCompChanged": null,
+      "layersAdded": [],
+      "layersRemoved": [],
+      "layersChanged": [],
+      "itemsAdded": [],
+      "itemsRemoved": [],
+      "truncated": false,
+      "notes": []
+    },
+    "revision": {
+      "before": 333,
+      "after": 333
+    },
+    "projectPath": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\host-shape-native-20260910\\host-shape-native.aep",
+    "errorSource": "if(p.matchName!==\"DynamicFx Host Shape Probe\"||p.numProperties!==5)throw Error(\"Background probe is not loaded\");",
+    "recoveryId": "y1zdob",
+    "scriptPath": "C:\\Users\\REDACTED_USER\\.ae-mcp\\checkpoints\\host-shape-native_a86229a859ff\\recovery\\y1zdob.jsx",
+    "checkpointId": null,
+    "attempt": 1
+  },
+  "isError": true
+}

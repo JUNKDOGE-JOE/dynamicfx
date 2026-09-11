@@ -1,0 +1,5 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var ids=[1,17,33,90],rows=[];for(var i=0;i<ids.length;i++){var c=app.project.itemByID(ids[i]);if(!c||c.name.indexOf('HS_')!==0)throw Error('Wrong fixture');var p=c.layer(1).property('ADBE Effect Parade').property(1);if(p.matchName!=='DynamicFx Host Shape Probe'||p.property(4).name!=='Log PF paths and channels')throw Error('Probe 0.0.4 not loaded');p.property(4).setValue(1);rows.push({comp:c.id,name:c.name,adjustment:c.layer(1).adjustmentLayer,logging:p.property(4).value});}return JSON.stringify(rows);})()",
+  "undo_group_name": "Enable auxiliary channel diagnostics",
+  "timeout_sec": 15
+}

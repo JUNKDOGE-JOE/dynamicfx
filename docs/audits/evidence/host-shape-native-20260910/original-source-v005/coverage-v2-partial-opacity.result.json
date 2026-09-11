@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":160,\\\"ms\\\":0,\\\"vertices\\\":4,\\\"error\\\":\\\"表达式被禁用\\\\n合成“HS_coverage_partial_opacity”中图层 1（“host”）的属性“蒙版路径”中，第 8 行出现错误。\\\\r\\\\nError: Coverage probe sampling budget exceeded\\\\n\\\\n\\\\t    if (w * h <= 64) {\\\\n▶\\\\t        if (++queries > 32768) throw new Error(\\\\\\\"Coverage probe samplin ...\\\\n\\\\t        var a = source.sampleImage([x + (w - 1) / 2, y + (h - 1) / 2], ...\\\"}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":160,\"ms\":0,\"vertices\":4,\"error\":\"表达式被禁用\\n合成“HS_coverage_partial_opacity”中图层 1（“host”）的属性“蒙版路径”中，第 8 行出现错误。\\r\\nError: Coverage probe sampling budget exceeded\\n\\n\\t    if (w * h <= 64) {\\n▶\\t        if (++queries > 32768) throw new Error(\\\"Coverage probe samplin ...\\n\\t        var a = source.sampleImage([x + (w - 1) / 2, y + (h - 1) / 2], ...\"}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

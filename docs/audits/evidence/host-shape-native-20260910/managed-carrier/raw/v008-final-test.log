@@ -1,0 +1,34 @@
+   Compiling dynamicfx-host-shape-probe v0.0.8 (E:\Code\AePlugin_Dynamicfx\spike\host-outline\native)
+error[E0061]: this method takes 1 argument but 0 arguments were supplied
+  --> src\carrier.rs:37:29
+   |
+37 |         let state = utility.start_quiet_errors()?;
+   |                             ^^^^^^^^^^^^^^^^^^-- argument #1 of type `bool` is missing
+   |
+note: method defined here
+  --> C:\Users\REDACTED_USER\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\after-effects-0.4.0\src\aegp\suites\utility.rs:42:12
+   |
+42 |     pub fn start_quiet_errors(&self, report_quieted_errors_on_drop: bool) -> Result<ErrReportState, Error> {
+   |            ^^^^^^^^^^^^^^^^^^
+help: provide the argument
+   |
+37 |         let state = utility.start_quiet_errors(/* bool */)?;
+   |                                                ++++++++++
+
+error[E0308]: mismatched types
+  --> src\carrier.rs:38:26
+   |
+38 |         Ok(Self(utility, state))
+   |            ----          ^^^^^ expected `AEGP_ErrReportState`, found `ErrReportState`
+   |            |
+   |            arguments to this function are incorrect
+   |
+note: tuple struct defined here
+  --> src\carrier.rs:33:8
+   |
+33 | struct Quiet(ae::aegp::suites::Utility, ae::sys::AEGP_ErrReportState);
+   |        ^^^^^
+
+Some errors have detailed explanations: E0061, E0308.
+For more information about an error, try `rustc --explain E0061`.
+error: could not compile `dynamicfx-host-shape-probe` (lib test) due to 2 previous errors

@@ -1,0 +1,5 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var rows=[];for(var i=1;i<=app.project.numItems;i++){var c=app.project.item(i);if(!(c instanceof CompItem)||c.name.indexOf('HS_')!==0)continue;var l=c.layer(1),fx=l.property('ADBE Effect Parade');if(fx.numProperties&&fx.property(1).matchName==='DynamicFx Host Shape Probe'){var p=fx.property(1);p.property(4).setValue(0);p.property(5).setValue(0);p.property(2).setValue(2);}rows.push({id:c.id,name:c.name,time:c.time,adjustment:l.adjustmentLayer});}app.project.save();return JSON.stringify({file:app.project.file.name,version:app.version,bpc:app.project.bitsPerChannel,comps:rows,standby:true});})()",
+  "undo_group_name": "Finish diagnostic coverage regression",
+  "timeout_sec": 20
+}

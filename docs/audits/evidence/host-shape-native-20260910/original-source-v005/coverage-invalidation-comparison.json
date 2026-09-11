@@ -1,0 +1,10 @@
+{
+  "label": "coverage-animated-edited-t05",
+  "vertices": 4390,
+  "pixels": 480000,
+  "different": 20,
+  "max_error_8bit": 31,
+  "mae_8bit": 0.00010416666666666667,
+  "within_one_8bit_level": false,
+  "pixels_changed_after_original_path_edit": 8509
+}

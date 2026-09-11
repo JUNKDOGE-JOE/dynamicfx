@@ -1,0 +1,4 @@
+{
+  "code": "(function(){var p=app.project;var items=[];for(var i=1;i<=p.numItems;i++){var c=p.item(i);if(c instanceof CompItem)items.push({id:c.id,name:c.name,layers:c.numLayers,time:c.time});}return JSON.stringify({version:app.version,file:p.file?p.file.fsName:null,dirty:p.dirty,bpc:p.bitsPerChannel,items:items});})()",
+  "timeout_sec": 15
+}

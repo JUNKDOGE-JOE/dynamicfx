@@ -80,7 +80,11 @@ Use [TEMPLATE.md](TEMPLATE.md). Ordinary implementation details and bug fixes do
 
 A `Proposed` ADR is under active decision review and freezes no persistent contract yet (it is not counted among the Accepted decisions and is not a binding record until Accepted).
 
-_No ADR is under review at the moment (ADR-0042 was Accepted on 2026-08-28)._
+- [0047 — Automatic host coverage input](0049-automatic-host-shape-input.md)
+  (Proposed transport/ABI, product scope approved 2026-09-10): issue #9;
+  original host visible coverage only after the user's same-day scope revision;
+  additional contour input withdrawn. Data-source/frame-transport probes
+  precede runtime integration.
 
 ## Format ADRs (staged per ADR-0009)
 

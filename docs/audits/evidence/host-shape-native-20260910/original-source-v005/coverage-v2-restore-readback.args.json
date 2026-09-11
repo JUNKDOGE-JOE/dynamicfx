@@ -1,0 +1,4 @@
+{
+  "timeout_sec": 15,
+  "code": "(function(){var c=app.project.itemByID(132);var r=[];function walk(p){for(var i=1;i<=p.numProperties;i++){var q=p.property(i);if(q.matchName==='ADBE Vector Shape')r.push(q.keyValue(1).vertices[0]);else if(q.propertyType!==PropertyType.PROPERTY)walk(q);}}walk(c.layer(1).property('ADBE Root Vectors Group'));return JSON.stringify({check:'after-v2-restore',vertices:r});})()"
+}
