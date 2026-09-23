@@ -130,6 +130,12 @@ pub(super) fn reflect_user_params(
                     )));
                 }
                 (Some(Hint::Color), ShaderParamType::Vec3Color | ShaderParamType::Vec4Color) => {}
+                (Some(Hint::Percent), ShaderParamType::Float) => {}
+                (Some(Hint::Percent), _) => {
+                    return Err(FrontendError::Param(format!(
+                        "`{name}`: hint:percent applies to float members only"
+                    )));
+                }
                 (Some(Hint::Color), _) => {
                     return Err(FrontendError::Param(format!(
                         "`{name}`: hint:color applies to vec3/vec4 members only"
@@ -213,7 +219,13 @@ pub(super) fn reflect_user_params(
                 min: annotation.min,
                 max: annotation.max,
                 default: annotation.default.clone(),
+                percent: annotation.hint == Some(Hint::Percent),
             };
+            if ty == ShaderParamType::Vec4Color {
+                if let Some(default) = &mut ui.default {
+                    if default.len() == 3 { default.push(1.0); }
+                }
+            }
         }
 
         let (words, int) = match ty {

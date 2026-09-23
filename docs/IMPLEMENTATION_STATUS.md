@@ -5,6 +5,22 @@
 
 
 
+## Active issue batch and unified release — 2026-09-23
+
+The user authorized resolving all open issues, then merging and releasing the
+combined result. #9 is accepted; #10 RGB hex defaults and #11 percent display
+are implemented and verified: 257 tests each (SDK default/editor/no-SDK), 24
+native parameter cases, display-unit readback, keyframe/save-reopen checks and
+27 pixel-identical glass frame pairs. Candidate main is `4fe13ec0...`; reader
+is unchanged. [Batch audit](audits/13-issue-batch-release.md).
+
+#12 is blocked on affected-host reproduction. The user confirms another
+machine is affected and has no additional error details. Four local opens
+do not reproduce it and are not evidence of a fix. The draft PR remains
+unmerged and no new release is published. Next action: obtain a reproducible
+affected-host case using the [diagnostic guide](project-reopen-diagnostics.md),
+then fix and verify #12 before the authorized unified merge/release.
+
 ## Completed upstream Liquid Glass port — 2026-09-23
 
 The material now adapts MIT `iyinchao/liquid-glass-studio` at pinned commit

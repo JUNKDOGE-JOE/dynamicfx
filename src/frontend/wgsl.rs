@@ -683,9 +683,7 @@ void main() {{ color=vec4(uv,u_time,1.0); }}
             ("x: f32,", "hint:path", "param"),
             ("x: i32,", "hint:canvas", "canvas"),
             ("x: f32,", "min:2 max:1", "param"),
-            // Existing GLSL behavior: HEX expands to RGBA, which vec3
-            // rejects before upload. This change does not redefine it.
-            ("x: vec3f,", "hint:color default:#112233", "param"),
+            ("x: vec3f,", "hint:color default:#112233FF", "param"),
         ] {
             let error =
                 parse(&format!("// @param x {annotation}\n{}", shader(member))).unwrap_err();

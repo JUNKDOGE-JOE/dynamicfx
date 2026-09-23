@@ -167,6 +167,10 @@ flowchart TB
 
 ### 4.2 参数池
 
+[ADR-0060](adr/0060-color-default-arity-and-percent-display.md) 增加 float 的
+`hint:percent` 显示提示；25 显示为 25%，上传值仍是 25。六位颜色默认值
+按声明支持 vec3 或 vec4，后者隐含 alpha=1；八位颜色只接受 vec4。
+
 v1 池表、容量与增长政策由 [ADR-0013](adr/0013-paramid-grammar-and-pools.md) 固定：
 
 - Float / Integer / Bool（Checkbox）/ Color / Point 2D / Angle，共 104 槽；

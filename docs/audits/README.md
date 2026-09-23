@@ -35,6 +35,8 @@ They do not replace:
 | M7 | [07 Performance and MFR](07-performance-mfr.md) | Not started (created at M6 exit) |
 | Post-M7 host repair | [10 Project-open callback repair](10-project-open-lock.md) | AE 2026 local repair verified; project expression follow-up paused |
 | Post-M7 coverage | [11 Host coverage integration](11-host-coverage-integration.md) | Production resource/precision layer implemented; native ownership hookup and host acceptance pending |
+| Upstream material | [12 Liquid Glass port](12-upstream-liquid-glass.md) | Complete; licensed source/FFX and native acceptance |
+| Unified issue release | [13 Issues #10–#12](13-issue-batch-release.md) | #10/#11 verified; #12 reproduction blocks merge/release |
 
 ## Required sections
 

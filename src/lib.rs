@@ -26,6 +26,8 @@ mod source;
 mod wgsl_tests;
 #[cfg(test)]
 mod reentry_tests;
+#[cfg(test)]
+mod parameter_hint_tests;
 
 // M3 persistence layers (ADRs 0015-0017).
 pub mod diagnostics;
@@ -702,6 +704,7 @@ impl CompiledEffect {
 /// UI-callback configuration and the idle observer's AEGP publication.
 pub(crate) struct SlotConfig {
     pub label: String,
+    pub percent: bool,
     pub min: Option<f32>,
     pub max: Option<f32>,
     /// Scalar default for this slot (component 0, or component 3 for the
@@ -741,6 +744,7 @@ pub(crate) fn slot_configs(
                 *slot,
                 SlotConfig {
                     label,
+                    percent: j == 0 && decl.ui.percent,
                     min: (j == 0).then_some(decl.ui.min).flatten(),
                     max: (j == 0).then_some(decl.ui.max).flatten(),
                     default,
@@ -3101,6 +3105,13 @@ fn configure_slots(plugin: &mut PluginState, local: &mut UiPublication) {
                 match plugin.params.get_mut(host::params::key_for_slot(kind, i)) {
                     Ok(mut p) => {
                         names_ok &= host::params::set_display_name(&mut p, &label).is_ok();
+                        if let Ok(ae::Param::FloatSlider(mut f)) = p.as_param_mut() {
+                            f.set_display_flags(if config.is_some_and(|c| c.percent) {
+                                ae::ValueDisplayFlag::PERCENT
+                            } else {
+                                ae::ValueDisplayFlag::NONE
+                            });
+                        }
                         // Range/default metadata for bound scalar slots
                         // (annotation-driven; display metadata only — the
                         // default VALUE is published separately before the
@@ -3554,7 +3565,7 @@ mod fresh_default_tests {
     use super::*;
 
     fn config() -> SlotConfig {
-        SlotConfig { label: "test".into(), min: None, max: None, default: Some(0.25),
+        SlotConfig { label: "test".into(), percent: false, min: None, max: None, default: Some(0.25),
             color_default: Some([0.25, 0.6, 1.5, 0.4]), fresh: true }
     }
 

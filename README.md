@@ -270,7 +270,7 @@ One comment line per parameter, anywhere in the source:
 | `label:"Some Text"` | the row name in Effect Controls (quotes optional if one word) |
 | `min:<number>` `max:<number>` | slider range (give both) — the range the control drags over, not a hard limit; see the note below |
 | `default:<number>[,<number>...]` | initial value, 1-4 components |
-| `default:#RRGGBB` / `default:#RRGGBBAA` | colour initial value (`hint:color` only) |
+| `default:#RRGGBB` / `default:#RRGGBBAA` | colour initial value (`hint:color` only); RGB supports vec3/vec4, RGBA requires vec4 |
 | `alias:<id>[,<id>...]` | previous names, so renaming a uniform keeps its keyframes |
 | `hint:<kind>` | pick a different AE control — see the table below |
 
@@ -290,6 +290,7 @@ The GLSL type picks the control; `hint:` overrides it where a type is ambiguous.
 | Declare | Hint | AE control | Value the shader receives | Slots |
 |---|---|---|---|---|
 | `float x;` | — | Slider | as shown | 48 |
+| `float x;` | `hint:percent` | Slider with `%` suffix | raw value: 25 means 25%; use min:0 max:100 if desired | uses a Float slot |
 | `float x;` | `hint:angle` | Angle dial | degrees | 8 |
 | `float x;` | `hint:canvas` | Slider, **and** the canvas boundary | logical pixels, as shown | uses a Float slot |
 | `int x;` | — | Integer slider | as shown | 8 |

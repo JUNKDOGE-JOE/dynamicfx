@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "flag_set": true,
+  "flag_cleared_by_supervised_refresh": true,
+  "keys_preserved": 2,
+  "note": "Scripted source-only edits retain prior presentation until the normal UI/supervised callback; Source.setValue(0) exercised that callback without changing source."
+}

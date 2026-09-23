@@ -1,0 +1,170 @@
+[
+  {
+    "depth": 8,
+    "case": "1-alpha",
+    "maximum_error": 0.0009842219892604032,
+    "tolerance": 0.00784313725490196,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "case": "1-percent",
+    "maximum_error": 0.000980406999590011,
+    "tolerance": 0.00784313725490196,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "case": "1-rgb",
+    "maximum_error": 2.968545453896354e-08,
+    "tolerance": 0.00784313725490196,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "case": "1-rgba",
+    "maximum_error": 2.968545453896354e-08,
+    "tolerance": 0.00784313725490196,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "case": "2-alpha",
+    "maximum_error": 0.0009842219892604032,
+    "tolerance": 0.00784313725490196,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "case": "2-percent",
+    "maximum_error": 0.0012990272045099727,
+    "tolerance": 0.00784313725490196,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "case": "2-rgb",
+    "maximum_error": 2.968545453896354e-08,
+    "tolerance": 0.00784313725490196,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "case": "2-rgba",
+    "maximum_error": 2.968545453896354e-08,
+    "tolerance": 0.00784313725490196,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "case": "1-alpha",
+    "maximum_error": 1.150398885041426e-05,
+    "tolerance": 6.103515625e-05,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "case": "1-percent",
+    "maximum_error": 0.0,
+    "tolerance": 6.103515625e-05,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "case": "1-rgb",
+    "maximum_error": 7.65931372548323e-06,
+    "tolerance": 6.103515625e-05,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "case": "1-rgba",
+    "maximum_error": 7.65931372548323e-06,
+    "tolerance": 6.103515625e-05,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "case": "2-alpha",
+    "maximum_error": 1.150398885041426e-05,
+    "tolerance": 6.103515625e-05,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "case": "2-percent",
+    "maximum_error": 3.6621093800204285e-06,
+    "tolerance": 6.103515625e-05,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "case": "2-rgb",
+    "maximum_error": 7.65931372548323e-06,
+    "tolerance": 6.103515625e-05,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "case": "2-rgba",
+    "maximum_error": 7.65931372548323e-06,
+    "tolerance": 6.103515625e-05,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "case": "1-alpha",
+    "maximum_error": 2.968545453896354e-08,
+    "tolerance": 1e-06,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "case": "1-percent",
+    "maximum_error": 0.0,
+    "tolerance": 1e-06,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "case": "1-rgb",
+    "maximum_error": 2.968545453896354e-08,
+    "tolerance": 1e-06,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "case": "1-rgba",
+    "maximum_error": 2.968545453896354e-08,
+    "tolerance": 1e-06,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "case": "2-alpha",
+    "maximum_error": 2.968545453896354e-08,
+    "tolerance": 1e-06,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "case": "2-percent",
+    "maximum_error": 3.5762799943661605e-09,
+    "tolerance": 1e-06,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "case": "2-rgb",
+    "maximum_error": 2.968545453896354e-08,
+    "tolerance": 1e-06,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "case": "2-rgba",
+    "maximum_error": 2.968545453896354e-08,
+    "tolerance": 1e-06,
+    "status": "PASS"
+  }
+]

@@ -2111,3 +2111,27 @@ probe changes. Current diagnostic 0.0.14 `6734a384...`; production AEX remains
   wrong SDK-root invocation remain visible in evidence; final corrections pass.
 - [Audit](audits/12-upstream-liquid-glass.md),
   [evidence](audits/evidence/liquid-glass-upstream-20260923/README.md).
+
+
+## TR-ISSUES-010-012 — Color/percent corrections and reopen investigation
+
+- Baseline: `112a6c7` plus parameter-only changes, Windows AE 26.5x89.
+  Main `4fe13ec0e9bb7962b4f28ce7020117502c7eeacc2f70d0740a64f6defc7ad80a`;
+  reader unchanged from TR-LIQUID-GLASS-UPSTREAM-008.
+- `PASS`: `cargo +1.97.1 test --locked --offline --lib`, SDK default/editor
+  and no-SDK variants: 257 each. Locked release build passes.
+- `PASS`: original E19 failures reproduced for RGB-hex vec3 and percent in both
+  languages; candidate passes 24 AE native numeric cases across 8/16/32 bpc.
+- `PASS`: Property.unitsText confirms percent display; removing/restoring the
+  hint clears/restores units after normal supervised UI refresh. Initial stale
+  source-only-script UI readback remains in evidence, not counted as a pass.
+- `PASS`: keyframe values/slots survive hint changes and project reopen;
+  native samples 0.25/0.5/0.75 are exact. 27 glass frame pairs are pixel-identical
+  to the preceding acceptance. No new coverage-runtime or reader code changed.
+- `BLOCKED`: #12 affected-host reproduction. Four local historical-copy opens
+  pass without the reported error; the user says the issue is on another
+  machine and has no more details. These runs do not prove #12 repaired.
+- `NOT_RUN`: unified merge, new release, affected-host confirmation. The draft
+  remains open until #12 is resolved. Diagnostic inventory is read-only.
+- [Audit](audits/13-issue-batch-release.md),
+  [evidence](audits/evidence/issues-10-12-20260923/README.md).

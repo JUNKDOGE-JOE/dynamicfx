@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "main_sha256": "4fe13ec0e9bb7962b4f28ce7020117502c7eeacc2f70d0740a64f6defc7ad80a",
+  "reader_sha256": "29695b72fc8a26222a51319c3e42f86696b6d15e78efb02d968bc264ff173be6",
+  "host_scope": "Windows AE 26.5x89; unchanged coverage runtime and reader; 27 glass frames byte-identical to accepted baseline. Issue 12 is unresolved; this is a test candidate, not a release."
+}

@@ -153,3 +153,4 @@ Post-M7 (follow-up features):
 - [0057](0057-shared-effect-dispatch.md) Shared effect dispatch — Accepted 2026-09-23; shared references and interior synchronization avoid exclusive-reference aliasing during MFR.
 - [0058](0058-frame-owned-checkout-lifetimes.md) Frame-owned checkout lifetimes — Accepted 2026-09-23; per-frame dependency IDs, balanced successful checkouts and cancellation propagation.
 - [0059](0059-licensed-liquid-glass-port.md) Licensed upstream Liquid Glass material — Accepted; user-selected MIT shader adaptation with native coverage geometry.
+- [0060](0060-color-default-arity-and-percent-display.md) Color default arity and percent display — Accepted; issues #10/#11, unchanged bindings and raw values.

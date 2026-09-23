@@ -11,7 +11,7 @@
 //!        | default:#RRGGBB[AA]               (hint:color only, ADR-0026)
 //!        | alias:<id>[,<id>]*
 //!        | hint:angle | hint:color | hint:layer | hint:gradient
-//!        | hint:point3d | hint:path | hint:canvas | hint:coverage
+//!        | hint:point3d | hint:path | hint:canvas | hint:coverage | hint:percent
 //! ```
 //!
 //! Error policy (fail closed without punishing leftovers): a malformed entry
@@ -38,6 +38,7 @@ pub enum Hint {
     /// "bool as i32".
     Bool,
     Color,
+    Percent,
     /// ADR-0035: like `Layer` and `Gradient`, declares a graph resource rather
     /// than a block member — the value is an AE mask's vertices in a texture.
     Path,
@@ -140,9 +141,6 @@ pub fn parse_annotations(source: &str) -> Result<HashMap<String, Annotation>, An
                     set_once(line_no, "max", &mut annotation.max, v)?;
                 }
                 "default" => {
-                    // ADR-0026: `#RRGGBB[AA]` color literals decode to
-                    // normalized components (6 digits imply alpha 1.0);
-                    // malformed hex is rejected, never guessed.
                     let components: Vec<f32> = if let Some(hex) = value.strip_prefix('#') {
                         default_was_hex = true;
                         parse_hex_color(line_no, hex)?
@@ -176,6 +174,7 @@ pub fn parse_annotations(source: &str) -> Result<HashMap<String, Annotation>, An
                         "gradient" => Hint::Gradient,
                         "bool" => Hint::Bool,
                         "color" => Hint::Color,
+                        "percent" => Hint::Percent,
                         "point3d" => Hint::Point3D,
                         "path" => Hint::Path,
                         "canvas" => Hint::Canvas,
@@ -225,19 +224,19 @@ fn parse_number(line: usize, key: &str, value: &str) -> Result<f32, AnnotationEr
 }
 
 /// ADR-0026 hex color literal (without the `#`): exactly 6 or 8 hex digits,
-/// sRGB-8 channels normalized to 0..=1; 6 digits imply alpha 1.0.
+/// sRGB-8 channels normalized to 0..=1; reflection supplies implicit vec4 alpha.
 fn parse_hex_color(line: usize, hex: &str) -> Result<Vec<f32>, AnnotationError> {
     if hex.len() != 6 && hex.len() != 8 {
         return Err(err(line, format!("hex default needs 6 or 8 digits, got `{hex}`")));
+    }
+    if !hex.bytes().all(|b| b.is_ascii_hexdigit()) {
+        return Err(err(line, format!("bad hex digits in default `#{hex}`")));
     }
     let mut components = Vec::with_capacity(4);
     for pair in 0..hex.len() / 2 {
         let byte = u8::from_str_radix(&hex[pair * 2..pair * 2 + 2], 16)
             .map_err(|_| err(line, format!("bad hex digits in default `#{hex}`")))?;
         components.push(byte as f32 / 255.0);
-    }
-    if components.len() == 3 {
-        components.push(1.0);
     }
     Ok(components)
 }
@@ -295,11 +294,10 @@ mod tests {
     fn color_hex_defaults() {
         let ok = parse_annotations("// @param tint hint:color default:#1A6BFF").unwrap();
         let d = ok["tint"].default.as_ref().unwrap();
-        assert_eq!(d.len(), 4);
+        assert_eq!(d.len(), 3);
         assert!((d[0] - 26.0 / 255.0).abs() < 1e-6);
         assert!((d[1] - 107.0 / 255.0).abs() < 1e-6);
         assert!((d[2] - 255.0 / 255.0).abs() < 1e-6);
-        assert_eq!(d[3], 1.0);
 
         let with_alpha = parse_annotations("// @param t hint:color default:#00FF8080").unwrap();
         let d = with_alpha["t"].default.as_ref().unwrap();

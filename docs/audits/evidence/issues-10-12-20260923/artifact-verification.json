@@ -1,0 +1,7 @@
+{
+  "version": "0.1.1",
+  "sha256": "4fe13ec0e9bb7962b4f28ce7020117502c7eeacc2f70d0740a64f6defc7ad80a",
+  "status": "PASS",
+  "host": "AE 26.5x89",
+  "scope": "Parameter fixes: 24 native depth/language/color cases, percent display readback, keyframe persistence; 27 glass frames unchanged. Issue 12 remains unreproduced, not release accepted."
+}

@@ -125,6 +125,7 @@ pub struct ParamUiMeta {
     pub max: Option<f32>,
     /// Component count matches the type's word count (validated at merge).
     pub default: Option<Vec<f32>>,
+    pub percent: bool,
 }
 
 /// One declared user parameter. Aliases are prior IDs for slot inheritance

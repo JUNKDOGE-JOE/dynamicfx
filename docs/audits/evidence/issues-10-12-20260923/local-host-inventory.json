@@ -1,0 +1,55 @@
+{
+  "collectedAtUtc": "2026-09-23T11:05:00.5991429Z",
+  "windowsVersion": "10.0.26200.0",
+  "hosts": [
+    {
+      "host": "Adobe After Effects 2023",
+      "version": "23.5",
+      "components": [
+        {
+          "name": "DynamicFx.aex",
+          "present": false,
+          "sha256": null
+        },
+        {
+          "name": "DynamicFxCoverageReader.aex",
+          "present": false,
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "host": "Adobe After Effects 2025",
+      "version": "25.6.6",
+      "components": [
+        {
+          "name": "DynamicFx.aex",
+          "present": true,
+          "sha256": "B32803D7CEF0393C6186844FD60C9595729DC7B0ED0497722F24E53DFD512DF3"
+        },
+        {
+          "name": "DynamicFxCoverageReader.aex",
+          "present": false,
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "host": "Adobe After Effects 2026",
+      "version": "26.5",
+      "components": [
+        {
+          "name": "DynamicFx.aex",
+          "present": true,
+          "sha256": "4FE13EC0E9BB7962B4F28CE7020117502C7EEACC2F70D0740A64F6DEFC7AD80A"
+        },
+        {
+          "name": "DynamicFxCoverageReader.aex",
+          "present": true,
+          "sha256": "29695B72FC8A26222A51319C3E42F86696B6D15E78EFB02D968BC264FF173BE6"
+        }
+      ]
+    }
+  ],
+  "note": "Read-only inventory. No project, source code, logs, account, machine name or user paths collected."
+}

@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){var c=app.project.activeItem,e=c.layer(\"Material\").property(\"ADBE Effect Parade\").property(1);return JSON.stringify({units:e.property(11).unitsText,label:e.property(11).name,value:e.property(11).value});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"units\\\":\\\"ç™¾åˆ†æ¯”\\\",\\\"label\\\":\\\"Float 01\\\",\\\"value\\\":25}\",\"contentType\":\"text\",\"artifactId\":\"user:51cfaf27-19d1-46fb-86be-e804485f52d9\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"units\":\"ç™¾åˆ†æ¯”\",\"label\":\"Float 01\",\"value\":25}",
+      "contentType": "text",
+      "artifactId": "user:51cfaf27-19d1-46fb-86be-e804485f52d9"
+    }
+  }
+}
