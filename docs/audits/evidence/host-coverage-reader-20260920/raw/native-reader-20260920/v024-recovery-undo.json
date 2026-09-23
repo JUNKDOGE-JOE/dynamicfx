@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"Undo cleanup requested\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "Undo cleanup requested",
+    "contentType": "text",
+    "artifactId": "user:<redacted>"
+  }
+}

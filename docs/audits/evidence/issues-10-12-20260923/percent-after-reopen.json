@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Parameter acceptance.aep\")throw Error(\"Unexpected project\");var c=null;for(var i=1;i<=app.project.numItems;i++)if(app.project.item(i).name===\"1-percent\")c=app.project.item(i);var e=c.layer(\"Material\").property(\"ADBE Effect Parade\").property(1),v=e.property(11);var p=c.layer(\"Sampler\").property(\"ADBE Effect Parade\").property(1).property(1),r={keys:v.numKeys,v0:v.keyValue(1),v1:v.keyValue(2),samples:[]};app.purge(PurgeTarget.ALL_CACHES);for(var j=0;j<3;j++){var t=j/2;p.expression=\"thisComp.layer(\\\"Material\\\").sampleImage([32,32],[0.49,0.49],true,\"+t+\")[0]\";r.samples.push(p.value);}return JSON.stringify(r);})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"keys\\\":2,\\\"v0\\\":25,\\\"v1\\\":75,\\\"samples\\\":[0.25,0.5,0.75]}\",\"contentType\":\"text\",\"artifactId\":\"user:220fecae-7606-40d8-9614-dd905e85a2cb\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"keys\":2,\"v0\":25,\"v1\":75,\"samples\":[0.25,0.5,0.75]}",
+      "contentType": "text",
+      "artifactId": "user:220fecae-7606-40d8-9614-dd905e85a2cb"
+    }
+  }
+}

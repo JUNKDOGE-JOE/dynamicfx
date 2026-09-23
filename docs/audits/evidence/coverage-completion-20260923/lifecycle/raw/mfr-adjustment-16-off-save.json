@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){app.project.save(new File(\"<workspace>/scripts/out/coverage-lifecycle-20260923/mfr-adjustment-16-off.aep\"));var c=app.project.renderQueue.item(1).comp,states=[];for(var i=1;i<=c.numLayers;i++){var fx=c.layer(i).property(\"ADBE Effect Parade\");if(fx.numProperties&&fx.property(1).matchName===\"DynamicFx\")states.push(fx.property(1).property(427).value);}return JSON.stringify({states:states});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"states\\\":[248873496917208]}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"states\":[248873496917208]}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

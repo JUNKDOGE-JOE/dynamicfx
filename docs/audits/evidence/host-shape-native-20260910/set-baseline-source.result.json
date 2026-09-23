@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"source\\\":627,\\\"property\\\":\\\"Source (use expression)\\\"}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"source\":627,\"property\":\"Source (use expression)\"}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

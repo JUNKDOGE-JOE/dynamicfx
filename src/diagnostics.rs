@@ -67,6 +67,8 @@ pub enum Diag {
     CanvasTooLarge = 57,
     /// The GPU backend rejected a pipeline after frontend validation succeeded.
     PipelineRejected = 58,
+    CoverageUnsupported = 59,
+    CoverageUnavailable = 60,
 }
 
 /// The registry rows, in ascending code order. Append-only forever.
@@ -98,6 +100,8 @@ pub const REGISTRY: &[Diag] = &[
     Diag::CanvasWrongKind,
     Diag::CanvasTooLarge,
     Diag::PipelineRejected,
+    Diag::CoverageUnsupported,
+    Diag::CoverageUnavailable,
 ];
 
 impl Diag {
@@ -169,6 +173,8 @@ mod tests {
                         | Diag::CanvasWrongKind
                         | Diag::CanvasTooLarge
                         | Diag::PipelineRejected
+                        | Diag::CoverageUnsupported
+                        | Diag::CoverageUnavailable
                 ),
                 _ => false,
             };

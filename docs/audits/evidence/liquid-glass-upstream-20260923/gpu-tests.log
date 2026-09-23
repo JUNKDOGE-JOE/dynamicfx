@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911\scripts\out\upstream-glass-20260924\verify-gpu.py", line 4, in <module>
+    from scipy.ndimage import distance_transform_edt
+ModuleNotFoundError: No module named 'scipy'

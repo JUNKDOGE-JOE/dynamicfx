@@ -80,7 +80,11 @@ Use [TEMPLATE.md](TEMPLATE.md). Ordinary implementation details and bug fixes do
 
 A `Proposed` ADR is under active decision review and freezes no persistent contract yet (it is not counted among the Accepted decisions and is not a binding record until Accepted).
 
-_No ADR is under review at the moment (ADR-0042 was Accepted on 2026-08-28)._
+- [0047 — Automatic host coverage input](0049-automatic-host-shape-input.md)
+  (Proposed transport/ABI, product scope approved 2026-09-10): issue #9;
+  original host visible coverage only after the user's same-day scope revision;
+  additional contour input withdrawn. Data-source/frame-transport probes
+  precede runtime integration.
 
 ## Format ADRs (staged per ADR-0009)
 
@@ -137,3 +141,17 @@ Post-M7 (follow-up features):
 
 - [0046 Windows 0.1.1 patch release](0046-011-windows-patch-release.md) — Accepted 2026-09-09.
 - [0047 0.1.1 macOS ARM asset backfill](0047-011-macos-backfill.md) — Accepted 2026-09-09; qualifies the earlier Windows-only delivery scope without granting new-byte AE acceptance.
+
+- [0050](0050-host-coverage-resource.md) Host coverage resource — Accepted 2026-09-23; production `hint:coverage`, exact alpha placement and readiness gates.
+- [0051](0051-native-coverage-reader-component.md) Native coverage reader component and automatic ownership — Accepted 2026-09-23; exact native forwarding, separate utility artifact and explicit remaining clone-readiness gate.
+- [0052](0052-coverage-instance-readiness.md) Instance-bound coverage certificates and outer sequence transport — Accepted 2026-09-23; resetup classification extended by 0053/0054.
+- [0053](0053-coverage-certificate-revocation.md) Process-wide certificate revocation — Accepted 2026-09-23; stale render copies cannot revive UI-copy authorization.
+- [0054](0054-coverage-headless-restore.md) Headless restore — Accepted 2026-09-23; official PF host-mode query preserves prepared offline rendering.
+- [0055](0055-coverage-host-cache-dependency.md) Host frame cache dependency — Accepted 2026-09-23; effective authorization enters GuidMixInPtr, without changing shader or pipeline identities.
+- [0056](0056-guid-mixin-on-every-prerender.md) Every SmartPreRender mixes a GUID — Accepted 2026-09-23; ordinary shaders use a fixed constant, correcting the AE host assertion.
+
+- [0057](0057-shared-effect-dispatch.md) Shared effect dispatch — Accepted 2026-09-23; shared references and interior synchronization avoid exclusive-reference aliasing during MFR.
+- [0058](0058-frame-owned-checkout-lifetimes.md) Frame-owned checkout lifetimes — Accepted 2026-09-23; per-frame dependency IDs, balanced successful checkouts and cancellation propagation.
+- [0059](0059-licensed-liquid-glass-port.md) Licensed upstream Liquid Glass material — Accepted; user-selected MIT shader adaptation with native coverage geometry.
+- [0060](0060-color-default-arity-and-percent-display.md) Color default arity and percent display — Accepted; issues #10/#11, unchanged bindings and raw values.
+- [0061](0061-020-windows-release.md) Windows 0.2.0 release — Accepted; user deferred #12, authorizes completed #9–#11 release with known limitations disclosed.

@@ -93,6 +93,7 @@ pub(crate) fn kind_byte(kind: PoolKind) -> u8 {
         PoolKind::Point3D => 8,
         // ADR-0035.
         PoolKind::Path => 9,
+        PoolKind::Coverage => 10,
     }
 }
 
@@ -108,12 +109,13 @@ fn kind_from_byte(byte: u8) -> Option<PoolKind> {
         7 => PoolKind::Gradient,
         8 => PoolKind::Point3D,
         9 => PoolKind::Path,
+        10 => PoolKind::Coverage,
         _ => return None,
     })
 }
 
 /// CRC-32/ISO-HDLC (the ubiquitous zlib polynomial), table-driven.
-fn crc32(data: &[u8]) -> u32 {
+pub(crate) fn crc32(data: &[u8]) -> u32 {
     static TABLE: std::sync::OnceLock<[u32; 256]> = std::sync::OnceLock::new();
     let table = TABLE.get_or_init(|| {
         let mut table = [0u32; 256];

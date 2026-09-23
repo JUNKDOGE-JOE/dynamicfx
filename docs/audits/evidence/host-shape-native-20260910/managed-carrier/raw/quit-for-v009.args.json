@@ -1,0 +1,4 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");var c=app.project.itemByID(174);if(c.name!==\"HS_auto_base\")throw Error(\"Wrong fixture\");var f=c.layer(1).property(\"ADBE Effect Parade\").property(1);f.property(7).setValue(false);f.property(5).setValue(0);f.property(4).setValue(false);app.project.save();app.scheduleTask(\"app.quit()\",1500,false);return JSON.stringify({saved:true,dirty:app.project.dirty,items:app.project.numItems,check:\"quit-before-v009\"});})()",
+  "timeout_sec": 15
+}

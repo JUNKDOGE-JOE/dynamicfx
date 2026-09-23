@@ -1,0 +1,20 @@
+[
+  {
+    "attempt": 1,
+    "status": "CLAIMED_UNVERIFIED",
+    "reason": "Initial control script matched only the first frame and printed PASS, but the strict verifier found two id-0 frames. This result is not accepted.",
+    "log": "control-first-background-32.native.log.gz"
+  },
+  {
+    "attempt": 2,
+    "status": "FAIL",
+    "reason": "Disabling the self selector still yielded two id-0 frames; strict single-frame assertion failed.",
+    "log": "control-second-background-32.native.log.gz"
+  },
+  {
+    "attempt": 3,
+    "status": "PASS",
+    "reason": "Only the target comp emits diagnostic alpha; exactly one opaque frame is captured and all temporary settings are restored.",
+    "log": "control-background-32.native.log.gz"
+  }
+]

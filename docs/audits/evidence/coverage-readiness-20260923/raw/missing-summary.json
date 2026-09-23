@@ -1,0 +1,11 @@
+{
+  "case": "missing reader remains unverified offline",
+  "returncode": 0,
+  "engine_pid": 38688,
+  "elapsed_seconds": 8.813,
+  "pixels": 480000,
+  "native_word_mismatches": 140000,
+  "gate_errors": 1,
+  "status": "PASS",
+  "opaque_words": 140000
+}

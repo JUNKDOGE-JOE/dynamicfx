@@ -1,0 +1,431 @@
+[
+  {
+    "case": "animated",
+    "depth": 8,
+    "time": 1,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "animated",
+    "depth": 8,
+    "time": 0,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "animated",
+    "depth": 8,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "animated",
+    "depth": 8,
+    "time": 0.36,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "animated",
+    "depth": 16,
+    "time": 1,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "animated",
+    "depth": 16,
+    "time": 0,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "animated",
+    "depth": 16,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "animated",
+    "depth": 16,
+    "time": 0.36,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "animated",
+    "depth": 32,
+    "time": 1,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "animated",
+    "depth": 32,
+    "time": 0,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "animated",
+    "depth": 32,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "animated",
+    "depth": 32,
+    "time": 0.36,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "transform2d",
+    "depth": 8,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "transform2d",
+    "depth": 16,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "transform2d",
+    "depth": 32,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "transform3d",
+    "depth": 8,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "transform3d",
+    "depth": 16,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "transform3d",
+    "depth": 32,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "plain",
+    "depth": 8,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "plain",
+    "depth": 16,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "plain",
+    "depth": 32,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "repeater",
+    "depth": 8,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "repeater",
+    "depth": 16,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "repeater",
+    "depth": 32,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "merge",
+    "depth": 8,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "merge",
+    "depth": 16,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "merge",
+    "depth": 32,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "stroke",
+    "depth": 8,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "stroke",
+    "depth": 16,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "stroke",
+    "depth": 32,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "downsample",
+    "depth": 8,
+    "time": 0.5,
+    "downsample": 2,
+    "size": [
+      300,
+      400
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "downsample",
+    "depth": 16,
+    "time": 0.5,
+    "downsample": 2,
+    "size": [
+      300,
+      400
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "downsample",
+    "depth": 32,
+    "time": 0.5,
+    "downsample": 2,
+    "size": [
+      300,
+      400
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "downsample",
+    "depth": 8,
+    "time": 0.5,
+    "downsample": 4,
+    "size": [
+      150,
+      200
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "downsample",
+    "depth": 16,
+    "time": 0.5,
+    "downsample": 4,
+    "size": [
+      150,
+      200
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "downsample",
+    "depth": 32,
+    "time": 0.5,
+    "downsample": 4,
+    "size": [
+      150,
+      200
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "par",
+    "depth": 8,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "par",
+    "depth": 16,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  },
+  {
+    "case": "par",
+    "depth": 32,
+    "time": 0.5,
+    "downsample": 1,
+    "size": [
+      600,
+      800
+    ],
+    "alpha_mismatches": 0
+  }
+]

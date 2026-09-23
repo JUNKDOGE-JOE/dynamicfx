@@ -1,0 +1,9 @@
+   Compiling dynamicfx-host-shape-probe v0.0.2 (E:\Code\AePlugin_Dynamicfx\spike\host-outline\native)
+error[E0433]: cannot find `Proj` in `suites`
+  --> src\idle.rs:85:38
+   |
+85 |     let projects = ae::aegp::suites::Proj::new()?;
+   |                                      ^^^^ could not find `Proj` in `suites`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `dynamicfx-host-shape-probe` (lib test) due to 1 previous error

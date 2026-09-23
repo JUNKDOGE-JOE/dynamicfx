@@ -1,0 +1,5 @@
+{
+  "undo_group_name": "Bind diagnostic to its own layer",
+  "code": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var r=[];var ids=[1,90];for(var i=0;i<ids.length;i++){var c=app.project.itemByID(ids[i]);var p=c.layer(1).property('ADBE Effect Parade').property(1);if(p.property(6).name!=='Original self source')throw Error('Wrong probe');p.property(6).setValue(1);r.push({comp:c.id,self:p.property(6).value});}return JSON.stringify(r);})()",
+  "timeout_sec": 15
+}

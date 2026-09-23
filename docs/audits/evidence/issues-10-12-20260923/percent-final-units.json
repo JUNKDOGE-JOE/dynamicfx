@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Parameter acceptance.aep\")throw Error(\"Unexpected project\");var c=null;for(var i=1;i<=app.project.numItems;i++)if(app.project.item(i).name===\"1-percent\")c=app.project.item(i);var e=c.layer(\"Material\").property(\"ADBE Effect Parade\").property(1);return JSON.stringify({units:e.property(11).unitsText,keys:e.property(11).numKeys});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"units\\\":\\\"ç™¾åˆ†æ¯”\\\",\\\"keys\\\":2}\",\"contentType\":\"text\",\"artifactId\":\"user:8237b8cd-5fe3-4a0c-b122-98baadcc9fcb\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"units\":\"ç™¾åˆ†æ¯”\",\"keys\":2}",
+      "contentType": "text",
+      "artifactId": "user:8237b8cd-5fe3-4a0c-b122-98baadcc9fcb"
+    }
+  }
+}

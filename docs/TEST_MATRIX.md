@@ -1246,5 +1246,913 @@ New-byte macOS AE installation, rendering, Undo/Redo, save/reopen, aerender
 and IOS27Siri Sample acceptance are **NOT_RUN**, outside this user's backfill
 scope. Prior 0.1.0 host results do not cover 0.1.1 bytes; Source single Undo
 remains **FAIL / disclosed limitation**. Existing Windows/Sample results
-above retain their original scope. [ADR-0047](adr/0047-011-macos-backfill.md),
+above retain their original scope. [ADR-0049](adr/0047-011-macos-backfill.md),
 [release audit](audits/09-windows-011.md).
+
+
+## TR-OPEN-001 - project-open idle callback and sequence lifetime
+
+2026-09-09, Windows 11, AE 2026 26.3x87, RTX 5080 DX12, Rust 1.97.1 MSVC.
+Baseline `17e12a7` plus the working-tree changes on `codex/fix-project-open-lock`.
+This is local repair acceptance, not a release. [Audit](audits/10-project-open-lock.md).
+
+- FAIL retained: installed `68171a98...` hangs in project open. The affected
+  byte-identical copy opens in 10.079 s with DynamicFX isolated.
+- FAIL retained: the first repair `28d006fb...` passes 228 default/editor tests
+  but native opening times out at 120 s. Private-symbol stacks and raw memory
+  show CompletelyGeneral entering a mutex over serialized `01 00 DFXS` data;
+  the attempted lock changes the first version byte to `02`. No competing
+  DynamicFX thread owns the mutex. No original project bytes were modified.
+- FAIL then PASS: adding the live-instance wrapper initially found three test
+  compilation errors (old Mutex constructor / missing test-only try_lock).
+  The corrected default and editor `cargo test --offline --lib` runs each pass
+  230 tests. `cargo build --offline --release` passes.
+- PASS: final candidate SHA-256
+  `c91db8c0435ccf90e0fac33f5473825c29bbd959cfeef8cc5fcebe80092b0d0a`
+  is installed only at AE 2026 `Support Files/Plug-ins/DynamicFx/DynamicFx.aex`.
+  PE exports include DynamicFxMain, EffectMain and PluginDataEntryFunction2;
+  PiPL routes through DynamicFxMain with local build generation 1.
+- PASS: the saved recovery copy opens in 10.604 s, 278 items, 75 comps,
+  184 footages, zero missing footage. All 426 DynamicFX properties, source,
+  keys and expressions, plus the recorded Main/05 structure, match baseline.
+  Runtime log confirms one pass / five parameters, no default writes, and
+  successful DX12 pipeline creation. Main at 25 s finishes a native frame.
+- FAIL then PASS: first direct original open reports AE's "layer has no source"
+  error, but the original is fully loaded and clean. Read-only continuation
+  uses recoveryId `vcz2im`, then a guarded close/reopen finishes in 4.420 s with
+  `openError:null`, 278 items and `dirty:false`. Do not erase the first error.
+- PASS: original AEP stays byte-identical, SHA-256
+  `608eccc22a6a6e2defbca6af05fb4add9b825d043e9c269f4c53dc3f18de887c`.
+  Native UI displays Main; PNG capture is dark because of the existing
+  high-bit-depth capture path, so it is not color-quality acceptance.
+- NOT_RUN: other AE years, macOS build/native acceptance, long-duration soak,
+  and a full sequence-lifecycle rewrite of after-effects-rs. The entry guard
+  specifically protects the plugin's early CompletelyGeneral idle calls.
+- NOT_RUN: two project expressions referencing the transient display name
+  `Refraction px` remain unmodified. The user stopped Computer Use before that
+  project repair; no further AE input was issued. Original was not saved.
+
+Exact commands, artifact identities and retained external evidence hashes:
+[evidence manifest](audits/evidence/project-open-lock-20260909/manifest.json).
+
+### TR-OPEN-COMMIT-001 — project-open repair source checkpoint
+
+- Date: 2026-09-10; Windows; Rust/Cargo 1.97.1 MSVC; `17e12a7` plus the
+  repair being committed on `codex/fix-project-open-lock`.
+- `PASS`: all 33 source inputs match the frozen TR-OPEN-001 manifest; the
+  frozen AEX remains `c91db8c0...` by SHA-256.
+- Initial `cargo test --offline --lib` reused a 220-test executable that
+  omitted the new reentry/live-header cases. That result does not validate
+  the current repair. Source/build timestamps were refreshed without byte
+  changes to make Cargo recompile the crate; the first output is retained.
+- `PASS`: freshly compiled `cargo test --offline --lib` and the same command
+  with `--features editor` each execute 230 tests, zero failures.
+- `NOT_RUN`: new release build, installation or native AE tests in this
+  commit turn. Existing exact-source/artifact acceptance remains TR-OPEN-001.
+- Raw logs, equivalence record and governance checks:
+  [commit evidence](audits/evidence/project-open-commit-20260910/README.md).
+
+## TR-REL-011-REFRESH-001 - existing Windows asset replacement
+
+2026-09-09, explicit user authorization to replace the existing GitHub v0.1.1
+Windows package, version unchanged. PASS: 33 frozen source inputs match,
+candidate equals the installed c91db8c0 AEX, PE architecture/exports pass,
+270 unchanged ZIP members compare equal, and both newly downloaded release
+files match staging and GitHub asset digests. The contained AEX, installation
+hash and build identity agree. Only Windows ZIP/AEX checksum lines changed;
+Mac and Sample asset metadata and the existing source tag are unchanged.
+Release-note content matches after GitHub CRLF normalization. No runtime test
+rerun or new installation occurred: exact-byte host/CPU acceptance remains
+TR-OPEN-001. [Evidence](audits/evidence/release-011-refresh-20260909/README.md).
+
+### TR-HOST-SHAPE-SCOPE-002 — coverage-only scope revision
+
+- Date: 2026-09-10; source baseline `ff89564`; Windows; documentation and
+  fixture-scope update only. The user withdrew the additional automatic
+  contour input and retained original host visible coverage/alpha.
+- Current required scenarios: HS-01..HS-12 and HS-16. HS-16 covers coverage opt-in and
+  partial-alpha fidelity; former contour-specific HS-13..HS-15 definitions
+  are retained under `withdrawn_cases`, not treated as passed or failed.
+- Existing mask `hint:path` stays in the compatibility matrix. Raw vector
+  acquisition remains diagnostic evidence, not production coverage acceptance.
+- `NOT_RUN`: production coverage, its transport/invalidation, portable FFX,
+  and all revised feature acceptance rows. This scope edit runs no native
+  renders and changes no plugin binary or AE project.
+- Current scope and verification: [scope record](audits/evidence/host-coverage-scope-20260910/README.md).
+- `PASS`: issue title/body readback matches the prepared coverage-only text;
+  13 active scenarios and 3 withdrawn definitions validated; production source
+  matches `ff89564`; governance checks pass (132 Markdown files, 1677 links,
+  zero errors); `git diff --check` passes. An initial fixture-edit script used
+  the wrong key and stopped before writing; recovery is recorded in the evidence.
+- Earlier preparation/native entries below retain their original scope and
+  status; later results and this scope revision must be read with them.
+
+### TR-HOST-SHAPE-NATIVE-004 — original alpha and raster-block transport
+
+- Date: 2026-09-10; Windows AE 2026 26.3x87 / AE-MCP 0.10.7, 16-bpc;
+  production `ff89564` / AEX `c91db8c0...` unchanged. Independently installed
+  diagnostic 0.0.5 `5da92f37...` appends only its own self-source parameter;
+  nine local tests and the locked native build pass.
+- `PASS` source observation: `sampleImage(..., false)` returns `[0,1,0]` on
+  shape adjustment and ordinary shape controls. Mask-only returns `[1,1,1]`:
+  this source excludes masks. Temporary sampling controls were removed.
+- `FAIL` native direct-source candidates: legacy PF checkout of input 0 and
+  an explicitly self-bound Layer parameter return `[1,1,1]` on the adjustment
+  shape. Both return `[0,1,0]` on the ordinary shape control. The appended
+  parameter initially loads as None on old instances; that observation is
+  distinct from the later explicitly bound result. Native Set Matte sourcing
+  its own adjustment layer also returns `[1,1,1]` in the sampled control.
+- `PASS` bounded feasibility: a mode-None data mask carries adaptively sampled
+  raster blocks through PF PathQuery on render ThreadId(2), with no render-side
+  AEGP call. A triangle and an animated/transformed curve at shuffled times
+  `1`, `0`, `0.5` with CTI `0` compare to native reference alpha within one
+  8-bit level across each 800x600 image. This is fixture-managed transport,
+  not automatic production mask ownership, MFR or an implemented shader input.
+- `PASS` invalidation observation: editing the original key changes 8509
+  decoded pixels at the same requested time. `FAIL` first precision check:
+  one pixel differs by 31/255 because coarse average sampling pruned tiny
+  coverage. Revised small-block sampling/recombination passes that exact
+  case (19 differing pixels, maximum 1/255); the edited paths were restored.
+- `FAIL` partial-opacity budget: the 50% fill fixture exceeds both the initial
+  and revised sampling/data budgets. The expression's disabled/fallback mask
+  is not accepted as coverage. It remains disabled in the saved fixture.
+- Harness recovery: initial Set Matte inspection queried a group as a leaf;
+  readback confirmed the created fixture before continuing. PNG completion
+  lagged one successful MCP response; the late file/log were recovered without
+  replay, and capture now waits for a stable file. The first edit record's
+  `before` array aliased the edited data; preserved reference PNGs and the
+  untouched source fixture establish the baseline; subsequent records copy it.
+- `NOT_RUN`: automatic FFX data-mask management, partial-opacity success,
+  original-mask fidelity, production GPU/resource integration, MFR, cold
+  aerender, other depths/hosts and the complete coverage acceptance matrix.
+- The user was asked whether a plugin-managed data mask may appear in the
+  host's mask list. No production dependency is accepted while that product
+  decision is pending. The disposable project is saved with logging/requests
+  reset; no mouse/keyboard or explicit foreground activation was used.
+- [Evidence and procedure](audits/evidence/host-shape-native-20260910/original-source-v005/README.md).
+- `PASS` record checks: 113 raw artifacts plus 12 source snapshots, three
+  ordinary-output RGBA comparisons, production source/AEX identity, nine
+  diagnostic tests; governance reports 133 Markdown files, 1684 links and
+  zero errors. `git diff --check` passes.
+
+### TR-HOST-SHAPE-001 — automatic host-shape input preparation
+
+- Date: 2026-09-10; Windows; baseline `17e12a7` plus the existing uncommitted
+  project-open repair on `codex/fix-project-open-lock`.
+- Public request: [issue #9](https://github.com/JUNKDOGE-JOE/dynamicfx/issues/9).
+  Issue creation and fetched-body equality were verified through the GitHub
+  connector. The local gh attempt returned HTTP 401; no auth settings changed.
+- `CLAIMED_UNVERIFIED`: supplied AE 2026 26.3x87 / DynamicFx 0.1.1 / 16-bpc /
+  RTX 5080 DX12 observation reports ordinary alpha `[1,1,1]` and correct final
+  triangle clipping. No new native reproduction ran in this preparation.
+- `NOT_RUN`: PF shape enumeration, native AEGP extraction, coverage checkout,
+  frame-exact transport and all HS-01..HS-12 acceptance scenarios.
+- `NOT_RUN`: new resource implementation/build, installation, FFX delivery,
+  AE 2025/2026 acceptance, other host years and macOS for this feature.
+- Prepared: [ADR-0049](adr/0049-automatic-host-shape-input.md),
+  [probe shader](../spike/host-outline/input-alpha-probe.glsl),
+  [fixture matrix](../spike/host-outline/cases.json) and
+  [native probe specification](../spike/host-outline/README.md).
+- Preparation-only checks and raw outputs:
+  [evidence](audits/evidence/host-outline-prep-20260910/README.md).
+  These checks cannot establish host-shape rendering support.
+- `PASS` for preparation checks: bundled Python `scripts/check_governance.py`
+  reports zero errors (126 Markdown files, 1630 local links); fixture JSON
+  has 12 unique scenarios and independent triangle classification gives
+  `[0,1,0]`; 31 runtime/build file hashes equal the pre-edit baseline.
+
+### TR-HOST-SHAPE-PROBE-001 — coverage and contour diagnostic build
+
+- Date: 2026-09-10; Windows; production baseline `ff89564`.
+- Approved product scope: primary coverage for refraction plus independently
+  requested contour sampling in the same feature batch. Recorded in
+  [issue #9](https://github.com/JUNKDOGE-JOE/dynamicfx/issues/9#issuecomment-5620243801)
+  and read back through the GitHub connector.
+- `PASS`: isolated diagnostic crate tests (5), native development DLL build,
+  artifact identity and fixture consistency checks. This extends the earlier
+  preparation record; it does not turn any native feature row into PASS.
+- The first compile failed on four probe integration details (required PiPL
+  support URL, nonzero instance size, PF vertex accessor and SDK time-mode
+  type). Corrected locally before the passing build. Neither installed Rust
+  toolchain has rustfmt; formatting automation was unavailable.
+- `NOT_RUN`: installation, native path/coverage reads, transport, invalidation,
+  all HS-01..HS-15 host cases, production shader resources and portable FFX.
+  AE-MCP health was unreachable in this session.
+- [Diagnostic procedure](../spike/host-outline/README.md) and
+  [build evidence](audits/evidence/host-shape-probe-20260910/README.md).
+
+### TR-HOST-SHAPE-NATIVE-001 — first MCP-only native acquisition checks
+
+- Date: 2026-09-10; Windows AE 2026 26.3x87; AE-MCP 0.10.7; 16-bpc project,
+  PNG readback at 8-bit. Installed diagnostic 0.0.1 `cf867972...`; production
+  AEX `c91db8c0...` and source `ff89564` preserved.
+- `PASS` reproduction: interior encoded ordinary-input alpha `[1,1,1]`,
+  transparent shape reference alpha `[0,1,0]`, outside-shape background intact.
+- `PASS` observations: PF enumeration yields 0 paths for shape-only and 1
+  for mask-only/shape-plus-mask. Animated mask vertices/handles follow requested
+  times `0`, `1`, `0.5` with CTI fixed at `0`. This is mask-control evidence,
+  not automatic animated shape transport.
+- `PASS` native metadata: MCP AEGP traversal reaches `ADBE Vector Shape`,
+  type `mask`. MCP marks its value `unsupported`; vertices were not exported.
+- `FAIL` initial setup transport: 45-second timeout; later readback confirmed
+  completion without replay. Empty Source from a label mismatch was corrected
+  before image acceptance. Full failure/recovery chain is in the evidence.
+- `PASS` development only: background diagnostic 0.0.2 build and 7 tests.
+  `NOT_RUN`: its installation/host acceptance, AEGP vertices, coverage checkout,
+  production resources, complete HS-01..HS-15 and other host years.
+- No foreground action was used. The user controls AE closure/reopen for
+  the next diagnostic reload. [Evidence](audits/evidence/host-shape-native-20260910/README.md).
+
+### TR-HOST-SHAPE-INSTALL-002 — background diagnostic replacement
+
+- Date: 2026-09-10 22:47:51 +08:00; Windows, AE 2026 installation.
+- `PASS`: after the user confirmed closure, the installer verified no
+  AfterFX/aerender process, backed up diagnostic 0.0.1, replaced only the
+  diagnostic with frozen 0.0.2, and verified SHA-256 `8d896b68...`.
+- `PASS`: the production AEX remained `c91db8c0...`. Full hashes and the
+  version-specific destination are in [install-v002.json](audits/evidence/host-shape-native-20260910/install-v002.json).
+- Command: `scripts/out/host-shape-native-20260910/install-v002.ps1`.
+- `NOT_RUN`: loading 0.0.2 in AE, background request execution, AEGP vertices
+  and coverage checkout. The user will reopen AE; regression remains MCP-only.
+
+### TR-HOST-SHAPE-NATIVE-002 — background vectors and coverage option rejection
+
+- Date: 2026-09-10; Windows AE 2026 26.3x87, AE-MCP 0.10.7, 16-bpc fixture;
+  installed diagnostic 0.0.2 `8d896b68...`, production `c91db8c0...` unchanged.
+- `PASS`: MCP opened the saved disposable fixture from an empty project;
+  native setup and readiness logs identify the newly loaded 0.0.2 process.
+- `PASS` raw acquisition: shape vertices, relative tangent offsets and group
+  transform streams match JSX post-expression samples at requested times
+  `1`, `0`, `0.5`, with CTI remaining `0`. Numeric comparison passed 3/3.
+  This does not establish transformed contours or render-thread transport.
+- `FAIL` shape-coverage candidates: RenderSuite5 upstream and RenderSuite4
+  upstream with plain=false return alpha `[1,1,1]` in an 800x600 16-bit world;
+  expected host coverage is `[0,1,0]`. The checkout calls themselves succeed.
+- `FAIL` invalid option combination: RenderSuite4 upstream with plain=true
+  triggers modal 5027, `Plain flag mismatch. Upgrade to RenderSuite5 call`.
+  The driver first times out after 30 seconds; after user dismissal, native
+  logging records AE error 3. No retry or foreground action was performed.
+- Harness failures retained: exact parameter-count guard rejected AE's
+  appended Compositing Options before any write; fixture expression initially
+  called `points()` on `value`, then was corrected to `thisProperty` before
+  comparison. A local GBK print error did not lose the saved MCP result.
+- Commands: `request-native.py` with unique evidence labels, comp 1 modes
+  2/3/4/5, comp 76 mode 2 at `1/0/0.5`; `check-background.py` passed.
+- `PASS` development only: 0.0.3 builds, 8 tests pass, frozen Windows x64
+  artifact `2a79f154...`. Mode 5 refuses before entering host suites; modes
+  6/7 use RenderSuite5 with layer/downstream options. Installation and host
+  acceptance are `NOT_RUN`; shader resources and complete HS-01..15 remain unrun.
+- Probe requests were reset to zero and the disposable project saved.
+  [Evidence and exact next action](audits/evidence/host-shape-native-20260910/background-v002/README.md).
+
+### TR-HOST-SHAPE-NATIVE-003 — layer options and auxiliary coverage
+
+- Date: 2026-09-10; Windows AE 2026 26.3x87 / AE-MCP 0.10.7; 16-bpc
+  disposable fixture. The user authorized autonomous AE close/start without
+  mouse control. Startup used `Start-Process -WindowStyle Hidden`; shutdown
+  used MCP save plus scheduled `app.quit()`. Process exit preceded replacement.
+- `PASS`: diagnostic 0.0.3 `2a79f154...`, then 0.0.4 `9c61010d...`, installed
+  in the version-specific AE 2026 directory with backup/hash checks. Both
+  loaded; production AEX `c91db8c0...` and production source remained unchanged.
+- `FAIL` adjustment coverage candidates: RenderSuite5 `NewFromLayer` and
+  `NewFromDownstreamOfEffect` both return alpha `[1,1,1]`. The same layer
+  constructor on an ordinary shape control returns the expected `[0,1,0]`.
+  The checkout logic works, but these routes do not isolate adjustment coverage.
+- `PASS` absence observation: render-side PF ChannelSuite reports zero
+  auxiliary channels and `Coverage` absent on shape-only adjustment, mask-only
+  adjustment, shape plus mask adjustment, and ordinary shape control. Four
+  requests render successfully; this auxiliary source is unavailable here.
+- `PASS` pixel regression: ordinary-input shader output matches the first-run
+  PNG exactly; ordinary-shape control with probe matches the transparent
+  reference exactly. These PNG comparisons use 8-bit RGBA, not deep precision.
+- Commands: `request-native.py` modes 6/7; `capture-native.py` on four auxiliary
+  fixtures and ordinary input; `check-layer-auxiliary.py`; locked 0.0.4 build
+  and eight local tests. The fixture is saved with serials/logging reset to zero.
+- No mouse/keyboard action or explicit window-activation call. OS foreground
+  ownership was not measured. [Evidence](audits/evidence/host-shape-native-20260910/coverage-v003-v004/README.md).
+- `NOT_RUN`: production automatic coverage/contour resources, full HS-01..15,
+  legal frame-exact contour transport, custom rasterization and other hosts.
+
+
+### TR-HOST-COVERAGE-MANAGED-001 — managed data mask and diagnostic memory repair
+
+- Date: 2026-09-10/11; Windows AE 2026 26.3x87 / AE-MCP 0.10.7; local
+  `ff89564` plus isolated probe changes; default 16-bpc disposable fixture.
+- User decision: accepts an automatically managed mode-None data mask visible
+  in the mask list. No extra contour API or helper layer/precomp is approved.
+- `FAIL` partial-alpha optimization: v3's opacity-bound shortcut still exceeds
+  32768 queries. The v4 exact-partial sampler with 262144 queries times out at
+  30 seconds; later readback shows evaluation completed, but no image or exact
+  completion-time acceptance exists. The expression is disabled afterward.
+- `FAIL` diagnostic 0.0.6/0.0.7: the wrapper's absent-expression memory handling
+  produces `Struct` and recurring tracked-memory-ID dialogs `23::33` reported
+  by the user. The exact owned AE process is stopped to end the loop.
+- `PASS` local repair: diagnostic 0.0.8/0.0.9 each pass 13 tests, including no
+  memory callbacks for a null expression allocation. Raw bounded UTF-16 reads,
+  balanced non-null allocation cleanup and failed-layer quarantine replace the
+  unsafe wrapper path. 0.0.8 reaches mask renaming, which separately fails with
+  `Parameter`; that error is logged once and does not keep retrying.
+- `PASS` native 0.0.9 `f0bd26c4...`: automatic creation on renamed shape/group,
+  two instances sharing one carrier, duplicated-comp isolation, retaining the
+  carrier while one owner remains, removing only the carrier when the last
+  owner opts out, and explicit re-enable. The ordinary user mask stays unchanged.
+- `PASS` native Undo/Redo: Undo removes the newly generated carrier without an
+  idle recreation; corrected Redo restores it. The first Redo harness uses the
+  wrong command ID 17 and fails its assertion; that failure is retained. The
+  documented command 2035 passes on this host.
+- `PASS` native acquisition: render-side PF PathQuery returns 3648 data vertices.
+  Decoded coverage compared with reference alpha over 480000 pixels has 49
+  differing values, maximum 1/255. The reopened/purged frame has the same result
+  and identical output RGBA. This is an 8-bit PNG comparison from a 16-bpc
+  fixture, not deep-precision or performance acceptance.
+- `PASS` saved project reload and cache-purged acquisition: 20 items and both
+  managed carriers survive reload. The first capture driver times out waiting
+  for a PNG after MCP returns; the original request later produces a PNG and
+  native render log, recovered without submitting a second render. The delay
+  remains recorded and is not an acceptable latency claim.
+- Commands: locked offline native `cargo test`/`cargo build`; versioned guarded
+  installers; MCP argument/result pairs; `check-managed-step.py`;
+  `capture-native.py v009-reopened-cold-render 174 0 --purge`;
+  `verify-coverage-blocks.py` comparison helpers.
+- `PASS` preservation: production source and AEX `c91db8c0...` remain unchanged;
+  AE is open on a saved 20-item disposable fixture with all 12 diagnostic
+  logging/serial controls reset and the expensive opacity expression disabled.
+- `NOT_RUN`: production shader resource/ABI, FFX recreation, aerender/MFR,
+  original-mask visible alpha, bounded partial-opacity fidelity/performance,
+  full HS acceptance and other hosts. No new commit or push.
+- [Audit and frozen evidence](audits/evidence/host-shape-native-20260910/managed-carrier/README.md).
+
+### TR-PUBLIC-TRANSFER-001 — public-history source transfer
+
+Baseline: public main `18501ac` plus the nine-file repair diff of `ff89564`
+and the independent diagnostic 0.0.9. Windows, 2026-09-11. No new AE run.
+Commands and actual results: [checks](audits/evidence/public-transfer-20260911/checks.json).
+[Audit and publication boundary](audits/evidence/public-transfer-20260911/README.md).
+The original missing-lock attempt is retained alongside the rerun logs.
+
+### TR-HOST-COVERAGE-REGRESSION-002 — AE 26.5 resumed acceptance
+
+Overall **FAIL**, 2026-09-20, Windows / AE 2026 26.5x89, branch baseline
+`922845c`. Production AEX `c91db8c0...`, diagnostic 0.0.9 `f0bd26c4...`.
+No production or diagnostic source changed in this run. A copy of the frozen
+test project was used through MCP; no mouse, keyboard or activation command.
+
+- PASS: default/editor unit suites 228 each, diagnostic 13, governance.
+- PASS: 800x600 cold interactive PF coverage: 3648 vertices, 49/480000 pixels
+  differ, maximum 1/255. The two-image capture completed after 37.656 seconds.
+- PASS subset: small triangle/rectangle/ellipse, group transform, 128x96 half
+  opacity in 8/16/32 bpc, corrected curved path in 16/32 bpc, and shuffled
+  animation times 0.75/0/0.25 while CTI is 1.5. These compare expression-path
+  readback with reference PNG alpha, not render-thread PF reads.
+- FAIL: add mask and subtract-mask hole each reach 255/255 error (2268 and
+  704 differing pixels). 8-bpc curved edge reaches 16/255 (9 pixels).
+- FAIL: 800x600 half opacity exceeds the 32768-query budget in 5.203 seconds;
+  the failed expression is disabled afterward.
+- FAIL: last-owner cleanup leaves both masks after an extended 8-second wait.
+  The subsequent Undo state also fails; deletion/recreation was not established,
+  so this does not isolate a separate Undo defect. Sharing and preservation of
+  the ordinary user mask pass. Save/reopen preserves 52 items, masks and owners.
+- PASS subset: supervised aerender exits 0 with three PSD frames in 25 seconds;
+  all differ from interactive RGBA8 by at most 1. An earlier valid aerender
+  process supplies one PF coverage record, also within 1/255. The supervised
+  run has no new PF record and reuses cache. MFR was requested at 50% CPU,
+  but the diagnostic does not advertise threaded rendering: concurrency remains
+  BLOCKED, not PASS. Comparisons are 8-bit exports, not deep-pixel proof.
+- BLOCKED: production resource/ABI and material FFX do not exist. Full shader,
+  temporal, expanded-origin/ROI and true MFR acceptance cannot be run against
+  the diagnostic. These are not waived or counted as successful tests.
+- Harness failures are retained: placeholder collision, invalid small native
+  fixture coordinates, initial tangent assignment, TIFF template failures,
+  first missing AEP and console encoding. Corrected runs have separate evidence.
+- Final state: saved 55-item disposable AEP, 16 bpc, all 22 diagnostic logging
+  and request controls reset. AE remains open. No commit, push or main update.
+
+[Audit](audits/evidence/host-coverage-regression-20260920/README.md),
+[summary](audits/evidence/host-coverage-regression-20260920/raw/summary.json),
+[artifact manifest](audits/evidence/host-coverage-regression-20260920/manifest.json).
+
+### TR-HOST-COVERAGE-ENGINEERING-003 — idle wake and scale-safe diagnostic
+
+2026-09-20, Windows / AE 2026 26.5x89, production source unchanged from
+`922845c`; isolated diagnostic 0.0.10 working tree, AEX `64a14201...`.
+- PASS diagnosis: the same disabled-owner fixture retains its data mask after
+  passive waiting; one read-only native MCP request wakes idle and removes it.
+- PASS: 16 locked/offline diagnostic tests and build. Added stop-before-host-call,
+  no retry after wake failure, baseline coordinate preservation, and small/empty/
+  extreme world bounds checks. First build's suite-version type error is retained.
+- PASS native: plugin-owned periodic wake fixes sharing, partial-owner disable,
+  last-owner cleanup, re-enable, Undo and Redo with ordinary user mask intact.
+  The acceptance run uses only JSX MCP calls, without the native wake workaround.
+- PASS native PF: 128x96 yields 818 vertices / 4 differing pixels; 800x600 yields
+  3648 / 49. Both maximum errors are 1/255 against fresh reference PNG alpha.
+- PASS shutdown: saved fixture, scheduled quit and confirmed exited process;
+  startup remains Hidden. Only the diagnostic AEX was replaced; production
+  remains `c91db8c0...`. No mouse/keyboard or activation command.
+- Coverage sampler is unchanged. Original-mask, 8-bpc curve and full-frame
+  partial-alpha failures remain unresolved; FFX and true MFR remain blocked.
+  User requires full scope before delivery. No commit or push.
+[Audit](audits/evidence/host-coverage-engineering-20260920/README.md).
+
+### Coverage acceptance priority — user decision, 2026-09-20
+
+Image fidelity is the prerequisite for preview-speed optimization. Establish
+coverage and final-output correctness against native AE references at each
+supported bit depth, including masks/holes, partial alpha, edges and animation.
+The existing 8-bit-export comparisons are diagnostic evidence, not a replacement
+for native-depth acceptance. Do not relax tolerances or silently lower sampling
+quality, resolution or update frequency to obtain a performance PASS. Any
+optimization must rerun the same correctness cases and preserve their results.
+This requirement records no additional test run and clears no existing failure.
+
+### TR-HOST-COVERAGE-FIDELITY-004 — exact sampling and mask API boundary
+
+2026-09-20, Windows / AE 2026 26.5x89, public baseline `922845c` plus isolated
+probe changes. Current diagnostic 0.0.14 `6734a384...`; production AEX remains
+`c91db8c0...`. Overall delivery gate remains FAIL; no commit or push.
+
+- PASS diagnosis: per-pixel 8-bpc curve and half-opacity oracles match native
+  PNG alpha at all 12288 pixels. The old region-average skip loses small edges.
+- FAIL old transport: direct/fractional-width mask coordinates quantize alpha;
+  values such as 1e-10 disappear. PASS new diagnostic encoding: float32 words
+  encoded as integer/half-integer symbols survive host coordinate noise when
+  decoded with bounded rounding. The 8-bpc curve's complete PF PathQuery read
+  matches the direct oracle bit-for-bit. Small float constants also round-trip.
+- PASS native-depth comparisons: 128x96 curve and half-opacity data match
+  AEGP upstream reference worlds bit-for-bit at both 16 and 32 bpc, with
+  reference world origins accounted for. These use expression-path readback;
+  no new production shader binding is claimed.
+- PASS performance experiment without precision loss: a full-source cache
+  warm-up before per-pixel queries reduces the cold 128x96 half-opacity
+  expression from 29.888 s to 1.463 s. Cold curve/half cases at 8/16/32 bpc
+  preserve the same values. This is one controlled diagnostic comparison,
+  not a general preview-rate guarantee.
+- PASS full-frame correctness: 800x600, 50% fill, 480000 decoded pixels,
+  3746 vertices, zero difference from the native 16-bit reference. Cold
+  expression evaluation takes 91.529 s; interactive performance is not accepted.
+- PASS mask subset: PF_MaskWorldWithPath on white 16-bit worlds gives the
+  correct add/subtract matte for feather=0 and opacity=1. Combining it with
+  the unmasked native source matches both native 16-bit masked references
+  exactly over 12288 pixels each.
+- FAIL mask expansion: +8 px, 834 differing pixels, maximum error 32768 in
+  native 16-bit alpha. The SDK raster route does not apply expansion.
+- FAIL alternative shortcut: directly rasterizing source Bezier geometry and
+  scaling by reference opacity differs by up to one native 16-bit level;
+  float conversion experiments also differ. This route is not adopted.
+- FAIL alternative source: sampleImage(postEffect=true) on adjustment cases
+  returns background alpha [1,1,1] regardless of original mask/shape coverage.
+- PASS local checks: 17 native tests/build; exact-codec tests include isolated
+  thin alpha, fractional alpha, float32 bit preservation through noisy path
+  coordinates, rectangle merging and invalid/bounded input rejection.
+- The initial combined direct-oracle call times out at 40 s; both original
+  outputs arrive later and a subsequent read proves recovery. No duplicate
+  sampling call was sent. Old build/test failures and conservative geometry
+  alternatives remain retained rather than reclassified as passing.
+- No production resource, complete mask-stack semantics, FFX, full transform/
+  modifier matrix or true MFR acceptance. The no-helper-object product boundary
+  is now an explicit pending user decision; no proxy implementation is assumed.
+
+[Audit](audits/evidence/host-coverage-fidelity-20260920/README.md),
+[summary](audits/evidence/host-coverage-fidelity-20260920/raw/summary.json),
+[manifest](audits/evidence/host-coverage-fidelity-20260920/manifest.json).
+
+### TR-HOST-COVERAGE-DIRECT-20260920 — native source stages and return bridge
+
+- Windows AE 2026 26.5x89; public `922845c` plus the frozen diagnostic source.
+  Installed diagnostic 0.0.23 SHA-256 `dcffcf890dfea0177c7ecde5bdda05874d80046eaa1a104b67c485752abd715a`;
+  production AEX remains `c91db8c0...`. Earlier 0.0.15–0.0.22 runs retain their
+  own installation records. SDK files are local/ignored, not evidence assets.
+- `PASS` source-item acquisition for footage, precomp and solid controls;
+  generated shape layers have no source item. This is main-thread acquisition,
+  not a production render adapter.
+- `PASS` StreamSuite7 acquisition and stage read/write using SDK 26.5 headers.
+  Default self parameters already use SOURCE (0). Explicit SOURCE, ONLY_MASKS
+  (-2) and combined layer/stage writes do not fix self checkout.
+- `FAIL` self coverage at 8/16/32 bpc: both layer params equal the background
+  input, differing from original masked coverage at 140000 of 480000 canvas
+  pixels in each case. The experiment reproduces failure, not acceptance.
+- `PASS` cross-layer source and masks stages: two parameter checkouts × three
+  depths × two stages, 480000 canvas pixels each, zero native-word mismatches.
+  Fixture: triangle, requested fill opacity 37.125%, subtract mask opacity
+  68.75%, feather [11.25, 7.75], expansion 4.25. These are exact comparisons
+  with AE's own raster; no claim of unquantized shape-property evaluation.
+- `PASS` return bridge: original ONLY_MASKS -> invisible reader -> ALL_EFFECTS
+  (-1) -> original effect's layer parameter. Six depth/parameter comparisons
+  each match all 480000 native words. Reader video is disabled. Positive
+  effect-stage 1 is refused with error 3 in this fixture even though the limit
+  query returns -1; the ALL_EFFECTS sentinel succeeds. Keep that failure.
+- `FAIL` legacy plain rendering: NewFromLayer using options suites 1 and 2
+  with RenderSuite4 plain=true returns error 3; no source pixels obtained.
+  Quiet error handling avoids a repeated modal loop. Do not retry those pairs.
+- Local checks: 19 SDK-enabled diagnostic tests and locked build pass;
+  the SDK-absent 0.0.21 build passes 19 tests including explicit refusal.
+  `python spike/host-outline/verify-source-stage.py
+  docs/audits/evidence/host-coverage-direct-source-20260920` independently
+  rechecks 18 exact comparisons and retains the self failure.
+- `NOT_RUN`: automatic reader ownership, duplicate/Undo lifecycle, FFX,
+  production resource ABI, transformed/3D/modifier cases, MFR concurrency,
+  old-host stage control and the complete release gate. User approval for
+  automatic internal layers changes scope, not these verification statuses.
+
+[Audit](audits/evidence/host-coverage-direct-source-20260920/README.md),
+[manifest](audits/evidence/host-coverage-direct-source-20260920/manifest.json).
+
+### TR-HOST-COVERAGE-READER-20260920 — automatic native reader
+
+- Windows AE 2026 26.5x89; public `922845c` plus frozen diagnostics.
+  Pixel/lifecycle suite: 0.0.25 `fb46db4a...`; current-build pixel smoke:
+  0.0.26 `7f6918d4...`; owner-deletion correction: 0.0.28 `bc0265d2...`.
+  Production DynamicFx.aex remains `c91db8c0...`; production code is unchanged.
+- `PASS` 10 lifecycle checks: initial creation, exact native float32 alpha,
+  two instances sharing, first opt-out releasing its binding, last opt-out
+  removing the reader and unused solid item, cleanup Undo/Redo, re-enable,
+  duplicate-owner separation and owner renaming. Snapshot readback proves
+  bindings; duplicate-owner pixels before the first idle tick are NOT_RUN.
+- `PASS` 30 native frame comparisons, 480000 canvas pixels each, zero word
+  mismatches: 9 cold shuffled animation/depth pairs at requested 1, 0, 0.5 s
+  with CTI 1.6 s; 6 2D/3D transform/depth pairs; 9 nontrivial repeater,
+  merge-subtract and stroke/depth pairs; 3 identity-repeater controls; 3
+  0.0.26 smoke pairs. The identity repeater defaults to one copy and is not
+  counted as modifier coverage. Each later modifier changes reference pixels.
+- `PASS` saved project and stable reader count on reopen; all frame cases
+  above execute after reopening. The 0.0.26 smoke also follows process restart.
+- `FAIL` 0.0.24 first cleanup left its solid item. 0.0.25 fixes counting by
+  resolving each layer's source item handle and then its item ID. The failing
+  run and successful rerun both remain in the evidence.
+- `FAIL` 0.0.27 owner deletion: AE reverts the reader selector to itself;
+  the foreign-reference guard mistakenly treated that as an external user.
+  `PASS` 0.0.28: deleting the original owner removes its reader and source;
+  one Undo restores the orphan without immediately deleting it again; the
+  second Undo restores the owner and binding. 22 local diagnostic tests pass.
+  A subsequent 32-bpc stroke/merge/repeater frame also matches all 480000
+  reference words on the installed 0.0.28 artifact after the Undo sequence.
+- AE 2025.6.6x4: `BLOCKED` StreamSuite7 acquisition (`kSPSuiteNotFoundError`).
+  A normal property-selected preset changes unrelated values; a reduced
+  parameter preset exported by AE 26.5 is refused as a newer file. These are
+  rejected compatibility experiments. User-approved minimum is now AE 26.5+
+  for this new feature only. The temporary AE 2025 diagnostic was removed and
+  its original production AEX hash remains unchanged.
+- Independent verification: `python spike/host-outline/verify-reader.py
+  docs/audits/evidence/host-coverage-reader-20260920` checks the compressed raw
+  alpha arrays, nonempty references, changed modifier pixels and lifecycle
+  summary. Earlier direct-source verifier still passes.
+- `NOT_RUN` / implementation remaining: production shader resource and UI
+  integration, immediate-before-idle duplicate readiness, foreign-consumer
+  protection in host tests, adopted/modified-helper policy, expanded canvas,
+  ROI/downsample/PAR, full FFX reuse, aerender and true MFR concurrency. The
+  diagnostic is fixture-guarded by comp prefix `HS_reader_`; it is not shipped
+  automatic coverage. No new commit or push.
+
+[Reader audit](audits/evidence/host-coverage-reader-20260920/README.md),
+[manifest](audits/evidence/host-coverage-reader-20260920/manifest.json).
+
+
+### TR-COVERAGE-INTEGRATION-001 — production resource foundation
+
+- Baseline: public `922845c` plus the frozen production source; Windows,
+  Rust 1.97.1, 2026-09-23, `codex/host-coverage-probe`.
+- `PASS`: `cargo test --offline --locked --lib` and the same command with
+  `--features editor`: 237 tests each. Coverage-specific checks include both
+  frontends, no uniform words, isolated pool capacity, aliases, read-only graph
+  rules, E7 temporal refusal, kind-tag persistence, unchanged old parameter order,
+  readiness errors, origin/stride/padding, all U15 values and exact float words.
+- `PASS`: `cargo +1.97.1 build --release --locked --offline
+  --target x86_64-pc-windows-msvc`.
+  Candidate SHA-256 `8f9fe9fa6889b1d290e47483d545e13aef1f97ad650491c2f1cc6e7ee141e286`.
+- First topology tests failed because the historical-order helper included the
+  new pool and expected no appended fields. The correction keeps the old order
+  comparison exact and separately asserts the two appended hidden parameters.
+- `NOT_RUN`: production AE execution and every production FFX/MFR/ROI gate.
+  This candidate was not installed; the native diagnostic remains separate.
+  Native ownership/helper hookup does not yet publish ready state, so ordinary
+  coverage declarations intentionally remain E60 rather than rendering fake data.
+- No commit, push or deployment. `rustfmt` is unavailable in the pinned local
+  toolchain; formatting was not claimed as a passed check.
+- [Summary](audits/evidence/coverage-integration-20260923/raw/summary.json),
+  [default tests](audits/evidence/coverage-integration-20260923/raw/tests-final.log),
+  [editor tests](audits/evidence/coverage-integration-20260923/raw/tests-editor-final.log),
+  [build](audits/evidence/coverage-integration-20260923/raw/build-release-final.log),
+  [first failure](audits/evidence/coverage-integration-20260923/raw/tests-first.log),
+  [manifest](audits/evidence/coverage-integration-20260923/manifest.json).
+- Audit: [production integration](audits/11-host-coverage-integration.md).
+
+### TR-COVERAGE-STAGE-002 — production SDK stage adapter
+
+- Baseline: public `922845c` plus TR-COVERAGE-INTEGRATION-001 and the frozen
+  adapter overlay; Windows, Rust 1.97.1, 2026-09-23.
+- `PASS`: default and editor `cargo +1.97.1 test --offline --locked --lib`
+  with `DYNAMICFX_AESDK_265_ROOT` set to the ignored SDK 26.5 root: 239 each.
+  The initial default invocation omitted `--locked` to add the already-cached
+  `cc` build dependency to the local ignored lockfile; no network was used.
+- `PASS`: the default library tests without the SDK variable: 239. Coverage
+  capability now requires both the compiled bridge and the host suite; a build
+  without the bridge cannot advertise this feature.
+- `PASS`: 22 SDK-header callback tests in
+  `spike/host-outline/stage-check`, using `cargo +1.97.1 test --offline
+  --manifest-path spike/host-outline/stage-check/Cargo.toml --target-dir
+  scripts/out/coverage-stage-20260923/check-target`. The tests include the exact
+  production C++ adapter and mock the officially declared suite callbacks.
+  Read-only/idempotent calls, atomic layer/stage writes, wrong readback,
+  acquisition/read/write/disposal failures and balanced handle lifetimes pass.
+- `PASS`: SDK-enabled `cargo +1.97.1 build --release --locked --offline
+  --target x86_64-pc-windows-msvc`. Candidate SHA-256
+  `b9e4db45517fad8dbf1d85aade4f3cc3c0309783f36f3bd6a85ae7e1738dd6cd`.
+- `NOT_RUN`: this candidate in AE. The manager does not yet call the binding
+  API, and compiler dead-code warnings accurately reflect that unconnected API.
+  No install, commit, push or ready-state publication. Mock callbacks are not
+  host evidence or proof that production coverage works.
+- [Evidence and commands](audits/evidence/coverage-stage-20260923/README.md),
+  [manifest](audits/evidence/coverage-stage-20260923/manifest.json).
+
+### TR-COVERAGE-OWNER-003 — production first frame and initial ownership
+
+- Baseline: public `922845c` plus resource/stage foundations and the frozen
+  ADR-0051 owner/reader overlay. Windows, Rust 1.97.1, 2026-09-23.
+- `PASS`: SDK-enabled default/editor and SDK-absent default library suites,
+  241 tests each. Native reader component: 3 pixel/checkout tests. Both Release
+  builds pass. Earlier compile failures (PiPL builder/trait signatures and
+  wrapper method names) are retained in the evidence.
+- Host: AE 2026 **26.5x89**, accessed only through MCP. The empty, unmodified
+  project was verified before scheduled quit; old production AEX was backed up.
+  Installed only under AE 2026 `Support Files/Plug-ins/DynamicFx`:
+  main `e72ac9379c24ffa01314e339cd66587ea820250ccc76fbe9bf43bb6aa1cd7874`,
+  reader `da16133dff6cafe4057f088c89ac9e535c37511d3fa033d353f23ddc23e66546`.
+  Diagnostic `bc0265d2...` is unchanged and only records native frame words.
+- `PASS`: automatic hidden reader creation and ready/binding readback on both
+  an ordinary shape and an adjustment shape. The first setup call timed out;
+  MCP later recovered and readback proved creation completed. It was not
+  replayed. The initial inspection script hit a no-value group property;
+  correcting the read-only script allowed successful inspection.
+- `PASS`: 6 native pixel comparisons, ordinary/adjustment × 8/16/32 bpc.
+  Each compares **480000 canvas alpha words** against an ordinary AE shape.
+  Every comparison has zero differences. Shader output alpha comes from
+  `hint:coverage` through the production graph; it is not a direct probe-only
+  reader check. Fixtures include triangle edges, 37.125% fill, subtract mask,
+  68.75% mask opacity, anisotropic feather and 4.25px expansion. References
+  have nonzero partial alpha and a hole, independently checked by the verifier.
+- `PASS`: 8 ownership cases: creation, shared reader, first opt-out, last
+  opt-out/source cleanup, cleanup Undo, cleanup Redo, re-enable and duplicate
+  original with independent links **after idle**. No immediate-copy claim.
+- `PASS`: reopen the saved baseline and render the adjustment frame in the
+  same JSX call, before a separate idle wait: 480000 float32 alpha words equal
+  the reference. This is same-process reopen, not cold-process/aerender proof.
+- `PASS`: disable DynamicFx in the adjustment fixture as a negative control:
+  all 140000 checked-out words become opaque background alpha, differing from
+  the reference at all 140000 positions. Restore the effect and save afterwards.
+  This confirms the passing shader test is distinguishable from pass-through.
+  Two preceding mixed-log captures are not accepted; the final control isolates
+  diagnostic output to the target comp and the verifier requires exactly one frame.
+- `PASS`: `python spike/host-outline/verify-production-reader.py
+  docs/audits/evidence/coverage-owner-20260923` independently recomputes all
+  6 comparisons, reopen comparison and 8 lifecycle assertions from raw evidence.
+- `NOT_RUN`: copy/FFX-before-idle authorization, full helper tamper/foreign
+  reference protection, original deletion, empty alpha, large/expanded sources,
+  animation/3D/modifier production matrix, ROI/downsample/PAR, aerender and
+  actual concurrent MFR, final glass material and packaging. No push/release.
+- [Evidence](audits/evidence/coverage-owner-20260923/README.md),
+  [manifest](audits/evidence/coverage-owner-20260923/manifest.json),
+  [audit](audits/11-host-coverage-integration.md).
+
+### TR-COVERAGE-READINESS-004 — copied/FFX state, cache and offline authorization
+
+- Windows, AE 2026 26.5x89, Rust 1.97.1, 2026-09-23. Public `922845c` plus
+  the production overlays and ADR-0052..0055. Final installed main SHA-256
+  `96dcff77f3b07c1e59cad1785120dcac4d7e3a8dabdcc798ac5ef2ba286a679c`;
+  native reader remains `da16133d...`, diagnostic remains `bc0265d2...`.
+- `FAIL` reproduced on `e72ac937...`: duplicate an adjustment layer, change
+  its triangle and render in the same JSX call. Copied ready=1 still points to
+  the original reader; 42331 of 480000 float32 alpha words differ. The first
+  resetup-only certificate attempt `9e922d84...` fails identically: AE can
+  construct the render copy directly from original flattened data.
+- `PASS`: process-wide revocation refuses the stale certificate with E60.
+  An observed-absence cache cleanup fixes automatic recovery when a reopened
+  test project reuses a deleted layer ID. The earlier protected-but-unrecovered
+  `6d718619...` result is preserved separately.
+- `PASS` on the final artifact: warm original frame, duplicate and change shape
+  within the same bounds, then render without purging caches. The 140000
+  checked-out words are the expected opaque pass-through and the log reports
+  E60, rather than the old coverage. After idle, binding points to the new
+  original and all 480000 alpha words equal its reference.
+- `PASS`: FFX applied to a fresh target and to an existing DynamicFx instance
+  (effect count stays one). Both immediate renders refuse the old state with
+  E60; both automatically rebound frames match all 480000 reference words.
+- `FAIL` first offline attempt on `152fb695...`: aerender returns 0 but the
+  prepared frame is E60/pass-through, differing at 87500 words. Normal resetup
+  occurs before render-only resetup. PF_IsRenderEngine fixes that distinction.
+  A following run used old disk cache and emitted no render callbacks; it is
+  not accepted. Effect cache generations are advanced and effective readiness
+  is mixed into the host frame GUID through GuidMixInPtr.
+- `PASS`: final independent aerender process, MFR OFF, one prepared 32-bpc
+  frame: return 0, zero E60 entries, all 480000 native words equal reference.
+- `PASS` save-time validation: a copy saved in the same JSX call is already
+  validated by the time AE writes the file (saved certificate and reader/owner
+  readback agree); its independent frame is exact. The harness initially
+  expected E60 and printed FAIL; that premise is rejected, not relabeled as an
+  unverified-data rejection. The raw result and assessment are retained.
+- `PASS` negative control: remove that copy's reader and save. Independent
+  rendering keeps E60 and opaque pass-through (140000 words); saved/copy state
+  cannot authorize a missing reader. Exit status alone is not a success gate.
+- `PASS`: final ordinary/adjustment × 8/16/32-bpc regression, 6 pairs × 480000
+  words, zero differences. Default SDK, editor SDK and default no-SDK suites
+  each pass 249 tests; SDK Release builds successfully.
+- The initial FFX harness assumed copyToComp inserted at index 1 and hit a
+  locked reader; readback located the actual new shape ID and execution resumed
+  there. A localized TIFF template failed; the existing ASCII Photoshop template
+  was used. These harness failures and the missing-project render attempt remain.
+- `PASS`: `python spike/host-outline/verify-coverage-readiness.py
+  docs/audits/evidence/coverage-readiness-20260923` independently checks native
+  pixels and E60 records. Hash/publication-pattern and governance checks pass.
+- `NOT_RUN`: the remaining full production animation/3D/modifier, empty-alpha,
+  ROI/downsample/PAR/expanded-source, helper-tamper and genuine concurrent MFR
+  matrix, final glass material/packaging and broader host regressions.
+- [Evidence](audits/evidence/coverage-readiness-20260923/README.md),
+  [manifest](audits/evidence/coverage-readiness-20260923/manifest.json).
+
+### TR-COVERAGE-FIDELITY-005 — production geometry and expanded coverage
+
+- Windows AE 2026 26.5x89, Rust 1.97.1, 2026-09-23. Public `922845c` plus
+  production overlays. Installed main
+  `07a79e31c1b881fa48d0b7ed8ae621ddaea74e1ba45a5ac28fb9083452eec1ba`,
+  reader `0a1f7c4c11d501ecd148fcfb2a62688ff31e5c1009130ae437640e8a9d2c75cf`,
+  probe 0.0.29 `ce965bf891e166f0be6fe38a8107853b2782fe94a66c3c413cdda0d5d9e4c559`.
+- `PASS`: 78 matrix pairs, repeated on repaired artifacts: curved path/opacity
+  at shuffled 1/0/0.5/0.36 seconds with CTI 1.6; 2D/3D; transformed repeater,
+  merge hole, stroke; Half/Quarter and PAR 1.333333; both hosts/all depths.
+  Every native alpha word agrees. Modifier references change measurably;
+  Half/Quarter output dimensions are verified.
+- `PASS`: 24 native pairs for negative group scale/rotation/skew, transformed
+  parents and expression-driven curves at 1/0.24 seconds.
+- `FAIL`: ordinary expanded reference triggers the supplied GUID dialog.
+  ADR-0056 moves one GuidMixInPtr call to entry for every SmartPreRender;
+  non-coverage graphs mix a fixed constant. Main suites each pass 249 tests.
+- Diagnostic correction adds IExpandBuffer, origin-aware forwarding and a
+  1048576-pixel budget (22 tests/build pass). This alone did not cure the GUID
+  assertion. A reference shader red-versus-alpha mistake is separately retained.
+- `FAIL`: real outside-comp clipping loses 3548 U8 or 3554 U15/F32 pixels.
+  The test shifts exterior sampling into the visible frame. Reader repair
+  unions base/source extents and request-clips results, with IExpandBuffer.
+- `PASS`: all 12 corrected unshifted/shifted host/depth pairs match exactly;
+  reader tests pass 4 and Release passes.
+- `PASS`: 15 ROI sampleImage comparisons equal the independent reference.
+  A footprint average is not asserted equal to an arbitrary single full pixel.
+- `PASS`: empty ordinary output and unchanged adjustment background. Initial
+  absolute blue=255 expectation fails at 32 bpc; the disabled-layer background
+  also exports blue=25 with zero RGBA difference. Both results are retained.
+- Independent verifier recomputes 114 native pairs, 15 ROIs and retained clipping
+  failures. Original 39 ordinary/reference PNG alpha comparisons also match.
+- User dismissed the GUID dialog. MCP quit later timed out; only the exact
+  launched process on saved full.aep without a dirty marker was terminated
+  under lifecycle authorization. Backups precede replacements; launches hidden.
+- `NOT_RUN`: helper tamper/foreign references, true concurrent MFR, remaining
+  compatibility/material/packaging. User orders shader authoring after complete
+  regression. No commit, push or main update.
+- [Evidence](audits/evidence/coverage-full-20260923/README.md),
+  [manifest](audits/evidence/coverage-full-20260923/manifest.json).
+
+### TR-COVERAGE-LIFECYCLE-MFR-006 — helper validation and shared dispatch
+
+- Windows AE 2026 26.5x89, Rust 1.97.1, 2026-09-23, `922845c` plus overlay.
+- `FAIL`: main `07a79e31...` keeps a valid certificate after a 35-pixel helper
+  move and idle. Transform/time/source validation repairs that ownership gap.
+- `PASS`: main `314e4fe1...`, 18 changed/restored helper cases: position,
+  anchor, scale, rotation, opacity, expression, keyframes, separated dimensions,
+  start/stretch/in/out, effect disable, marker, mask, parent, adjustment and
+  visibility. Conflict state 3 preserves the same helper; restoration revalidates.
+- `PASS`: shared-dispatch main `206ce4e2...` passes 9 lifecycle cases: foreign
+  selector preservation, reused reader, shared-source preservation, fresh opt-in,
+  modified opt-out preservation/recovery, orphan cleanup and two-step Undo.
+  A harness dereferenced the deleted owner after the successful deletion; the
+  failed call is preserved and fresh readback continues without repeating it.
+- ADR-0057 changes both effects to shared-reference dispatch. Default/editor/
+  no-SDK suites pass 250 each; reader passes 4. Release builds pass.
+- `FAIL`: the initial concurrent diagnostic wrote main/reader spans to one file;
+  interleaved begin lines prevent balanced-span acceptance, although all native
+  frame digests agree. Separate files plus buffered line writes repair the trace.
+- `PASS`: final main `a17d714b55d77f1eb920fb0f356fb6f9b69b0b801022ea6dc56b6d2be0d8a846`,
+  reader `d251a3608d2bd1931aa2ea6d72a3f7727b8d82bfd6e4bb141cc6ece904e7be8b`,
+  ordinary/adjustment × 8/16/32 bpc, 48 frames each: all 288 frame digests are
+  bit-identical between independent serial and MFR runs. Output hashes exclude
+  row padding but cover all native ARGB words. Every sequence has 48 distinct
+  frame hashes, zero E60 entries and balanced spans. MFR peaks are 9–12 overlapping
+  callbacks on 12–14 threads; serial peaks are 1. Probe effects are removed.
+- Raw local commands/results: `scripts/out/coverage-lifecycle-20260923/`:
+  `run.py tamper`, `foreign.py` plus recorded continuation, `mfr-run.py` (OFF/ON
+  for every kind/depth, `MFR_RUN_TAG=-v2`), `mfr-summary.json`, installation hashes.
+- Current-artifact fidelity/readiness/resource regression and material remain
+  in progress. No commit, push, main update or release.
+
+### TR-COVERAGE-COMPLETE-007 — cancellation and usable Liquid Glass
+
+- Windows AE 2026 26.5x89, Rust 1.97.1, DX12, 2026-09-23. Final installed
+  main `6d188d2251fdecf89f18611fd429cbc4cd9b8c056dc3ad8f25dc35f74eca6a97`,
+  reader `29695b72fc8a26222a51319c3e42f86696b6d15e78efb02d968bc264ff173be6`.
+- `PASS`: independent verifier recomputes 174 native-alpha comparisons, 15 ROIs,
+  3 empty-depth controls and 3 copy/FFX recovery images. Added 54 cases cover
+  open strokes, trim, offset, round corners, disjoint contours, animated mask
+  opacity/feather/expansion and a transformed 3D camera. Six pairs use WGSL;
+  both frontends explicitly reject coverage plus `prev` with E7.
+- `PASS`: ADR-0058 frame-owned checkout IDs and scoped release. Three fault
+  tests cover cancellation, failed checkin and unwind, including empty successful
+  input. SDK default/editor and no-SDK suites each pass 254; reader passes 4.
+- `PASS`: repeated 288-frame serial/MFR matrix after checkout repair. All native
+  ARGB digests match both serial and preceding correct output; peaks 10–12
+  concurrent callbacks, balanced spans, zero E60. Eighteen additional native
+  baseline/expanded comparisons and 15 ROIs pass on that implementation.
+- `PASS`: actual background preview interruption generates two external-input
+  cancellations; 105 surrounding cache-served PNGs match purged re-renders
+  exactly. Foreground remains unchanged. Earlier Ctrl+C/WM_CLOSE trials are
+  retained as `UNVERIFIED_CANCEL`, not counted as host-cancellation proof.
+- `PASS`: existing GLSL/WGSL features pass 330 numeric checks, and 217 checks
+  repeat after checkout repair. Hidden gradient children initially reject both
+  direct and expression writes. Idle child-visibility synchronization repairs
+  direct writes without opening a foreground panel. Save/reopen and keys pass.
+- `PASS`: 18 helper mutations, 9 lifecycle/foreign-selector/shared-source/Undo
+  cases, plus four final parent/matte-reference cases. Modified objects and
+  known external references are preserved; unreferenced valid helpers clean up.
+- `PASS`: Liquid Glass GPU Full/Half/Quarter × 8/16/32; Amount zero has zero
+  float error; 256000 encoded field pixels have identical bytes through 8/32
+  intermediate targets. Eighteen actual AE frames have the expected physical
+  sizes and animate. Partial alpha is applied once (measured error <0.0001),
+  outside/hole pixels remain exact, and FFX binds to renamed arbitrary Beziers.
+  Applying the supplied script twice leaves one effect. FFX credential/path
+  scans find nothing. Temporary test objects are removed from the saved example.
+- `PASS`: exact final installed pair, without the diagnostic AEX, independently
+  renders the 1440×900 example with zero channel differences from the accepted
+  formal output. The final rebuild's executable/data/unwind/resource/relocation
+  sections equal the preceding verified pair; attribution/debug metadata changed.
+- The host's 32-bpc `saveFrameToPng` is dark even with glass disabled. Native
+  sample values and formal queue output agree; shader brightness is unchanged.
+  Display evidence is decoded from formal PSD output, not that faulty preview.
+- Package ZIP CRC, both AEX hashes, sample members and separate dependency
+  notices are checked before publication. AEX/SDK/AEP/intermediate data stay local.
+- [Completion evidence](audits/evidence/coverage-completion-20260923/README.md),
+  [manifest](audits/evidence/coverage-completion-20260923/manifest.json),
+  [material usage](liquid-glass.md). Existing Source Undo limitation remains;
+  this does not add acceptance for other AE years or macOS.
+
+
+## TR-LIQUID-GLASS-UPSTREAM-008 — Licensed material port
+
+- Status: `PASS` on Windows AE 26.5x89, using the unchanged installed native pair
+  recorded in TR-COVERAGE-COMPLETE-007. Shader source and FFX identities are in
+  the new evidence manifest.
+- `cargo +1.97.1 test --locked --offline --lib` with the Windows 26.5 SDK root:
+  254 passed. Only the example test's pass count changed from three to five.
+- 26 GPU checks pass. Exact CPU distance reference maximum error 0.000003815
+  logical pixels; packed outputs match across all three depths. Independent
+  Snell displacement maximum error 0.00000423 pixels. Amount zero is exact.
+- 27 actual AE queue frames pass (three project depths, three resolutions,
+  three animation times). Output PSD display files are 8-bit; float checks use
+  the GPU runner and AE native samples. Four alpha/hole/preset cases pass.
+- Applying the script twice leaves one effect; final project contains three
+  enabled original shapes, valid bindings, no regression sampler and no queue.
+- ZIP CRC, member hashes, embedded FFX source and both native hashes are checked.
+  Source publication is gated on exact staged-content secret/path scanning.
+- Initial inverse-trig discrepancy, malformed diagnostic, missing SciPy and
+  wrong SDK-root invocation remain visible in evidence; final corrections pass.
+- [Audit](audits/12-upstream-liquid-glass.md),
+  [evidence](audits/evidence/liquid-glass-upstream-20260923/README.md).
+
+
+## TR-ISSUES-010-012 — Color/percent corrections and reopen investigation
+
+- Baseline: `112a6c7` plus parameter-only changes, Windows AE 26.5x89.
+  Main `4fe13ec0e9bb7962b4f28ce7020117502c7eeacc2f70d0740a64f6defc7ad80a`;
+  reader unchanged from TR-LIQUID-GLASS-UPSTREAM-008.
+- `PASS`: `cargo +1.97.1 test --locked --offline --lib`, SDK default/editor
+  and no-SDK variants: 257 each. Locked release build passes.
+- `PASS`: original E19 failures reproduced for RGB-hex vec3 and percent in both
+  languages; candidate passes 24 AE native numeric cases across 8/16/32 bpc.
+- `PASS`: Property.unitsText confirms percent display; removing/restoring the
+  hint clears/restores units after normal supervised UI refresh. Initial stale
+  source-only-script UI readback remains in evidence, not counted as a pass.
+- `PASS`: keyframe values/slots survive hint changes and project reopen;
+  native samples 0.25/0.5/0.75 are exact. 27 glass frame pairs are pixel-identical
+  to the preceding acceptance. No new coverage-runtime or reader code changed.
+- `BLOCKED`: #12 affected-host reproduction. Four local historical-copy opens
+  pass without the reported error; the user says the issue is on another
+  machine and has no more details. These runs do not prove #12 repaired.
+- `NOT_RUN`: unified merge, new release, affected-host confirmation. The draft
+  remains open until #12 is resolved. Diagnostic inventory is read-only.
+- [Audit](audits/13-issue-batch-release.md),
+  [evidence](audits/evidence/issues-10-12-20260923/README.md).
+
+
+## TR-REL-020 — Completed Windows work with issue 12 deferred
+
+- Scope: user explicitly defers #12 and authorizes merge/release of #9–#11;
+  ADR-0061 supersedes the preceding release blocker, not the unresolved defect.
+- `PASS`: v0.2.0 SDK default/editor/no-SDK library suites: 257 each; reader: 4.
+  Locked release builds use Rust 1.97.1 and Windows x64. Runtime changes from the
+  preceding batch are limited to version/cache-generation metadata and diagnostic
+  path remapping, with no shader/coverage/parameter behavior change.
+- `PASS`: final remapped main `b4505fd3...` and reader `b0f476ab...` are installed
+  on AE 26.5x89 and render the frozen 27-frame matrix. Exact comparison is recorded
+  separately; initial changed-user-workspace mismatch is retained, not erased.
+- `PASS`: home path exclusion in both final binaries; initial path-bearing builds
+  remain local and are not publication artifacts. Private AEP/PSD/PDB/SDK stay out.
+- Publication uses normal PR merge, merged-commit tag, paired Windows ZIP and
+  dependency notices. Fresh-download verification checks hashes and archive CRC.
+- #12 remains OPEN and is not claimed fixed. macOS retains original 0.1.1 assets;
+  other-host 0.2.0 acceptance is NOT_RUN. Source-expression Undo remains disclosed.
+- [Release audit](audits/14-windows-020.md),
+  [frozen evidence](audits/evidence/release-020-20260923/README.md).

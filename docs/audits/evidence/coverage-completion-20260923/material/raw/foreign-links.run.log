@@ -1,0 +1,17 @@
+{"step": "links-setup", "data": "{\"comp\":50,\"owner\":62,\"child\":64}"}
+{"step": "links-baseline", "data": "{\"reader\":66,\"state\":254648971659160,\"parent\":null,\"matte\":null}"}
+{"step": "links-parent-off", "data": "{\"reader\":66,\"state\":254648971659160,\"parent\":66,\"matte\":null}"}
+{"step": "links-parent-preserved", "data": "{\"reader\":66,\"state\":0,\"parent\":66,\"matte\":null}"}
+{"step": "links-parent-restore", "data": "{\"reader\":66,\"state\":0,\"parent\":null,\"matte\":null}"}
+{"step": "links-parent-ready", "data": "{\"reader\":66,\"state\":254648971659161,\"parent\":null,\"matte\":null}"}
+{"step": "links-matte-off", "data": "{\"reader\":66,\"state\":254648971659161,\"parent\":null,\"matte\":66}"}
+{"step": "links-matte-preserved", "data": "{\"reader\":66,\"state\":0,\"parent\":null,\"matte\":66}"}
+{"step": "links-matte-restore", "data": "{\"reader\":66,\"state\":0,\"parent\":null,\"matte\":null}"}
+{"step": "links-matte-ready", "data": "{\"reader\":66,\"state\":254648971659162,\"parent\":null,\"matte\":null}"}
+{"step": "links-owned-matte", "data": "{\"reader\":66,\"state\":254648971659162,\"parent\":null,\"matte\":null}"}
+{"step": "links-owned-matte-conflict", "data": "{\"reader\":66,\"state\":3,\"parent\":null,\"matte\":null}"}
+{"step": "links-owned-matte-restored", "data": "{\"reader\":66,\"state\":3,\"parent\":null,\"matte\":null}"}
+{"step": "links-cleanup", "data": "{\"reader\":66,\"state\":254648971659163,\"parent\":null,\"matte\":null}"}
+{"step": "links-cleaned", "data": "{\"reader\":null,\"state\":0,\"parent\":null,\"matte\":null}"}
+{"step": "links-fixture-removed", "data": "\"removed test comp\""}
+[{"case": "parent reference preserves helper", "state": {"reader": 66, "state": 0, "parent": 66, "matte": null}, "status": "PASS"}, {"case": "matte reference preserves helper", "state": {"reader": 66, "state": 0, "parent": null, "matte": 66}, "status": "PASS"}, {"case": "modified helper with matte rejected", "state": {"reader": 66, "state": 3, "parent": null, "matte": null}, "status": "PASS"}, {"case": "unreferenced helper removed", "state": {"reader": null, "state": 0, "parent": null, "matte": null}, "status": "PASS"}]

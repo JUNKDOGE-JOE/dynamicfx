@@ -1,0 +1,22 @@
+[
+  {
+    "case": "automatic creation",
+    "status": "PASS"
+  },
+  {
+    "case": "automatic reader native float32 alpha",
+    "status": "PASS"
+  },
+  {
+    "case": "two effects share one reader",
+    "status": "PASS"
+  },
+  {
+    "case": "first owner release",
+    "status": "PASS"
+  },
+  {
+    "case": "last owner cleanup including source",
+    "status": "FAIL"
+  }
+]

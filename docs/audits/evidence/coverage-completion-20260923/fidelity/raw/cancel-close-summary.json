@@ -1,0 +1,8 @@
+{
+  "returncode": 0,
+  "close_sent": true,
+  "interrupt_cancel_entries": 0,
+  "external_cancel_entries": 0,
+  "frames_written": 750,
+  "status": "UNVERIFIED_CANCEL"
+}

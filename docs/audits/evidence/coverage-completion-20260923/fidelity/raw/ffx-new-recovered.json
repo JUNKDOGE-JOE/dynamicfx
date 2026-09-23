@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"ffx.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30);var target=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===51)target=c.layer(i);if(!target)throw Error(\"Target missing\");var main=target.property(\"ADBE Effect Parade\").property(1),reader=c.layer(main.property(426).value);var row={target:target.id,state:main.property(427).value,reader:reader.id,source:c.layer(reader.property(\"ADBE Effect Parade\").property(1).property(1).value).id};app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(0,new File(\"<workspace>/scripts/out/coverage-final-20260923/ffx-new-recovered.png\"));app.project.save();return JSON.stringify(row);})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"target\\\":51,\\\"state\\\":249545369263685,\\\"reader\\\":53,\\\"source\\\":51}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"target\":51,\"state\":249545369263685,\"reader\":53,\"source\":51}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

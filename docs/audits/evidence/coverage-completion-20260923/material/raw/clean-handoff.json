@@ -1,0 +1,17 @@
+{
+  "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Liquid Glass.aep\")throw Error(\"Unexpected project\");var removed=app.project.removeUnusedFootage();app.project.save();var c=app.project.itemByID(1),rows=[];for(var i=1;i<=c.numLayers;i++){var l=c.layer(i);if(l instanceof ShapeLayer){var e=l.property(\"ADBE Effect Parade\").property(1);rows.push({id:l.id,state:e.property(427).value,effects:l.property(\"ADBE Effect Parade\").numProperties});}}return JSON.stringify({removedUnused:removed,items:app.project.numItems,layers:c.numLayers,shapes:rows});})()",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"removedUnused\\\":3,\\\"items\\\":6,\\\"layers\\\":12,\\\"shapes\\\":[{\\\"id\\\":23,\\\"state\\\":254648971659157,\\\"effects\\\":1},{\\\"id\\\":22,\\\"state\\\":254648971659158,\\\"effects\\\":1},{\\\"id\\\":21,\\\"state\\\":254648971659159,\\\"effects\\\":1}]}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"removedUnused\":3,\"items\":6,\"layers\":12,\"shapes\":[{\"id\":23,\"state\":254648971659157,\"effects\":1},{\"id\":22,\"state\":254648971659158,\"effects\":1},{\"id\":21,\"state\":254648971659159,\"effects\":1}]}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

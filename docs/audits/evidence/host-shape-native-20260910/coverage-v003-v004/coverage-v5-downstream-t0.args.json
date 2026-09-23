@@ -1,0 +1,5 @@
+{
+  "code": "(function(){\nif(!app.project.file||app.project.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");\nvar c=app.project.itemByID(1);\nif(!c||c.name.indexOf(\"HS_\")!==0)throw Error(\"Wrong fixture\");\nvar p=c.layer(1).property(\"ADBE Effect Parade\").property(1);\nif(p.matchName!==\"DynamicFx Host Shape Probe\"||p.numProperties<5||p.property(5).name!==\"Background request serial\")throw Error(\"Background probe is not loaded\");\nif(7>p.property(2).maxValue)throw Error(\"Requested mode is not available in the loaded probe\");\nif(p.property(5).value===2)throw Error(\"Serial has already been submitted; inspect its result\");\np.property(1).setValue(0.0);p.property(2).setValue(7);p.property(5).setValue(2);\nreturn JSON.stringify({comp:c.id,serial:p.property(5).value,mode:p.property(2).value,layerSeconds:p.property(1).value});\n})()",
+  "undo_group_name": "Request background host-shape diagnostic",
+  "timeout_sec": 20
+}

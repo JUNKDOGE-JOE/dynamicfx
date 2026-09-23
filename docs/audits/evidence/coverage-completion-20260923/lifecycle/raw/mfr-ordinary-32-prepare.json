@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!/^mfr-/.test(app.project.file.name))throw Error(\"Unexpected project\");while(app.project.renderQueue.numItems)app.project.renderQueue.item(1).remove();app.project.bitsPerChannel=32;var q=app.project.renderQueue.items.add(app.project.itemByID(1));q.timeSpanStart=0;q.timeSpanDuration=48/25;var om=q.outputModule(1);om.applyTemplate(\"Photoshop\");om.file=new File(\"<workspace>/scripts/out/coverage-lifecycle-20260923/mfr-ordinary-32_[#####].psd\");app.project.save(new File(\"<workspace>/scripts/out/coverage-lifecycle-20260923/mfr-ordinary-32.aep\"));return JSON.stringify({depth:app.project.bitsPerChannel,frames:48,comp:q.comp.id});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"depth\\\":32,\\\"frames\\\":48,\\\"comp\\\":1}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"depth\":32,\"frames\":48,\"comp\":1}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

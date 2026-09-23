@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":\\\"HS_auto_base\\\",\\\"id\\\":174,\\\"requestedTime\\\":0,\\\"cti\\\":0,\\\"resolution\\\":[1,1],\\\"bpc\\\":16,\\\"status\\\":[\\n\\n],\\\"purged\\\":true}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":\"HS_auto_base\",\"id\":174,\"requestedTime\":0,\"cti\":0,\"resolution\":[1,1],\"bpc\":16,\"status\":[\n\n],\"purged\":true}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

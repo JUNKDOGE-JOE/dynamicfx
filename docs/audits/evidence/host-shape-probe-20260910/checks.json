@@ -1,0 +1,86 @@
+{
+  "production_baseline": "ff895649bf99ce52055e066dd986f49e7bf6956e",
+  "artifact": {
+    "path": "scripts/out/host-shape-probe-20260910/DynamicFxHostShapeProbe.aex",
+    "sha256": "cf867972cc58de85fbb598a34958be667f6d1217b6dfb5974300b6805085c494",
+    "bytes": 628736,
+    "profile": "development",
+    "architecture": "Windows x64",
+    "exports": [
+      "EffectMain",
+      "PluginDataEntryFunction2",
+      "rust_win_dbg_logger_init_debug",
+      "rust_win_dbg_logger_init_error",
+      "rust_win_dbg_logger_init_info",
+      "rust_win_dbg_logger_init_trace",
+      "rust_win_dbg_logger_init_warn"
+    ],
+    "embedded_pipl": true
+  },
+  "source_inputs": [
+    {
+      "path": "spike/host-outline/cases.json",
+      "sha256": "b07725d94132360fee802a0f418a3d70fbc9ce9f76e99f4e42beb262e7f99d49"
+    },
+    {
+      "path": "spike/host-outline/input-alpha-probe.glsl",
+      "sha256": "2e65522854795ff73af5384bd12ee0629d7c079e637038b305cc17371f487710"
+    },
+    {
+      "path": "spike/host-outline/native/.gitignore",
+      "sha256": "f557d882fbeb3841d743d4c9b23c2c097e50f9b3740fbdae97c9dcd8d57e025e"
+    },
+    {
+      "path": "spike/host-outline/native/build.rs",
+      "sha256": "f2f583ea42b5b5d10b4993857e93d756c7bad6ee6fee405f9ce02b2d524a1700"
+    },
+    {
+      "path": "spike/host-outline/native/Cargo.lock",
+      "sha256": "6cda5457500cc80f006d9ed09b92d8f0b27145a23c31b5546be54b35f10d3421"
+    },
+    {
+      "path": "spike/host-outline/native/Cargo.toml",
+      "sha256": "edc172dfc3cecbefb2569a277041f551f9b4c536bfe8ae91ff8675cdb970f162"
+    },
+    {
+      "path": "spike/host-outline/native/src/lib.rs",
+      "sha256": "2b76ae7bc34cbba7a5ec5b67a2718b27dccb35c613b235553a599ef4fc690e8f"
+    },
+    {
+      "path": "spike/host-outline/native/src/read.rs",
+      "sha256": "9560546dc6dbfd72e875ff12639573999ad105084746fb9daaed5e51d3b67618"
+    },
+    {
+      "path": "spike/host-outline/README.md",
+      "sha256": "54766d86f854b1fa7c0d8a61b0503a5f448bfcfc0eca8ef13c9d68d759741dd2"
+    }
+  ],
+  "tests": {
+    "passed": 5,
+    "failed": 0
+  },
+  "fixture": {
+    "scenarios": 15,
+    "triangle_coverage": [
+      0,
+      1,
+      0
+    ],
+    "host": "NOT_RUN"
+  },
+  "production_preservation": {
+    "tracked_diff": "empty",
+    "matching_previous_hashes": 31
+  },
+  "native_acquisition": "NOT_RUN",
+  "installation": "NOT_RUN",
+  "ae_mcp_health": "unreachable on 11470-11499; bundled Python scripts/aemcp.py health exit 1",
+  "formatter": "NOT_RUN: rustfmt absent from both installed toolchains",
+  "issue_scope_comment": "https://github.com/JUNKDOGE-JOE/dynamicfx/issues/9#issuecomment-5620243801",
+  "issue_comment_readback": true,
+  "governance": {
+    "exit_code": 0,
+    "output": "DynamicFX governance check\nmarkdown_files=128\nlocal_links=1647\nmermaid_blocks=16\naccepted_adrs=45\nerrors=0\nRESULT=PASS",
+    "stderr": ""
+  }
+}

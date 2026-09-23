@@ -1,0 +1,4 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");var c=app.project.itemByID(174);if(c.name!==\"HS_auto_base\")throw Error(\"Wrong fixture\");var m=c.layer(1).property(\"ADBE Mask Parade\"),rows=[];for(var i=1;i<=m.numProperties;i++){var p=m.property(i),v=p.property(\"ADBE Mask Shape\");rows.push({name:p.name,mode:p.maskMode,enabled:v.expressionEnabled,error:v.expressionError,vertices:v.valueAtTime(0,false).vertices.length,head:v.valueAtTime(0,false).vertices.slice(0,4)});}return JSON.stringify({comp:c.id,masks:rows});})()",
+  "timeout_sec": 20
+}

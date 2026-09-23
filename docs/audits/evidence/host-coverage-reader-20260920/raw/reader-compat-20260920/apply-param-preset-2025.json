@@ -1,0 +1,19 @@
+{
+  "args": {
+    "code": "(function(){if(app.project.file.name!==\"stage-2025.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1);for(var i=1;i<=c.numLayers;i++)c.layer(i).selected=false;var l=c.layers.addShape();l.name=\"Preset merge target\";l.selected=true;var fx=l.property(\"ADBE Effect Parade\"),e=fx.addProperty(\"DynamicFx Host Shape Probe\");e.property(1).setValue(77);e.property(2).setValue(1);e.property(9).selected=true;var before=fx.numProperties;l.applyPreset(new File(\"<checkout>/scripts/out/reader-compat-20260920/selected-param-2025.ffx\"));fx=l.property(\"ADBE Effect Parade\");var rows=[];for(var i=1;i<=fx.numProperties;i++){var a=fx.property(i);rows.push({name:a.name,time:a.property(1).value,mode:a.property(2).value,source:a.property(9).value});}return JSON.stringify({before:before,after:fx.numProperties,layer:l.id,rows:rows});})()"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"before\\\":1,\\\"after\\\":1,\\\"layer\\\":17,\\\"rows\\\":[{\\\"name\\\":\\\"DynamicFx Host Shape Probe\\\",\\\"time\\\":0,\\\"mode\\\":12,\\\"source\\\":2}]}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"before\":1,\"after\":1,\"layer\":17,\"rows\":[{\"name\":\"DynamicFx Host Shape Probe\",\"time\":0,\"mode\":12,\"source\":2}]}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

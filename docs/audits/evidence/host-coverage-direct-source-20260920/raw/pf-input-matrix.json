@@ -1,0 +1,242 @@
+[
+  {
+    "kind": "shape",
+    "adjustment": false,
+    "imageExists": true,
+    "worlds": [
+      {
+        "index": 0,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=0",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=0"
+        ]
+      },
+      {
+        "index": 6,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=0",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=0"
+        ]
+      }
+    ],
+    "errors": []
+  },
+  {
+    "kind": "png",
+    "adjustment": false,
+    "imageExists": true,
+    "worlds": [
+      {
+        "index": 0,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=0",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=0"
+        ]
+      },
+      {
+        "index": 6,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=0",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=0"
+        ]
+      }
+    ],
+    "errors": []
+  },
+  {
+    "kind": "precomp",
+    "adjustment": false,
+    "imageExists": true,
+    "worlds": [
+      {
+        "index": 0,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=0",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=0"
+        ]
+      },
+      {
+        "index": 6,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=0",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=0"
+        ]
+      }
+    ],
+    "errors": []
+  },
+  {
+    "kind": "solid",
+    "adjustment": false,
+    "imageExists": true,
+    "worlds": [
+      {
+        "index": 0,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=1",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=1"
+        ]
+      },
+      {
+        "index": 6,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=1",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=1"
+        ]
+      }
+    ],
+    "errors": []
+  },
+  {
+    "kind": "shape",
+    "adjustment": true,
+    "imageExists": true,
+    "worlds": [
+      {
+        "index": 0,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=1",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=1"
+        ]
+      },
+      {
+        "index": 6,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=1",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=1"
+        ]
+      }
+    ],
+    "errors": []
+  },
+  {
+    "kind": "png",
+    "adjustment": true,
+    "imageExists": true,
+    "worlds": [
+      {
+        "index": 0,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=1",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=1"
+        ]
+      },
+      {
+        "index": 6,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=1",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=1"
+        ]
+      }
+    ],
+    "errors": []
+  },
+  {
+    "kind": "precomp",
+    "adjustment": true,
+    "imageExists": true,
+    "worlds": [
+      {
+        "index": 0,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=1",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=1"
+        ]
+      },
+      {
+        "index": 6,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=1",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=1"
+        ]
+      }
+    ],
+    "errors": []
+  },
+  {
+    "kind": "solid",
+    "adjustment": true,
+    "imageExists": true,
+    "worlds": [
+      {
+        "index": 0,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=1",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=1"
+        ]
+      },
+      {
+        "index": 6,
+        "world": [
+          "original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600"
+        ],
+        "alpha": [
+          "original_alpha[210,490]=1",
+          "original_alpha[400,300]=1",
+          "original_alpha[50,50]=1"
+        ]
+      }
+    ],
+    "errors": []
+  }
+]

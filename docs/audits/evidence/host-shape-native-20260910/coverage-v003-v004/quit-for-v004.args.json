@@ -1,0 +1,5 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.fsName.replace(/\\\\/g,'/')!=='E:/Code/AePlugin_Dynamicfx/scripts/out/host-shape-native-20260910/host-shape-native.aep')throw Error('Wrong project');for(var i=1;i<=app.project.numItems;i++){var c=app.project.item(i);if(!(c instanceof CompItem)||c.name.indexOf('HS_')!==0)continue;var fx=c.layer(1).property('ADBE Effect Parade');if(fx.numProperties&&fx.property(1).matchName==='DynamicFx Host Shape Probe'){fx.property(1).property(5).setValue(0);fx.property(1).property(2).setValue(2);}}app.project.save();var task=app.scheduleTask(\"if(app.project.file&&app.project.file.name==='host-shape-native.aep'){app.project.save();app.quit();}\",3000,false);return JSON.stringify({saved:true,file:app.project.file.name,quitScheduled:true,task:task});})()",
+  "undo_group_name": "Save diagnostic fixture before background restart",
+  "timeout_sec": 15
+}

@@ -1,0 +1,4 @@
+{
+  "code": "(function(){var p=app.project;if(!p.file||p.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");var c=p.itemByID(174);if(c.name!==\"HS_auto_base\")throw Error(\"Wrong fixture\");for(var i=1;i<=p.numItems;i++){var x=p.item(i);if(!(x instanceof CompItem)||x.name.indexOf(\"HS_\")!==0)continue;var effects=x.layer(1).property(\"ADBE Effect Parade\");for(var j=1;j<=effects.numProperties;j++){var f=effects.property(j);if(f.matchName===\"DynamicFx Host Shape Probe\"){f.property(5).setValue(0);f.property(4).setValue(x.id===174);}}}p.save();var file=p.file,oldCount=p.numItems;p.close(CloseOptions.DO_NOT_SAVE_CHANGES);app.open(file);app.purge(PurgeTarget.ALL_CACHES);return JSON.stringify({file:app.project.file.fsName,oldItems:oldCount,items:app.project.numItems,dirty:app.project.dirty,reopened:true,purged:true});})()",
+  "timeout_sec": 25
+}

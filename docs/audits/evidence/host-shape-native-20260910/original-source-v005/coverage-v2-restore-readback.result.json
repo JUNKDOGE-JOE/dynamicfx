@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"check\\\":\\\"after-v2-restore\\\",\\\"vertices\\\":[[200,150]]}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"check\":\"after-v2-restore\",\"vertices\":[[200,150]]}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

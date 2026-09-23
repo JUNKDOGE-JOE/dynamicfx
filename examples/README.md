@@ -44,6 +44,11 @@ the main thread prevents the compile from ever happening.
 
 ## The examples
 
+- [Liquid Glass](../docs/liquid-glass.md) — automatic original-layer coverage,
+  refraction, dispersion and edge lighting, adapted from MIT
+  [Liquid Glass Studio](liquid-glass-upstream.md). Windows 0.2.0, AE 26.5+;
+  includes [FFX](liquid-glass.ffx) and an [apply script](apply-liquid-glass.jsx).
+
 ### [`wgsl-field.wgsl`](wgsl-field.wgsl) — single-pass analytic light field
 
 A flowing cyan/violet disc with a narrow highlighted rim. It samples the

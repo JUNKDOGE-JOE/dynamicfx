@@ -1,0 +1,1 @@
+First build: E0308 at wake.rs AcquireSuite and ReleaseSuite, expected i32 suite version, found u32. Corrected with explicit i32 casts; locked test/build reruns pass. Full error text is in the task tool output.

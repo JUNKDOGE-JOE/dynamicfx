@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"Quit called directly\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "Quit called directly",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

@@ -1,0 +1,59 @@
+import json
+from pathlib import Path
+import re
+from PIL import Image
+
+OUT = Path(__file__).resolve().parents[2] / 'scripts/out/host-shape-native-20260910'
+
+
+def decode(label, log_name=None):
+    text = (OUT / (log_name or label + '.native.log')).read_text(encoding='utf-8')
+    text = text.rsplit('PF_RENDER\n', 1)[-1]
+    vertices = [(float(x), float(y)) for x, y in re.findall(
+        r'vertex\[\d+\]=PF_PathVertex \{ x: ([\d.e+-]+), y: ([\d.e+-]+)', text)]
+    if len(vertices) < 2 or len(vertices) % 2 or vertices[0] != (-1234, -5678):
+        raise ValueError('Coverage block header/length missing: ' + label)
+    width, height = map(int, vertices[1])
+    if (width, height) != (800, 600):
+        raise ValueError('Unexpected fixture dimensions')
+    pixels = bytearray(width * height)
+    assigned = bytearray(width * height)
+    for (x, y), (packed, h) in zip(vertices[2::2], vertices[3::2]):
+        w = int(packed)
+        alpha = (packed - w) * 4
+        if int(x) != x or int(y) != y or int(h) != h or not 0 <= alpha <= 1:
+            raise ValueError('Invalid block encoding')
+        x, y, h = int(x), int(y), int(h)
+        if w <= 0 or h <= 0 or x < 0 or y < 0 or x + w > width or y + h > height:
+            raise ValueError('Block outside image')
+        for row in range(y, y + h):
+            start = row * width + x
+            end = start + w
+            if any(assigned[start:end]):
+                raise ValueError('Overlapping blocks')
+            pixels[start:end] = bytes([round(alpha * 255)]) * w
+            assigned[start:end] = bytes([1]) * w
+    image = Image.frombytes('L', (width, height), bytes(pixels))
+    image.save(OUT / (label + '-decoded.png'))
+    return image, len(vertices)
+
+
+def compare(label, reference, log_name=None):
+    actual, vertices = decode(label, log_name)
+    expected = Image.open(OUT / reference).convert('RGBA').getchannel('A')
+    if actual.size != expected.size:
+        raise ValueError('Image sizes differ')
+    diff = [abs(a-b) for a,b in zip(actual.tobytes(), expected.tobytes())]
+    return {'label': label, 'vertices': vertices, 'pixels': len(diff),
+            'different': sum(d != 0 for d in diff), 'max_error_8bit': max(diff),
+            'mae_8bit': sum(diff) / len(diff), 'within_one_8bit_level': max(diff) <= 1}
+
+
+if __name__ == '__main__':
+    rows = [compare('v005-coverage-blocks', 'reference-t0.png', 'v005-coverage-blocks-late.native.log')]
+    rows += [compare('coverage-animated-' + t, 'coverage-reference-' + t + '.png') for t in ['t1', 't0', 't05']]
+    result = {'comparison': 'PF-read coverage blocks vs native reference alpha; 8-bit PNG comparison from 16-bpc', 'rows': rows}
+    (OUT / 'coverage-block-comparisons.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps(result, indent=2))
+    if not all(row['within_one_8bit_level'] for row in rows):
+        raise SystemExit(1)

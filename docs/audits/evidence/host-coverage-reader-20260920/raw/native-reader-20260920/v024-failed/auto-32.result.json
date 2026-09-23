@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"native-reader.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(910);function layer(id){for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===id)return c.layer(i);throw Error(\"Missing layer\");}var owner=layer(913);app.project.bitsPerChannel=32;app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(0,new File(\"<checkout>/scripts/out/native-reader-20260920/auto-32.png\"));return \"rendered\";})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"rendered\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "rendered",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

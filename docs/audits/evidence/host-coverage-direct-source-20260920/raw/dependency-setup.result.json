@@ -1,0 +1,19 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"source-matrix.aep\")throw Error(\"Unexpected project\");for(var i=1;i<=app.project.numItems;i++)if(app.project.item(i).name===\"DS_dependency_probe\")throw Error(\"Already created\");var c=app.project.itemByID(880).duplicate();c.name=\"DS_dependency_probe\";var l=c.layer(2),e=l.property(\"ADBE Effect Parade\").addProperty(\"DynamicFx Host Shape Probe\");e.property(6).setValue(1);e.property(9).setValue(1);e.property(2).setValue(12);return JSON.stringify({comp:c.id,target:l.id,reader:c.layer(1).id});})()"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":895,\\\"target\\\":898,\\\"reader\\\":899}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"comp\":895,\"target\":898,\"reader\":899}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

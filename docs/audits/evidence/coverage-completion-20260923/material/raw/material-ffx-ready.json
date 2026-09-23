@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Liquid Glass.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),l=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===47)l=c.layer(i);var e=l.property(\"ADBE Effect Parade\").property(1),r=c.layer(e.property(426).value);return JSON.stringify({effects:l.property(\"ADBE Effect Parade\").numProperties,state:e.property(427).value,owner:c.layer(r.property(\"ADBE Effect Parade\").property(1).property(1).value).id});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"effects\\\":1,\\\"state\\\":251486066029923,\\\"owner\\\":47}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"effects\":1,\"state\":251486066029923,\"owner\":47}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

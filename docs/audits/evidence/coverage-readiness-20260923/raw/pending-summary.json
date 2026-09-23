@@ -1,0 +1,11 @@
+{
+  "case": "unverified copy saved before idle",
+  "returncode": 0,
+  "engine_pid": 88720,
+  "elapsed_seconds": 8.687,
+  "pixels": 480000,
+  "native_word_mismatches": 0,
+  "gate_errors": 0,
+  "status": "FAIL",
+  "opaque_words": 0
+}

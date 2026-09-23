@@ -1,0 +1,4 @@
+{
+  "code": "(function(){var c=app.project.itemByID(174);if(c.name!==\"HS_auto_base\")throw Error(\"Wrong fixture\");var f=c.layer(1).property(\"ADBE Effect Parade\").property(1);f.property(7).setValue(false);return JSON.stringify({enabled:f.property(7).value});})()",
+  "timeout_sec": 15
+}

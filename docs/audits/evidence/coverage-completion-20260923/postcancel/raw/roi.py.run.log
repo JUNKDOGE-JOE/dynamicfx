@@ -1,0 +1,15 @@
+{"depth": 8, "point": [50.5, 50.5], "ordinary": 0, "reference": 0, "full_native_alpha": 0.0, "status": "PASS"}
+{"depth": 8, "point": [400.5, 200.5], "ordinary": 0.2549019753933, "reference": 0.2549019753933, "full_native_alpha": 0.2549019607843137, "status": "PASS"}
+{"depth": 8, "point": [400.5, 300.5], "ordinary": 0, "reference": 0, "full_native_alpha": 0.0, "status": "PASS"}
+{"depth": 8, "point": [250.5, 150.5], "ordinary": 0.2549019753933, "reference": 0.2549019753933, "full_native_alpha": 0.2549019607843137, "status": "PASS"}
+{"depth": 8, "point": [350.5, 225.5], "ordinary": 0.14509804546833, "reference": 0.14509804546833, "full_native_alpha": 0.1607843137254902, "status": "PASS"}
+{"depth": 16, "point": [50.5, 50.5], "ordinary": 0, "reference": 0, "full_native_alpha": 0.0, "status": "PASS"}
+{"depth": 16, "point": [400.5, 200.5], "ordinary": 0.256103515625, "reference": 0.256103515625, "full_native_alpha": 0.256103515625, "status": "PASS"}
+{"depth": 16, "point": [400.5, 300.5], "ordinary": 0, "reference": 0, "full_native_alpha": 0.0, "status": "PASS"}
+{"depth": 16, "point": [250.5, 150.5], "ordinary": 0.256103515625, "reference": 0.256103515625, "full_native_alpha": 0.256103515625, "status": "PASS"}
+{"depth": 16, "point": [350.5, 225.5], "ordinary": 0.14553833007812, "reference": 0.14553833007812, "full_native_alpha": 0.16094970703125, "status": "PASS"}
+{"depth": 32, "point": [50.5, 50.5], "ordinary": 0, "reference": 0, "full_native_alpha": 0.0, "status": "PASS"}
+{"depth": 32, "point": [400.5, 200.5], "ordinary": 0.25612744688988, "reference": 0.25612744688988, "full_native_alpha": 0.2561274468898773, "status": "PASS"}
+{"depth": 32, "point": [400.5, 300.5], "ordinary": 0, "reference": 0, "full_native_alpha": 0.0, "status": "PASS"}
+{"depth": 32, "point": [250.5, 150.5], "ordinary": 0.25612744688988, "reference": 0.25612744688988, "full_native_alpha": 0.2561274468898773, "status": "PASS"}
+{"depth": 32, "point": [350.5, 225.5], "ordinary": 0.1455525457859, "reference": 0.1455525457859, "full_native_alpha": 0.16096645593643188, "status": "PASS"}

@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"file\\\":\\\"Liquid Glass.aep\\\",\\\"dirty\\\":false}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"file\":\"Liquid Glass.aep\",\"dirty\":false}",
+    "contentType": "text",
+    "artifactId": "<local-id>"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "case": "disabled shader exposes background, not original alpha",
+  "opaque_words": 140000,
+  "words": 140000,
+  "status": "PASS"
+}

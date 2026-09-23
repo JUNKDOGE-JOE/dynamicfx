@@ -1,0 +1,10 @@
+{
+  "case": "independent aerender first frame",
+  "returncode": 0,
+  "engine_pid": 54116,
+  "elapsed_seconds": 9.172,
+  "pixels": 480000,
+  "native_word_mismatches": 0,
+  "gate_errors": 0,
+  "status": "PASS"
+}

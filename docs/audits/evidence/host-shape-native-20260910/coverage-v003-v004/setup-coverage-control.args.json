@@ -1,0 +1,5 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');for(var i=1;i<=app.project.numItems;i++)if(app.project.item(i).name==='HS_coverage_control')throw Error('Fixture exists');var c=app.project.itemByID(63).duplicate();c.name='HS_coverage_control';var l=c.layer(1);if(l.adjustmentLayer)throw Error('Expected ordinary shape control');var p=l.property('ADBE Effect Parade').addProperty('DynamicFx Host Shape Probe');p.property(4).setValue(0);p.property(5).setValue(0);app.project.save();return JSON.stringify({comp:c.id,name:c.name,adjustment:l.adjustmentLayer,effectCount:l.property('ADBE Effect Parade').numProperties,probe:p.matchName});})()",
+  "undo_group_name": "Prepare ordinary shape coverage control",
+  "timeout_sec": 20
+}

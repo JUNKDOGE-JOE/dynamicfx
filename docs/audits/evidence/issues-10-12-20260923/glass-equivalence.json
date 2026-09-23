@@ -1,0 +1,191 @@
+[
+  {
+    "depth": 8,
+    "resolution": 1,
+    "time": 0,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "resolution": 1,
+    "time": 1.5,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "resolution": 1,
+    "time": 3,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "resolution": 2,
+    "time": 0,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "resolution": 2,
+    "time": 1.5,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "resolution": 2,
+    "time": 3,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "resolution": 4,
+    "time": 0,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "resolution": 4,
+    "time": 1.5,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "resolution": 4,
+    "time": 3,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "resolution": 1,
+    "time": 0,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "resolution": 1,
+    "time": 1.5,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "resolution": 1,
+    "time": 3,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "resolution": 2,
+    "time": 0,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "resolution": 2,
+    "time": 1.5,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "resolution": 2,
+    "time": 3,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "resolution": 4,
+    "time": 0,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "resolution": 4,
+    "time": 1.5,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "resolution": 4,
+    "time": 3,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "resolution": 1,
+    "time": 0,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "resolution": 1,
+    "time": 1.5,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "resolution": 1,
+    "time": 3,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "resolution": 2,
+    "time": 0,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "resolution": 2,
+    "time": 1.5,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "resolution": 2,
+    "time": 3,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "resolution": 4,
+    "time": 0,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "resolution": 4,
+    "time": 1.5,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "resolution": 4,
+    "time": 3,
+    "maximum_channel_error": 0,
+    "status": "PASS"
+  }
+]

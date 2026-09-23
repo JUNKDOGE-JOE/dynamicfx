@@ -1,0 +1,226 @@
+[
+  {
+    "step": "share",
+    "status": "PASS",
+    "state": {
+      "owners": [
+        1,
+        1
+      ],
+      "masks": [
+        {
+          "owned": false,
+          "mode": 6812,
+          "userVertices": [
+            [
+              40,
+              40
+            ],
+            [
+              80,
+              40
+            ],
+            [
+              80,
+              80
+            ],
+            [
+              40,
+              80
+            ]
+          ]
+        },
+        {
+          "owned": true,
+          "mode": 6812,
+          "userVertices": null
+        }
+      ]
+    }
+  },
+  {
+    "step": "disable-first",
+    "status": "PASS",
+    "state": {
+      "owners": [
+        0,
+        1
+      ],
+      "masks": [
+        {
+          "owned": false,
+          "mode": 6812,
+          "userVertices": [
+            [
+              40,
+              40
+            ],
+            [
+              80,
+              40
+            ],
+            [
+              80,
+              80
+            ],
+            [
+              40,
+              80
+            ]
+          ]
+        },
+        {
+          "owned": true,
+          "mode": 6812,
+          "userVertices": null
+        }
+      ]
+    }
+  },
+  {
+    "step": "disable-last",
+    "status": "PASS",
+    "state": {
+      "owners": [
+        0,
+        0
+      ],
+      "masks": [
+        {
+          "owned": false,
+          "mode": 6812,
+          "userVertices": [
+            [
+              40,
+              40
+            ],
+            [
+              80,
+              40
+            ],
+            [
+              80,
+              80
+            ],
+            [
+              40,
+              80
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "step": "reenable",
+    "status": "PASS",
+    "state": {
+      "owners": [
+        1,
+        0
+      ],
+      "masks": [
+        {
+          "owned": false,
+          "mode": 6812,
+          "userVertices": [
+            [
+              40,
+              40
+            ],
+            [
+              80,
+              40
+            ],
+            [
+              80,
+              80
+            ],
+            [
+              40,
+              80
+            ]
+          ]
+        },
+        {
+          "owned": true,
+          "mode": 6812,
+          "userVertices": null
+        }
+      ]
+    }
+  },
+  {
+    "step": "undo",
+    "status": "PASS",
+    "state": {
+      "owners": [
+        1,
+        0
+      ],
+      "masks": [
+        {
+          "owned": false,
+          "mode": 6812,
+          "userVertices": [
+            [
+              40,
+              40
+            ],
+            [
+              80,
+              40
+            ],
+            [
+              80,
+              80
+            ],
+            [
+              40,
+              80
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "step": "redo",
+    "status": "PASS",
+    "state": {
+      "owners": [
+        1,
+        0
+      ],
+      "masks": [
+        {
+          "owned": false,
+          "mode": 6812,
+          "userVertices": [
+            [
+              40,
+              40
+            ],
+            [
+              80,
+              40
+            ],
+            [
+              80,
+              80
+            ],
+            [
+              40,
+              80
+            ]
+          ]
+        },
+        {
+          "owned": true,
+          "mode": 6812,
+          "userVertices": null
+        }
+      ]
+    }
+  }
+]

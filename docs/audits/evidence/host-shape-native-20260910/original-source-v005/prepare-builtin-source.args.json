@@ -1,0 +1,5 @@
+{
+  "undo_group_name": "Prepare disposable native matte control",
+  "code": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var orig=app.project.itemByID(1);var c=orig.duplicate();c.name='HS_builtin_source';var l=c.layer(1);var fx=l.property('ADBE Effect Parade');for(var i=fx.numProperties;i>=1;i--)fx.property(i).remove();var m=fx.addProperty('ADBE Set Matte3');var r=[];for(var j=1;j<=m.numProperties;j++){var p=m.property(j);r.push({i:j,name:p.name,matchName:p.matchName,type:p.propertyValueType.toString(),value:p.propertyType===PropertyType.PROPERTY?p.value:null});}return JSON.stringify({comp:c.id,properties:r});})()",
+  "timeout_sec": 20
+}

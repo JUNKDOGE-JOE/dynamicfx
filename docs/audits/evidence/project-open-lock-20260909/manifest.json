@@ -1,0 +1,317 @@
+{
+  "finalAexSha256": "c91db8c0435ccf90e0fac33f5473825c29bbd959cfeef8cc5fcebe80092b0d0a",
+  "retention": "Production project, shader and raw host records are retained outside the public repository. No release or source publication authorized.",
+  "originalAepSha256": "608eccc22a6a6e2defbca6af05fb4add9b825d043e9c269f4c53dc3f18de887c",
+  "recordedAt": "2026-09-09T08:08:57.8988372+08:00",
+  "branch": "codex/fix-project-open-lock",
+  "baseline": "17e12a7618588906a24957688ec0e4ce0bfcfd27",
+  "rawEvidence": [
+    {
+      "bytes": 24780,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\ae-main-stack.txt",
+      "sha256": "752d48dfe3abb93e39970196148055e04840c9a633d8d70516f274daa6ffebdb"
+    },
+    {
+      "bytes": 18240,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\fixed-first-stack.txt",
+      "sha256": "3e57490c4695b07e9f011242181cf9e6aa68cef17fe7691d38e7c37b86625b70"
+    },
+    {
+      "bytes": 512221,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\fixed-all-stacks.txt",
+      "sha256": "a0cd09d0a55f404108e2d1954392192038c818d361d918076a685f6b6815f433"
+    },
+    {
+      "bytes": 9662,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\flat-handle-evidence.txt",
+      "sha256": "c2d838b29effa00aafb0c5c25148d1d085a4e28d4dd643c071331bdd1f935b15"
+    },
+    {
+      "bytes": 102754,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\effect-baseline.json",
+      "sha256": "2b99caee3c9db23d2a5eb873afa32900340c94b00f49eb5fe915bd6b6217058e"
+    },
+    {
+      "bytes": 907,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\save-test-copy-result.json",
+      "sha256": "9ce48719da8da81416ea28d95695099703920569e2f85c4e9ccf5fbc9544b885"
+    },
+    {
+      "bytes": 157,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\entry-installation.json",
+      "sha256": "3dbcdb46fa464076afec997978f08249ef7cb3de2dfdaca352a4743f3e353686"
+    },
+    {
+      "bytes": 1015,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\entry-open-copy-result.json",
+      "sha256": "ceb2c7776c053b2fe911c08b567f291944f591787d473ea8439d1323747e9e35"
+    },
+    {
+      "bytes": 61721,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\entry-effect.json",
+      "sha256": "986932575e1547b5af455f2baa3fb15753da3ad3a8e1dfdb4dc70228a6bbdfce"
+    },
+    {
+      "bytes": 9798,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\entry-verify.json",
+      "sha256": "cdc063521bbb247ea95e172da343f70e845d76f1e52e33a56b516d5cd6bbd77f"
+    },
+    {
+      "bytes": 62,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\entry-comparison.json",
+      "sha256": "3de50dad841dc725d364df1872c70b5b6f4a6384995b8ba871f5453656817b0f"
+    },
+    {
+      "bytes": 507329,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\entry-preview-result.json",
+      "sha256": "2881a4a67c073cbb5f3e1190c06d1368bf74aaf008f5ab69b4a5c2b91b205bdc"
+    },
+    {
+      "bytes": 64868,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\entry-open-original-result.json",
+      "sha256": "ac9d8e6f3a30c297de0121c47685289b9974e771d85fcb7436a98528c2172689"
+    },
+    {
+      "bytes": 38116,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\original-recover-verify-result.json",
+      "sha256": "d28674e08cde85e63437c613bad3b3740ce6ee0f25cee4d8cf7bb0aee6bacbfa"
+    },
+    {
+      "bytes": 1005,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\repeat-original-result.json",
+      "sha256": "3a974003e851322a2be51ff473540ad261bc7401d159f534f2ed3320774f7c4a"
+    },
+    {
+      "bytes": 61681,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\final-effect.json",
+      "sha256": "1f660bd07e4de09ee0000c628342218d371c58e50229f6ac1098cf275348e5d0"
+    },
+    {
+      "bytes": 6789,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\expression-errors-result.json",
+      "sha256": "219851c9396fe8d621da4dceaba1b321cf2ec1ccf41bed9c2b560a3aaa18ee4a"
+    },
+    {
+      "bytes": 59602,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\named-effect.json",
+      "sha256": "86d2bab71381ee3afa71e2381fe8d24c5e8b1496059bee86a1b7c4e4d1e8a7da"
+    },
+    {
+      "bytes": 179,
+      "path": "C:\\Users\\REDACTED_USER\\Documents\\Codex\\2026-09-08\\20260908\\work\\recovery09\\entry-project-hashes.json",
+      "sha256": "f0773e7fa145102ac444eec9f6dd9c69c3636c29345f690756ea8e2fd14aec95"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "sha256": "194d24f3c188031b5664eac130c734698cde12e0c9513681b5bf7071b6cd1666",
+      "path": "src\\binding.rs"
+    },
+    {
+      "sha256": "9a0c7f2f4efd22b74e1e6fef8cee5d4a68419ee4602ef4c8b80638576244b117",
+      "path": "src\\canvas.rs"
+    },
+    {
+      "sha256": "5d14f33e5ffef0ea020bf5e401314c0f96b0583b589026d2c5be51c58479d5c2",
+      "path": "src\\diag.rs"
+    },
+    {
+      "sha256": "64d4c04e9b00e728b8a57c3dcbbdf379bf71302ca408dbe02f752ce95c820585",
+      "path": "src\\diagnostics.rs"
+    },
+    {
+      "sha256": "e1d2da1cc96134441fc5589810e61a4e65dd99fea9eb816748b2d45e20e59030",
+      "path": "src\\gradient.rs"
+    },
+    {
+      "sha256": "a21dffb50932d21d3ae1569294c75abc3cb28733940a0b611a561a8903840b92",
+      "path": "src\\identity.rs"
+    },
+    {
+      "sha256": "9494b2381789387459e919dfe7563d1dab142f3cd1a670b7e582d2c170185ecf",
+      "path": "src\\lib.rs"
+    },
+    {
+      "sha256": "aec80ce7ba105f6976a66204485d1df14f9d51e6d4062967c4dedc0efaa31ba2",
+      "path": "src\\path.rs"
+    },
+    {
+      "sha256": "a3f356cbefc16044979454d173a6187dc6fcd26bae5741acb8f49a43da200194",
+      "path": "src\\persistence.rs"
+    },
+    {
+      "sha256": "8dbad3cdd6df8fcd7f034cde844f2165d141d8b15f7b5c6ebda7a17c31d18c82",
+      "path": "src\\plan.rs"
+    },
+    {
+      "sha256": "3e05d4050dcb9001cb36bef186fa1e2900e840a41518011ef194866a664e3a25",
+      "path": "src\\reentry_tests.rs"
+    },
+    {
+      "sha256": "b2380264759aa99e9b749d321dfa9140bd234ee4b54ba3954466620726c79c93",
+      "path": "src\\render.rs"
+    },
+    {
+      "sha256": "39efb5990aa7d848a422b0d2e93eab655b4dbeef0ccd9766438b09b1adeca8ed",
+      "path": "src\\source.rs"
+    },
+    {
+      "sha256": "3cd93b7b705964377df44d4e9a6beca79fcd6c430609dca5d58b7ff1b7b0af0e",
+      "path": "src\\wgsl_tests.rs"
+    },
+    {
+      "sha256": "ea43bae18b5719e876c239e096edd68e6f25af4174bbd47265b7b62319ea475e",
+      "path": "src\\definition\\effect.rs"
+    },
+    {
+      "sha256": "9cd9704a88790c9d26dace0117f2b7075bb704b83f2367de3af6fd6407aa44df",
+      "path": "src\\definition\\mod.rs"
+    },
+    {
+      "sha256": "3d369e2df8273c44316a3e432a7aea26726090965f3ed036ed8382b22e02b203",
+      "path": "src\\definition\\param.rs"
+    },
+    {
+      "sha256": "ae3946d8904743daef1a1b38817ddb88c7829da5229225c661cf71ff75cedef0",
+      "path": "src\\frontend\\annotation.rs"
+    },
+    {
+      "sha256": "965ebeae5f0a6effd625c05ea4321cad58a0a350c4c8fdbb19e5043120293c51",
+      "path": "src\\frontend\\envelope.rs"
+    },
+    {
+      "sha256": "e6ce758a3fdafff6cdcf85494815dbdf8047f584382b96e30af37355188d7977",
+      "path": "src\\frontend\\glsl.rs"
+    },
+    {
+      "sha256": "90d4384e0c2a0d9621ccfd50b03feb3152d0cd330b68e710b14aa24e9ab968a9",
+      "path": "src\\frontend\\grammar.rs"
+    },
+    {
+      "sha256": "c5b00e188da84cfd7f032e17b9ddaf1ac2f94bf8d0a7dd57d1009fd5882cd439",
+      "path": "src\\frontend\\mod.rs"
+    },
+    {
+      "sha256": "f1efbf28f2d227450ddba6a1d94899c82c73599c29836e3962696bb60b229135",
+      "path": "src\\frontend\\shared.rs"
+    },
+    {
+      "sha256": "6a60485db5441129877957c65d198342bdb6b823d6166a6c9010bcc13a4209d7",
+      "path": "src\\frontend\\wgsl.rs"
+    },
+    {
+      "sha256": "fab9c9a64c29a4798fb02f7ad92c0f12a5fa8887368fa26ea766a21e77fa6072",
+      "path": "src\\host\\callback.rs"
+    },
+    {
+      "sha256": "c22f4753f789d15fa2884f888dc179e0c9c2d31514dddb70b06c8054c2313fdf",
+      "path": "src\\host\\entry.rs"
+    },
+    {
+      "sha256": "a71cc81238b0e40cbd3bef01ed4225ab56bfcef6d6b5a1f3ed6c0ce105a3c379",
+      "path": "src\\host\\idle.rs"
+    },
+    {
+      "sha256": "662d6556a67e113b11920c0749039ea08268aaada2f78f6c6d4d751e640e6801",
+      "path": "src\\host\\mod.rs"
+    },
+    {
+      "sha256": "841cc7a56e6915cd37573d4f03e573fdd60582f69fcb46775709a11233fba34c",
+      "path": "src\\host\\params.rs"
+    },
+    {
+      "sha256": "fe70d1e3eadc88eb72c33de7358f793b31efa39b0116dd761b155c458ebcd019",
+      "path": "Cargo.toml"
+    },
+    {
+      "sha256": "125d8418a9eb26068503cd15717ae7f04a2d23e680162285730c273a49d1f8bc",
+      "path": "Cargo.lock"
+    },
+    {
+      "sha256": "89a5a4525ee44c626140443f7e5e22c46cc08919b47d6426e573420e3eb3ecc1",
+      "path": "build.rs"
+    },
+    {
+      "sha256": "803857393d4519736b48c4a07edc6eb1811224b075cafd71ef4305d2e2a4a379",
+      "path": "scripts\\macos.py"
+    }
+  ],
+  "buildEvidence": [
+    {
+      "bytes": 523,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\artifact.json",
+      "sha256": "6e81f21a6d6f07fce46423999fecfeaeb5b5148bf946a6c025919c51d6a7e419"
+    },
+    {
+      "bytes": 123,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\build-entry-release.log",
+      "sha256": "f62b72af5b2d78d4a374b3c721ab660136f067946cb4b4c2d9f83cba30cf9f9f"
+    },
+    {
+      "bytes": 123,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\build-release.log",
+      "sha256": "d9f7ab62e40d0faf39548ddacc056a2a1621f1caa41ea9ed3295bacd9179909e"
+    },
+    {
+      "bytes": 8702464,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\DynamicFx.aex",
+      "sha256": "28d006fb6fb833972f9f58d0c9453a3035e5ca451eb90e97b3272e46f65d822d"
+    },
+    {
+      "bytes": 4476928,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\dynamicfx.pdb",
+      "sha256": "65294f524889db023d5ea011b3c32821c61c86a37773a587b6ff0ad38e1f56aa"
+    },
+    {
+      "bytes": 1196,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\pe-exports.txt",
+      "sha256": "c42c399d55f68c8a33cfab84862ce2528d91752296474c13d784d4ebbadd8bdc"
+    },
+    {
+      "bytes": 5893,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\pe-headers.txt",
+      "sha256": "e5e9add5116a4207332db23d37ca9a21cbca9fe1e3598faaaf4121a66575631b"
+    },
+    {
+      "bytes": 17735,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\tests-default.log",
+      "sha256": "0052c2be504c3adc809618965d81015ce1772b87ecb602d2d38f38cce2c6b18d"
+    },
+    {
+      "bytes": 17795,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\tests-editor.log",
+      "sha256": "499a2bc6e96d2a8e9d04bf036f9ad8acb3b600ebd706d5278856010c8556bc14"
+    },
+    {
+      "bytes": 17980,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\tests-entry-default-pass.log",
+      "sha256": "e3c031b193f5e64fbca4cc3e67f94be8475b724d98a4e95da9ba152f1245f71a"
+    },
+    {
+      "bytes": 3024,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\tests-entry-default.log",
+      "sha256": "33fd0c7959cb001eeef8d1078d96247a59622b7e5f801123ac9ab7b5b68ecb01"
+    },
+    {
+      "bytes": 17980,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\tests-entry-editor.log",
+      "sha256": "8a8516a6bcdf0b9d1f5ad71c03d074d8294c2edbc769541dc12c6ac1df9f6bfb"
+    },
+    {
+      "bytes": 1122,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\tests-reentry.log",
+      "sha256": "565e5ab78aeb499458b3131134d2c7e9c6ac24fdd22d6d96a7967471fc6583de"
+    },
+    {
+      "bytes": 8701952,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\entry\\DynamicFx.aex",
+      "sha256": "c91db8c0435ccf90e0fac33f5473825c29bbd959cfeef8cc5fcebe80092b0d0a"
+    },
+    {
+      "bytes": 4476928,
+      "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\project-open-lock-20260909\\entry\\dynamicfx.pdb",
+      "sha256": "5a8fea4c91aac1a8004eca0d657a174394546ce9a1c1899508ea48f8318e1a04"
+    }
+  ],
+  "host": "Windows 11 / AE 2026 26.3x87"
+}

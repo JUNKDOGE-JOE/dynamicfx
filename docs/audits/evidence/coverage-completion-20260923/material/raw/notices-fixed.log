@@ -1,0 +1,9 @@
+{
+  "version": "0.1.1",
+  "target": "x86_64-pc-windows-msvc",
+  "packages": 139,
+  "license_files": 266,
+  "cargo_lock_sha256": "2a3e4cfdbd7569543e7a210b8ac768bc841d854899395b34aa8c9e7d97edbcef",
+  "manifest_sha256": "8f7861ca4dc890651d7451e9e963f20beb3db05f79d4d2275743ae87952937f3",
+  "output": "<workspace>\\scripts\\out\\liquid-glass-20260923\\THIRD_PARTY"
+}

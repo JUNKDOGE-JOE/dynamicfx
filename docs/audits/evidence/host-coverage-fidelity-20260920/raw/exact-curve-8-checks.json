@@ -1,0 +1,7 @@
+{
+  "pixels": 12288,
+  "vertices": 1055,
+  "bitwise_float32_mismatches": 0,
+  "max_coordinate_noise": 0.001953125,
+  "expression_seconds": 19.82
+}

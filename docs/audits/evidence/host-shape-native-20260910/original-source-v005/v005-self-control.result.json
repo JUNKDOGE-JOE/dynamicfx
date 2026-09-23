@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":\\\"HS_coverage_control\\\",\\\"id\\\":90,\\\"requestedTime\\\":0,\\\"cti\\\":0,\\\"resolution\\\":[1,1],\\\"bpc\\\":16,\\\"status\\\":[\\n\\n]}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":\"HS_coverage_control\",\"id\":90,\"requestedTime\":0,\"cti\":0,\"resolution\":[1,1],\"bpc\":16,\"status\":[\n\n]}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

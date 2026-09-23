@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"full.aep\")throw Error(\"Unexpected project\");var comps=[app.project.itemByID(1),app.project.itemByID(30),app.project.itemByID(14)],ids=[13,44,26],targets=[];for(var n=0;n<comps.length;n++){var found=null;for(var j=1;j<=comps[n].numLayers;j++)if(comps[n].layer(j).id===ids[n])found=comps[n].layer(j);if(!found)throw Error(\"Missing owner\");targets.push(found);}for(var n=0;n<targets.length;n++){comps[n].resolutionFactor=[1,1];comps[n].time=1.6;var fx=targets[n].property(\"ADBE Effect Parade\");for(var j=1;j<=fx.numProperties;j++)if(fx.property(j).matchName===\"DynamicFx Host Shape Probe\")fx.property(j).property(2).setValue(targets[n].id===26?21:1);}app.project.bitsPerChannel=8;app.purge(PurgeTarget.ALL_CACHES);app.project.itemByID(14).saveFrameToPng(0.5,new File(\"<workspace>/scripts/out/coverage-final-20260923/fixed-shift-0-reference-8-0.5-1.png\"));return JSON.stringify({cti:app.project.itemByID(14).time,requested:0.5,resolution:app.project.itemByID(14).resolutionFactor});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"cti\\\":1.6,\\\"requested\\\":0.5,\\\"resolution\\\":[1,1]}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"cti\":1.6,\"requested\":0.5,\"resolution\":[1,1]}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var c=app.project.itemByID(1);var e=c.layer(1).property('ADBE Effect Parade').property(1);var out={file:app.project.file.name,comp:c.id,effect:e.matchName,count:e.numProperties,params:[]};for(var i=1;i<=e.numProperties;i++){var p=e.property(i);out.params.push({index:i,name:p.name,type:String(p.propertyValueType),value:p.propertyValueType===PropertyValueType.NO_VALUE?null:p.value});}return JSON.stringify(out);})()",
+  "timeout_sec": 15
+}

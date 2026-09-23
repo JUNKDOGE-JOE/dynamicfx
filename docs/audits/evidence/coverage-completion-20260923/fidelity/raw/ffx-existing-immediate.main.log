@@ -1,0 +1,9 @@
+[1790149604] status: compiled: 1 pass, 1 params
+[1790149604] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790149604] definition resolved from process registry
+[1790149604] layer 1: 800x600 stride 12800
+[1790149604] coverage gate refused: E60 state=249545369263683 certificate=0
+[1790149605] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790149605] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790149605] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790149605] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0

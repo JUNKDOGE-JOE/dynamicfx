@@ -1,0 +1,37 @@
+{
+  "status": "FAIL - full delivery gate remains open",
+  "date": "2026-09-20",
+  "host": "AE 2026 26.5x89",
+  "base": "922845c",
+  "diagnostic": "0.0.14",
+  "diagnostic_sha256": "6734a384d3f538aebf8d09725f9db3f359d9448aa893ed14ae81eb8c5ecd1e71",
+  "production_sha256": "c91db8c0435ccf90e0fac33f5473825c29bbd959cfeef8cc5fcebe80092b0d0a",
+  "findings": {
+    "adaptive_skip_is_inexact_at_8bpc": true,
+    "direct_8bpc_curve_and_half_match_png_exactly": true,
+    "fractional_coordinate_alpha_is_lossy": true,
+    "packed_float32_transport_matches_oracle_through_pf": true,
+    "native16_and32_small_reference_comparisons_bit_exact": true,
+    "full_half_800x600_native16_bit_exact": true,
+    "full_half_expression_seconds": 91.529,
+    "cold_small_half_before_seconds": 29.888,
+    "cold_small_half_after_seconds": 1.463,
+    "zero_feather_full_opacity_add_and_subtract_native16_exact": true,
+    "mask_expansion_8px_failed_pixels": 834,
+    "mask_expansion_max_native16_error": 32768,
+    "post_effect_adjustment_alpha_is_background": true,
+    "geometry_shortcut_adopted": false
+  },
+  "limits": [
+    "Exact sampler remains a separate diagnostic expression; managed production resource is not implemented",
+    "128x96 direct 16/32 comparisons use path readback and native reference worlds, not a production shader",
+    "PF path float32 transport proven for the 8-bpc curve; deep shader binding is not proven",
+    "Standard add/subtract mask raster tests fix feather=0 and opacity=1; expansion fails",
+    "Geometry raster shortcut differs at native precision and is not adopted",
+    "Full-frame exact extraction remains too slow for usable preview",
+    "FFX, general modifiers/transforms and true MFR are still unaccepted"
+  ],
+  "pending_product_question": "Whether automatic reference layers/precomps may replace the no-helper-object constraint; no dependent production change made",
+  "standby": "Saved 69-item disposable project, 16 bpc, 34 diagnostic log/request controls reset",
+  "push": "none"
+}

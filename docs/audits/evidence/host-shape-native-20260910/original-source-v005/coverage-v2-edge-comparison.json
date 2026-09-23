@@ -1,0 +1,9 @@
+{
+  "label": "coverage-v2-edited-t05",
+  "vertices": 4376,
+  "pixels": 480000,
+  "different": 19,
+  "max_error_8bit": 1,
+  "mae_8bit": 3.958333333333333e-05,
+  "within_one_8bit_level": true
+}

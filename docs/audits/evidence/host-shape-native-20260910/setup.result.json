@@ -1,0 +1,25 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":false,\"error\":\"JSX timeout after 45000ms\",\"disposition\":\"uncertain\",\"jsxBridge\":{\"state\":\"degraded\",\"degradedSinceMs\":1789050767785,\"lastTimeoutAt\":1789050767785,\"pendingCalls\":0,\"sentinelInFlight\":true},\"recoveryId\":\"4g213b\",\"scriptPath\":\"C:\\\\Users\\\\REDACTED_USER\\\\.ae-mcp\\\\checkpoints\\\\_untitled\\\\recovery\\\\4g213b.jsx\",\"checkpointId\":null,\"attempt\":1}"
+    }
+  ],
+  "structuredContent": {
+    "ok": false,
+    "error": "JSX timeout after 45000ms",
+    "disposition": "uncertain",
+    "jsxBridge": {
+      "state": "degraded",
+      "degradedSinceMs": 1789050767785,
+      "lastTimeoutAt": 1789050767785,
+      "pendingCalls": 0,
+      "sentinelInFlight": true
+    },
+    "recoveryId": "4g213b",
+    "scriptPath": "C:\\Users\\REDACTED_USER\\.ae-mcp\\checkpoints\\_untitled\\recovery\\4g213b.jsx",
+    "checkpointId": null,
+    "attempt": 1
+  },
+  "isError": true
+}

@@ -1,0 +1,9 @@
+{
+  "result": {
+    "ok": true,
+    "content": "{\"active\":30}",
+    "contentType": "text",
+    "artifactId": "<local-id>"
+  },
+  "foreground_unchanged": true
+}

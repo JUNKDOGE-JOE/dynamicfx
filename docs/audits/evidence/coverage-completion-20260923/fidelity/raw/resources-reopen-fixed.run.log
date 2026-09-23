@@ -1,0 +1,9 @@
+{"step": "resources-save", "status": "PASS"}
+Traceback (most recent call last):
+  File "<workspace>\scripts\out\coverage-final-20260923\resources.py", line 39, in <module>
+    call('resources-save',a.code_for('save'));call('resources-reopen',a.code_for('reopen'));time.sleep(3)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<workspace>\scripts\out\coverage-final-20260923\resources.py", line 18, in call
+    if not data.get('ok'):raise RuntimeError(data)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: {'ok': False, 'error': 'Error: Not the saved acceptance project', 'line': 52}

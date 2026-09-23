@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":850,\\\"layer\\\":865,\\\"adjustment\\\":false,\\\"serial\\\":1}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":850,\"layer\":865,\"adjustment\":false,\"serial\":1}",
+    "contentType": "text",
+    "artifactId": "user:<redacted>"
+  }
+}

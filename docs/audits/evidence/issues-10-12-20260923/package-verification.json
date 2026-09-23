@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "zip_sha256": "4ce3a92706f471c8fa0a9ed589af8d67f5a0ead77f7841b3bd325507db05c785",
+  "members": 402,
+  "crc": "PASS",
+  "native_hashes": "PASS",
+  "material_bytes": "PASS",
+  "release_ready": false,
+  "blocking_issue": 12
+}

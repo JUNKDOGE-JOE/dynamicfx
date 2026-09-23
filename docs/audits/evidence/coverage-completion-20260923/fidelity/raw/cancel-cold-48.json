@@ -1,0 +1,17 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!==\"cancel.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30),frames=[313, 314, 315, 316, 317, 318, 319, 320],paths=[\"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0313.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0314.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0315.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0316.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0317.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0318.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0319.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0320.png\"];for(var i=0;i<frames.length;i++)c.saveFrameToPng(frames[i]/25,new File(paths[i]));return JSON.stringify({phase:\"cold\",frames:frames});})()",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"phase\\\":\\\"cold\\\",\\\"frames\\\":[313,314,315,316,317,318,319,320]}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"phase\":\"cold\",\"frames\":[313,314,315,316,317,318,319,320]}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

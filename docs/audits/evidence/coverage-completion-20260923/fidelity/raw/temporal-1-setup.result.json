@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"full.aep\")throw Error(\"Unexpected project\");var comps=[app.project.itemByID(1),app.project.itemByID(30),app.project.itemByID(14)],ids=[13,44,26],targets=[];for(var n=0;n<comps.length;n++){var found=null;for(var j=1;j<=comps[n].numLayers;j++)if(comps[n].layer(j).id===ids[n])found=comps[n].layer(j);if(!found)throw Error(\"Missing owner\");targets.push(found);}var e=targets[0].property(\"ADBE Effect Parade\").property(1);e.property(2).setValue(1);e.property(3).expression=\"`\"+\"@dynamicfx 1\\n@graph\\npass main: prev, coverage -> output\\n@end\\n@pass main\\n#version 450\\n// @param coverage hint:coverage\\nlayout(location=0) in vec2 v_uv;\\nlayout(location=0) out vec4 outColor;\\nlayout(set=0,binding=0) uniform texture2D u_in;\\nlayout(set=0,binding=1) uniform sampler u_s;\\nlayout(set=0,binding=2) uniform FxUniforms { vec2 u_resolution; float u_time; float u_frame; };\\nlayout(set=0,binding=3) uniform texture2D u_cov;\\nvoid main(){ float a=texelFetch(sampler2D(u_cov,u_s),ivec2(v_uv*vec2(textureSize(sampler2D(u_cov,u_s),0))),0).r; outColor=vec4(0,0,0,a); }\\n@endpass\"+\"`;0\";return \"configured\";})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"configured\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "configured",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

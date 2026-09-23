@@ -1,0 +1,21 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"reported-project-copy.aep\")throw Error(\"Unexpected project\");app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);var error=null;app.beginSuppressDialogs();try{app.open(new File(\"E:/Code/AePlugin_Dynamicfx/scripts/out/public-push-20260911/scripts/out/issues-release-20260923/reported-project-copy.aep\"));}catch(e){error=String(e);}finally{app.endSuppressDialogs(false);}return JSON.stringify({error:error,items:app.project.numItems});})()",
+    "timeout_sec": 30,
+    "undo_group_name": "Reproduce historical project open"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"error\\\":null,\\\"items\\\":608}\",\"contentType\":\"text\",\"artifactId\":\"user:f9e701e2-8545-4ee2-b085-05d11f978d22\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"error\":null,\"items\":608}",
+      "contentType": "text",
+      "artifactId": "user:f9e701e2-8545-4ee2-b085-05d11f978d22"
+    }
+  }
+}

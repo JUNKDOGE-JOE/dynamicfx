@@ -1,0 +1,72 @@
+{
+  "args": {
+    "code": "(function(){if(app.version.indexOf(\"25.\")!==0)throw Error(\"Wrong host\");if(app.project.file&&app.project.file.name!==\"stage-2025.aep\")throw Error(\"Unexpected project\");if(!app.project.file)app.open(new File(\"<checkout>/scripts/out/reader-compat-20260920/stage-2025.aep\"));var c=app.project.itemByID(1),l=app.project.layerByID(17),fx=l.property(\"ADBE Effect Parade\"),e=fx.property(1);function state(e){var p=e.property(1),keys=[];for(var k=1;k<=p.numKeys;k++)keys.push({t:p.keyTime(k),v:p.keyValue(k),inType:p.keyInInterpolationType(k),outType:p.keyOutInterpolationType(k)});return {effects:fx.numProperties,keys:keys,expression:p.expression,mode:e.property(2).value,original:e.property(6).value,explicit:e.property(9).value};}var before=state(e);for(var i=1;i<=c.numLayers;i++)c.layer(i).selected=false;l.selected=true;e.selected=true;l.applyPreset(new File(\"<checkout>/scripts/out/reader-compat-20260920/native-stage-seed.ffx\"));fx=l.property(\"ADBE Effect Parade\");return JSON.stringify({version:app.version,before:before,after:state(fx.property(1))});})()"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":false,\"error\":\"ExtendScript error: Error: After Effects\u9519\u8bef: \u6b64\u6587\u4ef6\u4f7f\u7528 After Effects \u7684\u8f83\u65b0\u7248\u672c\u521b\u5efa - \u7acb\u523b\u5347\u7ea7\u60a8\u7684\u5e94\u7528\u7a0b\u5e8f\uff01 (line 1)\",\"disposition\":\"failed\",\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":null,\"pendingCalls\":0,\"sentinelInFlight\":false},\"errorLine\":1,\"touched\":{\"level\":\"item_diff\",\"method\":\"snapshot-diff\",\"comp\":null,\"activeCompChanged\":{\"from\":null,\"to\":{\"id\":1,\"name\":\"DS_stage_2025\"}},\"layersAdded\":[],\"layersRemoved\":[],\"layersChanged\":[],\"itemsAdded\":[{\"id\":1,\"name\":\"DS_stage_2025\",\"type\":\"\u00ba\u00cf\u00b3\u00c9\"},{\"id\":14,\"name\":\"\u7eaf\u8272\",\"type\":\"\u00ce\u00c4\u00bc\u00fe\u00bc\u00d0\"},{\"id\":15,\"name\":\"Background\",\"type\":\"\u00cb\u00d8\u00b2\u00c4\"}],\"itemsRemoved\":[],\"truncated\":false,\"notes\":[]},\"revision\":{\"before\":1,\"after\":102},\"projectPath\":null,\"errorSource\":\"(function(){if(app.version.indexOf(\\\"25.\\\")!==0)throw Error(\\\"Wrong host\\\");if(app.project.file&&app.project.file.name!==\\\"stage-2025.aep\\\")throw Error(\\\"Unexpected project\\\");if(!app.project.file)app.open(ne\",\"recoveryId\":\"v3yx5z\",\"scriptPath\":\"<user>\\\\.ae-mcp\\\\checkpoints\\\\_untitled\\\\recovery\\\\v3yx5z.jsx\",\"checkpointId\":null,\"attempt\":1}"
+      }
+    ],
+    "structuredContent": {
+      "ok": false,
+      "error": "ExtendScript error: Error: After Effects\u9519\u8bef: \u6b64\u6587\u4ef6\u4f7f\u7528 After Effects \u7684\u8f83\u65b0\u7248\u672c\u521b\u5efa - \u7acb\u523b\u5347\u7ea7\u60a8\u7684\u5e94\u7528\u7a0b\u5e8f\uff01 (line 1)",
+      "disposition": "failed",
+      "jsxBridge": {
+        "state": "ok",
+        "degradedSinceMs": null,
+        "lastTimeoutAt": null,
+        "pendingCalls": 0,
+        "sentinelInFlight": false
+      },
+      "errorLine": 1,
+      "touched": {
+        "level": "item_diff",
+        "method": "snapshot-diff",
+        "comp": null,
+        "activeCompChanged": {
+          "from": null,
+          "to": {
+            "id": 1,
+            "name": "DS_stage_2025"
+          }
+        },
+        "layersAdded": [],
+        "layersRemoved": [],
+        "layersChanged": [],
+        "itemsAdded": [
+          {
+            "id": 1,
+            "name": "DS_stage_2025",
+            "type": "\u00ba\u00cf\u00b3\u00c9"
+          },
+          {
+            "id": 14,
+            "name": "\u7eaf\u8272",
+            "type": "\u00ce\u00c4\u00bc\u00fe\u00bc\u00d0"
+          },
+          {
+            "id": 15,
+            "name": "Background",
+            "type": "\u00cb\u00d8\u00b2\u00c4"
+          }
+        ],
+        "itemsRemoved": [],
+        "truncated": false,
+        "notes": []
+      },
+      "revision": {
+        "before": 1,
+        "after": 102
+      },
+      "projectPath": null,
+      "errorSource": "(function(){if(app.version.indexOf(\"25.\")!==0)throw Error(\"Wrong host\");if(app.project.file&&app.project.file.name!==\"stage-2025.aep\")throw Error(\"Unexpected project\");if(!app.project.file)app.open(ne",
+      "recoveryId": "v3yx5z",
+      "scriptPath": "<user>\\.ae-mcp\\checkpoints\\_untitled\\recovery\\v3yx5z.jsx",
+      "checkpointId": null,
+      "attempt": 1
+    },
+    "isError": true
+  }
+}

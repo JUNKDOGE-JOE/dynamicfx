@@ -37,6 +37,22 @@ DynamicFX 当前仍处于未发布开发阶段。本次选择直接重写现有 
 
 ## 2. 产品边界
 
+自动原层覆盖图采用 [ADR-0050](adr/0050-host-coverage-resource.md) 的 `hint:coverage`
+资源接口：独立隐藏绑定、原生 alpha 精度和画布坐标，未就绪时明确拒绝使用。
+该新增功能最低要求 AE 26.5；既有功能的宿主范围不变。实现/验收状态见
+[Implementation status](IMPLEMENTATION_STATUS.md)，诊断版结果不代表正式接入完成。
+内部像素转交由 [ADR-0051](adr/0051-native-coverage-reader-component.md) 的独立原生
+读取组件完成，随主插件打包；管理器在主线程绑定两端，渲染只读取声明的帧依赖。
+覆盖图就绪状态按 [ADR-0052](adr/0052-coverage-instance-readiness.md) 和
+[ADR-0053](adr/0053-coverage-certificate-revocation.md) 绑定到实例凭据，并在复制时
+跨渲染副本作废。覆盖图实例使用外层 AE version 2，内部 DFXS v1 源码/绑定表不变；
+普通实例仍保存原格式。[ADR-0054](adr/0054-coverage-headless-restore.md) 区分无界面
+渲染恢复，[ADR-0055](adr/0055-coverage-host-cache-dependency.md) 将有效凭据纳入宿主帧缓存。
+[ADR-0056](adr/0056-guid-mixin-on-every-prerender.md) 要求每次预渲染都调用 GUID
+混入接口；无覆盖图的 shader 使用固定常量，不增加变化中的覆盖图依赖。
+[ADR-0057](adr/0057-shared-effect-dispatch.md) 用共享引用分发宿主回调，
+实例修改仍由内部互斥保护，避免 MFR 对共享状态创建互相冲突的可写引用。
+
 ### 2.1 DynamicFX 是什么
 
 DynamicFX 是一个由普通 AE property 驱动的多语言、多 pass GPU shader runtime：
@@ -150,6 +166,10 @@ flowchart TB
 - 不支持当前 language 时保留 source，但状态为 Invalid 并透传。
 
 ### 4.2 参数池
+
+[ADR-0060](adr/0060-color-default-arity-and-percent-display.md) 增加 float 的
+`hint:percent` 显示提示；25 显示为 25%，上传值仍是 25。六位颜色默认值
+按声明支持 vec3 或 vec4，后者隐含 alpha=1；八位颜色只接受 vec4。
 
 v1 池表、容量与增长政策由 [ADR-0013](adr/0013-paramid-grammar-and-pools.md) 固定：
 

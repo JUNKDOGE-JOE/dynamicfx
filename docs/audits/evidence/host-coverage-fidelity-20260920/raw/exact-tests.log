@@ -1,0 +1,4 @@
+PASS isolated low-opacity edge
+PASS partial interior and disconnected edge
+PASS float32 precision through fixed-point coordinates
+PASS exact merging, empty alpha, invalid samples and bounded work

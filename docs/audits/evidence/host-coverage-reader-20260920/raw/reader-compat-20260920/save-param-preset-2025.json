@@ -1,0 +1,19 @@
+{
+  "args": {
+    "code": "(function(){if(app.version.indexOf(\"25.\")!==0||app.project.file.name!==\"stage-2025.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),l=c.layer(1),e=l.property(\"ADBE Effect Parade\").property(1);for(var i=1;i<=c.numLayers;i++)c.layer(i).selected=false;l.selected=true;for(var i=e.numProperties;i>=1;i--)try{e.property(i).selected=false;}catch(ignore){}e.property(9).selected=true;var f=new File(\"<checkout>/scripts/out/reader-compat-20260920/selected-param-2025.ffx\");l.savePreset(f);return JSON.stringify({exists:f.exists,length:f.length,selected:c.selectedProperties.length});})()"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"exists\\\":true,\\\"length\\\":12238,\\\"selected\\\":2}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"exists\":true,\"length\":12238,\"selected\":2}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"after3.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30),copy=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===47)copy=c.layer(i);if(!copy)throw Error(\"Copy missing\");app.project.itemByID(14).layer(1).property(\"ADBE Effect Parade\").property(1).property(2).setValue(1);copy.property(\"ADBE Effect Parade\").property(2).property(2).setValue(21);var e=copy.property(\"ADBE Effect Parade\").property(1),reader=c.layer(e.property(426).value);return JSON.stringify({state:e.property(427).value,reader:reader.id,source:c.layer(reader.property(\"ADBE Effect Parade\").property(1).property(1).value).id});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"state\\\":236851021100321,\\\"reader\\\":49,\\\"source\\\":47}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"state\":236851021100321,\"reader\":49,\"source\":47}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

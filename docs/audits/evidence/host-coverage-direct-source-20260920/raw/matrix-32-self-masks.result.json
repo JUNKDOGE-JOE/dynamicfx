@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"source-matrix.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(866);c.layer(1).property(\"ADBE Effect Parade\").property(1).property(2).setValue(21);app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(0,new File(\"<checkout>/scripts/out/direct-source-20260920/matrix-32-self-masks.png\"));return \"rendered\";})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"rendered\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "rendered",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

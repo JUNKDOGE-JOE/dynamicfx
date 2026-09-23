@@ -1,0 +1,33 @@
+{"case": "distance rect 8", "status": "PASS", "maximum_error": 3.814697265625e-06}
+{"case": "distance rect 16", "status": "PASS", "maximum_error": 3.814697265625e-06}
+{"case": "distance rect 32", "status": "PASS", "maximum_error": 3.814697265625e-06}
+{"case": "packed depth identity rect", "status": "PASS"}
+{"case": "distance ring 8", "status": "PASS", "maximum_error": 2.3865126603794806e-06}
+{"case": "distance ring 16", "status": "PASS", "maximum_error": 2.3865126603794806e-06}
+{"case": "distance ring 32", "status": "PASS", "maximum_error": 2.3865126603794806e-06}
+{"case": "packed depth identity ring", "status": "PASS"}
+{"case": "distance disjoint 8", "status": "PASS", "maximum_error": 3.814697265625e-06}
+{"case": "distance disjoint 16", "status": "PASS", "maximum_error": 3.814697265625e-06}
+{"case": "distance disjoint 32", "status": "PASS", "maximum_error": 3.814697265625e-06}
+{"case": "packed depth identity disjoint", "status": "PASS"}
+{"case": "material 8 1", "status": "PASS", "physical": [640, 400]}
+{"case": "material 16 1", "status": "PASS", "physical": [640, 400]}
+{"case": "material 32 1", "status": "PASS", "physical": [640, 400]}
+{"case": "material 8 2", "status": "PASS", "physical": [320, 200]}
+{"case": "material 16 2", "status": "PASS", "physical": [320, 200]}
+{"case": "material 32 2", "status": "PASS", "physical": [320, 200]}
+{"case": "material 8 4", "status": "PASS", "physical": [160, 100]}
+{"case": "material 16 4", "status": "PASS", "physical": [160, 100]}
+{"case": "material 32 4", "status": "PASS", "physical": [160, 100]}
+{"case": "amount zero exact input", "status": "PASS"}
+{"case": "partial opacity keeps the same optical shape", "status": "PASS", "maximum_error": 0.0}
+{"case": "extreme linear HDR remains finite", "status": "PASS"}
+Traceback (most recent call last):
+  File "E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911\scripts\out\upstream-glass-20260924\verify-gpu.py", line 52, in <module>
+    a=render('displacement-reference',probe,cov,bg,32,[w,h]);errors=[]
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911\scripts\out\upstream-glass-20260924\verify-gpu.py", line 21, in render
+    assert p.returncode==0,p.stderr.decode(errors='replace');a=np.fromfile(dest,dtype='<f4').reshape(h,w,4);assert np.isfinite(a).all();return a
+           ^^^^^^^^^^^^^^^
+AssertionError: Parse("WithSpan { inner: Function { handle: [26], name: \"main\", source: UnvisitedExpression([233]) }, spans: [(Span { start: 7665, end: 7676 }, \"naga::ir::Function [26]\"), (Span { start: 8790, end: 8862 }, \"naga::ir::Expression [233]\")] }")
+

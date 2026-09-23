@@ -1,0 +1,5 @@
+{
+  "code": "(function(){var pr=app.project;if(!pr.file||pr.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");var c=pr.itemByID(160);if(c.name!==\"HS_coverage_partial_opacity\")throw Error(\"Wrong fixture\");var l=c.layer(1),p=l.property(\"ADBE Mask Parade\").property(\"HS Coverage Data Probe\").property(\"ADBE Mask Shape\"),o=l.property(\"ADBE Root Vectors Group\").property(1).property(\"ADBE Vectors Group\").property(2).property(\"ADBE Vector Fill Opacity\");var bpc=pr.bitsPerChannel,old=o.value,rows=[];app.beginSuppressDialogs();try{for(var b=0;b<3;b++){pr.bitsPerChannel=[8,16,32][b];var values=[0.01,1,10,37,50,75,99,100];for(var i=0;i<values.length;i++){o.setValue(values[i]);var v=p.valueAtTime(0,false);rows.push({bpc:pr.bitsPerChannel,opacity:values[i],vertices:v.vertices,error:p.expressionError});}}return JSON.stringify({rows:rows});}finally{o.setValue(old);pr.bitsPerChannel=bpc;app.endSuppressDialogs(false);}})()",
+  "timeout_sec": 25,
+  "undo_group_name": "Measure native fill alpha quantization"
+}

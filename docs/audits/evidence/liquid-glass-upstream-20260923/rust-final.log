@@ -1,0 +1,57 @@
+   Compiling dynamicfx v0.1.1 (E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911)
+error: failed to run custom build command for `dynamicfx v0.1.1 (E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911)`
+
+Caused by:
+  process didn't exit successfully: `E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911\target\debug\build\dynamicfx-0629ac5ea5014d27\build-script-build` (exit code: 1)
+  --- stdout
+  cargo:rerun-if-changed=build.rs
+  cargo:rustc-check-cfg=cfg(coverage_stage_sdk)
+  cargo:rerun-if-env-changed=DYNAMICFX_AESDK_265_ROOT
+  cargo:rerun-if-changed=src/host/coverage_stage.cpp
+  cargo:rerun-if-env-changed=CC_FORCE_DISABLE
+  CC_FORCE_DISABLE = None
+  cargo:rerun-if-env-changed=VCINSTALLDIR
+  VCINSTALLDIR = None
+  cargo:rerun-if-env-changed=VSTEL_MSBuildProjectFullPath
+  VSTEL_MSBuildProjectFullPath = None
+  cargo:rerun-if-env-changed=VCToolsVersion
+  VCToolsVersion = None
+  cargo:rerun-if-env-changed=VSCMD_ARG_VCVARS_SPECTRE
+  VSCMD_ARG_VCVARS_SPECTRE = None
+  cargo:rerun-if-env-changed=WindowsSdkDir
+  WindowsSdkDir = None
+  cargo:rerun-if-env-changed=WindowsSDKVersion
+  WindowsSDKVersion = None
+  cargo:rerun-if-env-changed=LIB
+  LIB = None
+  PATH = Some(E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911\target\debug;E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911\target\debug\deps;<user-home>\.rustup\toolchains\1.97.1-x86_64-pc-windows-msvc\lib\rustlib\x86_64-pc-windows-msvc\lib;<user-home>\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell;<user-home>\.codex\tmp\arg0\codex-arg0O8Dmr8;<user-home>\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\libheif\libheif\bin;<user-home>\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\jxrlib\jxrlib\bin;<user-home>\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\poppler\Library\bin;<user-home>\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\override;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files\FFmpeg\;C:\Program Files\VoukoderPro\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files\Bandizip\;C:\Program Files\dotnet\;E:\cursor\resources\app\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\CMake\bin;C:\Program Files\GitHub CLI\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\Sunshine;C:\Program Files\Sunshine\tools;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;;<user-home>\.cargo\bin;<user-home>\.local\bin;F:\Mods\me3\bin;e:\cursor\resources\app\codeBin;<user-home>\AppData\Local\Programs\Python\Python310\Scripts\;<user-home>\AppData\Local\Programs\Python\Python310\;<user-home>\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell;<user-home>\AppData\Local\Microsoft\WindowsApps;<user-home>\AppData\Local\PowerToys\DSCModules\;<user-home>\AppData\Roaming\npm;<user-home>\AppData\Local\garyttierney\me3\bin;<user-home>\AppData\Local\Programs\Microsoft VS Code\bin;<user-home>\.bun\bin;<user-home>\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;<user-home>\AppData\Local\Unity\bin;<user-home>\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\fallback;<user-home>\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin;<user-home>\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd;<user-home>\AppData\Local\OpenAI\Codex\bin\d5b459afd5dcd195;<user-home>\AppData\Local\OpenAI\Codex\bin\80f78947ad880e6e;<user-home>\.rustup\toolchains\1.97.1-x86_64-pc-windows-msvc\bin)
+  cargo:rerun-if-env-changed=INCLUDE
+  INCLUDE = None
+  cargo:rerun-if-env-changed=CXX_x86_64-pc-windows-msvc
+  CXX_x86_64-pc-windows-msvc = None
+  cargo:rerun-if-env-changed=CXX_x86_64_pc_windows_msvc
+  CXX_x86_64_pc_windows_msvc = None
+  cargo:rerun-if-env-changed=HOST_CXX
+  HOST_CXX = None
+  cargo:rerun-if-env-changed=CXX
+  CXX = None
+  cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+  CRATE_CC_NO_DEFAULTS = None
+  cargo:rerun-if-env-changed=CXXFLAGS
+  CXXFLAGS = None
+  cargo:rerun-if-env-changed=HOST_CXXFLAGS
+  HOST_CXXFLAGS = None
+  cargo:rerun-if-env-changed=CXXFLAGS_x86_64_pc_windows_msvc
+  CXXFLAGS_x86_64_pc_windows_msvc = None
+  cargo:rerun-if-env-changed=CXXFLAGS_x86_64-pc-windows-msvc
+  CXXFLAGS_x86_64-pc-windows-msvc = None
+  cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+  coverage_stage.cpp
+  src/host/coverage_stage.cpp(1): fatal error C1083: 无法打开包括文件: “AEConfig.h”: No such file or directory
+
+  --- stderr
+
+
+  error occurred in cc-rs: command did not execute successfully (status code exit code: 2): "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-O2" "-Z7" "-Brepro" "-I" "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\public-push-20260911\\.setup\\ae-sdk-26.5\\Examples/Headers" "-I" "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\public-push-20260911\\.setup\\ae-sdk-26.5\\Examples/Headers\\SP" "-W4" "-D_WINDOWS" "-FoE:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\public-push-20260911\\target\\debug\\build\\dynamicfx-05fa8ef46308df1b\\out\\9b782a01d138ffb3-coverage_stage.o" "-c" "src/host/coverage_stage.cpp"
+
+

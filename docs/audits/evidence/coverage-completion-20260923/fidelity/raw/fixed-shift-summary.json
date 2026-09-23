@@ -1,0 +1,470 @@
+[
+  {
+    "case": "fixed-shift-0",
+    "kind": "ordinary",
+    "depth": 8,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": null,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 8,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 8,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "fixed-shift-0",
+    "kind": "adjustment",
+    "depth": 8,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": null,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 8,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        520
+      ],
+      "origin": [
+        0,
+        40
+      ],
+      "depth": 8,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "fixed-shift-0",
+    "kind": "ordinary",
+    "depth": 16,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": null,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 16,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 16,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "fixed-shift-0",
+    "kind": "adjustment",
+    "depth": 16,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": null,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 16,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        520
+      ],
+      "origin": [
+        0,
+        40
+      ],
+      "depth": 16,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "fixed-shift-0",
+    "kind": "ordinary",
+    "depth": 32,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": null,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 32,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 32,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "fixed-shift-0",
+    "kind": "adjustment",
+    "depth": 32,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": null,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 32,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        520
+      ],
+      "origin": [
+        0,
+        40
+      ],
+      "depth": 32,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "fixed-shift-128",
+    "kind": "ordinary",
+    "depth": 8,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": 3548,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 8,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 8,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "fixed-shift-128",
+    "kind": "adjustment",
+    "depth": 8,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": 3548,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 8,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        520
+      ],
+      "origin": [
+        0,
+        40
+      ],
+      "depth": 8,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "fixed-shift-128",
+    "kind": "ordinary",
+    "depth": 16,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": 3554,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 16,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 16,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "fixed-shift-128",
+    "kind": "adjustment",
+    "depth": 16,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": 3554,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 16,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        520
+      ],
+      "origin": [
+        0,
+        40
+      ],
+      "depth": 16,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "fixed-shift-128",
+    "kind": "ordinary",
+    "depth": 32,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": 3554,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 32,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 32,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "fixed-shift-128",
+    "kind": "adjustment",
+    "depth": 32,
+    "pixels": 480000,
+    "mismatches": 0,
+    "outside_sample_nonzero": 3554,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "depth": 32,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        520
+      ],
+      "origin": [
+        0,
+        40
+      ],
+      "depth": 32,
+      "canvas": [
+        800,
+        600
+      ]
+    },
+    "status": "PASS"
+  }
+]

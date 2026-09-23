@@ -1,0 +1,4 @@
+{
+  "timeout_sec": 25,
+  "code": "(function(){var c=app.project.itemByID(118);if(!c||c.name!=='HS_expression_coverage_blocks')throw Error('Wrong fixture');var p=c.layer(1).property('ADBE Mask Parade').property('HS Coverage Data Probe').property('ADBE Mask Shape');var start=new Date().getTime();var s=p.valueAtTime(0,false);return JSON.stringify({comp:c.id,ms:new Date().getTime()-start,vertices:s.vertices,closed:s.closed,error:p.expressionError});})()"
+}

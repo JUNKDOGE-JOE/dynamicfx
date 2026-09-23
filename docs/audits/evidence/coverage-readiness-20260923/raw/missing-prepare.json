@@ -1,0 +1,19 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"pending.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30),owner=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===54)owner=c.layer(i);if(!owner)throw Error(\"Owner missing\");var e=owner.property(\"ADBE Effect Parade\").property(1),reader=c.layer(e.property(426).value),source=c.layer(reader.property(\"ADBE Effect Parade\").property(1).property(1).value).id;var before={owner:owner.id,state:e.property(427).value,reader:reader.id,source:source};if(source!==54||reader.property(\"ADBE Effect Parade\").property(1).matchName!==\"DynamicFx Coverage Reader\")throw Error(\"Reader mismatch\");reader.locked=false;reader.remove();app.project.renderQueue.item(1).outputModule(1).file=new File(\"<workspace>/scripts/out/coverage-readiness-20260923/missing_[#####].psd\");app.project.save(new File(\"<workspace>/scripts/out/coverage-readiness-20260923/missing.aep\"));return JSON.stringify({before:before,afterState:owner.property(\"ADBE Effect Parade\").property(1).property(427).value});})()"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"before\\\":{\\\"owner\\\":54,\\\"state\\\":238575237021379,\\\"reader\\\":56,\\\"source\\\":54},\\\"afterState\\\":238575237021379}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"before\":{\"owner\":54,\"state\":238575237021379,\"reader\":56,\"source\":54},\"afterState\":238575237021379}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+error: invalid toolchain name '+1.97.1'; valid toolchain names do not start with '+'
+Traceback (most recent call last):
+  File "<workspace>\scripts\release\dependency_notices.py", line 226, in <module>
+    main()
+  File "<workspace>\scripts\release\dependency_notices.py", line 222, in main
+    print(json.dumps(collect(args), indent=2))
+                     ^^^^^^^^^^^^^
+  File "<workspace>\scripts\release\dependency_notices.py", line 98, in collect
+    raw = command("cargo", args.toolchain, "metadata", "--format-version", "1", "--locked", "--offline", "--filter-platform", args.target)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<workspace>\scripts\release\dependency_notices.py", line 36, in command
+    return subprocess.check_output(cmd, cwd=ROOT, text=True).strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<user-home>\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<user-home>\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['cargo', '++1.97.1', 'metadata', '--format-version', '1', '--locked', '--offline', '--filter-platform', 'x86_64-pc-windows-msvc']' returned non-zero exit status 1.

@@ -1,0 +1,4 @@
+{
+  "code": "(function(){var p=app.project;if(!p.file||p.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");var rows=[];for(var i=1;i<=p.numItems;i++){var c=p.item(i);if(!(c instanceof CompItem)||c.name.indexOf(\"HS_auto_\")!==0)continue;var l=c.layer(1),m=l.property(\"ADBE Mask Parade\"),f=l.property(\"ADBE Effect Parade\"),owners=[],data=[];for(var j=1;j<=f.numProperties;j++)owners.push(f.property(j).property(7).value);for(var k=1;k<=m.numProperties;k++){var v=m.property(k).property(\"ADBE Mask Shape\"),owned=v.expression.indexOf(\"// DynamicFX internal coverage raster carrier; schema=1\")===0;data.push({name:m.property(k).name,mode:m.property(k).maskMode,owned:owned,enabled:v.expressionEnabled,error:v.expressionError,head:v.valueAtTime(0,false).vertices.slice(0,4),count:v.valueAtTime(0,false).vertices.length});}rows.push({id:c.id,name:c.name,layer:l.id,owners:owners,masks:data});}return JSON.stringify({rows:rows});})()",
+  "timeout_sec": 20
+}

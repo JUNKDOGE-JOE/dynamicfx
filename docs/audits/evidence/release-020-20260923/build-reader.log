@@ -1,0 +1,50 @@
+   Compiling windows-link v0.2.1
+   Compiling konst_macro_rules v0.2.19
+   Compiling scopeguard v1.2.0
+   Compiling smallvec v1.15.2
+   Compiling serde_core v1.0.229
+   Compiling zmij v1.0.23
+   Compiling parking_lot_core v0.9.12
+   Compiling serde v1.0.229
+   Compiling cfg-if v1.0.4
+   Compiling serde_json v1.0.151
+   Compiling unty v0.0.4
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.3
+   Compiling log v0.4.34
+   Compiling windows-sys v0.61.2
+   Compiling fastrand v2.5.0
+   Compiling once_cell v1.21.4
+   Compiling hash32 v1.0.0
+   Compiling konst v0.2.20
+   Compiling lock_api v0.4.14
+   Compiling num-traits v0.2.19
+   Compiling bitflags v2.13.1
+   Compiling widestring v1.2.1
+   Compiling after-effects-sys v0.4.0
+   Compiling dynamicfx-coverage-reader v0.1.0 (E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911\coverage-reader)
+   Compiling win_dbg_logger v0.1.0
+   Compiling const_format v0.2.36
+   Compiling parking_lot v0.12.5
+   Compiling cstr-literal v0.1.0
+   Compiling bincode v2.0.1
+   Compiling after-effects v0.4.0
+warning: field `out_data` is never read
+  --> src\..\..\src\host\shared_dispatch.rs:16:13
+   |
+12 |         struct PluginState<'main, 'global, 'params> {
+   |                ----------- field in this struct
+...
+16 |             out_data: after_effects::OutData
+   |             ^^^^^^^^
+   |
+  ::: src\lib.rs:15:1
+   |
+15 | crate::define_shared_effect!(Global, Instance, Params);
+   | ------------------------------------------------------ in this macro invocation
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+   = note: this warning originates in the macro `crate::define_shared_effect` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: `dynamicfx-coverage-reader` (lib) generated 1 warning
+    Finished `release` profile [optimized] target(s) in 7.17s

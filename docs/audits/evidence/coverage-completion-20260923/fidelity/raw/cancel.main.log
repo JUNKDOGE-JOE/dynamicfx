@@ -1,0 +1,176 @@
+[1790150918] registered with AEGP at global setup
+[1790150918] AEGP idle hook registered
+[1790150918] params setup: ADR-0013 topology
+[1790150918] params setup: complete
+[1790150918] coverage sequence resetup: render_only=true project_flag=false render_engine=true
+[1790150918] sequence (re)setup: observation deferred
+[1790150918] coverage sequence resetup: render_only=true project_flag=false render_engine=true
+[1790150918] sequence (re)setup: observation deferred
+[1790150918] coverage sequence resetup: render_only=true project_flag=true render_engine=true
+[1790150918] sequence (re)setup: observation deferred
+[1790150918] coverage sequence resetup: render_only=true project_flag=true render_engine=true
+[1790150918] sequence (re)setup: observation deferred
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] definition rebuilt from snapshot
+[1790150919] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 "
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 150, right: 600, bottom: 500 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 187, right: 600, bottom: 463 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 194, right: 600, bottom: 456 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 172, right: 600, bottom: 478 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150919] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 202, right: 600, bottom: 448 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 164, right: 600, bottom: 486 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 179, right: 600, bottom: 471 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150919] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150919] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 157, right: 600, bottom: 493 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150919] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150919] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150919] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150919] layer 1: 800x600 stride 12800
+[1790150919] layer 1: 800x600 stride 12800
+[1790150919] layer 1: 800x600 stride 12800
+[1790150919] layer 1: 800x600 stride 12800
+[1790150919] layer 1: 800x600 stride 12800
+[1790150919] layer 1: 800x600 stride 12800
+[1790150919] layer 1: 800x600 stride 12800
+[1790150919] layer 1: 800x600 stride 12800
+[1790150919] render enter: Some(F32) in=800x600 out=400x246 win=(200,202) token=97086776917201 compiled=true snap=true t=7168 step=1024 lstep=1024 scale=25600
+[1790150919] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 400x246, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790150919] execute_plan ok
+[1790150919] native frame digest: pid=87008 time=7168/25600 depth=32 world=400x246 origin=Point { h: 200, v: 202 } hash=602da2f8809930f9708854804fd9114492145b471df605cc5eb5da318a7bd2bb
+[1790150919] render enter: Some(F32) in=800x600 out=400x306 win=(200,172) token=97086776917201 compiled=true snap=true t=3072 step=1024 lstep=1024 scale=25600
+[1790150919] execute_plan ok
+[1790150919] native frame digest: pid=87008 time=3072/25600 depth=32 world=400x306 origin=Point { h: 200, v: 172 } hash=976bf2a152f322284237c4f425725167829d36e50ac88a676838fdc3fe91eda8
+[1790150919] render enter: Some(F32) in=800x600 out=400x350 win=(200,150) token=97086776917201 compiled=true snap=true t=0 step=1024 lstep=1024 scale=25600
+[1790150919] execute_plan ok
+[1790150919] native frame digest: pid=87008 time=0/25600 depth=32 world=400x350 origin=Point { h: 200, v: 150 } hash=f7012e5aace56dc54c8930146bfbbcf6dec21d5de5bba7da5e349616df2e970b
+[1790150919] render enter: Some(F32) in=800x600 out=400x276 win=(200,187) token=97086776917201 compiled=true snap=true t=5120 step=1024 lstep=1024 scale=25600
+[1790150919] execute_plan ok
+[1790150919] native frame digest: pid=87008 time=5120/25600 depth=32 world=400x276 origin=Point { h: 200, v: 187 } hash=9b2e4e7a7c8ab9fd8912e917119a5a865efb7e01874608a6c85d4ad01cbe03ee
+[1790150919] render enter: Some(F32) in=800x600 out=400x322 win=(200,164) token=97086776917201 compiled=true snap=true t=2048 step=1024 lstep=1024 scale=25600
+[1790150919] execute_plan ok
+[1790150919] native frame digest: pid=87008 time=2048/25600 depth=32 world=400x322 origin=Point { h: 200, v: 164 } hash=d8cdbcb0d05e95eb0894e2dcf9e02e123eae21fa71fedbe43a20775af8df61dc
+[1790150919] render enter: Some(F32) in=800x600 out=400x262 win=(200,194) token=97086776917201 compiled=true snap=true t=6144 step=1024 lstep=1024 scale=25600
+[1790150919] execute_plan ok
+[1790150919] native frame digest: pid=87008 time=6144/25600 depth=32 world=400x262 origin=Point { h: 200, v: 194 } hash=67a1bdd3930756e4d41cfa6e360753c47f3443af27b53ecf2713ea78bc553cdf
+[1790150919] render enter: Some(F32) in=800x600 out=400x336 win=(200,157) token=97086776917201 compiled=true snap=true t=1024 step=1024 lstep=1024 scale=25600
+[1790150919] execute_plan ok
+[1790150919] native frame digest: pid=87008 time=1024/25600 depth=32 world=400x336 origin=Point { h: 200, v: 157 } hash=dd7f8f1d18c07f29a8272528bde83b4a9e6739bb5aae90832e2688f6dc8cd369
+[1790150919] render enter: Some(F32) in=800x600 out=400x292 win=(200,179) token=97086776917201 compiled=true snap=true t=4096 step=1024 lstep=1024 scale=25600
+[1790150920] execute_plan ok
+[1790150920] native frame digest: pid=87008 time=4096/25600 depth=32 world=400x292 origin=Point { h: 200, v: 179 } hash=baed7cc773ece1d1ed4debea2d4f0cd91eb80d4515075efe4398bc13185726e9
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 209, right: 600, bottom: 441 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 217, right: 600, bottom: 433 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 224, right: 600, bottom: 426 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 269, right: 600, bottom: 381 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 246, right: 600, bottom: 404 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 254, right: 600, bottom: 396 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 261, right: 600, bottom: 389 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 231, right: 600, bottom: 419 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 239, right: 600, bottom: 411 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150920] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790150920] layer 1: 800x600 stride 12800
+[1790150920] layer 1: 800x600 stride 12800
+[1790150920] layer 1: 800x600 stride 12800
+[1790150920] layer 1: 800x600 stride 12800
+[1790150920] layer 1: 800x600 stride 12800
+[1790150920] layer 1: 800x600 stride 12800
+[1790150920] layer 1: 800x600 stride 12800
+[1790150920] layer 1: 800x600 stride 12800
+[1790150920] layer 1: 800x600 stride 12800
+[1790150920] render enter: Some(F32) in=800x600 out=400x232 win=(200,209) token=97086776917201 compiled=true snap=true t=8192 step=1024 lstep=1024 scale=25600
+[1790150920] execute_plan ok
+[1790150920] native frame digest: pid=87008 time=8192/25600 depth=32 world=400x232 origin=Point { h: 200, v: 209 } hash=68399a4156892278ce44d6c880494d21a464a90f7d2e8699d5b38adaa8e74a90
+[1790150920] render enter: Some(F32) in=800x600 out=400x112 win=(200,269) token=97086776917201 compiled=true snap=true t=16384 step=1024 lstep=1024 scale=25600
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] execute_plan ok
+[1790150920] native frame digest: pid=87008 time=16384/25600 depth=32 world=400x112 origin=Point { h: 200, v: 269 } hash=0eeed672b800c339dea77be4157fed8fc0314e2ec5844c685b1bc9e067dd3275
+[1790150920] render enter: Some(F32) in=800x600 out=400x216 win=(200,217) token=97086776917201 compiled=true snap=true t=9216 step=1024 lstep=1024 scale=25600
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] execute_plan ok
+[1790150920] native frame digest: pid=87008 time=9216/25600 depth=32 world=400x216 origin=Point { h: 200, v: 217 } hash=30055ee839b0d2fc3481f97479f2fb7dfa019697f4a7ff709e30d3245b7c198d
+[1790150920] render enter: Some(F32) in=800x600 out=400x142 win=(200,254) token=97086776917201 compiled=true snap=true t=14336 step=1024 lstep=1024 scale=25600
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] execute_plan ok
+[1790150920] native frame digest: pid=87008 time=14336/25600 depth=32 world=400x142 origin=Point { h: 200, v: 254 } hash=9b88d233d448fb9a0547fb6e1ddb14475eb3e682f422cc7820caed73a9746cc2
+[1790150920] render enter: Some(F32) in=800x600 out=400x188 win=(200,231) token=97086776917201 compiled=true snap=true t=11264 step=1024 lstep=1024 scale=25600
+[1790150920] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790150920] execute_plan ok
+[1790150920] native frame digest: pid=87008 time=11264/25600 depth=32 world=400x188 origin=Point { h: 200, v: 231 } hash=7df9ff5aa2b8daec87afdbc8d6cdb26feb06755fffeb1ee1399540162fc3f37f
+[1790150920] render enter: Some(F32) in=800x600 out=400x172 win=(200,239) token=97086776917201 compiled=true snap=true t=12288 step=1024 lstep=1024 scale=25600
+[1790150920] execute_plan ok
+[1790150920] native frame digest: pid=87008 time=12288/25600 depth=32 world=400x172 origin=Point { h: 200, v: 239 } hash=1ff3a72433b7abb781653345b696cabd970077400aae7ea1874ccc03cc7d3a09
+[1790150920] render enter: Some(F32) in=800x600 out=400x158 win=(200,246) token=97086776917201 compiled=true snap=true t=13312 step=1024 lstep=1024 scale=25600
+[1790150920] execute_plan ok
+[1790150920] native frame digest: pid=87008 time=13312/25600 depth=32 world=400x158 origin=Point { h: 200, v: 246 } hash=f1e7274891db3886e585bbec9ad8830080de4b0f2256fe54b5fa70d6b6850765
+[1790150920] render enter: Some(F32) in=800x600 out=400x128 win=(200,261) token=97086776917201 compiled=true snap=true t=15360 step=1024 lstep=1024 scale=25600
+[1790150920] execute_plan ok
+[1790150920] native frame digest: pid=87008 time=15360/25600 depth=32 world=400x128 origin=Point { h: 200, v: 261 } hash=5022476607828e9e78776602526c9dd9bad05f3c86514ddd3bf683cf79d15563
+[1790150920] render enter: Some(F32) in=800x600 out=400x202 win=(200,224) token=97086776917201 compiled=true snap=true t=10240 step=1024 lstep=1024 scale=25600
+[1790150920] execute_plan ok
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790150920] native frame digest: pid=87008 time=10240/25600 depth=32 world=400x202 origin=Point { h: 200, v: 224 } hash=00b7e106ef8853b874bf16fc976fcef7d9b51aee7838895207867dc09233984a

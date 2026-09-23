@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"production-coverage.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30),owner=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===44)owner=c.layer(i);if(!owner)throw Error(\"Owner missing\");var probe=owner.property(\"ADBE Effect Parade\").property(2),previous=probe.property(6).value,modes=[];for(var i=1;i<=app.project.numItems;i++){var other=app.project.item(i);if(!(other instanceof CompItem)||other.id===30)continue;for(var j=1;j<=other.numLayers;j++){var layer=other.layer(j),fx=layer.property(\"ADBE Effect Parade\");for(var k=1;k<=fx.numProperties;k++)if(fx.property(k).matchName===\"DynamicFx Host Shape Probe\"){modes.push([other.id,layer.id,k,fx.property(k).property(2).value]);fx.property(k).property(2).setValue(1);}}}probe.property(6).setValue(0);owner.property(\"ADBE Effect Parade\").property(1).enabled=false;return JSON.stringify({original:previous,modes:modes});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"original\\\":2,\\\"modes\\\":[[1,13,2,21],[14,26,1,21]]}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"original\":2,\"modes\":[[1,13,2,21],[14,26,1,21]]}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

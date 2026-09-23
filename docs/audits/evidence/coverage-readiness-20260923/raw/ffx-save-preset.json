@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"after4.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30),source=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===44)source=c.layer(i);if(!source)throw Error(\"Source missing\");for(var i=1;i<=c.numLayers;i++)c.layer(i).selected=false;var selected=c.selectedProperties;for(var i=selected.length-1;i>=0;i--)try{selected[i].selected=false;}catch(ignore){}source.selected=true;source.property(\"ADBE Effect Parade\").property(1).selected=true;source.savePreset(new File(\"<workspace>/scripts/out/coverage-readiness-20260923/coverage-test.ffx\"));for(var i=1;i<=app.project.numItems;i++){var comp=app.project.item(i);if(!(comp instanceof CompItem))continue;for(var j=1;j<=comp.numLayers;j++){var fx=comp.layer(j).property(\"ADBE Effect Parade\");for(var k=1;k<=fx.numProperties;k++)if(fx.property(k).matchName===\"DynamicFx Host Shape Probe\")fx.property(k).property(2).setValue(1);}}for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===47)c.layer(i).enabled=false;app.project.save(new File(\"<workspace>/scripts/out/coverage-readiness-20260923/ffx.aep\"));return JSON.stringify({presetBytes:File(\"<workspace>/scripts/out/coverage-readiness-20260923/coverage-test.ffx\").length,sourceState:source.property(\"ADBE Effect Parade\").property(1).property(427).value});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"presetBytes\\\":225414,\\\"sourceState\\\":238575237021375}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"presetBytes\":225414,\"sourceState\":238575237021375}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

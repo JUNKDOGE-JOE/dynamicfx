@@ -1,0 +1,299 @@
+[
+  {
+    "project_depth": 8,
+    "resolution": 1,
+    "time": 0,
+    "physical_size": [
+      1440,
+      900
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 8,
+    "resolution": 1,
+    "time": 1.5,
+    "physical_size": [
+      1440,
+      900
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 8,
+    "resolution": 1,
+    "time": 3,
+    "physical_size": [
+      1440,
+      900
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 8,
+    "resolution": 2,
+    "time": 0,
+    "physical_size": [
+      720,
+      450
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 8,
+    "resolution": 2,
+    "time": 1.5,
+    "physical_size": [
+      720,
+      450
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 8,
+    "resolution": 2,
+    "time": 3,
+    "physical_size": [
+      720,
+      450
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 8,
+    "resolution": 4,
+    "time": 0,
+    "physical_size": [
+      360,
+      225
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 8,
+    "resolution": 4,
+    "time": 1.5,
+    "physical_size": [
+      360,
+      225
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 8,
+    "resolution": 4,
+    "time": 3,
+    "physical_size": [
+      360,
+      225
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 16,
+    "resolution": 1,
+    "time": 0,
+    "physical_size": [
+      1440,
+      900
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 16,
+    "resolution": 1,
+    "time": 1.5,
+    "physical_size": [
+      1440,
+      900
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 16,
+    "resolution": 1,
+    "time": 3,
+    "physical_size": [
+      1440,
+      900
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 16,
+    "resolution": 2,
+    "time": 0,
+    "physical_size": [
+      720,
+      450
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 16,
+    "resolution": 2,
+    "time": 1.5,
+    "physical_size": [
+      720,
+      450
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 16,
+    "resolution": 2,
+    "time": 3,
+    "physical_size": [
+      720,
+      450
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 16,
+    "resolution": 4,
+    "time": 0,
+    "physical_size": [
+      360,
+      225
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 16,
+    "resolution": 4,
+    "time": 1.5,
+    "physical_size": [
+      360,
+      225
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 16,
+    "resolution": 4,
+    "time": 3,
+    "physical_size": [
+      360,
+      225
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 32,
+    "resolution": 1,
+    "time": 0,
+    "physical_size": [
+      1440,
+      900
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 32,
+    "resolution": 1,
+    "time": 1.5,
+    "physical_size": [
+      1440,
+      900
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 32,
+    "resolution": 1,
+    "time": 3,
+    "physical_size": [
+      1440,
+      900
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 32,
+    "resolution": 2,
+    "time": 0,
+    "physical_size": [
+      720,
+      450
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 32,
+    "resolution": 2,
+    "time": 1.5,
+    "physical_size": [
+      720,
+      450
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 32,
+    "resolution": 2,
+    "time": 3,
+    "physical_size": [
+      720,
+      450
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 32,
+    "resolution": 4,
+    "time": 0,
+    "physical_size": [
+      360,
+      225
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 32,
+    "resolution": 4,
+    "time": 1.5,
+    "physical_size": [
+      360,
+      225
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  },
+  {
+    "project_depth": 32,
+    "resolution": 4,
+    "time": 3,
+    "physical_size": [
+      360,
+      225
+    ],
+    "export_depth": 8,
+    "status": "PASS"
+  }
+]

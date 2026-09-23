@@ -1,0 +1,56 @@
+[
+  {
+    "kind": "ordinary",
+    "depth": 8,
+    "frames": 48,
+    "native_equal_to_serial_and_prior": true,
+    "peak_callbacks": 12,
+    "threads": 14,
+    "status": "PASS"
+  },
+  {
+    "kind": "adjustment",
+    "depth": 8,
+    "frames": 48,
+    "native_equal_to_serial_and_prior": true,
+    "peak_callbacks": 11,
+    "threads": 13,
+    "status": "PASS"
+  },
+  {
+    "kind": "ordinary",
+    "depth": 16,
+    "frames": 48,
+    "native_equal_to_serial_and_prior": true,
+    "peak_callbacks": 12,
+    "threads": 13,
+    "status": "PASS"
+  },
+  {
+    "kind": "adjustment",
+    "depth": 16,
+    "frames": 48,
+    "native_equal_to_serial_and_prior": true,
+    "peak_callbacks": 11,
+    "threads": 13,
+    "status": "PASS"
+  },
+  {
+    "kind": "ordinary",
+    "depth": 32,
+    "frames": 48,
+    "native_equal_to_serial_and_prior": true,
+    "peak_callbacks": 11,
+    "threads": 13,
+    "status": "PASS"
+  },
+  {
+    "kind": "adjustment",
+    "depth": 32,
+    "frames": 48,
+    "native_equal_to_serial_and_prior": true,
+    "peak_callbacks": 10,
+    "threads": 12,
+    "status": "PASS"
+  }
+]

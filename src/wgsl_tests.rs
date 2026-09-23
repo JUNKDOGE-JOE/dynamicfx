@@ -44,7 +44,7 @@ fn compile(language: LanguageId, text: &str, previous: Option<&binding::BindingP
 fn wgsl_snapshot_flattens_and_rebuilds_original_language_and_plan() {
     let text = wgsl("gain: f32,", "// @param gain default:0.25", "return vec4<f32>(fx.gain, uv, 1.0);");
     let (fp, effect) = compile(LanguageId::WGSL, &text, None);
-    let local = Mutex::new(Local { compiled: Some(Arc::clone(&effect)), token: fp, ..Local::default() });
+    let local = LocalMutex::new(Local { compiled: Some(Arc::clone(&effect)), token: fp, ..Local::default() });
     let (version, bytes) = <LocalMutex as AdobePluginInstance>::flatten(&local).unwrap();
     let restored = <LocalMutex as AdobePluginInstance>::unflatten(version, &bytes).unwrap();
     let mut restored = restored.lock().unwrap();
@@ -85,7 +85,7 @@ fn wgsl_graph_uses_original_modules_and_neutral_grouping() {
 
 #[test]
 fn wgsl_external_resources_and_canvas_reach_existing_host_mappings() {
-    for hint in ["layer", "gradient", "path"] {
+    for hint in ["layer", "gradient", "path", "coverage"] {
         let text = wgsl("reach: f32,", &format!("// @param side hint:{hint}\n// @param reach hint:canvas default:16"), "return textureLoad(side_image, vec2<i32>(0), 0);")
             .replace("@fragment", "@group(0) @binding(3) var side_image: texture_2d<f32>;\n@fragment");
         let text = envelope("pass use: input, side -> output", &[("use",text)]);
@@ -96,7 +96,8 @@ fn wgsl_external_resources_and_canvas_reach_existing_host_mappings() {
         assert!(matches!((&effect.externals[0], hint),
             (ExternalSource::Layer { .. }, "layer") |
             (ExternalSource::Gradient { .. }, "gradient") |
-            (ExternalSource::Path { .. }, "path")));
+            (ExternalSource::Path { .. }, "path") |
+            (ExternalSource::Coverage { .. }, "coverage")));
     }
 }
 

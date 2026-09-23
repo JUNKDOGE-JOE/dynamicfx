@@ -1,0 +1,17 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!==\"cancel.aep\"||!app.project.activeItem||app.project.activeItem.id!==30)throw Error(\"Unexpected active fixture\");var c=app.project.itemByID(30),o=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===44)o=c.layer(i);var p=o.property(\"ADBE Effect Parade\").property(1).property(3);p.expression=p.expression.replace(\"#version 450\",\"#version 450\\n// preview-cancellation-001\");c.workAreaStart=0;c.workAreaDuration=30;app.project.save();return \"prepared\";})()",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"prepared\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "prepared",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

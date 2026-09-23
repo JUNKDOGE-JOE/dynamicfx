@@ -1,0 +1,5 @@
+{
+  "timeout_sec": 15,
+  "undo_group_name": "Enable PF coverage data read",
+  "code": "(function(){var c=app.project.itemByID(118);if(!c||c.name!=='HS_expression_coverage_blocks')throw Error('Wrong fixture');var p=c.layer(1).effect(1);p.property(4).setValue(1);return JSON.stringify({comp:c.id,enabled:p.property(4).value});})()"
+}

@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"production-coverage.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),owner=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===13)owner=c.layer(i);if(!owner)throw Error(\"Owner missing\");var owners=[],readers=[];for(var i=1;i<=c.numLayers;i++){var l=c.layer(i),fx=l.property(\"ADBE Effect Parade\"),effects=[];for(var j=1;j<=fx.numProperties;j++){var e=fx.property(j);if(e.matchName===\"DynamicFx\")effects.push({index:j,enabled:e.property(3).expressionEnabled,linked:e.property(426).value?c.layer(e.property(426).value).id:0,state:e.property(427).value});if(e.matchName===\"DynamicFx Coverage Reader\")readers.push({id:l.id,source:e.property(1).value?c.layer(e.property(1).value).id:0,enabled:l.enabled,locked:l.locked,shy:l.shy});}if(effects.length)owners.push({id:l.id,effects:effects});}return JSON.stringify({layers:c.numLayers,items:app.project.numItems,owners:owners,readers:readers});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"layers\\\":2,\\\"items\\\":7,\\\"owners\\\":[{\\\"id\\\":13,\\\"effects\\\":[{\\\"index\\\":1,\\\"enabled\\\":false,\\\"linked\\\":0,\\\"state\\\":0},{\\\"index\\\":2,\\\"enabled\\\":false,\\\"linked\\\":29,\\\"state\\\":0}]}],\\\"readers\\\":[{\\\"id\\\":29,\\\"source\\\":13,\\\"enabled\\\":false,\\\"locked\\\":true,\\\"shy\\\":true}]}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"layers\":2,\"items\":7,\"owners\":[{\"id\":13,\"effects\":[{\"index\":1,\"enabled\":false,\"linked\":0,\"state\":0},{\"index\":2,\"enabled\":false,\"linked\":29,\"state\":0}]}],\"readers\":[{\"id\":29,\"source\":13,\"enabled\":false,\"locked\":true,\"shy\":true}]}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

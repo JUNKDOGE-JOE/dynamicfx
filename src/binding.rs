@@ -31,6 +31,7 @@ pub enum PoolKind {
     /// Distinct from `Color`, which is what an un-annotated `vec3` still maps
     /// to (ADR-0026); this kind is reached only through `hint:point3d`.
     Point3D,
+    Coverage,
 }
 
 /// The pool table released in 0.0.1: 104 stable Main-slot identities.
@@ -60,6 +61,7 @@ pub const GROWTH_POOLS: &[(PoolKind, usize)] = &[
     // walk every frame, and a shader wanting more masks than that is better
     // served by a layer input.
     (PoolKind::Path, 2),
+    (PoolKind::Coverage, 1),
 ];
 
 /// Fixed pass-bank topology. Main-only kinds deliberately have no row here.

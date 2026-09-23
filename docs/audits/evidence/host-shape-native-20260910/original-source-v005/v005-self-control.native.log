@@ -1,0 +1,27 @@
+[time=1789054063941 pid=57256 thread=ThreadId(2)]
+PF_ORIGINAL_BEGIN index=0
+[time=1789054063942 pid=57256 thread=ThreadId(2)]
+PF_ORIGINAL index=0
+original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600
+original_alpha[210,490]=0
+original_alpha[400,300]=1
+original_alpha[50,50]=0
+
+[time=1789054063942 pid=57256 thread=ThreadId(2)]
+PF_ORIGINAL_BEGIN index=6
+[time=1789054063942 pid=57256 thread=ThreadId(2)]
+PF_ORIGINAL index=6
+original_world=800x600 depth=16 rowbytes=6400 origin=Point { h: 0, v: 0 } time=0/25600
+original_alpha[210,490]=0
+original_alpha[400,300]=1
+original_alpha[50,50]=0
+
+[time=1789054063943 pid=57256 thread=ThreadId(2)]
+PF_RENDER
+pf_path_count=0
+
+[time=1789054063943 pid=57256 thread=ThreadId(2)]
+PF_AUXILIARY
+auxiliary_channel_count=0
+auxiliary_coverage_found=false
+

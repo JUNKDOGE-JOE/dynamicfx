@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"[{\\\"comp\\\":866,\\\"target\\\":869,\\\"reader\\\":869},{\\\"comp\\\":880,\\\"target\\\":883,\\\"reader\\\":884}]\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "[{\"comp\":866,\"target\":869,\"reader\":869},{\"comp\":880,\"target\":883,\"reader\":884}]",
+    "contentType": "text",
+    "artifactId": "user:<redacted>"
+  }
+}

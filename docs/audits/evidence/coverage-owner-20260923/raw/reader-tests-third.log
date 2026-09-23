@@ -1,0 +1,11 @@
+   Compiling dynamicfx-coverage-reader v0.1.0 (<workspace>\coverage-reader)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.12s
+     Running unittests src\lib.rs (scripts/out/coverage-owner-20260923/reader-target\debug\deps\dynamicfx_coverage_reader-13a860c1db9880bd.exe)
+
+running 3 tests
+test pixels::tests::clipping_empty_intersection_and_hdr_words_are_exact ... ok
+test pixels::tests::native_words_and_padded_rows_survive_positive_and_negative_origins ... ok
+test tests::checkin_failure_still_releases_every_successful_checkout ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

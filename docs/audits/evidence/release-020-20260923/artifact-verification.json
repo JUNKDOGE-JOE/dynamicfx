@@ -1,0 +1,9 @@
+{
+  "version": "0.2.0",
+  "sha256": "b4505fd38a7799a21e7d933032ac17118effba3162b8ffe0b4673466b16b4a7e",
+  "status": "PASS",
+  "host": "AE 26.5x89",
+  "native_render": "frame-equivalence.json",
+  "path_remapping": true,
+  "scope": "Exact versioned, remapped pair: 27 formal frames pixel-identical to accepted parameter-fix baseline."
+}

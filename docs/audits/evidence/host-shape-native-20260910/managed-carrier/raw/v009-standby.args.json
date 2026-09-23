@@ -1,0 +1,4 @@
+{
+  "code": "(function(){var p=app.project;if(!p.file||p.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");var count=0;for(var i=1;i<=p.numItems;i++){var c=p.item(i);if(!(c instanceof CompItem)||c.name.indexOf(\"HS_\")!==0)continue;var fx=c.layer(1).property(\"ADBE Effect Parade\");for(var j=1;j<=fx.numProperties;j++){var f=fx.property(j);if(f.matchName===\"DynamicFx Host Shape Probe\"){f.property(4).setValue(false);f.property(5).setValue(0);count++;}}}var partial=p.itemByID(160).layer(1).property(\"ADBE Mask Parade\").property(\"HS Coverage Data Probe\").property(\"ADBE Mask Shape\");partial.expressionEnabled=false;p.save();return JSON.stringify({file:p.file.fsName,dirty:p.dirty,items:p.numItems,bpc:p.bitsPerChannel,diagnosticsReset:count,partialExpressionEnabled:partial.expressionEnabled});})()",
+  "timeout_sec": 20
+}

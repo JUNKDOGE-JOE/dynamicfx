@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(app.project.file.name!==\"matrix-32.aep\")throw Error(\"Unexpected project\");app.open(new File(\"<workspace>/scripts/out/liquid-glass-20260923/Liquid Glass.aep\"));return JSON.stringify(\"restored\");})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"\\\"restored\\\"\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "\"restored\"",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

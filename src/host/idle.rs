@@ -39,6 +39,7 @@ pub struct IdleState {
     // instances of the same source can own different inherited pool slots.
     group_ui_tokens: HashMap<InstanceKey, (u64, u64)>,
     group_visibility_failures: HashSet<InstanceKey>,
+    coverage_owners: super::coverage_owner::State,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -65,6 +66,7 @@ impl IdleState {
             last_scan: None,
             group_ui_tokens: HashMap::new(),
             group_visibility_failures: HashSet::new(),
+            coverage_owners: super::coverage_owner::State::default(),
         }
     }
 }
@@ -189,6 +191,7 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                 }
             };
 
+            let mut coverage_requests = super::coverage_owner::Requests::new();
             for layer_index in 0..layer_count {
                 let layer = match layers.comp_layer_by_index(&comp, layer_index) {
                     Ok(layer) => layer,
@@ -252,7 +255,14 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                                 &ae::Command::CompletelyGeneral,
                                 None::<&()>,
                             )?;
-                            let general_reply = crate::take_general_reply();
+                            let Some(general_reply) = crate::take_general_reply() else {
+                                return Ok(());
+                            };
+                            coverage_requests.insert((layer_id, effect_index), super::coverage_owner::Request {
+                                enabled: general_reply.compiled.as_ref().is_some_and(|effect| effect.externals.iter()
+                                    .any(|source| matches!(source, crate::ExternalSource::Coverage { .. }))),
+                                permit: Arc::clone(&general_reply.coverage_permit),
+                            });
 
                             // CompletelyGeneral published into the process
                             // registry; mirror the token into the primitive
@@ -263,7 +273,7 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                                 &raw_streams,
                                 &effect_ref,
                                 layer_time,
-                                general_reply,
+                                Some(general_reply),
                                 instance_key,
                             )?;
                         }
@@ -283,6 +293,13 @@ fn idle_tick(state: &mut IdleState) -> Result<(), ae::Error> {
                     if let Err(err) = dispose_result {
                         crate::diag::log(&format!("idle effect dispose failed: {err:?}"));
                     }
+                }
+            }
+            if state.coverage_owners.needs_scan(project_index as i32, item_id, &coverage_requests) &&
+                unsafe { super::coverage::supported(state.pica_basic as *const _) } {
+                if let Err(error) = state.coverage_owners.reconcile(project_index as i32, item_id, &comp, &item,
+                    state.plugin_id, state.pica_basic as *const _, state.main_thread, target_key, &coverage_requests) {
+                    crate::diag::log(&format!("coverage owner reconcile: {error:?}"));
                 }
             }
         }
@@ -402,6 +419,17 @@ fn sync_state_token(
             }
         }
     };
+    if own_compiled.as_ref().is_some_and(|effect| effect.externals.iter().any(|s| matches!(s, crate::ExternalSource::Coverage { .. }))) {
+        let index = crate::host::params::stream_index_of(crate::host::params::ParamKey::CoverageState)
+            .ok_or(ae::Error::BadCallbackParameter)?;
+        let stream = streams.new_effect_stream_by_index(effect_ref, state.plugin_id, index)?;
+        if let StreamValue::OneD(current) = streams.new_stream_value(&stream, state.plugin_id,
+            ae::aegp::TimeMode::LayerTime, layer_time, true)? {
+            let supported = unsafe { super::coverage::supported(state.pica_basic as *const _) };
+            let desired = if !supported { 2.0 } else if current == 2.0 { 0.0 } else { current };
+            if current != desired { raw_streams.set_one_d(state.plugin_id, &stream, desired)?; }
+        }
+    }
     let desired = match desired_state {
         TokenState::Active(fp) => fp,
         _ => 0,
@@ -738,7 +766,7 @@ fn apply_slot_ui(
                     &stream,
                     ae::aegp::DynamicStreamFlags::Hidden,
                     false,
-                    config.is_none(),
+                    config.is_none() || kind == PoolKind::Coverage,
                 )?;
             }
             // Fresh-binding defaults: scalar (OneD) kinds, and Color
@@ -771,6 +799,27 @@ fn apply_slot_ui(
             }
         }
     }
+    if update.visibility {
+        use crate::host::params::{GradientField, ParamKey, GRADIENTS, STOPS_PER_GRADIENT};
+        for gradient in 0..GRADIENTS {
+            let bound = configs.contains_key(&SlotRef { kind: PoolKind::Gradient, index: gradient });
+            let count_index = stream_index_of(ParamKey::GradientCount(gradient)).ok_or(ae::Error::InvalidIndex)?;
+            let count_stream = streams.new_effect_stream_by_index(effect_ref, state.plugin_id, count_index)?;
+            let live = match streams.new_stream_value(&count_stream, state.plugin_id,
+                ae::aegp::TimeMode::LayerTime, ae::Time { value: 0, scale: 1 }, false)? {
+                StreamValue::OneD(value) => (value.round() as usize).clamp(1, STOPS_PER_GRADIENT),
+                _ => return Err(ae::Error::BadCallbackParameter),
+            };
+            dyn_suite.set_dynamic_stream_flag(&count_stream, ae::aegp::DynamicStreamFlags::Hidden, false, !bound)?;
+            for stop in 0..STOPS_PER_GRADIENT {
+                for field in [GradientField::Position, GradientField::Color, GradientField::Alpha] {
+                    let index = stream_index_of(ParamKey::GradientStop(gradient, stop, field)).ok_or(ae::Error::InvalidIndex)?;
+                    let stream = streams.new_effect_stream_by_index(effect_ref, state.plugin_id, index)?;
+                    dyn_suite.set_dynamic_stream_flag(&stream, ae::aegp::DynamicStreamFlags::Hidden, false, !bound || stop >= live)?;
+                }
+            }
+        }
+    }
     crate::diag::log(&format!(
         "idle slot ui applied: {bound} bound, {defaults_written} defaults written"
     ));
@@ -792,6 +841,11 @@ pub(crate) fn write_precise_default(
         crate::FreshDefault::Angle(value) => suite.set_one_d(plugin_id, stream, value),
         _ => Err(ae::Error::InvalidParms),
     }
+}
+
+pub(super) fn write_one_d(basic: *const ae::sys::SPBasicSuite, id: ae::aegp::PluginId,
+    stream: &StreamReferenceHandle, value: f64) -> Result<(), ae::Error> {
+    RawStreamSuite6::acquire(basic)?.set_one_d(id, stream, value)
 }
 
 /// Minimal raw wrapper for the one StreamSuite6 operation that

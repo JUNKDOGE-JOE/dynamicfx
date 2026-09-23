@@ -1,0 +1,5 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");var c=app.project.itemByID(174);if(c.name!==\"HS_auto_base\")throw Error(\"Wrong fixture\");var l=c.layer(1),m=l.property(\"ADBE Mask Parade\"),fx=l.property(\"ADBE Effect Parade\");if(m.numProperties!==2||fx.numProperties!==1)throw Error(\"Wrong initial counts\");m.property(2).name=\"Renamed internal raster\";fx.property(1).property(4).setValue(true);var second=fx.property(1).duplicate();second.name=\"Second diagnostic instance\";var copy=c.duplicate();copy.name=\"HS_auto_duplicate\";return JSON.stringify({base:c.id,copy:copy.id,copyLayer:copy.layer(1).id,effects:fx.numProperties,masks:m.numProperties,userVertices:m.property(1).property(\"ADBE Mask Shape\").value.vertices});})()",
+  "timeout_sec": 20,
+  "undo_group_name": "Test shared managed carrier and duplicated layer"
+}

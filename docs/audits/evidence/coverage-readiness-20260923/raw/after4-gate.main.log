@@ -1,0 +1,6 @@
+[1790137992] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790137992] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 150, right: 600, bottom: 500 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790137992] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790137992] layer 1: 800x600 stride 12800
+[1790137992] coverage gate refused: E60 state=238575237021372 certificate=0
+[1790137992] idle observation: compiled: 1 pass, 1 params

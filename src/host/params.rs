@@ -49,6 +49,7 @@ mod display_name_tests {
 /// kind-local slot `i` of one pool.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ParamKey {
+    CoverageState,
     SetupStart,
     SetupEnd,
     /// Non-time-varying language selector (ADR-0010).
@@ -175,7 +176,7 @@ pub fn declaration_order() -> Vec<ParamKey> {
         }
     }
     for (kind, capacity) in GROWTH_POOLS {
-        if *kind == PoolKind::Gradient {
+        if matches!(*kind, PoolKind::Gradient | PoolKind::Coverage) {
             continue;
         }
         for i in 0..*capacity {
@@ -207,6 +208,8 @@ pub fn declaration_order() -> Vec<ParamKey> {
         }
         order.push(ParamKey::PassGroupEnd(group));
     }
+    order.push(ParamKey::Pool(PoolKind::Coverage, 0));
+    order.push(ParamKey::CoverageState);
     order
 }
 
@@ -259,6 +262,7 @@ fn kind_label(kind: PoolKind) -> &'static str {
         PoolKind::Point2D => "Point",
         PoolKind::Angle => "Angle",
         PoolKind::Layer => "Layer",
+        PoolKind::Coverage => "Coverage",
         PoolKind::Gradient => "Gradient",
         PoolKind::Point3D => "Point 3D",
         PoolKind::Path => "Mask",
@@ -446,6 +450,12 @@ pub fn group_hidden(plan: Option<&BindingPlan>, key: ParamKey) -> Option<bool> {
 
 fn declare_one(params: &mut ae::Parameters<ParamKey>, key: ParamKey) -> Result<(), ae::Error> {
     match key {
+            ParamKey::CoverageState => params.add_with_flags(
+                key, "Coverage state", ae::FloatSliderDef::setup(|p| {
+                    p.set_valid_min(0.0); p.set_valid_max(281_474_976_710_656.0);
+                    p.set_slider_min(0.0); p.set_slider_max(3.0); p.set_default(0.0);
+                }), ae::ParamFlag::CANNOT_TIME_VARY | ae::ParamFlag::SUPERVISE, ae::ParamUIFlags::INVISIBLE,
+            )?,
             ParamKey::Language => {
                 let menu = frontend::popup_menu();
                 params.add_with_flags(
@@ -749,6 +759,10 @@ fn declare_one(params: &mut ae::Parameters<ParamKey>, key: ParamKey) -> Result<(
                         ae::ParamFlag::START_COLLAPSED,
                         ae::ParamUIFlags::empty(),
                     )?,
+                    PoolKind::Coverage => params.add_with_flags(
+                        key, &name, ae::LayerDef::setup(|_| {}),
+                        ae::ParamFlag::CANNOT_TIME_VARY | ae::ParamFlag::SUPERVISE, ae::ParamUIFlags::INVISIBLE,
+                    )?,
                     // ADR-0030. The default is deliberately *not*
                     // `PF_LayerDefault_MYSELF`: a layer input that silently
                     // pointed at the effect's own layer would render something
@@ -810,7 +824,7 @@ mod tests {
             }
         }
         for (kind, capacity) in GROWTH_POOLS {
-            if *kind == PoolKind::Gradient {
+            if matches!(*kind, PoolKind::Gradient | PoolKind::Coverage) {
                 continue;
             }
             for index in 0..*capacity {
@@ -869,6 +883,8 @@ mod tests {
     #[test]
     fn editor_topology_is_the_shipped_order_plus_first_row_canvases() {
         let order = declaration_order();
+        assert_eq!(&order[order.len()-2..], &[ParamKey::Pool(PoolKind::Coverage, 0), ParamKey::CoverageState]);
+        let order = order[..order.len()-2].to_vec();
         let shipped = shipped_declaration_order();
         #[cfg(not(feature = "editor"))]
         assert_eq!(order, shipped);
@@ -942,7 +958,7 @@ mod tests {
         let v1_slots: usize = V1_POOLS.iter().map(|(_, capacity)| capacity).sum();
         let main_growth: usize = GROWTH_POOLS
             .iter()
-            .filter(|(kind, _)| *kind != PoolKind::Gradient)
+            .filter(|(kind, _)| !matches!(*kind, PoolKind::Gradient | PoolKind::Coverage))
             .map(|(_, capacity)| capacity)
             .sum();
         let gradient_rows = GRADIENTS
@@ -962,7 +978,7 @@ mod tests {
                 (PoolKind::Angle, 1),
             ]
         );
-        let expected = HEAD.len()
+        let expected = 2 + HEAD.len()
             + 2
             + 2
             + 2

@@ -1,0 +1,24 @@
+[
+  {
+    "component": "main",
+    "sections": {
+      ".text": true,
+      ".rdata": false,
+      ".data": true,
+      ".pdata": true,
+      ".rsrc": true,
+      ".reloc": true
+    }
+  },
+  {
+    "component": "reader",
+    "sections": {
+      ".text": true,
+      ".rdata": false,
+      ".data": true,
+      ".pdata": true,
+      ".rsrc": true,
+      ".reloc": true
+    }
+  }
+]

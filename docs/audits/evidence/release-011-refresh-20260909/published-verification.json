@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "release": "https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.1.1",
+  "version": "0.1.1",
+  "tag_unchanged": true,
+  "tag_object": {
+    "sha": "c5e73d1731c3424ea2e09d66b9968d8e307a2b2c",
+    "type": "tag",
+    "url": "https://api.github.com/repos/JUNKDOGE-JOE/dynamicfx/git/tags/c5e73d1731c3424ea2e09d66b9968d8e307a2b2c"
+  },
+  "downloaded_bytes_equal": true,
+  "untouched_assets": [
+    "DynamicFX-0.1.1-macos-arm64.zip",
+    "IOS27Siri-0.1.1.zip"
+  ],
+  "zip_sha256": "96ec69db520d687e8a266c688995dfb6c4a98b061c66b4b227283a56cb783d65",
+  "aex_sha256": "c91db8c0435ccf90e0fac33f5473825c29bbd959cfeef8cc5fcebe80092b0d0a",
+  "checksums_sha256": "609cb388d1fed478281e7b81b56274d08675134b753286ce0b1a08c027fa3285",
+  "archive_changed_members": [
+    "DynamicFx.aex",
+    "INSTALL.txt",
+    "build/source-identity.json"
+  ],
+  "unchanged_members": 270,
+  "release_identity_and_publication_time_preserved": true,
+  "release_notes_verified_with_github_crlf_normalization": true
+}

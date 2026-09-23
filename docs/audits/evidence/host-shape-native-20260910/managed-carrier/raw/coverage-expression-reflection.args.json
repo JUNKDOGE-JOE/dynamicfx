@@ -1,0 +1,5 @@
+{
+  "code": "(function(){var project=app.project;if(!project.file||project.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");var c=project.itemByID(160);if(c.name!==\"HS_coverage_partial_opacity\")throw Error(\"Wrong fixture\");var p=c.layer(1).property(\"ADBE Mask Parade\").property(\"HS Coverage Data Probe\").property(\"ADBE Mask Shape\");var original=p.expression;app.beginSuppressDialogs();try{p.expression=\"var root=thisLayer.content; var g=root(1); var rows=[]; for(var i=1;i<=g.content.numProperties;i++){var p=g.content(i);rows.push({i:i,name:p.name,matchName:p.matchName,numProperties:p.numProperties,fillOpacity:(function(){try{return p(\\\"ADBE Vector Fill Opacity\\\").value}catch(e){return String(e)}})()});} throw new Error(JSON.stringify({root:root.numProperties,group:g.numProperties,rows:rows}));\";p.valueAtTime(0,false);var error=p.expressionError;p.expression=original;p.expressionEnabled=false;return JSON.stringify({error:error});}finally{app.endSuppressDialogs(false);}})()",
+  "timeout_sec": 20,
+  "undo_group_name": "Inspect coverage expression property access"
+}

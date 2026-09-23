@@ -1,6 +1,7 @@
 # ADR-0016: Sequence schema v1 — codec, limits, checksum
 
 - Status: Accepted
+- Outer AE coverage transport extended by [ADR-0052](0052-coverage-instance-readiness.md); the DFXS v1 body remains unchanged.
 - Date: 2026-08-12
 - Owners: DynamicFX project
 - Related architecture: [../ARCHITECTURE.md](../ARCHITECTURE.md) §13

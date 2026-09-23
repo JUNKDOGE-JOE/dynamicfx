@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "data": {
+    "mode": "resources-assign",
+    "values": [
+      {
+        "language": "glsl",
+        "layer": 3,
+        "path": 1,
+        "stops": 2
+      },
+      {
+        "language": "wgsl",
+        "layer": 3,
+        "path": 1,
+        "stops": 2
+      }
+    ],
+    "project": "<workspace>\\scripts\\out\\coverage-final-20260923\\resources.aep",
+    "next": "Return to AE idle, then run resources --phase assigned with a new tag"
+  }
+}

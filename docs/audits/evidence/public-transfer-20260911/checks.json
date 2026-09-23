@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "base": "18501ac",
+  "repair_source": "ff89564",
+  "commands": [
+    {
+      "command": "cargo test --offline --locked --lib",
+      "passed": 228,
+      "log": "tests-default.log"
+    },
+    {
+      "command": "cargo test --offline --locked --lib --features editor",
+      "passed": 228,
+      "log": "tests-editor.log"
+    },
+    {
+      "command": "cargo test --offline --locked --manifest-path spike/host-outline/native/Cargo.toml",
+      "passed": 13,
+      "log": "tests-probe.log"
+    }
+  ],
+  "native_host_run": "NOT_RUN - historical evidence retained",
+  "initial_setup_failure": "tests-default-missing-lock.log"
+}

@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Liquid Glass.aep\")throw Error(\"Unexpected project\");var c=app.project.items.addComp(\"Foreign link regression\",320,240,1,2,25),o=c.layers.addShape();o.name=\"Owner\";var v=o.property(\"ADBE Root Vectors Group\"),g=v.addProperty(\"ADBE Vector Group\").property(\"ADBE Vectors Group\");g.addProperty(\"ADBE Vector Shape - Rect\");g.addProperty(\"ADBE Vector Graphic - Fill\");var e=o.property(\"ADBE Effect Parade\").addProperty(\"DynamicFx\");e.property(3).expression=\"`\"+\"@dynamicfx 1\\n@graph\\npass main: input, coverage -> output\\n@end\\n@pass main\\n#version 450\\n// @param coverage hint:coverage\\nlayout(location=0) in vec2 v_uv;\\nlayout(location=0) out vec4 outColor;\\nlayout(set=0,binding=0) uniform texture2D u_in;\\nlayout(set=0,binding=1) uniform sampler u_s;\\nlayout(set=0,binding=2) uniform FxUniforms { vec2 u_resolution; float u_time; float u_frame; };\\nlayout(set=0,binding=3) uniform texture2D u_cov;\\nvoid main(){ float a=texelFetch(sampler2D(u_cov,u_s),ivec2(v_uv*vec2(textureSize(sampler2D(u_cov,u_s),0))),0).r; outColor=vec4(0,0,0,a); }\\n@endpass\"+\"`;0\";var child=c.layers.addSolid([1,1,1],\"Foreign child\",320,240,1,2);child.enabled=false;return JSON.stringify({comp:c.id,owner:o.id,child:child.id});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":50,\\\"owner\\\":62,\\\"child\\\":64}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"comp\":50,\"owner\":62,\"child\":64}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

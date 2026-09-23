@@ -1,0 +1,2 @@
+error: cannot create the lock file E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911\Cargo.lock because --locked was passed to prevent this
+help: to generate the lock file without accessing the network, remove the --locked flag and use --offline instead.

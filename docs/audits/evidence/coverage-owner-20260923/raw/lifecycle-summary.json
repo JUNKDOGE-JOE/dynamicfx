@@ -1,0 +1,34 @@
+[
+  {
+    "case": "automatic creation",
+    "status": "PASS"
+  },
+  {
+    "case": "two effects share reader",
+    "status": "PASS"
+  },
+  {
+    "case": "first opt-out retains shared reader",
+    "status": "PASS"
+  },
+  {
+    "case": "last opt-out removes reader and unused source",
+    "status": "PASS"
+  },
+  {
+    "case": "Undo restores reader without immediate removal",
+    "status": "PASS"
+  },
+  {
+    "case": "Redo removes reader and source again",
+    "status": "PASS"
+  },
+  {
+    "case": "reenable rebuilds reader automatically",
+    "status": "PASS"
+  },
+  {
+    "case": "duplicate original eventually gets separate reader",
+    "status": "PASS"
+  }
+]

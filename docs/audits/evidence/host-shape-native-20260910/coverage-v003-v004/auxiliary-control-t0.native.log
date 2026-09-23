@@ -1,0 +1,9 @@
+[time=1789052713362 pid=58660 thread=ThreadId(2)]
+PF_RENDER
+pf_path_count=0
+
+[time=1789052713363 pid=58660 thread=ThreadId(2)]
+PF_AUXILIARY
+auxiliary_channel_count=0
+auxiliary_coverage_found=false
+

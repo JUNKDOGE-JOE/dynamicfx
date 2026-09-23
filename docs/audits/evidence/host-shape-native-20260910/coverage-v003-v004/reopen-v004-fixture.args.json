@@ -1,0 +1,4 @@
+{
+  "code": "(function(){if(app.project.file||app.project.numItems!==0)throw Error('Expected empty project');var f=new File('E:/Code/AePlugin_Dynamicfx/scripts/out/host-shape-native-20260910/host-shape-native.aep');if(!f.exists)throw Error('Fixture missing');app.open(f);return JSON.stringify({file:app.project.file.fsName,numItems:app.project.numItems});})()",
+  "timeout_sec": 35
+}

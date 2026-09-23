@@ -1,0 +1,8 @@
+[time=1789050925792 pid=39756 thread=ThreadId(2)]
+PF_RENDER
+pf_path_count=1
+path[0] segments=3 open=false
+vertex[0]=PF_PathVertex { x: 150.0, y: 100.0, tan_in_x: 120.00000762939453, tan_in_y: 140.0, tan_out_x: 230.0, tan_out_y: 70.0 }
+vertex[1]=PF_PathVertex { x: 650.0, y: 180.0, tan_in_x: 590.0, tan_in_y: 160.0, tan_out_x: 660.0, tan_out_y: 240.0 }
+vertex[2]=PF_PathVertex { x: 390.0, y: 520.0, tan_in_x: 460.0, tan_in_y: 520.0, tan_out_x: 330.0, tan_out_y: 520.0 }
+vertex[3]=PF_PathVertex { x: 150.0, y: 100.0, tan_in_x: 120.00000762939453, tan_in_y: 140.0, tan_out_x: 230.0, tan_out_y: 70.0 }

@@ -1,0 +1,195 @@
+{
+  "issue": "https://github.com/JUNKDOGE-JOE/dynamicfx/issues/9",
+  "status": "NOT_RUN",
+  "baseline": {
+    "width": 800,
+    "height": 600,
+    "pixel_aspect": 1,
+    "bpc": 16,
+    "background_rgba": [
+      0.2,
+      0.3,
+      0.4,
+      1.0
+    ],
+    "vertices": [
+      [
+        200,
+        150
+      ],
+      [
+        600,
+        150
+      ],
+      [
+        400,
+        500
+      ]
+    ],
+    "in_tangents": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "out_tangents": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "closed": true,
+    "fill_rgba": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "stroke": false,
+    "group_transform": "identity",
+    "layer_position": [
+      0,
+      0
+    ],
+    "layer_anchor": [
+      0,
+      0
+    ],
+    "adjustment_layer": true,
+    "shader": "input-alpha-probe.glsl",
+    "probes": [
+      [
+        210,
+        490
+      ],
+      [
+        400,
+        300
+      ],
+      [
+        50,
+        50
+      ]
+    ],
+    "reported_input_alpha": [
+      1,
+      1,
+      1
+    ],
+    "required_separate_coverage": [
+      0,
+      1,
+      0
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "HS-01",
+      "case": "Triangle alpha baseline",
+      "expected": "Ordinary input remains opaque at all probes; the new resource separately distinguishes outside/inside/outside."
+    },
+    {
+      "id": "HS-02",
+      "case": "PF path enumeration",
+      "expected": "Record exact IDs, counts, closure and coordinates for shape-only, mask-only and combined layers; do not infer vector coverage from a mask test."
+    },
+    {
+      "id": "HS-03",
+      "case": "One FFX on rectangle, ellipse and curved Bezier",
+      "expected": "Apply the identical preset to differently named layers/groups; no rebinding, geometry rewrite or helper item; only material controls."
+    },
+    {
+      "id": "HS-04",
+      "case": "Animated path and expression-driven shape",
+      "expected": "At 0, 0.5 and 1 seconds plus subframes, edited vertices and curved tangents change the boundary at the requested time without source recompilation."
+    },
+    {
+      "id": "HS-05",
+      "case": "Group and layer transforms",
+      "expected": "Nested anchor/position/nonuniform scale/rotation/skew, negative scale and transformed parents remain aligned; 3D/camera behavior is supported or explicitly diagnosed."
+    },
+    {
+      "id": "HS-06",
+      "case": "Canvas, preview and ROI",
+      "expected": "Full/Half/Quarter and nonzero expanded origins share the same logical geometry; small ROI reads agree with the corresponding full-frame crop."
+    },
+    {
+      "id": "HS-07",
+      "case": "Multiple contours and modifiers",
+      "expected": "Test disjoint fills, holes and winding, open paths, fill opacity, strokes, trim/repeater/merge/offset/round-corners and masks; each follows AE or produces an explicit unsupported diagnostic."
+    },
+    {
+      "id": "HS-08",
+      "case": "Final adjustment coverage",
+      "expected": "Fully exterior pixels match the no-effect background; antialiased edges are compared separately and do not acquire doubled coverage."
+    },
+    {
+      "id": "HS-09",
+      "case": "Frame dependency and cancellation",
+      "expected": "With CTI elsewhere, render shuffled cold/warm times and MFR; path edits invalidate cached output; cancellation discards the frame; no synchronous idle wait or stale outline."
+    },
+    {
+      "id": "HS-10",
+      "case": "FFX persistence and instance isolation",
+      "expected": "Duplicate, rename, Undo/Redo, save/reopen and cold aerender retain host ownership without selection or Compile; identical shaders on different shapes never share shape data."
+    },
+    {
+      "id": "HS-11",
+      "case": "Compatibility and resource limits",
+      "expected": "GLSL/WGSL, raw/envelope, existing Layer/Gradient/Path resources and 8/16/32-bpc remain correct; no opt-in means no new extraction; unavailable suites and excessive geometry are diagnosed."
+    },
+    {
+      "id": "HS-12",
+      "case": "Temporal graph",
+      "expected": "A graph using prev either obtains the correct shape for every replay time or refuses explicitly; ordinary stateless path animation remains supported."
+    },
+    {
+      "id": "HS-16",
+      "case": "Coverage opt-in and visible alpha fidelity",
+      "expected": "A declared coverage resource matches AE alpha for opaque interiors, transparent exterior and holes, partial fill/stroke opacity, masks and antialiased edges. Undeclared shaders incur no new extraction. No contour resource or path-list fallback is added."
+    }
+  ],
+  "scope": {
+    "coverage": "only new resource: original host visible coverage/alpha for sampling",
+    "contours": "withdrawn; not a deliverable of this issue",
+    "existing_hint_path": "unchanged selected-mask input",
+    "approved_on": "2026-09-10",
+    "revision": "coverage-only"
+  },
+  "withdrawn_cases": {
+    "reason": "Additional automatic contour input withdrawn by the user on 2026-09-10; historical definitions only.",
+    "scenarios": [
+      {
+        "id": "HS-13",
+        "case": "Independent resource requests",
+        "expected": "Coverage-only, contour-only and both together bind explicitly and share host/time identity; only requested outputs are generated/uploaded; no substitution between resources."
+      },
+      {
+        "id": "HS-14",
+        "case": "Along-contour sampling",
+        "expected": "Sample positions and directions on curved, closed and disjoint contours; closure and contour boundaries are preserved, transforms/animation follow, and the curve-parameter or arc-length convention is explicit."
+      },
+      {
+        "id": "HS-15",
+        "case": "Optional contour limitations",
+        "expected": "A supported coverage-only material still works when optional contour extraction cannot represent a modifier; requesting that contour produces an explicit diagnostic without claiming raw paths match visible coverage."
+      }
+    ]
+  }
+}

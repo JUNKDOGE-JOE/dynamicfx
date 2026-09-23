@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(app.project.file&&app.project.file.name!==\"native-reader.aep\")throw Error(\"Unexpected project\");if(!app.project.file)app.open(new File(\"<checkout>/scripts/out/native-reader-20260920/native-reader.aep\"));return app.version;})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"26.5x89\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "26.5x89",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "main_sha256": "b4505fd38a7799a21e7d933032ac17118effba3162b8ffe0b4673466b16b4a7e",
+  "reader_sha256": "b0f476ab29016d2070898284ea145a6bac48a1e2c8cb63afc28c50cf645f4887",
+  "host_scope": "Windows AE 26.5x89; exact release pair installed, 27 formal glass frames identical to accepted baseline; runtime-equivalent to prior native coverage/parameter acceptance. Issue 12 is deferred and unresolved."
+}

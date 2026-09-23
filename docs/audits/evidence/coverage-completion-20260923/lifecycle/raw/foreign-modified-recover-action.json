@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"lifecycle.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),o=null,r=null;for(var i=1;i<=c.numLayers;i++){var l=c.layer(i),f=l.property(\"ADBE Effect Parade\");if(l.id===13)o=l;if(f.numProperties&&f.property(1).matchName===\"DynamicFx Coverage Reader\")r=l;}r.locked=false;r.position.setValue([400,300]);r.locked=true;o.property(\"ADBE Effect Parade\").property(1).property(3).expressionEnabled=true;return JSON.stringify({owner:o?o.id:null,reader:r?r.id:null,state:o?o.property(\"ADBE Effect Parade\").property(1).property(427).value:null,layers:c.numLayers,items:app.project.numItems});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"owner\\\":13,\\\"reader\\\":63,\\\"state\\\":3,\\\"layers\\\":2,\\\"items\\\":15}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"owner\":13,\"reader\":63,\"state\":3,\"layers\":2,\"items\":15}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

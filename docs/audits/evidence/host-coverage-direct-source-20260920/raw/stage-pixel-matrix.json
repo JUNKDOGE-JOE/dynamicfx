@@ -1,0 +1,98 @@
+[
+  {
+    "depth": 8,
+    "stage": "source",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "stage": "source",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "stage": "masks",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "stage": "masks",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "stage": "source",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "stage": "source",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "stage": "masks",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "stage": "masks",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "stage": "source",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "stage": "source",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "stage": "masks",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "stage": "masks",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "status": "PASS"
+  }
+]

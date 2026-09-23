@@ -1,0 +1,56 @@
+[
+  {
+    "depth": 8,
+    "stage": "masks -> all reader effects",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "reader_video_enabled": false,
+    "status": "PASS"
+  },
+  {
+    "depth": 8,
+    "stage": "masks -> all reader effects",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "reader_video_enabled": false,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "stage": "masks -> all reader effects",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "reader_video_enabled": false,
+    "status": "PASS"
+  },
+  {
+    "depth": 16,
+    "stage": "masks -> all reader effects",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "reader_video_enabled": false,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "stage": "masks -> all reader effects",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "reader_video_enabled": false,
+    "status": "PASS"
+  },
+  {
+    "depth": 32,
+    "stage": "masks -> all reader effects",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "reader_video_enabled": false,
+    "status": "PASS"
+  }
+]

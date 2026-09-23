@@ -1,0 +1,25 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":false,\"error\":\"JSX timeout after 40000ms\",\"disposition\":\"uncertain\",\"jsxBridge\":{\"state\":\"degraded\",\"degradedSinceMs\":1789898218800,\"lastTimeoutAt\":1789898218800,\"pendingCalls\":0,\"sentinelInFlight\":true},\"recoveryId\":\"ni6vmp\",\"scriptPath\":\"<user-home>\\\\.ae-mcp\\\\checkpoints\\\\host-shape-native_66a8e104ed59\\\\recovery\\\\ni6vmp.jsx\",\"checkpointId\":null,\"attempt\":1}"
+    }
+  ],
+  "structuredContent": {
+    "ok": false,
+    "error": "JSX timeout after 40000ms",
+    "disposition": "uncertain",
+    "jsxBridge": {
+      "state": "degraded",
+      "degradedSinceMs": 1789898218800,
+      "lastTimeoutAt": 1789898218800,
+      "pendingCalls": 0,
+      "sentinelInFlight": true
+    },
+    "recoveryId": "<local-id>",
+    "scriptPath": "<user-home>\\.ae-mcp\\checkpoints\\host-shape-native_66a8e104ed59\\recovery\\ni6vmp.jsx",
+    "checkpointId": null,
+    "attempt": 1
+  },
+  "isError": true
+}

@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){var p=app.project;if(!p.file||[\"User workspace checkpoint.aep\",\"reported-project-copy.aep\"].indexOf(decodeURI(p.file.name))<0)throw Error(\"Unexpected project\");p.close(CloseOptions.DO_NOT_SAVE_CHANGES);var error=null;app.beginSuppressDialogs();try{app.open(new File(\"E:/Code/AePlugin_Dynamicfx/scripts/out/public-push-20260911/scripts/out/issues-release-20260923/reported-project-copy.aep\"));}catch(e){error=String(e);}finally{app.endSuppressDialogs(false);}var r={error:error,items:app.project.numItems,saved:!!app.project.file,dirty:app.project.dirty};return JSON.stringify(r);})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"error\\\":null,\\\"items\\\":608,\\\"saved\\\":true,\\\"dirty\\\":true}\",\"contentType\":\"text\",\"artifactId\":\"user:a913107f-2083-4894-8a7c-27db7bd94afc\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"error\":null,\"items\":608,\"saved\":true,\"dirty\":true}",
+      "contentType": "text",
+      "artifactId": "user:a913107f-2083-4894-8a7c-27db7bd94afc"
+    }
+  }
+}

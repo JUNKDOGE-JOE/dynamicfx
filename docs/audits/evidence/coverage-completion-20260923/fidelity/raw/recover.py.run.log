@@ -1,0 +1,2 @@
+{"state": 249545369263682, "reader": 49, "source": 47}
+{"case": "post-idle recovery", "binding": {"state": 249545369263682, "reader": 49, "source": 47}, "pixels": 480000, "native_word_mismatches": 0, "status": "PASS"}

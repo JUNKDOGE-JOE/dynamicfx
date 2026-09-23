@@ -1,0 +1,45 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":false,\"error\":\"ExtendScript error: Error: After Effects错误: 内部验证故障，抱歉！ {Item Not Found} (line 1)\",\"disposition\":\"failed\",\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":null,\"pendingCalls\":0,\"sentinelInFlight\":false},\"errorLine\":1,\"touched\":{\"level\":\"none\",\"method\":\"snapshot-diff\",\"comp\":null,\"activeCompChanged\":null,\"layersAdded\":[],\"layersRemoved\":[],\"layersChanged\":[],\"itemsAdded\":[],\"itemsRemoved\":[],\"truncated\":false,\"notes\":[]},\"revision\":{\"before\":1,\"after\":1},\"projectPath\":null,\"errorSource\":\"(function(){var p=app.project;return JSON.stringify({file:p.file?p.file.fsName:null,dirty:p.dirty,items:p.numItems,carrier:p.itemByID(174).layer(1).property(\\\"ADBE Effect Parade\\\").property(1).property(\",\"recoveryId\":\"ceov1u\",\"scriptPath\":\"C:\\\\Users\\\\REDACTED_USER\\\\.ae-mcp\\\\checkpoints\\\\_untitled\\\\recovery\\\\ceov1u.jsx\",\"checkpointId\":null,\"attempt\":1}"
+    }
+  ],
+  "structuredContent": {
+    "ok": false,
+    "error": "ExtendScript error: Error: After Effects错误: 内部验证故障，抱歉！ {Item Not Found} (line 1)",
+    "disposition": "failed",
+    "jsxBridge": {
+      "state": "ok",
+      "degradedSinceMs": null,
+      "lastTimeoutAt": null,
+      "pendingCalls": 0,
+      "sentinelInFlight": false
+    },
+    "errorLine": 1,
+    "touched": {
+      "level": "none",
+      "method": "snapshot-diff",
+      "comp": null,
+      "activeCompChanged": null,
+      "layersAdded": [],
+      "layersRemoved": [],
+      "layersChanged": [],
+      "itemsAdded": [],
+      "itemsRemoved": [],
+      "truncated": false,
+      "notes": []
+    },
+    "revision": {
+      "before": 1,
+      "after": 1
+    },
+    "projectPath": null,
+    "errorSource": "(function(){var p=app.project;return JSON.stringify({file:p.file?p.file.fsName:null,dirty:p.dirty,items:p.numItems,carrier:p.itemByID(174).layer(1).property(\"ADBE Effect Parade\").property(1).property(",
+    "recoveryId": "ceov1u",
+    "scriptPath": "C:\\Users\\REDACTED_USER\\.ae-mcp\\checkpoints\\_untitled\\recovery\\ceov1u.jsx",
+    "checkpointId": null,
+    "attempt": 1
+  },
+  "isError": true
+}

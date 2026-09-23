@@ -1,0 +1,16 @@
+[package]
+name = "dynamicfx-coverage-reader"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+after-effects = "0.4"
+
+[build-dependencies]
+pipl = "0.1"
+winres = "0.1"

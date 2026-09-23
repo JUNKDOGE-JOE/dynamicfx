@@ -1,0 +1,51 @@
+[
+  {
+    "case": "FFX new instance before idle",
+    "binding": {
+      "target": 51,
+      "count": 1,
+      "state": 236851021100322,
+      "linked": 46
+    },
+    "opaque_words": 87500,
+    "old_data_rejected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "new-recovered",
+    "binding": {
+      "target": 51,
+      "state": 236851021100324,
+      "reader": 53,
+      "source": 51
+    },
+    "native_word_mismatches": 0,
+    "pixels": 480000,
+    "status": "PASS"
+  },
+  {
+    "case": "FFX existing instance before idle",
+    "binding": {
+      "target": 51,
+      "count": 1,
+      "previous": 236851021100324,
+      "state": 236851021100322,
+      "linked": 46
+    },
+    "opaque_words": 87500,
+    "old_data_rejected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "existing-recovered",
+    "binding": {
+      "target": 51,
+      "state": 236851021100325,
+      "reader": 53,
+      "source": 51
+    },
+    "native_word_mismatches": 0,
+    "pixels": 480000,
+    "status": "PASS"
+  }
+]

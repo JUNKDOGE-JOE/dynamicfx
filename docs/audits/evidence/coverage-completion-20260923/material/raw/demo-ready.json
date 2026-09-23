@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Liquid Glass.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),rows=[];for(var i=1;i<=c.numLayers;i++){var l=c.layer(i),fx=l.property(\"ADBE Effect Parade\");if(l instanceof ShapeLayer){var e=fx.property(1);rows.push({id:l.id,name:l.name,state:e.property(427).value,reader:e.property(426).value});}}app.project.save();return JSON.stringify(rows);})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"[{\\\"id\\\":23,\\\"name\\\":\\\"Glass - capsule\\\",\\\"state\\\":251486066029919,\\\"reader\\\":3},{\\\"id\\\":22,\\\"name\\\":\\\"Glass - circle\\\",\\\"state\\\":251486066029920,\\\"reader\\\":2},{\\\"id\\\":21,\\\"name\\\":\\\"Glass - rounded card\\\",\\\"state\\\":251486066029921,\\\"reader\\\":1}]\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "[{\"id\":23,\"name\":\"Glass - capsule\",\"state\":251486066029919,\"reader\":3},{\"id\":22,\"name\":\"Glass - circle\",\"state\":251486066029920,\"reader\":2},{\"id\":21,\"name\":\"Glass - rounded card\",\"state\":251486066029921,\"reader\":1}]",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

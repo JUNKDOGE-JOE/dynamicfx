@@ -1,0 +1,4 @@
+{
+  "code": "(function(){\nif(!app.project.file || app.project.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");\nvar c=app.project.itemByID(1);\nif(!c || !(c instanceof CompItem) || c.name.indexOf(\"HS_\")!==0)throw Error(\"Wrong fixture\");\nc.resolutionFactor=[1,1];\nvar status=[];\nvar fx=c.layer(1).property(\"ADBE Effect Parade\");\nfor(var i=1;i<=fx.numProperties;i++) {\n var f=fx.property(i);if(f.matchName!==\"DynamicFx\")continue;\n for(var k=1;k<=f.numProperties;k++) {\n  var p=f.property(k);if(p.name.indexOf(\"Status\")===0 || p.name.indexOf(\"State Token\")===0)status.push({name:p.name,value:p.value});\n }\n}\nc.saveFrameToPng(0.0,new File(\"E:/Code/AePlugin_Dynamicfx/scripts/out/host-shape-native-20260910/v005-original-shape.png\"));\nreturn JSON.stringify({comp:c.name,id:c.id,requestedTime:0.0,cti:c.time,resolution:c.resolutionFactor,bpc:app.project.bitsPerChannel,status:status});\n})()",
+  "timeout_sec": 40
+}

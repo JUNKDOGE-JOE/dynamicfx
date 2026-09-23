@@ -1,0 +1,64 @@
+{
+  "production_sha256": "c91db8c0435ccf90e0fac33f5473825c29bbd959cfeef8cc5fcebe80092b0d0a",
+  "probe_sha256": "f0bd26c4adbc52cd56abe2d3495393c8b3a5e9214d1f996277c58e352e7bb456",
+  "fixture_sha256": "854f972832aaf84b61bbc769523e8e35234603c1369763aa73b7a845e7d384cb",
+  "native_source_unchanged_from_build": true,
+  "production_matches_checkpoint": true,
+  "probe_matches_frozen_build": true,
+  "production_source_unchanged": true,
+  "output_rgba_matches_pre_reopen": true,
+  "output_rgba_matches_original_adjustment": true,
+  "comparisons": [
+    {
+      "label": "v009-managed-render",
+      "vertices": 3648,
+      "pixels": 480000,
+      "different": 49,
+      "max_error_8bit": 1,
+      "mae_8bit": 0.00010208333333333334,
+      "within_one_8bit_level": true
+    },
+    {
+      "label": "v009-reopened-cold-render",
+      "vertices": 3648,
+      "pixels": 480000,
+      "different": 49,
+      "max_error_8bit": 1,
+      "mae_8bit": 0.00010208333333333334,
+      "within_one_8bit_level": true
+    }
+  ],
+  "lifecycle_steps": {
+    "disable-first": {
+      "base_owner_flags": true,
+      "base_masks": true,
+      "duplicate_unchanged": true,
+      "user_masks_preserved": true
+    },
+    "disable-last": {
+      "base_owner_flags": true,
+      "base_masks": true,
+      "duplicate_unchanged": true,
+      "user_masks_preserved": true
+    },
+    "reenable": {
+      "base_owner_flags": true,
+      "base_masks": true,
+      "duplicate_unchanged": true,
+      "user_masks_preserved": true
+    },
+    "undo": {
+      "base_owner_flags": true,
+      "base_masks": true,
+      "duplicate_unchanged": true,
+      "user_masks_preserved": true
+    },
+    "redo-corrected": {
+      "base_owner_flags": true,
+      "base_masks": true,
+      "duplicate_unchanged": true,
+      "user_masks_preserved": true
+    }
+  },
+  "frozen_artifacts_verified": true
+}

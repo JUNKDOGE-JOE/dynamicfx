@@ -1,0 +1,150 @@
+[
+  {
+    "kind": "shape",
+    "adjustment": false,
+    "source": [
+      "source_item=none layer_object_type=4"
+    ],
+    "world": [],
+    "alpha": [],
+    "rgba": [],
+    "errors": []
+  },
+  {
+    "kind": "png",
+    "adjustment": false,
+    "source": [
+      "source_item=788 item_type=4 layer_object_type=0"
+    ],
+    "world": [
+      "world=800x600 rowbytes=6400 type=2 region=A_LRect { left: 0, top: 0, right: 800, bottom: 600 }"
+    ],
+    "alpha": [
+      "alpha[210,490]=0",
+      "alpha[400,300]=1",
+      "alpha[50,50]=0"
+    ],
+    "rgba": [
+      "rgba[210,490]=[0.0, 0.0, 0.0, 0.0]",
+      "rgba[400,300]=[1.0, 1.0, 1.0, 1.0]",
+      "rgba[50,50]=[0.0, 0.0, 0.0, 0.0]"
+    ],
+    "errors": []
+  },
+  {
+    "kind": "precomp",
+    "adjustment": false,
+    "source": [
+      "source_item=63 item_type=2 layer_object_type=0"
+    ],
+    "world": [
+      "world=800x600 rowbytes=6400 type=2 region=A_LRect { left: 0, top: 0, right: 800, bottom: 600 }"
+    ],
+    "alpha": [
+      "alpha[210,490]=0",
+      "alpha[400,300]=1",
+      "alpha[50,50]=0"
+    ],
+    "rgba": [
+      "rgba[210,490]=[0.0, 0.0, 0.0, 0.0]",
+      "rgba[400,300]=[1.0, 1.0, 1.0, 1.0]",
+      "rgba[50,50]=[0.0, 0.0, 0.0, 0.0]"
+    ],
+    "errors": []
+  },
+  {
+    "kind": "solid",
+    "adjustment": false,
+    "source": [
+      "source_item=846 item_type=4 layer_object_type=0"
+    ],
+    "world": [
+      "world=800x600 rowbytes=6400 type=2 region=A_LRect { left: 0, top: 0, right: 800, bottom: 600 }"
+    ],
+    "alpha": [
+      "alpha[210,490]=1",
+      "alpha[400,300]=1",
+      "alpha[50,50]=1"
+    ],
+    "rgba": [
+      "rgba[210,490]=[0.850006103515625, 0.149993896484375, 0.04998779296875, 1.0]",
+      "rgba[400,300]=[0.850006103515625, 0.149993896484375, 0.04998779296875, 1.0]",
+      "rgba[50,50]=[0.850006103515625, 0.149993896484375, 0.04998779296875, 1.0]"
+    ],
+    "errors": []
+  },
+  {
+    "kind": "shape",
+    "adjustment": true,
+    "source": [
+      "source_item=none layer_object_type=4"
+    ],
+    "world": [],
+    "alpha": [],
+    "rgba": [],
+    "errors": []
+  },
+  {
+    "kind": "png",
+    "adjustment": true,
+    "source": [
+      "source_item=788 item_type=4 layer_object_type=0"
+    ],
+    "world": [
+      "world=800x600 rowbytes=6400 type=2 region=A_LRect { left: 0, top: 0, right: 800, bottom: 600 }"
+    ],
+    "alpha": [
+      "alpha[210,490]=0",
+      "alpha[400,300]=1",
+      "alpha[50,50]=0"
+    ],
+    "rgba": [
+      "rgba[210,490]=[0.0, 0.0, 0.0, 0.0]",
+      "rgba[400,300]=[1.0, 1.0, 1.0, 1.0]",
+      "rgba[50,50]=[0.0, 0.0, 0.0, 0.0]"
+    ],
+    "errors": []
+  },
+  {
+    "kind": "precomp",
+    "adjustment": true,
+    "source": [
+      "source_item=63 item_type=2 layer_object_type=0"
+    ],
+    "world": [
+      "world=800x600 rowbytes=6400 type=2 region=A_LRect { left: 0, top: 0, right: 800, bottom: 600 }"
+    ],
+    "alpha": [
+      "alpha[210,490]=0",
+      "alpha[400,300]=1",
+      "alpha[50,50]=0"
+    ],
+    "rgba": [
+      "rgba[210,490]=[0.0, 0.0, 0.0, 0.0]",
+      "rgba[400,300]=[1.0, 1.0, 1.0, 1.0]",
+      "rgba[50,50]=[0.0, 0.0, 0.0, 0.0]"
+    ],
+    "errors": []
+  },
+  {
+    "kind": "solid",
+    "adjustment": true,
+    "source": [
+      "source_item=846 item_type=4 layer_object_type=0"
+    ],
+    "world": [
+      "world=800x600 rowbytes=6400 type=2 region=A_LRect { left: 0, top: 0, right: 800, bottom: 600 }"
+    ],
+    "alpha": [
+      "alpha[210,490]=1",
+      "alpha[400,300]=1",
+      "alpha[50,50]=1"
+    ],
+    "rgba": [
+      "rgba[210,490]=[0.850006103515625, 0.149993896484375, 0.04998779296875, 1.0]",
+      "rgba[400,300]=[0.850006103515625, 0.149993896484375, 0.04998779296875, 1.0]",
+      "rgba[50,50]=[0.850006103515625, 0.149993896484375, 0.04998779296875, 1.0]"
+    ],
+    "errors": []
+  }
+]

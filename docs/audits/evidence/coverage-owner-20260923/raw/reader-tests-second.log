@@ -1,0 +1,45 @@
+   Compiling bindgen v0.72.1
+   Compiling serde v1.0.229
+   Compiling dynamicfx-coverage-reader v0.1.0 (<workspace>\coverage-reader)
+   Compiling bincode v2.0.1
+   Compiling after-effects-sys v0.4.0
+   Compiling after-effects v0.4.0
+error: environment variable `PIPL_SUPPORT_URL` not defined at compile time
+  --> src\lib.rs:11:1
+   |
+11 | ae::define_effect!(Global, Instance, Params);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: use `std::env::var("PIPL_SUPPORT_URL")` to read the variable at run time
+   = note: this error originates in the macro `env` which comes from the expansion of the macro `ae::define_effect` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0053]: method `handle_command` has an incompatible type for trait
+  --> src\lib.rs:44:23
+   |
+44 |     fn handle_command(&self, plugin: &mut PluginState, command: ae::Command) -> Result<(), Error> {
+   |                       ^^^^^ types differ in mutability
+   |
+note: type in trait
+  --> src\lib.rs:11:1
+   |
+11 | ae::define_effect!(Global, Instance, Params);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = note: expected signature `fn(&mut Instance, &mut PluginState<'_, '_, '_, '_>, after_effects::Command) -> Result<_, _>`
+              found signature `fn(&Instance, &mut PluginState<'_, '_, '_, '_>, after_effects::Command) -> Result<_, _>`
+   = note: this error originates in the macro `ae::define_effect` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: change the self-receiver type to match the trait
+   |
+44 |     fn handle_command(&mut self, plugin: &mut PluginState, command: ae::Command) -> Result<(), Error> {
+   |                        +++
+
+error[E0080]: evaluation panicked: Type `Instance` cannot be zero-sized
+  --> src\lib.rs:11:1
+   |
+11 | ae::define_effect!(Global, Instance, Params);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ evaluation of `EffectMain::_` failed here
+   |
+   = note: this error originates in the macro `$crate::panic::panic_2021` which comes from the expansion of the macro `ae::define_effect` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+Some errors have detailed explanations: E0053, E0080.
+For more information about an error, try `rustc --explain E0053`.
+error: could not compile `dynamicfx-coverage-reader` (lib test) due to 3 previous errors

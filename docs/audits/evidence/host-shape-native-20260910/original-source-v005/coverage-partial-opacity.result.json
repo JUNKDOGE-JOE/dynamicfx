@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":160,\\\"fills\\\":[{\\\"name\\\":\\\"不透明度\\\",\\\"old\\\":100}],\\\"ms\\\":1334,\\\"vertices\\\":4,\\\"header\\\":[[0,0],[0,1]],\\\"error\\\":\\\"表达式被禁用\\\\n合成“HS_coverage_partial_opacity”中图层 1（“host”）的属性“蒙版路径”中，第 6 行出现错误。\\\\r\\\\nError: Coverage probe budget exceeded\\\\n\\\\n\\\\twhile (nodes.length) {\\\\n▶\\\\t    if (++queries > 16384 || points.length > 8000) throw new Error(\\\\\\\"Co ...\\\\n\\\\t    var r = nodes.pop(), x = r[0], y = r[1], w = r[2], h = r[3];\\\"}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":160,\"fills\":[{\"name\":\"不透明度\",\"old\":100}],\"ms\":1334,\"vertices\":4,\"header\":[[0,0],[0,1]],\"error\":\"表达式被禁用\\n合成“HS_coverage_partial_opacity”中图层 1（“host”）的属性“蒙版路径”中，第 6 行出现错误。\\r\\nError: Coverage probe budget exceeded\\n\\n\\twhile (nodes.length) {\\n▶\\t    if (++queries > 16384 || points.length > 8000) throw new Error(\\\"Co ...\\n\\t    var r = nodes.pop(), x = r[0], y = r[1], w = r[2], h = r[3];\"}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

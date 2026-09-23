@@ -21,11 +21,37 @@ def main():
     parser.add_argument('--verification', type=Path, required=True)
     parser.add_argument('--third-party', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--coverage-reader', type=Path)
+    parser.add_argument('--coverage-verification', type=Path)
+    parser.add_argument('--coverage-third-party', type=Path)
+    parser.add_argument('--release', action='store_true')
     args = parser.parse_args()
     version = tomllib.loads((ROOT / 'Cargo.toml').read_text())['package']['version']
     artifact = args.artifact.read_bytes()
     verified = json.loads(args.verification.read_text())
     assert verified['sha256'] == sha(artifact) and verified['version'] == version
+    if args.release:
+        assert verified['status'] == 'PASS'
+    if bool(args.coverage_reader) != bool(args.coverage_verification):
+        raise ValueError('Coverage packaging requires both reader and host verification')
+    reader = args.coverage_reader.read_bytes() if args.coverage_reader else None
+    coverage = json.loads(args.coverage_verification.read_text(encoding='utf-8')) if reader else None
+    if coverage:
+        assert coverage['status'] == 'PASS'
+        assert coverage['main_sha256'] == sha(artifact)
+        assert coverage['reader_sha256'] == sha(reader)
+        if not args.coverage_third_party:
+            raise ValueError('Coverage reader requires its own dependency notices')
+        reader_notices = json.loads((args.coverage_third_party / 'manifest.json').read_text())
+        assert reader_notices['target'] == 'x86_64-pc-windows-msvc'
+        assert reader_notices['cargo_lock_sha256'] == sha((ROOT / 'coverage-reader/Cargo.lock').read_bytes())
+        reader_files = [reader_notices['rust_standard_library']]
+        for package in reader_notices['packages']:
+            reader_files.extend(package['files'])
+        for entry in reader_files:
+            path = (args.coverage_third_party / entry['file']).resolve()
+            path.relative_to(args.coverage_third_party.resolve())
+            assert sha(path.read_bytes()) == entry['sha256']
     notices = json.loads((args.third_party / 'manifest.json').read_text())
     assert notices['version'] == version and notices['target'] == 'x86_64-pc-windows-msvc'
     assert notices['cargo_lock_sha256'] == sha((ROOT / 'Cargo.lock').read_bytes())
@@ -39,11 +65,20 @@ def main():
         assert sha(path.read_bytes()) == entry['sha256']
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     inputs = [ROOT / 'Cargo.toml', ROOT / 'Cargo.lock', ROOT / 'build.rs', *sorted((ROOT / 'src').rglob('*.rs'))]
+    if reader:
+        inputs += [ROOT / 'src/host/coverage_stage.cpp', ROOT / 'src/host/shared_dispatch.LICENSE',
+                   ROOT / 'coverage-reader/Cargo.toml', ROOT / 'coverage-reader/Cargo.lock',
+                   ROOT / 'coverage-reader/build.rs', *sorted((ROOT / 'coverage-reader/src').rglob('*.rs'))]
     identity = dict(version=version, source_commit=commit, binary_sha256=sha(artifact),
-                    build_command='cargo build --offline --release',
+                    build_command='cargo +1.97.1 build --release --locked --offline --target x86_64-pc-windows-msvc',
+                    source_line_endings='Hashes identify build-checkout bytes; normalize CRLF to LF when comparing tracked text with Git blobs. Exact dependency locks are bundled.',
+                    path_remapping=verified.get('path_remapping', False),
                     source_files={p.relative_to(ROOT).as_posix(): sha(p.read_bytes()) for p in inputs},
                     host_scope='AE 2026 runtime-code equivalence; exact versioned bytes not installed',
                     verification=verified)
+    if coverage:
+        identity.update(coverage_reader_sha256=sha(reader), coverage_verification=coverage,
+                        host_scope=coverage['host_scope'])
     install = f'''DynamicFX {version} - Windows x64 / DirectX 12
 
 Close After Effects before copying the plug-in. Copy DynamicFx.aex to:
@@ -67,12 +102,65 @@ The optional gradient editor is disabled. No accounts or services are required.
 Source and full instructions:
 https://github.com/JUNKDOGE-JOE/dynamicfx/tree/v{version}
 '''
+    if reader:
+        title = f'DynamicFX {version}' if args.release else 'DynamicFX host-coverage development candidate'
+        install = f'''{title} - Windows x64 / DirectX 12
+
+Close After Effects and aerender. Copy both AEX files to the version-specific
+Adobe After Effects 2026/Support Files/Plug-ins/DynamicFx directory.
+Do not use shared Common/Plug-ins/7.0/MediaCore. Restart AE after installation.
+Main SHA-256: {sha(artifact)}
+Host acceptance: {coverage['host_scope']}
+Build inputs and exact binary identities: build/source-identity.json.
+Source-expression single Undo remains the documented existing limitation.
+Issue #12 (some projects report a missing layer source after reopening) remains
+open and is not claimed fixed. See docs/project-reopen-diagnostics.md in source.
+'''
+        install += f'''
+Automatic host coverage requires AE 26.5 or newer on Windows.
+Copy DynamicFxCoverageReader.aex beside DynamicFx.aex while AE is closed.
+Both files must come from this same verified package. The utility belongs to
+the automatic layer manager; do not apply it manually to authored layers.
+Reader SHA-256: {sha(reader)}
+Coverage acceptance: {coverage['host_scope']}
+'''
     args.out.mkdir(parents=True, exist_ok=True)
-    plugin_zip = args.out / f'DynamicFX-{version}-windows-x64.zip'
+    suffix = 'coverage-candidate-' if reader and not args.release else ''
+    plugin_zip = args.out / f'DynamicFX-{version}-{suffix}windows-x64.zip'
     if plugin_zip.exists():
         raise ValueError('Refusing to replace a frozen package: ' + str(plugin_zip))
     with zipfile.ZipFile(plugin_zip, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         z.writestr('DynamicFx.aex', artifact)
+        if reader:
+            z.writestr('DynamicFxCoverageReader.aex', reader)
+            z.write(ROOT / 'coverage-reader/Cargo.lock', 'build/coverage-reader/Cargo.lock')
+            z.write(ROOT / 'src/host/shared_dispatch.LICENSE', 'THIRD_PARTY/shared-dispatch/LICENSE')
+            for p in sorted(args.coverage_third_party.rglob('*')):
+                if p.is_file():
+                    z.write(p, 'READER_THIRD_PARTY/' + p.relative_to(args.coverage_third_party).as_posix())
+            for name in ['liquid-glass.glsl', 'liquid-glass.ffx', 'apply-liquid-glass.jsx',
+                         'liquid-glass-upstream.md', 'licenses/liquid-glass-studio-MIT.txt',
+                         'licenses/glsl-color-functions-MIT.txt']:
+                z.write(ROOT / 'examples' / name, 'LiquidGlass/' + name)
+            z.writestr('LiquidGlass/README.txt', '''Liquid Glass / 液态玻璃
+
+Requires Windows After Effects 26.5+ and both AEX files from this package.
+需要 AE 26.5+，先安装本包里的两个 AEX 文件。
+
+Keep apply-liquid-glass.jsx and liquid-glass.glsl together. Select unlocked
+shape layers in an AE composition, then run apply-liquid-glass.jsx.
+选中未锁定的形状图层，运行 apply-liquid-glass.jsx，即可添加材质并打开调整层开关。
+
+Alternatively, enable the shape layer's Adjustment Layer switch and apply
+liquid-glass.ffx. No Layer/Mask selector or manual reader binding is needed.
+也可先打开形状图层的调整层开关，再应用 liquid-glass.ffx。无需绑定其他图层或蒙版。
+
+Edit the original shapes and masks normally. Keep the plugin-managed hidden
+  reader layers unchanged. Amount=0 restores the input; Glass Thickness controls
+  the rim, Refraction controls displacement, and Glare Strength controls highlights.
+  This material adapts iyinchao/liquid-glass-studio. See liquid-glass-upstream.md
+  and licenses/ for upstream attribution and MIT terms.
+''')
         z.writestr('INSTALL.txt', install)
         z.write(ROOT / 'LICENSE', 'LICENSE')
         z.write(ROOT / 'Cargo.lock', 'build/Cargo.lock')
@@ -86,6 +174,8 @@ https://github.com/JUNKDOGE-JOE/dynamicfx/tree/v{version}
             assert z.testzip() is None
         sums.append(f'{sha(p.read_bytes())}  {p.name}')
     sums.append(f'{sha(artifact)}  DynamicFx.aex')
+    if reader:
+        sums.append(f'{sha(reader)}  DynamicFxCoverageReader.aex')
     (args.out / 'SHA256SUMS.txt').write_text('\n'.join(sums) + '\n')
     (args.out / 'source-identity.json').write_text(json.dumps(identity, indent=2) + '\n')
     print('\n'.join(sums))

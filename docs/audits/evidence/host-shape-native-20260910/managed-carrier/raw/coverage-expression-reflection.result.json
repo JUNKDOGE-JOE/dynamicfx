@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"error\\\":\\\"表达式被禁用。合成“HS_coverage_partial_opacity”中图层 1（“host”）的属性“蒙版路径”中，第 1 行出现错误。\\\\r\\\\nError: {\\\\\\\"root\\\\\\\":1,\\\\\\\"group\\\\\\\":4,\\\\\\\"rows\\\\\\\":[{\\\\\\\"i\\\\\\\":1,\\\\\\\"name\\\\\\\":\\\\\\\"路径 1\\\\\\\",\\\\\\\"numProperties\\\\\\\":2,\\\\\\\"fillOpacity\\\\\\\":\\\\\\\"Error: 类“Group”中名为“ADBE Vector Fill Opacity”的属性或方法缺失或不存在。它可能已被重命名、移动或删除，或者该名称可能输入有误\\\\\\\"},{\\\\\\\"i\\\\\\\":2,\\\\\\\"name\\\\\\\":\\\\\\\"填充 1\\\\\\\",\\\\\\\"numProperties\\\\\\\":5,\\\\\\\"fillOpacity\\\\\\\":50}]}\\\"}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"error\":\"表达式被禁用。合成“HS_coverage_partial_opacity”中图层 1（“host”）的属性“蒙版路径”中，第 1 行出现错误。\\r\\nError: {\\\"root\\\":1,\\\"group\\\":4,\\\"rows\\\":[{\\\"i\\\":1,\\\"name\\\":\\\"路径 1\\\",\\\"numProperties\\\":2,\\\"fillOpacity\\\":\\\"Error: 类“Group”中名为“ADBE Vector Fill Opacity”的属性或方法缺失或不存在。它可能已被重命名、移动或删除，或者该名称可能输入有误\\\"},{\\\"i\\\":2,\\\"name\\\":\\\"填充 1\\\",\\\"numProperties\\\":5,\\\"fillOpacity\\\":50}]}\"}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

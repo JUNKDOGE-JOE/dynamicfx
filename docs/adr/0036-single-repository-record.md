@@ -149,3 +149,44 @@ A record that cannot be written is not a record.
   with every link resolving after the withheld file's removal.
 - A leak scan over the tree for the withheld vendor's name and for token or
   credential patterns returns nothing, recorded before the publishing commit.
+
+### 2026-09-11 diagnostic evidence publication
+
+The public transfer of project-open and host-coverage diagnostics replaces local
+user directory components and MCP artifact identifiers in evidence copies.
+[Redaction ledger](../audits/evidence/public-transfer-20260911/redactions.json)
+records original and public SHA-256 values. Existing frozen manifests describe
+the originals; the ledger explains changed public bytes. No observed result or
+failure was removed, and no earlier Accepted decision was changed.
+
+The same ledger records evidence Markdown link updates for the Proposed
+coverage ADR renumbering from local 0047 to public 0049.
+
+The 2026-09-20 regression evidence uses the same visible user-directory and MCP
+artifact-ID redaction policy. Its per-file original/evidence hashes are recorded
+in the [regression manifest](../audits/evidence/host-coverage-regression-20260920/manifest.json).
+These new local records have not been published.
+
+The unpushed 0.0.10 diagnostic correction records user-directory and MCP ID
+redactions in its [manifest](../audits/evidence/host-coverage-engineering-20260920/manifest.json).
+Raw source snapshots remain unchanged.
+
+The unpushed fidelity investigation applies the same user-directory and MCP
+artifact-ID redactions; its [manifest](../audits/evidence/host-coverage-fidelity-20260920/manifest.json)
+records original/evidence hashes. Pixel data and source snapshots are unchanged.
+
+The 2026-09-23 completed feature-branch payload includes the formerly unpushed
+records above; those publication descriptions refer to their recording time.
+The [completion evidence](../audits/evidence/coverage-completion-20260923/manifest.json)
+normalizes workspace/user paths and transient MCP IDs, including nested transport
+strings. Native pixel words and render digests are unchanged; large native logs
+are losslessly compressed. SDK archives/headers, AEX, AEP, intermediate renders
+and the unrelated local publication-contact image are excluded from the outgoing
+source payload. The standalone FFX is separately scanned as UTF-8 and UTF-16.
+
+The final index scan additionally found 22 nested encoded user-directory strings
+in earlier unpublished JSON evidence. Their additional normalization is recorded
+in the [publication redaction ledger](../audits/evidence/coverage-completion-20260923/publication-redactions.json).
+Three earlier PSDs are retained locally; their complete decoded channel bytes
+and dimensions/depth/source hashes replace the editor containers in the public
+record. No pixel channel data or failing test result was dropped.

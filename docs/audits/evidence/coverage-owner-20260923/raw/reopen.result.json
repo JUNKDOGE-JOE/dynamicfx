@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"production-coverage.aep\"||app.project.dirty)throw Error(\"Unexpected or unsaved project\");app.open(new File(\"<workspace>/scripts/out/coverage-owner-20260923/production-baseline.aep\"));app.project.bitsPerChannel=32;app.purge(PurgeTarget.ALL_CACHES);app.project.itemByID(30).saveFrameToPng(0,new File(\"<workspace>/scripts/out/coverage-owner-20260923/reopen-adjustment-32.png\"));app.project.save(new File(\"<workspace>/scripts/out/coverage-owner-20260923/production-coverage.aep\"));return JSON.stringify({items:app.project.numItems,dirty:app.project.dirty});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"items\\\":7,\\\"dirty\\\":false}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"items\":7,\"dirty\":false}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

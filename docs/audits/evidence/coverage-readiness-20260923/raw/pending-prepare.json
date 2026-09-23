@@ -1,0 +1,19 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"ffx.aep\"||app.project.renderQueue.numItems!==0)throw Error(\"Unexpected project or queue\");app.project.save();var c=app.project.itemByID(30),original=null;for(var i=1;i<=c.numLayers;i++){var l=c.layer(i),fx=l.property(\"ADBE Effect Parade\");if(l.id===44)original=l;if(l instanceof ShapeLayer)l.enabled=false;for(var j=1;j<=fx.numProperties;j++)if(fx.property(j).matchName===\"DynamicFx Host Shape Probe\")fx.property(j).property(2).setValue(1);}if(!original)throw Error(\"Original missing\");var copy=original.duplicate();copy.enabled=true;copy.name=\"Save before idle\";var group=copy.property(\"ADBE Root Vectors Group\").property(1).property(\"ADBE Vectors Group\"),path=group.property(\"ADBE Vector Shape - Group\").property(\"ADBE Vector Shape\"),s=path.value;s.vertices=[[200,500],[600,500],[400,150]];path.setValue(s);copy.property(\"ADBE Effect Parade\").property(2).property(2).setValue(21);copy.property(\"ADBE Effect Parade\").property(2).property(6).setValue(0);var q=app.project.renderQueue.items.add(c);q.timeSpanStart=0;q.timeSpanDuration=1/25;q.outputModule(1).applyTemplate(\"Photoshop\");q.outputModule(1).file=new File(\"<workspace>/scripts/out/coverage-readiness-20260923/pending_[#####].psd\");var before={copy:copy.id,state:copy.property(\"ADBE Effect Parade\").property(1).property(427).value};app.project.save(new File(\"<workspace>/scripts/out/coverage-readiness-20260923/pending.aep\"));return JSON.stringify(before);})()"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"copy\\\":54,\\\"state\\\":238575237021376}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"copy\":54,\"state\":238575237021376}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

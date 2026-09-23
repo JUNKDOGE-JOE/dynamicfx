@@ -1,0 +1,27 @@
+   Compiling dynamicfx v0.1.1 (<workspace>)
+warning: unused variable: `in_sp_basic_suite_ptr`
+    --> src\host\shared_dispatch.rs:266:13
+     |
+ 266 |             in_sp_basic_suite_ptr: *const after_effects::sys::SPBasicSuite,
+     |             ^^^^^^^^^^^^^^^^^^^^^
+     |
+    ::: src\lib.rs:1834:1
+     |
+1834 | crate::define_shared_effect!(Global, LocalMutex, ParamKey);
+     | ---------------------------------------------------------- in this macro invocation
+     |
+help: `in_sp_basic_suite_ptr` is captured in macro and introduced a unused variable
+    --> src\host\shared_dispatch.rs:266:13
+     |
+ 266 |             in_sp_basic_suite_ptr: *const after_effects::sys::SPBasicSuite,
+     |             ^^^^^^^^^^^^^^^^^^^^^
+     |
+    ::: src\lib.rs:1834:1
+     |
+1834 | crate::define_shared_effect!(Global, LocalMutex, ParamKey);
+     | ---------------------------------------------------------- in this macro invocation
+     = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+     = note: this warning originates in the macro `crate::define_shared_effect` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: `dynamicfx` (lib) generated 1 warning
+    Finished `release` profile [optimized] target(s) in 3.26s

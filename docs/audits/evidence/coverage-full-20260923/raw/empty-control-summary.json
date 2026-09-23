@@ -1,0 +1,5 @@
+{
+  "case": "empty adjustment versus disabled-layer background at 32 bpc",
+  "rgba_mismatches": 0,
+  "status": "PASS"
+}

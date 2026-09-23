@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"[{\\\"name\\\":\\\"savePreset\\\",\\\"args\\\":[\\n\\n],\\\"description\\\":\\\"\\\",\\\"help\\\":\\\"\\\"}]\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "[{\"name\":\"savePreset\",\"args\":[\n\n],\"description\":\"\",\"help\":\"\"}]",
+    "contentType": "text",
+    "artifactId": "user:<redacted>"
+  }
+}

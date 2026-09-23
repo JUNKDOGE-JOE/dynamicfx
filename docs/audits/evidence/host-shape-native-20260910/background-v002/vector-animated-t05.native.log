@@ -1,0 +1,249 @@
+[time=1789052068445 pid=56396 thread=ThreadId(1)]
+BACKGROUND_BEGIN comp=76 layer=79 effect=1 serial=3 mode=2 layer_seconds=0.5
+[time=1789052068447 pid=56396 thread=ThreadId(1)]
+raw post-expression streams; geometry has not been transformed or rasterized
+match=ADBE Root Vectors Group group=2
+index=0
+  match=ADBE Vector Group group=1
+index=0
+    match=ADBE Vector Blend Mode group=0
+value=1
+index=1
+    match=ADBE Vectors Group group=2
+index=0
+      match=ADBE Vector Shape - Group group=1
+index=0
+        match=ADBE Vector Shape Direction group=0
+value=1
+index=1
+        match=ADBE Vector Shape group=0
+outline segments=3 open=0
+vertex[0]=PF_PathVertex { x: 180.0, y: 127.5, tan_in_x: -15.0, tan_in_y: 20.0, tan_out_x: 40.0, tan_out_y: -15.0 }
+vertex[1]=PF_PathVertex { x: 630.0, y: 167.5, tan_in_x: -30.0, tan_in_y: -10.0, tan_out_x: 5.0, tan_out_y: 30.0 }
+vertex[2]=PF_PathVertex { x: 400.0, y: 512.5, tan_in_x: 35.0, tan_in_y: 0.0, tan_out_x: -30.0, tan_out_y: 0.0 }
+vertex[3]=PF_PathVertex { x: 180.0, y: 127.5, tan_in_x: -15.0, tan_in_y: 20.0, tan_out_x: 40.0, tan_out_y: -15.0 }
+index=1
+      match=ADBE Vector Graphic - Fill group=1
+index=0
+        match=ADBE Vector Blend Mode group=0
+value=1
+index=1
+        match=ADBE Vector Composite Order group=0
+value=1
+index=2
+        match=ADBE Vector Fill Rule group=0
+value=1
+index=3
+        match=ADBE Vector Fill Color group=0
+type=6 not sampled
+index=4
+        match=ADBE Vector Fill Opacity group=0
+value=100
+index=2
+    match=ADBE Vector Transform Group group=1
+index=0
+      match=ADBE Vector Anchor group=0
+value=AEGP_TwoDVal { x: 10.0, y: 20.0 }
+index=1
+      match=ADBE Vector Position group=0
+value=AEGP_TwoDVal { x: 94.99961132309224, y: 64.99968905847379 }
+index=2
+      match=ADBE Vector Scale group=0
+value=AEGP_TwoDVal { x: 125.0, y: 80.0 }
+index=3
+      match=ADBE Vector Skew group=0
+value=15
+index=4
+      match=ADBE Vector Skew Axis group=0
+value=20
+index=5
+      match=ADBE Vector Rotation group=0
+value=30
+index=6
+      match=ADBE Vector Group Opacity group=0
+value=100
+index=3
+    match=ADBE Vector Materials Group group=1
+index=0
+      match=ADBE Vec3D Front RGB group=0
+type=6 not sampled
+index=1
+      match=ADBE Vec3D Front Ambient group=0
+value=100
+index=2
+      match=ADBE Vec3D Front Diffuse group=0
+value=50
+index=3
+      match=ADBE Vec3D Front Specular group=0
+value=50
+index=4
+      match=ADBE Vec3D Front Shininess group=0
+value=5
+index=5
+      match=ADBE Vec3D Front Metal group=0
+value=100
+index=6
+      match=ADBE Vec3D Front Reflection group=0
+value=0
+index=7
+      match=ADBE Vec3D Front Gloss group=0
+value=100
+index=8
+      match=ADBE Vec3D Front Fresnel group=0
+value=0
+index=9
+      match=ADBE Vec3D Front Xparency group=0
+value=0
+index=10
+      match=ADBE Vec3D Front XparRoll group=0
+value=0
+index=11
+      match=ADBE Vec3D Front IOR group=0
+value=1
+index=12
+      match=ADBE Vec3D Bevel RGB group=0
+type=6 not sampled
+index=13
+      match=ADBE Vec3D Bevel Ambient group=0
+value=100
+index=14
+      match=ADBE Vec3D Bevel Diffuse group=0
+value=50
+index=15
+      match=ADBE Vec3D Bevel Specular group=0
+value=50
+index=16
+      match=ADBE Vec3D Bevel Shininess group=0
+value=5
+index=17
+      match=ADBE Vec3D Bevel Metal group=0
+value=100
+index=18
+      match=ADBE Vec3D Bevel Reflection group=0
+value=0
+index=19
+      match=ADBE Vec3D Bevel Gloss group=0
+value=100
+index=20
+      match=ADBE Vec3D Bevel Fresnel group=0
+value=0
+index=21
+      match=ADBE Vec3D Bevel Xparency group=0
+value=0
+index=22
+      match=ADBE Vec3D Bevel XparRoll group=0
+value=0
+index=23
+      match=ADBE Vec3D Bevel IOR group=0
+value=1
+index=24
+      match=ADBE Vec3D Side RGB group=0
+type=6 not sampled
+index=25
+      match=ADBE Vec3D Side Ambient group=0
+value=100
+index=26
+      match=ADBE Vec3D Side Diffuse group=0
+value=50
+index=27
+      match=ADBE Vec3D Side Specular group=0
+value=50
+index=28
+      match=ADBE Vec3D Side Shininess group=0
+value=5
+index=29
+      match=ADBE Vec3D Side Metal group=0
+value=100
+index=30
+      match=ADBE Vec3D Side Reflection group=0
+value=0
+index=31
+      match=ADBE Vec3D Side Gloss group=0
+value=100
+index=32
+      match=ADBE Vec3D Side Fresnel group=0
+value=0
+index=33
+      match=ADBE Vec3D Side Xparency group=0
+value=0
+index=34
+      match=ADBE Vec3D Side XparRoll group=0
+value=0
+index=35
+      match=ADBE Vec3D Side IOR group=0
+value=1
+index=36
+      match=ADBE Vec3D Back RGB group=0
+type=6 not sampled
+index=37
+      match=ADBE Vec3D Back Ambient group=0
+value=100
+index=38
+      match=ADBE Vec3D Back Diffuse group=0
+value=50
+index=39
+      match=ADBE Vec3D Back Specular group=0
+value=50
+index=40
+      match=ADBE Vec3D Back Shininess group=0
+value=5
+index=41
+      match=ADBE Vec3D Back Metal group=0
+value=100
+index=42
+      match=ADBE Vec3D Back Reflection group=0
+value=0
+index=43
+      match=ADBE Vec3D Back Gloss group=0
+value=100
+index=44
+      match=ADBE Vec3D Back Fresnel group=0
+value=0
+index=45
+      match=ADBE Vec3D Back Xparency group=0
+value=0
+index=46
+      match=ADBE Vec3D Back XparRoll group=0
+value=0
+index=47
+      match=ADBE Vec3D Back IOR group=0
+value=1
+match=ADBE Transform Group group=1
+index=0
+  match=ADBE Anchor Point group=0
+value=AEGP_ThreeDVal { x: 0.0, y: 0.0, z: 0.0 }
+index=1
+  match=ADBE Position group=0
+value=AEGP_ThreeDVal { x: 0.0, y: 0.0, z: 0.0 }
+index=2
+  match=ADBE Position_0 group=0
+value=0
+index=3
+  match=ADBE Position_1 group=0
+value=0
+index=4
+  match=ADBE Position_2 group=0
+value=0
+index=5
+  match=ADBE Scale group=0
+value=AEGP_ThreeDVal { x: 100.0, y: 100.0, z: 100.0 }
+index=6
+  match=ADBE Orientation group=0
+value=AEGP_ThreeDVal { x: 0.0, y: 0.0, z: 0.0 }
+index=7
+  match=ADBE Rotate X group=0
+value=0
+index=8
+  match=ADBE Rotate Y group=0
+value=0
+index=9
+  match=ADBE Rotate Z group=0
+value=0
+index=10
+  match=ADBE Opacity group=0
+value=100
+index=11
+  match=ADBE Envir Appear in Reflect group=0
+value=1
+
+BACKGROUND_COMPLETE comp=76 serial=3

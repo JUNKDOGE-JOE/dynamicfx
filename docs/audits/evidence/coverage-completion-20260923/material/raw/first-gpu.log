@@ -1,0 +1,2 @@
+gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 "
+{"adapter":"adapter=\"NVIDIA GeForce RTX 5080\" backend=Dx12 driver=\"32.0.16.1088 \"","finite":true,"height":400,"language_id":1,"logical":[640.0,400.0],"output":"scripts/out/liquid-glass-20260923/first.f32","passes":3,"renderer_blake3":"a64f634018da994bd8053844b547a629115a313dc795af1ead6dacdd8b3ca9e6","source":"examples/liquid-glass.glsl","source_blake3":"61ae999055fd0eb355ed9db5fcb4d512668f250a84ae022c3e195872677c14d5","steady_frame_ms":[],"time":0.0,"width":640,"working_depth":"32"}

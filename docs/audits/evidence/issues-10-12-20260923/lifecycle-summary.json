@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "keys_preserved": 2,
+  "samples": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "removed_restored_hint": true,
+  "reopened": true
+}

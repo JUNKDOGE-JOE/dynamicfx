@@ -1,0 +1,22 @@
+[1790136560] coverage sequence resetup: render_only=false
+[1790136560] sequence (re)setup: observation deferred
+[1790136560] coverage sequence resetup: render_only=false
+[1790136560] sequence (re)setup: observation deferred
+[1790136560] status: compiled: 1 pass, 1 params
+[1790136560] coverage sequence resetup: render_only=true
+[1790136560] sequence (re)setup: observation deferred
+[1790136560] coverage sequence resetup: render_only=true
+[1790136560] sequence (re)setup: observation deferred
+[1790136560] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790136560] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790136560] definition resolved from process registry
+[1790136560] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 50, top: 150, right: 300, bottom: 500 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790136560] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790136560] layer 1: 800x600 stride 12800
+[1790136560] coverage gate refused: E60 state=236851021100322 certificate=0
+[1790136561] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790136561] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790136561] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790136561] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790136561] coverage sequence resetup: render_only=true
+[1790136561] sequence (re)setup: observation deferred

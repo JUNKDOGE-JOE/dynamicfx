@@ -1,0 +1,51 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":false,\"error\":\"ExtendScript error: TypeError: undefined 不是对象 (line 1)\\n[hint] a lookup returned null/undefined - check comp/layer/property lookups (byName/index) before use, or wrap with AEMCP.mustFind(value, name). If you fetched an effect sub-property by name and got null, address it by index instead (effect.property(1)/property(2)/...).\",\"disposition\":\"failed\",\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":null,\"pendingCalls\":0,\"sentinelInFlight\":false},\"errorLine\":1,\"touched\":{\"level\":\"item_diff\",\"method\":\"snapshot-diff\",\"comp\":null,\"activeCompChanged\":null,\"layersAdded\":[],\"layersRemoved\":[],\"layersChanged\":[],\"itemsAdded\":[{\"id\":103,\"name\":\"HS_builtin_source\",\"type\":\"å�ˆæˆ�\"}],\"itemsRemoved\":[],\"truncated\":false,\"notes\":[]},\"revision\":{\"before\":781,\"after\":793},\"projectPath\":\"E:\\\\Code\\\\AePlugin_Dynamicfx\\\\scripts\\\\out\\\\host-shape-native-20260910\\\\host-shape-native.aep\",\"errorSource\":\"(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var orig=app.project.itemByID(1);var c=orig.duplicate();c.name='HS_builtin_source';var l=\",\"recoveryId\":\"dgsn3r\",\"scriptPath\":\"C:\\\\Users\\\\REDACTED_USER\\\\.ae-mcp\\\\checkpoints\\\\host-shape-native_a86229a859ff\\\\recovery\\\\dgsn3r.jsx\",\"checkpointId\":null,\"attempt\":1}"
+    }
+  ],
+  "structuredContent": {
+    "ok": false,
+    "error": "ExtendScript error: TypeError: undefined 不是对象 (line 1)\n[hint] a lookup returned null/undefined - check comp/layer/property lookups (byName/index) before use, or wrap with AEMCP.mustFind(value, name). If you fetched an effect sub-property by name and got null, address it by index instead (effect.property(1)/property(2)/...).",
+    "disposition": "failed",
+    "jsxBridge": {
+      "state": "ok",
+      "degradedSinceMs": null,
+      "lastTimeoutAt": null,
+      "pendingCalls": 0,
+      "sentinelInFlight": false
+    },
+    "errorLine": 1,
+    "touched": {
+      "level": "item_diff",
+      "method": "snapshot-diff",
+      "comp": null,
+      "activeCompChanged": null,
+      "layersAdded": [],
+      "layersRemoved": [],
+      "layersChanged": [],
+      "itemsAdded": [
+        {
+          "id": 103,
+          "name": "HS_builtin_source",
+          "type": "å�ˆæˆ�"
+        }
+      ],
+      "itemsRemoved": [],
+      "truncated": false,
+      "notes": []
+    },
+    "revision": {
+      "before": 781,
+      "after": 793
+    },
+    "projectPath": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\host-shape-native-20260910\\host-shape-native.aep",
+    "errorSource": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var orig=app.project.itemByID(1);var c=orig.duplicate();c.name='HS_builtin_source';var l=",
+    "recoveryId": "dgsn3r",
+    "scriptPath": "C:\\Users\\REDACTED_USER\\.ae-mcp\\checkpoints\\host-shape-native_a86229a859ff\\recovery\\dgsn3r.jsx",
+    "checkpointId": null,
+    "attempt": 1
+  },
+  "isError": true
+}

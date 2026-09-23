@@ -1,0 +1,19 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"ffx.aep\"||app.project.renderQueue.numItems!==1||app.project.renderQueue.item(1).comp.id!==30)throw Error(\"Unexpected project or queue\");var q=app.project.renderQueue.item(1);q.timeSpanStart=0;q.timeSpanDuration=1/25;var om=q.outputModule(1);om.applyTemplate(\"Photoshop\");om.file=new File(\"<workspace>/scripts/out/coverage-readiness-20260923/cold_[#####].psd\");app.project.save(new File(\"<workspace>/scripts/out/coverage-readiness-20260923/cold.aep\"));return JSON.stringify({template:\"Photoshop\",queue:app.project.renderQueue.numItems,depth:app.project.bitsPerChannel,file:app.project.file.name});})()"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"template\\\":\\\"Photoshop\\\",\\\"queue\\\":1,\\\"depth\\\":32,\\\"file\\\":\\\"cold.aep\\\"}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"template\":\"Photoshop\",\"queue\":1,\"depth\":32,\"file\":\"cold.aep\"}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

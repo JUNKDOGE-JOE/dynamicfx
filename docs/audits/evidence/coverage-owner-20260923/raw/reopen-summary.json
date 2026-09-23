@@ -1,0 +1,8 @@
+{
+  "case": "saved native links render immediately after reopen",
+  "depth": 32,
+  "pixels": 480000,
+  "native_word_mismatches": 0,
+  "nonzero_reference": 60149,
+  "status": "PASS"
+}

@@ -1,0 +1,4 @@
+{
+  "code": "(function(){\nif(!app.project.file||app.project.file.name!==\"source-matrix.aep\")throw Error(\"Unexpected project\");\nvar c=null;for(var i=1;i<=app.project.numItems;i++)if(app.project.item(i).name===\"DS_external_shape_reader\")c=app.project.item(i);\nif(!c)throw Error(\"Missing comp\");var l=c.layer(1),e=l.property(\"ADBE Effect Parade\").property(1);\n\ne.property(2).setValue(12);e.property(5).setValue(e.property(5).value+1);\nreturn JSON.stringify({comp:c.id,layer:l.id,adjustment:l.adjustmentLayer,serial:e.property(5).value});\n})()",
+  "timeout_sec": 20
+}

@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||!(/^(full|lifecycle)\\.aep$/.test(app.project.file.name)))throw Error(\"Unexpected project\");\nvar c=app.project.itemByID(1),o=null,r=null;for(var i=1;i<=c.numLayers;i++){var l=c.layer(i);if(l.id===13)o=l;var f=l.property(\"ADBE Effect Parade\");if(f.numProperties&&f.property(1).matchName===\"DynamicFx Coverage Reader\")r=l;}if(!o||!r)throw Error(\"Missing fixture\");\nr.locked=false;r.position.setValue([400,300]);r.locked=true;return JSON.stringify({state:o.property(\"ADBE Effect Parade\").property(1).property(427).value,reader:r.id,position:r.position.value,layerCount:c.numLayers});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"state\\\":3,\\\"reader\\\":29,\\\"position\\\":[400,300,0],\\\"layerCount\\\":2}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"state\":3,\"reader\":29,\"position\":[400,300,0],\"layerCount\":2}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

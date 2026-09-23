@@ -1,0 +1,185 @@
+{
+  "date": "2026-09-10",
+  "host": "After Effects 2026 26.3x87",
+  "hostPid": 39756,
+  "mcpVersion": "0.10.7",
+  "transport": "MCP over loopback HTTP, ae_exec/ae_read/ae_nativeExec",
+  "foregroundActions": [],
+  "projectBpc": 16,
+  "pngEncoding": "8-bit RGBA",
+  "productionCommit": "ff895649bf99ce52055e066dd986f49e7bf6956e",
+  "installedProductionSha256": "c91db8c0435ccf90e0fac33f5473825c29bbd959cfeef8cc5fcebe80092b0d0a",
+  "installedProbeVersion": "0.0.1",
+  "installedProbeSha256": "cf867972cc58de85fbb598a34958be667f6d1217b6dfb5974300b6805085c494",
+  "project": {
+    "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\host-shape-native-20260910\\host-shape-native.aep",
+    "sha256": "7a21944780f6d4ad4163b79b747f1b0c9146ed4af515ced360397a602bb2813b"
+  },
+  "baseline": {
+    "referenceAlphaBytes": [
+      0,
+      255,
+      0
+    ],
+    "ordinaryOutputRgbaBytes": [
+      [
+        51,
+        76,
+        102,
+        255
+      ],
+      [
+        255,
+        255,
+        255,
+        255
+      ],
+      [
+        51,
+        76,
+        102,
+        255
+      ]
+    ],
+    "result": "PASS reproduction only"
+  },
+  "pfEnumeration": {
+    "shape-only-t0": [
+      0
+    ],
+    "mask-only-t0": [
+      1
+    ],
+    "shape-and-mask-t0": [
+      1
+    ],
+    "mask-only-t1": [
+      1
+    ],
+    "mask-only-t05": [
+      1
+    ]
+  },
+  "maskAnimation": [
+    {
+      "frame": "mask-only-t0",
+      "requestedTime": 0,
+      "cti": 0,
+      "vertices": [
+        [
+          200,
+          150
+        ],
+        [
+          600,
+          150
+        ],
+        [
+          400,
+          500
+        ]
+      ],
+      "result": "PASS"
+    },
+    {
+      "frame": "mask-only-t1",
+      "requestedTime": 1,
+      "cti": 0,
+      "vertices": [
+        [
+          150,
+          100
+        ],
+        [
+          650,
+          180
+        ],
+        [
+          390,
+          520
+        ]
+      ],
+      "result": "PASS"
+    },
+    {
+      "frame": "mask-only-t05",
+      "requestedTime": 0.5,
+      "cti": 0,
+      "vertices": [
+        [
+          175.0,
+          125.0
+        ],
+        [
+          625.0,
+          165.0
+        ],
+        [
+          395.0,
+          510.0
+        ]
+      ],
+      "result": "PASS"
+    }
+  ],
+  "nativeShapeNode": {
+    "canVaryOverTime": true,
+    "childCount": 0,
+    "disabled": false,
+    "groupingType": "leaf",
+    "hidden": false,
+    "matchName": "ADBE Vector Shape",
+    "modified": true,
+    "name": "路径",
+    "propertyIndex": 2,
+    "timeVarying": false,
+    "value": null,
+    "valueStatus": "unsupported",
+    "valueType": "mask"
+  },
+  "coverageCheckout": "NOT_RUN: installed diagnostic needs a button; background entry requires reload",
+  "aegpVertices": "NOT_RUN: MCP lists the mask node but does not export its vertices",
+  "backgroundCandidate": {
+    "version": "0.0.2",
+    "path": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\host-shape-native-20260910\\DynamicFxHostShapeProbe-v002.aex",
+    "sha256": "8d896b6857385dcef0854ecba84995ee102e729ebd860588cc53f6bfd33cac25",
+    "testsPassed": 7,
+    "installed": false
+  },
+  "nativeSource": [
+    {
+      "path": "spike/host-outline/native/.gitignore",
+      "sha256": "f557d882fbeb3841d743d4c9b23c2c097e50f9b3740fbdae97c9dcd8d57e025e"
+    },
+    {
+      "path": "spike/host-outline/native/build.rs",
+      "sha256": "e4c1ec564d0c3953245b7b0eb076c05eff8fa3471008e0eb0664f2dcb0f10525"
+    },
+    {
+      "path": "spike/host-outline/native/Cargo.lock",
+      "sha256": "822a5339a72169e6e9ee669dd22c08594e2a887f5ab19da91e347d6e4c0e5ec8"
+    },
+    {
+      "path": "spike/host-outline/native/Cargo.toml",
+      "sha256": "df65bd889d9da82c753a88ab857774f88fd173d0cb255be0f4359869742e8811"
+    },
+    {
+      "path": "spike/host-outline/native/src/idle.rs",
+      "sha256": "8895bc7c24ab49500ed0091734f283797133d20b107d5b240ef713fd3f441da7"
+    },
+    {
+      "path": "spike/host-outline/native/src/lib.rs",
+      "sha256": "2b8b2aef5ce09d24542a1b5efb0e816f0965eaddf2a680ecfc4119156706d3b7"
+    },
+    {
+      "path": "spike/host-outline/native/src/read.rs",
+      "sha256": "ce8cff701c256e425f066168089eb440b270a8a0e97a131975749229a272cd17"
+    }
+  ],
+  "failures": [
+    "setup MCP call timed out at 45 seconds; later readback verified all five comps and saved project without replaying setup",
+    "setup exact Source label did not match Source (use expression); corrected only the intended fixture source, then rendered",
+    "native property list initially omitted composition ref, then local parser used locator instead of propertyLocator; corrected before native traversal succeeded",
+    "background candidate initial compile used Proj suite alias; corrected to Project before seven tests and build passed"
+  ]
+}

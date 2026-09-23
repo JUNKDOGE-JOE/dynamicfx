@@ -1,0 +1,1 @@
+{"content": [{"type": "text", "text": "{\"ok\":true,\"content\":\"{\\\"id\\\":775,\\\"expansion\\\":8}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"}], "structuredContent": {"ok": true, "content": "{\"id\":775,\"expansion\":8}", "contentType": "text", "artifactId": "user:REDACTED_ARTIFACT_ID"}}

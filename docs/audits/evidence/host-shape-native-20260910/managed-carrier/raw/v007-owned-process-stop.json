@@ -1,0 +1,6 @@
+{
+  "Id": 48108,
+  "StartTime": "2026-09-11T00:03:05.1809123+08:00",
+  "StopTime": "2026-09-11T00:11:02.1148198+08:00",
+  "Reason": "MCP quit left the owned process alive; subsequent MCP read verified empty clean project"
+}

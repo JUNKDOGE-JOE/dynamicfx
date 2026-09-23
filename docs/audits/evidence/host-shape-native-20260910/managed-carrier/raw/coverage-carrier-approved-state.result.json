@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"version\\\":\\\"26.3x87\\\",\\\"file\\\":\\\"E:\\\\\\\\Code\\\\\\\\AePlugin_Dynamicfx\\\\\\\\scripts\\\\\\\\out\\\\\\\\host-shape-native-20260910\\\\\\\\host-shape-native.aep\\\",\\\"dirty\\\":false,\\\"bpc\\\":16,\\\"items\\\":[{\\\"id\\\":103,\\\"name\\\":\\\"HS_builtin_source\\\",\\\"layers\\\":2,\\\"time\\\":0},{\\\"id\\\":90,\\\"name\\\":\\\"HS_coverage_control\\\",\\\"layers\\\":1,\\\"time\\\":0},{\\\"id\\\":160,\\\"name\\\":\\\"HS_coverage_partial_opacity\\\",\\\"layers\\\":2,\\\"time\\\":0},{\\\"id\\\":132,\\\"name\\\":\\\"HS_expression_coverage_animated\\\",\\\"layers\\\":2,\\\"time\\\":0},{\\\"id\\\":118,\\\"name\\\":\\\"HS_expression_coverage_blocks\\\",\\\"layers\\\":2,\\\"time\\\":0},{\\\"id\\\":146,\\\"name\\\":\\\"HS_expression_coverage_reference\\\",\\\"layers\\\":1,\\\"time\\\":0},{\\\"id\\\":17,\\\"name\\\":\\\"HS_mask_only\\\",\\\"layers\\\":2,\\\"time\\\":0},{\\\"id\\\":48,\\\"name\\\":\\\"HS_ordinary_input\\\",\\\"layers\\\":2,\\\"time\\\":0},{\\\"id\\\":63,\\\"name\\\":\\\"HS_reference_coverage\\\",\\\"layers\\\":1,\\\"time\\\":0},{\\\"id\\\":33,\\\"name\\\":\\\"HS_shape_and_mask\\\",\\\"layers\\\":2,\\\"time\\\":0},{\\\"id\\\":1,\\\"name\\\":\\\"HS_shape_only\\\",\\\"layers\\\":2,\\\"time\\\":0},{\\\"id\\\":76,\\\"name\\\":\\\"HS_vector_animated\\\",\\\"layers\\\":2,\\\"time\\\":0}]}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"version\":\"26.3x87\",\"file\":\"E:\\\\Code\\\\AePlugin_Dynamicfx\\\\scripts\\\\out\\\\host-shape-native-20260910\\\\host-shape-native.aep\",\"dirty\":false,\"bpc\":16,\"items\":[{\"id\":103,\"name\":\"HS_builtin_source\",\"layers\":2,\"time\":0},{\"id\":90,\"name\":\"HS_coverage_control\",\"layers\":1,\"time\":0},{\"id\":160,\"name\":\"HS_coverage_partial_opacity\",\"layers\":2,\"time\":0},{\"id\":132,\"name\":\"HS_expression_coverage_animated\",\"layers\":2,\"time\":0},{\"id\":118,\"name\":\"HS_expression_coverage_blocks\",\"layers\":2,\"time\":0},{\"id\":146,\"name\":\"HS_expression_coverage_reference\",\"layers\":1,\"time\":0},{\"id\":17,\"name\":\"HS_mask_only\",\"layers\":2,\"time\":0},{\"id\":48,\"name\":\"HS_ordinary_input\",\"layers\":2,\"time\":0},{\"id\":63,\"name\":\"HS_reference_coverage\",\"layers\":1,\"time\":0},{\"id\":33,\"name\":\"HS_shape_and_mask\",\"layers\":2,\"time\":0},{\"id\":1,\"name\":\"HS_shape_only\",\"layers\":2,\"time\":0},{\"id\":76,\"name\":\"HS_vector_animated\",\"layers\":2,\"time\":0}]}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

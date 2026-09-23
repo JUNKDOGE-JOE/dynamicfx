@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "pixel_channel_differences": 0,
+  "size": [
+    1440,
+    900
+  ],
+  "artifact": {
+    "probe": "moved to task backup",
+    "reader": "29695b72fc8a26222a51319c3e42f86696b6d15e78efb02d968bc264ff173be6",
+    "main": "6d188d2251fdecf89f18611fd429cbc4cd9b8c056dc3ad8f25dc35f74eca6a97"
+  }
+}

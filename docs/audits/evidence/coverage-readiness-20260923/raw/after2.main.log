@@ -1,0 +1,104 @@
+)setup: observation deferred
+[1790135874] coverage sequence resetup: render_only=true
+[1790135874] sequence (re)setup: observation deferred
+[1790135874] coverage sequence resetup: render_only=true
+[1790135874] sequence (re)setup: observation deferred
+[1790135874] idle observation: compiled: 1 pass, 1 params
+[1790135874] idle slot ui applied: 1 bound, 0 defaults written
+[1790135874] idle observation: compiled: 1 pass, 1 params
+[1790135874] idle slot ui applied: 1 bound, 0 defaults written
+[1790135874] status: compiled: 1 pass, 1 params
+[1790135874] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135874] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135874] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135874] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135874] coverage reader created: owner=47 reader=49
+[1790135874] coverage sequence resetup: render_only=true
+[1790135874] sequence (re)setup: observation deferred
+[1790135874] idle observation: compiled: 1 pass, 1 params
+[1790135874] idle slot ui applied: 1 bound, 0 defaults written
+[1790135874] status: compiled: 1 pass, 1 params
+[1790135874] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135874] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135874] coverage sequence resetup: render_only=true
+[1790135874] sequence (re)setup: observation deferred
+[1790135875] status: compiled: 1 pass, 1 params
+[1790135875] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135875] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135875] coverage sequence resetup: render_only=true
+[1790135875] sequence (re)setup: observation deferred
+[1790135884] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135884] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135884] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135884] coverage sequence resetup: render_only=false
+[1790135884] sequence (re)setup: observation deferred
+[1790135884] coverage sequence resetup: render_only=false
+[1790135884] sequence (re)setup: observation deferred
+[1790135884] coverage sequence resetup: render_only=true
+[1790135884] sequence (re)setup: observation deferred
+[1790135884] coverage sequence resetup: render_only=true
+[1790135884] sequence (re)setup: observation deferred
+[1790135884] idle observation: compiled: 1 pass, 1 params
+[1790135884] status: compiled: 1 pass, 1 params
+[1790135884] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135884] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135884] coverage sequence resetup: render_only=true
+[1790135884] sequence (re)setup: observation deferred
+[1790135884] idle observation: compiled: 1 pass, 1 params
+[1790135884] status: compiled: 1 pass, 1 params
+[1790135884] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135884] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135884] coverage sequence resetup: render_only=true
+[1790135884] sequence (re)setup: observation deferred
+[1790135887] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790135887] definition resolved from process registry
+[1790135887] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 "
+[1790135887] smart geometry: logical=800x600 downsample=1/9x1/9 request=PF_LRect { left: 22, top: 16, right: 67, bottom: 56 } upstream=Rect { left: 0, top: 0, right: 89, bottom: 67 } frame=Rect { left: 0, top: 0, right: 89, bottom: 67 } canvas=Rect { left: 0, top: 0, right: 89, bottom: 67 }
+[1790135887] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790135887] layer 1: 89x67 stride 1472
+[1790135887] render enter: Some(F32) in=89x67 out=45x40 win=(22,16) token=97086776917201 compiled=true snap=true t=0 step=1024 lstep=1024 scale=25600
+[1790135887] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 45x40, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790135887] execute_plan ok
+[1790135887] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790135887] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 150, right: 600, bottom: 500 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790135887] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790135887] layer 1: 800x600 stride 12800
+[1790135887] render enter: Some(F32) in=800x600 out=400x350 win=(200,150) token=97086776917201 compiled=true snap=true t=0 step=1024 lstep=1024 scale=25600
+[1790135887] execute_plan ok
+[1790135887] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790135887] definition resolved from process registry
+[1790135887] smart geometry: logical=800x600 downsample=1/9x1/9 request=PF_LRect { left: 0, top: 0, right: 89, bottom: 67 } upstream=Rect { left: 22, top: 16, right: 67, bottom: 56 } frame=Rect { left: 0, top: 0, right: 89, bottom: 67 } canvas=Rect { left: 0, top: 0, right: 89, bottom: 67 }
+[1790135887] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790135887] layer 1: 89x67 stride 1472
+[1790135887] render enter: Some(F32) in=45x40 out=89x67 win=(0,0) token=97086776917201 compiled=true snap=true t=0 step=1024 lstep=1024 scale=25600
+[1790135887] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 45x40, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790135887] execute_plan ok
+[1790135888] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790135888] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 200, top: 150, right: 600, bottom: 500 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790135888] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790135888] layer 1: 800x600 stride 12800
+[1790135888] render enter: Some(F32) in=400x350 out=800x600 win=(0,0) token=97086776917201 compiled=true snap=true t=0 step=1024 lstep=1024 scale=25600
+[1790135888] execute_plan ok
+[1790135889] coverage sequence resetup: render_only=false
+[1790135889] sequence (re)setup: observation deferred
+[1790135889] status: compiled: 1 pass, 1 params
+[1790135889] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135889] coverage sequence resetup: render_only=true
+[1790135889] sequence (re)setup: observation deferred
+[1790135889] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790135889] definition resolved from process registry
+[1790135889] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 50, top: 150, right: 300, bottom: 500 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790135889] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790135889] layer 1: 800x600 stride 12800
+[1790135889] coverage gate refused: E60 state=236493143671715 certificate=0
+[1790135889] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790135889] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 200, top: 150, right: 600, bottom: 500 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790135889] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790135889] layer 1: 800x600 stride 12800
+[1790135889] render enter: Some(F32) in=400x350 out=800x600 win=(0,0) token=97086776917201 compiled=true snap=true t=0 step=1024 lstep=1024 scale=25600
+[1790135889] execute_plan ok
+[1790135889] idle slot ui applied: 1 bound, 0 defaults written
+[1790135889] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135891] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135891] coverage sequence resetup: render_only=true
+[1790135891] sequence (re)setup: observation deferred

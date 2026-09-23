@@ -1,0 +1,16 @@
+[
+  {
+    "name": "curve",
+    "pixels": 12288,
+    "max_error_native16": 1,
+    "different_pixels": 128,
+    "opacity_from_reference": 1.0
+  },
+  {
+    "name": "half",
+    "pixels": 12288,
+    "max_error_native16": 1,
+    "different_pixels": 50,
+    "opacity_from_reference": 0.501953125
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "undo_group_name": "Measure partial opacity coverage cost",
+  "timeout_sec": 30,
+  "code": "(function(){if(!app.project.file||app.project.file.name!=='host-shape-native.aep')throw Error('Wrong project');var c=app.project.itemByID(118).duplicate();c.name='HS_coverage_partial_opacity';c.layer(1).effect(1).property(4).setValue(0);var root=c.layer(1).property('ADBE Root Vectors Group');var found=[];function walk(p){for(var i=1;i<=p.numProperties;i++){var q=p.property(i);if(q.matchName==='ADBE Vector Fill Opacity'){found.push({name:q.name,old:q.value});q.setValue(50);}if(q.propertyType!==PropertyType.PROPERTY)walk(q);}}walk(root);var p=c.layer(1).property('ADBE Mask Parade').property('HS Coverage Data Probe').property('ADBE Mask Shape');var begin=new Date().getTime();var s;app.beginSuppressDialogs();try{s=p.valueAtTime(0,false);}finally{app.endSuppressDialogs(false);}return JSON.stringify({comp:c.id,fills:found,ms:new Date().getTime()-begin,vertices:s.vertices.length,header:s.vertices.slice(0,2),error:p.expressionError});})()"
+}

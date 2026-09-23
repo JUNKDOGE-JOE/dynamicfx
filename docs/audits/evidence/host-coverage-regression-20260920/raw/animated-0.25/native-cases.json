@@ -1,0 +1,16 @@
+[
+  {
+    "name": "curve",
+    "id": 247,
+    "reference": "curve-expression-reference.png",
+    "carrierVertices": 994,
+    "expressionError": "",
+    "bpc": 16,
+    "status": "PASS",
+    "max_error_8bit": 1,
+    "different_pixels": 4,
+    "pixels": 12288,
+    "route": "expression path readback, not PF checkout",
+    "mcp_seconds": 1.4849999999860302
+  }
+]

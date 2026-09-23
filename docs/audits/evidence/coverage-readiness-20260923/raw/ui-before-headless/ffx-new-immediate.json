@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"ffx.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30);var target=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===51)target=c.layer(i);if(!target||!(target instanceof ShapeLayer)||target.property(\"ADBE Effect Parade\").numProperties!==1)throw Error(\"Fresh target changed\");target.name=\"Fresh preset target\";target.adjustmentLayer=true;target.enabled=true;for(var i=1;i<=c.numLayers;i++)c.layer(i).selected=false;var selected=c.selectedProperties;for(var i=selected.length-1;i>=0;i--)try{selected[i].selected=false;}catch(ignore){}target.selected=true;target.applyPreset(new File(\"<workspace>/scripts/out/coverage-readiness-20260923/coverage-test.ffx\"));var fx=target.property(\"ADBE Effect Parade\"),count=0,main=null;for(var j=1;j<=fx.numProperties;j++)if(fx.property(j).matchName===\"DynamicFx\"){count++;main=fx.property(j);}if(count!==1)throw Error(\"Expected one DynamicFx, got \"+count);if(main.propertyIndex!==1)main.moveTo(1);fx=target.property(\"ADBE Effect Parade\");var main=fx.property(1);fx.property(2).property(2).setValue(21);fx.property(2).property(6).setValue(0);var row={target:target.id,count:count,state:main.property(427).value,linked:main.property(426).value?c.layer(main.property(426).value).id:0};app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(0,new File(\"<workspace>/scripts/out/coverage-readiness-20260923/ffx-new-immediate.png\"));return JSON.stringify(row);})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"target\\\":51,\\\"count\\\":1,\\\"state\\\":236851021100322,\\\"linked\\\":46}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"target\":51,\"count\":1,\"state\":236851021100322,\"linked\":46}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

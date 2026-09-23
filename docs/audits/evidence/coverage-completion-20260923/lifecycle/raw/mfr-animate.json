@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(app.project.file.name!==\"mfr-base.aep\")throw Error(\"Unexpected project\");\nvar ids=[1,30,14],owners=[13,44,26];for(var n=0;n<ids.length;n++){var c=app.project.itemByID(ids[n]);for(var i=1;i<=c.numLayers;i++){var l=c.layer(i),fx=l.property(\"ADBE Effect Parade\");for(var j=fx.numProperties;j>=1;j--)if(fx.property(j).matchName===\"DynamicFx Host Shape Probe\")fx.property(j).remove();if(l.id===owners[n]){var v=l.property(\"ADBE Root Vectors Group\").property(1).property(\"ADBE Vectors Group\"),p=v.property(\"ADBE Vector Shape - Group\").property(\"ADBE Vector Shape\"),a=p.value,b=p.value;b.vertices=[[200,500],[600,500],[400,150]];p.setValueAtTime(0,a);p.setValueAtTime(1.88,b);v.property(\"ADBE Vector Graphic - Fill\").property(\"ADBE Vector Fill Opacity\").setValueAtTime(0,37.125);v.property(\"ADBE Vector Graphic - Fill\").property(\"ADBE Vector Fill Opacity\").setValueAtTime(1.88,83.375);}}}return \"animated, probes removed\";})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"animated, probes removed\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "animated, probes removed",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

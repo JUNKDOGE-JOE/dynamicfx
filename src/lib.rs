@@ -18,11 +18,16 @@
 //! carries meaning before the M3 ADR (ADR-0009). Nothing is flattened.
 
 mod canvas;
+mod coverage;
 mod diag;
 mod render;
 mod source;
 #[cfg(test)]
 mod wgsl_tests;
+#[cfg(test)]
+mod reentry_tests;
+#[cfg(test)]
+mod parameter_hint_tests;
 
 // M3 persistence layers (ADRs 0015-0017).
 pub mod diagnostics;
@@ -146,6 +151,7 @@ fn bake_gradient(
         samples: Some(value.bake_lut()),
         vertices: None,
         ae_pixels: false,
+        coverage_origin: None,
     })
 }
 
@@ -431,6 +437,7 @@ fn read_path(
             samples: None,
             vertices: Some(Vec::new()),
             ae_pixels: false,
+            coverage_origin: None,
         })
     };
 
@@ -515,6 +522,7 @@ fn read_path(
         samples: None,
         vertices: Some(vertices),
         ae_pixels: false,
+        coverage_origin: None,
     })
 }
 
@@ -540,6 +548,8 @@ pub(crate) struct ExternalPixels {
     /// ADR-0030: `pixels` are AE's own bytes (ARGB, and 8 bytes per pixel at
     /// 16-bpc), not the working RGBA layout. Converted at the encode site.
     ae_pixels: bool,
+    // Coverage buffers retain their origin when padded to the canvas.
+    coverage_origin: Option<(i32, i32)>,
 }
 
 /// What supplies one externally-fed graph resource (ADR-0030, ADR-0032).
@@ -558,6 +568,7 @@ pub(crate) enum ExternalSource {
     /// effect rendered transparent black — indistinguishable, in the harness
     /// as written, from the documented unassigned-selector behaviour.
     Layer { param_index: usize },
+    Coverage { param_index: usize },
     /// ADR-0033: the gradient's ordinal (its `Pool(Gradient, g)` slot index),
     /// not a declaration index — the value now lives in that gradient's stop
     /// parameters, which are addressed by ordinal.
@@ -693,6 +704,7 @@ impl CompiledEffect {
 /// UI-callback configuration and the idle observer's AEGP publication.
 pub(crate) struct SlotConfig {
     pub label: String,
+    pub percent: bool,
     pub min: Option<f32>,
     pub max: Option<f32>,
     /// Scalar default for this slot (component 0, or component 3 for the
@@ -732,6 +744,7 @@ pub(crate) fn slot_configs(
                 *slot,
                 SlotConfig {
                     label,
+                    percent: j == 0 && decl.ui.percent,
                     min: (j == 0).then_some(decl.ui.min).flatten(),
                     max: (j == 0).then_some(decl.ui.max).flatten(),
                     default,
@@ -961,6 +974,70 @@ mod layer_param_tests {
              }}\n\
              @endpass\n"
         )
+    }
+
+    #[test]
+    fn coverage_compiles_to_a_separate_persistent_resource() {
+        let text = source("pass main: input, depth_map -> output").replace("hint:layer", "hint:coverage");
+        let (code, status, result) = evaluate_committed_source(frontend::LanguageId::GLSL, &text, None);
+        assert_eq!(code, Diag::Ok, "{status}");
+        let (token, compiled) = result.unwrap();
+        assert_eq!(compiled.definition.params[0].ty, ShaderParamType::Coverage);
+        assert_eq!(compiled.definition.binding.bindings[0].slots[0].kind, PoolKind::Coverage);
+        let expected = host::params::param_index_of(ParamKey::Pool(PoolKind::Coverage, 0)).unwrap();
+        assert_eq!(compiled.externals, vec![ExternalSource::Coverage { param_index: expected }]);
+        let snapshot = persistence::Snapshot::from_state(frontend::LanguageId::GLSL, token, &text, &compiled.definition.binding);
+        assert_eq!(persistence::decode(&persistence::encode(&snapshot).unwrap()).unwrap(), snapshot);
+        assert_eq!(persistence::kind_byte(PoolKind::Coverage), 10);
+        assert!(compiled.passes[0].layout.entries.is_empty());
+        assert_eq!(binding::pool_capacity(PoolKind::Layer), 4);
+    }
+
+    #[test]
+    fn coverage_instance_flatten_preserves_map_but_ui_resetup_revokes_authority() {
+        let text = source("pass main: input, depth_map -> output").replace("hint:layer", "hint:coverage");
+        let (_, _, compiled) = evaluate_committed_source(frontend::LanguageId::GLSL, &text, None);
+        let (token, compiled) = compiled.unwrap();
+        let snapshot = persistence::Snapshot::from_state(frontend::LanguageId::GLSL, token, &text, &compiled.definition.binding);
+        let local = Local { snapshot: Some(snapshot.clone()), ..Local::default() };
+        let certificate = local.coverage_permit.grant();
+        let (version, bytes) = <LocalMutex as AdobePluginInstance>::flatten(&LocalMutex::new(local)).unwrap();
+        assert_eq!(version, 2);
+        for render_only in [true, false] {
+            let clone = <LocalMutex as AdobePluginInstance>::unflatten(version, &bytes).unwrap();
+            let clone = clone.lock().unwrap();
+            assert_eq!(clone.snapshot.as_ref(), Some(&snapshot));
+            assert_eq!(clone.coverage_permit.certificate(), 0);
+            clone.coverage_permit.resetup(render_only);
+            assert_eq!(clone.coverage_permit.certificate(), if render_only { certificate } else { 0 });
+        }
+    }
+
+    #[test]
+    fn coverage_alias_inherits_its_slot_and_distinct_resources_overflow_atomically() {
+        let first = source("pass main: input, depth_map -> output").replace("hint:layer", "hint:coverage");
+        let (_, _, compiled) = evaluate_committed_source(frontend::LanguageId::GLSL, &first, None);
+        let previous = &compiled.unwrap().1.definition.binding;
+        let renamed = first.replace("depth_map", "coverage").replace("hint:coverage", "hint:coverage alias:depth_map");
+        let (_, status, compiled) = evaluate_committed_source(frontend::LanguageId::GLSL, &renamed, Some(previous));
+        let compiled = compiled.expect(&status).1;
+        assert_eq!(compiled.definition.binding.bindings[0].slots, previous.bindings[0].slots);
+        assert!(compiled.definition.binding.bindings[0].inherited);
+        let two = first.replace("input, depth_map ->", "input, depth_map, other ->")
+            .replace("#version 450", "#version 450\n// @param other hint:coverage\nlayout(set=0,binding=4) uniform texture2D other_tex;");
+        let (code, _, result) = evaluate_committed_source(frontend::LanguageId::GLSL, &two, None);
+        assert_eq!(code, Diag::PoolOverflow);
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn coverage_is_read_only_and_requires_replay_support_for_prev() {
+        for graph in ["pass main: input -> depth_map", "pass depth_map: input -> output"] {
+            let text = source(graph).replace("hint:layer", "hint:coverage");
+            assert_eq!(evaluate_committed_source(frontend::LanguageId::GLSL, &text, None).0, Diag::EnvelopeSyntax);
+        }
+        let text = source("pass main: prev, depth_map -> output").replace("hint:layer", "hint:coverage");
+        assert_eq!(evaluate_committed_source(frontend::LanguageId::GLSL, &text, None).0, Diag::LayerInTemporalGraph);
     }
 
     fn compile(graph: &str) -> (Diag, String, Option<(u64, Arc<CompiledEffect>)>) {
@@ -1354,6 +1431,18 @@ mod example_tests {
     }
 
     #[test]
+    fn liquid_glass_compiles_with_automatic_coverage_and_canvas() {
+        let source = include_str!("../examples/liquid-glass.glsl");
+        compiles("liquid-glass.glsl", source);
+        let (_, _, compiled) = evaluate_committed_source(frontend::LanguageId::GLSL, source, None);
+        let (_, compiled) = compiled.unwrap();
+        assert_eq!(compiled.passes.len(), 5);
+        assert!(matches!(compiled.externals.as_slice(), [ExternalSource::Coverage { .. }]));
+        assert_eq!(compiled.definition.canvas_param.as_ref().unwrap().as_str(), "padding");
+        assert!(compiled.window.is_none());
+    }
+
+    #[test]
     fn siri_glow_example_compiles() {
         compiles("siri-glow.glsl", include_str!("../examples/siri-glow.glsl"));
     }
@@ -1642,7 +1731,7 @@ void main() {{
     }
 
     fn flatten_of(local: Local) -> Vec<u8> {
-        let (version, bytes) = <LocalMutex as AdobePluginInstance>::flatten(&Mutex::new(local))
+        let (version, bytes) = <LocalMutex as AdobePluginInstance>::flatten(&LocalMutex::new(local))
             .expect("flatten never fails");
         assert_eq!(version, 1);
         bytes
@@ -1718,7 +1807,7 @@ struct Global {
     /// The non-AEGP idle registration has no unregister token and its refcon
     /// is process-lived; this flag turns late callbacks into no-ops.
     idle_alive: Arc<AtomicBool>,
-    idle_registered: bool,
+    idle_registered: AtomicBool,
 }
 
 impl Default for Global {
@@ -1737,7 +1826,7 @@ impl Default for Global {
             plugin_id,
             main_thread: std::thread::current().id(),
             idle_alive: Arc::new(AtomicBool::new(true)),
-            idle_registered: false,
+            idle_registered: AtomicBool::new(false),
         }
     }
 }
@@ -1758,9 +1847,66 @@ impl Global {
     }
 }
 
-ae::define_effect!(Global, LocalMutex, ParamKey);
+crate::define_shared_effect!(Global, LocalMutex, ParamKey);
 
-type LocalMutex = Mutex<Local>;
+type LocalMutex = host::entry::LiveInstance<Local>;
+
+struct UiPublication {
+    status: String,
+    status_text: String,
+    status_code: Diag,
+    last_attempt: Option<u64>,
+    token: u64,
+    compiled: Option<Arc<CompiledEffect>>,
+    configured_token: Option<u64>,
+    visibility_token: Option<u64>,
+    group_visibility_disabled: bool,
+}
+
+impl UiPublication {
+    fn read(local: &Local) -> Self {
+        Self {
+            status: local.status.clone(),
+            status_text: local.status_text.clone(),
+            status_code: local.status_code,
+            last_attempt: local.last_attempt,
+            token: local.token,
+            compiled: local.compiled.clone(),
+            configured_token: local.configured_token,
+            visibility_token: local.visibility_token,
+            group_visibility_disabled: local.group_visibility_disabled,
+        }
+    }
+
+    fn finish(self, local: &mut Local) {
+        let same_definition = match (&self.compiled, &local.compiled) {
+            (Some(a), Some(b)) => Arc::ptr_eq(a, b),
+            (None, None) => true,
+            _ => false,
+        };
+        if same_definition && self.token == local.token
+            && self.last_attempt == local.last_attempt && self.status_code == local.status_code
+        {
+            local.status = self.status;
+            local.configured_token = self.configured_token;
+            local.visibility_token = self.visibility_token;
+            local.group_visibility_disabled = self.group_visibility_disabled;
+        }
+    }
+}
+
+fn with_ui_publication(
+    instance: &LocalMutex,
+    publish: impl FnOnce(&mut UiPublication) -> Result<(), Error>,
+) -> Result<(), Error> {
+    let Some(_scope) = host::callback::HostCallScope::enter(instance) else { return Ok(()) };
+    let mut publication = UiPublication::read(&*instance.lock().map_err(|_| Error::Generic)?);
+    // AEGP and PF UI calls can synchronously request this instance's flattened
+    // sequence. Keep the authoritative state available throughout publication.
+    let result = publish(&mut publication);
+    publication.finish(&mut *instance.lock().map_err(|_| Error::Generic)?);
+    result
+}
 
 struct Local {
     /// Status text last written into the Status parameter name.
@@ -1778,6 +1924,7 @@ struct Local {
     token: u64,
     compiled: Option<Arc<CompiledEffect>>,
     pipelines: Option<render::PipelineSet>,
+    coverage_permit: Arc<host::coverage_readiness::Permit>,
     /// Restored ADR-0016 snapshot: the render clone's authority and the UI
     /// side's slot-inheritance seed. Never overrides a fresh observation.
     snapshot: Option<persistence::Snapshot>,
@@ -1836,6 +1983,7 @@ impl Default for Local {
             token: 0,
             compiled: None,
             pipelines: None,
+            coverage_permit: Arc::default(),
             snapshot: None,
             plan_lineage: Vec::new(),
             last_good: None,
@@ -1957,12 +2105,6 @@ thread_local! {
     /// an instance field would race concurrent MFR frames. Owned copies —
     /// the checked-out `Layer` borrows the callbacks and cannot outlive the
     /// SmartRender arm, and the copy cost is visible in the upload span.
-    /// Layer checkout ids `PF_CHECKOUT_LAYER` actually accepted this frame.
-    /// PreRender fills it, SmartRender reads and clears it — the two run on the
-    /// same thread per frame, like `SMART_LAYERS` beside it.
-    static SMART_CHECKOUTS: std::cell::RefCell<Vec<u32>> =
-        const { std::cell::RefCell::new(Vec::new()) };
-
     static SMART_LAYERS: std::cell::RefCell<Vec<Option<ExternalPixels>>> =
         const { std::cell::RefCell::new(Vec::new()) };
 
@@ -1972,6 +2114,15 @@ thread_local! {
         const { std::cell::RefCell::new(None) };
 }
 
+struct SmartFrameScope;
+impl Drop for SmartFrameScope {
+    fn drop(&mut self) {
+        SMART_LAYERS.with(|value| value.borrow_mut().clear());
+        SMART_WINDOW.with(|value| value.set(None));
+        SMART_CANVAS.with(|value| value.set(None));
+    }
+}
+
 /// What one instance reports back to the idle observer after its
 /// CompletelyGeneral observation (ADR-0038 §5): its token and artifact when
 /// it has one, and its own diagnostic when it does not.
@@ -1979,6 +2130,7 @@ pub(crate) struct GeneralReply {
     pub token: u64,
     pub compiled: Option<Arc<CompiledEffect>>,
     pub code: Diag,
+    pub coverage_permit: Arc<host::coverage_readiness::Permit>,
 }
 
 pub(crate) fn take_general_reply() -> Option<GeneralReply> {
@@ -2019,7 +2171,7 @@ impl AdobePluginGlobal for Global {
     }
 
     fn handle_command(
-        &mut self,
+        &self,
         command: ae::Command,
         in_data: ae::InData,
         _: ae::OutData,
@@ -2063,7 +2215,7 @@ impl AdobePluginGlobal for Global {
         // The §5.3 idle observer: scripted expression writes never arrive as
         // UserChangedParam (TR-M0-005), so a main-thread idle scan gives each
         // instance its observation opportunity and mirrors the session token.
-        if matches!(&command, ae::Command::GlobalSetup) && !self.idle_registered {
+        if matches!(&command, ae::Command::GlobalSetup) && !self.idle_registered.load(Ordering::Acquire) {
             let plugin_id = self.plugin_id()?;
             let state = host::idle::IdleState::new(
                 plugin_id,
@@ -2076,7 +2228,7 @@ impl AdobePluginGlobal for Global {
                 Box::new(host::idle::idle_callback),
                 state,
             )?;
-            self.idle_registered = true;
+            self.idle_registered.store(true, Ordering::Release);
             diag::log("AEGP idle hook registered");
         }
         // Visibility for the smart path's sequence-data availability: the
@@ -2184,12 +2336,44 @@ fn selected_language(plugin: &mut PluginState) -> Option<LanguageId> {
     frontend::language_from_popup_position(u32::try_from(position).ok()?)
 }
 
-/// Observation core: read language + expression, classify, compile, publish
-/// into the process registry, and update `local` (including the desired
-/// status text). Touches NO parameters, so it is legal from UI callbacks,
-/// CompletelyGeneral, and main-thread render. Returns whether the attempt
-/// changed anything.
-fn observe_core(plugin: &mut PluginState, local: &mut Local, force: bool) -> Result<bool, Error> {
+fn observe_core(
+    plugin: &mut PluginState,
+    instance: &LocalMutex,
+    force: bool,
+) -> Result<Option<bool>, Error> {
+    observe_with(instance, force, || {
+        let language = selected_language(plugin);
+        let observation = if language.is_some() {
+            observe_source(plugin)?
+        } else {
+            Observation::NoExpression
+        };
+        Ok((language, observation))
+    })
+}
+
+fn observe_with(
+    instance: &LocalMutex,
+    force: bool,
+    read: impl FnOnce() -> Result<(Option<LanguageId>, Observation), Error>,
+) -> Result<Option<bool>, Error> {
+    let Some(_scope) = host::callback::HostCallScope::enter(instance) else { return Ok(None) };
+    if instance.lock().map_err(|_| Error::Generic)?.block_rebind && !force {
+        return Ok(Some(false));
+    }
+    // Converting PF handles to AEGP effects can reenter flatten during project
+    // loading. Read the host first; only pure observation application holds Local.
+    let (language, observation) = read()?;
+    let mut local = instance.lock().map_err(|_| Error::Generic)?;
+    apply_observation(&mut local, force, language, observation).map(Some)
+}
+
+fn apply_observation(
+    local: &mut Local,
+    force: bool,
+    language: Option<LanguageId>,
+    observation: Observation,
+) -> Result<bool, Error> {
     // SnapshotSchemaUnknown refuses implicit re-binding: fresh allocation
     // could silently misalign keyframes (ADR-0016 §1). Explicit Compile
     // (force) is the user's consent to re-bind.
@@ -2200,13 +2384,13 @@ fn observe_core(plugin: &mut PluginState, local: &mut Local, force: bool) -> Res
         local.block_rebind = false;
     }
 
-    let Some(language) = selected_language(plugin) else {
+    let Some(language) = language else {
+        local.coverage_permit.revoke();
         local.status_code = Diag::LanguageUnknown;
         local.status_text = "language selection unknown".to_string();
         return Ok(true);
     };
 
-    let observation = observe_source(plugin)?;
     local.source_absent = !matches!(&observation, Observation::Committed(_));
     let (attempt, code, status, compiled) = match observation {
         Observation::NoExpression => (
@@ -2254,6 +2438,10 @@ fn observe_core(plugin: &mut PluginState, local: &mut Local, force: bool) -> Res
     if !force && local.last_attempt == Some(attempt) {
         return Ok(false);
     }
+    let same_source = local.last_attempt.map(|previous| previous == attempt).unwrap_or_else(|| {
+        compiled.as_ref().is_some_and(|(token, _)| local.snapshot.as_ref().is_some_and(|saved| saved.fingerprint == *token))
+    });
+    if !same_source { local.coverage_permit.revoke(); }
     local.last_attempt = Some(attempt);
     local.status_code = code;
     local.status_text = status;
@@ -2362,6 +2550,7 @@ fn evaluate_committed_source(
     let layer_names = frontend::annotation::layer_param_names(parse_source);
     let gradient_names = frontend::annotation::gradient_param_names(parse_source);
     let path_names = frontend::annotation::path_param_names(parse_source);
+    let coverage_names = frontend::annotation::coverage_param_names(parse_source);
     let uses_prev = manifest
         .iter()
         .any(|p| p.inputs.iter().any(|i| i == frontend::grammar::RES_PREV));
@@ -2375,6 +2564,8 @@ fn evaluate_committed_source(
         .filter_map(|i| {
             if layer_names.iter().any(|l| l == i) {
                 Some(("layer input", i))
+            } else if coverage_names.iter().any(|l| l == i) {
+                Some(("coverage input", i))
             } else if path_names.iter().any(|l| l == i) {
                 Some(("path input", i))
             } else {
@@ -2456,6 +2647,8 @@ fn evaluate_committed_source(
         for input in &pass.inputs {
             let ty = if layer_names.iter().any(|l| l == input) {
                 definition::param::ShaderParamType::Layer
+            } else if coverage_names.iter().any(|g| g == input) {
+                definition::param::ShaderParamType::Coverage
             } else if gradient_names.iter().any(|g| g == input) {
                 definition::param::ShaderParamType::Gradient
             } else if path_names.iter().any(|g| g == input) {
@@ -2568,13 +2761,16 @@ fn evaluate_committed_source(
                 binding::PoolKind::Layer => {
                     Some(ExternalSource::Layer { param_index: param_index + 1 })
                 }
+                binding::PoolKind::Coverage => {
+                    Some(ExternalSource::Coverage { param_index: param_index + 1 })
+                }
                 binding::PoolKind::Gradient => {
                     Some(ExternalSource::Gradient { gradient_index: slot.index })
                 }
                 binding::PoolKind::Path => {
                     Some(ExternalSource::Path { path_index: slot.index })
                 }
-                // Unreachable: only these three kinds reach the graph as
+                // Unreachable: only texture-resource kinds reach the graph as
                 // resources. Dropping anything else keeps the ordinals aligned
                 // with what the render side can actually supply.
                 _ => None,
@@ -2859,7 +3055,7 @@ fn set_slot_hidden(
 /// DynamicStream visibility while AE is still constructing the property tree
 /// during addProperty() breaks the scripting API's child lookup (prototype
 /// lesson, kept as a hard rule).
-fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
+fn configure_slots(plugin: &mut PluginState, local: &mut UiPublication) {
     // No definition (fresh instance, cleared source): hide the ENTIRE pool
     // once — an uncompiled effect exposing hundreds of unbound controls
     // floods the Effect Controls panel and measurably drags it (user report).
@@ -2909,6 +3105,13 @@ fn configure_slots(plugin: &mut PluginState, local: &mut Local) {
                 match plugin.params.get_mut(host::params::key_for_slot(kind, i)) {
                     Ok(mut p) => {
                         names_ok &= host::params::set_display_name(&mut p, &label).is_ok();
+                        if let Ok(ae::Param::FloatSlider(mut f)) = p.as_param_mut() {
+                            f.set_display_flags(if config.is_some_and(|c| c.percent) {
+                                ae::ValueDisplayFlag::PERCENT
+                            } else {
+                                ae::ValueDisplayFlag::NONE
+                            });
+                        }
                         // Range/default metadata for bound scalar slots
                         // (annotation-driven; display metadata only — the
                         // default VALUE is published separately before the
@@ -3213,7 +3416,7 @@ fn apply_visibility(
             // a shader binds it. Everything else shows exactly when bound,
             // which the growth pools never did: four "Layer" rows sat in the
             // panel of every instance, bound or not.
-            let hidden = !configs.contains_key(&slot) || kind == binding::PoolKind::Gradient;
+            let hidden = !configs.contains_key(&slot) || matches!(kind, binding::PoolKind::Gradient | binding::PoolKind::Coverage);
             if let Err(e) = set_slot_hidden(plugin, &effect_ref, stream_index, hidden) {
                 diag::log(&format!("slot hidden flag failed ({kind:?} {i}): {e:?}"));
                 result = Err(e);
@@ -3238,7 +3441,7 @@ fn apply_visibility(
 }
 
 /// Mirror the status text into the Status parameter's name. UI contexts only.
-fn set_status(plugin: &mut PluginState, local: &mut Local, status: String) {
+fn set_status(plugin: &mut PluginState, local: &mut UiPublication, status: String) {
     // Failures carry their stable code up front; the 31-char PF name limit
     // truncates text, never the code (ADR-0015 §4).
     let status = diagnostics::status_text(local.status_code, &status);
@@ -3267,7 +3470,7 @@ fn set_status(plugin: &mut PluginState, local: &mut Local, status: String) {
 /// Only UserChangedParam calls this: PF scalar writes belong to that user
 /// transaction. Color/angle keep the existing full-precision AEGP writer;
 /// its Undo grouping with the PF writes still requires host verification.
-fn publish_fresh_defaults(plugin: &mut PluginState, local: &Local) -> Result<(), Error> {
+fn publish_fresh_defaults(plugin: &mut PluginState, local: &UiPublication) -> Result<(), Error> {
     let Some(compiled) = &local.compiled else { return Ok(()) };
     let desired = desired_token_state(local.token, local.status_code);
     if !fresh_publication_needed(
@@ -3362,7 +3565,7 @@ mod fresh_default_tests {
     use super::*;
 
     fn config() -> SlotConfig {
-        SlotConfig { label: "test".into(), min: None, max: None, default: Some(0.25),
+        SlotConfig { label: "test".into(), percent: false, min: None, max: None, default: Some(0.25),
             color_default: Some([0.25, 0.6, 1.5, 0.4]), fresh: true }
     }
 
@@ -3433,7 +3636,7 @@ mod fresh_default_tests {
 /// Publish the ADR-0015 token word into the StateToken parameter stream.
 /// Legal only in a UserChangedParam context (ParamDef writes elsewhere are
 /// ignored by AE); the idle observer mirrors it via AEGP for scripted paths.
-fn publish_token_param(plugin: &mut PluginState, local: &Local) {
+fn publish_token_param(plugin: &mut PluginState, local: &UiPublication) {
     let desired = encode_token_state(desired_token_state(local.token, local.status_code));
     write_word_param(plugin, ParamKey::StateToken, desired);
     write_word_param(plugin, ParamKey::PlanToken, plan_word(local) as f64);
@@ -3441,7 +3644,7 @@ fn publish_token_param(plugin: &mut PluginState, local: &Local) {
 
 /// The plan word an instance publishes beside its token (ADR-0038 §7): the
 /// identity of the published artifact's plan, 0 when nothing is published.
-fn plan_word(local: &Local) -> u64 {
+fn plan_word(local: &UiPublication) -> u64 {
     match (&local.compiled, local.token) {
         (Some(compiled), token) if token != 0 => {
             identity::plan_identity(&compiled.definition.binding)
@@ -3498,6 +3701,7 @@ struct SmartGeom {
     /// checkout) unless upstream content beyond the frame needed the second,
     /// canvas-rect checkout.
     input_id: u32,
+    external_checkouts: u32,
 }
 
 /// Checkout id of the canvas-rect input checkout. External layer ids are
@@ -3612,7 +3816,8 @@ fn read_bound_values(
                 // and is never read — no pass layout points at it.
                 ShaderParamType::Layer
                 | ShaderParamType::Gradient
-                | ShaderParamType::Path => {}
+                | ShaderParamType::Path
+                | ShaderParamType::Coverage => {}
                 ShaderParamType::Vec3Color | ShaderParamType::Vec4Color => {
                     if let Some(key) = slot_key(0) {
                         if let Ok(p) = plugin.params.get(key) {
@@ -3862,13 +4067,12 @@ impl AdobePluginInstance for LocalMutex {
             let Some(snapshot) = local.last_good.as_ref().or(local.snapshot.as_ref()) else {
                 return Ok((1, Vec::new()));
             };
-            return Ok((
-                1,
-                persistence::encode(snapshot).unwrap_or_else(|e| {
+            return Ok(
+                host::coverage_readiness::encode(snapshot, local.coverage_permit.certificate()).unwrap_or_else(|e| {
                     diag::log(&format!("snapshot encode refused: {e:?}"));
-                    Vec::new()
+                    (1, Vec::new())
                 }),
-            ));
+            );
         };
         let defn = &compiled.definition;
         let snapshot = persistence::Snapshot::from_state(
@@ -3877,8 +4081,8 @@ impl AdobePluginInstance for LocalMutex {
             &compiled.source,
             &defn.binding,
         );
-        match persistence::encode(&snapshot) {
-            Ok(bytes) => Ok((1, bytes)),
+        match host::coverage_readiness::encode(&snapshot, local.coverage_permit.certificate()) {
+            Ok(transport) => Ok(transport),
             Err(e) => {
                 // Construction-bug guard (ADR-0016 §3): refuse to persist a
                 // bad snapshot; the expression stream remains the recovery
@@ -3889,15 +4093,16 @@ impl AdobePluginInstance for LocalMutex {
         }
     }
 
-    fn unflatten(_version: u16, serialized: &[u8]) -> Result<Self, Error> {
+    fn unflatten(version: u16, serialized: &[u8]) -> Result<Self, Error> {
         // Empty payload = fresh instance. Anything else must pass the full
         // ADR-0016 validation; prototype bytes fail its magic check and are
         // discarded (ADR-0004: no compatibility promise).
-        if serialized.is_empty() {
-            return Ok(Mutex::new(Local::default()));
+        if serialized.is_empty() && version == 1 {
+            return Ok(Self::default());
         }
-        let local = match persistence::decode(serialized) {
-            Ok(snapshot) => Local { snapshot: Some(snapshot), ..Local::default() },
+        let local = match host::coverage_readiness::decode(version, serialized) {
+            Ok((snapshot, certificate)) => Local { snapshot: Some(snapshot),
+                coverage_permit: Arc::new(host::coverage_readiness::Permit::restored(certificate)), ..Local::default() },
             Err(persistence::DecodeError::Corrupt(what)) => {
                 diag::log(&format!("snapshot corrupt ({what}); expression path recovers"));
                 Local {
@@ -3918,7 +4123,7 @@ impl AdobePluginInstance for LocalMutex {
                 }
             }
         };
-        Ok(Mutex::new(local))
+        Ok(Self::new(local))
     }
 
     fn render(
@@ -3939,10 +4144,10 @@ impl AdobePluginInstance for LocalMutex {
             }
         };
         let on_main_thread = std::thread::current().id() == plugin.global.main_thread;
-        let mut local = self.lock().map_err(|_| Error::Generic)?;
         // ROI window stashed by the SmartRender arm on this thread; legacy
         // renders get the whole frame at origin zero.
         let window = SMART_WINDOW.with(|w| w.take()).unwrap_or((0, 0));
+        let coverage_output_window = window;
         // ADR-0039 canvas from the same stash; `None` (legacy path) makes the
         // canvas the input world itself further down.
         let canvas_stash = SMART_CANVAS.with(|c| c.take());
@@ -3953,16 +4158,39 @@ impl AdobePluginInstance for LocalMutex {
         // the next UI callback; render must not touch parameters.
         let mut observed_now = false;
         if on_main_thread {
-            match observe_core(plugin, &mut local, false) {
-                Ok(_) => observed_now = true,
+            match observe_core(plugin, self, false) {
+                Ok(Some(_)) => observed_now = true,
+                Ok(None) => {}
                 Err(e) => diag::verbose(&format!("main-thread observe failed: {e:?}")),
             }
         }
 
+        let mut local = self.lock().map_err(|_| Error::Generic)?;
         if !observed_now {
             resolve_transported_definition(plugin, &mut local);
         }
 
+        if local.compiled.as_ref().is_some_and(|effect| effect.externals.iter().any(|s| matches!(s, ExternalSource::Coverage { .. }))) {
+            let state = plugin.params.get(ParamKey::CoverageState)?.as_float_slider()?.value();
+            let problem = coverage::readiness(state, local.coverage_permit.certificate()).err().or_else(|| {
+                let borrowed = SMART_LAYERS.with(|l| l.borrow().clone());
+                local.compiled.as_ref().unwrap().externals.iter().enumerate().find_map(|(index, source)| {
+                    (matches!(source, ExternalSource::Coverage { .. }) && borrowed.get(index).is_none_or(|e| e.is_none()))
+                        .then_some(Diag::CoverageUnavailable)
+                })
+            });
+            if let Some(code) = problem {
+                diag::log(&format!("coverage gate refused: E{} state={state} certificate={}", code.code(), local.coverage_permit.certificate()));
+                local.status_code = code;
+                local.status_text = if code == Diag::CoverageUnsupported { "host coverage requires AE 26.5+" } else { "host coverage is not ready" }.into();
+                drop(local);
+                return passthrough(in_layer, out_layer, window);
+            }
+            if matches!(local.status_code, Diag::CoverageUnsupported | Diag::CoverageUnavailable) {
+                local.status_code = Diag::Ok;
+                local.status_text = "coverage ready".into();
+            }
+        }
         let mut rendered = false;
         diag::verbose(&format!(
             "render enter: {:?} in={}x{} out={}x{} win=({},{}) token={} compiled={} snap={} t={} step={} lstep={} scale={}",
@@ -4267,6 +4495,12 @@ impl AdobePluginInstance for LocalMutex {
                                         true,
                                     ));
                                 }
+                                if let Some(origin) = e.coverage_origin {
+                                    let pixels = coverage::encode(coverage::Plane {
+                                        pixels: &e.pixels, stride: e.stride, width: e.width, height: e.height, origin,
+                                    }, depth, (cvs.left, cvs.top, cw, ch)).ok()?;
+                                    return Some((pixels, cw, ch, false));
+                                }
                                 if e.ae_pixels {
                                     // ADR-0030 layer pixels: AE's ARGB (and
                                     // U15 at 16-bpc) into the working RGBA
@@ -4295,6 +4529,12 @@ impl AdobePluginInstance for LocalMutex {
                                 ))
                             })
                             .collect();
+                        if borrowed.iter().zip(&encoded).any(|(entry, encoded)| entry.as_ref().is_some_and(|e| e.coverage_origin.is_some()) && encoded.is_none()) {
+                            local.status_code = Diag::CoverageUnavailable;
+                            local.status_text = "invalid host coverage buffer".into();
+                            drop(local);
+                            return passthrough(in_layer, out_layer, coverage_output_window);
+                        }
                         let externals: Vec<Option<render::ExternalTexture>> = borrowed
                             .iter()
                             .zip(encoded.iter())
@@ -4435,9 +4675,14 @@ impl AdobePluginInstance for LocalMutex {
         Ok(())
     }
 
-    fn handle_command(&mut self, plugin: &mut PluginState, command: Command) -> Result<(), Error> {
+    fn handle_command(&self, plugin: &mut PluginState, command: Command) -> Result<(), Error> {
         match command {
             Command::UserChangedParam { param_index } => {
+                if !host::coverage_readiness::Publication::active() &&
+                    [ParamKey::CoverageState, ParamKey::Pool(PoolKind::Coverage, 0)].iter()
+                        .any(|key| plugin.params.index(*key) == Some(param_index)) {
+                    self.lock().map_err(|_| Error::Generic)?.coverage_permit.revoke();
+                }
                 let force = plugin.params.index(ParamKey::Compile) == Some(param_index);
                 // ADR-0028: the Details button pops the full status text —
                 // the Status row's name is capped at 31 chars by PF.
@@ -4456,35 +4701,37 @@ impl AdobePluginInstance for LocalMutex {
                     host::show_info_dialog(plugin.global.plugin_id()?, &text)?;
                     return Ok(());
                 }
-                let mut local = self.lock().map_err(|_| Error::Generic)?;
-                observe_core(plugin, &mut local, force)?;
+                let Some(_) = observe_core(plugin, self, force)? else { return Ok(()) };
                 // UI callbacks always try to land the desired status text —
                 // observation may have happened earlier in a context that
                 // could not touch parameters (idle bridge, render).
-                let text = local.status_text.clone();
-                set_status(plugin, &mut local, text);
-                configure_slots(plugin, &mut local);
-                // Commit context: mirror the token word into the stream so
-                // render clones can resolve it.
-                publish_fresh_defaults(plugin, &local)?;
-                publish_token_param(plugin, &local);
-                diag::log(&format!(
-                    "ui publication: param={param_index}, language={:?}, token={}, plan={}, code=E{}",
-                    selected_language(plugin),
-                    encode_token_state(desired_token_state(local.token, local.status_code)),
-                    plan_word(&local),
-                    local.status_code.code(),
-                ));
-                drop(local);
+                with_ui_publication(self, |local| {
+                    let text = local.status_text.clone();
+                    set_status(plugin, local, text);
+                    configure_slots(plugin, local);
+                    // Commit context: mirror the token word into the stream so
+                    // render clones can resolve it.
+                    publish_fresh_defaults(plugin, local)?;
+                    publish_token_param(plugin, local);
+                    diag::log(&format!(
+                        "ui publication: param={param_index}, language={:?}, token={}, plan={}, code=E{}",
+                        selected_language(plugin),
+                        encode_token_state(desired_token_state(local.token, local.status_code)),
+                        plan_word(local),
+                        local.status_code.code(),
+                    ));
+                    Ok(())
+                })?;
                 plugin.out_data.set_force_rerender();
             }
             Command::UpdateParamsUi => {
-                let mut local = self.lock().map_err(|_| Error::Generic)?;
-                let changed = observe_core(plugin, &mut local, false)?;
-                let text = local.status_text.clone();
-                set_status(plugin, &mut local, text);
-                configure_slots(plugin, &mut local);
-                drop(local);
+                let Some(changed) = observe_core(plugin, self, false)? else { return Ok(()) };
+                with_ui_publication(self, |local| {
+                    let text = local.status_text.clone();
+                    set_status(plugin, local, text);
+                    configure_slots(plugin, local);
+                    Ok(())
+                })?;
                 if changed {
                     plugin.out_data.set_force_rerender();
                 }
@@ -4494,8 +4741,8 @@ impl AdobePluginInstance for LocalMutex {
             // hook mirrors the token via AEGP afterwards; the status text
             // lands on the next UI callback).
             Command::CompletelyGeneral => {
-                let mut local = self.lock().map_err(|_| Error::Generic)?;
-                let changed = observe_core(plugin, &mut local, false)?;
+                let Some(changed) = observe_core(plugin, self, false)? else { return Ok(()) };
+                let local = self.lock().map_err(|_| Error::Generic)?;
                 // Reported every tick, not only on change: the observer
                 // needs this instance's own artifact for the slot UI and its
                 // own diagnostic for the token (ADR-0038 §5).
@@ -4503,6 +4750,7 @@ impl AdobePluginInstance for LocalMutex {
                     token: local.token,
                     compiled: if local.token != 0 { local.compiled.clone() } else { None },
                     code: local.status_code,
+                    coverage_permit: Arc::clone(&local.coverage_permit),
                 };
                 GENERAL_REPLY.with(|slot| *slot.borrow_mut() = Some(reply));
                 if changed {
@@ -4515,6 +4763,13 @@ impl AdobePluginInstance for LocalMutex {
             // constructing the scripting property tree; AEGP conversion in
             // that window fails. Observation waits for a UI callback or idle.
             Command::SequenceSetup | Command::SequenceResetup => {
+                let resetup = matches!(command, Command::SequenceResetup);
+                let project_flag = resetup && unsafe { (*plugin.in_data.as_ptr()).in_flags & 1 != 0 };
+                let render_engine = resetup && ae::pf::suites::App::new()
+                    .and_then(|suite| suite.is_render_engine()).unwrap_or(false);
+                let render_only = host::coverage_readiness::render_restore(resetup, project_flag, render_engine);
+                self.lock().map_err(|_| Error::Generic)?.coverage_permit.resetup(render_only);
+                diag::verbose(&format!("coverage sequence resetup: render_only={render_only} project_flag={project_flag} render_engine={render_engine}"));
                 diag::verbose("sequence (re)setup: observation deferred");
             }
             // ADR-0031 §7: the gradient editor. Custom-UI events arrive on
@@ -4524,6 +4779,15 @@ impl AdobePluginInstance for LocalMutex {
             // the smart path exists for image correctness; performance-side
             // SmartRender work (caching, checkout narrowing, MFR) is M7.
             Command::SmartPreRender { mut extra } => {
+                let cache_key = {
+                    let mut local = self.lock().map_err(|_| Error::Generic)?;
+                    resolve_transported_definition(plugin, &mut local);
+                    if local.compiled.as_ref().is_some_and(|effect| effect.externals.iter()
+                        .any(|source| matches!(source, ExternalSource::Coverage { .. }))) {
+                        local.coverage_permit.cache_key()
+                    } else { *b"DFXCVG01\0\0\0\0\0\0\0\0" }
+                };
+                extra.callbacks().guid_mix_in_ptr(&cache_key)?;
                 let mut req = extra.output_request();
                 let requested = req.rect;
                 let cb = extra.callbacks();
@@ -4663,16 +4927,12 @@ impl AdobePluginInstance for LocalMutex {
                                 in_data.time_scale(),
                             ) {
                                 Ok(_) => input_id = EXTENDED_INPUT_CHECKOUT,
+                                Err(Error::InterruptCancel) => return Err(Error::InterruptCancel),
                                 Err(e) => diag::log(&format!(
                                     "extended input checkout failed: {e:?}; canvas margins render transparent"
                                 )),
                             }
                         }
-                        extra.set_pre_render_data::<SmartGeom>(SmartGeom {
-                            window: (requested.left, requested.top),
-                            canvas: c,
-                            input_id,
-                        });
                         // External checkouts cover the CANVAS rect below:
                         // same rect ⇒ same uv span ⇒ ADR-0030 §4 comp-space
                         // alignment holds on the expanded canvas exactly as
@@ -4694,11 +4954,15 @@ impl AdobePluginInstance for LocalMutex {
                         // Exactly the ids AE accepted. SmartRender asks for
                         // these and checks in these — never a superset, which
                         // is the same accounting mistake from the other end.
-                        let mut checked_out: Vec<u32> = Vec::new();
+                        let mut external_checkouts = 0u32;
                         for (ordinal, source) in externals.iter().enumerate() {
                             // Gradients and paths are not checked out as layers.
-                            let ExternalSource::Layer { param_index } = source else { continue };
+                            let param_index = match source {
+                                ExternalSource::Layer { param_index } | ExternalSource::Coverage { param_index } => param_index,
+                                _ => continue,
+                            };
                             let id = ordinal as u32 + 1;
+                            let bit = 1u32.checked_shl(id).ok_or(Error::BadCallbackParameter)?;
                             match cb.checkout_layer(
                                 *param_index as i32,
                                 id as i32,
@@ -4707,18 +4971,23 @@ impl AdobePluginInstance for LocalMutex {
                                 in_data.time_step(),
                                 in_data.time_scale(),
                             ) {
-                                Ok(_) => checked_out.push(id),
+                                Ok(_) => external_checkouts |= bit,
+                                Err(Error::InterruptCancel) => return Err(Error::InterruptCancel),
                                 Err(e) => diag::log(&format!(
                                     "layer checkout failed (param {param_index}): {e:?}"
                                 )),
                             }
                         }
-                        SMART_CHECKOUTS.with(|c| *c.borrow_mut() = checked_out);
+                        extra.set_pre_render_data::<SmartGeom>(SmartGeom {
+                            window: (requested.left, requested.top), canvas: c, input_id, external_checkouts,
+                        });
                     }
+                    Err(Error::InterruptCancel) => return Err(Error::InterruptCancel),
                     Err(e) => diag::log(&format!("smart pre-render checkout failed: {e:?}")),
                 }
             }
             Command::SmartRender { extra } => {
+                let _frame_scope = SmartFrameScope;
                 let ds_x = plugin.in_data.downsample_x();
                 let ds_y = plugin.in_data.downsample_y();
                 let geom = extra
@@ -4731,32 +5000,25 @@ impl AdobePluginInstance for LocalMutex {
                             canvas::dimension_physical(plugin.in_data.height(), ds_y.num, ds_y.den),
                         ),
                         input_id: 0,
+                        external_checkouts: 0,
                     });
                 let window = geom.window;
                 let cb = extra.callbacks();
-                // When the canvas-rect checkout carries the content, the base
-                // checkout is consumed and released immediately: every id
-                // PreRender declared gets exactly one pixels/checkin pair,
-                // so the host's checkout accounting never sees a dangling
-                // declaration (the TR-CACHE-001 balancing discipline).
+                let mut checkouts = host::checkouts::Checkouts::new(|id| cb.checkin_layer_pixels(id));
+                // The base dependency still needs a pixels/checkin pair when
+                // the expanded checkout carries the rendered input instead.
                 if geom.input_id != 0 {
                     match cb.checkout_layer_pixels(0) {
-                        Ok(_) => {
-                            let _ = cb.checkin_layer_pixels(0);
-                        }
+                        Ok(_) => checkouts.record(0),
+                        Err(Error::InterruptCancel) => return Err(Error::InterruptCancel),
                         Err(e) => diag::log(&format!("base input release failed: {e:?}")),
                     }
                 }
                 let input = cb.checkout_layer_pixels(geom.input_id);
                 let checked_out = match input {
-                    Ok(v) => v,
+                    Ok(v) => { checkouts.record(geom.input_id); v },
                     Err(e) => {
                         diag::log(&format!("smart render input checkout failed: {e:?}"));
-                        for id in SMART_CHECKOUTS.with(|c| c.borrow().clone()) {
-                            let _ = cb.checkin_layer_pixels(id);
-                        }
-                        SMART_CHECKOUTS.with(|c| c.borrow_mut().clear());
-                        SMART_LAYERS.with(|l| l.borrow_mut().clear());
                         return Err(e);
                     }
                 };
@@ -4778,13 +5040,13 @@ impl AdobePluginInstance for LocalMutex {
                 let mut staged: Vec<Option<ExternalPixels>> = Vec::new();
                 for (ordinal, source) in externals.iter().enumerate() {
                     match source {
-                        ExternalSource::Layer { .. } => {
+                        ExternalSource::Layer { .. } | ExternalSource::Coverage { .. } => {
                             let id = ordinal as u32 + 1;
                             // PreRender is the authority on which ids exist
                             // this frame; asking for one it did not request is
                             // what AE reports as an internal verification
                             // failure.
-                            if !SMART_CHECKOUTS.with(|c| c.borrow().contains(&id)) {
+                            if 1u32.checked_shl(id).is_none_or(|bit| geom.external_checkouts & bit == 0) {
                                 staged.push(None);
                                 continue;
                             }
@@ -4793,6 +5055,7 @@ impl AdobePluginInstance for LocalMutex {
                                 // selector, or an adjustment layer with
                                 // nothing under it (ADR-0030 §5).
                                 Ok(Some(layer)) => {
+                                    checkouts.record(id);
                                     let stride = layer.buffer_stride();
                                     // Raw AE bytes: ARGB, and at 16-bpc a
                                     // 4x16-bit U15 pixel. The working format is
@@ -4818,9 +5081,11 @@ impl AdobePluginInstance for LocalMutex {
                                         samples: None,
                                         vertices: None,
                                         ae_pixels: true,
+                                        coverage_origin: matches!(source, ExternalSource::Coverage { .. }).then(|| { let o = layer.origin(); (o.h, o.v) }),
                                     }));
                                 }
                                 Ok(None) => {
+                                    checkouts.record(id);
                                     // Legitimate, but indistinguishable in the
                                     // render from a failed read — so say which
                                     // it was (2026-08-16: a broken checkout and
@@ -4828,6 +5093,10 @@ impl AdobePluginInstance for LocalMutex {
                                     // silent transparent black).
                                     diag::log(&format!("layer {id}: no pixels (selector unset?)"));
                                     staged.push(None);
+                                }
+                                Err(Error::InterruptCancel) => {
+                                    diag::log(&format!("external checkout {id} cancelled; discarding frame"));
+                                    return Err(Error::InterruptCancel);
                                 }
                                 Err(e) => {
                                     diag::log(&format!(
@@ -4851,7 +5120,7 @@ impl AdobePluginInstance for LocalMutex {
                 }
                 SMART_LAYERS.with(|l| *l.borrow_mut() = staged);
 
-                if let Ok(Some(mut out_layer)) = cb.checkout_output() {
+                if let Some(mut out_layer) = cb.checkout_output()? {
                     if let Some(in_layer) = &checked_out {
                         SMART_WINDOW.with(|w| w.set(Some(window)));
                         SMART_CANVAS.with(|c| c.set(Some(geom.canvas)));
@@ -4863,16 +5132,18 @@ impl AdobePluginInstance for LocalMutex {
                         // working encoding (U8/U15/F32).
                         out_layer.buffer_mut().fill(0);
                     }
+                    if host::render_trace::enabled() {
+                        let mut digest = blake3::Hasher::new();
+                        let bytes = out_layer.width() * match out_layer.bit_depth() { 8 => 4, 16 => 8, _ => 16 };
+                        for row in out_layer.buffer().chunks(out_layer.buffer_stride()).take(out_layer.height()) {
+                            digest.update(&row[..bytes]);
+                        }
+                        diag::log(&format!("native frame digest: pid={} time={}/{} depth={} world={}x{} origin={:?} hash={}",
+                            std::process::id(), plugin.in_data.current_time(), plugin.in_data.time_scale(), out_layer.bit_depth(),
+                            out_layer.width(), out_layer.height(), out_layer.origin(), digest.finalize().to_hex()));
+                    }
                 }
-                SMART_LAYERS.with(|l| l.borrow_mut().clear());
-                SMART_CANVAS.with(|c| c.set(None));
-                for id in SMART_CHECKOUTS.with(|c| c.borrow().clone()) {
-                    let _ = cb.checkin_layer_pixels(id);
-                }
-                SMART_CHECKOUTS.with(|c| c.borrow_mut().clear());
-                if checked_out.is_some() {
-                    let _ = cb.checkin_layer_pixels(geom.input_id);
-                }
+                checkouts.finish()?;
             }
             _ => {}
         }

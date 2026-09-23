@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"file\\\":\\\"host-shape-native.aep\\\",\\\"version\\\":\\\"26.3x87\\\",\\\"bpc\\\":16,\\\"comps\\\":[{\\\"id\\\":90,\\\"name\\\":\\\"HS_coverage_control\\\",\\\"time\\\":0,\\\"adjustment\\\":false},{\\\"id\\\":17,\\\"name\\\":\\\"HS_mask_only\\\",\\\"time\\\":0,\\\"adjustment\\\":true},{\\\"id\\\":48,\\\"name\\\":\\\"HS_ordinary_input\\\",\\\"time\\\":0,\\\"adjustment\\\":true},{\\\"id\\\":63,\\\"name\\\":\\\"HS_reference_coverage\\\",\\\"time\\\":0,\\\"adjustment\\\":false},{\\\"id\\\":33,\\\"name\\\":\\\"HS_shape_and_mask\\\",\\\"time\\\":0,\\\"adjustment\\\":true},{\\\"id\\\":1,\\\"name\\\":\\\"HS_shape_only\\\",\\\"time\\\":0,\\\"adjustment\\\":true},{\\\"id\\\":76,\\\"name\\\":\\\"HS_vector_animated\\\",\\\"time\\\":0,\\\"adjustment\\\":true}],\\\"standby\\\":true}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"file\":\"host-shape-native.aep\",\"version\":\"26.3x87\",\"bpc\":16,\"comps\":[{\"id\":90,\"name\":\"HS_coverage_control\",\"time\":0,\"adjustment\":false},{\"id\":17,\"name\":\"HS_mask_only\",\"time\":0,\"adjustment\":true},{\"id\":48,\"name\":\"HS_ordinary_input\",\"time\":0,\"adjustment\":true},{\"id\":63,\"name\":\"HS_reference_coverage\",\"time\":0,\"adjustment\":false},{\"id\":33,\"name\":\"HS_shape_and_mask\",\"time\":0,\"adjustment\":true},{\"id\":1,\"name\":\"HS_shape_only\",\"time\":0,\"adjustment\":true},{\"id\":76,\"name\":\"HS_vector_animated\",\"time\":0,\"adjustment\":true}],\"standby\":true}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

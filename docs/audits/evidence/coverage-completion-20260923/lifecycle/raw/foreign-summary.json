@@ -1,0 +1,101 @@
+[
+  {
+    "case": "foreign layer selector preserves reader after last opt-out",
+    "status": "PASS",
+    "state": {
+      "owner": 13,
+      "reader": 29,
+      "state": 0,
+      "layers": 3,
+      "items": 14
+    }
+  },
+  {
+    "case": "foreign reader remains usable without recreation",
+    "status": "PASS",
+    "state": {
+      "owner": 13,
+      "reader": 29,
+      "state": 248597054798406,
+      "layers": 3,
+      "items": 14
+    }
+  },
+  {
+    "case": "shared source preserved while owned reader removed",
+    "status": "PASS",
+    "state": {
+      "owner": 13,
+      "reader": null,
+      "state": 0,
+      "layers": 2,
+      "items": 14
+    }
+  },
+  {
+    "case": "new opt-in creates and validates independent reader",
+    "status": "PASS",
+    "state": {
+      "owner": 13,
+      "reader": 63,
+      "state": 248597054798407,
+      "layers": 2,
+      "items": 15
+    }
+  },
+  {
+    "case": "modified reader survives opt-out as conflict",
+    "status": "PASS",
+    "state": {
+      "owner": 13,
+      "reader": 63,
+      "state": 3,
+      "layers": 2,
+      "items": 15
+    }
+  },
+  {
+    "case": "restored structure recovers",
+    "status": "PASS",
+    "state": {
+      "owner": 13,
+      "reader": 63,
+      "state": 248597054798408,
+      "layers": 2,
+      "items": 15
+    }
+  },
+  {
+    "case": "owner deletion cleans known orphan",
+    "status": "PASS",
+    "state": {
+      "owner": null,
+      "reader": null,
+      "state": null,
+      "layers": 0,
+      "items": 14
+    }
+  },
+  {
+    "case": "Undo cleanup restores orphan without deletion loop",
+    "status": "PASS",
+    "state": {
+      "owner": null,
+      "reader": 63,
+      "state": null,
+      "layers": 1,
+      "items": 15
+    }
+  },
+  {
+    "case": "Undo original restores native link",
+    "status": "PASS",
+    "state": {
+      "owner": 13,
+      "reader": 63,
+      "state": 248597054798408,
+      "layers": 2,
+      "items": 15
+    }
+  }
+]

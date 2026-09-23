@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"native-reader.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(910),a=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===913)a=c.layer(i);var targets=[a,app.project.itemByID(931).layer(1)];for(var n=0;n<2;n++){targets[n].threeDLayer=false;var t=targets[n].property(\"ADBE Transform Group\");t.property(\"ADBE Anchor Point\").setValue([0,0]);t.property(\"ADBE Position\").setValue([0,0]);t.property(\"ADBE Scale\").setValue([100,100]);t.property(\"ADBE Rotate Z\").setValue(0);targets[n].property(\"ADBE Root Vectors Group\").property(1).property(\"ADBE Vectors Group\").addProperty(\"ADBE Vector Filter - Repeater\");}return \"set\";})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"set\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "set",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

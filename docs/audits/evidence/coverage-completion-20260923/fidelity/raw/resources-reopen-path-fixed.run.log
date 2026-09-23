@@ -1,0 +1,5 @@
+{"step": "resources-save", "status": "PASS"}
+{"step": "resources-reopen", "status": "PASS"}
+{"step": "resources-reopened-state", "status": "PASS"}
+{"step": "resources-reopened-assigned", "status": "PASS"}
+{"step": "resources-reopened-keys", "status": "PASS"}

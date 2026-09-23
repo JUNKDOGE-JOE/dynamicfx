@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"native-reader.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(910);function layer(id){for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===id)return c.layer(i);throw Error(\"Missing layer\");}var owner=layer(913);var readers=[],owners=[];for(var i=1;i<=c.numLayers;i++){var l=c.layer(i),fx=l.property(\"ADBE Effect Parade\"),row={id:l.id,enabled:l.enabled,locked:l.locked,shy:l.shy,effects:[]};for(var j=1;j<=fx.numProperties;j++){var e=fx.property(j);if(e.matchName!==\"DynamicFx Host Shape Probe\")continue;var r={index:j,managed:e.property(10).value,role:e.property(11).value,mode:e.property(2).value,source:e.property(6).value?c.layer(e.property(6).value).id:0,linked:e.property(9).value?c.layer(e.property(9).value).id:0};row.effects.push(r);}if(row.effects.length){if(row.effects[0].role)readers.push(row);else owners.push(row);}}return JSON.stringify({layers:c.numLayers,items:app.project.numItems,readers:readers,owners:owners});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"layers\\\":3,\\\"items\\\":86,\\\"readers\\\":[{\\\"id\\\":925,\\\"enabled\\\":false,\\\"locked\\\":true,\\\"shy\\\":true,\\\"effects\\\":[{\\\"index\\\":1,\\\"managed\\\":0,\\\"role\\\":1,\\\"mode\\\":22,\\\"source\\\":913,\\\"linked\\\":0}]}],\\\"owners\\\":[{\\\"id\\\":913,\\\"enabled\\\":true,\\\"locked\\\":false,\\\"shy\\\":false,\\\"effects\\\":[{\\\"index\\\":1,\\\"managed\\\":0,\\\"role\\\":0,\\\"mode\\\":21,\\\"source\\\":913,\\\"linked\\\":0},{\\\"index\\\":2,\\\"managed\\\":1,\\\"role\\\":0,\\\"mode\\\":21,\\\"source\\\":913,\\\"linked\\\":925}]}]}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"layers\":3,\"items\":86,\"readers\":[{\"id\":925,\"enabled\":false,\"locked\":true,\"shy\":true,\"effects\":[{\"index\":1,\"managed\":0,\"role\":1,\"mode\":22,\"source\":913,\"linked\":0}]}],\"owners\":[{\"id\":913,\"enabled\":true,\"locked\":false,\"shy\":false,\"effects\":[{\"index\":1,\"managed\":0,\"role\":0,\"mode\":21,\"source\":913,\"linked\":0},{\"index\":2,\"managed\":1,\"role\":0,\"mode\":21,\"source\":913,\"linked\":925}]}]}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

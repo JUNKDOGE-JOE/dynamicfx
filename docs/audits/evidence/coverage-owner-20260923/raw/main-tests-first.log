@@ -1,0 +1,27 @@
+   Compiling dynamicfx v0.1.1 (<workspace>)
+error[E0599]: no variant, associated function, or constant named `NONE` found for enum `InstalledEffectKey` in the current scope
+  --> src\host\coverage_owner.rs:81:43
+   |
+81 |     let mut current = InstalledEffectKey::NONE;
+   |                                           ^^^^ variant, associated function, or constant not found in `InstalledEffectKey`
+   |
+help: there is a variant with a similar name
+   |
+81 -     let mut current = InstalledEffectKey::NONE;
+81 +     let mut current = InstalledEffectKey::None;
+   |
+
+error[E0599]: no method named `installed_effect_match_name` found for reference `&after_effects::aegp::suites::Effect` in the current scope
+  --> src\host\coverage_owner.rs:84:20
+   |
+84 |         if effects.installed_effect_match_name(current)? == READER_NAME { return Ok(Some(current)); }
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: there is a method `effect_match_name` with a similar name
+   |
+84 -         if effects.installed_effect_match_name(current)? == READER_NAME { return Ok(Some(current)); }
+84 +         if effects.effect_match_name(current)? == READER_NAME { return Ok(Some(current)); }
+   |
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `dynamicfx` (lib test) due to 2 previous errors

@@ -1,0 +1,15 @@
+[1790149597] status: E5 no expression on Source
+[1790149597] slots hidden (no definition)
+[1790149597] ui publication: param=426, language=Some(LanguageId(1)), token=0, plan=0, code=E5
+[1790149597] ui publication: param=426, language=Some(LanguageId(1)), token=0, plan=0, code=E5
+[1790149597] status: compiled: 1 pass, 1 params
+[1790149597] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790149597] definition resolved from process registry
+[1790149597] layer 1: 800x600 stride 12800
+[1790149597] coverage gate refused: E60 state=249545369263683 certificate=0
+[1790149597] idle slot ui applied: 1 bound, 0 defaults written
+[1790149597] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790149597] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790149597] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790149597] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790149597] coverage reader created: owner=51 reader=53

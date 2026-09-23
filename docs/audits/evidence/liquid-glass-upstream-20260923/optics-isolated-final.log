@@ -1,0 +1,8 @@
+{"case": "upstream Snell displacement isolated from filtering", "status": "FAIL", "maximum_error_pixels": 0.0029916575450261718, "samples": 5}
+Traceback (most recent call last):
+  File "E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911\scripts\out\upstream-glass-20260924\verify-optics.py", line 38, in <module>
+    check('upstream Snell displacement isolated from filtering',max(errors)<.0001,maximum_error_pixels=max(errors),samples=len(errors))
+  File "E:\Code\AePlugin_Dynamicfx\scripts\out\public-push-20260911\scripts\out\upstream-glass-20260924\verify-optics.py", line 23, in check
+    rows.append({'case':name,'status':'PASS' if ok else 'FAIL',**values});(out/'gpu-summary.json').write_text(json.dumps(rows,indent=2),encoding='utf-8');print(json.dumps(rows[-1]),flush=True);assert ok,rows[-1]
+                                                                                                                                                                                                        ^^
+AssertionError: {'case': 'upstream Snell displacement isolated from filtering', 'status': 'FAIL', 'maximum_error_pixels': 0.0029916575450261718, 'samples': 5}

@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Upstream Glass.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),rows=[];for(var i=1;i<=c.numLayers;i++){var l=c.layer(i);if(l instanceof ShapeLayer){var e=l.property(\"ADBE Effect Parade\").property(1);rows.push({id:l.id,name:l.name,enabled:l.enabled,effects:l.property(\"ADBE Effect Parade\").numProperties,state:e.property(427).value,token:e.property(6).value,error:e.property(3).expressionError});}}app.project.save();return JSON.stringify({version:app.version,depth:app.project.bitsPerChannel,queue:app.project.renderQueue.numItems,shapes:rows});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"version\\\":\\\"26.5x89\\\",\\\"depth\\\":32,\\\"queue\\\":0,\\\"shapes\\\":[{\\\"id\\\":23,\\\"name\\\":\\\"Glass - capsule\\\",\\\"enabled\\\":true,\\\"effects\\\":1,\\\"state\\\":258747040017340,\\\"token\\\":5203023893666633,\\\"error\\\":\\\"\\\"},{\\\"id\\\":22,\\\"name\\\":\\\"Glass - circle\\\",\\\"enabled\\\":true,\\\"effects\\\":1,\\\"state\\\":258747040017341,\\\"token\\\":5203023893666633,\\\"error\\\":\\\"\\\"},{\\\"id\\\":21,\\\"name\\\":\\\"Glass - native rounded card\\\",\\\"enabled\\\":true,\\\"effects\\\":1,\\\"state\\\":258747040017342,\\\"token\\\":5203023893666633,\\\"error\\\":\\\"\\\"}]}\",\"contentType\":\"text\",\"artifactId\":\"user:5403b349-107d-4126-ae85-80aeee0d491a\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"version\":\"26.5x89\",\"depth\":32,\"queue\":0,\"shapes\":[{\"id\":23,\"name\":\"Glass - capsule\",\"enabled\":true,\"effects\":1,\"state\":258747040017340,\"token\":5203023893666633,\"error\":\"\"},{\"id\":22,\"name\":\"Glass - circle\",\"enabled\":true,\"effects\":1,\"state\":258747040017341,\"token\":5203023893666633,\"error\":\"\"},{\"id\":21,\"name\":\"Glass - native rounded card\",\"enabled\":true,\"effects\":1,\"state\":258747040017342,\"token\":5203023893666633,\"error\":\"\"}]}",
+      "contentType": "text",
+      "artifactId": "user:5403b349-107d-4126-ae85-80aeee0d491a"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "name": "1-alpha",
+    "token": 80823419823601,
+    "status": "Status: idle",
+    "rgba": [
+      0.12598232924938,
+      0.25196465849876,
+      0.50196081399918,
+      0.50196081399918
+    ],
+    "values": []
+  },
+  {
+    "name": "1-percent",
+    "token": 78,
+    "status": "Status: idle",
+    "rgba": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "values": []
+  },
+  {
+    "name": "1-rgb",
+    "token": 78,
+    "status": "Status: idle",
+    "rgba": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "values": []
+  },
+  {
+    "name": "1-rgba",
+    "token": 4585099403079245,
+    "status": "Status: idle",
+    "rgba": [
+      0.25098040699959,
+      0.50196081399918,
+      1,
+      1
+    ],
+    "values": []
+  },
+  {
+    "name": "2-alpha",
+    "token": 3024872702079213,
+    "status": "Status: idle",
+    "rgba": [
+      0.12598232924938,
+      0.25196465849876,
+      0.50196081399918,
+      0.50196081399918
+    ],
+    "values": []
+  },
+  {
+    "name": "2-percent",
+    "token": 78,
+    "status": "Status: idle",
+    "rgba": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "values": []
+  },
+  {
+    "name": "2-rgb",
+    "token": 78,
+    "status": "Status: idle",
+    "rgba": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "values": []
+  },
+  {
+    "name": "2-rgba",
+    "token": 5994091950541057,
+    "status": "Status: idle",
+    "rgba": [
+      0.25098040699959,
+      0.50196081399918,
+      1,
+      1
+    ],
+    "values": []
+  }
+]

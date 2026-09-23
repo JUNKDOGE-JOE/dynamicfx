@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":174,\\\"masks\\\":[{\\\"name\\\":\\\"User mask control\\\",\\\"mode\\\":6812,\\\"enabled\\\":false,\\\"error\\\":\\\"\\\",\\\"vertices\\\":4,\\\"head\\\":[[40,40],[80,40],[80,80],[40,80]]},{\\\"name\\\":\\\"蒙版 1\\\",\\\"mode\\\":6812,\\\"enabled\\\":true,\\\"error\\\":\\\"\\\",\\\"vertices\\\":3648,\\\"head\\\":[[-1234,-5678],[800,600],[200,150],[1.192138671875,1]]}]}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":174,\"masks\":[{\"name\":\"User mask control\",\"mode\":6812,\"enabled\":false,\"error\":\"\",\"vertices\":4,\"head\":[[40,40],[80,40],[80,80],[40,80]]},{\"name\":\"蒙版 1\",\"mode\":6812,\"enabled\":true,\"error\":\"\",\"vertices\":3648,\"head\":[[-1234,-5678],[800,600],[200,150],[1.192138671875,1]]}]}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}

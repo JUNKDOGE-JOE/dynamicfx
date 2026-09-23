@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Parameter acceptance.aep\")throw Error(\"Unexpected project\");app.project.save();app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);app.open(new File(\"E:/Code/AePlugin_Dynamicfx/scripts/out/public-push-20260911/scripts/out/issues-release-20260923/User workspace checkpoint.aep\"));return JSON.stringify({restored:true,items:app.project.numItems,version:app.version});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"restored\\\":true,\\\"items\\\":7,\\\"version\\\":\\\"26.5x89\\\"}\",\"contentType\":\"text\",\"artifactId\":\"user:af78a643-83fb-4129-a2f1-d769ca857baa\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"restored\":true,\"items\":7,\"version\":\"26.5x89\"}",
+      "contentType": "text",
+      "artifactId": "user:af78a643-83fb-4129-a2f1-d769ca857baa"
+    }
+  }
+}

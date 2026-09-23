@@ -1,0 +1,4 @@
+{
+  "code": "(function(){var p=app.project;if(!p.file||p.file.name!==\"host-shape-native.aep\")throw Error(\"Wrong project\");\nvar c=p.itemByID(174);if(c.name!==\"HS_auto_base\")throw Error(\"Wrong fixture\");\nvar f=c.layer(1).property(\"ADBE Effect Parade\");if(f.numProperties!==2)throw Error(\"Wrong effect count\");\napp.executeCommand(2035); return \"applied\";})()",
+  "timeout_sec": 15
+}

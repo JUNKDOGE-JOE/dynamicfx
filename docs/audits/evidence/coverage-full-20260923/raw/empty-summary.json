@@ -1,0 +1,56 @@
+[
+  {
+    "case": "empty",
+    "kind": "reference",
+    "depth": 8,
+    "status": "PASS"
+  },
+  {
+    "case": "empty",
+    "kind": "ordinary",
+    "depth": 8,
+    "status": "PASS"
+  },
+  {
+    "case": "empty",
+    "kind": "adjustment",
+    "depth": 8,
+    "status": "PASS"
+  },
+  {
+    "case": "empty",
+    "kind": "reference",
+    "depth": 16,
+    "status": "PASS"
+  },
+  {
+    "case": "empty",
+    "kind": "ordinary",
+    "depth": 16,
+    "status": "PASS"
+  },
+  {
+    "case": "empty",
+    "kind": "adjustment",
+    "depth": 16,
+    "status": "PASS"
+  },
+  {
+    "case": "empty",
+    "kind": "reference",
+    "depth": 32,
+    "status": "PASS"
+  },
+  {
+    "case": "empty",
+    "kind": "ordinary",
+    "depth": 32,
+    "status": "PASS"
+  },
+  {
+    "case": "empty",
+    "kind": "adjustment",
+    "depth": 32,
+    "status": "FAIL"
+  }
+]

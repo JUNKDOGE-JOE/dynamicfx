@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":103,\\\"alphaText\\\":\\\"[1,1,1]\\\",\\\"error\\\":\\\"\\\",\\\"matteSource\\\":2}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"comp\":103,\"alphaText\":\"[1,1,1]\",\"error\":\"\",\"matteSource\":2}",
+    "contentType": "text",
+    "artifactId": "user:REDACTED_ARTIFACT_ID"
+  }
+}
