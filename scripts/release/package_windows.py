@@ -24,11 +24,14 @@ def main():
     parser.add_argument('--coverage-reader', type=Path)
     parser.add_argument('--coverage-verification', type=Path)
     parser.add_argument('--coverage-third-party', type=Path)
+    parser.add_argument('--release', action='store_true')
     args = parser.parse_args()
     version = tomllib.loads((ROOT / 'Cargo.toml').read_text())['package']['version']
     artifact = args.artifact.read_bytes()
     verified = json.loads(args.verification.read_text())
     assert verified['sha256'] == sha(artifact) and verified['version'] == version
+    if args.release:
+        assert verified['status'] == 'PASS'
     if bool(args.coverage_reader) != bool(args.coverage_verification):
         raise ValueError('Coverage packaging requires both reader and host verification')
     reader = args.coverage_reader.read_bytes() if args.coverage_reader else None
@@ -67,7 +70,9 @@ def main():
                    ROOT / 'coverage-reader/Cargo.toml', ROOT / 'coverage-reader/Cargo.lock',
                    ROOT / 'coverage-reader/build.rs', *sorted((ROOT / 'coverage-reader/src').rglob('*.rs'))]
     identity = dict(version=version, source_commit=commit, binary_sha256=sha(artifact),
-                    build_command='cargo build --offline --release',
+                    build_command='cargo +1.97.1 build --release --locked --offline --target x86_64-pc-windows-msvc',
+                    source_line_endings='Hashes identify build-checkout bytes; normalize CRLF to LF when comparing tracked text with Git blobs. Exact dependency locks are bundled.',
+                    path_remapping=verified.get('path_remapping', False),
                     source_files={p.relative_to(ROOT).as_posix(): sha(p.read_bytes()) for p in inputs},
                     host_scope='AE 2026 runtime-code equivalence; exact versioned bytes not installed',
                     verification=verified)
@@ -98,7 +103,8 @@ Source and full instructions:
 https://github.com/JUNKDOGE-JOE/dynamicfx/tree/v{version}
 '''
     if reader:
-        install = f'''DynamicFX host-coverage development candidate - Windows x64 / DirectX 12
+        title = f'DynamicFX {version}' if args.release else 'DynamicFX host-coverage development candidate'
+        install = f'''{title} - Windows x64 / DirectX 12
 
 Close After Effects and aerender. Copy both AEX files to the version-specific
 Adobe After Effects 2026/Support Files/Plug-ins/DynamicFx directory.
@@ -106,8 +112,9 @@ Do not use shared Common/Plug-ins/7.0/MediaCore. Restart AE after installation.
 Main SHA-256: {sha(artifact)}
 Host acceptance: {coverage['host_scope']}
 Build inputs and exact binary identities: build/source-identity.json.
-This candidate is separate from the published 0.1.1 release.
 Source-expression single Undo remains the documented existing limitation.
+Issue #12 (some projects report a missing layer source after reopening) remains
+open and is not claimed fixed. See docs/project-reopen-diagnostics.md in source.
 '''
         install += f'''
 Automatic host coverage requires AE 26.5 or newer on Windows.
@@ -118,7 +125,7 @@ Reader SHA-256: {sha(reader)}
 Coverage acceptance: {coverage['host_scope']}
 '''
     args.out.mkdir(parents=True, exist_ok=True)
-    suffix = 'coverage-candidate-' if reader else ''
+    suffix = 'coverage-candidate-' if reader and not args.release else ''
     plugin_zip = args.out / f'DynamicFX-{version}-{suffix}windows-x64.zip'
     if plugin_zip.exists():
         raise ValueError('Refusing to replace a frozen package: ' + str(plugin_zip))

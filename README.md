@@ -12,10 +12,11 @@ single authority for what renders.
 
 ## Status
 
-The development branch adds automatic host coverage and a
+Version **0.2.0 for Windows** adds automatic host coverage and a
 [Liquid Glass example](docs/liquid-glass.md) for Windows AE 26.5+.
-It requires the paired native coverage reader; published 0.1.1 packages below
-do not contain this feature. See the [current implementation record](docs/IMPLEMENTATION_STATUS.md).
+It includes the paired native coverage reader, supports six-digit RGB defaults
+on `vec3`, and adds `hint:percent` float display. See the
+[current implementation record](docs/IMPLEMENTATION_STATUS.md).
 
 `0.1.1` fixes Windows GPU compiler failure handling. Backend pipeline rejection
 now returns `E58` instead of escaping into a panic; a rejected replacement
@@ -25,6 +26,7 @@ The IOS27Siri animation sample is temporarily withdrawn for further refinement.
 
 | Release / host | Status |
 |---|---|
+| 0.2.0 / Windows x64 / AE 26.5x89 | Native coverage, portable Liquid Glass, color/percent parameters and exact release-artifact regression verified |
 | 0.1.1 / Windows x64 / DX12 | Release build and real-GPU recovery regression verified; AE 2026 valid rendering verified on the same runtime code, before the version metadata bump |
 | 0.1.1 / macOS Apple Silicon / Metal | Native ARM build, CPU suites, real-Metal smoke tests and static bundle checks verified; new-byte AE execution and Sample acceptance NOT_RUN |
 | 0.1.0 / macOS Apple Silicon / AE 2026 | Previous native host and independent aerender verified release; this host result does not certify 0.1.1 |
@@ -35,7 +37,9 @@ See [macOS setup](docs/macos-arm64.md) and the [test matrix](docs/TEST_MATRIX.md
 for the exact artifact and host scope. The optional gradient editor remains
 shelved and disabled in the default release.
 
-**Known limitation, retained in 0.1.1:** after editing the `Source` expression, background
+**Known limitations:** [issue #12](https://github.com/JUNKDOGE-JOE/dynamicfx/issues/12),
+an intermittent missing-layer-source report on project reopen, remains unresolved.
+Also, after editing the `Source` expression, background
 state publication can occupy Undo history. A single Undo may leave the source
 unchanged and make Redo unavailable. Keep earlier shader text in a file and
 restore that text explicitly. Source-expression Undo is not covered by the
@@ -46,12 +50,13 @@ same limitation and explicitly separates Metal tests from native AE acceptance.
 
 ## Install
 
-For Windows x64, download `DynamicFX-0.1.1-windows-x64.zip` from
-[v0.1.1](https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.1.1).
-Close After Effects, extract the archive, then follow `INSTALL.txt` to copy
-`DynamicFx.aex` into the plug-ins folder for your AE version. SHA-256 checksums
-are included on the release page. The currently verified native host is AE 2026;
-this patch does not add acceptance for AE 2023–2025.
+For Windows x64, download `DynamicFX-0.2.0-windows-x64.zip` from
+[v0.2.0](https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.2.0).
+Close After Effects and aerender, then follow `INSTALL.txt` to copy both
+`DynamicFx.aex` and `DynamicFxCoverageReader.aex` into the version-specific
+plug-in folder. SHA-256 checksums are included. Automatic coverage and the
+Liquid Glass example require **AE 26.5+**; native acceptance for this release
+is AE 26.5x89. Earlier-host acceptance is not extended by this release.
 
 For Apple Silicon macOS, download `DynamicFX-0.1.1-macos-arm64.zip` from
 [v0.1.1](https://github.com/JUNKDOGE-JOE/dynamicfx/releases/tag/v0.1.1), verify

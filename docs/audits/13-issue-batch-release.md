@@ -1,6 +1,6 @@
 # Issues #10–#12 and unified release
 
-## Outcome
+## Initial outcome
 
 Issues #10 and #11 are implemented and verified on Windows AE 26.5x89.
 Issue #9 retains its accepted coverage/material implementation. Issue #12 is
@@ -55,5 +55,9 @@ toolchain; use the recorded disposable host harness for the native matrix.
 The [read-only collector](../project-reopen-diagnostics.md) records host versions
 and component hashes on the affected machine without reading projects or logs.
 
-Next action: obtain a reproducible affected-host case for #12, demonstrate its
-fix, then complete final package checks and the authorized unified merge/release.
+The initial next action was to obtain a reproducible affected-host case for #12
+before release. The user subsequently explicitly deferred #12 and authorized
+release of completed work. [ADR-0061](../adr/0061-020-windows-release.md) and the
+[0.2.0 audit](14-windows-020.md) supersede that release gate. #12 remains open.
+
+Next development action: obtain an affected-host #12 reproduction.

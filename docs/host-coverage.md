@@ -1,6 +1,6 @@
 # Automatic host coverage
 
-This unreleased Windows feature requires **After Effects 26.5 or newer**.
+This Windows feature ships in 0.2.0 and requires **After Effects 26.5 or newer**.
 The [implementation status](IMPLEMENTATION_STATUS.md) and
 [test matrix](TEST_MATRIX.md) identify accepted artifacts and remaining work.
 The published 0.1.1 downloads do not contain this feature.

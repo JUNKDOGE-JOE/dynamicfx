@@ -14,10 +14,10 @@
 
 ## Current - IOS27Siri withdrawn for refinement
 
-Unified issue delivery is now authorized. #9–#11 are implemented and locally
-verified; #12 still needs affected-host reproduction before merge/release.
-See [issue-batch audit](audits/13-issue-batch-release.md). No release gate is
-waived merely because the report is not reproducible on the development host.
+The user explicitly deferred #12 and authorized Windows 0.2.0 with completed
+#9–#11. #12 still needs affected-host reproduction and remains open; release
+does not establish its repair. See [release audit](audits/14-windows-020.md) and
+[ADR-0061](adr/0061-020-windows-release.md).
 
 The user-selected MIT Liquid Glass Studio material port is complete, including
 coverage-derived geometry, source/FFX, upstream notices and GPU/AE acceptance.

@@ -1,7 +1,7 @@
 # 液态玻璃
 
 需要 Windows AE **26.5 或以上**，以及同一构建的 `DynamicFx.aex` 和
-`DynamicFxCoverageReader.aex`。这是开发分支的新功能，已发布的 0.1.1
+`DynamicFxCoverageReader.aex`。该功能随 Windows 0.2.0 提供，0.1.1
 安装包不包含它。[覆盖图安装说明](host-coverage.md)。
 
 ## 使用

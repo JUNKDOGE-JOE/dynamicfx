@@ -1,0 +1,82 @@
+[
+  {
+    "path": "ae-matrix-summary.json",
+    "bytes": 4475,
+    "sha256": "429da04102e7b79f64254e8d70f0021fb4ac7bdaa1762a02c4f18c683d490778"
+  },
+  {
+    "path": "artifact-verification.json",
+    "bytes": 334,
+    "sha256": "bea961e99347723c5a881b4062528ff7be0f16f86e1ea5d12a1649b67c5a02de"
+  },
+  {
+    "path": "binary-identities.json",
+    "bytes": 369,
+    "sha256": "34db108a8fd98475cdfafe39ace5f06a41bf48d92a5e6d86dbb150633ee3be2f"
+  },
+  {
+    "path": "build-main.log",
+    "bytes": 3158,
+    "sha256": "22b07ac20bc1875f7610d863acf563f7aaa584ec4673bacb711f436a41ba2b04"
+  },
+  {
+    "path": "build-reader.log",
+    "bytes": 1861,
+    "sha256": "25d76d2f6878f7bbbaeeda78b02fe8f99af372683795aeaafa2ce58af10daf80"
+  },
+  {
+    "path": "coverage-verification.json",
+    "bytes": 421,
+    "sha256": "c0bb11c34cf1b523ae8ea30c39f028cbb4519c7d5da7b5d28ab49b42374789f6"
+  },
+  {
+    "path": "fixture-note.json",
+    "bytes": 173,
+    "sha256": "e25142d81020bf29afc5c777ce32d238b79b68a230f8dee2969da884cefcfa0f"
+  },
+  {
+    "path": "frame-equivalence.json",
+    "bytes": 2981,
+    "sha256": "a031af87e69641219ffc41f94707466924b3918c0ede68b8838d22b901c77b03"
+  },
+  {
+    "path": "matrix.log",
+    "bytes": 86,
+    "sha256": "7dd0beb71e59adff453ded550ab9063dd40a28109a40fda30157cc15a8172b80"
+  },
+  {
+    "path": "matrix.py",
+    "bytes": 3530,
+    "sha256": "af92dd24c389a1d1bd0fb7df90d0339b349c93efb32c458c8bb6e90fecea00d8"
+  },
+  {
+    "path": "notices.log",
+    "bytes": 415,
+    "sha256": "1f59c2a76f7b12899278c4dd3f413f9f0ae81f7a1005c8ff389205854e871ef1"
+  },
+  {
+    "path": "README.md",
+    "bytes": 1347,
+    "sha256": "429e253bc32e92c04e06b5e4b875fba410e47e1dfc0c7e4b3a1761a0816e2c55"
+  },
+  {
+    "path": "tests-default.log",
+    "bytes": 20415,
+    "sha256": "3c1d71105bdb3bc8bab6d0eeb3c814d37cb3940beaecfbef62b00bfd7b27b343"
+  },
+  {
+    "path": "tests-editor.log",
+    "bytes": 20415,
+    "sha256": "8e14270e67697e93c3e2daef695304a60254ddea7cd9b7b70d51e282a74c7596"
+  },
+  {
+    "path": "tests-no-sdk.log",
+    "bytes": 20945,
+    "sha256": "856d151e890d99f2f8e2f5a3ecf9cab02c44e4b7678544320acc97d985609750"
+  },
+  {
+    "path": "tests-reader.log",
+    "bytes": 1516,
+    "sha256": "6a2abfe692b0b949670d4104e6e1da3f1724679a7631328527ac0b46aa3ad23d"
+  }
+]

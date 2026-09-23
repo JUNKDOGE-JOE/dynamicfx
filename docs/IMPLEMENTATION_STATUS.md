@@ -5,7 +5,7 @@
 
 
 
-## Active issue batch and unified release — 2026-09-23
+## Windows 0.2.0 release — 2026-09-23
 
 The user authorized resolving all open issues, then merging and releasing the
 combined result. #9 is accepted; #10 RGB hex defaults and #11 percent display
@@ -14,12 +14,13 @@ native parameter cases, display-unit readback, keyframe/save-reopen checks and
 27 pixel-identical glass frame pairs. Candidate main is `4fe13ec0...`; reader
 is unchanged. [Batch audit](audits/13-issue-batch-release.md).
 
-#12 is blocked on affected-host reproduction. The user confirms another
-machine is affected and has no additional error details. Four local opens
-do not reproduce it and are not evidence of a fix. The draft PR remains
-unmerged and no new release is published. Next action: obtain a reproducible
-affected-host case using the [diagnostic guide](project-reopen-diagnostics.md),
-then fix and verify #12 before the authorized unified merge/release.
+The user subsequently deferred #12 and authorized release of completed #9–#11.
+[ADR-0061](adr/0061-020-windows-release.md) records the Windows-only 0.2.0 scope,
+retained Source Undo limitation and unchanged macOS 0.1.1 distribution.
+The report on another machine stays open: four local opens without the error
+do not prove a fix. [Release audit](audits/14-windows-020.md).
+Next development action: obtain an affected-host #12 reproduction using the
+[diagnostic guide](project-reopen-diagnostics.md).
 
 ## Completed upstream Liquid Glass port — 2026-09-23
 

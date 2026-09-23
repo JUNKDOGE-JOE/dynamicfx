@@ -123,7 +123,7 @@ fn pipl_properties(editor: bool) -> Vec<Property> {
             // Distinct cache generations separate default/editor output and
             // invalidate frames produced before coverage authorization checks.
             version: 1,
-            subversion: if editor { 22 } else { 21 },
+            subversion: if editor { 24 } else { 23 },
             bugversion: 1,
             stage: Stage::Develop,
             build: 1,

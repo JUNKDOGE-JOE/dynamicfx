@@ -2135,3 +2135,24 @@ probe changes. Current diagnostic 0.0.14 `6734a384...`; production AEX remains
   remains open until #12 is resolved. Diagnostic inventory is read-only.
 - [Audit](audits/13-issue-batch-release.md),
   [evidence](audits/evidence/issues-10-12-20260923/README.md).
+
+
+## TR-REL-020 — Completed Windows work with issue 12 deferred
+
+- Scope: user explicitly defers #12 and authorizes merge/release of #9–#11;
+  ADR-0061 supersedes the preceding release blocker, not the unresolved defect.
+- `PASS`: v0.2.0 SDK default/editor/no-SDK library suites: 257 each; reader: 4.
+  Locked release builds use Rust 1.97.1 and Windows x64. Runtime changes from the
+  preceding batch are limited to version/cache-generation metadata and diagnostic
+  path remapping, with no shader/coverage/parameter behavior change.
+- `PASS`: final remapped main `b4505fd3...` and reader `b0f476ab...` are installed
+  on AE 26.5x89 and render the frozen 27-frame matrix. Exact comparison is recorded
+  separately; initial changed-user-workspace mismatch is retained, not erased.
+- `PASS`: home path exclusion in both final binaries; initial path-bearing builds
+  remain local and are not publication artifacts. Private AEP/PSD/PDB/SDK stay out.
+- Publication uses normal PR merge, merged-commit tag, paired Windows ZIP and
+  dependency notices. Fresh-download verification checks hashes and archive CRC.
+- #12 remains OPEN and is not claimed fixed. macOS retains original 0.1.1 assets;
+  other-host 0.2.0 acceptance is NOT_RUN. Source-expression Undo remains disclosed.
+- [Release audit](audits/14-windows-020.md),
+  [frozen evidence](audits/evidence/release-020-20260923/README.md).

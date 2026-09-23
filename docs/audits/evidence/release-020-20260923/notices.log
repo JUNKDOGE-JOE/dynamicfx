@@ -1,0 +1,9 @@
+{
+  "version": "0.2.0",
+  "target": "x86_64-pc-windows-msvc",
+  "packages": 139,
+  "license_files": 266,
+  "cargo_lock_sha256": "3a4fe26f418447342446fcf45efc029af254c37e65a0090c11a8f3e80af46d68",
+  "manifest_sha256": "d0f540cb7c234d0bf87db603e146d5612604edf40aaf6eb5592f07e74c21bb13",
+  "output": "E:\\Code\\AePlugin_Dynamicfx\\scripts\\out\\public-push-20260911\\scripts\\out\\release-020-20260923\\THIRD_PARTY"
+}
