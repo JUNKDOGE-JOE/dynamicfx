@@ -1,0 +1,29 @@
+   Compiling dynamicfx-host-shape-probe v0.0.26 (<checkout>\spike\host-outline\native)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.12s
+     Running unittests src\lib.rs (scripts/out/engineering-20260920/target\debug\deps\dynamicfx_host_shape_probe-017a9c85c6caca69.exe)
+
+running 21 tests
+test carrier::tests::creation_is_not_replayed_after_undo ... ok
+test carrier::tests::multiple_effects_share_one_valid_carrier ... ok
+test read::tests::cleanup_runs_on_early_error ... ok
+test read::tests::source_sample_offsets_respect_each_depth ... ok
+test idle::tests::request_serial_rejects_fractional_nonfinite_and_out_of_range_values ... ok
+test tests::nested_read_does_not_clear_the_outer_guard ... ok
+test carrier::tests::removal_requires_no_remaining_owner_and_valid_data ... ok
+test read::tests::reference_budget_accepts_full_fixture_but_rejects_unbounded_worlds ... ok
+test read::tests::probe_points_preserve_the_reference_fixture_and_fit_small_worlds ... ok
+test read::tests::retired_plain_mode_never_enters_host_suites ... ok
+test read::tests::sample_bounds_include_stride_padding_and_exclude_overflow ... ok
+test idle::tests::persisted_requests_do_not_replay_and_each_change_runs_once ... ok
+test read::tests::traversal_limits_reject_deep_and_large_geometry ... ok
+test reader::tests::undo_does_not_recreate_a_reader_until_opt_in_changes ... ok
+test read::tests::aligned_copy_preserves_native_bytes_and_clears_padding_at_all_depths ... ok
+test wake::tests::shutdown_during_wait_prevents_another_host_call ... ok
+test read::tests::invalid_time_never_saturates_into_a_valid_sample ... ok
+test reader::tests::duplication_and_modified_ownership_are_never_deleted ... ok
+test read::absent_expression_never_enters_memory_operations ... ok
+test tests::failed_checkin_does_not_leave_other_worlds_checked_out ... ok
+test wake::tests::host_error_stops_waking_without_retries ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

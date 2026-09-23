@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "branch": "codex/host-coverage-probe",
+  "files": 3435,
+  "bytes": 35905840,
+  "gzip_content_scanned": 817,
+  "ffx_utf16_scanned": true,
+  "forbidden_files": [],
+  "findings": [],
+  "maximum_blob_bytes": 1019359,
+  "inventory_sha256": "c25f00cc27ba49ddef168b6475bfb265c121f0c2c70b23439c3f008d32a94838",
+  "scope_note": "Exact staged blob snapshot before adding this attestation and updating its containing manifest; those two generated metadata files were reviewed separately."
+}

@@ -1,0 +1,228 @@
+ld failed: E16
+[1790124324] binding plan identity collision; publication refused
+[1790124324] definition rebuilt from snapshot
+[1790124331] session token collision; publication refused
+[1790124331] snapshot rebuild failed: E16
+[1790124331] binding plan identity collision; publication refused
+[1790124331] definition rebuilt from snapshot
+[1790124663] session token collision; publication refused
+[1790124663] snapshot rebuild failed: E16
+[1790124663] binding plan identity collision; publication refused
+[1790124663] definition rebuilt from snapshot
+[1790124669] session token collision; publication refused
+[1790124669] snapshot rebuild failed: E16
+[1790124669] definition rebuilt from snapshot
+[1790124669] binding plan identity collision; publication refused
+[1790125565] session token collision; publication refused
+[1790125565] snapshot rebuild failed: E16
+[1790125565] binding plan identity collision; publication refused
+[1790125565] definition rebuilt from snapshot
+[1790125733] session token collision; publication refused
+[1790125733] binding plan identity collision; publication refused
+[1790125733] snapshot rebuild failed: E16
+[1790125733] definition rebuilt from snapshot
+[1790125778] session token collision; publication refused
+[1790125778] snapshot rebuild failed: E16
+[1790125778] binding plan identity collision; publication refused
+[1790125778] definition rebuilt from snapshot
+[1790132627] session token collision; publication refused
+[1790132627] snapshot rebuild failed: E16
+[1790132627] binding plan identity collision; publication refused
+[1790132627] definition rebuilt from snapshot
+[1790133008] session token collision; publication refused
+[1790133008] snapshot rebuild failed: E16
+[1790133008] binding plan identity collision; publication refused
+[1790133008] definition rebuilt from snapshot
+[1790133014] session token collision; publication refused
+[1790133014] binding plan identity collision; publication refused
+[1790133014] snapshot rebuild failed: E16
+[1790133014] definition rebuilt from snapshot
+[1790133180] registered with AEGP at global setup
+[1790133180] AEGP idle hook registered
+[1790133180] params setup: ADR-0013 topology
+[1790133180] params setup: complete
+[1790133180] idle observation: compiled: 1 pass, 1 params
+[1790133180] idle slot ui applied: 1 bound, 0 defaults written
+[1790133180] idle plan token updated: 0x11460b967d3af
+[1790133180] idle state token updated: Active(97086776917201)
+[1790133180] coverage reader created: owner=13 reader=29
+[1790133181] idle observation: compiled: 1 pass, 1 params
+[1790133181] idle slot ui applied: 1 bound, 0 defaults written
+[1790133181] idle plan token updated: 0x11460b967d3af
+[1790133181] idle state token updated: Active(97086776917201)
+[1790133181] coverage reader created: owner=44 reader=46
+[1790133345] definition resolved from process registry
+[1790133345] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 "
+[1790133345] layer 1: 800x600 stride 12800
+[1790133345] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 400x350, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790133386] layer 1: 800x600 stride 3200
+[1790133386] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 400x350, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790133387] definition resolved from process registry
+[1790133387] layer 1: 800x600 stride 3200
+[1790133387] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 400x350, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790133389] layer 1: 800x600 stride 6400
+[1790133389] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 400x350, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790133390] layer 1: 800x600 stride 6400
+[1790133390] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 400x350, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790133392] layer 1: 800x600 stride 12800
+[1790133392] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 400x350, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790133393] layer 1: 800x600 stride 12800
+[1790133393] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 400x350, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790133545] idle observation: compiled: 1 pass, 1 params
+[1790133545] idle slot ui applied: 1 bound, 0 defaults written
+[1790133550] idle observation: no expression on Source
+[1790133550] idle plan token updated: 0x0
+[1790133550] idle state token updated: Uninitialized
+[1790133554] idle observation: no expression on Source
+[1790133554] idle plan token updated: 0x0
+[1790133554] idle state token updated: Uninitialized
+[1790133554] status: E5 no expression on Source
+[1790133554] slots hidden (no definition)
+[1790133554] status: E5 no expression on Source
+[1790133554] slots hidden (no definition)
+[1790133569] idle observation: compiled: 1 pass, 1 params
+[1790133569] idle slot ui applied: 1 bound, 0 defaults written
+[1790133569] idle plan token updated: 0x11460b967d3af
+[1790133569] idle state token updated: Active(97086776917201)
+[1790133569] coverage reader created: owner=13 reader=48
+[1790133569] status: compiled: 1 pass, 1 params
+[1790133569] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790133573] idle observation: compiled: 1 pass, 1 params
+[1790133573] idle slot ui applied: 1 bound, 0 defaults written
+[1790133573] idle observation: no expression on Source
+[1790133573] coverage reader created: owner=49 reader=51
+[1790133680] definition resolved from process registry
+[1790133680] layer 1: 800x600 stride 12800
+[1790133680] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 400x350, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790133681] idle observation: compiled: 1 pass, 1 params
+[1790133681] idle slot ui applied: 1 bound, 0 defaults written
+[1790133681] idle observation: compiled: 1 pass, 1 params
+[1790133681] idle slot ui applied: 1 bound, 0 defaults written
+[1790133690] session token collision; publication refused
+[1790133690] snapshot rebuild failed: E16
+[1790133690] binding plan identity collision; publication refused
+[1790133690] definition rebuilt from snapshot
+[1790133738] layer 1: 89x67 stride 1472
+[1790133738] status: compiled: 1 pass, 1 params
+[1790133738] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790133740] layer 1: 800x600 stride 12800
+[1790133740] layer 1: 800x600 stride 12800
+[1790133741] layer 1: 800x600 stride 12800
+[1790133741] layer 1: 800x600 stride 12800
+[1790133741] layer 1: 800x600 stride 12800
+[1790133741] layer 1: 800x600 stride 12800
+[1790133741] layer 1: 800x600 stride 12800
+[1790133741] layer 1: 800x600 stride 12800
+[1790133742] definition resolved from process registry
+[1790133742] layer 1: 89x67 stride 1472
+[1790133742] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 45x40, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790133742] status: compiled: 1 pass, 1 params
+[1790133742] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790133742] layer 1: 800x600 stride 12800
+[1790133743] layer 1: 800x600 stride 12800
+[1790133743] layer 1: 800x600 stride 12800
+[1790133743] layer 1: 800x600 stride 12800
+[1790133743] layer 1: 800x600 stride 12800
+[1790133743] layer 1: 800x600 stride 12800
+[1790133743] layer 1: 800x600 stride 12800
+[1790133743] layer 1: 800x600 stride 12800
+[1790134934] idle observation: compiled: 1 pass, 1 params
+[1790134934] idle observation: compiled: 1 pass, 1 params
+[1790134938] definition resolved from process registry
+[1790134938] layer 1: 800x600 stride 12800
+[1790134938] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 250x350, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790134939] idle observation: compiled: 1 pass, 1 params
+[1790134939] idle slot ui applied: 1 bound, 0 defaults written
+[1790134939] coverage reader created: owner=47 reader=49
+[1790135340] session token collision; publication refused
+[1790135340] snapshot rebuild failed: E16
+[1790135340] definition rebuilt from snapshot
+[1790135340] binding plan identity collision; publication refused
+[1790135432] session token collision; publication refused
+[1790135432] binding plan identity collision; publication refused
+[1790135432] snapshot rebuild failed: E16
+[1790135432] definition rebuilt from snapshot
+[1790135486] session token collision; publication refused
+[1790135486] binding plan identity collision; publication refused
+[1790135486] snapshot rebuild failed: E16
+[1790135486] definition rebuilt from snapshot
+[1790135489] registered with AEGP at global setup
+[1790135489] AEGP idle hook registered
+[1790135489] params setup: ADR-0013 topology
+[1790135489] params setup: complete
+[1790135489] coverage sequence resetup: render_only=false
+[1790135489] sequence (re)setup: observation deferred
+[1790135489] coverage sequence resetup: render_only=false
+[1790135489] sequence (re)setup: observation deferred
+[1790135489] coverage sequence resetup: render_only=false
+[1790135489] sequence (re)setup: observation deferred
+[1790135489] coverage sequence resetup: render_only=true
+[1790135489] sequence (re)setup: observation deferred
+[1790135489] coverage sequence resetup: render_only=true
+[1790135489] sequence (re)setup: observation deferred
+[1790135489] coverage sequence resetup: render_only=true
+[1790135489] sequence (re)setup: observation deferred
+[1790135489] idle observation: compiled: 1 pass, 1 params
+[1790135489] idle slot ui applied: 1 bound, 0 defaults written
+[1790135489] idle observation: compiled: 1 pass, 1 params
+[1790135489] idle slot ui applied: 1 bound, 0 defaults written
+[1790135489] status: compiled: 1 pass, 1 params
+[1790135489] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135489] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135489] coverage sequence resetup: render_only=true
+[1790135489] sequence (re)setup: observation deferred
+[1790135489] idle observation: compiled: 1 pass, 1 params
+[1790135489] idle slot ui applied: 1 bound, 0 defaults written
+[1790135489] status: compiled: 1 pass, 1 params
+[1790135489] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135489] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135489] coverage sequence resetup: render_only=true
+[1790135489] sequence (re)setup: observation deferred
+[1790135490] status: compiled: 1 pass, 1 params
+[1790135490] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135490] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135490] coverage sequence resetup: render_only=true
+[1790135490] sequence (re)setup: observation deferred
+[1790135546] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135546] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135546] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135546] coverage sequence resetup: render_only=false
+[1790135546] sequence (re)setup: observation deferred
+[1790135546] coverage sequence resetup: render_only=false
+[1790135546] sequence (re)setup: observation deferred
+[1790135546] coverage sequence resetup: render_only=true
+[1790135546] sequence (re)setup: observation deferred
+[1790135546] coverage sequence resetup: render_only=true
+[1790135546] sequence (re)setup: observation deferred
+[1790135546] idle observation: compiled: 1 pass, 1 params
+[1790135546] status: compiled: 1 pass, 1 params
+[1790135546] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135546] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135546] coverage sequence resetup: render_only=true
+[1790135546] sequence (re)setup: observation deferred
+[1790135546] idle observation: compiled: 1 pass, 1 params
+[1790135546] status: compiled: 1 pass, 1 params
+[1790135546] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135546] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135546] coverage sequence resetup: render_only=true
+[1790135546] sequence (re)setup: observation deferred
+[1790135550] coverage sequence resetup: render_only=false
+[1790135550] sequence (re)setup: observation deferred
+[1790135550] coverage sequence resetup: render_only=true
+[1790135550] sequence (re)setup: observation deferred
+[1790135550] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790135550] definition resolved from process registry
+[1790135550] gpu ready: adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 "
+[1790135550] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 50, top: 150, right: 300, bottom: 500 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790135550] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790135550] layer 1: 800x600 stride 12800
+[1790135550] render enter: Some(F32) in=800x600 out=250x350 win=(50,150) token=97086776917201 compiled=true snap=true t=0 step=1024 lstep=1024 scale=25600
+[1790135550] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 250x350, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790135550] execute_plan ok
+[1790135551] idle observation: compiled: 1 pass, 1 params
+[1790135551] idle slot ui applied: 1 bound, 0 defaults written
+[1790135551] status: compiled: 1 pass, 1 params
+[1790135551] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790135551] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790135551] coverage sequence resetup: render_only=true
+[1790135551] sequence (re)setup: observation deferred

@@ -24,6 +24,7 @@ log = "0.4"
 blake3 = "1"
 
 [build-dependencies]
+cc = "1"
 pipl = "0.1"
 # Only to re-emit the PiPL resource byte-exactly; see build.rs
 # `repair_pipl_resource`. Same version pipl itself pulls in.

@@ -1,0 +1,872 @@
+[
+  {
+    "case": "animated",
+    "depth": 8,
+    "requested": 1,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 360,
+        "height": 400,
+        "depth": 8,
+        "origin": [
+          220,
+          120
+        ]
+      },
+      {
+        "width": 360,
+        "height": 400,
+        "depth": 8,
+        "origin": [
+          220,
+          120
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "animated",
+    "depth": 8,
+    "requested": 0,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 400,
+        "height": 350,
+        "depth": 8,
+        "origin": [
+          200,
+          150
+        ]
+      },
+      {
+        "width": 400,
+        "height": 350,
+        "depth": 8,
+        "origin": [
+          200,
+          150
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "animated",
+    "depth": 8,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 8,
+        "origin": [
+          210,
+          135
+        ]
+      },
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 8,
+        "origin": [
+          210,
+          135
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "animated",
+    "depth": 16,
+    "requested": 1,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 360,
+        "height": 400,
+        "depth": 16,
+        "origin": [
+          220,
+          120
+        ]
+      },
+      {
+        "width": 360,
+        "height": 400,
+        "depth": 16,
+        "origin": [
+          220,
+          120
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "animated",
+    "depth": 16,
+    "requested": 0,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 400,
+        "height": 350,
+        "depth": 16,
+        "origin": [
+          200,
+          150
+        ]
+      },
+      {
+        "width": 400,
+        "height": 350,
+        "depth": 16,
+        "origin": [
+          200,
+          150
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "animated",
+    "depth": 16,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 16,
+        "origin": [
+          210,
+          135
+        ]
+      },
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 16,
+        "origin": [
+          210,
+          135
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "animated",
+    "depth": 32,
+    "requested": 1,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 360,
+        "height": 400,
+        "depth": 32,
+        "origin": [
+          220,
+          120
+        ]
+      },
+      {
+        "width": 360,
+        "height": 400,
+        "depth": 32,
+        "origin": [
+          220,
+          120
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "animated",
+    "depth": 32,
+    "requested": 0,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 400,
+        "height": 350,
+        "depth": 32,
+        "origin": [
+          200,
+          150
+        ]
+      },
+      {
+        "width": 400,
+        "height": 350,
+        "depth": 32,
+        "origin": [
+          200,
+          150
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "animated",
+    "depth": 32,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 32,
+        "origin": [
+          210,
+          135
+        ]
+      },
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 32,
+        "origin": [
+          210,
+          135
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "transform2d",
+    "depth": 8,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 435,
+        "height": 471,
+        "depth": 8,
+        "origin": [
+          197,
+          98
+        ]
+      },
+      {
+        "width": 435,
+        "height": 471,
+        "depth": 8,
+        "origin": [
+          197,
+          98
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "transform2d",
+    "depth": 16,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 435,
+        "height": 471,
+        "depth": 16,
+        "origin": [
+          197,
+          98
+        ]
+      },
+      {
+        "width": 435,
+        "height": 471,
+        "depth": 16,
+        "origin": [
+          197,
+          98
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "transform2d",
+    "depth": 32,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 435,
+        "height": 471,
+        "depth": 32,
+        "origin": [
+          197,
+          98
+        ]
+      },
+      {
+        "width": 435,
+        "height": 471,
+        "depth": 32,
+        "origin": [
+          197,
+          98
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "transform3d",
+    "depth": 8,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 800,
+        "height": 600,
+        "depth": 8,
+        "origin": [
+          0,
+          0
+        ]
+      },
+      {
+        "width": 800,
+        "height": 600,
+        "depth": 8,
+        "origin": [
+          0,
+          0
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "transform3d",
+    "depth": 16,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 800,
+        "height": 600,
+        "depth": 16,
+        "origin": [
+          0,
+          0
+        ]
+      },
+      {
+        "width": 800,
+        "height": 600,
+        "depth": 16,
+        "origin": [
+          0,
+          0
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "transform3d",
+    "depth": 32,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 800,
+        "height": 600,
+        "depth": 32,
+        "origin": [
+          0,
+          0
+        ]
+      },
+      {
+        "width": 800,
+        "height": 600,
+        "depth": 32,
+        "origin": [
+          0,
+          0
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "repeater",
+    "depth": 8,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 8,
+        "origin": [
+          210,
+          135
+        ]
+      },
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 8,
+        "origin": [
+          210,
+          135
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "repeater",
+    "depth": 16,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 16,
+        "origin": [
+          210,
+          135
+        ]
+      },
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 16,
+        "origin": [
+          210,
+          135
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "repeater",
+    "depth": 32,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 32,
+        "origin": [
+          210,
+          135
+        ]
+      },
+      {
+        "width": 380,
+        "height": 375,
+        "depth": 32,
+        "origin": [
+          210,
+          135
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "repeater3",
+    "depth": 8,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 433,
+        "height": 400,
+        "depth": 8,
+        "origin": [
+          210,
+          119
+        ]
+      },
+      {
+        "width": 433,
+        "height": 400,
+        "depth": 8,
+        "origin": [
+          210,
+          119
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "repeater3",
+    "depth": 16,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 433,
+        "height": 400,
+        "depth": 16,
+        "origin": [
+          210,
+          119
+        ]
+      },
+      {
+        "width": 433,
+        "height": 400,
+        "depth": 16,
+        "origin": [
+          210,
+          119
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "repeater3",
+    "depth": 32,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 433,
+        "height": 400,
+        "depth": 32,
+        "origin": [
+          210,
+          119
+        ]
+      },
+      {
+        "width": 433,
+        "height": 400,
+        "depth": 32,
+        "origin": [
+          210,
+          119
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "merge-hole-repeater3",
+    "depth": 8,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 434,
+        "height": 400,
+        "depth": 8,
+        "origin": [
+          209,
+          119
+        ]
+      },
+      {
+        "width": 434,
+        "height": 400,
+        "depth": 8,
+        "origin": [
+          209,
+          119
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "merge-hole-repeater3",
+    "depth": 16,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 434,
+        "height": 400,
+        "depth": 16,
+        "origin": [
+          209,
+          119
+        ]
+      },
+      {
+        "width": 434,
+        "height": 400,
+        "depth": 16,
+        "origin": [
+          209,
+          119
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "merge-hole-repeater3",
+    "depth": 32,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 434,
+        "height": 400,
+        "depth": 32,
+        "origin": [
+          209,
+          119
+        ]
+      },
+      {
+        "width": 434,
+        "height": 400,
+        "depth": 32,
+        "origin": [
+          209,
+          119
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "stroke-merge-repeater3",
+    "depth": 8,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 8,
+        "origin": [
+          178,
+          87
+        ]
+      },
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 8,
+        "origin": [
+          178,
+          87
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "stroke-merge-repeater3",
+    "depth": 16,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 16,
+        "origin": [
+          178,
+          87
+        ]
+      },
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 16,
+        "origin": [
+          178,
+          87
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "stroke-merge-repeater3",
+    "depth": 32,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 32,
+        "origin": [
+          178,
+          87
+        ]
+      },
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 32,
+        "origin": [
+          178,
+          87
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "v026-smoke-stroke-merge-repeater3",
+    "depth": 8,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 8,
+        "origin": [
+          178,
+          87
+        ]
+      },
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 8,
+        "origin": [
+          178,
+          87
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "v026-smoke-stroke-merge-repeater3",
+    "depth": 16,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 16,
+        "origin": [
+          178,
+          87
+        ]
+      },
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 16,
+        "origin": [
+          178,
+          87
+        ]
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "case": "v026-smoke-stroke-merge-repeater3",
+    "depth": 32,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 32,
+        "origin": [
+          178,
+          87
+        ]
+      },
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 32,
+        "origin": [
+          178,
+          87
+        ]
+      }
+    ],
+    "status": "PASS"
+  }
+]

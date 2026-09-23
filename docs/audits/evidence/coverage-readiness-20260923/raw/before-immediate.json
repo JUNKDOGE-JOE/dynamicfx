@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.fsName.replace(/\\\\/g,\"/\")!==\"<workspace>/scripts/out/coverage-readiness-20260923/before.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30),owner=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===44)owner=c.layer(i);if(!owner)throw Error(\"Missing owner\");owner.enabled=false;var copy=owner.duplicate();copy.enabled=true;copy.name=\"Immediate copy\";var p=copy.property(\"ADBE Root Vectors Group\").property(1).property(\"ADBE Vectors Group\").property(\"ADBE Vector Shape - Group\").property(\"ADBE Vector Shape\"),s=p.value;s.vertices=[[50,150],[300,150],[175,500]];p.setValue(s);var fx=copy.property(\"ADBE Effect Parade\"),e=fx.property(1);fx.property(2).property(2).setValue(21);var before={copy:copy.id,state:e.property(427).value,reader:c.layer(e.property(426).value).id};app.project.bitsPerChannel=32;app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(0,new File(\"<workspace>/scripts/out/coverage-readiness-20260923/before-immediate.png\"));return JSON.stringify(before);})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"copy\\\":47,\\\"state\\\":1,\\\"reader\\\":46}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"copy\":47,\"state\":1,\"reader\":46}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

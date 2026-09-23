@@ -141,3 +141,14 @@ Post-M7 (follow-up features):
 
 - [0046 Windows 0.1.1 patch release](0046-011-windows-patch-release.md) — Accepted 2026-09-09.
 - [0047 0.1.1 macOS ARM asset backfill](0047-011-macos-backfill.md) — Accepted 2026-09-09; qualifies the earlier Windows-only delivery scope without granting new-byte AE acceptance.
+
+- [0050](0050-host-coverage-resource.md) Host coverage resource — Accepted 2026-09-23; production `hint:coverage`, exact alpha placement and readiness gates.
+- [0051](0051-native-coverage-reader-component.md) Native coverage reader component and automatic ownership — Accepted 2026-09-23; exact native forwarding, separate utility artifact and explicit remaining clone-readiness gate.
+- [0052](0052-coverage-instance-readiness.md) Instance-bound coverage certificates and outer sequence transport — Accepted 2026-09-23; resetup classification extended by 0053/0054.
+- [0053](0053-coverage-certificate-revocation.md) Process-wide certificate revocation — Accepted 2026-09-23; stale render copies cannot revive UI-copy authorization.
+- [0054](0054-coverage-headless-restore.md) Headless restore — Accepted 2026-09-23; official PF host-mode query preserves prepared offline rendering.
+- [0055](0055-coverage-host-cache-dependency.md) Host frame cache dependency — Accepted 2026-09-23; effective authorization enters GuidMixInPtr, without changing shader or pipeline identities.
+- [0056](0056-guid-mixin-on-every-prerender.md) Every SmartPreRender mixes a GUID — Accepted 2026-09-23; ordinary shaders use a fixed constant, correcting the AE host assertion.
+
+- [0057](0057-shared-effect-dispatch.md) Shared effect dispatch — Accepted 2026-09-23; shared references and interior synchronization avoid exclusive-reference aliasing during MFR.
+- [0058](0058-frame-owned-checkout-lifetimes.md) Frame-owned checkout lifetimes — Accepted 2026-09-23; per-frame dependency IDs, balanced successful checkouts and cancellation propagation.

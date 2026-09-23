@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"native-reader.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(910),a=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===913)a=c.layer(i);var targets=[a,app.project.itemByID(931).layer(1)];for(var n=0;n<2;n++){var v=targets[n].property(\"ADBE Root Vectors Group\").property(1).property(\"ADBE Vectors Group\"),stroke=v.addProperty(\"ADBE Vector Graphic - Stroke\");stroke.property(\"ADBE Vector Stroke Width\").setValue(12.5);stroke.property(\"ADBE Vector Stroke Opacity\").setValue(77);}return \"set\";})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"set\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "set",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

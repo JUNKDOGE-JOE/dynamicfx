@@ -1,0 +1,19 @@
+{
+  "args": {
+    "code": "(function(){if(app.version.indexOf(\"25.\")!==0||app.project.dirty||app.project.numItems!==0)throw Error(\"Expected empty AE 2025 project\");var c=app.project.items.addComp(\"DS_stage_2025\",128,96,1,2,25),l=c.layers.addShape(),v=l.property(\"ADBE Root Vectors Group\").addProperty(\"ADBE Vector Group\").property(\"ADBE Vectors Group\"),p=v.addProperty(\"ADBE Vector Shape - Group\"),s=new Shape();s.vertices=[[20,15],[100,15],[64,80]];s.inTangents=[[0,0],[0,0],[0,0]];s.outTangents=s.inTangents;s.closed=true;p.property(\"ADBE Vector Shape\").setValue(s);v.addProperty(\"ADBE Vector Graphic - Fill\");l.property(\"ADBE Transform Group\").property(\"ADBE Anchor Point\").setValue([0,0]);l.property(\"ADBE Transform Group\").property(\"ADBE Position\").setValue([0,0]);l.adjustmentLayer=true;var e=l.property(\"ADBE Effect Parade\").addProperty(\"DynamicFx Host Shape Probe\");e.property(6).setValue(1);e.property(9).setValue(1);e.property(2).setValue(12);var bg=c.layers.addSolid([.2,.3,.4],\"Background\",128,96,1,2);bg.moveToEnd();app.project.save(new File(\"<checkout>/scripts/out/reader-compat-20260920/stage-2025.aep\"));return JSON.stringify({version:app.version,comp:c.id,owner:l.id});})()"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"version\\\":\\\"25.6.6x4\\\",\\\"comp\\\":1,\\\"owner\\\":13}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"version\":\"25.6.6x4\",\"comp\":1,\"owner\":13}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

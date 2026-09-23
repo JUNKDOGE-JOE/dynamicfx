@@ -1,0 +1,17 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!==\"cancel.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30),frames=[470, 471, 472, 473, 474, 475, 476, 477],paths=[\"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0470.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0471.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0472.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0473.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0474.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0475.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0476.png\", \"<workspace>/scripts/out/coverage-final-20260923/cancel-cold-0477.png\"];for(var i=0;i<frames.length;i++)c.saveFrameToPng(frames[i]/25,new File(paths[i]));return JSON.stringify({phase:\"cold\",frames:frames});})()",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"phase\\\":\\\"cold\\\",\\\"frames\\\":[470,471,472,473,474,475,476,477]}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"phase\":\"cold\",\"frames\":[470,471,472,473,474,475,476,477]}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

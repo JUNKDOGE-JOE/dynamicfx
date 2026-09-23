@@ -1,0 +1,26 @@
+[
+  {
+    "name": "curve",
+    "variant": "coverage8_floor",
+    "max_error_native16": 0,
+    "different_pixels": 0
+  },
+  {
+    "name": "curve",
+    "variant": "mask16_floor",
+    "max_error_native16": 1,
+    "different_pixels": 128
+  },
+  {
+    "name": "half",
+    "variant": "coverage8_floor",
+    "max_error_native16": 1,
+    "different_pixels": 9
+  },
+  {
+    "name": "half",
+    "variant": "mask16_floor",
+    "max_error_native16": 1,
+    "different_pixels": 2
+  }
+]

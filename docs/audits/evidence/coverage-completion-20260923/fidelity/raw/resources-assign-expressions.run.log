@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<workspace>\scripts\out\coverage-final-20260923\resources.py", line 35, in <module>
+    call('resources-assign-expressions',code);time.sleep(2)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<workspace>\scripts\out\coverage-final-20260923\resources.py", line 18, in call
+    if not data.get('ok'):raise RuntimeError(data)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: {'ok': False, 'error': 'Error: After Effects����: �޷�����set expression�� �������һ��ʹ�ã���Ϊ���Ի򸸼����Ա����ء�', 'line': 62}

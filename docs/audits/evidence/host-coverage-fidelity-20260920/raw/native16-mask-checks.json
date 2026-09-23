@@ -1,0 +1,14 @@
+[
+  {
+    "name": "add",
+    "pixels": 12288,
+    "max_error_native16": 0,
+    "different_pixels": 0
+  },
+  {
+    "name": "subtract",
+    "pixels": 12288,
+    "max_error_native16": 0,
+    "different_pixels": 0
+  }
+]

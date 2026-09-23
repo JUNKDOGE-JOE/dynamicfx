@@ -1,0 +1,11 @@
+{
+  "width": 800,
+  "height": 600,
+  "depth": 8,
+  "channels": 4,
+  "layout": "decoded PSD planar channel order",
+  "byte_order": "big-endian",
+  "original_psd_sha256": "0b48aaee23dc188cc5cf025785d30dcab6a95b49f86d28542c22de919c32cb41",
+  "pixel_sha256": "422169c4a3774e92287f67e14d14dc5713af9ec87a30b588c2f539daa477763a",
+  "pixel_bytes": 1920000
+}

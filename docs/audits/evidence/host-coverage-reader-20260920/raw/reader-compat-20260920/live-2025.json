@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"version\\\":\\\"25.6.6x4\\\",\\\"file\\\":null,\\\"dirty\\\":false,\\\"items\\\":0}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"version\":\"25.6.6x4\",\"file\":null,\"dirty\":false,\"items\":0}",
+    "contentType": "text",
+    "artifactId": "user:<redacted>"
+  }
+}

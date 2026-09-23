@@ -1,0 +1,19 @@
+{
+  "args": {
+    "code": "(function(){if(app.version.indexOf(\"26.\")!==0||app.project.dirty||app.project.numItems!==0)throw Error(\"Expected empty AE 2026 project\");var c=app.project.items.addComp(\"SDK_seed_export\",128,96,1,2,25),l=c.layers.addSolid([0,0,0],\"Stage seed owner\",128,96,1,2),target=c.layers.addSolid([1,1,1],\"Stage seed target\",128,96,1,2);target.moveToEnd();target.property(\"ADBE Effect Parade\").addProperty(\"ADBE Gaussian Blur 2\");var e=l.property(\"ADBE Effect Parade\").addProperty(\"DynamicFx Host Shape Probe\");if(e.property(1).name!==\"Original self source\"||e.property(2).name!==\"Explicit source (default none)\")throw Error(\"Seed build not loaded\");e.property(1).setValue(2);e.property(2).setValue(2);app.project.save(new File(\"<checkout>/scripts/out/reader-compat-20260920/seed-2026.aep\"));return JSON.stringify({version:app.version,comp:c.id,owner:l.id,props:e.numProperties});})()"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"version\\\":\\\"26.5x89\\\",\\\"comp\\\":1,\\\"owner\\\":15,\\\"props\\\":3}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"version\":\"26.5x89\",\"comp\":1,\"owner\":15,\"props\":3}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+[1790138058] coverage sequence resetup: render_only=false project_flag=false render_engine=false
+[1790138058] sequence (re)setup: observation deferred
+[1790138058] status: E5 no expression on Source
+[1790138058] slots hidden (no definition)
+[1790138058] ui publication: param=426, language=Some(LanguageId(1)), token=0, plan=0, code=E5
+[1790138058] ui publication: param=426, language=Some(LanguageId(1)), token=0, plan=0, code=E5
+[1790138058] coverage sequence resetup: render_only=false project_flag=false render_engine=false
+[1790138058] sequence (re)setup: observation deferred
+[1790138058] coverage sequence resetup: render_only=false project_flag=false render_engine=false
+[1790138058] sequence (re)setup: observation deferred
+[1790138058] status: compiled: 1 pass, 1 params
+[1790138058] coverage sequence resetup: render_only=true project_flag=true render_engine=false
+[1790138058] sequence (re)setup: observation deferred
+[1790138058] coverage sequence resetup: render_only=true project_flag=true render_engine=false
+[1790138058] sequence (re)setup: observation deferred
+[1790138058] coverage sequence resetup: render_only=true project_flag=true render_engine=false
+[1790138058] sequence (re)setup: observation deferred
+[1790138058] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790138058] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790138058] definition resolved from process registry
+[1790138058] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790138058] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790138058] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 200, top: 150, right: 600, bottom: 500 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790138058] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790138058] layer 1: 800x600 stride 12800
+[1790138058] coverage gate refused: E60 state=238575237021375 certificate=0
+[1790138058] idle slot ui applied: 1 bound, 0 defaults written
+[1790138058] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790138058] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790138058] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790138058] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790138058] coverage reader created: owner=51 reader=53
+[1790138058] coverage sequence resetup: render_only=true project_flag=true render_engine=false
+[1790138058] sequence (re)setup: observation deferred

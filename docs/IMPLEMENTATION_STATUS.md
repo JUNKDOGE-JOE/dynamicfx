@@ -5,6 +5,192 @@
 
 
 
+## Completed production coverage and Liquid Glass — 2026-09-23
+
+The agreed coverage feature and Liquid Glass material pass Windows AE 2026
+26.5x89 acceptance. Final installed main:
+`6d188d2251fdecf89f18611fd429cbc4cd9b8c056dc3ad8f25dc35f74eca6a97`;
+reader: `29695b72fc8a26222a51319c3e42f86696b6d15e78efb02d968bc264ff173be6`.
+The exact final pair independently renders the accepted 1440×900 image with
+zero channel differences. The temporary probe is backed up outside AE.
+
+Verification includes 174 native coverage pairs; 288 serial/MFR frame pairs;
+105 cache/purged comparisons after actual cancellation; 18 helper mutations,
+9 lifecycle cases and 4 parent/matte cases; existing GLSL/WGSL resource checks;
+and 18 material frames across three depths, three resolutions and animation.
+Default/editor/no-SDK suites pass 254 each. Reader tests pass 4.
+[Exact test record](TEST_MATRIX.md#tr-coverage-complete-007--cancellation-and-usable-liquid-glass),
+[completion evidence](audits/evidence/coverage-completion-20260923/README.md).
+
+Delivered source assets: [shader](../examples/liquid-glass.glsl),
+[FFX](../examples/liquid-glass.ffx), [apply script](../examples/apply-liquid-glass.jsx),
+[usage](liquid-glass.md). The local candidate package includes both native
+components and their dependency notices. SDK, binaries, AEP and intermediate
+renders are excluded from source publication. The clean editable example stays
+saved in the task's local output directory.
+
+**Exact next action:** review the `codex/host-coverage-probe` development branch
+and tested candidate after its gated publication. No main merge or public release
+is part of this delivery. Existing Source Undo limitations and other-host
+acceptance remain as previously documented.
+
+The following entries retain the earlier implementation and failure history.
+
+### Preceding readiness baseline
+
+**Current result:** copy/FFX readiness is implemented and verified. Final main
+`96dcff77...` passes warm-copy rejection plus automatic exact-pixel recovery,
+new/existing FFX targets, prepared independent aerender, missing-reader refusal
+and 6 ordinary/adjustment × 8/16/32-bpc comparisons. Every positive comparison
+matches all 480000 alpha words. SDK default/editor and no-SDK tests pass 249
+each; Release passes. Reader `da16133d...` and diagnostic are unchanged.
+[Current evidence](audits/evidence/coverage-readiness-20260923/README.md).
+
+The fidelity/coordinate action from this baseline is covered above; remaining
+gates still prevent publication.
+
+The initial copy failure, failed resetup-only attempt, reopened-ID recovery
+failure, first offline failure and discarded cache-only result are preserved.
+ADRs 0052–0055 record the final certificate, revocation, headless and cache rules.
+
+### Preceding production first-frame baseline
+
+**Current result:** the [ADR-0051](adr/0051-native-coverage-reader-component.md)
+native component and owner manager are connected. AE 2026 26.5x89 first-frame
+acceptance passes ordinary/adjustment × 8/16/32 bpc: 6 comparisons of 480000
+native alpha words each, zero differences. Eight initial ownership cases and
+one same-process reopened float32 frame pass. Main default/editor/no-SDK tests
+pass 241 each; reader tests pass 3. Installed main `e72ac937...`, reader
+`da16133d...`; former production AEX is backed up. No push or release.
+[Current evidence](audits/evidence/coverage-owner-20260923/README.md).
+
+The copy/FFX readiness action from this baseline is completed above.
+
+The following foundation results precede the installed production first frame.
+
+The user requested production integration. [ADR-0050](adr/0050-host-coverage-resource.md)
+fixes `hint:coverage`, a separate hidden resource slot, native-alpha canvas
+encoding and explicit E59/E60 readiness errors. These contracts are now in the
+production source. Default/editor suites each pass 237 tests; the Windows
+Release build passes (candidate `8f9fe9fa...`). It has not been installed or
+accepted in AE. The automatic native owner adapter is not yet connected, so
+coverage stays pending instead of silently using background or zero data.
+[Production audit](audits/11-host-coverage-integration.md).
+
+The owner/helper first-frame integration is now complete as recorded above.
+No commit or push before the agreed full gate.
+
+The SDK-header stage adapter is now in the production build, with verified
+layer-and-stage readback and balanced failure cleanup. Default/editor SDK
+suites and default no-SDK suite each pass 239 tests; 22 C++ callback fault tests
+pass. SDK-enabled Release `b9e4db45...` is uninstalled. The binding API remains
+unconnected to ownership (unused-API warnings are retained); it publishes no
+ready state. Builds without the bridge explicitly report unsupported coverage.
+[Adapter evidence](audits/evidence/coverage-stage-20260923/README.md).
+
+## Automatic native reader baseline — 2026-09-20
+
+The original-alpha input has a verified native route and automatic diagnostic
+ownership. 0.0.25 passes 10 lifecycle cases and the broad 8/16/32-bpc frame
+matrix. 0.0.26 adds three restart smoke cases; 30 frame pairs (including three
+identity controls) have zero native-word differences. 0.0.28 `bc0265d2...`
+fixes deletion of the original owner and passes cleanup plus two-step Undo.
+22 local diagnostic tests pass. Production source and AEX remain unchanged.
+[Reader audit](audits/evidence/host-coverage-reader-20260920/README.md).
+
+The user accepts automatically maintained internal reading layers and sets
+**AE 26.5+ as this new feature's minimum**. Existing-feature compatibility,
+image fidelity and the complete feature acceptance scope remain unchanged.
+AE 2025 refused the new suite and the newer preset; that workaround is retired.
+
+The production resource contract is now fixed in ADR-0050. Copy/FFX-before-idle
+readiness and ROI/downsample tests remain required; the guarded diagnostic is
+not the delivered feature. Follow the active production action above.
+
+## Completed direct-source investigation — diagnostic evidence
+
+The original-image audit now distinguishes source-item, PF self and cross-layer
+inputs with native readback. Continue within disposable diagnostic fixtures;
+the user-approved internal reader is the active path. Do not repeat the rejected
+plain=true combinations.
+Keep main-thread AEGP outside render callbacks and preserve the full fidelity
+requirement. No new push while acceptance is incomplete.
+
+SDK 26.5 headers are local and ignored. Diagnostic 0.0.23 `dcffcf89...` now
+proves native cross-layer SOURCE/ONLY_MASKS acquisition and an invisible-reader
+return bridge at 8/16/32 bpc: 18 comparisons of 480000 pixels, zero native-word
+mismatches. Self checkouts still return background, even with explicit stages.
+Positive stage 1 is refused in the bridge fixture; ALL_EFFECTS (-1) works.
+Production code and AEX are unchanged; no new push.
+[Direct-source audit](audits/evidence/host-coverage-direct-source-20260920/README.md).
+
+The user has now explicitly accepted an automatically maintained internal
+reading layer. This resolves the earlier project-structure question. Full
+original scope and image-fidelity priority remain unchanged.
+
+Automatic diagnostic ownership and its recorded lifecycle checks are now
+implemented; the active next action is in the section above.
+
+## Historical fidelity investigation — before native reader approval
+
+Diagnostic 0.0.14 `6734a384...` and the separate exact sampling expression now
+provide native-depth evidence. Small 8/16/32-bpc curve/half-opacity cases retain
+all verified pixels; the float32 word transport is lossless in tested readbacks.
+A full-source cache warm-up preserves precision and reduces the cold 128x96
+half-opacity case from 29.888 s to 1.463 s. The 800x600 half-opacity case now
+matches all 480000 native 16-bit pixels, but still takes 91.529 s.
+
+Native mask rasterization exactly matches zero-feather/full-opacity add and
+subtract cases at 16 bpc, but +8 px expansion fails (834 pixels). Post-effect
+adjustment sampling returns background alpha. Geometry shortcuts remain inexact
+and are not adopted. Production coverage binding, FFX and full acceptance remain
+unimplemented/open. The managed carrier still uses the older prototype sampler;
+the exact expression has not been silently substituted into every instance.
+
+The then-pending internal-object question is resolved by the native reader
+approval above. These expression and rasterization results remain historical
+evidence; the native reader path is now the active acquisition candidate.
+[Fidelity evidence](audits/evidence/host-coverage-fidelity-20260920/README.md).
+
+The active next action is recorded in the direct-source section above.
+
+
+## Active engineering correction — verified diagnostic 0.0.10
+
+The user requires the original full scope before delivery; no reduced initial
+scope is accepted. Diagnostic 0.0.10 `64a14201...` now passes 16 tests and native
+sharing, last-owner cleanup, re-enable, Undo/Redo, scale-safe PF reads, clean
+shutdown and reopening on AE 2026 26.5x89. An SDK wake worker fixes idle
+starvation while all project access remains on the main thread. Small and
+800x600 reference coverage stay within 1/255. Production source/AEX and the
+coverage sampler are unchanged. No commit or push.
+[Engineering audit](audits/evidence/host-coverage-engineering-20260920/README.md).
+
+**User priority:** image fidelity first. Establish native-depth coverage and
+output correctness before optimizing preview speed; optimizations must preserve
+that correctness. No silent quality reduction or relaxed error tolerance.
+
+**Exact next action:** solve original masks/holes, full-frame partial-alpha
+fidelity and 8-bpc edges; use those correctness results to constrain subsequent
+performance work, then complete the original FFX/runtime/render acceptance gate.
+
+
+## Active regression result — coverage acceptance FAIL, 2026-09-20
+
+The user required tests before any further push. On AE 2026 26.5x89, local
+suites pass (228 default, 228 editor, 13 diagnostic), but visible coverage
+acceptance fails: original masks/holes, 8-bpc curved edges, full-frame partial
+opacity, and last-owner cleanup. Undo did not reach the expected state after
+that cleanup failure. Small geometry/depth/animation subsets, 800x600 cold PF
+acquisition, save/reopen and offline output pass within recorded limits.
+FFX/resource integration and true MFR concurrency remain blocked. No new push,
+commit or main update. The source baseline remains public `922845c`.
+[Regression audit](audits/evidence/host-coverage-regression-20260920/README.md).
+
+**Exact next action:** fix the recorded acquisition and lifecycle failures,
+then rerun them before treating coverage as ready for FFX/production integration.
+
+
 ## Public source transfer — 2026-09-11
 
 The user authorized pushing the project-open repair and coverage preparation.

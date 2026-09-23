@@ -6,6 +6,7 @@ const PF_PLUG_IN_SUBVERS: u16 = 28;
 #[rustfmt::skip]
 fn main() {
     println!("cargo:rerun-if-changed=build.rs");
+    build_coverage_stage();
     // after-effects-rs exposes these as destination-crate cfgs from its
     // generated entry point. Declare all of them for rustc's cfg checking and
     // keep a release panic boundary around EffectMain: several upstream host
@@ -27,6 +28,22 @@ fn main() {
     let editor = std::env::var_os("CARGO_FEATURE_EDITOR").is_some();
     pipl::plugin_build(pipl_properties(editor));
     repair_pipl_resource(editor);
+}
+
+fn build_coverage_stage() {
+    println!("cargo:rustc-check-cfg=cfg(coverage_stage_sdk)");
+    println!("cargo:rerun-if-env-changed=DYNAMICFX_AESDK_265_ROOT");
+    println!("cargo:rerun-if-changed=src/host/coverage_stage.cpp");
+    let Some(root) = std::env::var_os("DYNAMICFX_AESDK_265_ROOT") else { return };
+    let headers = std::path::PathBuf::from(root).join("Examples/Headers");
+    let mut build = cc::Build::new();
+    build.cpp(true).file("src/host/coverage_stage.cpp")
+        .include(&headers).include(headers.join("SP"));
+    if std::env::var("CARGO_CFG_TARGET_OS").as_deref() == Ok("windows") {
+        build.define("_WINDOWS", None);
+    }
+    build.compile("dynamicfx_coverage_stage");
+    println!("cargo:rustc-cfg=coverage_stage_sdk");
 }
 
 /// pipl 0.1.1 serializes the PiPL as an RC **string literal** of `\xNN`
@@ -103,10 +120,10 @@ fn pipl_properties(editor: bool) -> Vec<Property> {
         Property::AE_PiPL_Version { major: 2, minor: 0 },
         Property::AE_Effect_Spec_Version { major: PF_PLUG_IN_VERSION, minor: PF_PLUG_IN_SUBVERS },
         Property::AE_Effect_Version {
-            // 0.1.0 appends WGSL to the Language popup. Advance both flavor
-            // cache generations beyond the previous default=5/editor=6.
+            // Distinct cache generations separate default/editor output and
+            // invalidate frames produced before coverage authorization checks.
             version: 1,
-            subversion: if editor { 12 } else { 11 },
+            subversion: if editor { 22 } else { 21 },
             bugversion: 1,
             stage: Stage::Develop,
             build: 1,
@@ -125,6 +142,7 @@ fn pipl_properties(editor: bool) -> Vec<Property> {
             // MFR (M6, ADR-0023 §4): thread-safe by construction (per-instance
             // mutex, mutex/OnceLock globals, locked log writer, thread-local
             // ROI hand-off; temporal state lives outside sequence data).
+            OutFlags2::IMixGuidDependencies |
             OutFlags2::SupportsGetFlattenedSequenceData |
             OutFlags2::SupportsSmartRender |
             OutFlags2::FloatColorAware |

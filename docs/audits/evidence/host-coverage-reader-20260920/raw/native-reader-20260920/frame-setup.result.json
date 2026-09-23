@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"native-reader.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(910),owner=null;\nfor(var i=1;i<=c.numLayers;i++){var l=c.layer(i),fx=l.property(\"ADBE Effect Parade\");if(l.id===913)owner=l;\nfor(var j=1;j<=fx.numProperties;j++)if(fx.property(j).matchName===\"DynamicFx Host Shape Probe\" && !fx.property(j).property(11).value){fx.property(j).property(2).setValue(l.id===913&&j===1?21:1);fx.property(j).property(4).setValue(false);}\nif(l.id===928)l.enabled=false;}\nif(!owner)throw Error(\"Missing owner\");\nfor(var i=1;i<=app.project.numItems;i++)if(app.project.item(i).name===\"DS_reader_frame_reference\")throw Error(\"Already prepared\");\nvar ref=app.project.itemByID(866).duplicate();ref.name=\"DS_reader_frame_reference\";var rl=ref.layer(1);rl.adjustmentLayer=false;var e=rl.property(\"ADBE Effect Parade\").property(1);e.property(2).setValue(21);e.property(4).setValue(false);e.property(10).setValue(false);e.property(6).setValue(1);e.property(9).setValue(1);\nvar targets=[owner,rl];for(var n=0;n<2;n++){var v=targets[n].property(\"ADBE Root Vectors Group\").property(1).property(\"ADBE Vectors Group\"),path=v.property(\"ADBE Vector Shape - Group\").property(\"ADBE Vector Shape\");var a=path.value,b=path.value;b.vertices=[[220,120],[580,180],[350,520]];path.setValueAtTime(0,a);path.setValueAtTime(1,b);var opacity=v.property(\"ADBE Vector Graphic - Fill\").property(\"ADBE Vector Fill Opacity\");opacity.setValueAtTime(0,37.125);opacity.setValueAtTime(1,78.25);}\nc.time=1.6;ref.time=1.6;app.project.save();return JSON.stringify({actual:c.id,owner:owner.id,reference:ref.id});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"actual\\\":910,\\\"owner\\\":913,\\\"reference\\\":931}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"actual\":910,\"owner\":913,\"reference\":931}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

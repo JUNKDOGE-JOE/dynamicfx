@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.fsName.replace(/\\\\/g,\"/\")!==\"<workspace>/scripts/out/coverage-readiness-20260923/after.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30);for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===47)c.layer(i).property(\"ADBE Effect Parade\").property(2).property(2).setValue(1);var L=app.project.itemByID(14).layer(1);var p=L.property(\"ADBE Root Vectors Group\").property(1).property(\"ADBE Vectors Group\").property(\"ADBE Vector Shape - Group\").property(\"ADBE Vector Shape\"),s=p.value;s.vertices=[[50,150],[300,150],[175,500]];p.setValue(s);L.property(\"ADBE Effect Parade\").property(1).property(2).setValue(21);return \"reference set\";})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"reference set\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "reference set",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

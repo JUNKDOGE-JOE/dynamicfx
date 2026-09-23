@@ -1,0 +1,51 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"ffx.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30);app.project.itemByID(14).layer(1).copyToComp(c);var target=c.layer(1);target.name=\"Fresh preset target\";target.adjustmentLayer=true;target.enabled=true;for(var i=1;i<=c.numLayers;i++)c.layer(i).selected=false;var selected=c.selectedProperties;for(var i=selected.length-1;i>=0;i--)try{selected[i].selected=false;}catch(ignore){}target.selected=true;target.applyPreset(new File(\"<workspace>/scripts/out/coverage-readiness-20260923/coverage-test.ffx\"));var fx=target.property(\"ADBE Effect Parade\"),count=0,main=null;for(var j=1;j<=fx.numProperties;j++)if(fx.property(j).matchName===\"DynamicFx\"){count++;main=fx.property(j);}if(count!==1)throw Error(\"Expected one DynamicFx, got \"+count);if(main.propertyIndex!==1)main.moveTo(1);fx=target.property(\"ADBE Effect Parade\");var main=fx.property(1);fx.property(2).property(2).setValue(21);fx.property(2).property(6).setValue(0);var row={target:target.id,count:count,state:main.property(427).value,linked:main.property(426).value?c.layer(main.property(426).value).id:0};app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(0,new File(\"<workspace>/scripts/out/coverage-readiness-20260923/ffx-new-immediate.png\"));return JSON.stringify(row);})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":false,\"error\":\"ExtendScript error: Error: After Effects错误: 无法在图层“DynamicFX internal coverage reader”上设置属性“name”，因为图层已锁定。 (line 1)\",\"disposition\":\"failed\",\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":null,\"pendingCalls\":0,\"sentinelInFlight\":false},\"errorLine\":1,\"touched\":{\"level\":\"none\",\"method\":\"snapshot-diff\",\"comp\":null,\"activeCompChanged\":null,\"layersAdded\":[],\"layersRemoved\":[],\"layersChanged\":[],\"itemsAdded\":[],\"itemsRemoved\":[],\"truncated\":false,\"notes\":[]},\"revision\":{\"before\":421,\"after\":434},\"projectPath\":\"<workspace>\\\\scripts\\\\out\\\\coverage-readiness-20260923\\\\ffx.aep\",\"errorSource\":\"(function(){if(!app.project.file||app.project.file.name!==\\\"ffx.aep\\\")throw Error(\\\"Unexpected project\\\");var c=app.project.itemByID(30);app.project.itemByID(14).layer(1).copyToComp(c);var target=c.layer(\",\"recoveryId\":\"ndoqju\",\"scriptPath\":\"<user-home>\\\\.ae-mcp\\\\checkpoints\\\\ffx_0aa626a03de2\\\\recovery\\\\ndoqju.jsx\",\"checkpointId\":null,\"attempt\":1}"
+      }
+    ],
+    "structuredContent": {
+      "ok": false,
+      "error": "ExtendScript error: Error: After Effects错误: 无法在图层“DynamicFX internal coverage reader”上设置属性“name”，因为图层已锁定。 (line 1)",
+      "disposition": "failed",
+      "jsxBridge": {
+        "state": "ok",
+        "degradedSinceMs": null,
+        "lastTimeoutAt": null,
+        "pendingCalls": 0,
+        "sentinelInFlight": false
+      },
+      "errorLine": 1,
+      "touched": {
+        "level": "none",
+        "method": "snapshot-diff",
+        "comp": null,
+        "activeCompChanged": null,
+        "layersAdded": [],
+        "layersRemoved": [],
+        "layersChanged": [],
+        "itemsAdded": [],
+        "itemsRemoved": [],
+        "truncated": false,
+        "notes": []
+      },
+      "revision": {
+        "before": 421,
+        "after": 434
+      },
+      "projectPath": "<workspace>\\scripts\\out\\coverage-readiness-20260923\\ffx.aep",
+      "errorSource": "(function(){if(!app.project.file||app.project.file.name!==\"ffx.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30);app.project.itemByID(14).layer(1).copyToComp(c);var target=c.layer(",
+      "recoveryId": "<local-id>",
+      "scriptPath": "<user-home>\\.ae-mcp\\checkpoints\\ffx_0aa626a03de2\\recovery\\ndoqju.jsx",
+      "checkpointId": null,
+      "attempt": 1
+    },
+    "isError": true
+  }
+}

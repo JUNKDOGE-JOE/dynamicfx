@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.fsName.replace(/\\\\/g,\"/\")!==\"<workspace>/scripts/out/coverage-readiness-20260923/after.aep\")throw Error(\"Unexpected project\");app.project.save();return \"saved\";})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"saved\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "saved",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

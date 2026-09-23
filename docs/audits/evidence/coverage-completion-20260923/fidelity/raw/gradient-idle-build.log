@@ -1,0 +1,25 @@
+   Compiling dynamicfx v0.1.1 (<workspace>)
+error[E0433]: cannot find type `ParamKey` in this scope
+   --> src\host\idle.rs:806:47
+    |
+806 |             let count_index = stream_index_of(ParamKey::GradientCount(gradient)).ok_or(ae::Error::InvalidIndex)?;
+    |                                               ^^^^^^^^ use of undeclared type `ParamKey`
+    |
+help: consider importing this enum through its public re-export
+    |
+ 10 + use crate::ParamKey;
+    |
+
+error[E0433]: cannot find type `ParamKey` in this scope
+   --> src\host\idle.rs:816:49
+    |
+816 |                     let index = stream_index_of(ParamKey::GradientStop(gradient, stop, field)).ok_or(ae::Error::InvalidIndex)?;
+    |                                                 ^^^^^^^^ use of undeclared type `ParamKey`
+    |
+help: consider importing this enum through its public re-export
+    |
+ 10 + use crate::ParamKey;
+    |
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `dynamicfx` (lib) due to 2 previous errors

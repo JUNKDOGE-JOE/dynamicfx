@@ -1,0 +1,170 @@
+[
+  {
+    "case": "expanded",
+    "kind": "ordinary",
+    "depth": 8,
+    "mismatches": 243464,
+    "outside_reference": 0,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ]
+    },
+    "status": "FAIL"
+  },
+  {
+    "case": "expanded",
+    "kind": "adjustment",
+    "depth": 8,
+    "mismatches": 243464,
+    "outside_reference": 0,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        520
+      ],
+      "origin": [
+        0,
+        40
+      ]
+    },
+    "status": "FAIL"
+  },
+  {
+    "case": "expanded",
+    "kind": "ordinary",
+    "depth": 16,
+    "mismatches": 243497,
+    "outside_reference": 0,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ]
+    },
+    "status": "FAIL"
+  },
+  {
+    "case": "expanded",
+    "kind": "adjustment",
+    "depth": 16,
+    "mismatches": 243497,
+    "outside_reference": 0,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        520
+      ],
+      "origin": [
+        0,
+        40
+      ]
+    },
+    "status": "FAIL"
+  },
+  {
+    "case": "expanded",
+    "kind": "ordinary",
+    "depth": 32,
+    "mismatches": 243497,
+    "outside_reference": 0,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ]
+    },
+    "status": "FAIL"
+  },
+  {
+    "case": "expanded",
+    "kind": "adjustment",
+    "depth": 32,
+    "mismatches": 243497,
+    "outside_reference": 0,
+    "reference": {
+      "world": [
+        800,
+        600
+      ],
+      "origin": [
+        0,
+        0
+      ]
+    },
+    "actual": {
+      "world": [
+        800,
+        520
+      ],
+      "origin": [
+        0,
+        40
+      ]
+    },
+    "status": "FAIL"
+  }
+]

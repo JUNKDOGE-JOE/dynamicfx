@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<workspace>\scripts\out\coverage-final-20260923\resources.py", line 30, in <module>
+    call('resources-assign',a.code_for('resources',phase='assign'));time.sleep(2)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<workspace>\scripts\out\coverage-final-20260923\resources.py", line 18, in call
+    if not data.get('ok'):raise RuntimeError(data)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: {'ok': False, 'error': 'Error: After Effects错误: 无法将“set value” 与此属性一起使用，因为属性或父级属性被隐藏。', 'line': 62}

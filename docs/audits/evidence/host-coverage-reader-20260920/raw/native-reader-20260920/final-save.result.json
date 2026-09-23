@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"native-reader.aep\")throw Error(\"Unexpected project\");app.project.save();return JSON.stringify({version:app.version,file:app.project.file.name,dirty:app.project.dirty,items:app.project.numItems,layers:app.project.itemByID(910).numLayers});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"version\\\":\\\"26.5x89\\\",\\\"file\\\":\\\"native-reader.aep\\\",\\\"dirty\\\":false,\\\"items\\\":88,\\\"layers\\\":5}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"version\":\"26.5x89\",\"file\":\"native-reader.aep\",\"dirty\":false,\"items\":88,\"layers\":5}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

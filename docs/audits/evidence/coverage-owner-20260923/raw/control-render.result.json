@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"production-coverage.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30),owner=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===44)owner=c.layer(i);if(!owner)throw Error(\"Owner missing\");app.project.bitsPerChannel=32;app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(0,new File(\"<workspace>/scripts/out/coverage-owner-20260923/control-background-32.png\"));return \"rendered\";})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"rendered\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "rendered",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

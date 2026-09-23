@@ -1,0 +1,56 @@
+[
+  {
+    "name": "default",
+    "command": [
+      "cargo",
+      "test",
+      "--offline",
+      "--locked",
+      "--lib",
+      "--target-dir",
+      "<repository>/target"
+    ],
+    "exit": 0,
+    "seconds": 4.296999999991385
+  },
+  {
+    "name": "editor",
+    "command": [
+      "cargo",
+      "test",
+      "--offline",
+      "--locked",
+      "--lib",
+      "--features",
+      "editor",
+      "--target-dir",
+      "<repository>/target"
+    ],
+    "exit": 0,
+    "seconds": 0.39100000000325963
+  },
+  {
+    "name": "probe",
+    "command": [
+      "cargo",
+      "test",
+      "--offline",
+      "--locked",
+      "--manifest-path",
+      "spike/host-outline/native/Cargo.toml",
+      "--target-dir",
+      "<repository>/scripts/out/host-shape-probe-20260910/target"
+    ],
+    "exit": 0,
+    "seconds": 1.1410000000032596
+  },
+  {
+    "name": "governance",
+    "command": [
+      "<user-home>/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "scripts/check_governance.py"
+    ],
+    "exit": 0,
+    "seconds": 0.8280000000086147
+  }
+]

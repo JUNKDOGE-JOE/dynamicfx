@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Liquid Glass.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),card=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===21)card=c.layer(i);if(!card)throw Error(\"Missing card\");\nfunction sample(point){var w=null;for(var j=1;j<=app.project.numItems;j++)if(app.project.item(j).name===\"Material test sampler\")w=app.project.item(j);if(!w){w=app.project.items.addComp(\"Material test sampler\",1440,900,1,6,25);w.layers.add(c).name=\"scene\";var n=w.layers.addNull();n.name=\"probe\";n.property(\"ADBE Effect Parade\").addProperty(\"ADBE Slider Control\");}var p=w.layer(\"probe\").property(\"ADBE Effect Parade\").property(1).property(1),a=[];for(var k=0;k<4;k++){p.expression='thisComp.layer(\"scene\").sampleImage(['+point[0]+','+point[1]+'],[0.49,0.49],true,0)['+k+']';a.push(p.value);if(p.expressionError)throw Error(p.expressionError);}return a;}\nvar l=c.layers.addShape();l.name=\"Preset - arbitrary Bezier\";l.adjustmentLayer=true;l.property(\"ADBE Transform Group\").property(\"ADBE Position\").setValue([0,0]);var g=l.property(\"ADBE Root Vectors Group\").addProperty(\"ADBE Vector Group\");g.name=\"Unrelated group name\";var v=g.property(\"ADBE Vectors Group\"),p=v.addProperty(\"ADBE Vector Shape - Group\").property(\"ADBE Vector Shape\"),s=new Shape();s.vertices=[[80,250],[500,260],[330,620],[100,550]];s.inTangents=[[-20,70],[-100,-90],[80,-40],[-10,30]];s.outTangents=[[100,-50],[20,90],[-90,40],[-30,-50]];s.closed=true;p.setValue(s);v.addProperty(\"ADBE Vector Graphic - Fill\");for(var i=1;i<=c.numLayers;i++)c.layer(i).selected=false;l.selected=true;l.applyPreset(new File(\"<workspace>/examples/liquid-glass.ffx\"));return JSON.stringify({id:l.id});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"id\\\":47}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"id\":47}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

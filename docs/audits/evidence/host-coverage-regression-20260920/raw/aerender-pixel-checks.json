@@ -1,0 +1,29 @@
+[
+  {
+    "file": "frame00000.psd",
+    "size": [
+      800,
+      600
+    ],
+    "max_difference_rgba8": 1,
+    "same_rgba": false
+  },
+  {
+    "file": "frame00001.psd",
+    "size": [
+      800,
+      600
+    ],
+    "max_difference_rgba8": 1,
+    "same_rgba": false
+  },
+  {
+    "file": "frame00002.psd",
+    "size": [
+      800,
+      600
+    ],
+    "max_difference_rgba8": 1,
+    "same_rgba": false
+  }
+]

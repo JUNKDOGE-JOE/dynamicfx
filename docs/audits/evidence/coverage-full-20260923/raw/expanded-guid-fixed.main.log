@@ -1,0 +1,50 @@
+5171] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145171] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: -80, top: 40, right: 880, bottom: 560 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145171] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145171] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: -80, top: 40, right: 880, bottom: 560 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145171] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790145171] layer 1: 800x600 stride 6400
+[1790145171] render enter: Some(U15) in=960x520 out=800x600 win=(0,0) token=2008274452143030 compiled=true snap=true t=12800 step=1024 lstep=1024 scale=25600
+[1790145171] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 800x520, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790145171] execute_plan ok
+[1790145172] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145172] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145172] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145172] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 40, right: 800, bottom: 560 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145172] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790145172] layer 1: 800x600 stride 6400
+[1790145172] render enter: Some(U15) in=800x600 out=800x520 win=(0,40) token=2008274452143030 compiled=true snap=true t=12800 step=1024 lstep=1024 scale=25600
+[1790145172] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 800x520, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790145172] execute_plan ok
+[1790145174] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145174] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: -80, top: 40, right: 880, bottom: 560 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145174] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145174] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: -80, top: 40, right: 880, bottom: 560 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145174] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145174] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: -80, top: 40, right: 880, bottom: 560 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145174] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145174] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: -80, top: 40, right: 880, bottom: 560 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145174] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790145174] render enter: Some(F32) in=960x520 out=800x600 win=(0,0) token=648196296103398 compiled=true snap=true t=12800 step=1024 lstep=1024 scale=25600
+[1790145174] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 800x520, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790145174] execute_plan ok
+[1790145175] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145175] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: -80, top: 40, right: 880, bottom: 560 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145175] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145175] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: -80, top: 40, right: 880, bottom: 560 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145175] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145175] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: -80, top: 40, right: 880, bottom: 560 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145175] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790145175] layer 1: 800x600 stride 12800
+[1790145175] render enter: Some(F32) in=960x520 out=800x600 win=(0,0) token=2008274452143030 compiled=true snap=true t=12800 step=1024 lstep=1024 scale=25600
+[1790145175] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 800x520, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790145175] execute_plan ok
+[1790145176] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145176] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145176] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790145176] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 40, right: 800, bottom: 560 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }
+[1790145176] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790145176] layer 1: 800x600 stride 12800
+[1790145176] render enter: Some(F32) in=800x600 out=800x520 win=(0,40) token=2008274452143030 compiled=true snap=true t=12800 step=1024 lstep=1024 scale=25600
+[1790145176] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 800x520, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790145176] execute_plan ok

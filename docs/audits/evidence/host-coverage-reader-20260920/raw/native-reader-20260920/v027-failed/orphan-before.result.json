@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(app.project.file.name!==\"native-reader.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(910),rows=[];for(var i=1;i<=c.numLayers;i++){var l=c.layer(i),fx=l.property(\"ADBE Effect Parade\");if(fx.numProperties&&fx.property(1).matchName===\"DynamicFx Host Shape Probe\"){var e=fx.property(1);rows.push({id:l.id,role:e.property(11).value,source:e.property(6).value?c.layer(e.property(6).value).id:0});}}return JSON.stringify({layers:c.numLayers,items:app.project.numItems,rows:rows});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"layers\\\":5,\\\"items\\\":88,\\\"rows\\\":[{\\\"id\\\":930,\\\"role\\\":1,\\\"source\\\":928},{\\\"id\\\":927,\\\"role\\\":1,\\\"source\\\":913},{\\\"id\\\":928,\\\"role\\\":0,\\\"source\\\":913},{\\\"id\\\":913,\\\"role\\\":0,\\\"source\\\":913}]}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"layers\":5,\"items\":88,\"rows\":[{\"id\":930,\"role\":1,\"source\":928},{\"id\":927,\"role\":1,\"source\":913},{\"id\":928,\"role\":0,\"source\":913},{\"id\":913,\"role\":0,\"source\":913}]}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

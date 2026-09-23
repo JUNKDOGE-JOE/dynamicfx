@@ -1,0 +1,26 @@
+{
+  "kind": "production",
+  "depth": 32,
+  "pixels": 480000,
+  "nonzero_reference": 60149,
+  "native_word_mismatches": 0,
+  "reference": {
+    "width": 400,
+    "height": 350,
+    "depth": 32,
+    "origin": [
+      200,
+      150
+    ]
+  },
+  "production": {
+    "width": 800,
+    "height": 600,
+    "depth": 32,
+    "origin": [
+      0,
+      0
+    ]
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"lifecycle.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),o=null,r=null;for(var i=1;i<=c.numLayers;i++){var l=c.layer(i),f=l.property(\"ADBE Effect Parade\");if(l.id===13)o=l;if(f.numProperties&&f.property(1).matchName===\"DynamicFx Coverage Reader\")r=l;}app.executeCommand(16);return JSON.stringify(\"applied\");})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"\\\"applied\\\"\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "\"applied\"",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

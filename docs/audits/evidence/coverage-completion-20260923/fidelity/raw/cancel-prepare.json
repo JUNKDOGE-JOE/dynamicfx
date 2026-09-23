@@ -1,0 +1,17 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!==\"mfr-adjustment-32-on.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30);c.duration=30;c.workAreaDuration=30;var owner=null;for(var i=1;i<=c.numLayers;i++){var l=c.layer(i),locked=l.locked;l.locked=false;l.outPoint=30;l.locked=locked;if(l.id===44)owner=l;}if(!owner)throw Error(\"Missing owner\");owner.property(\"ADBE Root Vectors Group\").property(1).property(\"ADBE Vectors Group\").property(\"ADBE Vector Graphic - Fill\").property(\"ADBE Vector Fill Opacity\").expression=\"50+40*Math.sin(time*4.7)\";var q=app.project.renderQueue.item(1);q.timeSpanStart=0;q.timeSpanDuration=30;app.project.save(new File(\"<workspace>/scripts/out/coverage-final-20260923/cancel.aep\"));return JSON.stringify({frames:750,owner:owner.id});})()",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"frames\\\":750,\\\"owner\\\":44}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"frames\":750,\"owner\":44}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

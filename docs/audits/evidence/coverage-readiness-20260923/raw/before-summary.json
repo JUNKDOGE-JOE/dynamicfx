@@ -1,0 +1,10 @@
+{
+  "case": "copy edit and immediate render before idle",
+  "binding_before_render": {
+    "copy": 47,
+    "state": 1,
+    "reader": 46
+  },
+  "native_word_mismatches": 42331,
+  "reference_nonzero": 44224
+}

@@ -204,9 +204,10 @@ dependencies = [
 
 [[package]]
 name = "dynamicfx-host-shape-probe"
-version = "0.0.9"
+version = "0.0.29"
 dependencies = [
  "after-effects",
+ "cc",
  "pipl",
  "winres",
 ]

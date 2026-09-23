@@ -1,0 +1,32 @@
+[1790137252] registered with AEGP at global setup
+[1790137252] AEGP idle hook registered
+[1790137252] params setup: ADR-0013 topology
+[1790137252] params setup: complete
+[1790137252] coverage sequence resetup: render_only=true project_flag=false render_engine=true
+[1790137252] sequence (re)setup: observation deferred
+[1790137252] coverage sequence resetup: render_only=true project_flag=false render_engine=true
+[1790137252] sequence (re)setup: observation deferred
+[1790137252] coverage sequence resetup: render_only=true project_flag=false render_engine=true
+[1790137252] sequence (re)setup: observation deferred
+[1790137252] coverage sequence resetup: render_only=true project_flag=false render_engine=true
+[1790137252] sequence (re)setup: observation deferred
+[1790137252] coverage sequence resetup: render_only=true project_flag=true render_engine=true
+[1790137252] sequence (re)setup: observation deferred
+[1790137252] coverage sequence resetup: render_only=true project_flag=true render_engine=true
+[1790137252] sequence (re)setup: observation deferred
+[1790137252] coverage sequence resetup: render_only=true project_flag=true render_engine=true
+[1790137252] sequence (re)setup: observation deferred
+[1790137252] coverage sequence resetup: render_only=true project_flag=true render_engine=true
+[1790137252] sequence (re)setup: observation deferred
+[1790137253] status: compiled: 1 pass, 1 params
+[1790137253] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790137253] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790137253] status: compiled: 1 pass, 1 params
+[1790137253] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790137253] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790137253] status: compiled: 1 pass, 1 params
+[1790137253] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790137253] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790137253] status: compiled: 1 pass, 1 params
+[1790137253] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790137253] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0

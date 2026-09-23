@@ -214,6 +214,7 @@ pub fn parse_envelope(source: &str) -> Result<Envelope, GrammarError> {
                 let mut names = super::annotation::layer_param_names(body);
                 names.extend(super::annotation::gradient_param_names(body));
                 names.extend(super::annotation::path_param_names(body));
+                names.extend(super::annotation::coverage_param_names(body));
                 names
             })
             .collect();

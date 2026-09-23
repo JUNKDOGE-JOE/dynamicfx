@@ -1,0 +1,17 @@
+{
+  "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Liquid Glass.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),rows=[];for(var i=1;i<=c.numLayers;i++)if(c.layer(i) instanceof ShapeLayer){var e=c.layer(i).property(\"ADBE Effect Parade\").property(1);if(e.property(427).value<4)throw Error(\"Coverage pending\");rows.push(e.property(427).value);}if(app.project.renderQueue.numItems)throw Error(\"Unexpected queue\");var q=app.project.renderQueue.items.add(c);q.setSettings({\"Resolution\":\"Full\",\"Quality\":\"Best\",\"Color Depth\":\"Current Settings\"});q.timeSpanStart=0;q.timeSpanDuration=1/25;q.outputModule(1).applyTemplate(\"Photoshop\");q.outputModule(1).file=new File(\"<workspace>/scripts/out/liquid-glass-20260923/delivery_[#####].psd\");app.project.save(new File(\"<workspace>/scripts/out/liquid-glass-20260923/delivery-check.aep\"));return JSON.stringify({states:rows});})()",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"states\\\":[255960886349188,255960886349189,255960886349190]}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"states\":[255960886349188,255960886349189,255960886349190]}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

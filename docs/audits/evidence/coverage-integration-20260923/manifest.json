@@ -1,0 +1,86 @@
+[
+  {
+    "path": "source/scripts/check_governance.py",
+    "sha256": "0ea313d7661388a57a5faa7f0541a14b71b09b4d75fc3e4864aa1904ca3e4777"
+  },
+  {
+    "path": "source/src/binding.rs",
+    "sha256": "f7b2cb26aa4a4809301e457bc4f0b7d705e37cf55ba8561938cbd3597221715f"
+  },
+  {
+    "path": "source/src/coverage.rs",
+    "sha256": "5dccd96efe74de3eac793c3820469f3544a0cfbb1095f319ac21b5248a538a74"
+  },
+  {
+    "path": "source/src/definition/param.rs",
+    "sha256": "e2540abe9881f9900d0c202eecf340f35b3dd7666217e19db49dfcdc2fbebe70"
+  },
+  {
+    "path": "source/src/diagnostics.rs",
+    "sha256": "24dc6672b989f158ba7a2d9fc22b80fd7b39fe8a2a43523f5e23a142383ca950"
+  },
+  {
+    "path": "source/src/frontend/annotation.rs",
+    "sha256": "f95d4e5f192811a120616fc048428f94ef26e24971698b48f40c016013f13a30"
+  },
+  {
+    "path": "source/src/frontend/grammar.rs",
+    "sha256": "9663bcb988a99af085f97ab34b3a2f740cd8024e6319459185e6712e7f63ce60"
+  },
+  {
+    "path": "source/src/frontend/shared.rs",
+    "sha256": "82499b67041999a4083b5537cf510469abf997d4815f025c8bee8db3b045efc6"
+  },
+  {
+    "path": "source/src/host/coverage.rs",
+    "sha256": "dcb40b95c42af84073b82e20b5c3c7556fce10ba9ba8e4b207769bfeefa01c74"
+  },
+  {
+    "path": "source/src/host/idle.rs",
+    "sha256": "39543a3f1a141757262785e496e7e19f601438ea01f90f17b0d483f5cf05b80f"
+  },
+  {
+    "path": "source/src/host/mod.rs",
+    "sha256": "e97fca282c1ece14f42cd8a5aabb630a03e590ec4d52a49a3179aedd3bdd168b"
+  },
+  {
+    "path": "source/src/host/params.rs",
+    "sha256": "36e173e4238d429613936654e4790f8611afd1be413bb2e147dea58d97733039"
+  },
+  {
+    "path": "source/src/lib.rs",
+    "sha256": "bfb422841295d6a944067725dfe32af2c7126b8a2146d5a75b99823ddec52ce7"
+  },
+  {
+    "path": "source/src/persistence.rs",
+    "sha256": "70229745c7ab5599c7b59983fdb66c7f9d84eb2d432293bf6d94b4e271224d18"
+  },
+  {
+    "path": "source/src/wgsl_tests.rs",
+    "sha256": "c532ad626ba0b728e7bf057d0891997172bcc4d5a3f99b1e9f3b19d05743daf6"
+  },
+  {
+    "path": "raw/tests-first.log",
+    "sha256": "537fac74afaadf569e58c867c7241b904a5a86adb3d2c32c1ca29e04dda6a372"
+  },
+  {
+    "path": "raw/tests-final.log",
+    "sha256": "85d9e1d4b6b0346ed270918f8777fcc59b90f324963b0522532d4f0eeba294df"
+  },
+  {
+    "path": "raw/tests-editor-final.log",
+    "sha256": "5542f9eb69cd97e6b5e413ea480235b262e8579ed9407063ce69fa23c0d94e74"
+  },
+  {
+    "path": "raw/build-release-final.log",
+    "sha256": "6f748601dbb456a52ceabefd296d80091d99f1d22e734471a3497bbe12a33c0c"
+  },
+  {
+    "path": "raw/governance.log",
+    "sha256": "a3ce88b6c4ae25d276f839e96ff5de780b21ee6963ce5eddb7f2f0dfdd6d8f9c"
+  },
+  {
+    "path": "raw/summary.json",
+    "sha256": "454e0c022bbb082cd87e2d059989eb357c19db701ab4eff30447d24574ff74d1"
+  }
+]

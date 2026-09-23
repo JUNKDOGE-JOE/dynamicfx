@@ -1,0 +1,36 @@
+[
+  {
+    "width": 128,
+    "height": 96,
+    "pixels": 12288,
+    "reference_depth": 16,
+    "float32_bit_mismatches": 0,
+    "max_alpha_error": 0.0,
+    "status": "PASS",
+    "depth": 16,
+    "name": "curve"
+  },
+  {
+    "width": 128,
+    "height": 96,
+    "pixels": 12288,
+    "reference_depth": 32,
+    "float32_bit_mismatches": 0,
+    "max_alpha_error": 0.0,
+    "status": "PASS",
+    "depth": 32,
+    "name": "half"
+  },
+  {
+    "pixels": 12288,
+    "float32_bit_mismatches": 0,
+    "depth": 8,
+    "name": "curve"
+  },
+  {
+    "pixels": 12288,
+    "float32_bit_mismatches": 0,
+    "depth": 8,
+    "name": "half"
+  }
+]

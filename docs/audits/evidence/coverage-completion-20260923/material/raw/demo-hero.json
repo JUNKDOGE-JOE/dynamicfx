@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Liquid Glass.aep\")throw Error(\"Unexpected project\");var c=app.project.item(1);app.project.bitsPerChannel=32;c.resolutionFactor=[1,1];app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(0,new File(\"<workspace>/scripts/out/liquid-glass-20260923/ae-hero-32-full.png\"));return JSON.stringify({depth:32,size:[c.width,c.height]});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"depth\\\":32,\\\"size\\\":[1440,900]}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"depth\":32,\"size\":[1440,900]}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "small",
+    "route": "native PF PathQuery",
+    "size": [
+      128,
+      96
+    ],
+    "vertices": 818,
+    "max_error_8bit": 1,
+    "different_pixels": 4,
+    "status": "PASS"
+  },
+  {
+    "name": "baseline",
+    "route": "native PF PathQuery",
+    "size": [
+      800,
+      600
+    ],
+    "vertices": 3648,
+    "max_error_8bit": 1,
+    "different_pixels": 49,
+    "status": "PASS"
+  }
+]

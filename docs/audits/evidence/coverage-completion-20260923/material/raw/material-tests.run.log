@@ -1,0 +1,17 @@
+{"step": "material-full", "data": "[0.40849548578262,0.59505015611649,0.78031009435654,1]"}
+{"step": "material-disabled", "data": "[0.33458468317986,0.52526658773422,0.70479929447174,1]"}
+{"step": "material-semi", "data": "[0.36212024092674,0.55126452445984,0.73293095827103,1]"}
+{"case": "partial alpha is applied once by AE", "status": "PASS", "full": [0.40849548578262, 0.59505015611649, 0.78031009435654, 1], "background": [0.33458468317986, 0.52526658773422, 0.70479929447174, 1], "partial": [0.36212024092674, 0.55126452445984, 0.73293095827103, 1], "maximum_error": 9.827934205808297e-05}
+{"step": "material-full-restored", "data": "\"restored\""}
+{"step": "material-outside", "data": "[[0.25930792093277,0.29835575819016,0.65338134765625,1],[0.85364639759064,0.30287244915962,0.40072712302208,1]]"}
+{"step": "material-outside-disabled", "data": "[[0.25930792093277,0.29835575819016,0.65338134765625,1],[0.85364639759064,0.30287244915962,0.40072712302208,1]]"}
+{"case": "exterior pixels unchanged", "status": "PASS", "points": [[70.5, 200.5], [1300.5, 820.5]], "actual": [[0.25930792093277, 0.29835575819016, 0.65338134765625, 1], [0.85364639759064, 0.30287244915962, 0.40072712302208, 1]], "reference": [[0.25930792093277, 0.29835575819016, 0.65338134765625, 1], [0.85364639759064, 0.30287244915962, 0.40072712302208, 1]]}
+{"step": "material-hole", "data": "[0.58865493535995,0.41548177599907,0.5750338435173,1]"}
+{"step": "material-hole-disabled", "data": "[0.58865493535995,0.41548177599907,0.5750338435173,1]"}
+{"case": "cutout interior unchanged", "status": "PASS", "actual": [0.58865493535995, 0.41548177599907, 0.5750338435173, 1], "reference": [0.58865493535995, 0.41548177599907, 0.5750338435173, 1]}
+{"step": "material-hole-restored", "data": "\"restored and renamed\""}
+{"step": "material-preset", "data": "{\"bytes\":236848}"}
+{"step": "material-ffx-new", "data": "{\"id\":47}"}
+{"step": "material-ffx-ready", "data": "{\"effects\":1,\"state\":251486066029923,\"owner\":47}"}
+{"case": "FFX adapts to renamed arbitrary Bezier", "status": "PASS", "binding": {"effects": 1, "state": 251486066029923, "owner": 47}}
+{"step": "material-ffx-hidden", "data": "\"saved\""}

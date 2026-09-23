@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"native-reader.aep\")throw Error(\"Unexpected project\");app.project.save();app.open(new File(\"<checkout>/scripts/out/native-reader-20260920/native-reader.aep\"));return JSON.stringify({items:app.project.numItems,layers:app.project.itemByID(910).numLayers});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"items\\\":87,\\\"layers\\\":5}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"items\":87,\"layers\":5}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

@@ -34,6 +34,7 @@ They do not replace:
 | M6 | [06 Temporal Feedback](06-temporal-feedback.md) | Complete (exited 2026-08-13) |
 | M7 | [07 Performance and MFR](07-performance-mfr.md) | Not started (created at M6 exit) |
 | Post-M7 host repair | [10 Project-open callback repair](10-project-open-lock.md) | AE 2026 local repair verified; project expression follow-up paused |
+| Post-M7 coverage | [11 Host coverage integration](11-host-coverage-integration.md) | Production resource/precision layer implemented; native ownership hookup and host acceptance pending |
 
 ## Required sections
 

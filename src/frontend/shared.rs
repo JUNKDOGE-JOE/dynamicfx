@@ -146,6 +146,9 @@ pub(super) fn reflect_user_params(
                          also be an FxUniforms member"
                     )));
                 }
+                (Some(Hint::Coverage), _) => {
+                    return Err(FrontendError::Param(format!("`{name}`: coverage is a texture, not a uniform member")));
+                }
                 (Some(Hint::Layer), _) => {
                     return Err(FrontendError::Param(format!(
                         "`{name}`: hint:layer names a graph input, so it must not \
@@ -175,7 +178,7 @@ pub(super) fn reflect_user_params(
                     ShaderParamType::Vec4Color => &[3, 4],
                     // Unreachable: reflection only ever yields member types,
                     // and the hint:layer arm above already rejected the id.
-                    ShaderParamType::Layer | ShaderParamType::Gradient | ShaderParamType::Path => {
+                    ShaderParamType::Layer | ShaderParamType::Gradient | ShaderParamType::Path | ShaderParamType::Coverage => {
                         &[]
                     }
                     // ADR-0034 §4 keeps Point 3D where Point 2D already is:
@@ -221,7 +224,7 @@ pub(super) fn reflect_user_params(
             ShaderParamType::Vec4Color => (4, false),
             // Unreachable for the same reason as above; a layer occupies no
             // block words, so zero is also the honest answer if it were.
-            ShaderParamType::Layer | ShaderParamType::Gradient | ShaderParamType::Path => {
+            ShaderParamType::Layer | ShaderParamType::Gradient | ShaderParamType::Path | ShaderParamType::Coverage => {
                 (0, false)
             }
         };

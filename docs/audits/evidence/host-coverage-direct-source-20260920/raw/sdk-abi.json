@@ -1,0 +1,19 @@
+{
+  "header_sha256": "24414adeae741a2f6328f4eb9aa24c4bb271a1e5214192f7ad927892f7d6a49b",
+  "suite_version": 12,
+  "function_count": 28,
+  "tail_functions": [
+    "AEGP_GetExpressionState",
+    "AEGP_SetExpressionState",
+    "AEGP_GetExpression",
+    "AEGP_SetExpression",
+    "AEGP_DuplicateStreamRef",
+    "AEGP_GetUniqueStreamID"
+  ],
+  "missing_functions": [],
+  "stage_values": {
+    "SOURCE": "0",
+    "ONLY_MASKS": "-2",
+    "ALL_EFFECTS": "-1"
+  }
+}

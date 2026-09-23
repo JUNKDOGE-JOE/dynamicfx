@@ -1,0 +1,50 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"ffx.aep\"||app.project.renderQueue.numItems!==0)throw Error(\"Unexpected project or queue\");var q=app.project.renderQueue.items.add(app.project.itemByID(30));q.timeSpanStart=0;q.timeSpanDuration=1/25;var om=q.outputModule(1),tpl=null;for(var i=0;i<om.templates.length;i++)if(om.templates[i].indexOf(\"TIFF\")>=0)tpl=om.templates[i];if(!tpl)throw Error(\"No TIFF template\");om.applyTemplate(tpl);om.file=new File(\"<workspace>/scripts/out/coverage-readiness-20260923/cold_[#####].tif\");app.project.save(new File(\"<workspace>/scripts/out/coverage-readiness-20260923/cold.aep\"));return JSON.stringify({template:tpl,queue:app.project.renderQueue.numItems,depth:app.project.bitsPerChannel});})()"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":false,\"error\":\"ExtendScript error: Error: After Effects错误: ?? Alpha ? TIFF ??  不是有效的模板名称。 (line 1)\",\"disposition\":\"failed\",\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":null,\"pendingCalls\":0,\"sentinelInFlight\":false},\"errorLine\":1,\"touched\":{\"level\":\"none\",\"method\":\"snapshot-diff\",\"comp\":null,\"activeCompChanged\":null,\"layersAdded\":[],\"layersRemoved\":[],\"layersChanged\":[],\"itemsAdded\":[],\"itemsRemoved\":[],\"truncated\":false,\"notes\":[]},\"revision\":{\"before\":523,\"after\":523},\"projectPath\":\"<workspace>\\\\scripts\\\\out\\\\coverage-readiness-20260923\\\\ffx.aep\",\"errorSource\":\"(function(){if(!app.project.file||app.project.file.name!==\\\"ffx.aep\\\"||app.project.renderQueue.numItems!==0)throw Error(\\\"Unexpected project or queue\\\");var q=app.project.renderQueue.items.add(app.project\",\"recoveryId\":\"3ip2gr\",\"scriptPath\":\"<user-home>\\\\.ae-mcp\\\\checkpoints\\\\ffx_0aa626a03de2\\\\recovery\\\\3ip2gr.jsx\",\"checkpointId\":null,\"attempt\":1}"
+      }
+    ],
+    "structuredContent": {
+      "ok": false,
+      "error": "ExtendScript error: Error: After Effects错误: ?? Alpha ? TIFF ??  不是有效的模板名称。 (line 1)",
+      "disposition": "failed",
+      "jsxBridge": {
+        "state": "ok",
+        "degradedSinceMs": null,
+        "lastTimeoutAt": null,
+        "pendingCalls": 0,
+        "sentinelInFlight": false
+      },
+      "errorLine": 1,
+      "touched": {
+        "level": "none",
+        "method": "snapshot-diff",
+        "comp": null,
+        "activeCompChanged": null,
+        "layersAdded": [],
+        "layersRemoved": [],
+        "layersChanged": [],
+        "itemsAdded": [],
+        "itemsRemoved": [],
+        "truncated": false,
+        "notes": []
+      },
+      "revision": {
+        "before": 523,
+        "after": 523
+      },
+      "projectPath": "<workspace>\\scripts\\out\\coverage-readiness-20260923\\ffx.aep",
+      "errorSource": "(function(){if(!app.project.file||app.project.file.name!==\"ffx.aep\"||app.project.renderQueue.numItems!==0)throw Error(\"Unexpected project or queue\");var q=app.project.renderQueue.items.add(app.project",
+      "recoveryId": "<local-id>",
+      "scriptPath": "<user-home>\\.ae-mcp\\checkpoints\\ffx_0aa626a03de2\\recovery\\3ip2gr.jsx",
+      "checkpointId": null,
+      "attempt": 1
+    },
+    "isError": true
+  }
+}

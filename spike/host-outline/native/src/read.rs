@@ -1,4 +1,4 @@
-use after_effects::{self as ae, AsPtr};
+use after_effects::{self as ae, AsPtr, AsMutPtr};
 use ae::sys as sys;
 use std::{ffi::CStr, fmt::Write, marker::PhantomData, ptr, rc::Rc, time::Instant};
 
@@ -60,6 +60,18 @@ fn cleanup<F: FnOnce() -> i32>(f: F) -> Cleanup<F> { Cleanup(Some(f)) }
 
 fn nullable_expression<T>(handle: *mut T, read: impl FnOnce(*mut T) -> Result<String>) -> Result<String> {
     if handle.is_null() { Ok(String::new()) } else { read(handle) }
+}
+
+pub unsafe fn set_primitive(basic: *mut sys::SPBasicSuite, id: i32,
+    stream_ref: sys::AEGP_StreamRefH, value: ae::aegp::StreamValue) -> Result<()> {
+    if !matches!(value, ae::aegp::StreamValue::OneD(_) | ae::aegp::StreamValue::LayerId(_)) {
+        return Err("unsupported primitive stream write".into());
+    }
+    let stream = Suite::<sys::AEGP_StreamSuite6>::acquire(basic, sys::kAEGPStreamSuite, sys::kAEGPStreamSuiteVersion6)?;
+    let mut raw: sys::AEGP_StreamValue2 = std::mem::zeroed();
+    raw.streamH = stream_ref;
+    raw.val = value.to_sys();
+    call!(stream, AEGP_SetStreamValue, id, stream_ref, &mut raw)
 }
 
 pub unsafe fn expression_text(basic: *mut sys::SPBasicSuite, id: i32,
@@ -149,6 +161,69 @@ pub fn auxiliary(input: &ae::InData) -> std::result::Result<String, ae::Error> {
     Ok(report)
 }
 
+pub fn raster_masks(input: &ae::InData, source: &ae::Layer) -> Result<String> {
+    let (width, height) = (source.width(), source.height());
+    if width == 0 || height == 0 || width.checked_mul(height).is_none_or(|n| n > 32768) {
+        return Err("native mask diagnostic requires a world of at most 32768 pixels".into());
+    }
+    let query = ae::pf::suites::PathQuery::new().map_err(|e| format!("{e:?}"))?;
+    let masks = unsafe { Suite::<sys::PF_MaskSuite1>::acquire(input.pica_basic_suite_ptr(),
+        sys::kPF_MaskSuite, sys::kPF_MaskSuiteVersion1)? };
+    let count = query.num_paths(input.effect_ref()).map_err(|e| format!("{e:?}"))?;
+    if !(0..=64).contains(&count) { return Err("mask count exceeds diagnostic budget".into()); }
+    let depth = source.bit_depth();
+    let bytes = match depth { 8 => 4, 16 => 8, 32 => 16, _ => return Err("unknown source depth".into()) };
+    if source.row_bytes() <= 0 { return Err("unsupported source stride".into()); }
+    let mut input_alpha = Vec::with_capacity(width * height);
+    let buffer = source.buffer();
+    for y in 0..height {
+        input.interact().abort().map_err(|e| format!("{e:?}"))?;
+        for x in 0..width {
+            let at = pixel_offset(width as i32, height as i32, source.row_bytes() as usize,
+                bytes, x as i32, y as i32)?;
+            let data = buffer.get(at..at + bytes).ok_or("source pixel outside buffer")?;
+            input_alpha.push(match depth {
+                8 => u32::from(data[0]),
+                16 => u32::from(u16::from_ne_bytes([data[0], data[1]])),
+                _ => u32::from_ne_bytes([data[0], data[1], data[2], data[3]]),
+            });
+        }
+    }
+    let mut report = format!("mask_input width={width} height={height} depth={depth}\ninput_alpha{depth}={input_alpha:?}\n");
+    for index in 0..count {
+        input.interact().abort().map_err(|e| format!("{e:?}"))?;
+        let id = query.path_info(input.effect_ref(), index).map_err(|e| format!("{e:?}"))?;
+        let Some(path) = query.checkout_path(input.effect_ref(), id, input.current_time(), 0,
+            input.time_scale()).map_err(|e| format!("{e:?}"))? else { continue };
+        let mode = path.mask_mode().map_err(|e| format!("{e:?}"))?;
+        if !matches!(mode, ae::pf::MaskMode::Add | ae::pf::MaskMode::Subtract) { continue; }
+        let inverted = path.is_inverted().map_err(|e| format!("{e:?}"))?
+            ^ (mode == ae::pf::MaskMode::Subtract);
+        let world_suite = ae::pf::suites::World::new().map_err(|e| format!("{e:?}"))?;
+        let mut world = world_suite.new_world(input, width as i32, height as i32, true,
+            ae::pf::PixelFormat::Argb64).map_err(|e| format!("{e:?}"))?;
+        ae::pf::suites::FillMatte::new().and_then(|fill| fill.fill16(input.effect_ref(), &mut world,
+            Some(ae::Pixel16 { alpha: 32768, red: 32768, green: 32768, blue: 32768 }), None))
+            .map_err(|e| format!("{e:?}"))?;
+        let mut outline = path.as_ptr();
+        // This probe isolates the host rasterizer with zero feather and full opacity.
+        // It does not claim the layer's animated feather, expansion or opacity semantics.
+        call!(masks, PF_MaskWorldWithPath, input.effect_ref().as_ptr(), &mut outline,
+            0.0, 0.0, inverted as _, 1.0, input.quality().into(), world.as_mut_ptr(), ptr::null_mut())?;
+        let mut alpha = Vec::with_capacity(width * height);
+        for y in 0..height {
+            input.interact().abort().map_err(|e| format!("{e:?}"))?;
+            for x in 0..width {
+                let at = y * world.row_bytes() as usize + x * std::mem::size_of::<sys::PF_Pixel16>();
+                let bytes = &world.buffer()[at..at + 2];
+                alpha.push(u16::from_ne_bytes([bytes[0], bytes[1]]));
+            }
+        }
+        let _ = writeln!(report, "mask_raster id={id} mode={mode:?} invert={inverted} width={width} height={height} feather=0 opacity=1\nalpha16={alpha:?}");
+    }
+    Ok(report)
+}
+
 struct CheckedParam<'a> { input: &'a ae::InData, param: sys::PF_ParamDef }
 impl Drop for CheckedParam<'_> {
     fn drop(&mut self) {
@@ -158,10 +233,111 @@ impl Drop for CheckedParam<'_> {
     }
 }
 
+fn probe_points(width: i32, height: i32) -> Result<[(i32, i32); 3]> {
+    if width <= 0 || height <= 0 { return Err("empty probe world".into()); }
+    Ok([(210i64, 490i64), (400, 300), (50, 50)].map(|(x, y)| (
+        (x * i64::from(width) / 800) as i32,
+        (y * i64::from(height) / 600) as i32,
+    )))
+}
+
+pub fn world_samples(world: &ae::Layer) -> Result<String> {
+    let (width, height) = (world.width() as i32, world.height() as i32);
+    let depth = world.bit_depth();
+    let size = match depth { 8 => 4, 16 => 8, 32 => 16, _ => return Err("unknown depth".into()) };
+    if world.row_bytes() <= 0 { return Err("invalid world stride".into()); }
+    let mut report = format!("world={width}x{height} depth={depth} origin={:?}\n", world.origin());
+    for (x, y) in probe_points(width, height)? {
+        let at = pixel_offset(width, height, world.row_bytes() as usize, size, x, y)?;
+        let bytes = world.buffer().get(at..at + size).ok_or("world buffer bounds")?;
+        let rgba = unsafe {
+            match depth {
+                8 => {
+                    let p = ptr::read_unaligned(bytes.as_ptr().cast::<sys::PF_Pixel8>());
+                    [p.red, p.green, p.blue, p.alpha].map(|v| f64::from(v) / 255.0)
+                }
+                16 => {
+                    let p = ptr::read_unaligned(bytes.as_ptr().cast::<sys::PF_Pixel16>());
+                    [p.red, p.green, p.blue, p.alpha].map(|v| f64::from(v) / 32768.0)
+                }
+                _ => {
+                    let p = ptr::read_unaligned(bytes.as_ptr().cast::<sys::PF_PixelFloat>());
+                    [p.red, p.green, p.blue, p.alpha].map(f64::from)
+                }
+            }
+        };
+        let _ = writeln!(report, "rgba[{x},{y}]={rgba:?}");
+    }
+    Ok(report)
+}
+
 pub fn original_pixels(input: &ae::InData, index: i32) -> std::result::Result<String, ae::Error> {
+    original_pixels_at(input, index, input.current_time(), input.time_step(), input.time_scale())
+}
+
+pub fn world_alpha(world: &ae::Layer) -> Result<String> {
+    let (width, height) = (world.width() as i32, world.height() as i32);
+    let count = reference_pixel_count(width, height)?;
+    let depth = world.bit_depth();
+    let size = match depth { 8 => 4, 16 => 8, 32 => 16, _ => return Err("unknown depth".into()) };
+    if world.row_bytes() <= 0 { return Err("invalid world stride".into()); }
+    let mut values = Vec::with_capacity(count);
+    for y in 0..height {
+        for x in 0..width {
+            let at = pixel_offset(width, height, world.row_bytes() as usize, size, x, y)?;
+            let bytes = world.buffer().get(at..at + size).ok_or("world buffer bounds")?;
+            values.push(match depth {
+                8 => u32::from(bytes[0]),
+                16 => u32::from(u16::from_ne_bytes([bytes[0], bytes[1]])),
+                _ => u32::from_ne_bytes(bytes[..4].try_into().unwrap()),
+            });
+        }
+    }
+    Ok(format!("world={width}x{height} depth={depth} origin={:?}\nalpha_words={values:?}", world.origin()))
+}
+
+#[derive(Clone, Copy)]
+struct CopyPlane { width: i32, height: i32, stride: usize, x: i32, y: i32 }
+
+pub fn copy_aligned(source: &ae::Layer, output: &mut ae::Layer) -> Result<()> {
+    if source.bit_depth() != output.bit_depth() { return Err("copy depth mismatch".into()); }
+    let size = match source.bit_depth() { 8 => 4, 16 => 8, 32 => 16, _ => return Err("unknown depth".into()) };
+    if source.row_bytes() <= 0 || output.row_bytes() <= 0 { return Err("invalid copy stride".into()); }
+    let plane = |world: &ae::Layer| CopyPlane { width: world.width() as i32, height: world.height() as i32,
+        stride: world.row_bytes() as usize, x: world.origin().h, y: world.origin().v };
+    let src = plane(source);
+    let dst = plane(output);
+    copy_native(source.buffer(), output.buffer_mut(), src, dst, size)
+}
+
+fn copy_native(source: &[u8], output: &mut [u8], src: CopyPlane, dst: CopyPlane, size: usize) -> Result<()> {
+    if ![4, 8, 16].contains(&size) { return Err("invalid pixel size".into()); }
+    pixel_offset(src.width, src.height, src.stride, size, 0, 0)?;
+    pixel_offset(dst.width, dst.height, dst.stride, size, 0, 0)?;
+    let left = i64::from(src.x).max(i64::from(dst.x));
+    let top = i64::from(src.y).max(i64::from(dst.y));
+    let right = (i64::from(src.x) + i64::from(src.width)).min(i64::from(dst.x) + i64::from(dst.width));
+    let bottom = (i64::from(src.y) + i64::from(src.height)).min(i64::from(dst.y) + i64::from(dst.height));
+    output.fill(0);
+    if left >= right || top >= bottom { return Ok(()); }
+    for y in top..bottom {
+        let from = pixel_offset(src.width, src.height, src.stride, size,
+            (left - i64::from(src.x)) as i32, (y - i64::from(src.y)) as i32)?;
+        let to = pixel_offset(dst.width, dst.height, dst.stride, size,
+            (left - i64::from(dst.x)) as i32, (y - i64::from(dst.y)) as i32)?;
+        let len = (right - left) as usize * size;
+        let row = source.get(from..from + len).ok_or("source copy bounds")?;
+        output.get_mut(to..to + len).ok_or("destination copy bounds")?.copy_from_slice(row);
+    }
+    Ok(())
+}
+
+pub fn original_pixels_at(input: &ae::InData, index: i32, ticks: i32, step: i32, scale: u32)
+    -> std::result::Result<String, ae::Error>
+{
     input.interact().abort()?;
     let checked = CheckedParam { input, param: input.interact().checkout_param(index,
-        input.current_time(), input.time_step(), input.time_scale())? };
+        ticks, step, scale)? };
     if checked.param.param_type != sys::PF_Param_LAYER { return Err(ae::Error::BadCallbackParameter); }
     let mut world = unsafe { checked.param.u.ld };
     if world.data.is_null() { return Ok("original_world=unavailable".into()); }
@@ -170,8 +346,9 @@ pub fn original_pixels(input: &ae::InData, index: i32) -> std::result::Result<St
     let depth = layer.bit_depth();
     let bytes = match depth { 8 => 4, 16 => 8, 32 => 16, _ => return Err(ae::Error::BadCallbackParameter) };
     let mut report = format!("original_world={}x{} depth={depth} rowbytes={} origin={:?} time={}/{}\n",
-        world.width, world.height, world.rowbytes, layer.origin(), input.current_time(), input.time_scale());
-    for (x, y) in [(210, 490), (400, 300), (50, 50)] {
+        world.width, world.height, world.rowbytes, layer.origin(), ticks, scale);
+    for (x, y) in probe_points(world.width, world.height)
+        .map_err(|_| ae::Error::BadCallbackParameter)? {
         input.interact().abort()?;
         let at = pixel_offset(world.width, world.height, world.rowbytes as usize, bytes, x, y)
             .map_err(|_| ae::Error::BadCallbackParameter)?;
@@ -193,7 +370,7 @@ pub fn host(input: &ae::InData, id: ae::aegp::PluginId, mode: i32, time: ae::Tim
     if mode == 2 {
         let layer = interface.effect_layer(input.effect_ref()).map_err(|e| format!("{e:?}"))?;
         unsafe { streams(input.pica_basic_suite_ptr(), id, layer.as_ptr(), time.into()) }
-    } else if (3..=7).contains(&mode) {
+    } else if (3..=10).contains(&mode) {
         unsafe { coverage(input, id, mode, time.into()) }
     } else { Err("unknown mode".into()) }
 }
@@ -331,8 +508,11 @@ pub unsafe fn background(input: *mut sys::SPBasicSuite, id: i32, layer: sys::AEG
 {
     match mode {
         2 => streams(input, id, layer, time.into()),
-        3..=7 => coverage_for_effect(input, id, layer, effect, mode, time.into()),
-        _ => Err("background mode must be 2 through 7; PF paths use rendering".into()),
+        3..=10 => coverage_for_effect(input, id, layer, effect, mode, time.into()),
+        12..=16 => super::stage::inspect(input, id, effect, mode - 12),
+        17..=20 => plain_layer(input, id, layer, time.into(), mode % 2 == 0, mode >= 19),
+        23..=25 => super::stage::inspect(input, id, effect, mode - 18),
+        _ => Err("background mode must be 2 through 10 or 12 through 20; PF paths use rendering".into()),
     }
 }
 
@@ -340,6 +520,7 @@ unsafe fn coverage_for_effect(input: *mut sys::SPBasicSuite, id: i32,
     layer: sys::AEGP_LayerH, effect: sys::AEGP_EffectRefH, mode: i32, time: sys::A_Time) -> Result<String>
 {
     if mode == 5 { return Err("retired plain flag: incompatible with upstream layer options".into()); }
+    if mode == 10 { return source_item(input, id, layer, time); }
     let options = Suite::<sys::AEGP_LayerRenderOptionsSuite2>::acquire(input, sys::kAEGPLayerRenderOptionsSuite, sys::kAEGPLayerRenderOptionsSuiteVersion2)?;
     let dispose_options = options.AEGP_Dispose.ok_or("missing Dispose options")?;
     let mut opts = ptr::null_mut();
@@ -357,7 +538,8 @@ unsafe fn coverage_for_effect(input: *mut sys::SPBasicSuite, id: i32,
     if opts.is_null() { return Err("null render options".into()); }
     let _opts = cleanup(|| dispose_options(opts));
     call!(options, AEGP_SetTime, opts, time)?;
-    call!(options, AEGP_SetWorldType, opts, sys::AEGP_WorldType_16)?;
+    call!(options, AEGP_SetWorldType, opts,
+        if mode == 8 { sys::AEGP_WorldType_32 } else { sys::AEGP_WorldType_16 })?;
     call!(options, AEGP_SetDownsampleFactor, opts, 1, 1)?;
     let mut start = Instant::now();
     let refcon = (&mut start as *mut Instant).cast();
@@ -373,7 +555,7 @@ unsafe fn coverage_for_effect(input: *mut sys::SPBasicSuite, id: i32,
         let mut region = std::mem::zeroed();
         call!(render, AEGP_GetReceiptWorld, receipt, &mut world)?;
         call!(render, AEGP_GetRenderedRegion, receipt, &mut region)?;
-        pixels(input, world, region)
+        if mode >= 8 { reference_alpha(input, world, region) } else { pixels(input, world, region) }
     } else {
         let render = Suite::<sys::AEGP_RenderSuite4>::acquire(input, sys::kAEGPRenderSuite, sys::kAEGPRenderSuiteVersion4)?;
         let checkin = render.AEGP_CheckinFrame.ok_or("missing CheckinFrame")?;
@@ -386,6 +568,142 @@ unsafe fn coverage_for_effect(input: *mut sys::SPBasicSuite, id: i32,
         call!(render, AEGP_GetRenderedRegion, receipt, &mut region)?;
         pixels(input, world, region)
     }
+}
+
+unsafe fn plain_layer(basic: *mut sys::SPBasicSuite, id: i32, layer: sys::AEGP_LayerH,
+    time: sys::A_Time, float: bool, old_options: bool) -> Result<String>
+{
+    if layer.is_null() { return Err("null plain source layer".into()); }
+    let _quiet = ae::aegp::suites::Utility::new().and_then(|s| s.start_quiet_errors(false))
+        .map_err(|e| format!("{e:?}"))?;
+    let options1 = if old_options { Some(Suite::<sys::AEGP_LayerRenderOptionsSuite1>::acquire(basic,
+        sys::kAEGPLayerRenderOptionsSuite, sys::kAEGPLayerRenderOptionsSuiteVersion1)?) } else { None };
+    let options2 = if !old_options { Some(Suite::<sys::AEGP_LayerRenderOptionsSuite2>::acquire(basic,
+        sys::kAEGPLayerRenderOptionsSuite, sys::kAEGPLayerRenderOptionsSuiteVersion2)?) } else { None };
+    let (new_layer, dispose, set_time, set_world, set_downsample) = if let Some(s) = &options1 {
+        (s.AEGP_NewFromLayer, s.AEGP_Dispose, s.AEGP_SetTime, s.AEGP_SetWorldType, s.AEGP_SetDownsampleFactor)
+    } else {
+        let s = options2.as_ref().ok_or("missing layer options suite")?;
+        (s.AEGP_NewFromLayer, s.AEGP_Dispose, s.AEGP_SetTime, s.AEGP_SetWorldType, s.AEGP_SetDownsampleFactor)
+    };
+    let render = Suite::<sys::AEGP_RenderSuite4>::acquire(basic,
+        sys::kAEGPRenderSuite, sys::kAEGPRenderSuiteVersion4)?;
+    let dispose = dispose.ok_or("missing Dispose options")?;
+    let checkin = render.AEGP_CheckinFrame.ok_or("missing CheckinFrame")?;
+    let mut opts = ptr::null_mut();
+    check(new_layer.ok_or("missing NewFromLayer")?(id, layer, &mut opts), "NewFromLayer")?;
+    if opts.is_null() { return Err("null plain layer options".into()); }
+    let _opts = cleanup(|| dispose(opts));
+    check(set_time.ok_or("missing SetTime")?(opts, time), "SetTime")?;
+    check(set_world.ok_or("missing SetWorldType")?(opts,
+        if float { sys::AEGP_WorldType_32 } else { sys::AEGP_WorldType_16 }), "SetWorldType")?;
+    check(set_downsample.ok_or("missing SetDownsampleFactor")?(opts, 1, 1), "SetDownsampleFactor")?;
+    let mut start = Instant::now();
+    let mut receipt = ptr::null_mut();
+    super::log(&format!("PLAIN_LAYER_BEGIN options=NewFromLayer options_suite={} render_suite=4 plain=true",
+        if old_options { 1 } else { 2 }));
+    call!(render, AEGP_RenderAndCheckoutLayerFrame, opts, 1, Some(cancel),
+        (&mut start as *mut Instant).cast(), &mut receipt)?;
+    if receipt.is_null() { return Err("null plain frame receipt".into()); }
+    let _receipt = cleanup(|| checkin(receipt));
+    let mut world = ptr::null_mut();
+    let mut region = std::mem::zeroed();
+    call!(render, AEGP_GetReceiptWorld, receipt, &mut world)?;
+    call!(render, AEGP_GetRenderedRegion, receipt, &mut region)?;
+    let samples = if float { String::new() } else { pixels(basic, world, region)? };
+    let raw = reference_alpha(basic, world, region)?;
+    Ok(format!("PLAIN_LAYER_COMPLETE\n{samples}\n{raw}"))
+}
+
+unsafe fn source_item(basic: *mut sys::SPBasicSuite, id: i32, layer: sys::AEGP_LayerH,
+    time: sys::A_Time) -> Result<String>
+{
+    if layer.is_null() { return Err("null source layer".into()); }
+    let _quiet = ae::aegp::suites::Utility::new().and_then(|s| s.start_quiet_errors(false))
+        .map_err(|e| format!("{e:?}"))?;
+    let layers = Suite::<sys::AEGP_LayerSuite9>::acquire(basic, sys::kAEGPLayerSuite,
+        sys::kAEGPLayerSuiteVersion9)?;
+    let mut item = ptr::null_mut();
+    let mut object_type = 0;
+    call!(layers, AEGP_GetLayerObjectType, layer, &mut object_type)?;
+    call!(layers, AEGP_GetLayerSourceItem, layer, &mut item)?;
+    if item.is_null() {
+        return Ok(format!("source_item=none layer_object_type={object_type}"));
+    }
+    let items = Suite::<sys::AEGP_ItemSuite9>::acquire(basic, sys::kAEGPItemSuite,
+        sys::kAEGPItemSuiteVersion9)?;
+    let (mut item_id, mut item_type) = (0, 0);
+    call!(items, AEGP_GetItemID, item, &mut item_id)?;
+    call!(items, AEGP_GetItemType, item, &mut item_type)?;
+    let options = Suite::<sys::AEGP_RenderOptionsSuite4>::acquire(basic,
+        sys::kAEGPRenderOptionsSuite, sys::kAEGPRenderOptionsSuiteVersion4)?;
+    let dispose = options.AEGP_Dispose.ok_or("missing source options disposal")?;
+    let mut opts = ptr::null_mut();
+    call!(options, AEGP_NewFromItem, id, item, &mut opts)?;
+    if opts.is_null() { return Err("null source-item options".into()); }
+    let _options = cleanup(|| dispose(opts));
+    call!(options, AEGP_SetTime, opts, time)?;
+    call!(options, AEGP_SetWorldType, opts, sys::AEGP_WorldType_16)?;
+    call!(options, AEGP_SetDownsampleFactor, opts, 1, 1)?;
+    let render = Suite::<sys::AEGP_RenderSuite5>::acquire(basic, sys::kAEGPRenderSuite,
+        sys::kAEGPRenderSuiteVersion5)?;
+    let checkin = render.AEGP_CheckinFrame.ok_or("missing source frame checkin")?;
+    let mut started = Instant::now();
+    let mut receipt = ptr::null_mut();
+    call!(render, AEGP_RenderAndCheckoutFrame, opts, Some(cancel),
+        (&mut started as *mut Instant).cast(), &mut receipt)?;
+    if receipt.is_null() { return Err("null source-item receipt".into()); }
+    let _receipt = cleanup(|| checkin(receipt));
+    let mut world = ptr::null_mut();
+    let mut region = std::mem::zeroed();
+    call!(render, AEGP_GetReceiptWorld, receipt, &mut world)?;
+    call!(render, AEGP_GetRenderedRegion, receipt, &mut region)?;
+    let report = pixels(basic, world, region)?;
+    Ok(format!("source_item={item_id} item_type={item_type} layer_object_type={object_type}\n{report}"))
+}
+
+unsafe fn reference_alpha(input: *mut sys::SPBasicSuite, world: sys::AEGP_WorldH,
+    region: sys::A_LRect) -> Result<String>
+{
+    if world.is_null() { return Err("null reference world".into()); }
+    let suite = Suite::<sys::AEGP_WorldSuite3>::acquire(input, sys::kAEGPWorldSuite,
+        sys::kAEGPWorldSuiteVersion3)?;
+    let (mut width, mut height, mut stride, mut kind) = (0, 0, 0, 0);
+    call!(suite, AEGP_GetSize, world, &mut width, &mut height)?;
+    call!(suite, AEGP_GetRowBytes, world, &mut stride)?;
+    call!(suite, AEGP_GetType, world, &mut kind)?;
+    let count = reference_pixel_count(width, height)?;
+    if stride <= 0 { return Err("invalid reference stride".into()); }
+    let (base, size, depth) = if kind == sys::AEGP_WorldType_32 {
+        let mut pixels = ptr::null_mut();
+        call!(suite, AEGP_GetBaseAddr32, world, &mut pixels)?;
+        (pixels.cast::<u8>(), std::mem::size_of::<sys::PF_PixelFloat>(), 32)
+    } else if kind == sys::AEGP_WorldType_16 {
+        let mut pixels = ptr::null_mut();
+        call!(suite, AEGP_GetBaseAddr16, world, &mut pixels)?;
+        (pixels.cast::<u8>(), std::mem::size_of::<sys::PF_Pixel16>(), 16)
+    } else { return Err(format!("unexpected reference world type {kind}")); };
+    if base.is_null() { return Err("null reference pixels".into()); }
+    let mut values = Vec::with_capacity(count);
+    for y in 0..height {
+        for x in 0..width {
+            let at = pixel_offset(width, height, stride as usize, size, x, y)?;
+            values.push(if depth == 32 {
+                ptr::read_unaligned(base.add(at).cast::<sys::PF_PixelFloat>()).alpha.to_bits()
+            } else {
+                u32::from(ptr::read_unaligned(base.add(at).cast::<sys::PF_Pixel16>()).alpha)
+            });
+        }
+    }
+    Ok(format!("reference width={width} height={height} depth={depth} region={region:?}\nreference_alpha{depth}={values:?}"))
+}
+
+fn reference_pixel_count(width: i32, height: i32) -> Result<usize> {
+    let count = i64::from(width) * i64::from(height);
+    if width <= 0 || height <= 0 || count > 1048576 {
+        return Err("reference world exceeds diagnostic budget".into());
+    }
+    Ok(count as usize)
 }
 
 fn offset(width: i32, height: i32, stride: usize, x: i32, y: i32) -> Result<usize> {
@@ -415,11 +733,13 @@ unsafe fn pixels(input: *mut sys::SPBasicSuite, world: sys::AEGP_WorldH, region:
     call!(suite, AEGP_GetBaseAddr16, world, &mut base)?;
     if base.is_null() { return Err("null pixel buffer".into()); }
     let mut report = format!("world={width}x{height} rowbytes={stride} type={kind} region={region:?}\ncoordinates=world-local; compare only identity baseline until origin mapping is proven\n");
-    for (x, y) in [(210, 490), (400, 300), (50, 50)] {
+    for (x, y) in probe_points(width, height)? {
         match offset(width, height, stride as usize, x, y) {
             Ok(offset) => {
                 let pixel = ptr::read_unaligned(base.cast::<u8>().add(offset).cast::<sys::PF_Pixel16>());
                 let _ = writeln!(report, "alpha[{x},{y}]={}", f64::from(pixel.alpha) / 32768.0);
+                let _ = writeln!(report, "rgba[{x},{y}]={:?}", [pixel.red, pixel.green, pixel.blue, pixel.alpha]
+                    .map(|v| f64::from(v) / 32768.0));
             }
             Err(error) => { let _ = writeln!(report, "alpha[{x},{y}]=UNAVAILABLE reason={error}"); }
         }
@@ -430,6 +750,44 @@ unsafe fn pixels(input: *mut sys::SPBasicSuite, world: sys::AEGP_WorldH, region:
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn aligned_copy_preserves_native_bytes_and_clears_padding_at_all_depths() {
+        for size in [4usize, 8, 16] {
+            let mut src = vec![0u8; size * 6];
+            for (i, byte) in src.iter_mut().enumerate() { *byte = (i + 1) as u8; }
+            let mut dst = vec![255u8; size * 12];
+            let mut expected = vec![0u8; size * 12];
+            expected[size * 5..size * 7].copy_from_slice(&src[..size * 2]);
+            expected[size * 9..size * 11].copy_from_slice(&src[size * 3..size * 5]);
+            let src_plane = CopyPlane { width: 2, height: 2, stride: size * 3, x: 11, y: 21 };
+            let dst_plane = CopyPlane { width: 3, height: 3, stride: size * 4, x: 10, y: 20 };
+            copy_native(&src, &mut dst, src_plane, dst_plane, size).unwrap();
+            assert_eq!(dst, expected);
+            assert!(copy_native(&src[..size], &mut dst, src_plane, dst_plane, size).is_err());
+            assert!(copy_native(&src, &mut dst[..size], src_plane, dst_plane, size).is_err());
+        }
+    }
+
+    #[test]
+    fn reference_budget_accepts_full_fixture_but_rejects_unbounded_worlds() {
+        assert_eq!(reference_pixel_count(800, 600).unwrap(), 480000);
+        assert_eq!(reference_pixel_count(1056, 856).unwrap(), 903936);
+        for (width, height) in [(0, 600), (-1, 1), (1920, 1080), (i32::MAX, i32::MAX)] {
+            assert!(reference_pixel_count(width, height).is_err());
+        }
+    }
+    #[test]
+    fn probe_points_preserve_the_reference_fixture_and_fit_small_worlds() {
+        assert_eq!(probe_points(800, 600).unwrap(), [(210, 490), (400, 300), (50, 50)]);
+        assert_eq!(probe_points(128, 96).unwrap(), [(33, 78), (64, 48), (8, 8)]);
+        for (width, height) in [(1, 1), (1, 96), (128, 1), (1920, 1080), (i32::MAX, i32::MAX)] {
+            for (x, y) in probe_points(width, height).unwrap() {
+                assert!((0..width).contains(&x) && (0..height).contains(&y));
+            }
+        }
+        assert!(probe_points(0, 96).is_err());
+        assert!(probe_points(128, -1).is_err());
+    }
     #[test]
     fn retired_plain_mode_never_enters_host_suites() {
         let result = unsafe { coverage_for_effect(ptr::null_mut(), 0, ptr::null_mut(),

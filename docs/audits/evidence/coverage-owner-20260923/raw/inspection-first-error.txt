@@ -1,0 +1,11 @@
+Captured from the first MCP read-only inspection response. The corrected
+inspection subsequently overwrote the scratch result filename; this excerpt
+retains the observed error rather than representing a second execution.
+
+ExtendScript error: Error: After Effects错误: 无法从此属性（matchname 是“DynamicFx--945478748”）获取或设置值。此属性的 propertyValueType 为 PropertyValueType.NO_VALUE。 (line 1)
+[hint] that match name is a GROUP, not a leaf property; set values on its child leaf properties by walking with AEMCP.propByMatchPath or numeric indices.
+
+disposition: failed
+touched.level: none
+revision.before: 271
+revision.after: 271

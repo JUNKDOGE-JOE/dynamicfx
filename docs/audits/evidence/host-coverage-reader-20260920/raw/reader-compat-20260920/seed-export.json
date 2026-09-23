@@ -1,0 +1,19 @@
+{
+  "args": {
+    "code": "(function(){var c=app.project.itemByID(1),l=c.layer(1);for(var i=1;i<=c.numLayers;i++)c.layer(i).selected=false;l.selected=true;var e=l.property(\"ADBE Effect Parade\").property(1);e.selected=true;l.savePreset(new File(\"<checkout>/scripts/out/reader-compat-20260920/native-stage-seed.ffx\"));app.project.save();return JSON.stringify({fileExists:File(\"<checkout>/scripts/out/reader-compat-20260920/native-stage-seed.ffx\").exists,bytes:File(\"<checkout>/scripts/out/reader-compat-20260920/native-stage-seed.ffx\").length});})()"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"fileExists\\\":true,\\\"bytes\\\":7078}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"fileExists\":true,\"bytes\":7078}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

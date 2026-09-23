@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"native-reader.aep\")throw Error(\"Unexpected project\");app.project.bitsPerChannel=32;var c=app.project.itemByID(910);c.time=1.6;app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(0.5,new File(\"<checkout>/scripts/out/native-reader-20260920/repeater3-32-0_5-actual.png\"));return JSON.stringify({cti:c.time,requested:0.5});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"cti\\\":1.6,\\\"requested\\\":0.5}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"cti\":1.6,\"requested\":0.5}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

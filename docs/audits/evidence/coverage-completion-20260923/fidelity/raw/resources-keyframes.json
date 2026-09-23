@@ -1,0 +1,44 @@
+{
+  "ok": true,
+  "data": {
+    "mode": "keyframes",
+    "written": true,
+    "pairs": {
+      "glsl": {
+        "keys": 2,
+        "t0": [
+          0.25,
+          0,
+          0,
+          1
+        ],
+        "t1": [
+          0.75,
+          0,
+          0,
+          1
+        ],
+        "value0": 0.25,
+        "value1": 0.75
+      },
+      "wgsl": {
+        "keys": 2,
+        "t0": [
+          0.25,
+          0,
+          0,
+          1
+        ],
+        "t1": [
+          0.75,
+          0,
+          0,
+          1
+        ],
+        "value0": 0.25,
+        "value1": 0.75
+      }
+    },
+    "project": "<workspace>\\scripts\\out\\coverage-final-20260923\\resources.aep"
+  }
+}

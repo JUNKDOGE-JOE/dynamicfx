@@ -1,0 +1,17 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!==\"cancel.aep\"||!app.project.activeItem||app.project.activeItem.id!==30)throw Error(\"Unexpected active fixture\");\n$.global.__dfxCancel={comp:app.project.itemByID(30),cycle:0,rows:[]};\n$.global.__dfxCancelStep=function(){var s=$.global.__dfxCancel;try{s.comp.time=(s.cycle*3.13)%27;s.rows.push({cycle:s.cycle,time:s.comp.time});if(s.cycle>=8){var f=new File(\"<workspace>/scripts/out/coverage-final-20260923/preview-cancel-done.json\");f.encoding=\"UTF-8\";f.open(\"w\");f.write(JSON.stringify({ok:true,rows:s.rows}));f.close();return;}app.executeCommand(10314);s.cycle++;app.scheduleTask(\"$.global.__dfxCancelStep()\",220,false);}catch(e){var f=new File(\"<workspace>/scripts/out/coverage-final-20260923/preview-cancel-done.json\");f.open(\"w\");f.write(JSON.stringify({ok:false,error:String(e)}));f.close();}};\napp.purge(PurgeTarget.ALL_CACHES);app.scheduleTask(\"$.global.__dfxCancelStep()\",300,false);return \"scheduled\";})()",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"scheduled\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "scheduled",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

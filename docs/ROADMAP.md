@@ -14,6 +14,13 @@
 
 ## Current - IOS27Siri withdrawn for refinement
 
+The separately requested automatic host-coverage feature and Liquid Glass
+example have completed Windows AE 26.5x89 acceptance. The development candidate
+contains paired native components, shader, FFX and application script. See
+[TR-COVERAGE-COMPLETE-007](TEST_MATRIX.md#tr-coverage-complete-007--cancellation-and-usable-liquid-glass).
+Feature-branch review is next; main integration, public release and other-host
+acceptance are separate. This does not republish the withdrawn Siri sample.
+
 Repository and maintained release distribution have been withdrawn and checked.
 Local authoring files and plugin binaries remain preserved. Re-publication is
 pending the user's request after refinement.
@@ -385,3 +392,92 @@ Undo/Redo and saved/cache-purged data retrieval. FFX recreation, original masks,
 partial-alpha cost and production integration remain unresolved; the acquisition
 and transport gate is still open.
 [Current evidence](audits/evidence/host-shape-native-20260910/original-source-v005/README.md).
+
+## 2026-09-20 coverage regression gate
+
+Acceptance remains FAIL on AE 26.5x89: original masks/holes, 8-bpc curved
+edges, full-frame partial opacity and managed cleanup. Runtime FFX, canvas/ROI,
+temporal use and true MFR concurrency remain blocked by implementation gaps.
+The user has suspended further pushes until tests pass.
+[Current regression](audits/evidence/host-coverage-regression-20260920/README.md).
+
+The 0.0.10 engineering correction clears the observed idle cleanup/Undo failure
+and fixed-coordinate small-frame diagnostic error. Acquisition failures remain.
+The user explicitly requires the original full scope before delivery; do not
+use a reduced first-release scope as an exit from this gate.
+[Correction evidence](audits/evidence/host-coverage-engineering-20260920/README.md).
+
+The user's clarified priority is image fidelity first, then preview speed within
+the proven fidelity contract. Benchmark and optimize against the same native
+reference cases; do not trade away edges, partial alpha, masks or animation to
+meet a preview target. The full original delivery gate remains required.
+
+## 2026-09-20 fidelity baseline and acquisition boundary
+
+Exact per-pixel sampling and float32 word transport are verified for recorded
+cases, including the full 800x600 half-opacity fixture. Cache warm-up is adopted
+only in the standalone exact diagnostic after unchanged-pixel checks. Full-frame
+cost remains 91.529 s, and native mask rasterization omits expansion. A decision
+on automatically managed reference objects is pending; do not assume permission
+to alter the original no-helper-object workflow. Full delivery gate remains FAIL.
+[Fidelity audit](audits/evidence/host-coverage-fidelity-20260920/README.md).
+
+## 2026-09-20 native reader path approved
+
+The user has accepted an automatically maintained internal reading layer after
+the native return bridge passed at 8/16/32 bpc. This resolves the pending
+project-structure choice above. Continue in order: ownership/lifecycle and
+requested-time validation -> resource/coordinate ABI -> runtime integration ->
+full FFX and original host/render acceptance. No reduced delivery scope or push.
+[Direct-source audit](audits/evidence/host-coverage-direct-source-20260920/README.md).
+
+The subsequent user decision sets **AE 26.5+ for this new feature only**.
+AE 2025.6.6 returned `kSPSuiteNotFoundError` for StreamSuite7 and rejected the
+newer-host preset. Do not pursue an undocumented compatibility workaround or
+change existing-feature support. Native automatic-reader lifecycle and frame
+tests now precede production shader integration; they are not release acceptance.
+
+The guarded reader now passes automatic binding/sharing, unused-source cleanup,
+Undo/Redo, duplicate-owner/rename checks and the recorded native pixel matrix.
+Owner-layer deletion and two-step Undo pass on diagnostic 0.0.28. The active
+gate is production resource/coordinate/readiness integration, followed by FFX,
+ROI/downsample and actual MFR acceptance.
+[Reader audit](audits/evidence/host-coverage-reader-20260920/README.md).
+
+## 2026-09-23 production integration
+
+The user has requested formal integration. ADR-0050 fixes `hint:coverage`, a
+dedicated hidden slot, native-alpha canvas encoding and E59/E60 readiness gates.
+The resource/reflection/persistence/encoding layer is now in production source.
+Next connect native ownership/helper rendering and first-frame readiness, then
+run production host, FFX and MFR/ROI acceptance. No deployment or push yet.
+[Integration audit](audits/11-host-coverage-integration.md).
+
+The production SDK stage adapter is compiled and callback-fault-tested. Native
+ownership and the helper frame path remain the active integration work; no
+first production AE frame or lifecycle/render acceptance is inferred from
+these local tests. The full remaining gate is listed in the integration audit.
+
+The subsequent ADR-0051 integration passes its first production AE 26.5 frames:
+6 native-word comparisons at 8/16/32 bpc, 8 initial lifecycle cases and one
+same-process reopen frame. Native ownership/helper hookup is complete for this
+fixture. Next is copy/FFX-before-idle authorization, then the full production
+coordinate, animation, ownership, aerender/MFR and glass-material acceptance.
+[Production first-frame evidence](audits/evidence/coverage-owner-20260923/README.md).
+
+Copy/FFX-before-idle authorization now passes on final `96dcff77...`, including
+warm-cache copy, automatic recovery, new/existing preset targets, prepared
+independent rendering and missing-reader refusal. The 6 native-depth first-frame
+comparisons still pass. Continue the full production animation/coordinate and
+ownership/MFR matrix before glass-material delivery or any push.
+[Readiness evidence](audits/evidence/coverage-readiness-20260923/README.md).
+
+The user's explicit delivery order is complete regression, then liquid-glass
+shader authoring and native visual/preset acceptance. The material must follow
+the original layer automatically; no manual geometry or layer binding is added.
+
+Production fidelity now passes 114 native comparisons and 15 ROI comparisons,
+including the repeated 78-case base matrix, parent/negative-scale/expression
+cases and repaired outside-comp sampling. Helper tamper, actual concurrent MFR
+and remaining release gates precede liquid-glass shader authoring.
+[Fidelity evidence](audits/evidence/coverage-full-20260923/README.md).

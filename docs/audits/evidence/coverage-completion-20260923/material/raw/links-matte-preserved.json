@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Liquid Glass.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(50),o=null,child=null;for(var i=1;i<=c.numLayers;i++){if(c.layer(i).id===62)o=c.layer(i);if(c.layer(i).id===64)child=c.layer(i);}var e=o.property(\"ADBE Effect Parade\").property(1),r=null;for(var i=1;i<=c.numLayers;i++){var l=c.layer(i),fx=l.property(\"ADBE Effect Parade\");if(fx.numProperties&&fx.property(1).matchName===\"DynamicFx Coverage Reader\")r=l;}return JSON.stringify({reader:r?r.id:null,state:e.property(427).value,parent:child.parent?child.parent.id:null,matte:child.trackMatteLayer?child.trackMatteLayer.id:null});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"reader\\\":66,\\\"state\\\":0,\\\"parent\\\":null,\\\"matte\\\":66}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"reader\":66,\"state\":0,\"parent\":null,\"matte\":66}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

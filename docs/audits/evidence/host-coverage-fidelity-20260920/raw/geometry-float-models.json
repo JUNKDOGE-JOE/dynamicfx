@@ -1,0 +1,26 @@
+[
+  {
+    "name": "curve",
+    "coef": 0,
+    "max_error32": 1.1920928955078125e-07,
+    "different_pixels": 293
+  },
+  {
+    "name": "curve",
+    "coef": 1,
+    "max_error32": 5.960464477539063e-08,
+    "different_pixels": 3727
+  },
+  {
+    "name": "half",
+    "coef": 0,
+    "max_error32": 1.4901161193847656e-07,
+    "different_pixels": 2968
+  },
+  {
+    "name": "half",
+    "coef": 1,
+    "max_error32": 5.960464477539063e-08,
+    "different_pixels": 2880
+  }
+]

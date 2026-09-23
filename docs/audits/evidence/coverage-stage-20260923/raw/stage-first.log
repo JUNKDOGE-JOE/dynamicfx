@@ -1,0 +1,40 @@
+     Locking 3 packages to latest compatible versions
+   Compiling find-msvc-tools v0.1.9
+   Compiling shlex v2.0.1
+   Compiling cc v1.4.0
+   Compiling dynamicfx-coverage-stage-check v0.0.0 (<workspace>\spike\host-outline\stage-check)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.68s
+     Running unittests src\lib.rs (scripts/out/coverage-stage-20260923/check-target\debug\deps\dynamicfx_coverage_stage_check-f8b135ea6b205be1.exe)
+
+running 22 tests
+test tests::acquire_failure_owns_nothing ... ok
+test tests::idempotent_binding_does_not_write ... ok
+test tests::missing_basic_callback_never_calls_host ... ok
+test tests::readback_failure_disposes_both_reads_correctly ... ok
+test tests::stream_disposal_failure_still_releases_suite ... ok
+test tests::null_table_still_releases_suite ... ok
+test tests::read_failure_disposes_stream ... ok
+test tests::value_disposal_failure_cannot_publish_success ... ok
+test tests::wrong_readback_stage_is_rejected ... ok
+test tests::read_preserves_unknown_stage_for_conflict_detection ... ok
+test tests::null_effect_never_calls_host ... ok
+test tests::null_stream_is_rejected ... ok
+test tests::stream_failure_releases_suite ... ok
+test tests::unapproved_write_stage_never_calls_host ... ok
+test tests::updates_layer_with_same_stage ... ok
+test tests::updates_stage_with_same_layer ... ok
+test tests::read_only_preserves_binding ... ok
+test tests::wrong_readback_layer_is_rejected ... ok
+test tests::missing_callback_refuses_and_releases ... ok
+test tests::suite_release_failure_cannot_publish_success ... ok
+test tests::updates_layer_and_stage_together ... ok
+test tests::write_failure_disposes_value_and_stream ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests dynamicfx_coverage_stage_check
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

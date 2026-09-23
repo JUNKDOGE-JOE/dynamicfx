@@ -1,0 +1,31 @@
+[
+  {
+    "case": "v028-after-owner-undo",
+    "depth": 32,
+    "requested": 0.5,
+    "cti": 1.6,
+    "pixels": 480000,
+    "native_word_mismatches": 0,
+    "worlds": [
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 32,
+        "origin": [
+          178,
+          87
+        ]
+      },
+      {
+        "width": 497,
+        "height": 463,
+        "depth": 32,
+        "origin": [
+          178,
+          87
+        ]
+      }
+    ],
+    "status": "PASS"
+  }
+]

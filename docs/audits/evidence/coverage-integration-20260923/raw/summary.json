@@ -1,0 +1,10 @@
+{
+  "baseline": "922845cfae29700b69f2940baccf753dd9baea09",
+  "branch": "codex/host-coverage-probe",
+  "candidate_sha256": "8f9fe9fa6889b1d290e47483d545e13aef1f97ad650491c2f1cc6e7ee141e286",
+  "artifact": "target/x86_64-pc-windows-msvc/release/dynamicfx.dll",
+  "installed": false,
+  "default_tests": 237,
+  "editor_tests": 237,
+  "production_ae_acceptance": "NOT_RUN"
+}

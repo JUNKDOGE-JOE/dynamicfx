@@ -1,0 +1,41 @@
+{
+  "result": {
+    "ok": false,
+    "error": "ExtendScript error: Error: The installed DynamicFX parameter layout is unsupported. (line 37)",
+    "disposition": "failed",
+    "jsxBridge": {
+      "state": "ok",
+      "degradedSinceMs": null,
+      "lastTimeoutAt": null,
+      "pendingCalls": 0,
+      "sentinelInFlight": false
+    },
+    "errorLine": 37,
+    "touched": {
+      "level": "none",
+      "method": "snapshot-diff",
+      "comp": {
+        "id": 1,
+        "name": "Liquid Glass - edit the native shapes"
+      },
+      "activeCompChanged": null,
+      "layersAdded": [],
+      "layersRemoved": [],
+      "layersChanged": [],
+      "itemsAdded": [],
+      "itemsRemoved": [],
+      "truncated": false,
+      "notes": []
+    },
+    "revision": {
+      "before": 2692,
+      "after": 2693
+    },
+    "projectPath": "<workspace>\\scripts\\out\\liquid-glass-20260923\\Liquid Glass.aep",
+    "recoveryId": "<local-id>",
+    "scriptPath": "<user-home>\\.ae-mcp\\checkpoints\\Liquid Glass_0287357cfcff\\recovery\\hg47f2.jsx",
+    "checkpointId": null,
+    "attempt": 1
+  },
+  "foreground_unchanged": true
+}

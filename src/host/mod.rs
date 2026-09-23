@@ -3,7 +3,13 @@
 //! host-agnostic by policy (CLAUDE.md).
 
 pub(crate) mod callback;
+pub(crate) mod checkouts;
+pub(crate) mod coverage;
+pub(crate) mod coverage_owner;
+pub(crate) mod coverage_readiness;
 pub(crate) mod entry;
+pub(crate) mod shared_dispatch;
+pub(crate) mod render_trace;
 pub mod idle;
 pub mod params;
 

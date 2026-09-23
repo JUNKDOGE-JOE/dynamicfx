@@ -1,0 +1,14 @@
+[
+  {
+    "name": "masked",
+    "pixels": 12288,
+    "max_error_8bit": 0,
+    "different_pixels": 0
+  },
+  {
+    "name": "hole",
+    "pixels": 12288,
+    "max_error_8bit": 0,
+    "different_pixels": 0
+  }
+]

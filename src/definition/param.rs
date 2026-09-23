@@ -84,6 +84,7 @@ pub enum ShaderParamType {
     /// as `Layer`/`Gradient` — annotation-declared, texture-bound, no block
     /// storage.
     Path,
+    Coverage,
 }
 
 impl ShaderParamType {
@@ -103,6 +104,7 @@ impl ShaderParamType {
             Self::Gradient => &[PoolKind::Gradient],
             Self::Point3D => &[PoolKind::Point3D],
             Self::Path => &[PoolKind::Path],
+            Self::Coverage => &[PoolKind::Coverage],
         }
     }
 
@@ -110,7 +112,7 @@ impl ShaderParamType {
     /// storage. Such parameters are skipped by uniform packing and by the
     /// float-budget accounting.
     pub fn is_texture_binding(self) -> bool {
-        matches!(self, Self::Layer | Self::Gradient | Self::Path)
+        matches!(self, Self::Layer | Self::Gradient | Self::Path | Self::Coverage)
     }
 }
 

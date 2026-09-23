@@ -1,0 +1,7 @@
+{"step": "resources-postcancel-open", "status": "PASS"}
+{"step": "resources-postcancel-capture", "status": "PASS"}
+{"step": "resources-postcancel-clear", "status": "PASS"}
+{"step": "resources-postcancel-none", "status": "PASS"}
+{"step": "resources-postcancel-assign", "status": "PASS"}
+{"step": "resources-postcancel-assigned", "status": "PASS"}
+{"step": "resources-postcancel-keys", "status": "PASS"}

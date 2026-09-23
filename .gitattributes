@@ -15,3 +15,15 @@ docs/audits/evidence/project-open-commit-20260910/** -text -whitespace
 docs/audits/evidence/project-open-lock-20260909/** -text -whitespace
 docs/audits/evidence/public-transfer-20260911/** -text -whitespace
 docs/audits/evidence/release-011-refresh-20260909/** -text -whitespace
+docs/audits/evidence/host-coverage-regression-20260920/** -text -whitespace
+docs/audits/evidence/host-coverage-engineering-20260920/** -text -whitespace
+docs/audits/evidence/host-coverage-fidelity-20260920/** -text -whitespace
+docs/audits/evidence/host-coverage-direct-source-20260920/** -text -whitespace
+docs/audits/evidence/host-coverage-reader-20260920/** -text -whitespace
+
+docs/audits/evidence/coverage-integration-20260923/** -text -whitespace
+docs/audits/evidence/coverage-stage-20260923/** -text -whitespace
+docs/audits/evidence/coverage-owner-20260923/** -text -whitespace
+docs/audits/evidence/coverage-readiness-20260923/** -text -whitespace
+docs/audits/evidence/coverage-full-20260923/** -text -whitespace
+docs/audits/evidence/coverage-completion-20260923/** -text -whitespace

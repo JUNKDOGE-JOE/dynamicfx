@@ -1,6 +1,8 @@
 /target
+/coverage-reader/target
 /dist
 /.setup
+AfterEffectsSDK_*.zip
 Cargo.lock
 
 /scripts/out

@@ -1,0 +1,1176 @@
+[
+  {
+    "path": "raw/bridge-16-masks-stage.native.log.gz",
+    "original_sha256": "9d9b5c2621fcaec91b0c7e063105a540634a4429e60bdf66b89751e9638358e8",
+    "normalized_sha256": "9d9b5c2621fcaec91b0c7e063105a540634a4429e60bdf66b89751e9638358e8",
+    "evidence_sha256": "a070decf20cf739cb684ef3ca3085109dcb62ead46d8d6abbad1acee2ba08d8b",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-16-masks-stage.result.json",
+    "original_sha256": "3c6ace75050a2c47d410b7045507abb3f7d441833b557df810d9f6295b0d78be",
+    "normalized_sha256": "61a61ec18d037d3e9349ea111134ee30824071533fe842704aede426db677f3a",
+    "evidence_sha256": "61a61ec18d037d3e9349ea111134ee30824071533fe842704aede426db677f3a",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-16-masks.native.log.gz",
+    "original_sha256": "84d425505542328c332c40f370fe112b3ce76d6002e556a67b7757149a020cae",
+    "normalized_sha256": "84d425505542328c332c40f370fe112b3ce76d6002e556a67b7757149a020cae",
+    "evidence_sha256": "ad928cb1276d0819b15f0585f8586ddeceedd48fcf12f32fe5c850d513d688fc",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-16-masks.result.json",
+    "original_sha256": "ce1244f11bca59b8cad8c3a6adad3c68a3d6671c523762f984b47f2184e67415",
+    "normalized_sha256": "cf0c9b9e7e3d02a6090190ede3b33939a6ee7fccbe7575d504d30e9dccbf26d5",
+    "evidence_sha256": "cf0c9b9e7e3d02a6090190ede3b33939a6ee7fccbe7575d504d30e9dccbf26d5",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-32-masks-stage.native.log.gz",
+    "original_sha256": "892dd189819525c2ea2d6991464c8e10856e122c3898ac2bf7efac5e638aa76c",
+    "normalized_sha256": "892dd189819525c2ea2d6991464c8e10856e122c3898ac2bf7efac5e638aa76c",
+    "evidence_sha256": "dbb48d77a364fb34f2ad304bc77b6ddfc00da92f99b5d3346d16a3de0a905171",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-32-masks-stage.result.json",
+    "original_sha256": "c26136244bfadfa054b57919c44d055d5c95eeb9c13642beef7c9f2e02cb958f",
+    "normalized_sha256": "571c7b26cb07dd26ac561de928f764196cb1f7833cbb2447154a8a20ad4cbe71",
+    "evidence_sha256": "571c7b26cb07dd26ac561de928f764196cb1f7833cbb2447154a8a20ad4cbe71",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-32-masks.native.log.gz",
+    "original_sha256": "fdf2c5cb6c18a20c2695805b3bea09684dc7f4e603b75fdd8d7b7fd39bd1421d",
+    "normalized_sha256": "fdf2c5cb6c18a20c2695805b3bea09684dc7f4e603b75fdd8d7b7fd39bd1421d",
+    "evidence_sha256": "590f39303f94b07bc75e9083b89398fae9c6ebd5e70c71f7f9a178ce03db91a1",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-32-masks.result.json",
+    "original_sha256": "753a90d53fa0a82f5da094292a292aebffdc528970fae240ad7a712e3f6a20ff",
+    "normalized_sha256": "7fb171eaa559956b027f4bbcaee2ef3d97bfa66ed9e1f20c59673f7b0db3ac30",
+    "evidence_sha256": "7fb171eaa559956b027f4bbcaee2ef3d97bfa66ed9e1f20c59673f7b0db3ac30",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-8-masks-stage.native.log.gz",
+    "original_sha256": "31aca32f7544e6c60dbe78aa46012ac1491f22722f54da18dc9de711458633f6",
+    "normalized_sha256": "31aca32f7544e6c60dbe78aa46012ac1491f22722f54da18dc9de711458633f6",
+    "evidence_sha256": "9428786f07219753d6074aad0837de06bbc0ce71e0a71c08d66c3daec9854fcc",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-8-masks-stage.result.json",
+    "original_sha256": "5910678c38d5463cfc85a62e46b8491173d738da30474564d9e9679e23ca562b",
+    "normalized_sha256": "f3c143c7d3d4fd01ad8b54bca10bc94010ccaa1d6485445ce8844838b567754f",
+    "evidence_sha256": "f3c143c7d3d4fd01ad8b54bca10bc94010ccaa1d6485445ce8844838b567754f",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-8-masks.native.log.gz",
+    "original_sha256": "af9c4bd02e98231510277963e89c48e21d6e3fddc20a00c3afe574f9a15379e6",
+    "normalized_sha256": "af9c4bd02e98231510277963e89c48e21d6e3fddc20a00c3afe574f9a15379e6",
+    "evidence_sha256": "b4acba5dcdddbda6983a8dc82e94a970114ac2fa3a8d9af9ba502e112ecb4995",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-8-masks.result.json",
+    "original_sha256": "0262bf5381d69683a5f00e646cc843a5f0d6f60298f2785fc6c7d889fb64b2ee",
+    "normalized_sha256": "51be174ee6b8f8c722d5765ad32685d8c58c4495bdeb0636f51951c273ce74b8",
+    "evidence_sha256": "51be174ee6b8f8c722d5765ad32685d8c58c4495bdeb0636f51951c273ce74b8",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-enabled-stage.native.log.gz",
+    "original_sha256": "c32b5f1084d038da069524d36aec4fdc7b86f9d807dac56ce02f5e7d821e31a5",
+    "normalized_sha256": "c32b5f1084d038da069524d36aec4fdc7b86f9d807dac56ce02f5e7d821e31a5",
+    "evidence_sha256": "a46b200c442d1235fe54f8bd825cd9f8e807ee7da895b7051e83fdf9de8c5885",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-enabled-stage.result.json",
+    "original_sha256": "04ea4ddcd5303da674c302d9caa0811ccd4ba56546137fd4cabedc5b67b3205e",
+    "normalized_sha256": "17a4d8bec044db941d1240dc4ce7a6d5855b09b8f81113c30a22cc84805fb890",
+    "evidence_sha256": "17a4d8bec044db941d1240dc4ce7a6d5855b09b8f81113c30a22cc84805fb890",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-first-effect-refused.native.log.gz",
+    "original_sha256": "0a309f3425753bfe53389e994762d081a7ffa158d41ad41c49177b1ee2e683e1",
+    "normalized_sha256": "0a309f3425753bfe53389e994762d081a7ffa158d41ad41c49177b1ee2e683e1",
+    "evidence_sha256": "94a1400b15e52a3be9c19c8d5ca22a23d139db94b5ac48c48e36bd762501bb12",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-matrix-save.result.json",
+    "original_sha256": "4714367e85ecd7f58c44725ae9e2636f28bf1451fc80663a43649d0de53219c3",
+    "normalized_sha256": "fa30e0fdb2634bbc252333c8d2df91d6d71b03bb617741d517c710bede1dbd66",
+    "evidence_sha256": "fa30e0fdb2634bbc252333c8d2df91d6d71b03bb617741d517c710bede1dbd66",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-matrix.py",
+    "original_sha256": "aa99f5735071a8073dd02779261e5f4269aa7b6e88663345da3326dbc6f4c320",
+    "normalized_sha256": "aa99f5735071a8073dd02779261e5f4269aa7b6e88663345da3326dbc6f4c320",
+    "evidence_sha256": "aa99f5735071a8073dd02779261e5f4269aa7b6e88663345da3326dbc6f4c320",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/bridge-pixel-matrix.json",
+    "original_sha256": "b6e970e5d897ab8094c5d496c51d267bb020c875aed9f35eed651bb14041db6f",
+    "normalized_sha256": "b6e970e5d897ab8094c5d496c51d267bb020c875aed9f35eed651bb14041db6f",
+    "evidence_sha256": "b6e970e5d897ab8094c5d496c51d267bb020c875aed9f35eed651bb14041db6f",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/dependency-setup.result.json",
+    "original_sha256": "999d2aeafbb2bce614a02f5100f3dbe4b816be02d3562f6c073c433ccfae3af1",
+    "normalized_sha256": "8127729f8e071081fe9d86f22e094f24e93ce5d23c1a21c6e234c16637d1f352",
+    "evidence_sha256": "8127729f8e071081fe9d86f22e094f24e93ce5d23c1a21c6e234c16637d1f352",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/dependency-stage.native.log.gz",
+    "original_sha256": "6d44befc0d93e850d34542f02273729f50be306c462a006d9fef250885247b84",
+    "normalized_sha256": "6d44befc0d93e850d34542f02273729f50be306c462a006d9fef250885247b84",
+    "evidence_sha256": "daaad81057f307b3b3f026ad9f5bf6f50df14fba903920484bd44bcbc1ac639b",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/dependency-stage.result.json",
+    "original_sha256": "2afa0eedca920c7070f47dc70c8bf2e750bfa29e8a69d3f58ccb857e5bcdd2dc",
+    "normalized_sha256": "c1656fa5e4489929dd7452f31ddbf29138ce9b74a81feebde090ec35936146fe",
+    "evidence_sha256": "c1656fa5e4489929dd7452f31ddbf29138ce9b74a81feebde090ec35936146fe",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/explicit-self-variants.native.log.gz",
+    "original_sha256": "7876b6c9d703e823851c4eaa440750167670093c17dd3336d266a7b6869faffc",
+    "normalized_sha256": "7876b6c9d703e823851c4eaa440750167670093c17dd3336d266a7b6869faffc",
+    "evidence_sha256": "2def4afae576a7e42e5c346deebc9675c017eec73707b95cadccd4c34b6799b6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/external-shape-reader.native.log.gz",
+    "original_sha256": "c037a6252bc5ad4368e7f191bf6aa806a3a12573d0b9c54d6bdcd837fb44fc47",
+    "normalized_sha256": "c037a6252bc5ad4368e7f191bf6aa806a3a12573d0b9c54d6bdcd837fb44fc47",
+    "evidence_sha256": "a5f13098b0fab9da6be814d7f3888749a22e16fca15ab7dc929a19bb33ad5e92",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/final-live-state.json",
+    "original_sha256": "4ddae772a39bfbed3aba753b5b6c2e8b9b7b77df0de10fbc8fa9fbf9073abe58",
+    "normalized_sha256": "d8a77371131c7a202e0e3640267c3f580dca8cb947929facd5d22582a9d72ff7",
+    "evidence_sha256": "d8a77371131c7a202e0e3640267c3f580dca8cb947929facd5d22582a9d72ff7",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/install-v015.json",
+    "original_sha256": "1105105749c1b094c0620b40e750c6e4d269ab31c774b881ba62acbb599741a3",
+    "normalized_sha256": "1105105749c1b094c0620b40e750c6e4d269ab31c774b881ba62acbb599741a3",
+    "evidence_sha256": "1105105749c1b094c0620b40e750c6e4d269ab31c774b881ba62acbb599741a3",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/install-v016.json",
+    "original_sha256": "539f5d71a9a219c38fd409984406b1553187828c5e1b8e4d9f9ced0116e8eb2b",
+    "normalized_sha256": "539f5d71a9a219c38fd409984406b1553187828c5e1b8e4d9f9ced0116e8eb2b",
+    "evidence_sha256": "539f5d71a9a219c38fd409984406b1553187828c5e1b8e4d9f9ced0116e8eb2b",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/install-v017.json",
+    "original_sha256": "304359e2883d7886b350acd617d975e096ccb07e5065b954095ece36da693a3d",
+    "normalized_sha256": "304359e2883d7886b350acd617d975e096ccb07e5065b954095ece36da693a3d",
+    "evidence_sha256": "304359e2883d7886b350acd617d975e096ccb07e5065b954095ece36da693a3d",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/install-v018.json",
+    "original_sha256": "bb68e783fdcba8cb9c770b6fbbe7aad3c6a05778fe623195a519f71800e6897a",
+    "normalized_sha256": "bb68e783fdcba8cb9c770b6fbbe7aad3c6a05778fe623195a519f71800e6897a",
+    "evidence_sha256": "bb68e783fdcba8cb9c770b6fbbe7aad3c6a05778fe623195a519f71800e6897a",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/install-v019.json",
+    "original_sha256": "e856aaa0b61adb77f4ba590f9a0112a3036c49b92244bd49126ae6809cae818e",
+    "normalized_sha256": "e856aaa0b61adb77f4ba590f9a0112a3036c49b92244bd49126ae6809cae818e",
+    "evidence_sha256": "e856aaa0b61adb77f4ba590f9a0112a3036c49b92244bd49126ae6809cae818e",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/install-v020.json",
+    "original_sha256": "1afdc1154fec8a596237d8c183fed949d17537400472aa36f4a35797a45ba78a",
+    "normalized_sha256": "1afdc1154fec8a596237d8c183fed949d17537400472aa36f4a35797a45ba78a",
+    "evidence_sha256": "1afdc1154fec8a596237d8c183fed949d17537400472aa36f4a35797a45ba78a",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/install-v021.json",
+    "original_sha256": "47bb759bcf78f4460fb1b9d863710fe1fe2fd84d22abefbe2658a40735951355",
+    "normalized_sha256": "47bb759bcf78f4460fb1b9d863710fe1fe2fd84d22abefbe2658a40735951355",
+    "evidence_sha256": "47bb759bcf78f4460fb1b9d863710fe1fe2fd84d22abefbe2658a40735951355",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/install-v022.json",
+    "original_sha256": "1a4e7f25f4e06398e505c10f3261764fe4ce895989635fff6a52702f47cdf760",
+    "normalized_sha256": "1a4e7f25f4e06398e505c10f3261764fe4ce895989635fff6a52702f47cdf760",
+    "evidence_sha256": "1a4e7f25f4e06398e505c10f3261764fe4ce895989635fff6a52702f47cdf760",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/install-v023.json",
+    "original_sha256": "e67af3a9db8f93c1dc2021587807dd79876a6c3e50e69b75917cf6e499737077",
+    "normalized_sha256": "e67af3a9db8f93c1dc2021587807dd79876a6c3e50e69b75917cf6e499737077",
+    "evidence_sha256": "e67af3a9db8f93c1dc2021587807dd79876a6c3e50e69b75917cf6e499737077",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-masks-external.args.json",
+    "original_sha256": "7d01519d24ab65e512b4cf7d48cdba4a93e1b88d5d0581cf944bf4a6bbcce54c",
+    "normalized_sha256": "523a73ae7e322072fbb1d3a20bfefc457610f5b3ca33ebe953709f40a64b7144",
+    "evidence_sha256": "523a73ae7e322072fbb1d3a20bfefc457610f5b3ca33ebe953709f40a64b7144",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-masks-external.native.log.gz",
+    "original_sha256": "ac1d6b67dbfcddf9592d81e7a56b52f816d8338eff00d866c97a281870ddfa3e",
+    "normalized_sha256": "ac1d6b67dbfcddf9592d81e7a56b52f816d8338eff00d866c97a281870ddfa3e",
+    "evidence_sha256": "5da5040673f6f0aa96cf52f74d3d45373e85d91523618c0030e1ff8539d378bf",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-masks-external.result.json",
+    "original_sha256": "35716dd583a3b8782624b933e09420677a4d50d85cf0bac7fb221af91008d94d",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-masks-reference.args.json",
+    "original_sha256": "ef4afe480d29c38225c4c6af17025ad8567a776b72036bdc6c8c719bf1c82594",
+    "normalized_sha256": "c1c75d5ead685eed6ed6cf5613cc6303785e30d1f2f22807bca6a19088082b2e",
+    "evidence_sha256": "c1c75d5ead685eed6ed6cf5613cc6303785e30d1f2f22807bca6a19088082b2e",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-masks-reference.native.log.gz",
+    "original_sha256": "3036b8f1258c59e09fe05e2e31175d706a330ff1c160c29b8f063cbc3bb02e86",
+    "normalized_sha256": "3036b8f1258c59e09fe05e2e31175d706a330ff1c160c29b8f063cbc3bb02e86",
+    "evidence_sha256": "f9335feb76b511c14bccc3a20e507d9a1f3e71252b25233943d1c40bb7c6cb76",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-masks-reference.result.json",
+    "original_sha256": "e06366449cc93b8e15fb08bfe38bc9d5336aeda29be4b1f51465a8e502725ecc",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-masks-stage.args.json",
+    "original_sha256": "8f8e7ecca0e6e32b9b0562a7a5fc59fb53ae392f0a5c9ee6a7160a19de8fa88e",
+    "normalized_sha256": "8f8e7ecca0e6e32b9b0562a7a5fc59fb53ae392f0a5c9ee6a7160a19de8fa88e",
+    "evidence_sha256": "8f8e7ecca0e6e32b9b0562a7a5fc59fb53ae392f0a5c9ee6a7160a19de8fa88e",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-masks-stage.native.log.gz",
+    "original_sha256": "cf800a5a37cc75a72cddfc0b1dacc6d47eaa95d751483a4fbe3a612b0214ff26",
+    "normalized_sha256": "cf800a5a37cc75a72cddfc0b1dacc6d47eaa95d751483a4fbe3a612b0214ff26",
+    "evidence_sha256": "1cb059df6aaf0e76bbb72b698b5dd70143f7fe696873f698b0729ee199d0fd29",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-masks-stage.result.json",
+    "original_sha256": "5caba15d8042539162c485ee0cca601c37b3812b7895a191c20245759c897cc4",
+    "normalized_sha256": "b514083b687d79161337fc712a75fd0c77654018a8d71363bd3fd15a0e5f1294",
+    "evidence_sha256": "b514083b687d79161337fc712a75fd0c77654018a8d71363bd3fd15a0e5f1294",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-self-masks-stage.result.json",
+    "original_sha256": "39509738afa1645b5ced38b3479543cf04cd72656bbd4af3a5613b8742a50af9",
+    "normalized_sha256": "2edb765316464194a7e918fe21c1cf4f236d0aca3c3afffec49453ee6ebe4478",
+    "evidence_sha256": "2edb765316464194a7e918fe21c1cf4f236d0aca3c3afffec49453ee6ebe4478",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-self-masks.native.log.gz",
+    "original_sha256": "ee14b787e4b4b7afb1f139befdf2b6f7005133a30af3bd3a8cc863da6697d6ca",
+    "normalized_sha256": "ee14b787e4b4b7afb1f139befdf2b6f7005133a30af3bd3a8cc863da6697d6ca",
+    "evidence_sha256": "a991698479929c4a789f3af08a05ae7431e32ae54889f9b1c824da19a330d997",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-self-masks.result.json",
+    "original_sha256": "1732acd976459a84a5a71767bdaf76594e8956323678c6c26ae1d0f695a569f0",
+    "normalized_sha256": "666d597ad73716211762bcee246532e684b8178656c9fdfb9b95d90db5e190cf",
+    "evidence_sha256": "666d597ad73716211762bcee246532e684b8178656c9fdfb9b95d90db5e190cf",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-source-external.args.json",
+    "original_sha256": "e1e299d2a2ce7b7c5f6b58207b9aec9661db59244728fc0b3ba4b65ce89dbd81",
+    "normalized_sha256": "642924794f87007177d8205d2f8186f6a5da9deba4a4ca963e014633c36e623c",
+    "evidence_sha256": "642924794f87007177d8205d2f8186f6a5da9deba4a4ca963e014633c36e623c",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-source-external.native.log.gz",
+    "original_sha256": "12f889b18026d0c4fbc50322033d009df6e4e26994e758a65315ff7a464aa833",
+    "normalized_sha256": "12f889b18026d0c4fbc50322033d009df6e4e26994e758a65315ff7a464aa833",
+    "evidence_sha256": "4ec1f1884f8d20afe298d7424a235712e874a8b7179701cb2080468a491476d8",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-source-external.result.json",
+    "original_sha256": "44b66b2df40ab2ca1effe2da840240b784d9603095360cd5af86bf79a0e67b8c",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-source-reference.args.json",
+    "original_sha256": "eeb86f87a181efd0ecc91f94de160b5ef94c2ddc8df50554d735410c2a56e55b",
+    "normalized_sha256": "87f7b7b3ec127f41ff36b3d98b22b41648dc1cc7e0d90025bae8e454b5d0a60d",
+    "evidence_sha256": "87f7b7b3ec127f41ff36b3d98b22b41648dc1cc7e0d90025bae8e454b5d0a60d",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-source-reference.native.log.gz",
+    "original_sha256": "2a2c71c1f422275864104b0ea351b1dd6ad444fa8b88f55d489d1d91d5358a01",
+    "normalized_sha256": "2a2c71c1f422275864104b0ea351b1dd6ad444fa8b88f55d489d1d91d5358a01",
+    "evidence_sha256": "8c5dd6f614b3359c805fb309b29f9f95b58d9fb0332471fced33bcd90da1a9b7",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-source-reference.result.json",
+    "original_sha256": "c85c5d66a1ce14539db1525c1d3b94051b1494c2b595cbf04d4e44c10550ae20",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-source-stage.args.json",
+    "original_sha256": "3b896f8437768945a14ac2c02bb17f3468a6e24aadf73dd10bcad3e24d50e06e",
+    "normalized_sha256": "3b896f8437768945a14ac2c02bb17f3468a6e24aadf73dd10bcad3e24d50e06e",
+    "evidence_sha256": "3b896f8437768945a14ac2c02bb17f3468a6e24aadf73dd10bcad3e24d50e06e",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-source-stage.native.log.gz",
+    "original_sha256": "37c7d313bce0a98d14d0b81f89ebef4779f6eb206ef93df6efb0a572fcf59303",
+    "normalized_sha256": "37c7d313bce0a98d14d0b81f89ebef4779f6eb206ef93df6efb0a572fcf59303",
+    "evidence_sha256": "0d8d74b431b45c87ef2c0f65c6e5f2cf1c3f14e1ca315b727953fc74ed21fc5f",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-16-source-stage.result.json",
+    "original_sha256": "01df94e2a8f09d96a5f5254062d959fab17c1ff0af630e1de36a753ccee1182c",
+    "normalized_sha256": "a6024a2e3708018570f9e54a8968538153b7f11bfbe0f11f5e32a7f68cbe2c38",
+    "evidence_sha256": "a6024a2e3708018570f9e54a8968538153b7f11bfbe0f11f5e32a7f68cbe2c38",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-masks-external.args.json",
+    "original_sha256": "fd9a787ddbe28e150ba87e49b557be5b4d6292873f6a00b091ee7ee21053c784",
+    "normalized_sha256": "d1e6a4db909e94fb356351b134aeb020ca1eb3fd858557bf6261455314f6365d",
+    "evidence_sha256": "d1e6a4db909e94fb356351b134aeb020ca1eb3fd858557bf6261455314f6365d",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-masks-external.native.log.gz",
+    "original_sha256": "ba414999d3682194178fc85a710e725683a38467be0093be1a06b4446c97e1cb",
+    "normalized_sha256": "ba414999d3682194178fc85a710e725683a38467be0093be1a06b4446c97e1cb",
+    "evidence_sha256": "2f2d80ebe2ee1581f975f2af589fb5cb8d7cc51d81a4a963a43ec5cd6d982b68",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-masks-external.result.json",
+    "original_sha256": "9ca6d12d78bd68b723acfd7d19d3e8ed6338f11f3d50f53d5781cefbfb1b0c52",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-masks-reference.args.json",
+    "original_sha256": "e10167da6affc193e9bd2fe4b1e2788e6647b782a52327bff52649aa2e10c700",
+    "normalized_sha256": "799650e56a36ffd50f4307d1a1dff8419a68f9d90040635b2bc9ab4c86200014",
+    "evidence_sha256": "799650e56a36ffd50f4307d1a1dff8419a68f9d90040635b2bc9ab4c86200014",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-masks-reference.native.log.gz",
+    "original_sha256": "3c7fd494a16406d6e32e4f6a332c295b16683cc7c877722f07c5ae0f4cd969f0",
+    "normalized_sha256": "3c7fd494a16406d6e32e4f6a332c295b16683cc7c877722f07c5ae0f4cd969f0",
+    "evidence_sha256": "2d13f8cb5a74e6d714314d2584bf1ef170990cb66c87f2a410fad3e02bc7597f",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-masks-reference.result.json",
+    "original_sha256": "0a9f9d695c71348d26e45360cec79a03e0daf81f6e1f9cdec464e728584e8cb0",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-masks-stage.args.json",
+    "original_sha256": "a3bea9c42af38f4ddd05c6e91c80e1cfb6cf7ee35344610b609f9a94ffd4e422",
+    "normalized_sha256": "a3bea9c42af38f4ddd05c6e91c80e1cfb6cf7ee35344610b609f9a94ffd4e422",
+    "evidence_sha256": "a3bea9c42af38f4ddd05c6e91c80e1cfb6cf7ee35344610b609f9a94ffd4e422",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-masks-stage.native.log.gz",
+    "original_sha256": "0751eb381ee94700ee39f2bbf2a756d0481fe2bfbf9670864fd33c23654a0b7a",
+    "normalized_sha256": "0751eb381ee94700ee39f2bbf2a756d0481fe2bfbf9670864fd33c23654a0b7a",
+    "evidence_sha256": "825c3294eadb1aea31502efc062325e8817465bffc4e28df85c1092750482023",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-masks-stage.result.json",
+    "original_sha256": "cecbd52c1ad1e6129f76bd285ac80cbf9081bf6b91bcf37a6fdb390069104a9c",
+    "normalized_sha256": "1f00a59c04d8c81ded3537a79536130e84f48501dc86c9d18d866a3e23df880e",
+    "evidence_sha256": "1f00a59c04d8c81ded3537a79536130e84f48501dc86c9d18d866a3e23df880e",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-self-masks-stage.result.json",
+    "original_sha256": "5c30eeed541bfea4b059e3003e75405726942d1a39668a81ae2c84489da7bb45",
+    "normalized_sha256": "440719ece34992d01dc1da4f1f83c1f577e017f00f0a850f7009957b8408cbf5",
+    "evidence_sha256": "440719ece34992d01dc1da4f1f83c1f577e017f00f0a850f7009957b8408cbf5",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-self-masks.native.log.gz",
+    "original_sha256": "f092afaf0c2201966ac6a7199ce4b9c3d6981844e3b41d1312b7a25307532952",
+    "normalized_sha256": "f092afaf0c2201966ac6a7199ce4b9c3d6981844e3b41d1312b7a25307532952",
+    "evidence_sha256": "ef276f8f6e8d449258ddd69aca6346e5cd7c46cd34165a516ea48b948989e319",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-self-masks.result.json",
+    "original_sha256": "05d96165d4e9c9905f2863e1a617a5fef569d552cfabe245e077ea6afe4cfd9c",
+    "normalized_sha256": "60e5cfa43d54592aa30d0b6cef3d1a619a5521714303196ed5614650499cc7aa",
+    "evidence_sha256": "60e5cfa43d54592aa30d0b6cef3d1a619a5521714303196ed5614650499cc7aa",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-source-external.args.json",
+    "original_sha256": "9dd77dea94dad78416fce8e930227543d2204c24a4037f8b129934d187bf7442",
+    "normalized_sha256": "3842f13443c73b79c85ae1e66efb15d86e5b264f8ee2fcd3ce4dd712ea58c87d",
+    "evidence_sha256": "3842f13443c73b79c85ae1e66efb15d86e5b264f8ee2fcd3ce4dd712ea58c87d",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-source-external.native.log.gz",
+    "original_sha256": "d70d3e3561e9ead732735008c7d4f66b8cf3be00fa126f550ad7d8bfdb64f10c",
+    "normalized_sha256": "d70d3e3561e9ead732735008c7d4f66b8cf3be00fa126f550ad7d8bfdb64f10c",
+    "evidence_sha256": "598a3ffdec7b90010a9fd1c48a412ef9cd42d6d0696b785f0cdadde3c9759e1d",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-source-external.result.json",
+    "original_sha256": "ea68e88cf2c908742bc885d53bba46693c9efb7f7caa6c179d294f17006bacf1",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-source-reference.args.json",
+    "original_sha256": "50c6ebe67f0719d097b51b9214757b73622639f0577cd084e90cacfcda3e71e2",
+    "normalized_sha256": "990448a053b380a0ad6471f1f736c80cce52b6b8b749827c25489125e73dc96d",
+    "evidence_sha256": "990448a053b380a0ad6471f1f736c80cce52b6b8b749827c25489125e73dc96d",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-source-reference.native.log.gz",
+    "original_sha256": "2f058a01ac50b818797e17385ac1753f8888e3783cabff1948a3be26ab505f52",
+    "normalized_sha256": "2f058a01ac50b818797e17385ac1753f8888e3783cabff1948a3be26ab505f52",
+    "evidence_sha256": "6721fabefda22680c54dfc9312197745deff688209dca2542829c12d4e4d8c3c",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-source-reference.result.json",
+    "original_sha256": "c6cf3702b7584e319420a330ed7f5ca16d39ab29a30f45309e8d1181cc053c83",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-source-stage.args.json",
+    "original_sha256": "ae3b83a9419c5fc103253cb8e5c38c71d6b930f95ec586dd1641853fddc5daa0",
+    "normalized_sha256": "ae3b83a9419c5fc103253cb8e5c38c71d6b930f95ec586dd1641853fddc5daa0",
+    "evidence_sha256": "ae3b83a9419c5fc103253cb8e5c38c71d6b930f95ec586dd1641853fddc5daa0",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-source-stage.native.log.gz",
+    "original_sha256": "6741c2681230498f4ec3f9864402a670522c7833fddb4517656d1fbcaf113817",
+    "normalized_sha256": "6741c2681230498f4ec3f9864402a670522c7833fddb4517656d1fbcaf113817",
+    "evidence_sha256": "8fd346a7c98919c881ea691fd26d2930cd7fb01dd57651fcf196f098de9b4a93",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-32-source-stage.result.json",
+    "original_sha256": "cf27c787e4d00916c5f429f74e38a688a09141835379112ddeca471e9b0b1773",
+    "normalized_sha256": "c13c5468e6686f44d8c2ab7628ea838b827604871e8fd2fea697c0fb9b761f98",
+    "evidence_sha256": "c13c5468e6686f44d8c2ab7628ea838b827604871e8fd2fea697c0fb9b761f98",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-masks-external.args.json",
+    "original_sha256": "354524d9f8fb42f8688f71e6ab6151cdb98fd0d5ea7a7c17a985229daa4a29aa",
+    "normalized_sha256": "1dd21a64b1011bc5e87d13d5901b79516a1c008aced67b4a740b4332a1782014",
+    "evidence_sha256": "1dd21a64b1011bc5e87d13d5901b79516a1c008aced67b4a740b4332a1782014",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-masks-external.native.log.gz",
+    "original_sha256": "ddb33a19d0afe43105b087e1a950df8af7eb4ee61d091a3c8d86abcc82b5e76d",
+    "normalized_sha256": "ddb33a19d0afe43105b087e1a950df8af7eb4ee61d091a3c8d86abcc82b5e76d",
+    "evidence_sha256": "a72cadc569c1530aad887700a0eb416c4f6ec798a8aafa4991fa0cecd520d77e",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-masks-external.result.json",
+    "original_sha256": "038c0bf34e8f4bd7489ba6227b8a4a739fc0c54f7220ec165e6fd74939739244",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-masks-reference.args.json",
+    "original_sha256": "437f654409d73b08ea32a01adf672163302d307721ee0a64bbafdaf72403b946",
+    "normalized_sha256": "0023a6579f66875c7628d3e7bf32bfc56cb09814a7fe05608827937dd7ac869c",
+    "evidence_sha256": "0023a6579f66875c7628d3e7bf32bfc56cb09814a7fe05608827937dd7ac869c",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-masks-reference.native.log.gz",
+    "original_sha256": "0b69aacb2b3f5643a41a7183bb95bb0e6bece180ea37ab7d30b607748c7f2512",
+    "normalized_sha256": "0b69aacb2b3f5643a41a7183bb95bb0e6bece180ea37ab7d30b607748c7f2512",
+    "evidence_sha256": "f6af6a45e85b9e11215bdb871ef78b47630ff656cdbcfd626ad95749ab75ea1c",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-masks-reference.result.json",
+    "original_sha256": "5bf875c9738bb6768a32a70b3d1df99f2777a16b8006812cbd8619fafb0bf64a",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-masks-stage.args.json",
+    "original_sha256": "27e40461e10cda1ac7ae26ea313e531d2cb70fd45afac38143a396005b6d1e43",
+    "normalized_sha256": "27e40461e10cda1ac7ae26ea313e531d2cb70fd45afac38143a396005b6d1e43",
+    "evidence_sha256": "27e40461e10cda1ac7ae26ea313e531d2cb70fd45afac38143a396005b6d1e43",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-masks-stage.native.log.gz",
+    "original_sha256": "95df1d469412f9093dd316e4153aeeace42851fd48ede66979d8bfd9cba061ab",
+    "normalized_sha256": "95df1d469412f9093dd316e4153aeeace42851fd48ede66979d8bfd9cba061ab",
+    "evidence_sha256": "e8b1d6c803db8f0c7a2e3e30de12681f63a4fb69d6066aad3c22789a0a4e0b8e",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-masks-stage.result.json",
+    "original_sha256": "f703c089141a1240c294ebac0a78e283fb00fc35d00dad382a479b11a0722a9b",
+    "normalized_sha256": "71e1d015f42728ab3a73059a3eac17640b42a34004faa95a7307afbe05de72f6",
+    "evidence_sha256": "71e1d015f42728ab3a73059a3eac17640b42a34004faa95a7307afbe05de72f6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-self-masks-stage.result.json",
+    "original_sha256": "f39cd64c31ba6a168741ea12421927b8b9318f1ce8367bd96f8f09ba7ee218a2",
+    "normalized_sha256": "6753feb558e75dbf6d1b10446eface18b09b499f04d523b9490656ddee34b9fb",
+    "evidence_sha256": "6753feb558e75dbf6d1b10446eface18b09b499f04d523b9490656ddee34b9fb",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-self-masks.native.log.gz",
+    "original_sha256": "b3e1f9d16709e38281641a9552da3fa5fdf4f674b09e3e6e5010d3a20302ee6f",
+    "normalized_sha256": "b3e1f9d16709e38281641a9552da3fa5fdf4f674b09e3e6e5010d3a20302ee6f",
+    "evidence_sha256": "5c29db08e5f41dcd2261925734f1f942bcf767e87ee456da1f626be6a53f20c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-self-masks.result.json",
+    "original_sha256": "eb8e096e4adf901bb31ef26bb3bd041536f6ab2ee1dd3f38eee9a6f95f19efb0",
+    "normalized_sha256": "1c03d4f7a24bd26da7de81bba41d8316b0c809bf9c9f70db26c83b7d7ebcc134",
+    "evidence_sha256": "1c03d4f7a24bd26da7de81bba41d8316b0c809bf9c9f70db26c83b7d7ebcc134",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-source-external.args.json",
+    "original_sha256": "1a2088ed8ee99a2ed230a2966c542524f7b7d3a58445e9beafee1c4b76aedf1b",
+    "normalized_sha256": "65b617c929c3e440794db812c6160873fce024530fb35794cc6425f508887a78",
+    "evidence_sha256": "65b617c929c3e440794db812c6160873fce024530fb35794cc6425f508887a78",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-source-external.native.log.gz",
+    "original_sha256": "dc0915c111f5978f7a6e024d0f7a948878eb9016be0abed4470a96f8e1d11a50",
+    "normalized_sha256": "dc0915c111f5978f7a6e024d0f7a948878eb9016be0abed4470a96f8e1d11a50",
+    "evidence_sha256": "94332332990eb00e8befeeee14b80104a27fd26a9939f7b07fbe88a9cc38f959",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-source-external.result.json",
+    "original_sha256": "33ac58605d66e30642e2c820e2a13632c319b3dbc12ff843d641ad00348e7f95",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-source-reference.args.json",
+    "original_sha256": "7be9853ccf521e40ef528aaa20ece03a569ebf1e517c53c4976b4f5dbbe96218",
+    "normalized_sha256": "e3f7ec794c26be1730172ba647db914e92fe5e7f7500d44cca4cda537e1d6b23",
+    "evidence_sha256": "e3f7ec794c26be1730172ba647db914e92fe5e7f7500d44cca4cda537e1d6b23",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-source-reference.native.log.gz",
+    "original_sha256": "3f9e0c158ee1bc2e7259fa64f1a28d30d9600576d231cb9209060c69f48a2083",
+    "normalized_sha256": "3f9e0c158ee1bc2e7259fa64f1a28d30d9600576d231cb9209060c69f48a2083",
+    "evidence_sha256": "45d8f2f473739b20eca54011ff7eebf845000d15f75c726a490410b41b576024",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-source-reference.result.json",
+    "original_sha256": "5d40fd3d697d0d7e8ad70fd8253985a8163227ad33a6e2fcdd6a873d615368fb",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-source-stage.args.json",
+    "original_sha256": "a20843ec70515c0d91fea8ccc96f39c8afc877183f2507d6e46efd07f4089375",
+    "normalized_sha256": "a20843ec70515c0d91fea8ccc96f39c8afc877183f2507d6e46efd07f4089375",
+    "evidence_sha256": "a20843ec70515c0d91fea8ccc96f39c8afc877183f2507d6e46efd07f4089375",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-source-stage.native.log.gz",
+    "original_sha256": "ea8204afce704a54b3d04c55867010ad3475e76c7af3a0ac2fa1578e7eb8361b",
+    "normalized_sha256": "ea8204afce704a54b3d04c55867010ad3475e76c7af3a0ac2fa1578e7eb8361b",
+    "evidence_sha256": "89b3729c121cc7c9adeb0659c15457660fc334d92f51822b7bfce4fdbccf3539",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/matrix-8-source-stage.result.json",
+    "original_sha256": "71f103283af3f8a7f3a8237bfc910daffd5fcd9b743e4152c90bdeba924e7eee",
+    "normalized_sha256": "8485d8cf231bcd61dd45681ed8cdbc53c9ae933f9ea87222fda0cac692a8cffb",
+    "evidence_sha256": "8485d8cf231bcd61dd45681ed8cdbc53c9ae933f9ea87222fda0cac692a8cffb",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/pf-input-matrix.json",
+    "original_sha256": "49dfdfa2931018e866ec1d5a4270233a799f748f43bfae9a8eaef109f03f3bc7",
+    "normalized_sha256": "49dfdfa2931018e866ec1d5a4270233a799f748f43bfae9a8eaef109f03f3bc7",
+    "evidence_sha256": "49dfdfa2931018e866ec1d5a4270233a799f748f43bfae9a8eaef109f03f3bc7",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/pf-png-adjustment.native.log.gz",
+    "original_sha256": "6113cfd38f6c20fea8ba879a0d1498c399650a3702c0f6dfc7c0d264c93f583e",
+    "normalized_sha256": "6113cfd38f6c20fea8ba879a0d1498c399650a3702c0f6dfc7c0d264c93f583e",
+    "evidence_sha256": "c184850f3523b002167daf054361d936cbef79836e417608132e15943f194e15",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/pf-png-ordinary.native.log.gz",
+    "original_sha256": "368f1c496f4abce145105520e584c30b71dcb9aa9af12b61315318aab55e428b",
+    "normalized_sha256": "368f1c496f4abce145105520e584c30b71dcb9aa9af12b61315318aab55e428b",
+    "evidence_sha256": "3aa2aaf2701b33c5948c8f1a9c4c0cb49b631ff0563774b313ab9a3d0b2c5b38",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/pf-precomp-adjustment.native.log.gz",
+    "original_sha256": "79ac0c140b142f3f20198afc484ff7b73dc28dc4e77625386006decf42f5727a",
+    "normalized_sha256": "79ac0c140b142f3f20198afc484ff7b73dc28dc4e77625386006decf42f5727a",
+    "evidence_sha256": "04c4af4743420110616ef05af3ffc5504ea8544828f092d53ca0b3b4fb540ba7",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/pf-precomp-ordinary.native.log.gz",
+    "original_sha256": "cb5e34a0bb2857f2e783fd4d8fa749be45f800b162e1a582e7d1b6ba86b74ac3",
+    "normalized_sha256": "cb5e34a0bb2857f2e783fd4d8fa749be45f800b162e1a582e7d1b6ba86b74ac3",
+    "evidence_sha256": "ddfb7c5e275ab3e20670450319778cab57e59b66b9853deaab73ae37d4d29a8c",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/pf-shape-adjustment.native.log.gz",
+    "original_sha256": "78576a2572fd1f441efc5fdd20817b11501048b409b383bc09847ab80771edcf",
+    "normalized_sha256": "78576a2572fd1f441efc5fdd20817b11501048b409b383bc09847ab80771edcf",
+    "evidence_sha256": "3387cb9ea0154f6877f330e639325e541513db80c530e991185bda3dd4223600",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/pf-shape-ordinary.native.log.gz",
+    "original_sha256": "163eb16ca50e1c374e62edd3a35149a3e1d1368ea0fe84d5c0419d41b3e5ca9b",
+    "normalized_sha256": "163eb16ca50e1c374e62edd3a35149a3e1d1368ea0fe84d5c0419d41b3e5ca9b",
+    "evidence_sha256": "714c59228b4ddaa8d5926985df25d393566e8fc529881e05b6df77b35aa80ec1",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/pf-solid-adjustment.native.log.gz",
+    "original_sha256": "fcc6dfde5b8ac43543df61a7c615340f2e13c74bf66c637e0ceab5b294469e9a",
+    "normalized_sha256": "fcc6dfde5b8ac43543df61a7c615340f2e13c74bf66c637e0ceab5b294469e9a",
+    "evidence_sha256": "38a58b801a00e64e0866a67e3d2cfdaa0a88a929214f4d08bf0a0a0bd4acd23a",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/pf-solid-ordinary.native.log.gz",
+    "original_sha256": "526af7c021308781e2a532112d1d9f08902fe493f5a969a8d9d0514cd0c21ac2",
+    "normalized_sha256": "526af7c021308781e2a532112d1d9f08902fe493f5a969a8d9d0514cd0c21ac2",
+    "evidence_sha256": "f819bcb1ad9c5da13d0df22697d3a6aabf48fb8646dc85f704a5e00c8c1708d4",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/plain-options1-shape-adjustment16.native.log.gz",
+    "original_sha256": "3217cf5434c18e8b3a7171332440ee0948cf58d21434681ef610645d55636402",
+    "normalized_sha256": "3217cf5434c18e8b3a7171332440ee0948cf58d21434681ef610645d55636402",
+    "evidence_sha256": "915091c376d92bdc6bbfbb018403ebf3d1c561069af1148a5b2ad0bcc6e05771",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/plain-shape-adjustment16.native.log.gz",
+    "original_sha256": "7e7dec6fca1e899eccc0e8b9a43cff0d9a3d6db97808320af318087256ec4d3b",
+    "normalized_sha256": "7e7dec6fca1e899eccc0e8b9a43cff0d9a3d6db97808320af318087256ec4d3b",
+    "evidence_sha256": "4b7a98083c6e43b874cf65e2e54cfb99bff9b7f861e5311b61614958e20a6cc0",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/plain-shape-ordinary16.native.log.gz",
+    "original_sha256": "1e01d4564ff362b65c1670e956216e2339e02bda085a4a7bbf751a9c8abf7522",
+    "normalized_sha256": "1e01d4564ff362b65c1670e956216e2339e02bda085a4a7bbf751a9c8abf7522",
+    "evidence_sha256": "eb6721337844f7fa2692f48375e66562062f3edccbb18c1c97a7537ed0e4914a",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/png-adjustment.native.log.gz",
+    "original_sha256": "6267106ee44acbac112bc17d071a2912c5a513b5f4a28779e4373d230a98e690",
+    "normalized_sha256": "6267106ee44acbac112bc17d071a2912c5a513b5f4a28779e4373d230a98e690",
+    "evidence_sha256": "70aec588adb88b6dd94bedea846946c7cb69e9c19c79cb97f36b2414c92b880d",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/png-ordinary.native.log.gz",
+    "original_sha256": "c466dd7dcb40444b5a74a742956ae7aa9f57eb3f5997a378ecf73847dec05917",
+    "normalized_sha256": "c466dd7dcb40444b5a74a742956ae7aa9f57eb3f5997a378ecf73847dec05917",
+    "evidence_sha256": "003bf7f3d55c04270b867edfdbbab97e86968fc7f89a986b0d291248f47319a9",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/precomp-adjustment.native.log.gz",
+    "original_sha256": "d4f3c459be846af8de0342ee0372dba69e14562c0acce173fb73350cb55d2f08",
+    "normalized_sha256": "d4f3c459be846af8de0342ee0372dba69e14562c0acce173fb73350cb55d2f08",
+    "evidence_sha256": "5f5d2babe184796c460ebe6f94ed0cc597a7255b35966df24b0de60fc26f325c",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/precomp-ordinary.native.log.gz",
+    "original_sha256": "0b1a747d902505cd6c92130ad1e360668ee0da33adf4295c5d6b98552bf0d00f",
+    "normalized_sha256": "0b1a747d902505cd6c92130ad1e360668ee0da33adf4295c5d6b98552bf0d00f",
+    "evidence_sha256": "ef3fe7f5769bbedba0f18fc75748a25c4d147b6a494cc68d5cb28069b603ff2f",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/sdk-abi.json",
+    "original_sha256": "db2f7fda320f50f9681e7f384f42928520feab507fd16bf0f584508df646f840",
+    "normalized_sha256": "db2f7fda320f50f9681e7f384f42928520feab507fd16bf0f584508df646f840",
+    "evidence_sha256": "db2f7fda320f50f9681e7f384f42928520feab507fd16bf0f584508df646f840",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/self-matrix-save.result.json",
+    "original_sha256": "4714367e85ecd7f58c44725ae9e2636f28bf1451fc80663a43649d0de53219c3",
+    "normalized_sha256": "fa30e0fdb2634bbc252333c8d2df91d6d71b03bb617741d517c710bede1dbd66",
+    "evidence_sha256": "fa30e0fdb2634bbc252333c8d2df91d6d71b03bb617741d517c710bede1dbd66",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/self-matrix.py",
+    "original_sha256": "9790d87de4cd58026bca458dfabe295e1fa5026f8ca97527f7542ebfaa7cada7",
+    "normalized_sha256": "9790d87de4cd58026bca458dfabe295e1fa5026f8ca97527f7542ebfaa7cada7",
+    "evidence_sha256": "9790d87de4cd58026bca458dfabe295e1fa5026f8ca97527f7542ebfaa7cada7",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/self-pixel-matrix.json",
+    "original_sha256": "fee7369c14ae129738bd59e2ad64c618d46b5e0da2c3c255241bf3478689afda",
+    "normalized_sha256": "fee7369c14ae129738bd59e2ad64c618d46b5e0da2c3c255241bf3478689afda",
+    "evidence_sha256": "fee7369c14ae129738bd59e2ad64c618d46b5e0da2c3c255241bf3478689afda",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/self-rebind.native.log.gz",
+    "original_sha256": "32d1e35f227847a0e288732338fa1a22209e662736166b3afb86cffa4e763877",
+    "normalized_sha256": "32d1e35f227847a0e288732338fa1a22209e662736166b3afb86cffa4e763877",
+    "evidence_sha256": "6ddf712234b00fe30ddebafd93209ad2a28a4df1935d10f3154eb08ced858845",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/shape-adjustment.native.log.gz",
+    "original_sha256": "5b77f41ee422e4d625add014bdb7a8cf6a4cc49c4db91b806d771908152bd03b",
+    "normalized_sha256": "5b77f41ee422e4d625add014bdb7a8cf6a4cc49c4db91b806d771908152bd03b",
+    "evidence_sha256": "f07071ecceee245ac32fcff17654a0ba705e3087a2947c39768478b865219da6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/shape-ordinary.native.log.gz",
+    "original_sha256": "b863ab44e89c01d41eff36c69d96c1e846e6f6cfa57b21d366e3777da3c5c423",
+    "normalized_sha256": "b863ab44e89c01d41eff36c69d96c1e846e6f6cfa57b21d366e3777da3c5c423",
+    "evidence_sha256": "954982212809fa45807df990cec31cb4831e46bfdeb0b1a8379e43db8b4a81b7",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/smart-copy-checks.json",
+    "original_sha256": "bd97a835040e34588a6bd1f2b0fedb4bd753e5fa57aed3cbf3eae018abb3cb52",
+    "normalized_sha256": "bd97a835040e34588a6bd1f2b0fedb4bd753e5fa57aed3cbf3eae018abb3cb52",
+    "evidence_sha256": "bd97a835040e34588a6bd1f2b0fedb4bd753e5fa57aed3cbf3eae018abb3cb52",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/smart-external-shape.native.log.gz",
+    "original_sha256": "a8966cfe081f5ea4b256e83fa0653f3c71b598e1d3cef3a67a9bdfa9d35572fc",
+    "normalized_sha256": "a8966cfe081f5ea4b256e83fa0653f3c71b598e1d3cef3a67a9bdfa9d35572fc",
+    "evidence_sha256": "a971676db55da0bb232454d275d31f06493f12479d88dfd3e90303032ed91ec8",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/smart-shape-adjustment.native.log.gz",
+    "original_sha256": "634025ca856a3af823a65e79bdbd0c1f1c4872609434b0d3459e05bb5c9e1a11",
+    "normalized_sha256": "634025ca856a3af823a65e79bdbd0c1f1c4872609434b0d3459e05bb5c9e1a11",
+    "evidence_sha256": "6fe3a63c0f97e7dd5f27d989a41367324a9e75db38202d71e4812b8920b86a70",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/smart-shape-ordinary.native.log.gz",
+    "original_sha256": "3f642b803bedbffca7460e74d3404981f84fad7a3ccef68b74893a4b4faae27c",
+    "normalized_sha256": "3f642b803bedbffca7460e74d3404981f84fad7a3ccef68b74893a4b4faae27c",
+    "evidence_sha256": "3b13f76eedad82875990954797c7cad26f9f30dfede1e4ddd1281a859d9dbe6c",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/solid-adjustment.native.log.gz",
+    "original_sha256": "3cb0a1c5f40bde749f8010292a2ad41e9b3a1d8b3ecc0ff3ee384e7d3d57efad",
+    "normalized_sha256": "3cb0a1c5f40bde749f8010292a2ad41e9b3a1d8b3ecc0ff3ee384e7d3d57efad",
+    "evidence_sha256": "6f3a29a55d6e5ab63e802957896b9ec4ed8c336dcb3ce8d6a67b36ceaa521ec3",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/solid-ordinary.native.log.gz",
+    "original_sha256": "e760afbef241fee765fce442e2fd68caa16126de75d27633ae667c5ed030225c",
+    "normalized_sha256": "e760afbef241fee765fce442e2fd68caa16126de75d27633ae667c5ed030225c",
+    "evidence_sha256": "77a2e2be75c8b8de6814de80dd2c8e8e648c1677e9a7baf7d7f6cb0337380cdc",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/source-item-matrix.json",
+    "original_sha256": "dc53c39b95aa08b9de46312434e38c51409f4e3ee4ea63fdc456982fe451ebca",
+    "normalized_sha256": "dc53c39b95aa08b9de46312434e38c51409f4e3ee4ea63fdc456982fe451ebca",
+    "evidence_sha256": "dc53c39b95aa08b9de46312434e38c51409f4e3ee4ea63fdc456982fe451ebca",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-atomic-masks-self.args.json",
+    "original_sha256": "f53c4920a38e5af847e0379b5c4bc051e6c1a5817e2b5c7a564efa5b1b88989f",
+    "normalized_sha256": "f53c4920a38e5af847e0379b5c4bc051e6c1a5817e2b5c7a564efa5b1b88989f",
+    "evidence_sha256": "f53c4920a38e5af847e0379b5c4bc051e6c1a5817e2b5c7a564efa5b1b88989f",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-atomic-masks-self.native.log.gz",
+    "original_sha256": "0819fd6220f398462e47c525d695c2eb38e9a52cd28878c1aba0e3fd0dca930c",
+    "normalized_sha256": "0819fd6220f398462e47c525d695c2eb38e9a52cd28878c1aba0e3fd0dca930c",
+    "evidence_sha256": "f53523c4cd7ee50f8985a88ee6f655931efdf0f3a2f02ca825feb63a785f729f",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-atomic-masks-self.render.json",
+    "original_sha256": "91d52695d637fad8bac00954dc87bf0b022ec33a2b50bde0b065ddc4cd85b108",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-atomic-masks-self.result.json",
+    "original_sha256": "cec3dde9fcba656a384d6fd0d6a9fce669073450b62e259beba9b01099c985f0",
+    "normalized_sha256": "67ee7124e3dd08655944fac314a1c4f3e478cc66a936bd2cd0db71642969d366",
+    "evidence_sha256": "67ee7124e3dd08655944fac314a1c4f3e478cc66a936bd2cd0db71642969d366",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-atomic-source-self.args.json",
+    "original_sha256": "c51dce814317ffb573190fd56b23e4f8d5d3f6d9ff4b26cd17d9475573a70c0f",
+    "normalized_sha256": "c51dce814317ffb573190fd56b23e4f8d5d3f6d9ff4b26cd17d9475573a70c0f",
+    "evidence_sha256": "c51dce814317ffb573190fd56b23e4f8d5d3f6d9ff4b26cd17d9475573a70c0f",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-atomic-source-self.native.log.gz",
+    "original_sha256": "f74b0a7540a24846d3b47b5a5bcf929c37c8cc81d482a82293a79579fcb9b5fc",
+    "normalized_sha256": "f74b0a7540a24846d3b47b5a5bcf929c37c8cc81d482a82293a79579fcb9b5fc",
+    "evidence_sha256": "5925505545e6f631a9202fe870e0a2f1d5e63a47e7a50f5a65bd66a185c3a657",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-atomic-source-self.render.json",
+    "original_sha256": "91ec3f940784123c409f19cd6fc9f4f303f02c3f6e6ea9faab5fe159825a1e0c",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-atomic-source-self.result.json",
+    "original_sha256": "63debf994a4b3d7fbcce518f34262009db359ee6d7b895d5e0784ed118f8630b",
+    "normalized_sha256": "698dbb64f6b663ba59055fb0c8281881a388227dd331005ebc224f27a153ca08",
+    "evidence_sha256": "698dbb64f6b663ba59055fb0c8281881a388227dd331005ebc224f27a153ca08",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-inspect-external.args.json",
+    "original_sha256": "3da8e7bc808de7906779b2ed5e6b3627b325072013cbc015448d648ade989ce5",
+    "normalized_sha256": "3da8e7bc808de7906779b2ed5e6b3627b325072013cbc015448d648ade989ce5",
+    "evidence_sha256": "3da8e7bc808de7906779b2ed5e6b3627b325072013cbc015448d648ade989ce5",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-inspect-external.native.log.gz",
+    "original_sha256": "8bca41a9ec03964c444a1fe9fe342f2fc4293b098d967c64a406ddde2a75eba0",
+    "normalized_sha256": "8bca41a9ec03964c444a1fe9fe342f2fc4293b098d967c64a406ddde2a75eba0",
+    "evidence_sha256": "8bf452b53335e5d1094d637222fec78230e2d9920886a2b293bddbda8e127704",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-inspect-external.render.json",
+    "original_sha256": "ffb0d68059b0e8914fc4c1141e8b069024e9ce305ed7e353544e0371f5b85200",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-inspect-external.result.json",
+    "original_sha256": "d200c5ee1b32a8fd7c77afe162a8c104094c8e9c1d12ef1cc4062b87edd5dcfe",
+    "normalized_sha256": "6a6e1e46a67ee5c7bfe200569a6551026367bb6194cd940eae418bf07a6add71",
+    "evidence_sha256": "6a6e1e46a67ee5c7bfe200569a6551026367bb6194cd940eae418bf07a6add71",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-inspect-self.args.json",
+    "original_sha256": "d7480727fa7e36cd39177d33abf2b3a7bd7f08b4cbc27f278f5dbd83fc42c387",
+    "normalized_sha256": "d7480727fa7e36cd39177d33abf2b3a7bd7f08b4cbc27f278f5dbd83fc42c387",
+    "evidence_sha256": "d7480727fa7e36cd39177d33abf2b3a7bd7f08b4cbc27f278f5dbd83fc42c387",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-inspect-self.native.log.gz",
+    "original_sha256": "5367670fb78e7295e869dab6bd5dd72e033d6baab462781cb515d5ab7e269433",
+    "normalized_sha256": "5367670fb78e7295e869dab6bd5dd72e033d6baab462781cb515d5ab7e269433",
+    "evidence_sha256": "c83bfc46a104e4738b406f602c07a5616ffa08d04c829e3adc7940074c91e672",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-inspect-self.render.json",
+    "original_sha256": "cf697355014abbd3cbaa4a5a186d9885c029b054c259ec650871a9f5f9fbac63",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-inspect-self.result.json",
+    "original_sha256": "85cf80758e1b77446d0a0adb29ff11bef832fda40e4f888ed2d05785dec48b13",
+    "normalized_sha256": "5844e9b2110246271e54d34f5d49d7df97bea6aff948e12a3138a2bc67580a86",
+    "evidence_sha256": "5844e9b2110246271e54d34f5d49d7df97bea6aff948e12a3138a2bc67580a86",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-masks-self.args.json",
+    "original_sha256": "4ebc13f1c21e34522e531b81731dd88313125d552603ddcf3ef056ab8e8662b2",
+    "normalized_sha256": "4ebc13f1c21e34522e531b81731dd88313125d552603ddcf3ef056ab8e8662b2",
+    "evidence_sha256": "4ebc13f1c21e34522e531b81731dd88313125d552603ddcf3ef056ab8e8662b2",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-masks-self.native.log.gz",
+    "original_sha256": "646be98bf01d22a723eed480e75a43af0525e7d5088b081f328449c54c10011e",
+    "normalized_sha256": "646be98bf01d22a723eed480e75a43af0525e7d5088b081f328449c54c10011e",
+    "evidence_sha256": "ccddd125d3622a18dce1d40337a8cfda942f5813821d52e2afdba209d90c9caa",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-masks-self.render.json",
+    "original_sha256": "3a72073cace42aa8668ff1a17720551c3692efb19641016b4b5b9c814ef58b31",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-masks-self.result.json",
+    "original_sha256": "9bbec24686851731931c213d7e87dfa8d17b3e0df71014eef69be685b9e8891e",
+    "normalized_sha256": "05e0ea3d62a5e52dacd3268cc90f4e3df2bb07588c2d3a9b4a0f285be101b3fa",
+    "evidence_sha256": "05e0ea3d62a5e52dacd3268cc90f4e3df2bb07588c2d3a9b4a0f285be101b3fa",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-matrix-save.args.json",
+    "original_sha256": "176697bd8bd697fb0544eae175a0c9bd11162c64c83b51e00619540229a3f65c",
+    "normalized_sha256": "176697bd8bd697fb0544eae175a0c9bd11162c64c83b51e00619540229a3f65c",
+    "evidence_sha256": "176697bd8bd697fb0544eae175a0c9bd11162c64c83b51e00619540229a3f65c",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-matrix-save.result.json",
+    "original_sha256": "6ea54ad59b43c72254da1a97adf99846aeba9bfc5a40869660b7070855f94053",
+    "normalized_sha256": "3d7a919108ebf4205949a799c78e554788b80611c5a02fb49cef93acde31ebe4",
+    "evidence_sha256": "3d7a919108ebf4205949a799c78e554788b80611c5a02fb49cef93acde31ebe4",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-matrix-setup.args.json",
+    "original_sha256": "85b9ba310db3a0d720ed8609f40589aaed9408ff5083c0be55ab316d6c48b0a2",
+    "normalized_sha256": "85b9ba310db3a0d720ed8609f40589aaed9408ff5083c0be55ab316d6c48b0a2",
+    "evidence_sha256": "85b9ba310db3a0d720ed8609f40589aaed9408ff5083c0be55ab316d6c48b0a2",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-matrix-setup.result.json",
+    "original_sha256": "98c0452ece556f5fcd2881257e1325e9d58fd47520671c8f05a164b42d399854",
+    "normalized_sha256": "42b4596016ce623c9efc2deb25ea331445d7f12ccffc4e5bb35cc0c6f663d589",
+    "evidence_sha256": "42b4596016ce623c9efc2deb25ea331445d7f12ccffc4e5bb35cc0c6f663d589",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-matrix.py",
+    "original_sha256": "faab7856f7d1920dbbc1de8a8a6a011373ac5d9aab2de8a0b4c3a8dcbcbe8e4e",
+    "normalized_sha256": "faab7856f7d1920dbbc1de8a8a6a011373ac5d9aab2de8a0b4c3a8dcbcbe8e4e",
+    "evidence_sha256": "faab7856f7d1920dbbc1de8a8a6a011373ac5d9aab2de8a0b4c3a8dcbcbe8e4e",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-pixel-matrix.json",
+    "original_sha256": "b55e647981ab16ceac8c145f35fa32bdbff9df78bd2192585fa1a95b6f4dd0f4",
+    "normalized_sha256": "b55e647981ab16ceac8c145f35fa32bdbff9df78bd2192585fa1a95b6f4dd0f4",
+    "evidence_sha256": "b55e647981ab16ceac8c145f35fa32bdbff9df78bd2192585fa1a95b6f4dd0f4",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-run.py",
+    "original_sha256": "dc97e56563ac6702adc7c930462694e53a8aa95fec88ac95710e164377a1561e",
+    "normalized_sha256": "dc97e56563ac6702adc7c930462694e53a8aa95fec88ac95710e164377a1561e",
+    "evidence_sha256": "dc97e56563ac6702adc7c930462694e53a8aa95fec88ac95710e164377a1561e",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-source-self.args.json",
+    "original_sha256": "bfdbafb640c2db7572b0dc72c87d52b266bf4d691ba4732218a8ead4e19d6c3e",
+    "normalized_sha256": "bfdbafb640c2db7572b0dc72c87d52b266bf4d691ba4732218a8ead4e19d6c3e",
+    "evidence_sha256": "bfdbafb640c2db7572b0dc72c87d52b266bf4d691ba4732218a8ead4e19d6c3e",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-source-self.native.log.gz",
+    "original_sha256": "eab90b7ce8def29f454d54f3d7f7b63d5894e3a6fce0f17ec38f007666ddaba8",
+    "normalized_sha256": "eab90b7ce8def29f454d54f3d7f7b63d5894e3a6fce0f17ec38f007666ddaba8",
+    "evidence_sha256": "3737141dc6fa44a0f2ad694ce4158527b652089ea7dc0ae21ef1143587f06a83",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-source-self.render.json",
+    "original_sha256": "f432f828bb62db9cdf4579454e81b4b04d52ae51d93264ec5264f4546a83e6ed",
+    "normalized_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "evidence_sha256": "f1d67954deaded2139756d7309e9ce6048937acb3e0f9dd457006ea29691e6c6",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/stage-source-self.result.json",
+    "original_sha256": "172f1b388cec3162b3eebddb5a7cf27ef5de4afe9d09123774941f7c41e5f756",
+    "normalized_sha256": "38eeb8df16fec13b8aaaf4210f64541930d9ce2c3c93f92c518a1c92f58a31d9",
+    "evidence_sha256": "38eeb8df16fec13b8aaaf4210f64541930d9ce2c3c93f92c518a1c92f58a31d9",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/v019-lib.rs",
+    "original_sha256": "b7d8503626b1611fe84b5d902b1aa375ec0e5a2d17516b4b78a91b7e252265c7",
+    "normalized_sha256": "b7d8503626b1611fe84b5d902b1aa375ec0e5a2d17516b4b78a91b7e252265c7",
+    "evidence_sha256": "b7d8503626b1611fe84b5d902b1aa375ec0e5a2d17516b4b78a91b7e252265c7",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/v019-read.rs",
+    "original_sha256": "ef9a479a80e6093d507c7015cf65817a59fd53ffd851f3f37ff12763121ab6ae",
+    "normalized_sha256": "ef9a479a80e6093d507c7015cf65817a59fd53ffd851f3f37ff12763121ab6ae",
+    "evidence_sha256": "ef9a479a80e6093d507c7015cf65817a59fd53ffd851f3f37ff12763121ab6ae",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/v021-without-sdk-test.log",
+    "original_sha256": "cbb0d2f219802dc28cd920d3f3bddce21228449dae4a39c6448d5c0fb63d5928",
+    "normalized_sha256": "e277536509d26d577bf6f5e2b3d063bd1e5559f3b6cff19913aef4c77bc6bd1c",
+    "evidence_sha256": "e277536509d26d577bf6f5e2b3d063bd1e5559f3b6cff19913aef4c77bc6bd1c",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/v023-build.log",
+    "original_sha256": "f268dba1973ddd22efc480e095af0871460f787f38f2dbb85915a63ddb04743a",
+    "normalized_sha256": "539e6931a11881b0b0a6bf9fdbc4b65cf8b87b2ac17e7a6f5e85997082d2be87",
+    "evidence_sha256": "539e6931a11881b0b0a6bf9fdbc4b65cf8b87b2ac17e7a6f5e85997082d2be87",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "raw/v023-test.log",
+    "original_sha256": "c790067b2e3a9e68a04caeb7b48eecaae8ea877cc6d408d81430b6d2251072de",
+    "normalized_sha256": "eea8ed11fae9d71b7af3007baf4112ffd342602be93f9fbb78c2fe6ddf8e6e9e",
+    "evidence_sha256": "eea8ed11fae9d71b7af3007baf4112ffd342602be93f9fbb78c2fe6ddf8e6e9e",
+    "redactions": "local path prefixes and MCP artifact IDs; SDK archives/headers and AEP/AEX omitted"
+  },
+  {
+    "path": "source/carrier.rs",
+    "evidence_sha256": "72522bee102b490918b0b76fb3799d0ecff0088a5361153d6fc96d4b14bbf461"
+  },
+  {
+    "path": "source/idle.rs",
+    "evidence_sha256": "cf7b0c2799f61a2a026380cd7009a303902c7d27d99420959aa86d48eb2e307a"
+  },
+  {
+    "path": "source/lib.rs",
+    "evidence_sha256": "c18ecd61ebd5c864682af098799b8fb99b6c832917bd5dc52e419ee4b03519b8"
+  },
+  {
+    "path": "source/read.rs",
+    "evidence_sha256": "81c44ad07943914a849f83686b9274f14bc261aa34f3b6454da8361f60f55fc2"
+  },
+  {
+    "path": "source/stage.cpp",
+    "evidence_sha256": "946989f0be3d609ff071a23157617fa7efede9fb771a1666407d58f759e18deb"
+  },
+  {
+    "path": "source/stage.rs",
+    "evidence_sha256": "974d0f6ec9a5a9fcfcfb1bf3e4d781589cf68f7846606fc958bb8bb3fac077e5"
+  },
+  {
+    "path": "source/wake.rs",
+    "evidence_sha256": "8603221be15e1a95bdc095be5ba97b30a7d5373a4fe119e78d5700a019799721"
+  },
+  {
+    "path": "source/Cargo.toml",
+    "evidence_sha256": "f8834ab614103f20baefba3654b961e734e81d0d8fc24a2fbd208e5069b03e57"
+  },
+  {
+    "path": "source/Cargo.lock",
+    "evidence_sha256": "5588bb37af0e8e56e9200a515fbc031c612ddfb97ea8a66b1a54a79be5d446bb"
+  },
+  {
+    "path": "source/build.rs",
+    "evidence_sha256": "ed764f20a2b57eb2259d7d91d544e14b6b1800af26b45bcfb4a53212286006cf"
+  }
+]

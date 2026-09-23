@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"version\\\":\\\"26.5x89\\\",\\\"bpc\\\":32,\\\"dirty\\\":false,\\\"rows\\\":[{\\\"comp\\\":866,\\\"layer\\\":869,\\\"adjustment\\\":true,\\\"fillOpacity\\\":37.125,\\\"maskMode\\\":6814,\\\"maskOpacity\\\":68.75,\\\"feather\\\":[11.25,7.75],\\\"expansion\\\":4.25},{\\\"comp\\\":880,\\\"layer\\\":883,\\\"adjustment\\\":true,\\\"fillOpacity\\\":37.125,\\\"maskMode\\\":6814,\\\"maskOpacity\\\":68.75,\\\"feather\\\":[11.25,7.75],\\\"expansion\\\":4.25}]}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"version\":\"26.5x89\",\"bpc\":32,\"dirty\":false,\"rows\":[{\"comp\":866,\"layer\":869,\"adjustment\":true,\"fillOpacity\":37.125,\"maskMode\":6814,\"maskOpacity\":68.75,\"feather\":[11.25,7.75],\"expansion\":4.25},{\"comp\":880,\"layer\":883,\"adjustment\":true,\"fillOpacity\":37.125,\"maskMode\":6814,\"maskOpacity\":68.75,\"feather\":[11.25,7.75],\"expansion\":4.25}]}",
+    "contentType": "text",
+    "artifactId": "user:<redacted>"
+  }
+}

@@ -1,0 +1,3 @@
+aerender version 26.5x89
+PROGRESS: Launching After Effects...
+aerender Error: After Effects错误: 由于参数 1，无法调用“openFast”。路径无效。路径:“<workspace>\scripts\out\coverage-final-20260923\cancel-close.aep”

@@ -1,0 +1,103 @@
+[
+  {
+    "case": "glass-8-1",
+    "status": "PASS",
+    "size": [
+      640,
+      400
+    ],
+    "alpha_min": 1.0,
+    "alpha_max": 1.0
+  },
+  {
+    "case": "glass-16-1",
+    "status": "PASS",
+    "size": [
+      640,
+      400
+    ],
+    "alpha_min": 1.0,
+    "alpha_max": 1.0
+  },
+  {
+    "case": "glass-32-1",
+    "status": "PASS",
+    "size": [
+      640,
+      400
+    ],
+    "alpha_min": 1.0,
+    "alpha_max": 1.0
+  },
+  {
+    "case": "glass-8-2",
+    "status": "PASS",
+    "size": [
+      320,
+      200
+    ],
+    "alpha_min": 1.0,
+    "alpha_max": 1.0
+  },
+  {
+    "case": "glass-16-2",
+    "status": "PASS",
+    "size": [
+      320,
+      200
+    ],
+    "alpha_min": 1.0,
+    "alpha_max": 1.0
+  },
+  {
+    "case": "glass-32-2",
+    "status": "PASS",
+    "size": [
+      320,
+      200
+    ],
+    "alpha_min": 1.0,
+    "alpha_max": 1.0
+  },
+  {
+    "case": "glass-8-4",
+    "status": "PASS",
+    "size": [
+      160,
+      100
+    ],
+    "alpha_min": 1.0,
+    "alpha_max": 1.0
+  },
+  {
+    "case": "glass-16-4",
+    "status": "PASS",
+    "size": [
+      160,
+      100
+    ],
+    "alpha_min": 1.0,
+    "alpha_max": 1.0
+  },
+  {
+    "case": "glass-32-4",
+    "status": "PASS",
+    "size": [
+      160,
+      100
+    ],
+    "alpha_min": 1.0,
+    "alpha_max": 1.0
+  },
+  {
+    "case": "amount-zero",
+    "maximum_float_error": 0.0,
+    "status": "PASS"
+  },
+  {
+    "case": "float-field-transport-through-8-and-32-bpc",
+    "compared_pixels": 256000,
+    "different_bytes": 0,
+    "status": "PASS"
+  }
+]

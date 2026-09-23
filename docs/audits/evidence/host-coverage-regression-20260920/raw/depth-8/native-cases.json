@@ -1,0 +1,30 @@
+[
+  {
+    "name": "curve",
+    "id": 247,
+    "reference": "curve-expression-reference.png",
+    "carrierVertices": 1000,
+    "expressionError": "",
+    "bpc": 8,
+    "status": "FAIL",
+    "max_error_8bit": 16,
+    "different_pixels": 9,
+    "pixels": 12288,
+    "route": "expression path readback, not PF checkout",
+    "mcp_seconds": 1.2339999999967404
+  },
+  {
+    "name": "half",
+    "id": 262,
+    "reference": "half-expression-reference.png",
+    "carrierVertices": 818,
+    "expressionError": "",
+    "bpc": 8,
+    "status": "PASS",
+    "max_error_8bit": 0,
+    "different_pixels": 0,
+    "pixels": 12288,
+    "route": "expression path readback, not PF checkout",
+    "mcp_seconds": 1.8280000000086147
+  }
+]

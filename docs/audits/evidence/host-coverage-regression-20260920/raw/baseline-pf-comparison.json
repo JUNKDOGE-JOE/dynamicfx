@@ -1,0 +1,9 @@
+{
+  "label": "baseline-pf",
+  "vertices": 3648,
+  "pixels": 480000,
+  "different": 49,
+  "max_error_8bit": 1,
+  "mae_8bit": 0.00010208333333333334,
+  "within_one_8bit_level": true
+}

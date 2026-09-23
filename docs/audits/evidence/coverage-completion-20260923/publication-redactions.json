@@ -1,0 +1,161 @@
+[
+  {
+    "path": "docs/audits/evidence/host-coverage-fidelity-20260920/raw/direct-8.result.json",
+    "before_sha256": "8361ef0874a340bd135b60a690d0ddfd3982539a3be48d19dbfe240b155e2d93",
+    "after_sha256": "7d1bf525aebd8c988ba1ec6834f6fc6a1a29a532a419dd7a53c3ce10044e31ea",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-setup-encoding-failure.json",
+    "before_sha256": "dab3153e0453af490a0eb5d141834bf92259035b70fa9d3bc863b45f5a881cf5",
+    "after_sha256": "6c884b54eaf9da30673388898ccbcb3eb40920534abb500ec0acbaf3c958a1da",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-setup-escaped-failure.json",
+    "before_sha256": "1149c445f6fe62eee5201f725af782bd696d32bc9f914b1792bb73efe55e422f",
+    "after_sha256": "0da9319083add5824aa8e4bfd78cc3962d1e1984bb709d6f6375da81fd0c8104",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-setup-runtime-template-failure.json",
+    "before_sha256": "3537fe2b6bbc57ac90877d4f7b5b9a0c5702d864ed1fb8d955880c382c84a8b2",
+    "after_sha256": "850b73b842ef6fdee8a719bc07c10a04b692e16f8b3fd94b7bb799808ce36b48",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-setup.json",
+    "before_sha256": "3537fe2b6bbc57ac90877d4f7b5b9a0c5702d864ed1fb8d955880c382c84a8b2",
+    "after_sha256": "850b73b842ef6fdee8a719bc07c10a04b692e16f8b3fd94b7bb799808ce36b48",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/curve.result.json",
+    "before_sha256": "addbbb237182738e600fb3abf5fb75e34328678bbd0626e399c7f504cd87066a",
+    "after_sha256": "343c9c411984c3a368179e10cb72e873999e136d2188c0bd59ce9815fba69a73",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/driver-placeholder-failure/curve.result.json",
+    "before_sha256": "addbbb237182738e600fb3abf5fb75e34328678bbd0626e399c7f504cd87066a",
+    "after_sha256": "343c9c411984c3a368179e10cb72e873999e136d2188c0bd59ce9815fba69a73",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/driver-placeholder-failure/ellipse.result.json",
+    "before_sha256": "1038327f7723f9d66d4ce4f2cba120cbc6cae170c5b56243232ef40e20b6cc39",
+    "after_sha256": "e48ebcb66d5b3cc0a6507b6267197f21a9f1808710c72812b507e3640270c16d",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/driver-placeholder-failure/half.result.json",
+    "before_sha256": "4126dcc54e03243d8a3dd472c3596c61da5cb65b58c7ad4a34b4fbbda4edb2b5",
+    "after_sha256": "7927193b7a6940d78524b5c7d294185838df63c3fb968c61f50594b60b5fff32",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/driver-placeholder-failure/hole.result.json",
+    "before_sha256": "28f3c7cdb3d2929be13d0b58af1288f7f3067931da89c7ba47aaf8d07fdbebec",
+    "after_sha256": "052a6f5af20d6b9ad58793417789779975e583a7399a0ad431354987a67b6426",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/driver-placeholder-failure/masked.result.json",
+    "before_sha256": "0ce129dc22d92c5b56f1f852a9a1dd2161ac76c88abd8ca96ff2bd6e84f50fe4",
+    "after_sha256": "5efca13f1ee477e7c6243e1fffa3b5ee259fec3f9d14407a6c4ed4f1db6df49c",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/driver-placeholder-failure/native-cases.json",
+    "before_sha256": "3580f62c64f9133734793bab60746efcbe4476b572960b179fba73e62215eac5",
+    "after_sha256": "91a5ac95d00d78ad628c04a2524fd756e46f2fbf5cbb056113e62d886c527095",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/driver-placeholder-failure/rectangle.result.json",
+    "before_sha256": "3c2b0257c0dbddb2612a997e44dc44cef9c9f54f71b28651bee6e6330449c338",
+    "after_sha256": "c405950be9af33f84477b673c79ac174e45ec45b74770ae66fc6d86f3c56c518",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/driver-placeholder-failure/transformed.result.json",
+    "before_sha256": "84a0af25c61fff600e3eaf442797e024a367d4d4dd591c9e76196019945e8d19",
+    "after_sha256": "99ece93783b169dc6f29253a42faf349473cc2621336d9229a2dee323f5f0488",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/driver-placeholder-failure/triangle.result.json",
+    "before_sha256": "317cc306bc594773a56f493c29c329938cb58beea80497a7dd0f4c22f63c3eac",
+    "after_sha256": "a9f19c67b40059d0aff9e5d8c54b5349b6bb5b52d035b58f27cf138cbe31fdec",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/ellipse.result.json",
+    "before_sha256": "1038327f7723f9d66d4ce4f2cba120cbc6cae170c5b56243232ef40e20b6cc39",
+    "after_sha256": "e48ebcb66d5b3cc0a6507b6267197f21a9f1808710c72812b507e3640270c16d",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/half.result.json",
+    "before_sha256": "4126dcc54e03243d8a3dd472c3596c61da5cb65b58c7ad4a34b4fbbda4edb2b5",
+    "after_sha256": "7927193b7a6940d78524b5c7d294185838df63c3fb968c61f50594b60b5fff32",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/hole.result.json",
+    "before_sha256": "28f3c7cdb3d2929be13d0b58af1288f7f3067931da89c7ba47aaf8d07fdbebec",
+    "after_sha256": "052a6f5af20d6b9ad58793417789779975e583a7399a0ad431354987a67b6426",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/local-tests.json",
+    "before_sha256": "44045ef6b0f60dbc05f99189e859096b9fe313f33f3b3633e167dd8dde73cc03",
+    "after_sha256": "955aeede8da3e4041ac59ca73f236c8951e422223cd0669c5797ed46d2b29e07",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/masked.result.json",
+    "before_sha256": "0ce129dc22d92c5b56f1f852a9a1dd2161ac76c88abd8ca96ff2bd6e84f50fe4",
+    "after_sha256": "5efca13f1ee477e7c6243e1fffa3b5ee259fec3f9d14407a6c4ed4f1db6df49c",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/rectangle.result.json",
+    "before_sha256": "3c2b0257c0dbddb2612a997e44dc44cef9c9f54f71b28651bee6e6330449c338",
+    "after_sha256": "c405950be9af33f84477b673c79ac174e45ec45b74770ae66fc6d86f3c56c518",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/transformed.result.json",
+    "before_sha256": "84a0af25c61fff600e3eaf442797e024a367d4d4dd591c9e76196019945e8d19",
+    "after_sha256": "99ece93783b169dc6f29253a42faf349473cc2621336d9229a2dee323f5f0488",
+    "action": "normalize legacy REDACTED_USER placeholders and nested transport paths"
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-frames/frame00000.psd",
+    "original_sha256": "0b48aaee23dc188cc5cf025785d30dcab6a95b49f86d28542c22de919c32cb41",
+    "action": "retain exact decoded pixels, withhold PSD editor metadata",
+    "replacement": [
+      "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-frames/frame00000.pixels.bin.gz",
+      "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-frames/frame00000.pixels.json"
+    ]
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-frames/frame00001.psd",
+    "original_sha256": "6ef2ef307424cc7473795ae26871fb5e2dcff2c2bb290fa6d696e12ba845627a",
+    "action": "retain exact decoded pixels, withhold PSD editor metadata",
+    "replacement": [
+      "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-frames/frame00001.pixels.bin.gz",
+      "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-frames/frame00001.pixels.json"
+    ]
+  },
+  {
+    "path": "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-frames/frame00002.psd",
+    "original_sha256": "869c68ea965a241e7dd89641aa9b2b54fd84b9772681a7ffce8e9cad699ab362",
+    "action": "retain exact decoded pixels, withhold PSD editor metadata",
+    "replacement": [
+      "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-frames/frame00002.pixels.bin.gz",
+      "docs/audits/evidence/host-coverage-regression-20260920/raw/aerender-frames/frame00002.pixels.json"
+    ]
+  }
+]

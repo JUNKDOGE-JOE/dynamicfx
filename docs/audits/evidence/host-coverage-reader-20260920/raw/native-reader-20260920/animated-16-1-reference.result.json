@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"native-reader.aep\")throw Error(\"Unexpected project\");app.project.bitsPerChannel=16;var c=app.project.itemByID(931);c.time=1.6;app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(1,new File(\"<checkout>/scripts/out/native-reader-20260920/animated-16-1-reference.png\"));return JSON.stringify({cti:c.time,requested:1});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"cti\\\":1.6,\\\"requested\\\":1}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"cti\":1.6,\"requested\":1}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

@@ -11,7 +11,7 @@
 //!        | default:#RRGGBB[AA]               (hint:color only, ADR-0026)
 //!        | alias:<id>[,<id>]*
 //!        | hint:angle | hint:color | hint:layer | hint:gradient
-//!        | hint:point3d | hint:path | hint:canvas
+//!        | hint:point3d | hint:path | hint:canvas | hint:coverage
 //! ```
 //!
 //! Error policy (fail closed without punishing leftovers): a malformed entry
@@ -46,6 +46,7 @@ pub enum Hint {
     /// is the only way to reach the kind.
     Point3D,
     Canvas,
+    Coverage,
 }
 
 #[derive(Debug, Clone, Default, PartialEq)]
@@ -171,6 +172,7 @@ pub fn parse_annotations(source: &str) -> Result<HashMap<String, Annotation>, An
                     let hint = match value {
                         "angle" => Hint::Angle,
                         "layer" => Hint::Layer,
+                        "coverage" => Hint::Coverage,
                         "gradient" => Hint::Gradient,
                         "bool" => Hint::Bool,
                         "color" => Hint::Color,
@@ -420,4 +422,8 @@ fn hinted_names(source: &str, hint: Hint) -> Vec<String> {
         .collect();
     names.sort();
     names
+}
+
+pub fn coverage_param_names(source: &str) -> Vec<String> {
+    hinted_names(source, Hint::Coverage)
 }

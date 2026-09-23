@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){\nif(app.project.file&&app.project.file.name!==\"source-matrix.aep\")throw Error(\"Unexpected project\");\nif(!app.project.file)app.open(new File(\"<checkout>/scripts/out/direct-source-20260920/source-matrix.aep\"));\nfor(var i=1;i<=app.project.numItems;i++)if(app.project.item(i).name===\"HS_reader_native\")throw Error(\"Already created\");\nvar c=app.project.itemByID(866).duplicate();c.name=\"HS_reader_native\";\nvar l=c.layer(1),e=l.property(\"ADBE Effect Parade\").property(1);l.adjustmentLayer=true;e.property(2).setValue(21);e.property(4).setValue(true);e.property(10).setValue(false);\napp.project.save(new File(\"<checkout>/scripts/out/native-reader-20260920/native-reader.aep\"));return JSON.stringify({comp:c.id,owner:l.id,layers:c.numLayers,items:app.project.numItems,version:app.version});\n})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"comp\\\":910,\\\"owner\\\":913,\\\"layers\\\":2,\\\"items\\\":85,\\\"version\\\":\\\"26.5x89\\\"}\",\"contentType\":\"text\",\"artifactId\":\"user:<redacted>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"comp\":910,\"owner\":913,\"layers\":2,\"items\":85,\"version\":\"26.5x89\"}",
+      "contentType": "text",
+      "artifactId": "user:<redacted>"
+    }
+  }
+}

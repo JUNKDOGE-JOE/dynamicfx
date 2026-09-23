@@ -1,0 +1,76 @@
+{
+  "status": "FAIL",
+  "baseline": "922845cfae29700b69f2940baccf753dd9baea09",
+  "host": "AE 2026 26.5x89",
+  "date": "2026-09-20",
+  "production_sha256": "c91db8c0435ccf90e0fac33f5473825c29bbd959cfeef8cc5fcebe80092b0d0a",
+  "probe_sha256": "f0bd26c4adbc52cd56abe2d3495393c8b3a5e9214d1f996277c58e352e7bb456",
+  "local_tests": {
+    "default": 228,
+    "editor": 228,
+    "diagnostic": 13,
+    "governance": "PASS"
+  },
+  "failures": [
+    {
+      "case": "original add mask",
+      "max_error_8bit": 255,
+      "different_pixels": 2268
+    },
+    {
+      "case": "subtract-mask hole",
+      "max_error_8bit": 255,
+      "different_pixels": 704
+    },
+    {
+      "case": "8bpc curved edge",
+      "max_error_8bit": 16,
+      "different_pixels": 9
+    },
+    {
+      "case": "800x600 50% fill",
+      "error": "Coverage probe sampling budget exceeded",
+      "seconds": 5.203
+    },
+    {
+      "case": "last-owner cleanup",
+      "observed": "2 masks remain with both owners disabled after 8 seconds"
+    },
+    {
+      "case": "Undo after re-enable",
+      "observed": "carrier remains; deletion/recreation prerequisite not established"
+    }
+  ],
+  "passes": [
+    "800x600 interactive cold PF path: 3648 vertices, max error 1/255",
+    "small triangle/rectangle/ellipse/group transform coverage",
+    "128x96 half-opacity at 8/16/32 bpc",
+    "corrected curved fixture at 16/32 bpc",
+    "animated curve at requested times 0.75/0/0.25 with CTI 1.5",
+    "sharing and preservation of user mask",
+    "save/reopen with 52 items and same owner/mask state",
+    "aerender supervised exit 0: three PSD frames, max RGBA8 difference 1/255",
+    "first valid aerender process PF path: 3648 vertices, max coverage error 1/255"
+  ],
+  "limits": [
+    "PNG/PSD comparisons quantized to 8-bit, not native 32-bit pixel proof",
+    "supervised aerender reused cache; first valid helper supplied one native PF record",
+    "diagnostic has no threaded-rendering capability flag; MFR option does not prove parallel callbacks",
+    "full shader resource and FFX material do not exist",
+    "no push or merge in this test run"
+  ],
+  "harness_failures": [
+    "initial placeholder replaced itemByID method name; retained failed attempts before correction",
+    "128x96 native logging invalidates fixed 800x600 probe coordinates; expression comparison separated",
+    "first curve fixture did not assign full tangent arrays; corrected before depth/animation tests",
+    "TIFF template apply failed; ASCII Photoshop template succeeded",
+    "first aerender launched without a saved AEP; later saved and supervised successfully",
+    "full-half result printing failed with console encoding after JSON was saved"
+  ],
+  "standby": {
+    "saved": true,
+    "items": 55,
+    "logging_serial_reset": 22,
+    "large_half_expression_disabled": true
+  }
+}

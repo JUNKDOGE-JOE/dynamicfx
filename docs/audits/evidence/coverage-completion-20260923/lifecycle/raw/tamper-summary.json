@@ -1,0 +1,434 @@
+[
+  {
+    "case": "position",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        435,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755790,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "anchor",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755791,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "scale",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755792,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "rotation",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755793,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "opacity",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755794,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "expression",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755795,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "keyframe",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755796,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "separated",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755797,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "start",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755798,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "stretch",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755799,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "inpoint",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755800,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "outpoint",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755801,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "disabled",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755802,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "marker",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755803,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755804,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "parent",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755805,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "adjustment",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755806,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "visible",
+    "changed": {
+      "state": 3,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "restored": {
+      "state": 248209058755807,
+      "reader": 29,
+      "position": [
+        400,
+        300,
+        0
+      ],
+      "layerCount": 2
+    },
+    "status": "PASS"
+  }
+]

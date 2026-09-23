@@ -1,0 +1,54 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.parent.name!==\"regression-20260920\")throw Error(\"Wrong fixture\");var q=app.project.renderQueue;for(var i=1;i<=q.numItems;i++)q.item(i).render=false;var item=q.item(q.numItems);item.applyTemplate(item.templates[4]);item.timeSpanStart=0;item.timeSpanDuration=2/24;var om=item.outputModule(1);var templates=om.templates,chosen=null;for(var k=0;k<templates.length;k++)if(templates[k].indexOf(\"TIFF\")>=0)chosen=templates[k];if(!chosen)throw Error(\"No TIFF template\");om.applyTemplate(chosen);om.file=new File(\"<workspace>/scripts/out/regression-20260920/aerender-frames/frame[#####].tif\");item.render=true;app.project.save(new File(\"<workspace>/scripts/out/regression-20260920/aerender-checkpoint.aep\"));return JSON.stringify({file:app.project.file.fsName,queueItems:q.numItems,output:om.file.fsName,start:item.timeSpanStart,duration:item.timeSpanDuration});})()",
+    "timeout_sec": 20
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":false,\"error\":\"ExtendScript error: Error: After Effects错误: ?? Alpha ? TIFF ??  不是有效的模板名称。 (line 1)\",\"disposition\":\"failed\",\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":null,\"pendingCalls\":0,\"sentinelInFlight\":false},\"errorLine\":1,\"touched\":{\"level\":\"none\",\"method\":\"snapshot-diff\",\"comp\":{\"id\":48,\"name\":\"HS_ordinary_input\"},\"activeCompChanged\":null,\"layersAdded\":[],\"layersRemoved\":[],\"layersChanged\":[],\"itemsAdded\":[],\"itemsRemoved\":[],\"truncated\":false,\"notes\":[]},\"revision\":{\"before\":2751,\"after\":2751},\"projectPath\":\"<workspace>\\\\scripts\\\\out\\\\regression-20260920\\\\host-shape-native.aep\",\"errorSource\":\"(function(){if(!app.project.file||app.project.file.parent.name!==\\\"regression-20260920\\\")throw Error(\\\"Wrong fixture\\\");var q=app.project.renderQueue;for(var i=1;i<=q.numItems;i++)q.item(i).render=false;v\",\"recoveryId\":\"ax0d1y\",\"scriptPath\":\"<user-home>\\\\.ae-mcp\\\\checkpoints\\\\host-shape-native_2e60e0e2dd3a\\\\recovery\\\\ax0d1y.jsx\",\"checkpointId\":null,\"attempt\":1}"
+      }
+    ],
+    "structuredContent": {
+      "ok": false,
+      "error": "ExtendScript error: Error: After Effects错误: ?? Alpha ? TIFF ??  不是有效的模板名称。 (line 1)",
+      "disposition": "failed",
+      "jsxBridge": {
+        "state": "ok",
+        "degradedSinceMs": null,
+        "lastTimeoutAt": null,
+        "pendingCalls": 0,
+        "sentinelInFlight": false
+      },
+      "errorLine": 1,
+      "touched": {
+        "level": "none",
+        "method": "snapshot-diff",
+        "comp": {
+          "id": 48,
+          "name": "HS_ordinary_input"
+        },
+        "activeCompChanged": null,
+        "layersAdded": [],
+        "layersRemoved": [],
+        "layersChanged": [],
+        "itemsAdded": [],
+        "itemsRemoved": [],
+        "truncated": false,
+        "notes": []
+      },
+      "revision": {
+        "before": 2751,
+        "after": 2751
+      },
+      "projectPath": "<workspace>\\scripts\\out\\regression-20260920\\host-shape-native.aep",
+      "errorSource": "(function(){if(!app.project.file||app.project.file.parent.name!==\"regression-20260920\")throw Error(\"Wrong fixture\");var q=app.project.renderQueue;for(var i=1;i<=q.numItems;i++)q.item(i).render=false;v",
+      "recoveryId": "<local-id>",
+      "scriptPath": "<user-home>\\.ae-mcp\\checkpoints\\host-shape-native_2e60e0e2dd3a\\recovery\\ax0d1y.jsx",
+      "checkpointId": null,
+      "attempt": 1
+    },
+    "isError": true
+  }
+}

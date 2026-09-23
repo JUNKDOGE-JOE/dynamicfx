@@ -13,6 +13,24 @@ the alpha mismatch and rules out PF enumeration for shape-only contents.
 [Native results](../../docs/audits/evidence/host-shape-native-20260910/README.md)
 distinguish these observations from the unrun shader-resource acceptance.
 
+## Current fidelity baseline
+
+Diagnostic 0.0.14 reads native reference alpha at 16/32 bpc and tests the PF mask
+raster API. [Exact sampling](coverage-exact-expression.js) and its
+[codec tests](test-coverage-exact.cjs) are separate from automatic carrier
+creation. [Deep comparison](verify-exact-coverage.py) checks decoded data against
+native reference worlds. [Evidence](../../docs/audits/evidence/host-coverage-fidelity-20260920/README.md)
+records exact samples, the cache warm-up, remaining full-frame cost and the
+mask-expansion gap. This is not a production coverage resource or preset.
+
+## Current diagnostic correction
+
+Version 0.0.10 adds a bounded idle wake service and scale-safe diagnostic sample
+coordinates. Six native lifecycle steps and small/full-size PF reads pass on
+AE 26.5x89. [Engineering evidence](../../docs/audits/evidence/host-coverage-engineering-20260920/README.md).
+The user requires the full original scope before delivery; coverage acquisition,
+FFX and full runtime acceptance remain open. Earlier version sections are history.
+
 ## Latest diagnostic state
 
 Version 0.0.9 proves automatic carrier creation, sharing, cleanup, Undo/Redo,
@@ -150,6 +168,19 @@ were subsequently installed and tested using authorized background lifecycle
 operations. Source, installation and host-result states stay separate.
 
 ## Integration order
+
+The current candidate is the user-approved invisible native reading layer.
+[SDK stage and full return-bridge evidence](../../docs/audits/evidence/host-coverage-direct-source-20260920/README.md)
+passes the recorded 8/16/32-bpc pixel matrix. Build its stage calls with
+`DYNAMICFX_AESDK_265_ROOT` pointing to a local SDK 26.5 root; without it, stage
+operations explicitly refuse. SDK files are not checked in. Next implement
+ownership/rebinding and test lifecycle before production integration.
+
+The user has since accepted AE 26.5+ as this feature's minimum host. Existing
+features keep their prior compatibility. The optional diagnostic `preset-seed`
+build was an export experiment only: it registers a reduced parameter topology,
+must use a fresh disposable project, and is never the normal diagnostic or a
+shipping plugin. Its AE 26.5 preset was rejected by AE 2025; that route is retired.
 
 Data-source proof -> resource/coordinate ADR -> frame-owned host adapter ->
 shared GLSL/WGSL resource parsing and binding -> GPU upload -> full host matrix

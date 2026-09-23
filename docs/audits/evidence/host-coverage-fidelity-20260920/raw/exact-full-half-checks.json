@@ -1,0 +1,9 @@
+{
+  "width": 800,
+  "height": 600,
+  "pixels": 480000,
+  "reference_depth": 16,
+  "float32_bit_mismatches": 0,
+  "max_alpha_error": 0.0,
+  "status": "PASS"
+}

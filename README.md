@@ -12,6 +12,11 @@ single authority for what renders.
 
 ## Status
 
+The development branch adds automatic host coverage and a
+[Liquid Glass example](docs/liquid-glass.md) for Windows AE 26.5+.
+It requires the paired native coverage reader; published 0.1.1 packages below
+do not contain this feature. See the [current implementation record](docs/IMPLEMENTATION_STATUS.md).
+
 `0.1.1` fixes Windows GPU compiler failure handling. Backend pipeline rejection
 now returns `E58` instead of escaping into a panic; a rejected replacement
 cannot reuse stale pipelines.

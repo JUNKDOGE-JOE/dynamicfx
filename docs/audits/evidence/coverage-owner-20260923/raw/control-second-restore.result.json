@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"production-coverage.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(30),owner=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===44)owner=c.layer(i);if(!owner)throw Error(\"Owner missing\");owner.property(\"ADBE Effect Parade\").property(2).property(6).setValue(2);owner.property(\"ADBE Effect Parade\").property(1).enabled=true;app.project.save();return JSON.stringify({enabled:owner.property(\"ADBE Effect Parade\").property(1).enabled,dirty:app.project.dirty});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"enabled\\\":true,\\\"dirty\\\":false}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"enabled\":true,\"dirty\":false}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

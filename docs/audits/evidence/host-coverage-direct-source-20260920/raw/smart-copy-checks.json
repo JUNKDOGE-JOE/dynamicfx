@@ -1,0 +1,14 @@
+[
+  {
+    "case": "ordinary",
+    "same_size": true,
+    "max_rgba8_error": 0,
+    "different_channels": 0
+  },
+  {
+    "case": "adjustment",
+    "same_size": true,
+    "max_rgba8_error": 0,
+    "different_channels": 0
+  }
+]

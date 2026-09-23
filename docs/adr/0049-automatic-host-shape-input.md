@@ -6,6 +6,21 @@
   The user subsequently accepted a plugin-managed mode-None data mask visible
   in the mask list, with no manual binding. Transport and shader ABI details
   remain Proposed pending native evidence.
+- Delivery decision (2026-09-20): the user requires the original full scope
+  to pass before delivery. A reduced initial 2D/16/32-bpc scope is rejected.
+  Existing approval for an automatically managed data mask remains in force.
+- Fidelity decision (2026-09-20): image accuracy takes priority. Preview speed
+  may be optimized only while preserving validated accuracy. No silent quality
+  reduction or relaxed correctness threshold is authorized.
+- Internal-object decision (2026-09-20): after the native return bridge passed,
+  the user explicitly accepted a plugin-maintained invisible reading layer,
+  without manual binding. This supersedes the earlier no-helper-layer product
+  constraint. Resource ABI and production ownership semantics remain Proposed.
+- Host-version decision (2026-09-20): the user explicitly accepts AE 26.5+
+  as the minimum for this new feature after AE 2025.6.6 refused StreamSuite7
+  and a preset exported by AE 26.5. Existing features keep their previous host
+  compatibility. The 8/16/32-bpc, 3D, mask, modifier and FFX requirements are
+  unchanged; this is not approval to reduce their scope.
 - Date: 2026-09-10
 - Owners: DynamicFX project
 - Issue: [#9](https://github.com/JUNKDOGE-JOE/dynamicfx/issues/9)
@@ -65,7 +80,17 @@ substitute for coverage. If geometry is used internally, its fill, stroke,
 mask, modifier and transform evaluation must meet the same visible-alpha
 contract. It does not introduce an exposed contour representation or any
 along-contour sampling guarantee.
-Annotation spelling, resource IDs, texture layout and persistence remain open.
+The resource contract is now fixed by [ADR-0050](0050-host-coverage-resource.md).
+This feasibility record does not by itself accept the production owner adapter,
+helper renderer or copy/FFX readiness protocol.
+
+The active acquisition candidate is the [native reader bridge](../audits/evidence/host-coverage-direct-source-20260920/README.md):
+original ONLY_MASKS -> disabled reader layer -> reader ALL_EFFECTS -> host
+effect Layer input. Configuration belongs on the main thread; frame acquisition
+uses declared PF/SmartFX dependencies. The tested original alpha returns with
+zero native-word differences at 8/16/32 bpc. No expression sampling or shape
+duplication is needed for those cases. Automatic lifecycle, arbitrary times,
+coordinate/host matrices and production persistence remain unaccepted.
 
 Resolve the data-source question before accepting those contracts:
 
@@ -222,3 +247,16 @@ Also verify coverage opt-in, unchanged undeclared shaders and sampled partial
 alpha against AE. No contour-only/both-resource or along-contour sampling
 acceptance is required. Earlier contour-specific fixture definitions remain
 archived separately and do not gate this coverage-only scope.
+
+## 2026-09-20 acquisition evidence and pending product boundary
+
+The [fidelity investigation](../audits/evidence/host-coverage-fidelity-20260920/README.md)
+records exact native-depth sampling and a lossless diagnostic float32 transport.
+The original 800x600 half-opacity case is correct but takes 91.529 s. The native
+mask API matches basic add/subtract cases but omits expansion. These results do
+not accept a production ABI. The managed mask's previous sampler is unchanged.
+
+A user question is pending on whether automatically managed reference
+layers/precomps may change the original no-helper-object requirement. No answer
+or approval is inferred. Original full-scope and fidelity-first requirements
+remain binding while that structural alternative is evaluated.

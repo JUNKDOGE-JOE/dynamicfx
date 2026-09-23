@@ -1,0 +1,3381 @@
+{
+  "passed": false,
+  "scopes": [
+    "setup",
+    "state",
+    "capture",
+    "sampleImage at requested resolution [1, 1]; this does not prove physical viewport downsampling",
+    "resources/none",
+    "resources-assign",
+    "resources/assigned",
+    "keyframes"
+  ],
+  "checks": [
+    {
+      "name": "resources-setup.json execution completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "all new instances default to GLSL",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "resources-state.json execution completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "exact 18 fixture states",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "DFX_010_glsl_uv language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_uv publication",
+      "passed": true,
+      "observed": 5394432871329449
+    },
+    {
+      "name": "DFX_010_glsl_multi language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_multi publication",
+      "passed": true,
+      "observed": 7942678604589549
+    },
+    {
+      "name": "DFX_010_glsl_hdr language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_hdr publication",
+      "passed": true,
+      "observed": 2733910970917609
+    },
+    {
+      "name": "DFX_010_glsl_gain language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_gain publication",
+      "passed": true,
+      "observed": 4356010305193217
+    },
+    {
+      "name": "DFX_010_glsl_temporal language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_temporal publication",
+      "passed": true,
+      "observed": 4491971869283849
+    },
+    {
+      "name": "DFX_010_glsl_invalid language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_invalid publication",
+      "passed": true,
+      "observed": 70
+    },
+    {
+      "name": "DFX_010_glsl_invalid exact diagnostic",
+      "passed": true,
+      "observed": 17
+    },
+    {
+      "name": "DFX_010_glsl_layer language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_layer publication",
+      "passed": true,
+      "observed": 7581894892887909
+    },
+    {
+      "name": "DFX_010_glsl_gradient language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_gradient publication",
+      "passed": true,
+      "observed": 8385036533599313
+    },
+    {
+      "name": "DFX_010_glsl_path language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_path publication",
+      "passed": true,
+      "observed": 7279622535650709
+    },
+    {
+      "name": "DFX_010_wgsl_uv language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_uv publication",
+      "passed": true,
+      "observed": 745269557618749
+    },
+    {
+      "name": "DFX_010_wgsl_multi language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_multi publication",
+      "passed": true,
+      "observed": 3269827265471353
+    },
+    {
+      "name": "DFX_010_wgsl_hdr language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_hdr publication",
+      "passed": true,
+      "observed": 2415714848280953
+    },
+    {
+      "name": "DFX_010_wgsl_gain language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_gain publication",
+      "passed": true,
+      "observed": 8917034658075649
+    },
+    {
+      "name": "DFX_010_wgsl_temporal language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_temporal publication",
+      "passed": true,
+      "observed": 6496573744943837
+    },
+    {
+      "name": "DFX_010_wgsl_invalid language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_invalid publication",
+      "passed": true,
+      "observed": 86
+    },
+    {
+      "name": "DFX_010_wgsl_invalid exact diagnostic",
+      "passed": true,
+      "observed": 21
+    },
+    {
+      "name": "DFX_010_wgsl_layer language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_layer publication",
+      "passed": true,
+      "observed": 7980509528982093
+    },
+    {
+      "name": "DFX_010_wgsl_gradient language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_gradient publication",
+      "passed": true,
+      "observed": 3361673050099813
+    },
+    {
+      "name": "DFX_010_wgsl_path language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_path publication",
+      "passed": true,
+      "observed": 261074076417621
+    },
+    {
+      "name": "resources-capture.json execution completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "exact 18 fixture states",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "DFX_010_glsl_uv language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_uv publication",
+      "passed": true,
+      "observed": 5394432871329449
+    },
+    {
+      "name": "DFX_010_glsl_multi language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_multi publication",
+      "passed": true,
+      "observed": 7942678604589549
+    },
+    {
+      "name": "DFX_010_glsl_hdr language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_hdr publication",
+      "passed": true,
+      "observed": 2733910970917609
+    },
+    {
+      "name": "DFX_010_glsl_gain language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_gain publication",
+      "passed": true,
+      "observed": 4356010305193217
+    },
+    {
+      "name": "DFX_010_glsl_temporal language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_temporal publication",
+      "passed": true,
+      "observed": 4491971869283849
+    },
+    {
+      "name": "DFX_010_glsl_invalid language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_invalid publication",
+      "passed": true,
+      "observed": 70
+    },
+    {
+      "name": "DFX_010_glsl_invalid exact diagnostic",
+      "passed": true,
+      "observed": 17
+    },
+    {
+      "name": "DFX_010_glsl_layer language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_layer publication",
+      "passed": true,
+      "observed": 7581894892887909
+    },
+    {
+      "name": "DFX_010_glsl_gradient language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_gradient publication",
+      "passed": true,
+      "observed": 8385036533599313
+    },
+    {
+      "name": "DFX_010_glsl_path language",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "name": "DFX_010_glsl_path publication",
+      "passed": true,
+      "observed": 7279622535650709
+    },
+    {
+      "name": "DFX_010_wgsl_uv language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_uv publication",
+      "passed": true,
+      "observed": 745269557618749
+    },
+    {
+      "name": "DFX_010_wgsl_multi language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_multi publication",
+      "passed": true,
+      "observed": 3269827265471353
+    },
+    {
+      "name": "DFX_010_wgsl_hdr language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_hdr publication",
+      "passed": true,
+      "observed": 2415714848280953
+    },
+    {
+      "name": "DFX_010_wgsl_gain language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_gain publication",
+      "passed": true,
+      "observed": 8917034658075649
+    },
+    {
+      "name": "DFX_010_wgsl_temporal language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_temporal publication",
+      "passed": true,
+      "observed": 6496573744943837
+    },
+    {
+      "name": "DFX_010_wgsl_invalid language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_invalid publication",
+      "passed": true,
+      "observed": 86
+    },
+    {
+      "name": "DFX_010_wgsl_invalid exact diagnostic",
+      "passed": true,
+      "observed": 21
+    },
+    {
+      "name": "DFX_010_wgsl_layer language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_layer publication",
+      "passed": true,
+      "observed": 7980509528982093
+    },
+    {
+      "name": "DFX_010_wgsl_gradient language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_gradient publication",
+      "passed": true,
+      "observed": 3361673050099813
+    },
+    {
+      "name": "DFX_010_wgsl_path language",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "DFX_010_wgsl_path publication",
+      "passed": true,
+      "observed": 261074076417621
+    },
+    {
+      "name": "all three depths",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "resolution setting recorded",
+      "passed": true,
+      "observed": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "8 uv three sample points",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "8 uv GLSL/WGSL point 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 uv glsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 uv wgsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 uv GLSL/WGSL point 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 uv glsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 uv wgsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 uv GLSL/WGSL point 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 uv glsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 uv wgsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 multi three sample points",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "8 multi GLSL/WGSL point 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 multi glsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 multi wgsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 multi GLSL/WGSL point 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 multi glsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 multi wgsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 multi GLSL/WGSL point 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 multi glsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 multi wgsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "8 hdr three sample points",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "8 hdr GLSL/WGSL point 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 hdr glsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 hdr wgsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 hdr GLSL/WGSL point 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 hdr glsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 hdr wgsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 hdr GLSL/WGSL point 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 hdr glsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 hdr wgsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12156863510609,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 glsl true multipass parity 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 glsl true multipass parity 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 glsl true multipass parity 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 wgsl true multipass parity 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.2549019753933,
+          0.25098040699959,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 wgsl true multipass parity 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.50196081399918,
+          0.50196081399918,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "8 wgsl true multipass parity 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "expected": [
+          0.75294125080109,
+          0.75294125080109,
+          0.6235294342041,
+          1
+        ],
+        "tolerance": 0.0039225686274509805
+      }
+    },
+    {
+      "name": "16 uv three sample points",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "16 uv GLSL/WGSL point 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 uv glsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 uv wgsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 uv GLSL/WGSL point 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 uv glsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 uv wgsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 uv GLSL/WGSL point 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 uv glsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 uv wgsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 multi three sample points",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "16 multi GLSL/WGSL point 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 multi glsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 multi wgsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 multi GLSL/WGSL point 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 multi glsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 multi wgsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 multi GLSL/WGSL point 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 multi glsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 multi wgsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "16 hdr three sample points",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "16 hdr GLSL/WGSL point 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 hdr glsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 hdr wgsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 hdr GLSL/WGSL point 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 hdr glsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 hdr wgsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 hdr GLSL/WGSL point 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 hdr glsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 hdr wgsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          1,
+          0,
+          0.12344360351562,
+          1
+        ],
+        "expected": [
+          1,
+          0,
+          0.123456,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 glsl true multipass parity 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 glsl true multipass parity 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 glsl true multipass parity 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 wgsl true multipass parity 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.25234985351562,
+          0.25106811523438,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 wgsl true multipass parity 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.50155639648438,
+          0.50210571289062,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "16 wgsl true multipass parity 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.75079345703125,
+          0.75314331054688,
+          0.625,
+          1
+        ],
+        "tolerance": 6.103515625e-05
+      }
+    },
+    {
+      "name": "32 uv three sample points",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "32 uv GLSL/WGSL point 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 uv glsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 uv wgsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 uv GLSL/WGSL point 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 uv glsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 uv wgsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 uv GLSL/WGSL point 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 uv glsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 uv wgsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 multi three sample points",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "32 multi GLSL/WGSL point 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 multi glsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 multi wgsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.2507788161993769,
+          0.2489539748953975,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 multi GLSL/WGSL point 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 multi glsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 multi wgsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.5,
+          0.5,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 multi GLSL/WGSL point 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 multi glsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 multi wgsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.7492211838006231,
+          0.7510460251046025,
+          0.625,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "32 hdr three sample points",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "32 hdr GLSL/WGSL point 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "expected": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 hdr glsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "expected": [
+          2,
+          -0.5,
+          0.123456,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 hdr wgsl analytic 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "expected": [
+          2,
+          -0.5,
+          0.123456,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 hdr GLSL/WGSL point 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "expected": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 hdr glsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "expected": [
+          2,
+          -0.5,
+          0.123456,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 hdr wgsl analytic 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "expected": [
+          2,
+          -0.5,
+          0.123456,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 hdr GLSL/WGSL point 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "expected": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 hdr glsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "expected": [
+          2,
+          -0.5,
+          0.123456,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 hdr wgsl analytic 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          2,
+          -0.5,
+          0.12345600128174,
+          1
+        ],
+        "expected": [
+          2,
+          -0.5,
+          0.123456,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 glsl true multipass parity 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 glsl true multipass parity 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 glsl true multipass parity 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 wgsl true multipass parity 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.25233644247055,
+          0.25104603171349,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 wgsl true multipass parity 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.50155758857727,
+          0.50209200382233,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "32 wgsl true multipass parity 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "expected": [
+          0.75077879428864,
+          0.75313806533813,
+          0.625,
+          1
+        ],
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "name": "glsl random temporal order",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl temporal 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.10000000149012,
+          0.10000000149012,
+          0.10000000149012,
+          1
+        ],
+        "expected": [
+          0.1,
+          0.1,
+          0.1,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "glsl temporal 0.12",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.40000000596046,
+          0.40000000596046,
+          0.40000000596046,
+          1
+        ],
+        "expected": [
+          0.4,
+          0.4,
+          0.4,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "glsl temporal 0.04",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.20000000298023,
+          0.20000000298023,
+          0.20000000298023,
+          1
+        ],
+        "expected": [
+          0.2,
+          0.2,
+          0.2,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "glsl temporal 0.8",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.40000000596046,
+          0.40000000596046,
+          0.40000000596046,
+          1
+        ],
+        "expected": [
+          0.4,
+          0.4,
+          0.4,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "glsl invalid passthrough",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.05000000074506,
+          0.40000000596046,
+          0.10000000149012,
+          1
+        ],
+        "expected": [
+          0.05,
+          0.4,
+          0.1,
+          1
+        ],
+        "tolerance": 0.006
+      }
+    },
+    {
+      "name": "wgsl random temporal order",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl temporal 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.10000000149012,
+          0.10000000149012,
+          0.10000000149012,
+          1
+        ],
+        "expected": [
+          0.1,
+          0.1,
+          0.1,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "wgsl temporal 0.12",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.40000000596046,
+          0.40000000596046,
+          0.40000000596046,
+          1
+        ],
+        "expected": [
+          0.4,
+          0.4,
+          0.4,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "wgsl temporal 0.04",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.20000000298023,
+          0.20000000298023,
+          0.20000000298023,
+          1
+        ],
+        "expected": [
+          0.2,
+          0.2,
+          0.2,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "wgsl temporal 0.8",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.40000000596046,
+          0.40000000596046,
+          0.40000000596046,
+          1
+        ],
+        "expected": [
+          0.4,
+          0.4,
+          0.4,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "wgsl invalid passthrough",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.05000000074506,
+          0.40000000596046,
+          0.10000000149012,
+          1
+        ],
+        "expected": [
+          0.05,
+          0.4,
+          0.1,
+          1
+        ],
+        "tolerance": 0.006
+      }
+    },
+    {
+      "name": "resources-none.json execution completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "resources measured at Full/32-bpc",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "resource phase identified",
+      "passed": true,
+      "observed": "none"
+    },
+    {
+      "name": "glsl layer none",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.7843137383461,
+          0.15686275064945,
+          0.15686275064945,
+          1
+        ],
+        "expected": [
+          0.7843137254901961,
+          0.1568627450980392,
+          0.1568627450980392,
+          1
+        ],
+        "tolerance": 0.006
+      }
+    },
+    {
+      "name": "glsl path none",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0,
+          0,
+          0.0625,
+          1
+        ],
+        "expected": [
+          0,
+          0,
+          0.0625,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "glsl selector phase",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl two gradient stops",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl gradient none 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25624847412109,
+          0.25624847412109,
+          0.25624847412109,
+          1
+        ],
+        "expected": [
+          0.253125,
+          0.253125,
+          0.253125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "glsl gradient none 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50624847412109,
+          0.50624847412109,
+          0.50624847412109,
+          1
+        ],
+        "expected": [
+          0.503125,
+          0.503125,
+          0.503125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "glsl gradient none 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75624847412109,
+          0.75624847412109,
+          0.75624847412109,
+          1
+        ],
+        "expected": [
+          0.753125,
+          0.753125,
+          0.753125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "wgsl layer none",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.7843137383461,
+          0.15686275064945,
+          0.15686275064945,
+          1
+        ],
+        "expected": [
+          0.7843137254901961,
+          0.1568627450980392,
+          0.1568627450980392,
+          1
+        ],
+        "tolerance": 0.006
+      }
+    },
+    {
+      "name": "wgsl path none",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0,
+          0,
+          0.0625,
+          1
+        ],
+        "expected": [
+          0,
+          0,
+          0.0625,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "wgsl selector phase",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl two gradient stops",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl gradient none 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25624847412109,
+          0.25624847412109,
+          0.25624847412109,
+          1
+        ],
+        "expected": [
+          0.253125,
+          0.253125,
+          0.253125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "wgsl gradient none 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50624847412109,
+          0.50624847412109,
+          0.50624847412109,
+          1
+        ],
+        "expected": [
+          0.503125,
+          0.503125,
+          0.503125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "wgsl gradient none 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75624847412109,
+          0.75624847412109,
+          0.75624847412109,
+          1
+        ],
+        "expected": [
+          0.753125,
+          0.753125,
+          0.753125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "layer language parity",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.7843137383461,
+          0.15686275064945,
+          0.15686275064945,
+          1
+        ],
+        "expected": [
+          0.7843137383461,
+          0.15686275064945,
+          0.15686275064945,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "path language parity",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0,
+          0,
+          0.0625,
+          1
+        ],
+        "expected": [
+          0,
+          0,
+          0.0625,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "gradient language parity 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25624847412109,
+          0.25624847412109,
+          0.25624847412109,
+          1
+        ],
+        "expected": [
+          0.25624847412109,
+          0.25624847412109,
+          0.25624847412109,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "gradient language parity 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.50624847412109,
+          0.50624847412109,
+          0.50624847412109,
+          1
+        ],
+        "expected": [
+          0.50624847412109,
+          0.50624847412109,
+          0.50624847412109,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "gradient language parity 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75624847412109,
+          0.75624847412109,
+          0.75624847412109,
+          1
+        ],
+        "expected": [
+          0.75624847412109,
+          0.75624847412109,
+          0.75624847412109,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "resources-assign.json execution completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "both resource assignments recorded",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "resources-assigned.json execution completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "resources measured at Full/32-bpc",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "resource phase identified",
+      "passed": true,
+      "observed": "assigned"
+    },
+    {
+      "name": "glsl layer assigned",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.07843136787415,
+          0.70588237047195,
+          0.86274510622025,
+          1
+        ],
+        "expected": [
+          0.0784313725490196,
+          0.7058823529411765,
+          0.8627450980392157,
+          1
+        ],
+        "tolerance": 0.006
+      }
+    },
+    {
+      "name": "glsl path assigned",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25,
+          0.25,
+          0.3125,
+          1
+        ],
+        "expected": [
+          0.25,
+          0.25,
+          0.3125,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "glsl selector phase",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl two gradient stops",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl gradient assigned 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.74375152587891,
+          0,
+          0.25624847412109,
+          1
+        ],
+        "expected": [
+          0.746875,
+          0,
+          0.253125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "glsl gradient assigned 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.49375152587891,
+          0,
+          0.50624847412109,
+          1
+        ],
+        "expected": [
+          0.49687499999999996,
+          0,
+          0.503125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "glsl gradient assigned 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.24375152587891,
+          0,
+          0.75624847412109,
+          1
+        ],
+        "expected": [
+          0.24687499999999996,
+          0,
+          0.753125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "wgsl layer assigned",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.07843136787415,
+          0.70588237047195,
+          0.86274510622025,
+          1
+        ],
+        "expected": [
+          0.0784313725490196,
+          0.7058823529411765,
+          0.8627450980392157,
+          1
+        ],
+        "tolerance": 0.006
+      }
+    },
+    {
+      "name": "wgsl path assigned",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25,
+          0.25,
+          0.3125,
+          1
+        ],
+        "expected": [
+          0.25,
+          0.25,
+          0.3125,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "wgsl selector phase",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl two gradient stops",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "wgsl gradient assigned 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.74375152587891,
+          0,
+          0.25624847412109,
+          1
+        ],
+        "expected": [
+          0.746875,
+          0,
+          0.253125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "wgsl gradient assigned 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.49375152587891,
+          0,
+          0.50624847412109,
+          1
+        ],
+        "expected": [
+          0.49687499999999996,
+          0,
+          0.503125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "wgsl gradient assigned 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.24375152587891,
+          0,
+          0.75624847412109,
+          1
+        ],
+        "expected": [
+          0.24687499999999996,
+          0,
+          0.753125,
+          1
+        ],
+        "tolerance": 0.008
+      }
+    },
+    {
+      "name": "layer language parity",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.07843136787415,
+          0.70588237047195,
+          0.86274510622025,
+          1
+        ],
+        "expected": [
+          0.07843136787415,
+          0.70588237047195,
+          0.86274510622025,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "path language parity",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25,
+          0.25,
+          0.3125,
+          1
+        ],
+        "expected": [
+          0.25,
+          0.25,
+          0.3125,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "gradient language parity 0",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.74375152587891,
+          0,
+          0.25624847412109,
+          1
+        ],
+        "expected": [
+          0.74375152587891,
+          0,
+          0.25624847412109,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "gradient language parity 1",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.49375152587891,
+          0,
+          0.50624847412109,
+          1
+        ],
+        "expected": [
+          0.49375152587891,
+          0,
+          0.50624847412109,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "gradient language parity 2",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.24375152587891,
+          0,
+          0.75624847412109,
+          1
+        ],
+        "expected": [
+          0.24375152587891,
+          0,
+          0.75624847412109,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "resources-keyframes.json execution completed",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "name": "glsl exactly two keyframes",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "glsl key stream values",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25,
+          0.75
+        ],
+        "expected": [
+          0.25,
+          0.75
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "glsl keyframe zero rendered",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25,
+          0,
+          0,
+          1
+        ],
+        "expected": [
+          0.25,
+          0,
+          0,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "glsl keyframe one rendered",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75,
+          0,
+          0,
+          1
+        ],
+        "expected": [
+          0.75,
+          0,
+          0,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "wgsl exactly two keyframes",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "name": "wgsl key stream values",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25,
+          0.75
+        ],
+        "expected": [
+          0.25,
+          0.75
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "wgsl keyframe zero rendered",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.25,
+          0,
+          0,
+          1
+        ],
+        "expected": [
+          0.25,
+          0,
+          0,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "wgsl keyframe one rendered",
+      "passed": true,
+      "observed": {
+        "actual": [
+          0.75,
+          0,
+          0,
+          1
+        ],
+        "expected": [
+          0.75,
+          0,
+          0,
+          1
+        ],
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "name": "resources-reopened-state.json readable complete record",
+      "passed": false,
+      "observed": "[Errno 2] No such file or directory: 'scripts\\\\out\\\\coverage-final-20260923\\\\resources-reopened-state.json'"
+    },
+    {
+      "name": "resources-reopened-assigned.json readable complete record",
+      "passed": false,
+      "observed": "[Errno 2] No such file or directory: 'scripts\\\\out\\\\coverage-final-20260923\\\\resources-reopened-assigned.json'"
+    },
+    {
+      "name": "resources-reopened-keys.json readable complete record",
+      "passed": false,
+      "observed": "[Errno 2] No such file or directory: 'scripts\\\\out\\\\coverage-final-20260923\\\\resources-reopened-keys.json'"
+    }
+  ],
+  "files": [
+    {
+      "file": "resources-setup.json",
+      "sha256": "abb58d9ad8aff40e52af7f86d9bd63a67460b62613252df54321659416f888bd"
+    },
+    {
+      "file": "resources-state.json",
+      "sha256": "156bfcb60719c25bda007870a66e38eeed4c55fddd52b19188b9e480d7c58786"
+    },
+    {
+      "file": "resources-capture.json",
+      "sha256": "b2afa203619795b4754afffc2d1a7602b460d0a6c76ba48bdddb45b6aef7e45d"
+    },
+    {
+      "file": "resources-none.json",
+      "sha256": "251c45f59344059a6011da10bad36c0d395f54765debd86a9ff4a65aded3e2af"
+    },
+    {
+      "file": "resources-assign.json",
+      "sha256": "4912f9a66166cfd418d36df9b81e1fe2190d635a0ca5d37f93fd24a2d52846ed"
+    },
+    {
+      "file": "resources-assigned.json",
+      "sha256": "b64f2f612b17f6126318d8f928bd503b88c0db813f118b141d7a3b81e01e83c2"
+    },
+    {
+      "file": "resources-keyframes.json",
+      "sha256": "6c974a9344c1fd211b323cb69ea9e79722c597cec9a4b05c3c3cc65ee49ebd79"
+    }
+  ],
+  "limits": "Only supplied records are checked. This does not certify installation, actual UI Undo/Redo, physical viewport geometry, other hosts, signing or publication."
+}

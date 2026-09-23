@@ -1,0 +1,48 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":false,\"error\":\"ExtendScript error: ReferenceError: 函数 app.project.itemBy232 未定义 (line 1)\\n[hint] that API does not exist on this object - verify with a read tool first instead of guessing method names\",\"disposition\":\"failed\",\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":null,\"pendingCalls\":0,\"sentinelInFlight\":false},\"errorLine\":1,\"touched\":{\"level\":\"none\",\"method\":\"snapshot-diff\",\"comp\":{\"id\":48,\"name\":\"HS_ordinary_input\"},\"activeCompChanged\":null,\"layersAdded\":[],\"layersRemoved\":[],\"layersChanged\":[],\"itemsAdded\":[],\"itemsRemoved\":[],\"truncated\":false,\"notes\":[]},\"revision\":{\"before\":2561,\"after\":2561},\"projectPath\":\"<workspace>\\\\scripts\\\\out\\\\regression-20260920\\\\host-shape-native.aep\",\"errorSource\":\"(function(){if(!app.project.file||app.project.file.parent.name!==\\\"regression-20260920\\\")throw Error(\\\"Wrong fixture\\\");var c=app.project.itemBy232(232),l=c.layer(1),m=l.property(\\\"ADBE Mask Parade\\\"),car=n\",\"recoveryId\":\"91moby\",\"scriptPath\":\"<user-home>\\\\.ae-mcp\\\\checkpoints\\\\host-shape-native_2e60e0e2dd3a\\\\recovery\\\\91moby.jsx\",\"checkpointId\":null,\"attempt\":1}"
+    }
+  ],
+  "structuredContent": {
+    "ok": false,
+    "error": "ExtendScript error: ReferenceError: 函数 app.project.itemBy232 未定义 (line 1)\n[hint] that API does not exist on this object - verify with a read tool first instead of guessing method names",
+    "disposition": "failed",
+    "jsxBridge": {
+      "state": "ok",
+      "degradedSinceMs": null,
+      "lastTimeoutAt": null,
+      "pendingCalls": 0,
+      "sentinelInFlight": false
+    },
+    "errorLine": 1,
+    "touched": {
+      "level": "none",
+      "method": "snapshot-diff",
+      "comp": {
+        "id": 48,
+        "name": "HS_ordinary_input"
+      },
+      "activeCompChanged": null,
+      "layersAdded": [],
+      "layersRemoved": [],
+      "layersChanged": [],
+      "itemsAdded": [],
+      "itemsRemoved": [],
+      "truncated": false,
+      "notes": []
+    },
+    "revision": {
+      "before": 2561,
+      "after": 2561
+    },
+    "projectPath": "<workspace>\\scripts\\out\\regression-20260920\\host-shape-native.aep",
+    "errorSource": "(function(){if(!app.project.file||app.project.file.parent.name!==\"regression-20260920\")throw Error(\"Wrong fixture\");var c=app.project.itemBy232(232),l=c.layer(1),m=l.property(\"ADBE Mask Parade\"),car=n",
+    "recoveryId": "<local-id>",
+    "scriptPath": "<user-home>\\.ae-mcp\\checkpoints\\host-shape-native_2e60e0e2dd3a\\recovery\\91moby.jsx",
+    "checkpointId": null,
+    "attempt": 1
+  },
+  "isError": true
+}

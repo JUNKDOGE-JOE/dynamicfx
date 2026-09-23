@@ -1,0 +1,8 @@
+[1790136558] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790136558] definition resolved from process registry
+[1790136558] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 50, top: 150, right: 300, bottom: 500 } upstream=Rect { left: 0, top: 0, right: 800, bottom: 600 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790136558] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790136558] layer 1: 800x600 stride 12800
+[1790136558] render enter: Some(F32) in=800x600 out=250x350 win=(50,150) token=97086776917201 compiled=true snap=true t=0 step=1024 lstep=1024 scale=25600
+[1790136558] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 250x350, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790136558] execute_plan ok

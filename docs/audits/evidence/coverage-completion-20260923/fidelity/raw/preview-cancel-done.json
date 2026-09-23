@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "rows": [
+    {
+      "cycle": 0,
+      "time": 0
+    },
+    {
+      "cycle": 1,
+      "time": 3.12
+    },
+    {
+      "cycle": 2,
+      "time": 6.28
+    },
+    {
+      "cycle": 3,
+      "time": 9.4
+    },
+    {
+      "cycle": 4,
+      "time": 12.52
+    },
+    {
+      "cycle": 5,
+      "time": 15.64
+    },
+    {
+      "cycle": 6,
+      "time": 18.8
+    },
+    {
+      "cycle": 7,
+      "time": 21.92
+    },
+    {
+      "cycle": 8,
+      "time": 25.04
+    }
+  ]
+}

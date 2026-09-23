@@ -69,6 +69,7 @@ pub unsafe extern "C" fn DynamicFxMain(
     output: *mut ae::sys::PF_LayerDef,
     extra: *mut std::ffi::c_void,
 ) -> ae::sys::PF_Err {
+    let _trace = unsafe { super::render_trace::Span::enter("main", cmd, in_data) };
     // Idle can reach an effect before SequenceResetup during BEE_LoadProject.
     // The upstream dispatcher casts sequence_data before any instance callback.
     if cmd == ae::sys::PF_Cmd_COMPLETELY_GENERAL as ae::sys::PF_Cmd

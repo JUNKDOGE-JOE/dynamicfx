@@ -1,0 +1,265 @@
+{
+  "ok": true,
+  "data": {
+    "mode": "state",
+    "version": "26.5x89",
+    "build": 89,
+    "project": "<workspace>\\scripts\\out\\coverage-final-20260923\\resources.aep",
+    "dirty": false,
+    "depth": 32,
+    "states": [
+      {
+        "name": "DFX_010_glsl_uv",
+        "token": 5394432871329449,
+        "status": "Status: idle",
+        "source": 378,
+        "language": 1,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_glsl_multi",
+        "token": 7942678604589549,
+        "status": "Status: idle",
+        "source": 1280,
+        "language": 1,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_glsl_hdr",
+        "token": 2733910970917609,
+        "status": "Status: idle",
+        "source": 385,
+        "language": 1,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_glsl_gain",
+        "token": 4356010305193217,
+        "status": "Status: idle",
+        "source": 443,
+        "language": 1,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_glsl_temporal",
+        "token": 4491971869283849,
+        "status": "Status: idle",
+        "source": 505,
+        "language": 1,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_glsl_invalid",
+        "token": 70,
+        "status": "Status: idle",
+        "source": 82,
+        "language": 1,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 17
+      },
+      {
+        "name": "DFX_010_glsl_layer",
+        "token": 7581894892887909,
+        "status": "Status: idle",
+        "source": 672,
+        "language": 1,
+        "width": 160,
+        "height": 120,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_glsl_gradient",
+        "token": 8385036533599313,
+        "status": "Status: idle",
+        "source": 596,
+        "language": 1,
+        "width": 160,
+        "height": 120,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_glsl_path",
+        "token": 7279622535650709,
+        "status": "Status: idle",
+        "source": 676,
+        "language": 1,
+        "width": 160,
+        "height": 120,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_wgsl_uv",
+        "token": 745269557618749,
+        "status": "Status: idle",
+        "source": 386,
+        "language": 2,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_wgsl_multi",
+        "token": 3269827265471353,
+        "status": "Status: idle",
+        "source": 1326,
+        "language": 2,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_wgsl_hdr",
+        "token": 2415714848280953,
+        "status": "Status: idle",
+        "source": 393,
+        "language": 2,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_wgsl_gain",
+        "token": 8917034658075649,
+        "status": "Status: idle",
+        "source": 453,
+        "language": 2,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_wgsl_temporal",
+        "token": 6496573744943837,
+        "status": "Status: idle",
+        "source": 517,
+        "language": 2,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_wgsl_invalid",
+        "token": 86,
+        "status": "Status: idle",
+        "source": 94,
+        "language": 2,
+        "width": 321,
+        "height": 239,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 21
+      },
+      {
+        "name": "DFX_010_wgsl_layer",
+        "token": 7980509528982093,
+        "status": "Status: idle",
+        "source": 672,
+        "language": 2,
+        "width": 160,
+        "height": 120,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_wgsl_gradient",
+        "token": 3361673050099813,
+        "status": "Status: idle",
+        "source": 610,
+        "language": 2,
+        "width": 160,
+        "height": 120,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      },
+      {
+        "name": "DFX_010_wgsl_path",
+        "token": 261074076417621,
+        "status": "Status: idle",
+        "source": 654,
+        "language": 2,
+        "width": 160,
+        "height": 120,
+        "resolution": [
+          1,
+          1
+        ],
+        "code": 0
+      }
+    ]
+  }
+}

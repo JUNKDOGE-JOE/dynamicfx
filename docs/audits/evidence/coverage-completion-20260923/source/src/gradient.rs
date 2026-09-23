@@ -1,0 +1,389 @@
+//! Gradient values and LUT baking (ADR-0031 §4/§5, ADR-0033).
+//!
+//! This module is pure value logic. It does **not** persist anything: since
+//! [ADR-0033] a gradient's stops are ordinary AE parameters, so After Effects
+//! owns saving, undo, copy/paste and keyframes. A `Gradient` here is just the
+//! snapshot assembled from those parameters for one frame, so it can be
+//! sampled and baked into the LUT the shader reads.
+//!
+//! A snapshot that violates the rules **fails closed** (`E54`) rather than
+//! being repaired by guesswork — per-stop keyframes make a non-monotone order
+//! representable, so the read has to check.
+//!
+//! [ADR-0033]: ../../docs/adr/0033-gradient-stops-are-ordinary-parameters.md
+
+/// ADR-0031 §3. Raising this is an append-compatible format change; lowering
+/// it is not.
+pub const MAX_STOPS: usize = 8;
+
+/// ADR-0031 §5: 256 samples is past visible banding for a ramp at 8-bpc and
+/// costs 4 KB at float precision.
+pub const LUT_WIDTH: usize = 256;
+
+/// Host-free ramp geometry. The frame bounds come from AE's live event frame,
+/// because the host may stretch a declared custom control to a wider column.
+#[derive(Debug, Clone, Copy, PartialEq)]
+#[cfg(any(feature = "editor", test))]
+pub struct RampGeometry {
+    left: f32,
+    right: f32,
+}
+
+#[cfg(any(feature = "editor", test))]
+impl RampGeometry {
+    pub fn new(left: f32, right: f32) -> Self {
+        Self { left, right: right.max(left) }
+    }
+
+    pub fn position_to_x(self, position: f32) -> f32 {
+        self.left + position.clamp(0.0, 1.0) * (self.right - self.left)
+    }
+
+    pub fn x_to_position(self, x: f32) -> f32 {
+        let width = self.right - self.left;
+        if width <= f32::EPSILON {
+            0.0
+        } else {
+            ((x - self.left) / width).clamp(0.0, 1.0)
+        }
+    }
+}
+
+#[cfg(any(feature = "editor", test))]
+pub fn nearest_stop(
+    x_px: f32,
+    geometry: RampGeometry,
+    positions: &[f32],
+    radius: f32,
+) -> Option<usize> {
+    let mut nearest = None;
+    for (index, position) in positions.iter().copied().enumerate() {
+        let distance = (geometry.position_to_x(position) - x_px).abs();
+        if distance <= radius
+            && nearest.is_none_or(|(_, nearest_distance)| distance < nearest_distance)
+        {
+            nearest = Some((index, distance));
+        }
+    }
+    nearest.map(|(index, _)| index)
+}
+
+#[cfg(any(feature = "editor", test))]
+pub fn clamp_position(target: f32, index: usize, positions: &[f32]) -> f32 {
+    let lower = if index == 0 {
+        0.0
+    } else {
+        positions.get(index - 1).copied().unwrap_or(0.0)
+    };
+    let upper = index
+        .checked_add(1)
+        .and_then(|next| positions.get(next))
+        .copied()
+        .unwrap_or(1.0);
+    target.max(lower).min(upper)
+}
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Stop {
+    pub position: f32,
+    /// Straight sRGB, `0..1` per channel — the same encoding `hint:color`
+    /// already delivers to shaders (ADR-0026), so the two agree.
+    pub rgba: [f32; 4],
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct Gradient {
+    pub stops: Vec<Stop>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum GradientError {
+    Empty,
+    TooManyStops(usize),
+    PositionOutOfRange,
+    NotSorted,
+}
+
+impl Default for Gradient {
+    /// A neutral black→white ramp. Chosen over a single-stop flat value so a
+    /// freshly added control reads as a *gradient* on sight.
+    fn default() -> Self {
+        Self {
+            stops: vec![
+                Stop { position: 0.0, rgba: [0.0, 0.0, 0.0, 1.0] },
+                Stop { position: 1.0, rgba: [1.0, 1.0, 1.0, 1.0] },
+            ],
+        }
+    }
+}
+
+impl Gradient {
+    /// Assemble one frame's snapshot from the live stop parameters
+    /// (ADR-0033 §1). `count` is the gradient's `Stops` value; `stops` supplies
+    /// every declared slot, live or not, so the caller need not slice.
+    pub fn from_parameters(count: usize, stops: &[Stop]) -> Self {
+        let live = count.min(stops.len());
+        Self { stops: stops[..live].to_vec() }
+    }
+
+    /// ADR-0033 §5 validation, re-scoped from a decoded blob to a live read:
+    /// per-stop keyframes make a non-monotone order representable, so the read
+    /// checks. Never repairs — a silently reordered ramp would render a
+    /// picture the user never authored.
+    pub fn validate(&self) -> Result<(), GradientError> {
+        if self.stops.is_empty() {
+            return Err(GradientError::Empty);
+        }
+        if self.stops.len() > MAX_STOPS {
+            return Err(GradientError::TooManyStops(self.stops.len()));
+        }
+        let mut previous = f32::NEG_INFINITY;
+        for stop in &self.stops {
+            if !stop.position.is_finite() || !(0.0..=1.0).contains(&stop.position) {
+                return Err(GradientError::PositionOutOfRange);
+            }
+            if stop.position < previous {
+                return Err(GradientError::NotSorted);
+            }
+            previous = stop.position;
+        }
+        Ok(())
+    }
+
+    /// Colour at `t`, linearly interpolated in straight sRGB (ADR-0031 §4).
+    /// Outside the first/last stop the nearest stop's colour is held — a ramp
+    /// whose stops do not reach the ends must not fade to transparent.
+    pub fn sample(&self, t: f32) -> [f32; 4] {
+        let Some(first) = self.stops.first() else { return [0.0; 4] };
+        let t = t.clamp(0.0, 1.0);
+        if t <= first.position {
+            return first.rgba;
+        }
+        let last = self.stops.last().expect("non-empty");
+        if t >= last.position {
+            return last.rgba;
+        }
+        for pair in self.stops.windows(2) {
+            let (a, b) = (pair[0], pair[1]);
+            if t >= a.position && t <= b.position {
+                let span = b.position - a.position;
+                // Coincident stops are a legal hard edge: take the later one.
+                if span <= f32::EPSILON {
+                    return b.rgba;
+                }
+                let k = (t - a.position) / span;
+                let mut out = [0.0f32; 4];
+                for c in 0..4 {
+                    out[c] = a.rgba[c] + (b.rgba[c] - a.rgba[c]) * k;
+                }
+                return out;
+            }
+        }
+        last.rgba
+    }
+
+    /// Bake the `LUT_WIDTH x 1` strip the shader samples. Texel centres, so
+    /// texel 0 is `t = 0.5/W` rather than 0 — sampling with `vec2(t, 0.5)`
+    /// and linear filtering then reproduces `sample()` across the whole ramp.
+    pub fn bake_lut(&self) -> Vec<[f32; 4]> {
+        (0..LUT_WIDTH)
+            .map(|i| self.sample((i as f32 + 0.5) / LUT_WIDTH as f32))
+            .collect()
+    }
+
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn stop(position: f32, v: f32) -> Stop {
+        Stop { position, rgba: [v, v, v, 1.0] }
+    }
+
+    #[test]
+    fn default_is_a_valid_black_to_white_ramp() {
+        let g = Gradient::default();
+        assert!(g.validate().is_ok());
+        assert_eq!(g.sample(0.0), [0.0, 0.0, 0.0, 1.0]);
+        assert_eq!(g.sample(1.0), [1.0, 1.0, 1.0, 1.0]);
+        assert!((g.sample(0.5)[0] - 0.5).abs() < 1e-6);
+    }
+
+    /// Every malformed shape is rejected, never repaired (ADR-0031 §3).
+    #[test]
+    fn malformed_values_fail_closed() {
+        assert_eq!(Gradient { stops: vec![] }.validate(), Err(GradientError::Empty));
+
+        let too_many = Gradient {
+            stops: (0..MAX_STOPS + 1)
+                .map(|i| stop(i as f32 / (MAX_STOPS as f32 + 1.0), 0.0))
+                .collect(),
+        };
+        assert_eq!(too_many.validate(), Err(GradientError::TooManyStops(MAX_STOPS + 1)));
+
+        let out_of_range = Gradient { stops: vec![stop(0.0, 0.0), stop(1.5, 1.0)] };
+        assert_eq!(out_of_range.validate(), Err(GradientError::PositionOutOfRange));
+
+        let nan = Gradient { stops: vec![stop(f32::NAN, 0.0)] };
+        assert_eq!(nan.validate(), Err(GradientError::PositionOutOfRange));
+
+        let unsorted = Gradient { stops: vec![stop(0.8, 0.0), stop(0.2, 1.0)] };
+        assert_eq!(unsorted.validate(), Err(GradientError::NotSorted));
+
+        // A maximum-length value is legal — the cap is inclusive.
+        let exactly_max = Gradient {
+            stops: (0..MAX_STOPS).map(|i| stop(i as f32 / (MAX_STOPS - 1) as f32, 0.0)).collect(),
+        };
+        assert!(exactly_max.validate().is_ok());
+    }
+
+    #[test]
+    fn stops_outside_the_ends_hold_rather_than_fade() {
+        let g = Gradient { stops: vec![stop(0.25, 0.2), stop(0.75, 0.8)] };
+        assert_eq!(g.sample(0.0), g.stops[0].rgba, "below the first stop holds");
+        assert_eq!(g.sample(1.0), g.stops[1].rgba, "above the last stop holds");
+    }
+
+    #[test]
+    fn coincident_stops_make_a_hard_edge() {
+        let g = Gradient { stops: vec![stop(0.0, 0.0), stop(0.5, 0.0), stop(0.5, 1.0)] };
+        assert_eq!(g.sample(0.49)[0], 0.0);
+        assert_eq!(g.sample(0.5)[0], 1.0);
+    }
+
+    /// ADR-0033 §1: the snapshot assembled from live parameters must produce
+    /// exactly the LUT the equivalent literal gradient does. Declared slots
+    /// past the live count are ignored, not blended in.
+    #[test]
+    fn parameter_snapshot_matches_the_literal_gradient() {
+        let declared = vec![
+            stop(0.0, 0.0),
+            stop(1.0, 1.0),
+            // Slots 3..8 exist in the topology but are not live; if the read
+            // ever included them the ramp would fold back on itself.
+            stop(0.4, 0.9),
+            stop(0.2, 0.1),
+        ];
+        let from_params = Gradient::from_parameters(2, &declared);
+        let literal = Gradient { stops: vec![stop(0.0, 0.0), stop(1.0, 1.0)] };
+        assert_eq!(from_params, literal);
+        assert_eq!(from_params.bake_lut(), literal.bake_lut());
+        assert!(from_params.validate().is_ok());
+    }
+
+    /// A count beyond what the caller supplied must clamp rather than panic —
+    /// the count is a keyframeable parameter and can outrun reality.
+    #[test]
+    fn snapshot_clamps_a_count_past_the_declared_slots() {
+        let declared = vec![stop(0.0, 0.0), stop(1.0, 1.0)];
+        let g = Gradient::from_parameters(99, &declared);
+        assert_eq!(g.stops.len(), 2);
+        assert!(g.validate().is_ok());
+    }
+
+    /// Per-stop keyframes make a non-monotone order representable, so the read
+    /// has to reject it (ADR-0033 §5) rather than silently render a ramp the
+    /// user never authored.
+    #[test]
+    fn animated_stops_out_of_order_are_rejected_not_repaired() {
+        let declared = vec![stop(0.8, 0.0), stop(0.2, 1.0)];
+        let g = Gradient::from_parameters(2, &declared);
+        assert_eq!(g.validate(), Err(GradientError::NotSorted));
+        // And the value is untouched — no quiet sort behind the user's back.
+        assert_eq!(g.stops[0].position, 0.8);
+    }
+
+    #[test]
+    fn lut_uses_texel_centres_and_covers_the_ramp() {
+        let lut = Gradient::default().bake_lut();
+        assert_eq!(lut.len(), LUT_WIDTH);
+        // Monotone black -> white, endpoints near but not exactly 0/1 because
+        // the samples sit at texel centres.
+        assert!(lut[0][0] > 0.0 && lut[0][0] < 0.01);
+        assert!(lut[LUT_WIDTH - 1][0] > 0.99 && lut[LUT_WIDTH - 1][0] < 1.0);
+        for pair in lut.windows(2) {
+            assert!(pair[1][0] >= pair[0][0], "ramp must not go backwards");
+        }
+    }
+
+    #[test]
+    fn ramp_geometry_maps_both_edges_and_clamps_outside() {
+        let geometry = RampGeometry::new(12.0, 212.0);
+        assert_eq!(geometry.position_to_x(0.0), 12.0);
+        assert_eq!(geometry.position_to_x(1.0), 212.0);
+        assert_eq!(geometry.position_to_x(-1.0), 12.0);
+        assert_eq!(geometry.position_to_x(2.0), 212.0);
+        assert_eq!(geometry.x_to_position(12.0), 0.0);
+        assert_eq!(geometry.x_to_position(212.0), 1.0);
+    }
+
+    #[test]
+    fn ramp_geometry_uses_the_stretched_frame_and_round_trips() {
+        let geometry = RampGeometry::new(0.0, 280.0);
+        assert_eq!(geometry.position_to_x(0.5), 140.0);
+        assert_ne!(
+            geometry.position_to_x(0.5),
+            100.0,
+            "declared 200px is not draw geometry"
+        );
+        for position in [0.0, 0.125, 0.5, 0.875, 1.0] {
+            let round_trip = geometry.x_to_position(geometry.position_to_x(position));
+            assert!((round_trip - position).abs() < 1e-6);
+        }
+    }
+
+    #[test]
+    fn zero_width_ramp_geometry_is_stable() {
+        let geometry = RampGeometry::new(5.0, 5.0);
+        assert_eq!(geometry.position_to_x(0.75), 5.0);
+        assert_eq!(geometry.x_to_position(99.0), 0.0);
+    }
+
+    #[test]
+    fn nearest_stop_hits_first_and_last_at_the_radius_boundary() {
+        let geometry = RampGeometry::new(10.0, 110.0);
+        let positions = [0.0, 0.5, 1.0];
+        assert_eq!(nearest_stop(4.0, geometry, &positions, 6.0), Some(0));
+        assert_eq!(nearest_stop(116.0, geometry, &positions, 6.0), Some(2));
+        assert_eq!(nearest_stop(17.0, geometry, &positions, 6.0), None);
+    }
+
+    #[test]
+    fn nearest_stop_chooses_the_closest_tick() {
+        let geometry = RampGeometry::new(0.0, 100.0);
+        let positions = [0.25, 0.5, 0.75];
+        assert_eq!(nearest_stop(46.0, geometry, &positions, 30.0), Some(1));
+    }
+
+    #[test]
+    fn nearest_stop_tie_chooses_the_lower_index() {
+        let geometry = RampGeometry::new(0.0, 100.0);
+        let positions = [0.25, 0.75];
+        assert_eq!(nearest_stop(50.0, geometry, &positions, 30.0), Some(0));
+    }
+
+    #[test]
+    fn clamp_position_bounds_an_interior_stop_by_both_neighbors() {
+        let positions = [0.1, 0.4, 0.8];
+        assert_eq!(clamp_position(0.0, 1, &positions), 0.1);
+        assert_eq!(clamp_position(0.6, 1, &positions), 0.6);
+        assert_eq!(clamp_position(1.0, 1, &positions), 0.8);
+    }
+
+    #[test]
+    fn clamp_position_uses_ramp_edges_for_first_and_last_stops() {
+        let positions = [0.2, 0.6, 0.9];
+        assert_eq!(clamp_position(-1.0, 0, &positions), 0.0);
+        assert_eq!(clamp_position(0.9, 0, &positions), 0.6);
+        assert_eq!(clamp_position(0.0, 2, &positions), 0.6);
+        assert_eq!(clamp_position(2.0, 2, &positions), 1.0);
+    }
+
+    #[test]
+    fn clamp_position_allows_equal_neighbors() {
+        let positions = [0.4, 0.4, 0.4];
+        assert_eq!(clamp_position(0.0, 1, &positions), 0.4);
+        assert_eq!(clamp_position(1.0, 1, &positions), 0.4);
+    }
+}

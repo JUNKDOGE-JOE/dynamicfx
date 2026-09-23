@@ -1,0 +1,1 @@
+{"content": [{"type": "text", "text": "{\"ok\":true,\"content\":\"{\\\"enabled\\\":true}\",\"contentType\":\"text\",\"artifactId\":\"user:REDACTED_ARTIFACT_ID\"}"}], "structuredContent": {"ok": true, "content": "{\"enabled\":true}", "contentType": "text", "artifactId": "user:REDACTED_ARTIFACT_ID"}}

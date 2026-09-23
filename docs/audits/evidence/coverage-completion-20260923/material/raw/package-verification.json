@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "members": 399,
+  "zip_sha256": "8927c0f35dbc50a8ba18798eb6292a8316efaf3a48ae511ff69e1acb1e3e27a8",
+  "required_members": [
+    "DynamicFx.aex",
+    "DynamicFxCoverageReader.aex",
+    "LiquidGlass/liquid-glass.glsl",
+    "LiquidGlass/liquid-glass.ffx",
+    "LiquidGlass/apply-liquid-glass.jsx",
+    "LiquidGlass/README.txt",
+    "READER_THIRD_PARTY/manifest.json",
+    "THIRD_PARTY/manifest.json"
+  ],
+  "binaries_match_installed": true,
+  "sample_bytes_match_source": true,
+  "sdk_aep_psd_pdb_excluded": true
+}

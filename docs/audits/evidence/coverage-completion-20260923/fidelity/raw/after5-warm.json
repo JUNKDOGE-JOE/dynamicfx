@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.fsName.replace(/\\\\/g,\"/\")!==\"<workspace>/scripts/out/coverage-final-20260923/after5.aep\")throw Error(\"Unexpected project\");app.project.bitsPerChannel=32;app.purge(PurgeTarget.ALL_CACHES);app.project.itemByID(30).saveFrameToPng(0,new File(\"<workspace>/scripts/out/coverage-final-20260923/after5-warm.png\"));return \"warm\";})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"warm\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "warm",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

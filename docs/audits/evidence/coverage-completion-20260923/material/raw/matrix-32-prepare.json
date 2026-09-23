@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||!(decodeURI(app.project.file.name)===\"Liquid Glass.aep\"||/^matrix-/.test(app.project.file.name)))throw Error(\"Unexpected project\");var c=app.project.itemByID(1);while(app.project.renderQueue.numItems)app.project.renderQueue.item(1).remove();app.project.bitsPerChannel=32;var rows=[];var q=app.project.renderQueue.items.add(c);q.setSettings({\"Resolution\":\"Full\",\"Quality\":\"Best\",\"Color Depth\":\"Current Settings\"});q.timeSpanStart=0;q.timeSpanDuration=1/25;q.outputModule(1).applyTemplate(\"Photoshop\");q.outputModule(1).file=new File(\"<workspace>/scripts/out/liquid-glass-20260923/ae-32-1-0_[#####].psd\");rows.push({resolution:1,time:0});var q=app.project.renderQueue.items.add(c);q.setSettings({\"Resolution\":\"Full\",\"Quality\":\"Best\",\"Color Depth\":\"Current Settings\"});q.timeSpanStart=3;q.timeSpanDuration=1/25;q.outputModule(1).applyTemplate(\"Photoshop\");q.outputModule(1).file=new File(\"<workspace>/scripts/out/liquid-glass-20260923/ae-32-1-3_[#####].psd\");rows.push({resolution:1,time:3});var q=app.project.renderQueue.items.add(c);q.setSettings({\"Resolution\":\"Half\",\"Quality\":\"Best\",\"Color Depth\":\"Current Settings\"});q.timeSpanStart=0;q.timeSpanDuration=1/25;q.outputModule(1).applyTemplate(\"Photoshop\");q.outputModule(1).file=new File(\"<workspace>/scripts/out/liquid-glass-20260923/ae-32-2-0_[#####].psd\");rows.push({resolution:2,time:0});var q=app.project.renderQueue.items.add(c);q.setSettings({\"Resolution\":\"Half\",\"Quality\":\"Best\",\"Color Depth\":\"Current Settings\"});q.timeSpanStart=3;q.timeSpanDuration=1/25;q.outputModule(1).applyTemplate(\"Photoshop\");q.outputModule(1).file=new File(\"<workspace>/scripts/out/liquid-glass-20260923/ae-32-2-3_[#####].psd\");rows.push({resolution:2,time:3});var q=app.project.renderQueue.items.add(c);q.setSettings({\"Resolution\":\"Quarter\",\"Quality\":\"Best\",\"Color Depth\":\"Current Settings\"});q.timeSpanStart=0;q.timeSpanDuration=1/25;q.outputModule(1).applyTemplate(\"Photoshop\");q.outputModule(1).file=new File(\"<workspace>/scripts/out/liquid-glass-20260923/ae-32-4-0_[#####].psd\");rows.push({resolution:4,time:0});var q=app.project.renderQueue.items.add(c);q.setSettings({\"Resolution\":\"Quarter\",\"Quality\":\"Best\",\"Color Depth\":\"Current Settings\"});q.timeSpanStart=3;q.timeSpanDuration=1/25;q.outputModule(1).applyTemplate(\"Photoshop\");q.outputModule(1).file=new File(\"<workspace>/scripts/out/liquid-glass-20260923/ae-32-4-3_[#####].psd\");rows.push({resolution:4,time:3});app.project.save(new File(\"<workspace>/scripts/out/liquid-glass-20260923/matrix-32.aep\"));return JSON.stringify(rows);})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"[{\\\"resolution\\\":1,\\\"time\\\":0},{\\\"resolution\\\":1,\\\"time\\\":3},{\\\"resolution\\\":2,\\\"time\\\":0},{\\\"resolution\\\":2,\\\"time\\\":3},{\\\"resolution\\\":4,\\\"time\\\":0},{\\\"resolution\\\":4,\\\"time\\\":3}]\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "[{\"resolution\":1,\"time\":0},{\"resolution\":1,\"time\":3},{\"resolution\":2,\"time\":0},{\"resolution\":2,\"time\":3},{\"resolution\":4,\"time\":0},{\"resolution\":4,\"time\":3}]",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

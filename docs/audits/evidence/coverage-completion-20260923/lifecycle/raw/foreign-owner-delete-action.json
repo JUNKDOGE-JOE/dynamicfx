@@ -1,0 +1,54 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||app.project.file.name!==\"lifecycle.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),o=null,r=null;for(var i=1;i<=c.numLayers;i++){var l=c.layer(i),f=l.property(\"ADBE Effect Parade\");if(l.id===13)o=l;if(f.numProperties&&f.property(1).matchName===\"DynamicFx Coverage Reader\")r=l;}app.beginUndoGroup(\"Delete regression owner\");o.remove();app.endUndoGroup();return JSON.stringify({owner:o?o.id:null,reader:r?r.id:null,state:o?o.property(\"ADBE Effect Parade\").property(1).property(427).value:null,layers:c.numLayers,items:app.project.numItems});})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":false,\"error\":\"ExtendScript error: ReferenceError: 对象无效 (line 1)\\n[hint] the referenced AE object was deleted or its collection index shifted; re-acquire comps, layers, and properties by name right before use instead of holding references across edits.\",\"disposition\":\"failed\",\"jsxBridge\":{\"state\":\"ok\",\"degradedSinceMs\":null,\"lastTimeoutAt\":null,\"pendingCalls\":0,\"sentinelInFlight\":false},\"errorLine\":1,\"touched\":{\"level\":\"none\",\"method\":\"snapshot-diff\",\"comp\":{\"id\":30,\"name\":\"COV_adjustment_pixels\"},\"activeCompChanged\":null,\"layersAdded\":[],\"layersRemoved\":[],\"layersChanged\":[],\"itemsAdded\":[],\"itemsRemoved\":[],\"truncated\":false,\"notes\":[]},\"revision\":{\"before\":1062,\"after\":1069},\"projectPath\":\"<workspace>\\\\scripts\\\\out\\\\coverage-lifecycle-20260923\\\\lifecycle.aep\",\"errorSource\":\"(function(){if(!app.project.file||app.project.file.name!==\\\"lifecycle.aep\\\")throw Error(\\\"Unexpected project\\\");var c=app.project.itemByID(1),o=null,r=null;for(var i=1;i<=c.numLayers;i++){var l=c.layer(i)\",\"recoveryId\":\"m6uyqn\",\"scriptPath\":\"<user-home>\\\\.ae-mcp\\\\checkpoints\\\\lifecycle_6a3a465bce4b\\\\recovery\\\\m6uyqn.jsx\",\"checkpointId\":null,\"attempt\":1}"
+      }
+    ],
+    "structuredContent": {
+      "ok": false,
+      "error": "ExtendScript error: ReferenceError: 对象无效 (line 1)\n[hint] the referenced AE object was deleted or its collection index shifted; re-acquire comps, layers, and properties by name right before use instead of holding references across edits.",
+      "disposition": "failed",
+      "jsxBridge": {
+        "state": "ok",
+        "degradedSinceMs": null,
+        "lastTimeoutAt": null,
+        "pendingCalls": 0,
+        "sentinelInFlight": false
+      },
+      "errorLine": 1,
+      "touched": {
+        "level": "none",
+        "method": "snapshot-diff",
+        "comp": {
+          "id": 30,
+          "name": "COV_adjustment_pixels"
+        },
+        "activeCompChanged": null,
+        "layersAdded": [],
+        "layersRemoved": [],
+        "layersChanged": [],
+        "itemsAdded": [],
+        "itemsRemoved": [],
+        "truncated": false,
+        "notes": []
+      },
+      "revision": {
+        "before": 1062,
+        "after": 1069
+      },
+      "projectPath": "<workspace>\\scripts\\out\\coverage-lifecycle-20260923\\lifecycle.aep",
+      "errorSource": "(function(){if(!app.project.file||app.project.file.name!==\"lifecycle.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),o=null,r=null;for(var i=1;i<=c.numLayers;i++){var l=c.layer(i)",
+      "recoveryId": "<local-id>",
+      "scriptPath": "<user-home>\\.ae-mcp\\checkpoints\\lifecycle_6a3a465bce4b\\recovery\\m6uyqn.jsx",
+      "checkpointId": null,
+      "attempt": 1
+    },
+    "isError": true
+  }
+}

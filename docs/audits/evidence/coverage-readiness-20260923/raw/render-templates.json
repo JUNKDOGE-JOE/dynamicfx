@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"ok\":true,\"content\":\"{\\\"templates\\\":[\\\"多机序列\\\",\\\"带有 Alpha 的 TIFF 序列 \\\",\\\"AIFF 48kHz\\\",\\\"Codex_ProRes4444_Alpha_Full\\\",\\\"Codex_ProRes4444_Alpha_Source\\\",\\\"H.264 - 匹配渲染设置 - 15 Mbps\\\",\\\"H.264 - 匹配渲染设置 - 40 Mbps\\\",\\\"H.264 - 匹配渲染设置 - 5 Mbps\\\",\\\"Photoshop\\\",\\\"具有 Alpha 的高品质\\\",\\\"使用 Alpha 无损耗\\\",\\\"仅 Alpha\\\",\\\"无损\\\",\\\"高品质\\\",\\\"_HIDDEN X-Factor 16\\\",\\\"_HIDDEN X-Factor 16 Premul\\\",\\\"_HIDDEN X-Factor 32\\\",\\\"_HIDDEN X-Factor 32 Premul\\\",\\\"_HIDDEN X-Factor 8\\\",\\\"_HIDDEN X-Factor 8 Premul\\\"]}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+    }
+  ],
+  "structuredContent": {
+    "ok": true,
+    "content": "{\"templates\":[\"多机序列\",\"带有 Alpha 的 TIFF 序列 \",\"AIFF 48kHz\",\"Codex_ProRes4444_Alpha_Full\",\"Codex_ProRes4444_Alpha_Source\",\"H.264 - 匹配渲染设置 - 15 Mbps\",\"H.264 - 匹配渲染设置 - 40 Mbps\",\"H.264 - 匹配渲染设置 - 5 Mbps\",\"Photoshop\",\"具有 Alpha 的高品质\",\"使用 Alpha 无损耗\",\"仅 Alpha\",\"无损\",\"高品质\",\"_HIDDEN X-Factor 16\",\"_HIDDEN X-Factor 16 Premul\",\"_HIDDEN X-Factor 32\",\"_HIDDEN X-Factor 32 Premul\",\"_HIDDEN X-Factor 8\",\"_HIDDEN X-Factor 8 Premul\"]}",
+    "contentType": "text",
+    "artifactId": "<local-id>"
+  }
+}

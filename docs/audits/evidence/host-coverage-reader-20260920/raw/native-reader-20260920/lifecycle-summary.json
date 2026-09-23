@@ -1,0 +1,42 @@
+[
+  {
+    "case": "automatic creation",
+    "status": "PASS"
+  },
+  {
+    "case": "automatic reader native float32 alpha",
+    "status": "PASS"
+  },
+  {
+    "case": "two effects share one reader",
+    "status": "PASS"
+  },
+  {
+    "case": "first owner release",
+    "status": "PASS"
+  },
+  {
+    "case": "last owner cleanup including source",
+    "status": "PASS"
+  },
+  {
+    "case": "cleanup Undo remains restored",
+    "status": "PASS"
+  },
+  {
+    "case": "cleanup Redo",
+    "status": "PASS"
+  },
+  {
+    "case": "explicit reenable",
+    "status": "PASS"
+  },
+  {
+    "case": "duplicate layer independent binding",
+    "status": "PASS"
+  },
+  {
+    "case": "renaming keeps ownership",
+    "status": "PASS"
+  }
+]

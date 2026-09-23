@@ -1,0 +1,3 @@
+[1790149609] definition resolved from process registry
+[1790149609] layer 1: 800x600 stride 12800
+[1790149609] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 400x350, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")

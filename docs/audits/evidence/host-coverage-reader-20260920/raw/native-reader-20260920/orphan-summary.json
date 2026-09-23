@@ -1,0 +1,83 @@
+[
+  {
+    "case": "orphan-delete-owner",
+    "status": "PASS",
+    "observed": {
+      "layers": 3,
+      "items": 87,
+      "rows": [
+        {
+          "id": 930,
+          "role": 1,
+          "source": 928
+        },
+        {
+          "id": 928,
+          "role": 0,
+          "source": 928
+        }
+      ]
+    },
+    "expected_layers": 3,
+    "expected_items": 87
+  },
+  {
+    "case": "orphan-undo-cleanup",
+    "status": "PASS",
+    "observed": {
+      "layers": 4,
+      "items": 88,
+      "rows": [
+        {
+          "id": 930,
+          "role": 1,
+          "source": 928
+        },
+        {
+          "id": 927,
+          "role": 1,
+          "source": 927
+        },
+        {
+          "id": 928,
+          "role": 0,
+          "source": 928
+        }
+      ]
+    },
+    "expected_layers": 4,
+    "expected_items": 88
+  },
+  {
+    "case": "orphan-undo-owner",
+    "status": "PASS",
+    "observed": {
+      "layers": 5,
+      "items": 88,
+      "rows": [
+        {
+          "id": 930,
+          "role": 1,
+          "source": 928
+        },
+        {
+          "id": 927,
+          "role": 1,
+          "source": 913
+        },
+        {
+          "id": 928,
+          "role": 0,
+          "source": 913
+        },
+        {
+          "id": 913,
+          "role": 0,
+          "source": 913
+        }
+      ]
+    },
+    "expected_layers": 5,
+    "expected_items": 88
+  }
+]

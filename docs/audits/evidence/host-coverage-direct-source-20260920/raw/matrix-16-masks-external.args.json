@@ -1,0 +1,4 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!==\"source-matrix.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(880);c.layer(1).property(\"ADBE Effect Parade\").property(1).property(2).setValue(21);app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(0,new File(\"<checkout>/scripts/out/direct-source-20260920/matrix-16-masks-external.png\"));return \"rendered\";})()",
+  "timeout_sec": 30
+}

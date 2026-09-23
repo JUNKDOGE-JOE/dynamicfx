@@ -1,0 +1,4 @@
+{
+  "code": "(function(){if(!app.project.file||app.project.file.name!==\"source-matrix.aep\")throw Error(\"Unexpected project\");app.project.bitsPerChannel=16;var c=app.project.itemByID(866),e=app.project.itemByID(880).layer(1).property(\"ADBE Effect Parade\").property(1);c.layer(1).property(\"ADBE Mask Parade\").property(1).maskMode=MaskMode.SUBTRACT;e.property(2).setValue(14);e.property(5).setValue(e.property(5).value+1);return e.property(5).value;})()",
+  "timeout_sec": 30
+}

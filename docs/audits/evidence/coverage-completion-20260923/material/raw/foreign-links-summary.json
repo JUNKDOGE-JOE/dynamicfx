@@ -1,0 +1,42 @@
+[
+  {
+    "case": "parent reference preserves helper",
+    "state": {
+      "reader": 66,
+      "state": 0,
+      "parent": 66,
+      "matte": null
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "matte reference preserves helper",
+    "state": {
+      "reader": 66,
+      "state": 0,
+      "parent": null,
+      "matte": 66
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "modified helper with matte rejected",
+    "state": {
+      "reader": 66,
+      "state": 3,
+      "parent": null,
+      "matte": null
+    },
+    "status": "PASS"
+  },
+  {
+    "case": "unreferenced helper removed",
+    "state": {
+      "reader": null,
+      "state": 0,
+      "parent": null,
+      "matte": null
+    },
+    "status": "PASS"
+  }
+]

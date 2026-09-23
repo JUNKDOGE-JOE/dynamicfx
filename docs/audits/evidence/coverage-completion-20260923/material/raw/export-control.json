@@ -1,0 +1,17 @@
+{
+  "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Liquid Glass.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1),layers=[];for(var i=1;i<=c.numLayers;i++)if(c.layer(i) instanceof ShapeLayer){layers.push(c.layer(i));c.layer(i).enabled=false;}try{app.purge(PurgeTarget.ALL_CACHES);c.saveFrameToPng(0,new File(\"<workspace>/scripts/out/liquid-glass-20260923/ae-background-32-png.png\"));}finally{for(var i=0;i<layers.length;i++)layers[i].enabled=true;}if(app.project.renderQueue.numItems)throw Error(\"Unexpected queue\");var q=app.project.renderQueue.items.add(c);q.timeSpanStart=0;q.timeSpanDuration=1/25;q.outputModule(1).applyTemplate(\"Photoshop\");q.outputModule(1).file=new File(\"<workspace>/scripts/out/liquid-glass-20260923/ae-hero-queue.psd\");app.project.save();return JSON.stringify({queue:1,file:app.project.file.fsName});})()",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"queue\\\":1,\\\"file\\\":\\\"<workspace>\\\\scripts\\\\out\\\\liquid-glass-20260923\\\\Liquid Glass.aep\\\"}\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"queue\":1,\"file\":\"<workspace>\\scripts\\out\\liquid-glass-20260923\\Liquid Glass.aep\"}",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}

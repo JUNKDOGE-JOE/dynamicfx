@@ -1,0 +1,110 @@
+t: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790143880] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790143880] layer 1: 800x600 stride 3200
+[1790143880] render enter: Some(U8) in=384x466 out=800x600 win=(0,0) token=97086776917201 compiled=true snap=true t=12800 step=1024 lstep=1024 scale=25600
+[1790143880] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 384x466, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790143880] execute_plan ok
+[1790143881] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143881] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 99, top: -1, right: 701, bottom: 601 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: -1, right: 800, bottom: 601 }
+[1790143881] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143881] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 126, top: 70, right: 510, bottom: 536 } upstream=Rect { left: 99, top: -1, right: 701, bottom: 601 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: -1, right: 800, bottom: 601 }
+[1790143881] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790143881] layer 1: 800x600 stride 3200
+[1790143881] render enter: Some(U8) in=602x602 out=384x466 win=(126,70) token=97086776917201 compiled=true snap=true t=12800 step=1024 lstep=1024 scale=25600
+[1790143881] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 384x466, Rgba8Unorm working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790143881] execute_plan ok
+[1790143883] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143883] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 126, top: 70, right: 510, bottom: 536 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790143883] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143883] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 126, top: 70, right: 510, bottom: 536 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790143883] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143883] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 126, top: 70, right: 510, bottom: 536 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790143883] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790143883] layer 1: 800x600 stride 6400
+[1790143883] render enter: Some(U15) in=384x466 out=800x600 win=(0,0) token=97086776917201 compiled=true snap=true t=12800 step=1024 lstep=1024 scale=25600
+[1790143883] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 384x466, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790143883] execute_plan ok
+[1790143884] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143884] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 99, top: -1, right: 701, bottom: 601 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: -1, right: 800, bottom: 601 }
+[1790143884] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143884] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 126, top: 70, right: 510, bottom: 536 } upstream=Rect { left: 99, top: -1, right: 701, bottom: 601 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: -1, right: 800, bottom: 601 }
+[1790143884] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790143884] layer 1: 800x600 stride 6400
+[1790143884] render enter: Some(U15) in=602x602 out=384x466 win=(126,70) token=97086776917201 compiled=true snap=true t=12800 step=1024 lstep=1024 scale=25600
+[1790143884] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 384x466, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790143884] execute_plan ok
+[1790143886] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143886] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 126, top: 70, right: 510, bottom: 536 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790143886] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143886] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 126, top: 70, right: 510, bottom: 536 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790143886] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143886] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 126, top: 70, right: 510, bottom: 536 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: 0, right: 800, bottom: 600 }
+[1790143886] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790143886] layer 1: 800x600 stride 12800
+[1790143886] render enter: Some(F32) in=384x466 out=800x600 win=(0,0) token=97086776917201 compiled=true snap=true t=12800 step=1024 lstep=1024 scale=25600
+[1790143886] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 384x466, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790143886] execute_plan ok
+[1790143887] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143887] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: 99, top: -1, right: 701, bottom: 601 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: -1, right: 800, bottom: 601 }
+[1790143887] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790143887] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 126, top: 70, right: 510, bottom: 536 } upstream=Rect { left: 99, top: -1, right: 701, bottom: 601 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: 0, top: -1, right: 800, bottom: 601 }
+[1790143887] smart cmd (render=true): seq_raw_null=true const_seq_ok=true
+[1790143887] layer 1: 800x600 stride 12800
+[1790143887] render enter: Some(F32) in=602x602 out=384x466 win=(126,70) token=97086776917201 compiled=true snap=true t=12800 step=1024 lstep=1024 scale=25600
+[1790143887] pipelines built: 1 pass(es), plan 1 step(s), 0 physical intermediate(s) (~0 KiB transient at 384x466, Rgba32Float working format) (adapter="NVIDIA GeForce RTX 5080" backend=Dx12 driver="32.0.16.1088 ")
+[1790143887] execute_plan ok
+[1790144042] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790144042] ui publication: param=426, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790144042] coverage sequence resetup: render_only=false project_flag=false render_engine=false
+[1790144042] sequence (re)setup: observation deferred
+[1790144042] coverage sequence resetup: render_only=false project_flag=false render_engine=false
+[1790144042] sequence (re)setup: observation deferred
+[1790144042] coverage sequence resetup: render_only=true project_flag=true render_engine=false
+[1790144042] sequence (re)setup: observation deferred
+[1790144042] coverage sequence resetup: render_only=true project_flag=true render_engine=false
+[1790144042] sequence (re)setup: observation deferred
+[1790144043] idle observation: compiled: 1 pass, 1 params
+[1790144043] status: compiled: 1 pass, 1 params
+[1790144043] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790144043] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790144043] coverage sequence resetup: render_only=true project_flag=true render_engine=false
+[1790144043] sequence (re)setup: observation deferred
+[1790144043] idle observation: compiled: 1 pass, 1 params
+[1790144043] status: compiled: 1 pass, 1 params
+[1790144043] slots configured: 1 bound (names_ok=true, visibility_ok=true)
+[1790144043] ui publication: param=427, language=Some(LanguageId(1)), token=388347107668805, plan=303880636715951, code=E0
+[1790144043] coverage sequence resetup: render_only=true project_flag=true render_engine=false
+[1790144043] sequence (re)setup: observation deferred
+[1790144046] coverage sequence resetup: render_only=false project_flag=false render_engine=false
+[1790144046] sequence (re)setup: observation deferred
+[1790144046] status: E5 no expression on Source
+[1790144046] coverage sequence resetup: render_only=true project_flag=true render_engine=false
+[1790144046] sequence (re)setup: observation deferred
+[1790144046] slots hidden (no definition)
+[1790144046] ui publication: param=426, language=Some(LanguageId(1)), token=0, plan=0, code=E5
+[1790144046] ui publication: param=426, language=Some(LanguageId(1)), token=0, plan=0, code=E5
+[1790144047] idle observation: compiled: 1 pass, 2 params
+[1790144047] idle slot ui applied: 2 bound, 1 defaults written
+[1790144047] idle plan token updated: 0x6adf4a070deb4
+[1790144047] idle state token updated: Active(2008274452143030)
+[1790144047] status: compiled: 1 pass, 2 params
+[1790144047] slots configured: 2 bound (names_ok=true, visibility_ok=true)
+[1790144047] ui publication: param=427, language=Some(LanguageId(1)), token=8033097808572121, plan=1880116035641012, code=E0
+[1790144047] coverage sequence resetup: render_only=true project_flag=true render_engine=false
+[1790144047] sequence (re)setup: observation deferred
+[1790144047] idle observation: compiled: 1 pass, 2 params
+[1790144047] idle slot ui applied: 2 bound, 1 defaults written
+[1790144047] idle plan token updated: 0x6adf4a070deb4
+[1790144047] idle state token updated: Active(2008274452143030)
+[1790144047] status: compiled: 1 pass, 2 params
+[1790144047] slots configured: 2 bound (names_ok=true, visibility_ok=true)
+[1790144047] ui publication: param=427, language=Some(LanguageId(1)), token=8033097808572121, plan=1880116035641012, code=E0
+[1790144047] coverage sequence resetup: render_only=true project_flag=true render_engine=false
+[1790144047] sequence (re)setup: observation deferred
+[1790144047] idle observation: compiled: 1 pass, 1 params
+[1790144047] idle slot ui applied: 1 bound, 1 defaults written
+[1790144047] idle plan token updated: 0x56d43fb16adbc
+[1790144047] idle state token updated: Active(648196296103398)
+[1790144050] smart cmd (render=false): seq_raw_null=true const_seq_ok=true
+[1790144050] definition resolved from process registry
+[1790144050] smart geometry: logical=800x600 downsample=1/1x1/1 request=PF_LRect { left: 0, top: 0, right: 800, bottom: 600 } upstream=Rect { left: -80, top: 40, right: 880, bottom: 560 } frame=Rect { left: 0, top: 0, right: 800, bottom: 600 } canvas=Rect { left: -128, top: -128, right: 928, bottom: 728 }

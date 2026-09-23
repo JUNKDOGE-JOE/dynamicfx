@@ -1,0 +1,29 @@
+[
+  {
+    "case": "orphan-delete-owner",
+    "status": "FAIL",
+    "observed": {
+      "layers": 4,
+      "items": 88,
+      "rows": [
+        {
+          "id": 930,
+          "role": 1,
+          "source": 928
+        },
+        {
+          "id": 927,
+          "role": 1,
+          "source": 927
+        },
+        {
+          "id": 928,
+          "role": 0,
+          "source": 928
+        }
+      ]
+    },
+    "expected_layers": 3,
+    "expected_items": 87
+  }
+]

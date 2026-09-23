@@ -1,0 +1,9 @@
+{
+  "result": {
+    "ok": true,
+    "content": "{\"effects\":1,\"adjustment\":true}",
+    "contentType": "text",
+    "artifactId": "<local-id>"
+  },
+  "foreground_unchanged": true
+}

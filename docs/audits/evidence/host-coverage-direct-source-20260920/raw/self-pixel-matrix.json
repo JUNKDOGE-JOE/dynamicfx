@@ -1,0 +1,62 @@
+[
+  {
+    "depth": 8,
+    "stage": "masks",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 140000,
+    "same_as_background_input": true,
+    "mask_changes_pixels": 70500,
+    "status": "FAIL"
+  },
+  {
+    "depth": 8,
+    "stage": "masks",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 140000,
+    "same_as_background_input": true,
+    "mask_changes_pixels": 70500,
+    "status": "FAIL"
+  },
+  {
+    "depth": 16,
+    "stage": "masks",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 140000,
+    "same_as_background_input": true,
+    "mask_changes_pixels": 70549,
+    "status": "FAIL"
+  },
+  {
+    "depth": 16,
+    "stage": "masks",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 140000,
+    "same_as_background_input": true,
+    "mask_changes_pixels": 70549,
+    "status": "FAIL"
+  },
+  {
+    "depth": 32,
+    "stage": "masks",
+    "checkout_id": 1,
+    "pixels": 480000,
+    "native_word_mismatches": 140000,
+    "same_as_background_input": true,
+    "mask_changes_pixels": 70549,
+    "status": "FAIL"
+  },
+  {
+    "depth": 32,
+    "stage": "masks",
+    "checkout_id": 2,
+    "pixels": 480000,
+    "native_word_mismatches": 140000,
+    "same_as_background_input": true,
+    "mask_changes_pixels": 70549,
+    "status": "FAIL"
+  }
+]

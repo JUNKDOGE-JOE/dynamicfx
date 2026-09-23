@@ -1,0 +1,1 @@
+{"status": "PASS", "native_comparisons": 174, "groups": {"final-core-summary.json": 78, "more-summary.json": 24, "extra-summary.json": 54, "fixed-shift-summary.json": 12, "wgsl-coverage-summary.json": 6}, "roi": 15, "empty_depths": 3, "copy_ffx_recoveries": 3}

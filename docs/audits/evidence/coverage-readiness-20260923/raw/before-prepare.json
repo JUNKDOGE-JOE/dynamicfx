@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(app.project.dirty)throw Error(\"Unsaved project\");if(!app.project.file||!(/^(production-coverage|before|after)\\.aep$/.test(app.project.file.name)))throw Error(\"Unexpected project\");app.open(new File(\"<workspace>/scripts/out/coverage-owner-20260923/production-baseline.aep\"));for(var i=1;i<=app.project.numItems;i++){var c=app.project.item(i);if(!(c instanceof CompItem))continue;for(var j=1;j<=c.numLayers;j++){var fx=c.layer(j).property(\"ADBE Effect Parade\");for(var k=1;k<=fx.numProperties;k++)if(fx.property(k).matchName===\"DynamicFx Host Shape Probe\"){fx.property(k).property(2).setValue(1);fx.property(k).property(6).setValue(0);}}}app.project.save(new File(\"<workspace>/scripts/out/coverage-readiness-20260923/before.aep\"));return \"prepared\";})()",
+    "timeout_sec": 25
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"prepared\",\"contentType\":\"text\",\"artifactId\":\"<artifact>\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "prepared",
+      "contentType": "text",
+      "artifactId": "<local-id>"
+    }
+  }
+}
