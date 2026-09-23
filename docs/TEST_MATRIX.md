@@ -2088,3 +2088,26 @@ probe changes. Current diagnostic 0.0.14 `6734a384...`; production AEX remains
   [manifest](audits/evidence/coverage-completion-20260923/manifest.json),
   [material usage](liquid-glass.md). Existing Source Undo limitation remains;
   this does not add acceptance for other AE years or macOS.
+
+
+## TR-LIQUID-GLASS-UPSTREAM-008 — Licensed material port
+
+- Status: `PASS` on Windows AE 26.5x89, using the unchanged installed native pair
+  recorded in TR-COVERAGE-COMPLETE-007. Shader source and FFX identities are in
+  the new evidence manifest.
+- `cargo +1.97.1 test --locked --offline --lib` with the Windows 26.5 SDK root:
+  254 passed. Only the example test's pass count changed from three to five.
+- 26 GPU checks pass. Exact CPU distance reference maximum error 0.000003815
+  logical pixels; packed outputs match across all three depths. Independent
+  Snell displacement maximum error 0.00000423 pixels. Amount zero is exact.
+- 27 actual AE queue frames pass (three project depths, three resolutions,
+  three animation times). Output PSD display files are 8-bit; float checks use
+  the GPU runner and AE native samples. Four alpha/hole/preset cases pass.
+- Applying the script twice leaves one effect; final project contains three
+  enabled original shapes, valid bindings, no regression sampler and no queue.
+- ZIP CRC, member hashes, embedded FFX source and both native hashes are checked.
+  Source publication is gated on exact staged-content secret/path scanning.
+- Initial inverse-trig discrepancy, malformed diagnostic, missing SciPy and
+  wrong SDK-root invocation remain visible in evidence; final corrections pass.
+- [Audit](audits/12-upstream-liquid-glass.md),
+  [evidence](audits/evidence/liquid-glass-upstream-20260923/README.md).

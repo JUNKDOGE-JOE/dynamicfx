@@ -21,13 +21,13 @@
             var layer = layers[i], effects = layer.property("ADBE Effect Parade"), effect = null;
             for (var j = 1; j <= effects.numProperties; j++) {
                 var candidate = effects.property(j);
-                if (candidate.matchName === "DynamicFx" && candidate.name === "Liquid Glass") {
+                if (candidate.matchName === "DynamicFx" && (candidate.name === "Liquid Glass" || candidate.name === "Liquid Glass Studio")) {
                     if (effect) throw Error("More than one Liquid Glass effect on " + layer.name);
                     effect = candidate;
                 }
             }
             if (!effect) effect = effects.addProperty("DynamicFx");
-            effect.name = "Liquid Glass";
+            effect.name = "Liquid Glass Studio";
             var language = null, source = null;
             for (var j = 1; j <= effect.numProperties; j++) {
                 var property = effect.property(j);

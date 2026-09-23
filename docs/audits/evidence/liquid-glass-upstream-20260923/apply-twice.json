@@ -1,0 +1,20 @@
+{
+  "args": {
+    "code": "(function(){if(!app.project.file||decodeURI(app.project.file.name)!==\"Upstream Glass.aep\")throw Error(\"Unexpected project\");var c=app.project.itemByID(1);c.openInViewer();for(var i=1;i<=c.numLayers;i++)c.layer(i).selected=false;var card=null;for(var i=1;i<=c.numLayers;i++)if(c.layer(i).id===21)card=c.layer(i);if(!card)throw Error(\"Missing card\");card.selected=true;$.evalFile(new File(\"E:/Code/AePlugin_Dynamicfx/scripts/out/public-push-20260911/examples/apply-liquid-glass.jsx\"));$.evalFile(new File(\"E:/Code/AePlugin_Dynamicfx/scripts/out/public-push-20260911/examples/apply-liquid-glass.jsx\"));var e=card.property(\"ADBE Effect Parade\");return JSON.stringify({effects:e.numProperties,name:e.property(1).name,adjustment:card.adjustmentLayer,error:e.property(1).property(3).expressionError});})()",
+    "timeout_sec": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"content\":\"{\\\"effects\\\":1,\\\"name\\\":\\\"Liquid Glass Studio\\\",\\\"adjustment\\\":true,\\\"error\\\":\\\"\\\"}\",\"contentType\":\"text\",\"artifactId\":\"user:a0588da1-8948-49bf-8e6a-81232a71a07e\"}"
+      }
+    ],
+    "structuredContent": {
+      "ok": true,
+      "content": "{\"effects\":1,\"name\":\"Liquid Glass Studio\",\"adjustment\":true,\"error\":\"\"}",
+      "contentType": "text",
+      "artifactId": "user:a0588da1-8948-49bf-8e6a-81232a71a07e"
+    }
+  }
+}

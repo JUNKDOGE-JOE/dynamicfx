@@ -1,0 +1,192 @@
+[
+  {
+    "path": "ae-32-1-0.png",
+    "bytes": 1021678,
+    "sha256": "73cb371c0400e44290c3bf139bb6f74cdaf9672837f72334a50a26903a9323f7"
+  },
+  {
+    "path": "ae-32-1-1.5.png",
+    "bytes": 1022302,
+    "sha256": "3e4209b589db851dc9beb46534e0674c914d4e410793f44e9e3b2220114e5d42"
+  },
+  {
+    "path": "ae-8-4-0.png",
+    "bytes": 51500,
+    "sha256": "bea4dac6baaccf67beb512ae3d311c1845d8aa94cf547885f52aab24197d07d0"
+  },
+  {
+    "path": "ae-material-tests.py",
+    "bytes": 6333,
+    "sha256": "81fb10634d3828bed2d1d097d105408c8f7f8fbad76dc9b517e2cc5c9265114e"
+  },
+  {
+    "path": "ae-matrix-summary.json",
+    "bytes": 4773,
+    "sha256": "2d78fa2c5e75d7d4acb13aab62aac19fdb572abb7a94164876eb9ef9b258db28"
+  },
+  {
+    "path": "ae-matrix.py",
+    "bytes": 3474,
+    "sha256": "9fbb8d6cf98cffefdcf46d2e8ca5e2ff8709bac49dd68d8cf21cc4d739f0a2fa"
+  },
+  {
+    "path": "ae-upstream.py",
+    "bytes": 2911,
+    "sha256": "b45505d0d0b13f7ebbf70ebb12a9f9a6f273a7d3781f8d9fa1fe55e8eec6a8e3"
+  },
+  {
+    "path": "algebraic-ready.json",
+    "bytes": 1520,
+    "sha256": "5d8de354536eb4310fa1dbb38326c6fffd7fb65a99c690d8cbb8805959da0d80"
+  },
+  {
+    "path": "apply-twice.json",
+    "bytes": 1459,
+    "sha256": "e99916e9be5c28af20e254e47f52498daa3230a661053a32746364aee146c0b9"
+  },
+  {
+    "path": "delivery-check.json",
+    "bytes": 450,
+    "sha256": "0232206d1c4696245f070a10dd7194a0dbc6d62e5974f55d7422e8f61a7f7547"
+  },
+  {
+    "path": "delivery-check.py",
+    "bytes": 1704,
+    "sha256": "da201ab76733e44258a2b068965b98c708196069c4cce8b2b4b04202a64e64e8"
+  },
+  {
+    "path": "final-demo-state.json",
+    "bytes": 2223,
+    "sha256": "87f5311a60df661410ac55c09082867d2be979d4bd5f7c60c87c10794c5526ae"
+  },
+  {
+    "path": "finalize-ae.py",
+    "bytes": 2305,
+    "sha256": "f16c9542742efefbe5a684665063b1a7cdb10dd5804181b5455be2e21cffad97"
+  },
+  {
+    "path": "gpu-algebraic.log",
+    "bytes": 2045,
+    "sha256": "94fe78f2eb64a8f355e7adce38532b1eed06c9d6a1446bc6417337c1dc0e3333"
+  },
+  {
+    "path": "gpu-final.log",
+    "bytes": 2978,
+    "sha256": "9acde642f1827bdbc46926a634db69abe5764a3dcce0449bf554ad85f1aa2efc"
+  },
+  {
+    "path": "gpu-isolated.log",
+    "bytes": 2692,
+    "sha256": "b3367e58754efeca0c4ab484eb774e1a1612a2d16557869a6721466a0ca822b6"
+  },
+  {
+    "path": "gpu-summary.json",
+    "bytes": 2815,
+    "sha256": "1608d0c11d0fe39e1530881384c80cb6e65183b593a00f1097fb41865c319563"
+  },
+  {
+    "path": "gpu-tests-fixed.log",
+    "bytes": 1800,
+    "sha256": "5e3c704c088a9a9c646be3fc2be3065017b1fb1d6657276516a5e3dbe292a45c"
+  },
+  {
+    "path": "gpu-tests.log",
+    "bytes": 277,
+    "sha256": "ccc2a8cdf3352a1dae37a5682ecf9e0c2f1151982bcf6dc6b35047c55cbfe5be"
+  },
+  {
+    "path": "material-algebraic.log",
+    "bytes": 2192,
+    "sha256": "e0891173b729ff9b326777463a85214e0a6348fc42ce5618a7140c0715ebb954"
+  },
+  {
+    "path": "material-ffx-ready.json",
+    "bytes": 1093,
+    "sha256": "3f113500537c16b87c7eb07d27664fa125d22942fd6107c4df5c72686958dc85"
+  },
+  {
+    "path": "material-identities.json",
+    "bytes": 478,
+    "sha256": "86a3e8830563c74f4bfb8828f2b058f90daa5b58969ca497ef6e3fdaab8bf63a"
+  },
+  {
+    "path": "material-summary.json",
+    "bytes": 1637,
+    "sha256": "b6fc81950098ac38a85f0d50138ba8f656adbae637f0f57fa5bad2b6bb9a178c"
+  },
+  {
+    "path": "matrix-16.stdout.log",
+    "bytes": 14473,
+    "sha256": "90b91de45b922e3d84e29a66b4eaf9094d6bb391a3c6803f3a27064ac7e9ccdb"
+  },
+  {
+    "path": "matrix-32.stdout.log",
+    "bytes": 14473,
+    "sha256": "495d4fbd62dd394028fa5c1fdd7b5e871d905905527923363860a18ad52cf1cf"
+  },
+  {
+    "path": "matrix-8.stdout.log",
+    "bytes": 11295,
+    "sha256": "72ad3b39a710843174ba7780b994285d5dd6170441f227e0394ff7c40f2a35c4"
+  },
+  {
+    "path": "matrix-algebraic.log",
+    "bytes": 89,
+    "sha256": "c6b5506cbb2d95cf7f2734cef0315c14db7c5b59b11d3e683113f89254a1d64f"
+  },
+  {
+    "path": "optics-isolated-final.log",
+    "bytes": 1181,
+    "sha256": "534cd3ea78bb1a8b52e652cef89617b96bb23d3ab787f74c96215c21003fd0a3"
+  },
+  {
+    "path": "README.md",
+    "bytes": 1330,
+    "sha256": "b8971394d3b8c468c253ed84b117f1b07091d5d09a6aa60079fa569cef6134e3"
+  },
+  {
+    "path": "refresh.py",
+    "bytes": 1178,
+    "sha256": "205cee816ff5f27db0da7cd14d04b8b961818a8ac456539fb6f41b7d0a24f92c"
+  },
+  {
+    "path": "rust-correct-sdk.log",
+    "bytes": 20415,
+    "sha256": "fd951dc792108e9b293980b28f14ebfb108a353e04889c7e71a51e9f2c611f31"
+  },
+  {
+    "path": "rust-final.log",
+    "bytes": 5505,
+    "sha256": "fabec19095930aac436d71b1aef6f840f90dc678d1c0093d3fe0646e48dd7c07"
+  },
+  {
+    "path": "upstream/COLOR-LICENSE",
+    "bytes": 1070,
+    "sha256": "07170a555896a4e6af22ee9712bd3e074428cd7303b926f02b7c813371fc510b"
+  },
+  {
+    "path": "upstream/LICENSE",
+    "bytes": 1068,
+    "sha256": "fc2398f73fb001de6506ff9258276f41d0cc7642d1f1a41cbbfd791f346a68ef"
+  },
+  {
+    "path": "upstream/src/shaders/fragment-main.glsl",
+    "bytes": 17639,
+    "sha256": "fa2108ca4a71bbdf15b93b2954c4dbd2164e55b37dc581b6926c76b0eaf8afc9"
+  },
+  {
+    "path": "upstream/src/shaders/lib/color.glsl",
+    "bytes": 3788,
+    "sha256": "0f07b667a00e925061160e99b599f193729c2ea69b92306f1b7fe6dd05bb43d3"
+  },
+  {
+    "path": "verify-gpu.py",
+    "bytes": 6358,
+    "sha256": "8409e93b1f646de61d84b5f30bc04609549e19d3e421b72e9968f258343ec4aa"
+  },
+  {
+    "path": "verify-optics.py",
+    "bytes": 3976,
+    "sha256": "1008b026b1d3aff240a704aa10cacb273d3f8e9d3d2434281fbf7f3e09cfd382"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "archive_sha256": "60ac1b1269123c443122065eb79e2c212e85594d0113f2b20915ad9ceb063159",
+  "zip_crc": "PASS",
+  "material_members_exact": 6,
+  "ffx_embeds_exact_source": true,
+  "native_pair_unchanged": true,
+  "gpu_cases": 26,
+  "ae_frames": 27,
+  "source_sha256": "eee6dd959fed14c6e6a311258d2a61f2973e1cb5fd11062bfa056d9c833a5132",
+  "ffx_sha256": "bbf000c4b504405129473f6f22867c94c3c2ccbd8240c1b07367eb28f76a266d"
+}

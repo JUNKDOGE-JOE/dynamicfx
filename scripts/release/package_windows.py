@@ -131,7 +131,9 @@ Coverage acceptance: {coverage['host_scope']}
             for p in sorted(args.coverage_third_party.rglob('*')):
                 if p.is_file():
                     z.write(p, 'READER_THIRD_PARTY/' + p.relative_to(args.coverage_third_party).as_posix())
-            for name in ['liquid-glass.glsl', 'liquid-glass.ffx', 'apply-liquid-glass.jsx']:
+            for name in ['liquid-glass.glsl', 'liquid-glass.ffx', 'apply-liquid-glass.jsx',
+                         'liquid-glass-upstream.md', 'licenses/liquid-glass-studio-MIT.txt',
+                         'licenses/glsl-color-functions-MIT.txt']:
                 z.write(ROOT / 'examples' / name, 'LiquidGlass/' + name)
             z.writestr('LiquidGlass/README.txt', '''Liquid Glass / 液态玻璃
 
@@ -147,8 +149,10 @@ liquid-glass.ffx. No Layer/Mask selector or manual reader binding is needed.
 也可先打开形状图层的调整层开关，再应用 liquid-glass.ffx。无需绑定其他图层或蒙版。
 
 Edit the original shapes and masks normally. Keep the plugin-managed hidden
-reader layers unchanged. Amount=0 restores the input; Edge Width controls the
-rim, Refraction controls displacement, and Edge Light controls highlights.
+  reader layers unchanged. Amount=0 restores the input; Glass Thickness controls
+  the rim, Refraction controls displacement, and Glare Strength controls highlights.
+  This material adapts iyinchao/liquid-glass-studio. See liquid-glass-upstream.md
+  and licenses/ for upstream attribution and MIT terms.
 ''')
         z.writestr('INSTALL.txt', install)
         z.write(ROOT / 'LICENSE', 'LICENSE')

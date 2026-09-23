@@ -14,6 +14,10 @@
 
 ## Current - IOS27Siri withdrawn for refinement
 
+The user-selected MIT Liquid Glass Studio material port is complete, including
+coverage-derived geometry, source/FFX, upstream notices and GPU/AE acceptance.
+See [material audit](audits/12-upstream-liquid-glass.md).
+
 The separately requested automatic host-coverage feature and Liquid Glass
 example have completed Windows AE 26.5x89 acceptance. The development candidate
 contains paired native components, shader, FFX and application script. See

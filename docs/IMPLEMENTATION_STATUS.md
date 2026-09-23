@@ -5,7 +5,19 @@
 
 
 
-## Completed production coverage and Liquid Glass — 2026-09-23
+## Completed upstream Liquid Glass port — 2026-09-23
+
+The material now adapts MIT `iyinchao/liquid-glass-studio` at pinned commit
+`f7b28c36305a862f5cffed3ddd51511cf1204f56`, using original-layer coverage for
+geometry. Source, FFX, application script and package carry the upstream notices.
+Final verification: 254 Rust tests, 26 GPU cases, 27 formal AE frames, four
+alpha/hole/preset cases and repeat application. The equivalent algebraic Snell
+formula reduces GPU displacement error to 0.00000423 pixels in the independent
+CPU comparison. No native plug-in ABI or host-support change.
+[Port audit](audits/12-upstream-liquid-glass.md),
+[test record](TEST_MATRIX.md#tr-liquid-glass-upstream-008--licensed-material-port).
+
+## Completed production coverage and initial Liquid Glass — 2026-09-23
 
 The agreed coverage feature and Liquid Glass material pass Windows AE 2026
 26.5x89 acceptance. Final installed main:

@@ -1,0 +1,17 @@
+[
+  {
+    "path": "examples/liquid-glass.glsl",
+    "sha256": "eee6dd959fed14c6e6a311258d2a61f2973e1cb5fd11062bfa056d9c833a5132",
+    "bytes": 14582
+  },
+  {
+    "path": "examples/liquid-glass.ffx",
+    "sha256": "bbf000c4b504405129473f6f22867c94c3c2ccbd8240c1b07367eb28f76a266d",
+    "bytes": 253756
+  },
+  {
+    "path": "examples/apply-liquid-glass.jsx",
+    "sha256": "0b8078d76e8a81a38fb581f9ab517a2d174d0d6455437652ea391be0f9692a10",
+    "bytes": 2462
+  }
+]

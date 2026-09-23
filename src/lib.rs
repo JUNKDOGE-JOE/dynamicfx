@@ -1432,7 +1432,7 @@ mod example_tests {
         compiles("liquid-glass.glsl", source);
         let (_, _, compiled) = evaluate_committed_source(frontend::LanguageId::GLSL, source, None);
         let (_, compiled) = compiled.unwrap();
-        assert_eq!(compiled.passes.len(), 3);
+        assert_eq!(compiled.passes.len(), 5);
         assert!(matches!(compiled.externals.as_slice(), [ExternalSource::Coverage { .. }]));
         assert_eq!(compiled.definition.canvas_param.as_ref().unwrap().as_str(), "padding");
         assert!(compiled.window.is_none());
